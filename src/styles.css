@@ -172,7 +172,13 @@ body {
 .app-shell {
   max-width: 600px;
   margin: 0 auto;
-  padding: 18px 18px 60px;
+  /* Respect the device safe area so the top nav isn't hidden under the status
+     bar / notch when Plexus runs as an installed PWA (viewport-fit=cover +
+     translucent status bar). In a normal browser these insets are 0, so this
+     changes nothing there. */
+  padding:
+    calc(18px + env(safe-area-inset-top)) calc(18px + env(safe-area-inset-right))
+    calc(60px + env(safe-area-inset-bottom)) calc(18px + env(safe-area-inset-left));
   min-height: 100vh;
 }
 
