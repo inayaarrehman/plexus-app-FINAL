@@ -19,6 +19,9 @@
     <title>Plexus — Medical Pattern Recognition</title>
   </head>
   <body>
+    <!-- Static dark cover shown before JavaScript loads; the animated splash
+         removes it on mount so the launch is one continuous dark screen. -->
+    <div id="boot-splash" style="position:fixed;inset:0;z-index:999;background:#1e1238"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

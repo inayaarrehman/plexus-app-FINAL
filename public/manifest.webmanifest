@@ -6,7 +6,7 @@
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#1b1c2e",
+  "background_color": "#1e1238",
   "theme_color": "#1b1c2e",
   "categories": ["education", "games", "medical"],
   "icons": [

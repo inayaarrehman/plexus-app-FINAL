@@ -1053,6 +1053,36 @@ console.log('\n[34] Every organ system can generate a puzzle (content coverage)'
 }
 
 // ---------------------------------------------------------------
+console.log('\n[35] Supabase content maps to playable groups and merges onto the bundled bank')
+{
+  const { mapRow, mergeBank } = await import('../src/lib/contentSource.js')
+  const row = {
+    id: 'abc', title: 'Test connection', organ_systems: ['Cardiology'], difficulty: 'medium',
+    connection_type: 'knowledge', explanation: 'Why these four belong together.', remember: 'A memory hook.',
+    tags: ['test'],
+    connection_concepts: [
+      { position: 0, tile_note: 'note a', concept: { canonical_name: 'Alpha' } },
+      { position: 1, tile_note: 'note b', concept: { canonical_name: 'Beta' } },
+      { position: 2, tile_note: 'note c', concept: { canonical_name: 'Gamma' } },
+      { position: 3, tile_note: 'note d', concept: { canonical_name: 'Delta' } },
+    ],
+  }
+  const g = mapRow(row)
+  assert(!!g, 'a complete row maps to a group')
+  assert(g.tiles.length === 4 && g.tiles[0] === 'Alpha', 'tiles come from linked concepts in position order')
+  assert(g.primarySystem === 'Cardiology' && Array.isArray(g.secondarySystems), 'systems map to primary/secondary')
+  // Incomplete rows are rejected (not playable).
+  assert(mapRow({ ...row, connection_concepts: row.connection_concepts.slice(0, 3) }) === null, 'a row with <4 tiles is skipped')
+  assert(mapRow({ ...row, difficulty: 'nonsense' }) === null, 'a row with an invalid difficulty is skipped')
+  assert(mapRow({ ...row, organ_systems: ['NotASystem'] }) === null, 'a row with no known system is skipped')
+  // Merge: dedupe by title, base wins, additions appended.
+  const base = [{ title: 'Existing', id: 'b1' }]
+  const merged = mergeBank(base, [{ title: 'Existing', id: 'x' }, { title: 'Brand New', id: 'x2' }])
+  assert(merged.length === 2, 'merge dedupes by title and appends only new titles')
+  assert(mergeBank(base, []) === base, 'merge with no extras returns the base unchanged')
+}
+
+// ---------------------------------------------------------------
 console.log(`\n${'='.repeat(40)}`)
 if (failures === 0) {
   console.log(`ALL CHECKS PASSED (${allPuzzles.length} puzzles validated: ${dailyPuzzles.length} daily, ${systemPuzzles.length} system)\n`)

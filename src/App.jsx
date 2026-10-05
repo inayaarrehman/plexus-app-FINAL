@@ -15,6 +15,7 @@ import { isSupabaseConfigured } from './lib/supabaseClient.js'
 import { onAuthChange } from './lib/auth.js'
 import { syncProgress, pushProgress } from './lib/progressRepo.js'
 import { snapshotLocal } from './utils/progressSync.js'
+import { loadExtraConnections, mergeBank } from './lib/contentSource.js'
 import StatsModal from './components/StatsModal.jsx'
 import DevViewer from './components/DevViewer.jsx'
 import BrandMark from './components/BrandMark.jsx'
@@ -167,6 +168,22 @@ export default function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supaConfigured])
+
+  // Verified connections authored/generated in Supabase, merged on top of the
+  // bundled bank for Systems / 3-Minute / Race. The Daily stays on the bundled
+  // bank (below) so it is stable and identical for everyone.
+  const [extraConnections, setExtraConnections] = useState([])
+  useEffect(() => {
+    if (!supaConfigured) return
+    loadExtraConnections()
+      .then((rows) => {
+        if (rows && rows.length) setExtraConnections(rows)
+      })
+      .catch(() => {
+        /* offline / empty — the bundled bank is used */
+      })
+  }, [supaConfigured])
+  const bank = useMemo(() => mergeBank(connectionBank, extraConnections), [extraConnections])
   const [refreshTick, setRefreshTick] = useState(0)
   const [systemPlayNotice, setSystemPlayNotice] = useState(null)
 
@@ -199,7 +216,7 @@ export default function App() {
   const continueSystemCounts = useMemo(
     () =>
       continueSystem
-        ? systemMasteryCounts(connectionBank, continueSystem, mastery)
+        ? systemMasteryCounts(bank, continueSystem, mastery)
         : { total: 0, solved: 0, mastered: 0 },
     [continueSystem, mastery]
   )
@@ -291,7 +308,7 @@ export default function App() {
   // Library's PLAY button) — no pre-generated file, no numbered puzzle to
   // pick. Biased away from already-mastered concepts via `mastery`.
   const playSystem = (system) => {
-    const puzzle = assembleSystemPuzzle(connectionBank, system, {
+    const puzzle = assembleSystemPuzzle(bank, system, {
       mastery,
       recentIds: getRecentCategories(),
     })
@@ -437,7 +454,7 @@ export default function App() {
     return (
       <div className="app-shell">
         {challengePhase !== 'playing' && <AppNav active="challenge" onNavigate={navigate} />}
-        <Challenge bank={connectionBank} onExit={goHome} onPhaseChange={setChallengePhase} />
+        <Challenge bank={bank} onExit={goHome} onPhaseChange={setChallengePhase} />
       </div>
     )
   }
@@ -445,7 +462,7 @@ export default function App() {
   if (view === 'race') {
     return (
       <div className="app-shell">
-        <Race bank={connectionBank} initialCode={raceInitialCode} onExit={goHome} />
+        <Race bank={bank} initialCode={raceInitialCode} onExit={goHome} />
       </div>
     )
   }
@@ -464,7 +481,7 @@ export default function App() {
       <div className="app-shell">
         <AppNav active="systems" onNavigate={navigate} />
         <Systems
-          bank={connectionBank}
+          bank={bank}
           mastery={mastery}
           onPlaySystem={playSystem}
           onBack={goHome}

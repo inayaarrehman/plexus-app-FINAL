@@ -153,6 +153,65 @@ export async function removeConceptFromConnection(connectionId, conceptId) {
   return true
 }
 
+// Find a concept by its canonical name, or create it (verified) if missing.
+// Returns the concept id. Handles the race where two inserts collide on the
+// unique canonical_name by re-selecting.
+export async function ensureConcept(canonicalName, fields = {}) {
+  const sb = await getSupabase()
+  if (!sb) throw notConfigured()
+  const name = String(canonicalName || '').trim()
+  if (!name) throw new Error('A tile needs a term.')
+  const { data: found } = await sb.from('concepts').select('id').eq('canonical_name', name).maybeSingle()
+  if (found?.id) return found.id
+  const { data, error } = await sb
+    .from('concepts')
+    .insert({ canonical_name: name, verification_status: 'verified', ...fields })
+    .select('id')
+    .single()
+  if (error) {
+    const { data: again } = await sb.from('concepts').select('id').eq('canonical_name', name).maybeSingle()
+    if (again?.id) return again.id
+    throw error
+  }
+  return data.id
+}
+
+// Create or update a connection together with its four tiles in one call: the
+// connection row, a concept per tile (reused by name if it already exists), and
+// the ordered links carrying each tile's note. `tiles` is [{ term, why }].
+export async function saveConnectionWithTiles({ id = null, fields, tiles }) {
+  const sb = await getSupabase()
+  if (!sb) throw notConfigured()
+  const clean = (tiles || []).map((t) => ({ term: String(t.term || '').trim(), why: String(t.why || '').trim() })).filter((t) => t.term)
+  if (clean.length !== 4) throw new Error('A connection needs exactly four tiles, each with a term.')
+  if (new Set(clean.map((t) => t.term.toLowerCase())).size !== 4) throw new Error('The four tiles must be distinct.')
+
+  // Create or update the connection row.
+  let connectionId = id
+  if (connectionId) {
+    await updateConnection(connectionId, fields)
+    // Clear existing tile links so we can rewrite them cleanly.
+    const existing = await getConnection(connectionId)
+    for (const link of existing?.connection_concepts || []) {
+      if (link.concept?.id) await removeConceptFromConnection(connectionId, link.concept.id)
+    }
+  } else {
+    const created = await createConnection(fields)
+    connectionId = created.id
+  }
+
+  // Ensure a concept per tile and link it in order, carrying the tile note.
+  const conceptFields = {
+    organ_systems: fields.organ_systems || [],
+    difficulty: fields.difficulty || null,
+  }
+  for (let i = 0; i < clean.length; i++) {
+    const conceptId = await ensureConcept(clean[i].term, conceptFields)
+    await addConceptToConnection(connectionId, conceptId, { position: i, tile_note: clean[i].why || null })
+  }
+  return connectionId
+}
+
 // ---- CONCEPTS ----
 export async function listConcepts({ search = '', status = 'all', system = 'all', includeArchived = false } = {}) {
   const sb = await getSupabase()

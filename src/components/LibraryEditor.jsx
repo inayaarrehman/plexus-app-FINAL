@@ -34,9 +34,25 @@ function ConnectionForm({ initial, onSave, onCancel, busy }) {
     tags: arrToCsv(initial?.tags),
     explanation: initial?.explanation || '',
     remember: initial?.remember || '',
-    verification_status: initial?.verification_status || 'needs_review',
+    verification_status: initial?.verification_status || 'verified',
   }))
+  // The four tiles (term + why), prefilled from the connection's linked concepts
+  // when editing. These are what make the connection playable.
+  const [tiles, setTiles] = useState(() => {
+    const links = (initial?.connection_concepts || [])
+      .slice()
+      .sort((a, b) => (a.position || 0) - (b.position || 0))
+    const t = links.map((l) => ({ term: l.concept?.canonical_name || '', why: l.tile_note || '' }))
+    while (t.length < 4) t.push({ term: '', why: '' })
+    return t.slice(0, 4)
+  })
   const up = (k) => (e) => setF((p) => ({ ...p, [k]: e.target.value }))
+  const upTile = (i, k) => (e) =>
+    setTiles((prev) => prev.map((t, idx) => (idx === i ? { ...t, [k]: e.target.value } : t)))
+
+  const terms = tiles.map((t) => t.term.trim())
+  const tilesValid = terms.filter(Boolean).length === 4 && new Set(terms.map((t) => t.toLowerCase())).size === 4
+
   return (
     <div className="led-form">
       <Field label="Title"><input value={f.title} onChange={up('title')} /></Field>
@@ -58,24 +74,51 @@ function ConnectionForm({ initial, onSave, onCancel, busy }) {
         </Field>
       </div>
       <Field label="Organ systems (comma-separated)"><input value={f.organ_systems} onChange={up('organ_systems')} placeholder={SYSTEMS.slice(0, 3).join(', ')} /></Field>
+
+      {/* The four tiles. Each is a concept (the term players tap) plus a one-line
+          "why" shown in Review. All four are required for a playable connection. */}
+      <div className="led-tiles">
+        <span className="led-label">Tiles (exactly 4)</span>
+        {tiles.map((t, i) => (
+          <div className="led-tile-row" key={i}>
+            <input
+              className="led-tile-term"
+              value={t.term}
+              onChange={upTile(i, 'term')}
+              placeholder={`Tile ${i + 1} term`}
+            />
+            <input
+              className="led-tile-why"
+              value={t.why}
+              onChange={upTile(i, 'why')}
+              placeholder="why it belongs (shown in Review)"
+            />
+          </div>
+        ))}
+        {!tilesValid && <span className="led-tile-hint">Enter four distinct tile terms to make this connection playable.</span>}
+      </div>
+
       <Field label="Tags (comma-separated)"><input value={f.tags} onChange={up('tags')} /></Field>
       <Field label="Explanation"><textarea rows={2} value={f.explanation} onChange={up('explanation')} /></Field>
       <Field label="Remember"><textarea rows={2} value={f.remember} onChange={up('remember')} /></Field>
       <div className="led-actions">
         <button
           className="led-btn-primary"
-          disabled={busy || !f.title.trim()}
+          disabled={busy || !f.title.trim() || !tilesValid}
           onClick={() =>
-            onSave({
-              title: f.title.trim(),
-              difficulty: f.difficulty,
-              connection_type: f.connection_type,
-              organ_systems: csvToArr(f.organ_systems),
-              tags: csvToArr(f.tags),
-              explanation: f.explanation,
-              remember: f.remember,
-              verification_status: f.verification_status,
-            })
+            onSave(
+              {
+                title: f.title.trim(),
+                difficulty: f.difficulty,
+                connection_type: f.connection_type,
+                organ_systems: csvToArr(f.organ_systems),
+                tags: csvToArr(f.tags),
+                explanation: f.explanation,
+                remember: f.remember,
+                verification_status: f.verification_status,
+              },
+              tiles.map((t) => ({ term: t.term.trim(), why: t.why.trim() }))
+            )
           }
         >
           {busy ? 'Saving…' : 'Save'}
@@ -285,13 +328,26 @@ export default function LibraryEditor() {
     )
   }
 
-  const save = async (fields) => {
+  // Open a connection for editing with its tiles loaded (the list rows don't
+  // carry linked concepts).
+  const openEdit = async (row) => {
+    if (entity === 'connections') {
+      try {
+        setEditing(await repo.getConnection(row.id))
+        return
+      } catch {
+        /* fall back to the list row without tiles */
+      }
+    }
+    setEditing(row)
+  }
+
+  const save = async (fields, tiles) => {
     setBusy(true)
     setError('')
     try {
       if (entity === 'connections') {
-        if (editing === 'new') await repo.createConnection(fields)
-        else await repo.updateConnection(editing.id, fields)
+        await repo.saveConnectionWithTiles({ id: editing === 'new' ? null : editing.id, fields, tiles })
       } else if (entity === 'concepts') {
         if (editing === 'new') await repo.createConcept(fields)
         else await repo.updateConcept(editing.id, fields)
@@ -395,7 +451,7 @@ export default function LibraryEditor() {
                 </span>
               </div>
               <div className="led-item-actions">
-                <button className="led-btn" onClick={() => setEditing(row)}>Edit</button>
+                <button className="led-btn" onClick={() => openEdit(row)}>Edit</button>
                 {entity !== 'sources' && <button className="led-btn" onClick={() => toggleArchive(row)}>{row.archived ? 'Unarchive' : 'Archive'}</button>}
               </div>
             </div>
