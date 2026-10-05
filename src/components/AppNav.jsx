@@ -3,7 +3,7 @@ import LockGlyph from './LockGlyph.jsx'
 import { LOCK_COPY } from '../utils/dailyGate.js'
 
 // Understated text navigation — no icons, no cards. Rendered above Home,
-// Systems and Archive/Review; deliberately NOT rendered around an active
+// Systems and Archive; deliberately NOT rendered around an active
 // Daily Puzzle or a running 3-Minute Challenge, which stay full-screen and
 // distraction-free (the same treatment Game.jsx already used before this
 // nav existed).
@@ -11,7 +11,7 @@ const ITEMS = [
   { key: 'home', label: 'Today' },
   { key: 'systems', label: 'Systems' },
   { key: 'challenge', label: '3-Minute' },
-  { key: 'archive', label: 'Review' },
+  { key: 'archive', label: 'Archive' },
 ]
 
 // `locked`: before today's Daily is finished, every destination except Today

@@ -10,7 +10,9 @@ const NODE_COLORS = NODE_VARS
 // in miniature. Decorative only (geometry is seeded from the id, never the
 // content), and always aria-hidden — it carries no information a screen
 // reader needs. Draws the paths with a short "draw" when `animate`.
-export default function PuzzleSignature({ seed, resolved = false, size = 40, animate = false, nodeCount, className = '' }) {
+// `bold` draws larger nodes and heavier links for very small uses (the
+// Archive calendar marks), where the default weights would vanish.
+export default function PuzzleSignature({ seed, resolved = false, size = 40, animate = false, nodeCount, className = '', bold = false }) {
   const { nodes, links } = useMemo(
     () => puzzleSignature(seed, nodeCount ? { nodeCount } : undefined),
     [seed, nodeCount]
@@ -35,9 +37,9 @@ export default function PuzzleSignature({ seed, resolved = false, size = 40, ani
               x2={nodes[b].x}
               y2={nodes[b].y}
               stroke="currentColor"
-              strokeWidth="1.6"
+              strokeWidth={bold ? 3.6 : 1.6}
               strokeLinecap="round"
-              opacity="0.4"
+              opacity={bold ? 0.6 : 0.4}
             />
           ))}
         </g>
@@ -48,7 +50,7 @@ export default function PuzzleSignature({ seed, resolved = false, size = 40, ani
             key={i}
             cx={n.x}
             cy={n.y}
-            r={resolved ? 4.2 : 3.2}
+            r={bold ? 9.5 : resolved ? 4.2 : 3.2}
             fill={NODE_COLORS[i % NODE_COLORS.length]}
             opacity={resolved ? 1 : 0.7}
           />

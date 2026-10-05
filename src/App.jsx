@@ -535,7 +535,7 @@ export default function App() {
     return (
       <div className="app-shell">
         <AppNav active="archive" onNavigate={navigate} />
-        <Archive dailyHistory={getDailyHistory()} onOpenDay={openArchiveDay} onBack={goHome} />
+        <Archive dailyHistory={getDailyHistory()} onOpenDay={openArchiveDay} onBack={goHome} currentStreak={stats.currentStreak} />
       </div>
     )
   }

@@ -149,7 +149,7 @@ check('Home omits the Continue section with no play history yet, but still offer
 
 check('AppNav renders all 4 primary nav items with the active one marked', () => {
   const html = renderToStaticMarkup(React.createElement(AppNav, { active: 'systems', onNavigate: () => {} }))
-  ;['Today', 'Systems', '3-Minute', 'Review'].forEach((label) => {
+  ;['Today', 'Systems', '3-Minute', 'Archive'].forEach((label) => {
     if (!html.includes(label)) throw new Error(`expected the nav to include "${label}"`)
   })
   if (!html.includes('app-nav-item active')) throw new Error('expected the active nav item to carry the "active" class')
@@ -425,7 +425,7 @@ check('Game renders the result card on a pre-seeded loss (no streak banner)', ()
 // Archive
 // ---------------------------------------------------------------
 
-check('Review renders the Monthly Plexus View — a signature per day of the current month', () => {
+check('Archive renders the month as a calendar with no connecting line', () => {
   const html = renderToStaticMarkup(
     React.createElement(Archive, {
       dailyHistory: getDailyHistory(),
@@ -433,34 +433,36 @@ check('Review renders the Monthly Plexus View — a signature per day of the cur
       onBack: () => {},
     })
   )
-  if (!html.includes('monthly-grid')) throw new Error('expected the monthly signature grid')
-  if (!html.includes('monthly-cell')) throw new Error('expected per-day signature cells')
-  if (!html.includes('puzzle-signature')) throw new Error('expected Puzzle Signatures in the monthly grid')
-  // Non-punitive: no ✕ / broken-streak imagery for missed days.
-  if (html.includes('✕') || html.includes('archive-row-status lost')) {
-    throw new Error('monthly view must not show missed-day / broken-streak warnings')
-  }
+  if (!html.includes('archive-grid')) throw new Error('expected the calendar grid')
+  if (!html.includes('>Archive<')) throw new Error('expected the page to be labelled Archive')
+  if (!html.includes('Revisit a Daily.')) throw new Error('expected the "Revisit a Daily." line')
+  if (html.includes('monthly-network')) throw new Error('the month must not draw a connecting line')
+  if (html.includes('✕') || html.includes('archive-row-status lost')) throw new Error('no missed-day warnings')
+  if (!html.includes('Previous month') || !html.includes('Next month')) throw new Error('expected month navigation')
   return html
 })
 
-check('Review marks a completed day as connected and shows a non-punitive month summary', () => {
+check('Archive marks completed days with a Plexus and shows "X / Y completed" plus the streak', () => {
   const today = new Date()
   const y = today.getFullYear()
-  const m = String(today.getMonth() + 1).padStart(2, '0')
+  const mm = today.getMonth()
+  const m = String(mm + 1).padStart(2, '0')
   const d = String(today.getDate()).padStart(2, '0')
   const key = `${y}-${m}-${d}`
   const html = renderToStaticMarkup(
     React.createElement(Archive, {
-      dailyHistory: {
-        [key]: { date: key, completed: true, won: true, mistakes: 2 },
-      },
+      dailyHistory: { [key]: { date: key, completed: true, won: true, mistakes: 2 } },
       onOpenDay: () => {},
       onBack: () => {},
+      currentStreak: 4,
     })
   )
-  if (!html.includes('is-connected')) throw new Error('expected a completed day to render as a connected signature')
-  if (!html.includes('Daily completed') && !html.includes('Dailies completed'))
-    throw new Error('expected a clear "X Dailies completed" month summary')
+  if (!html.includes('archive-cell is-done')) throw new Error('expected the completed day in the completed state')
+  if (!html.includes('puzzle-signature')) throw new Error('expected a Plexus mark on the completed day')
+  const expectedAvail = today.getDate()
+  const plain = html.replace(/<!-- -->/g, '')
+  if (!plain.includes(`1 / ${expectedAvail} completed`)) throw new Error(`expected "1 / ${expectedAvail} completed" (only Dailies available so far)`)
+  if (!plain.includes('4 day streak')) throw new Error('expected the existing streak')
   return html
 })
 

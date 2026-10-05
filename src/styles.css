@@ -3160,100 +3160,7 @@ body.env-challenge .secondary-btn:hover {
   margin: 6px 0 2px;
 }
 
-/* The month as a field: signatures on a fixed 7-column lattice, with the
-   sparse Plexus network drawn behind them. Fixed columns keep the network
-   geometry deterministic and resolution-independent. */
-.monthly-field {
-  position: relative;
-  margin: 16px 0 18px;
-}
-
-/* The deterministic peripheral network, stretched to the grid box and sitting
-   BEHIND the signatures at low opacity so dates stay readable (Section 19). */
-.monthly-network {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  color: var(--text);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Signatures are the primary objects; date numbers are secondary. */
-.monthly-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px 6px;
-}
-
-.monthly-cell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  background: transparent;
-  border: none;
-  padding: 6px 2px;
-  border-radius: 10px;
-  cursor: pointer;
-  min-height: 68px;
-}
-
-.monthly-cell:disabled {
-  cursor: default;
-}
-
-.monthly-cell .puzzle-signature {
-  color: var(--text);
-}
-
-/* Completed = connected & full colour; quiet/future = faint outline. */
-.monthly-cell.is-quiet .puzzle-signature {
-  opacity: 0.34;
-}
-
-/* §23: future days show only the date, centred and quiet — no signature, so
-   they can't be mistaken for missed or playable puzzles. */
-.monthly-cell.is-future {
-  justify-content: center;
-}
-
-.monthly-cell.is-future .monthly-cell-day {
-  opacity: 0.4;
-}
-
-.monthly-cell-day {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--text-dim);
-  font-variant-numeric: tabular-nums;
-}
-
-.monthly-cell.is-connected .monthly-cell-day {
-  color: var(--text);
-}
-
-/* Today: a subtle ring, never a red/streak warning. */
-.monthly-cell.is-today {
-  outline: 2px solid color-mix(in srgb, var(--text) 70%, transparent);
-  outline-offset: -2px;
-}
-
-.monthly-cell:hover:not(:disabled) .puzzle-signature {
-  opacity: 1;
-}
-
-.monthly-summary {
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin: 0 0 8px;
-}
-
-/* ---------- Saved connections (in Review) ---------- */
+/* ---------- Saved connections (in Archive) ---------- */
 
 .saved-connections {
   border-top: 1px solid var(--border);
@@ -5061,4 +4968,118 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 @media (max-width: 360px) {
   .app-nav-item.is-locked { padding-left: 2px; padding-right: 2px; }
   .app-nav-lock { margin-left: 2px; }
+}
+
+/* ==================================================================
+   ARCHIVE
+   The month as a calendar of completed Dailies. Each finished Daily leaves
+   a small four-node Plexus on its date; nothing links one day to the next.
+   States read without a legend: a mark = completed, ivory ring = today and
+   not done yet, plain date = missed (still playable), faint date = future.
+   ================================================================== */
+.archive-month { text-align: center; margin: 10px 0 26px; }
+.archive-month-row { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.archive .monthly-title { margin: 0; min-width: 8.5ch; text-align: center; }
+.archive-month-year { color: var(--text-dim); font-size: 0.62em; letter-spacing: -0.01em; }
+.archive-month-step {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 4px;
+  background: none;
+  border: none;
+  border-radius: 12px;
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 150ms ease, opacity 150ms ease;
+}
+.archive-month-step:hover:not(:disabled) { background: color-mix(in srgb, var(--text) 8%, transparent); }
+.archive-month-step:disabled { opacity: 0.22; cursor: default; }
+.archive-sub { margin: 6px 0 0; color: var(--text-dim); font-size: var(--type-secondary); }
+
+.archive-cal { max-width: 392px; margin: 0 auto; }
+.archive-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  margin-bottom: 4px;
+  text-align: center;
+  font-size: var(--type-caption);
+  font-weight: 600;
+  color: var(--text-dim);
+}
+.archive-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px 2px; }
+
+.archive-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 0;
+  min-height: 64px;
+  padding: 5px 0 6px;
+  background: none;
+  border: none;
+  border-radius: 12px;
+  color: var(--text);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 150ms ease, box-shadow 150ms ease;
+}
+.archive-cell.is-blank { pointer-events: none; }
+.archive-cell:disabled { cursor: default; }
+.archive-cell:focus-visible { outline: 2px solid var(--text); outline-offset: -2px; }
+.archive-mark { display: block; width: 34px; height: 34px; transition: transform 150ms ease, opacity 150ms ease; }
+.archive-mark .puzzle-signature { display: block; color: var(--text); }
+.archive-mark .sig-nodes circle { stroke-width: 2.4px; }
+.archive-day {
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-dim);
+}
+
+/* Completed: the mark plus a full-strength date. */
+.archive-cell.is-done .archive-day { color: var(--text); font-weight: 700; }
+@media (hover: hover) {
+  .archive-cell.is-done:hover .archive-mark { transform: translateY(-1px); }
+  .archive-cell.is-missed:hover .archive-day,
+  .archive-cell.is-open:hover .archive-day { color: var(--text); }
+}
+.archive-cell.is-done:active,
+.archive-cell.is-missed:active,
+.archive-cell.is-open:active { background: color-mix(in srgb, var(--text) 8%, transparent); }
+
+/* Today, not completed yet: a clear ivory ring, never a disabled look. */
+.archive-cell.is-open { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--text) 85%, transparent); }
+.archive-cell.is-open .archive-day { color: var(--text); font-weight: 700; }
+/* Today, completed: the normal completed state, date underlined. */
+.archive-cell.is-done.is-today .archive-day { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+
+/* Future: subdued and inert. Missed past days keep the plain dim date. */
+.archive-cell.is-future .archive-day { opacity: 0.34; }
+
+/* The Daily last opened from here. */
+.archive-cell.is-selected {
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 50%, transparent);
+}
+
+.archive-summary { text-align: center; margin: 26px 0 10px; }
+.archive-count { margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+.archive-streak { margin: 4px 0 0; font-size: var(--type-secondary); font-weight: 600; color: var(--text-dim); }
+
+@media (max-width: 360px) {
+  .archive-cell { min-height: 56px; padding-top: 5px; }
+  .archive-mark { width: 30px; height: 30px; }
+  .archive-mark .puzzle-signature { width: 30px; height: 30px; }
+}
+
+@media (max-width: 360px) {
+  .app-nav-item { white-space: nowrap; font-size: 0.76rem; }
 }
