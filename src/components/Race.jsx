@@ -6,18 +6,22 @@ import {
   isValidJoinCode,
   buildRaceChallenge,
   raceLinkForCode,
-  raceSync,
 } from '../utils/raceEngine.js'
+import { openLiveRace, isSupabaseConfigured } from '../lib/liveRace.js'
 import { haptics } from '../utils/haptics.js'
 
 // ---------------------------------------------------------------------
-// Race Mode — "Race a friend through the same Plexus."
+// Race Mode — "Race a friend through the same Plexus," live.
 // ---------------------------------------------------------------------
 // The challenge set is a deterministic function of the join code, so two
-// players who enter the same code get the identical set in the identical
-// order. Live opponent sync lives behind raceSync (a stub until a backend is
-// added) — so the opponent panel reads "offline" rather than faking progress.
-// A player can still run the seeded set for a real, timed, scored attempt.
+// players who enter the same code independently build the identical set in the
+// identical order — the channel only relays progress, never the questions.
+//
+// When Supabase is configured, Race opens a live Realtime channel keyed by the
+// code: presence shows the opponent in the lobby, one tap starts BOTH players,
+// and each side sees the other's live progress and final result. With no second
+// player on the channel (or no Supabase), it stays an honest solo timed run —
+// it never invents an opponent.
 // ---------------------------------------------------------------------
 
 function fmtTime(ms) {
@@ -26,7 +30,16 @@ function fmtTime(ms) {
   return `${m}:${String(s % 60).padStart(2, '0')}`
 }
 
+// Decide the head-to-head result: more correct wins; ties break on faster time.
+function raceVerdict(you, opp) {
+  if (!opp) return null
+  if (you.correct !== opp.correct) return you.correct > opp.correct ? 'win' : 'lose'
+  if (you.timeMs !== opp.timeMs) return you.timeMs < opp.timeMs ? 'win' : 'lose'
+  return 'tie'
+}
+
 export default function Race({ bank, initialCode = '', onExit }) {
+  const live = isSupabaseConfigured()
   const [phase, setPhase] = useState(initialCode ? 'join' : 'entry') // entry | join | lobby | countdown | playing | results
   const [code, setCode] = useState(initialCode ? normalizeJoinCode(initialCode) : '')
   const [joinInput, setJoinInput] = useState(initialCode ? normalizeJoinCode(initialCode) : '')
@@ -47,22 +60,79 @@ export default function Race({ bank, initialCode = '', onExit }) {
   const lockRef = useRef(false)
   const shakeTimer = useRef(null)
 
-  useEffect(() => () => clearTimeout(shakeTimer.current), [])
+  // Live opponent state
+  const liveRef = useRef(null)
+  const phaseRef = useRef(phase)
+  const [oppOnline, setOppOnline] = useState(false)
+  const [oppName, setOppName] = useState('Opponent')
+  const [oppProgress, setOppProgress] = useState({ correct: 0, answered: 0, finished: false })
+  const [oppResult, setOppResult] = useState(null) // { correct, total, timeMs }
 
-  const createRace = () => {
+  useEffect(() => {
+    phaseRef.current = phase
+  }, [phase])
+
+  useEffect(
+    () => () => {
+      clearTimeout(shakeTimer.current)
+      liveRef.current?.leave()
+    },
+    []
+  )
+
+  // Build the deterministic set from the code and roll into the countdown.
+  // Both players call this (host on tap, guest on the broadcast) → same set.
+  const buildAndCountdown = () => {
+    const built = buildRaceChallenge(bank, { code, length: RACE_LENGTH })
+    setRounds(built)
+    setIdx(0)
+    setSelected([])
+    setVerdict(null)
+    setCorrectCount(0)
+    setMisses([])
+    setOppProgress({ correct: 0, answered: 0, finished: false })
+    setOppResult(null)
+    lockRef.current = false
+    setCountdown(3)
+    setPhase('countdown')
+  }
+
+  // Open (or reuse) the live channel for a code. Safe no-op when not configured.
+  const connectLive = async (c) => {
+    if (!live || liveRef.current) return
+    const handle = await openLiveRace(c, {
+      name: 'Player',
+      onPresence: (state, myId) => {
+        const others = Object.entries(state).filter(([k]) => k !== myId)
+        setOppOnline(others.length > 0)
+        const first = others[0]?.[1]?.[0]
+        if (first?.name) setOppName(first.name)
+      },
+      onStart: () => {
+        // Opponent (or host) kicked it off — only act if we're still waiting.
+        if (phaseRef.current === 'lobby' || phaseRef.current === 'results') buildAndCountdown()
+      },
+      onProgress: (p) =>
+        setOppProgress({ correct: p.correct || 0, answered: p.answered || 0, finished: !!p.finished }),
+      onFinish: (p) => setOppResult({ correct: p.correct || 0, total: p.total || 0, timeMs: p.timeMs || 0 }),
+    })
+    liveRef.current = handle
+  }
+
+  const createRace = async () => {
     const c = makeJoinCode()
     setCode(c)
     setIsHost(true)
-    raceSync.createRace(c) // stub (no-backend) — isolated boundary
+    await connectLive(c)
     setPhase('lobby')
   }
 
-  const confirmJoin = () => {
+  const confirmJoin = async () => {
     const c = normalizeJoinCode(joinInput)
     if (!isValidJoinCode(c)) return
     setCode(c)
     setIsHost(false)
-    raceSync.joinRace(c) // stub (no-backend) — isolated boundary
+    await connectLive(c)
     setPhase('lobby')
   }
 
@@ -72,23 +142,17 @@ export default function Race({ bank, initialCode = '', onExit }) {
       setCopied(true)
       setTimeout(() => setCopied(false), 1500)
     } catch {
-      // clipboard blocked — show the code instead (already visible)
+      // clipboard blocked — the code is shown on screen to read out instead
     }
   }
 
-  const beginCountdown = () => {
-    const built = buildRaceChallenge(bank, { code, length: RACE_LENGTH })
-    setRounds(built)
-    setIdx(0)
-    setSelected([])
-    setVerdict(null)
-    setCorrectCount(0)
-    setMisses([])
-    setCountdown(3)
-    setPhase('countdown')
+  // Anyone can start; the first tap starts BOTH via the broadcast.
+  const startRace = () => {
+    liveRef.current?.sendStart?.({ at: Date.now() })
+    buildAndCountdown()
   }
 
-  // 3-2-1 countdown, then start.
+  // 3-2-1 countdown, then start the clock.
   useEffect(() => {
     if (phase !== 'countdown') return undefined
     if (countdown <= 0) {
@@ -114,10 +178,12 @@ export default function Race({ bank, initialCode = '', onExit }) {
     }
   }
 
-  const advance = () => {
+  const advance = (finalCorrect) => {
     const next = idx + 1
     if (next >= rounds.length) {
-      setElapsedMs(Date.now() - startRef.current)
+      const ms = Date.now() - startRef.current
+      setElapsedMs(ms)
+      liveRef.current?.sendFinish?.({ correct: finalCorrect, total: rounds.length, timeMs: ms })
       setPhase('results')
       return
     }
@@ -130,15 +196,22 @@ export default function Race({ bank, initialCode = '', onExit }) {
   const resolve = (correct, missLabel, missAnswer) => {
     if (lockRef.current) return
     lockRef.current = true
+    const nextCorrect = correct ? correctCount + 1 : correctCount
     setVerdict(correct ? 'correct' : 'incorrect')
     if (correct) {
-      setCorrectCount((n) => n + 1)
+      setCorrectCount(nextCorrect)
       haptics.correct()
     } else {
       setMisses((m) => [...m, { label: missLabel, answer: missAnswer }])
       triggerWrong()
     }
-    setTimeout(advance, 480)
+    // Live progress — aggregate counts only.
+    liveRef.current?.sendProgress?.({
+      correct: nextCorrect,
+      answered: idx + 1,
+      finished: idx + 1 >= rounds.length,
+    })
+    setTimeout(() => advance(nextCorrect), 480)
   }
 
   // Single-answer rounds: one tap answers.
@@ -165,6 +238,8 @@ export default function Race({ bank, initialCode = '', onExit }) {
     resolve(correct, round.anchor, round.correctAnswers.join(', '))
   }
 
+  const total = rounds.length || RACE_LENGTH
+
   // ---------- Render ----------
 
   if (phase === 'entry' || phase === 'join') {
@@ -178,7 +253,7 @@ export default function Race({ bank, initialCode = '', onExit }) {
           <div />
         </div>
         <h1 className="race-title">Race</h1>
-        <p className="race-lede">Race a friend through the same Plexus.</p>
+        <p className="race-lede">Race a friend through the same Plexus, live.</p>
 
         <div className="race-entry-actions">
           <button className="race-primary-btn" onClick={createRace}>
@@ -202,8 +277,9 @@ export default function Race({ bank, initialCode = '', onExit }) {
         </div>
 
         <p className="race-note">
-          Both players enter the same code to get the identical challenge set. Live head-to-head
-          sync is coming — for now you can run the seeded race and compare times.
+          {live
+            ? 'One of you taps “Create a race” and shares the code or link; the other enters it. Then either of you starts — you’ll both race the same board at the same time.'
+            : 'Both players enter the same code to get the identical challenge set, then compare times.'}
         </p>
       </div>
     )
@@ -236,15 +312,22 @@ export default function Race({ bank, initialCode = '', onExit }) {
           </div>
           <div className="race-player">
             <span className="race-player-name">Opponent</span>
-            <span className="race-player-status is-offline">Offline</span>
+            <span className={`race-player-status ${oppOnline ? 'is-ready' : 'is-offline'}`}>
+              {oppOnline ? 'In the lobby' : live ? 'Waiting to join…' : 'Offline'}
+            </span>
           </div>
         </div>
 
-        <p className="race-note">{raceSync.backendNote} You can start the seeded race now — your
-          friend running the same code gets the exact same questions.</p>
+        <p className="race-note">
+          {live
+            ? oppOnline
+              ? 'Your opponent is here. Tap start when you’re both ready — it begins the race for both of you.'
+              : 'Share the code or link above. Once your friend joins you’ll see them here — or start now for a solo timed run.'
+            : 'Live sync is off (Supabase not configured). You can run the seeded race solo; a friend with the same code gets the identical questions.'}
+        </p>
 
-        <button className="race-primary-btn" onClick={beginCountdown}>
-          Start race
+        <button className="race-primary-btn" onClick={startRace}>
+          {live && oppOnline ? 'Start race' : 'Start'}
         </button>
       </div>
     )
@@ -261,17 +344,24 @@ export default function Race({ bank, initialCode = '', onExit }) {
   }
 
   if (phase === 'playing' && round) {
-    const total = rounds.length
     const isRapid = round.type === 'rapidAssociation'
+    const showOpp = live && (oppOnline || oppProgress.answered > 0)
     return (
       <div className={`race race-playing ${shake ? 'is-shake' : ''} ${verdict === 'incorrect' ? 'is-wrong' : ''}`}>
         <div className="race-live">
           <span className="race-live-you">You {correctCount}/{total}</span>
-          <span className="race-live-opp">Opponent —/{total}</span>
+          <span className="race-live-opp">
+            {oppName} {showOpp ? `${oppProgress.correct}/${total}` : `—/${total}`}
+          </span>
         </div>
         <div className="race-progress-track" aria-hidden="true">
           <div className="race-progress-fill" style={{ width: `${(idx / total) * 100}%` }} />
         </div>
+        {showOpp && (
+          <div className="race-progress-track race-progress-opp" aria-hidden="true">
+            <div className="race-progress-fill" style={{ width: `${(oppProgress.answered / total) * 100}%` }} />
+          </div>
+        )}
 
         <div className="race-round">
           {isRapid && <p className="race-anchor">{round.anchor}</p>}
@@ -322,11 +412,21 @@ export default function Race({ bank, initialCode = '', onExit }) {
   }
 
   if (phase === 'results') {
-    const total = rounds.length || RACE_LENGTH
     const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0
+    const you = { correct: correctCount, timeMs: elapsedMs }
+    const verdictResult = live && oppResult ? raceVerdict(you, oppResult) : null
+    const oppStillRacing = live && oppOnline && !oppResult
+
     return (
       <div className="race race-results">
         <h1 className="race-title">Race complete</h1>
+
+        {verdictResult && (
+          <div className={`race-outcome race-outcome-${verdictResult}`}>
+            {verdictResult === 'win' ? 'You win! 🏆' : verdictResult === 'lose' ? 'You lost' : "It's a tie"}
+          </div>
+        )}
+
         <div className="race-result-grid">
           <div className="race-result-stat">
             <span className="race-result-num">{fmtTime(elapsedMs)}</span>
@@ -342,8 +442,23 @@ export default function Race({ bank, initialCode = '', onExit }) {
           </div>
         </div>
 
+        {live && oppResult && (
+          <div className="race-opp-result">
+            <span className="race-opp-result-name">{oppName}</span>
+            <span className="race-opp-result-stat">
+              {oppResult.correct}/{oppResult.total} · {fmtTime(oppResult.timeMs)}
+            </span>
+          </div>
+        )}
+
         <p className="race-note">
-          Opponent was offline — compare your time with a friend running code <strong>{code}</strong>.
+          {oppStillRacing
+            ? `${oppName} is still racing — their result will appear here when they finish.`
+            : live && oppResult
+              ? 'Good race. Tap “Race again” for a fresh board with the same opponent.'
+              : (
+                <>Opponent was offline — compare your time with a friend running code <strong>{code}</strong>.</>
+              )}
         </p>
 
         {misses.length > 0 && (
@@ -359,7 +474,7 @@ export default function Race({ bank, initialCode = '', onExit }) {
         )}
 
         <div className="race-results-actions">
-          <button className="race-primary-btn" onClick={beginCountdown}>
+          <button className="race-primary-btn" onClick={startRace}>
             Race again
           </button>
           <button className="race-secondary-btn" onClick={onExit}>

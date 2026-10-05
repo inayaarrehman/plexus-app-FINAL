@@ -3754,6 +3754,37 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   background: var(--accent);
   transition: width 0.3s ease;
 }
+/* Opponent's live progress track — sits just under the player's, dimmer. */
+.race-progress-opp { margin-top: -12px; margin-bottom: 20px; opacity: 0.72; }
+.race-progress-opp .race-progress-fill { background: var(--text-dim); }
+
+/* Head-to-head outcome banner on the results screen. */
+.race-outcome {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.15rem;
+  padding: 10px 14px;
+  border-radius: 12px;
+  margin: 4px 0 14px;
+}
+.race-outcome-win { color: var(--difficulty-medium); background: color-mix(in srgb, var(--difficulty-medium) 14%, var(--bg)); }
+.race-outcome-lose { color: var(--difficulty-easy); background: color-mix(in srgb, var(--difficulty-easy) 12%, var(--bg)); }
+.race-outcome-tie { color: var(--text-dim); background: var(--border); }
+
+/* Opponent's final line under your result grid. */
+.race-opp-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin: 2px 0 10px;
+}
+.race-opp-result-name { font-weight: 700; }
+.race-opp-result-stat { color: var(--text-dim); font-variant-numeric: tabular-nums; }
+
 .race-round { display: flex; flex-direction: column; }
 .race-anchor {
   font-size: 1.3rem;
@@ -3916,3 +3947,52 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
 .led-auth-form .led-auth-status { margin-right: 2px; }
 .led-auth-input { flex: 0 1 190px; padding: 7px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font-size: 0.85rem; }
 .led-auth-msg { font-size: 0.8rem; color: var(--difficulty-easy); flex-basis: 100%; }
+
+/* ------------------------------------------------------------------ */
+/* Install hint (PWA "Add to Home Screen") — unobtrusive bottom card.  */
+/* ------------------------------------------------------------------ */
+.install-hint {
+  position: fixed;
+  left: 50%;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  width: min(440px, calc(100vw - 32px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--surface, #23243a);
+  color: var(--text, #f2f1fb);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  z-index: 50;
+  animation: install-hint-in 0.35s ease;
+}
+@keyframes install-hint-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.install-hint-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.install-hint-title { font-weight: 700; font-size: 0.9rem; }
+.install-hint-text { font-size: 0.8rem; color: var(--text-dim); }
+.install-hint-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.install-hint-install {
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.install-hint-dismiss {
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  padding: 8px 6px;
+  cursor: pointer;
+}

@@ -8,12 +8,11 @@
 // build the identical ordered set of rounds — no server needs to send the
 // questions, only to relay progress.
 //
-// Everything that WOULD require realtime backend infrastructure (matchmaking,
-// presence, live opponent progress) is deliberately quarantined in
-// `raceSync` below as clearly-labeled stubs that do nothing yet. Nothing in
-// this file fabricates an opponent or fakes multiplayer — a solo player can
-// run the seeded set for real, and the opponent panel stays "offline" until a
-// backend is wired into raceSync.
+// The live head-to-head layer (presence + progress relay over Supabase
+// Realtime) lives in src/lib/liveRace.js — this file stays backend-agnostic and
+// only produces the deterministic set, codes and links. A solo player with no
+// opponent on the channel runs the same seeded set honestly; nothing here
+// fabricates an opponent.
 // ---------------------------------------------------------------------
 
 import { composeNextRound } from './challengeEngine.js'
@@ -82,42 +81,4 @@ export function raceLinkForCode(code, origin) {
 export function raceCodeFromHash(hash) {
   const m = /#race=([A-Za-z0-9]+)/.exec(String(hash || ''))
   return m ? normalizeJoinCode(m[1]) : null
-}
-
-// ---------------------------------------------------------------------
-// raceSync — the realtime boundary (STUB, no backend yet)
-// ---------------------------------------------------------------------
-// This is the ONLY place that would talk to a realtime backend. It is a stub
-// on purpose: methods resolve to an explicit "not connected" result, and
-// `isAvailable` is false, so the UI shows the opponent as offline rather than
-// inventing fake progress. To ship real multiplayer later, implement these
-// four methods against a realtime service (WebSocket/Firebase/etc.) — the rest
-// of Race Mode (seeded set, countdown, scoring, results) already works as-is.
-//
-//   createRace(code)            → reserve/register a race room for this code
-//   joinRace(code)              → join an existing race room
-//   publishProgress(code, p)    → broadcast {answered, correct, finished, timeMs}
-//   subscribe(code, onUpdate)   → receive the opponent's progress; returns an
-//                                 unsubscribe function
-//
-// Progress payloads intentionally carry only aggregate counts/time — never
-// which specific questions the opponent answered — matching the product rule
-// "do not reveal which connections the opponent has answered."
-export const raceSync = {
-  isAvailable: false,
-  backendNote: 'Live racing needs a realtime connection — not wired up yet.',
-
-  async createRace(/* code */) {
-    return { ok: false, reason: 'no-backend' }
-  },
-  async joinRace(/* code */) {
-    return { ok: false, reason: 'no-backend' }
-  },
-  async publishProgress(/* code, progress */) {
-    return { ok: false, reason: 'no-backend' }
-  },
-  subscribe(/* code, onUpdate */) {
-    // No backend: never calls onUpdate; returns a no-op unsubscribe.
-    return () => {}
-  },
 }

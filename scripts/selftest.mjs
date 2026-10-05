@@ -984,6 +984,25 @@ console.log('\n[31] Daily seed is canonical and deterministic (PLEXUS-YYYY-MM-DD
 }
 
 // ---------------------------------------------------------------
+console.log('\n[32] Daily board changes every day (regression: not stuck on one puzzle)')
+{
+  const sig = (p) => p.categories.map((c) => c.title).join('|')
+  const seen = []
+  for (let i = 0; i < 14; i++) {
+    const d = new Date(2026, 9, 4 + i) // 14 consecutive dates
+    const p = getDailyPuzzleForDate(d)
+    assert(!!p, `daily resolves for ${dateKey(d)}`)
+    assert(validatePuzzle(p).length === 0, `daily for ${dateKey(d)} is a valid puzzle`)
+    seen.push(sig(p))
+  }
+  const unique = new Set(seen).size
+  assert(unique >= 12, `14 consecutive days give mostly distinct boards (got ${unique}/14 unique)`)
+  // Determinism: the same date must always resolve to the same board.
+  const d = new Date(2026, 10, 2)
+  assert(sig(getDailyPuzzleForDate(d)) === sig(getDailyPuzzleForDate(d)), 'same date → identical board (deterministic)')
+}
+
+// ---------------------------------------------------------------
 console.log(`\n${'='.repeat(40)}`)
 if (failures === 0) {
   console.log(`ALL CHECKS PASSED (${allPuzzles.length} puzzles validated: ${dailyPuzzles.length} daily, ${systemPuzzles.length} system)\n`)

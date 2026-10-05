@@ -8,6 +8,7 @@ import Challenge from './components/Challenge.jsx'
 import Race from './components/Race.jsx'
 import { raceCodeFromHash } from './utils/raceEngine.js'
 import AppNav from './components/AppNav.jsx'
+import InstallPrompt from './components/InstallPrompt.jsx'
 import HowToModal from './components/HowToModal.jsx'
 import StatsModal from './components/StatsModal.jsx'
 import DevViewer from './components/DevViewer.jsx'
@@ -462,6 +463,7 @@ export default function App() {
       />
       {showHowTo && <HowToModal onClose={() => setShowHowTo(false)} />}
       {showStats && <StatsModal stats={stats} onClose={() => setShowStats(false)} />}
+      <InstallPrompt />
     </div>
   )
 }
