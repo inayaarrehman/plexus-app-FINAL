@@ -45,10 +45,39 @@
      Strand fills/nodes, the brand mark, and result-square fills via
      inline style) — both are contrast-checked at 4.5:1+ against the
      fixed white text/glyph shown on top of them. */
-  --difficulty-easy: #bb4c34;
-  --difficulty-medium: #0f7a76;
-  --difficulty-hard: #3568c4;
-  --difficulty-expert: #8c4fc2;
+  /* ---- Canonical Plexus jewel palette ----
+     Deep navy + rich coloured gems. THEME-INDEPENDENT on purpose: these are
+     the colours of the nodes themselves (logo, intro, constellation, confetti,
+     node motifs, progress, badges/fills), so they never swap to the lighter
+     dark-mode text tints below. Tuned against the intro navy (~3–4:1 so they
+     read as rich, not neon) and still ≥4.5:1 with white text when used as a
+     fill. -deep / -soft are subtle same-family variations for node depth
+     (medium / tiny satellites), not effects. Kept in sync with
+     src/data/constants.js DIFFICULTY.color. */
+  --jewel-navy: #1e1238;
+  --jewel-ivory: #f2eef3;
+  --jewel-terracotta: #bf5236;
+  --jewel-terracotta-deep: #ad4b31;
+  --jewel-terracotta-soft: #a85a47;
+  --jewel-peacock: #087f78;
+  --jewel-peacock-deep: #087470;
+  --jewel-peacock-soft: #2f7b77;
+  --jewel-cobalt: #3267c8;
+  --jewel-cobalt-deep: #2e5fba;
+  --jewel-cobalt-soft: #4a67a8;
+  --jewel-plum: #7a49b2;
+  --jewel-plum-deep: #7046a8;
+  --jewel-plum-soft: #74599c;
+  /* Ink: the same families pushed deep enough for TEXT on the light rooms. */
+  --jewel-terracotta-ink: #a6472f;
+  --jewel-peacock-ink: #076d69;
+
+  /* Difficulty tiers = the jewel palette (light mode). Dark mode overrides
+     these with lighter tints ONLY for text use; graphics use --jewel-*. */
+  --difficulty-easy: var(--jewel-terracotta-ink); /* text: deeper for contrast on the rooms */
+  --difficulty-medium: var(--jewel-peacock-ink);
+  --difficulty-hard: var(--jewel-cobalt);
+  --difficulty-expert: var(--jewel-plum);
   --difficulty-easy-ink: #fff6f3;
   --difficulty-medium-ink: #eefdfc;
   --difficulty-hard-ink: #f3f7ff;
@@ -120,10 +149,10 @@
        on the page background (labels, sub-headings) rather than as a
        solid fill with fixed white text — the darker light-mode hexes
        above don't clear 4.5:1 against the dark background, these do. */
-    --difficulty-easy: #f0836a;
-    --difficulty-medium: #4fd6cd;
-    --difficulty-hard: #7ea6ee;
-    --difficulty-expert: #c491ea;
+    --difficulty-easy: #df7d62;   /* jewel-family text tints, >= 4.8:1 on every dark room */
+    --difficulty-medium: #38b8ae;
+    --difficulty-hard: #7398e3;
+    --difficulty-expert: #b386df;
   }
 }
 
@@ -305,7 +334,7 @@ button {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--difficulty-medium);
+  background: var(--jewel-peacock);
 }
 
 .app-nav-item:hover {
@@ -571,7 +600,7 @@ body.bg-home .secondary-btn:hover {
    button: one flat brand color, an arrow instead of an icon, generous
    tap target. */
 .play-today-btn {
-  background: var(--difficulty-easy);
+  background: var(--jewel-terracotta);
   color: #fff6f3;
   border: none;
   border-radius: 10px;
@@ -745,8 +774,8 @@ body.bg-home .secondary-btn:hover {
 }
 
 .node-dot.is-on {
-  background: var(--node-fill, var(--difficulty-medium));
-  border-color: var(--node-fill, var(--difficulty-medium));
+  background: var(--node-fill, var(--jewel-peacock));
+  border-color: var(--node-fill, var(--jewel-peacock));
 }
 
 .node-link {
@@ -758,7 +787,7 @@ body.bg-home .secondary-btn:hover {
 }
 
 .node-link.is-on {
-  background: var(--node-fill, var(--difficulty-medium));
+  background: var(--node-fill, var(--jewel-peacock));
 }
 
 /* ---------- Systems: tactile Plexus-node grid (redesign) ---------- */
@@ -2344,7 +2373,7 @@ body.bg-home .secondary-btn:hover {
   padding: 10px 12px;
   background: transparent;
   border: 1px solid var(--border);
-  border-left: 3px solid var(--difficulty-hard);
+  border-left: 3px solid var(--jewel-cobalt);
   border-radius: 8px;
   color: var(--text);
   cursor: pointer;
@@ -2352,7 +2381,7 @@ body.bg-home .secondary-btn:hover {
 }
 
 .follow-thread-btn:hover {
-  border-color: var(--difficulty-hard);
+  border-color: var(--jewel-cobalt);
 }
 
 .follow-thread-label {
@@ -2416,7 +2445,7 @@ body.bg-home .secondary-btn:hover {
   height: 10px;
   border-radius: 50%;
   margin-top: 6px;
-  background: var(--difficulty-hard);
+  background: var(--jewel-cobalt);
 }
 
 .thread-node-main {
@@ -2462,7 +2491,7 @@ body.bg-home .secondary-btn:hover {
 
 .thread-node-remember {
   background: rgba(53, 104, 196, 0.08);
-  border-left: 3px solid var(--difficulty-hard);
+  border-left: 3px solid var(--jewel-cobalt);
   padding: 8px 12px;
   border-radius: 4px;
   font-size: 0.85rem;
@@ -2478,7 +2507,7 @@ body.bg-home .secondary-btn:hover {
   width: 2px;
   height: 16px;
   margin: 2px 0 8px 4px;
-  background: var(--difficulty-hard);
+  background: var(--jewel-cobalt);
   opacity: 0.4;
   border-radius: 2px;
 }
@@ -2533,8 +2562,8 @@ body.bg-home .secondary-btn:hover {
   color: #fff;
 }
 
-.pill-1 { background: var(--difficulty-easy); }
-.pill-4 { background: var(--difficulty-expert); }
+.pill-1 { background: var(--jewel-terracotta); }
+.pill-4 { background: var(--jewel-plum); }
 
 /* ---------- Stats ---------- */
 
@@ -2614,13 +2643,27 @@ body.bg-home .secondary-btn:hover {
   pointer-events: none;
 }
 
+/* Each piece starts at the constellation (top-centre of the result card),
+   arcs outward, then falls and fades. Positions/rotation come from inline
+   custom properties set in Confetti.jsx. */
 .confetti-piece {
   position: absolute;
-  top: -10px;
+  left: 50%;
+  top: 46px;
+  margin-left: -4px;
   border-radius: 2px;
-  animation-name: fall;
-  animation-timing-function: ease-in;
-  animation-fill-mode: forwards;
+  opacity: 0;
+  animation-name: confetti-burst;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+@keyframes confetti-burst {
+  0% { transform: translate(0, 0) rotate(0deg) scale(0.5); opacity: 0; animation-timing-function: cubic-bezier(0.15, 0.75, 0.3, 1); }
+  6% { opacity: 1; }
+  28% { transform: translate(calc(var(--x) * 0.58), var(--peak)) rotate(calc(var(--rot) * 0.35)) scale(1); animation-timing-function: cubic-bezier(0.35, 0, 0.7, 0.9); }
+  82% { opacity: 1; }
+  100% { transform: translate(var(--x), var(--fall)) rotate(var(--rot)) scale(0.9); opacity: 0; }
 }
 
 /* A restrained shape mix so it reads as confetti but feels like Plexus:
@@ -2829,7 +2872,7 @@ body.bg-home .secondary-btn:hover {
 /* A momentary wrong-state wash behind the round while feedback shows. */
 .challenge-playing.is-wrong .challenge-board,
 .challenge-playing.is-wrong .challenge-options {
-  outline: 2px solid color-mix(in srgb, var(--difficulty-easy) 70%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--jewel-terracotta) 70%, transparent);
   outline-offset: 6px;
   border-radius: 14px;
   transition: outline-color 0.1s ease;
@@ -3107,7 +3150,7 @@ body.env-challenge .secondary-btn:hover {
 
 .save-connection-btn.is-saved {
   color: var(--difficulty-expert);
-  border-color: color-mix(in srgb, var(--difficulty-expert) 45%, var(--border));
+  border-color: color-mix(in srgb, var(--jewel-plum) 45%, var(--border));
 }
 
 .save-connection-mark {
@@ -3203,7 +3246,7 @@ body.env-challenge .secondary-btn:hover {
 
 /* Today: a subtle ring, never a red/streak warning. */
 .monthly-cell.is-today {
-  outline: 2px solid color-mix(in srgb, var(--difficulty-hard) 60%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--jewel-cobalt) 60%, transparent);
   outline-offset: -2px;
 }
 
@@ -3233,7 +3276,7 @@ body.env-challenge .secondary-btn:hover {
 }
 
 .saved-item {
-  border-left: 3px solid var(--difficulty-expert);
+  border-left: 3px solid var(--jewel-plum);
   padding: 4px 0 4px 12px;
 }
 
@@ -3500,11 +3543,11 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   border-radius: 8px;
   border-left: 3px solid;
 }
-.challenge-split-label.split-a { border-left-color: var(--difficulty-easy); }
-.challenge-split-label.split-b { border-left-color: var(--difficulty-hard); }
+.challenge-split-label.split-a { border-left-color: var(--jewel-terracotta); }
+.challenge-split-label.split-b { border-left-color: var(--jewel-cobalt); }
 .challenge-split-tile { position: relative; }
-.challenge-split-tile.assigned-a { border-color: var(--difficulty-easy); }
-.challenge-split-tile.assigned-b { border-color: var(--difficulty-hard); }
+.challenge-split-tile.assigned-a { border-color: var(--jewel-terracotta); }
+.challenge-split-tile.assigned-b { border-color: var(--jewel-cobalt); }
 .challenge-split-badge {
   position: absolute;
   top: 4px;
@@ -3519,8 +3562,8 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   align-items: center;
   justify-content: center;
 }
-.challenge-split-badge.a { background: var(--difficulty-easy); }
-.challenge-split-badge.b { background: var(--difficulty-hard); }
+.challenge-split-badge.a { background: var(--jewel-terracotta); }
+.challenge-split-badge.b { background: var(--jewel-cobalt); }
 
 /* Match the Link — concepts (tap to select) + link chips (tap to assign) */
 .challenge-match-concepts {
@@ -3899,7 +3942,7 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
 
 .race-playing.is-shake { animation: challengeShake 0.34s cubic-bezier(0.36, 0.07, 0.19, 0.97); }
 .race-playing.is-wrong .race-options {
-  outline: 2px solid color-mix(in srgb, var(--difficulty-easy) 65%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--jewel-terracotta) 65%, transparent);
   outline-offset: 6px;
   border-radius: 16px;
 }
@@ -4255,10 +4298,10 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
 .mode-glyph .mg-node { fill: var(--home-text-dim); opacity: 0.45; }
 .mode-glyph .mg-node.is-on { fill: var(--mode-accent, var(--text)); opacity: 1; }
 .mode-glyph .mg-link { stroke: var(--mode-accent, var(--text)); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
-.mode-glyph .mg-a .mg-dot { fill: var(--difficulty-easy); }
-.mode-glyph .mg-a .mg-path { stroke: var(--difficulty-easy); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
-.mode-glyph .mg-b .mg-dot { fill: var(--difficulty-hard); }
-.mode-glyph .mg-b .mg-path { stroke: var(--difficulty-hard); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
+.mode-glyph .mg-a .mg-dot { fill: var(--jewel-terracotta); }
+.mode-glyph .mg-a .mg-path { stroke: var(--jewel-terracotta); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
+.mode-glyph .mg-b .mg-dot { fill: var(--jewel-cobalt); }
+.mode-glyph .mg-b .mg-path { stroke: var(--jewel-cobalt); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
 .mode-glyph-mini { flex: 0 0 auto; }
 
 @media (max-width: 380px) {
@@ -4299,7 +4342,7 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   justify-content: center;
   background:
     radial-gradient(ellipse at 50% 45%, #2c1b52 0%, var(--splash-bg) 62%);
-  color: #f2f1fb;
+  color: var(--jewel-ivory);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   animation: splash-out var(--splash-dur, 2700ms) linear forwards;
@@ -4322,10 +4365,10 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   transform-origin: center;
 }
 .splash-node { animation: splash-node var(--splash-dur, 2700ms) both; }
-.splash-hub { fill: #f2f1fb; animation: splash-hub var(--splash-dur, 2700ms) both; }
+.splash-hub { fill: var(--jewel-ivory); animation: splash-hub var(--splash-dur, 2700ms) both; }
 .splash-frag { opacity: 0; animation: splash-frag var(--splash-dur, 2700ms) both; }
 .splash-path {
-  stroke: #cfc6f2;
+  stroke: var(--jewel-ivory);
   stroke-width: 1.7;
   stroke-linecap: round;
   stroke-dasharray: 1;
@@ -4335,7 +4378,7 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
 }
 .splash-wave {
   fill: none;
-  stroke: #cfc6f2;
+  stroke: var(--jewel-ivory);
   stroke-width: 0.8;
   opacity: 0;
   animation: splash-wave var(--splash-dur, 2700ms) both;
@@ -4346,7 +4389,7 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   letter-spacing: 0.32em;
   margin-right: -0.32em; /* optically centre the tracked word */
   font-size: clamp(1.05rem, 4.6vw, 1.35rem);
-  color: #f2f1fb;
+  color: var(--jewel-ivory);
   opacity: 0;
   animation: splash-word var(--splash-dur, 2700ms) both;
 }
@@ -4538,13 +4581,13 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
 }
 .sp-main { animation: sp-pop 380ms cubic-bezier(0.2, 0.9, 0.3, 1.3) both; }
 .sp-sat { animation: sp-pop 300ms ease-out both; }
-.sp-hub { fill: #f2f1fb; animation: sp-pop 380ms 60ms cubic-bezier(0.2, 0.9, 0.3, 1.3) both; }
+.sp-hub { fill: var(--jewel-ivory); animation: sp-pop 380ms 60ms cubic-bezier(0.2, 0.9, 0.3, 1.3) both; }
 .sp-travel { animation: sp-travel 820ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 .sp-hubflash { animation: sp-flash 520ms 900ms ease-out both; }
 
 /* The compact mark's paths draw in, then release at the burst. */
 .sp-markpath {
-  stroke: #cfc6f2;
+  stroke: var(--jewel-ivory);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-dasharray: 1;
@@ -4562,14 +4605,14 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   opacity: 0;
   animation: sp-draw 500ms cubic-bezier(0.3, 0.6, 0.3, 1) both;
 }
-.sp-link-hub { stroke: #cfc6f2; }
+.sp-link-hub { stroke: var(--jewel-ivory); }
 .sp-link-cluster { --link-op: 0.6; }
-.sp-link-cross { stroke: #cfc6f2; --link-op: 0.28; stroke-width: 1.2; }
+.sp-link-cross { stroke: var(--jewel-ivory); --link-op: 0.28; stroke-width: 1.2; }
 
 /* Shockwave sweeps past the farthest corner. */
 .sp-wave {
   fill: none;
-  stroke: #cfc6f2;
+  stroke: var(--jewel-ivory);
   stroke-width: 1.5;
   vector-effect: non-scaling-stroke;
   opacity: 0;
@@ -4582,7 +4625,7 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   font-weight: 800;
   font-size: 15px;
   letter-spacing: 0.32em;
-  fill: #f2f1fb;
+  fill: var(--jewel-ivory);
   stroke: #1e1238;
   stroke-width: 10px;
   stroke-linejoin: round;

@@ -8,6 +8,7 @@ import { buildShareText } from '../utils/shareText.js'
 import { computeDailyMicroStat } from '../utils/dailyMicroStat.js'
 import { pickConnectionOfDay } from '../utils/connectionOfDay.js'
 import BrandMark from './BrandMark.jsx'
+import Confetti from './Confetti.jsx'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import PlexusLine from './PlexusLine.jsx'
 import ReviewConnections from './ReviewConnections.jsx'
@@ -379,11 +380,13 @@ export default function Game({
 
       {gameOver && (
         <div className={`result-card ${won ? 'result-card-won' : ''} ${isPerfect ? 'result-card-perfect' : ''}`}>
-          {/* The completion payoff is the Plexus mark assembling — four
-              difficulty-coloured nodes wiring themselves together — above the
-              solved strands that have just drawn into their connected form.
-              The reward is the connections completing, not confetti. */}
+          {/* The completion payoff: the Plexus constellation assembles (four
+              jewel-toned nodes wiring themselves together) as the centrepiece,
+              and just as its nodes land a restrained jewel-tone confetti burst
+              comes out of it, then settles as the result appears. The Daily
+              gets a slightly fuller burst than a system puzzle. */}
           {won && <BrandMark size={58} className="result-brandmark" animate decorative />}
+          {won && <Confetti count={isDaily ? 44 : 32} originY={45} seed={puzzle.id.length * 97 + mistakes} />}
 
           <h2>{resultTitle || (isDaily ? "Today's Results" : 'Puzzle Results')}</h2>
 

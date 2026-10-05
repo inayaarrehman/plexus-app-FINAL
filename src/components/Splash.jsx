@@ -24,12 +24,16 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 const DURATION_MS = 3400
 const SESSION_KEY = 'plexus.splashShown.v1'
 
-const COLORS = [
-  'var(--difficulty-easy, #bb4c34)', // coral
-  'var(--difficulty-medium, #0f7a76)', // teal
-  'var(--difficulty-hard, #3568c4)', // cobalt
-  'var(--difficulty-expert, #8c4fc2)', // plum
-]
+// Canonical jewel palette (theme-independent; see --jewel-* in styles.css).
+const JEWELS = ['terracotta', 'peacock', 'cobalt', 'plum']
+const FALLBACK = { terracotta: '#bf5236', peacock: '#087f78', cobalt: '#3267c8', plum: '#7a49b2' }
+const jewel = (name, variant = '') =>
+  `var(--jewel-${name}${variant ? `-${variant}` : ''}, ${FALLBACK[name]})`
+const COLORS = JEWELS.map((n) => jewel(n))
+// Satellites: subtle same-family depth. Medium satellites take the deeper
+// variant, tiny ones the more subdued variant (flat fills, no effects).
+const SAT_SIZE = [0.62, 0.48, 0.7, 0.42]
+const SAT_VARIANT = ['deep', 'soft', 'deep', 'soft']
 
 // Compact mark offsets from the hub (BrandMark geometry, scaled to screen px).
 const MARK = [
@@ -139,8 +143,8 @@ export function buildScene(W, H, safe = { t: 0, r: 0, b: 0, l: 0 }) {
         key: `${i}-${k}`,
         parent: i,
         k,
-        color: COLORS[i],
-        r: base * [0.62, 0.48, 0.7, 0.42][k % 4],
+        color: jewel(JEWELS[i], SAT_VARIANT[k % 4]),
+        r: base * SAT_SIZE[k % 4],
         start: parent.start,
         end,
         tx: end.x - parent.start.x,
@@ -160,7 +164,7 @@ export function buildScene(W, H, safe = { t: 0, r: 0, b: 0, l: 0 }) {
       key: `s${s.key}`,
       a: mains[s.parent].end,
       b: s.end,
-      tone: s.color,
+      tone: COLORS[s.parent], // connections keep the cluster's primary jewel tone
       delay: Math.round(s.delay + s.dur * 0.45),
       dur: 520,
     })

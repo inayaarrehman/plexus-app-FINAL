@@ -226,9 +226,10 @@ check('Game renders a live-assembled organ-system puzzle with a shareLabel and t
     })
   )
   if (!html.includes('result-card')) throw new Error('expected a result-card for a won system puzzle')
-  // Completion now pays off with the assembling Plexus constellation, not confetti.
+  // Completion = the assembling Plexus constellation (centrepiece) + a jewel-tone confetti burst.
   if (!html.includes('brand-mark-assemble')) throw new Error('expected the assembling Plexus constellation on a won puzzle')
-  if (html.includes('confetti-piece')) throw new Error('did not expect confetti; the completion payoff is the node constellation')
+  if (!html.includes('confetti-piece')) throw new Error('expected the jewel-tone confetti burst on a won puzzle')
+  if (/#(bb4c34|0f7a76|3568c4|8c4fc2)/i.test(html)) throw new Error('completion still uses the old palette')
   return html
 })
 
@@ -685,10 +686,11 @@ check('AppNav is not shown alongside an active Game (immersive puzzle board stay
   return html
 })
 
-check('Confetti renders 60 pieces', () => {
+check('Confetti renders a restrained jewel-tone burst (40 pieces by default)', () => {
   const html = renderToStaticMarkup(React.createElement(Confetti, {}))
   const pieces = (html.match(/confetti-piece/g) || []).length
-  if (pieces !== 60) throw new Error(`expected 60 confetti pieces, found ${pieces}`)
+  if (pieces !== 40) throw new Error(`expected 40 confetti pieces, found ${pieces}`)
+  if (!html.includes('--jewel-')) throw new Error('expected confetti coloured from the jewel palette')
   return html
 })
 

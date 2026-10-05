@@ -19,10 +19,10 @@ import React from 'react'
 //     fully disabled under prefers-reduced-motion by the global rule in
 //     styles.css.
 const NODES = [
-  { cx: 12, cy: 14, r: 4.6, cls: 'plexus-node-1', fill: 'var(--difficulty-easy, #bb4c34)' },
-  { cx: 36, cy: 10, r: 4.6, cls: 'plexus-node-2', fill: 'var(--difficulty-medium, #0f7a76)' },
-  { cx: 39, cy: 34, r: 4.6, cls: 'plexus-node-3', fill: 'var(--difficulty-hard, #3568c4)' },
-  { cx: 16, cy: 38, r: 4.6, cls: 'plexus-node-4', fill: 'var(--difficulty-expert, #8c4fc2)' },
+  { cx: 12, cy: 14, r: 4.6, cls: 'plexus-node-1', fill: 'var(--jewel-terracotta, #bf5236)' },
+  { cx: 36, cy: 10, r: 4.6, cls: 'plexus-node-2', fill: 'var(--jewel-peacock, #087f78)' },
+  { cx: 39, cy: 34, r: 4.6, cls: 'plexus-node-3', fill: 'var(--jewel-cobalt, #3267c8)' },
+  { cx: 16, cy: 38, r: 4.6, cls: 'plexus-node-4', fill: 'var(--jewel-plum, #7a49b2)' },
 ]
 const HUB = { cx: 26, cy: 24, r: 3 }
 // Outer ring, then the four spokes into the hub.
