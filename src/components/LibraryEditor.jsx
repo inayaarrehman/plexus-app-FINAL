@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { SYSTEMS } from '../puzzles.js'
 import { CONNECTION_TYPES, DIFFICULTY_TIERS, BANK_STATUS } from '../data/connectionBank.js'
+import DifficultyIcon from './DifficultyIcon.jsx'
+
+const LEVEL_BY_TIER = { easy: 1, medium: 2, hard: 3, expert: 4 }
 import * as repo from '../lib/libraryRepo.js'
 import { isSupabaseConfigured } from '../lib/supabaseClient.js'
 import { isAdmin as checkAdmin, getCurrentUser, signInWithPassword, signOut } from '../lib/auth.js'
@@ -453,7 +456,7 @@ export default function LibraryEditor() {
               <div className="led-item-main">
                 <span className="led-item-title">{title(row)}</span>
                 <span className="led-item-meta">
-                  {row.verification_status || ''}{row.difficulty ? ` · ${row.difficulty}` : ''}{row.archived ? ' · archived' : ''}
+                  {row.verification_status || ''}{row.difficulty ? <> · {LEVEL_BY_TIER[row.difficulty] && <DifficultyIcon level={LEVEL_BY_TIER[row.difficulty]} size={13} decorative />} {row.difficulty}</> : ''}{row.archived ? ' · archived' : ''}
                 </span>
               </div>
               <div className="led-item-actions">

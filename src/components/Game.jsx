@@ -10,6 +10,7 @@ import BrandMark from './BrandMark.jsx'
 import Confetti from './Confetti.jsx'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import GroupMotif, { groupColor } from './GroupMotif.jsx'
+import DifficultyIcon, { DifficultyTag, DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
 import PlexusLine from './PlexusLine.jsx'
 import ReviewConnections from './ReviewConnections.jsx'
 import { haptics } from '../utils/haptics.js'
@@ -333,6 +334,7 @@ export default function Game({
                 <GroupMotif level={c.level} size={24} animate={popCatIndex === c.catIndex} />
               </span>
               <span className="strand-title">{c.title}</span>
+              <DifficultyTag level={c.level} className="strand-difficulty" />
             </div>
             <ol className="strand-nodes">
               {c.items.map((it) => (
@@ -408,7 +410,8 @@ export default function Game({
             aria-label={`${foundOrder.length} of ${puzzle.categories.length} connections found`}
           >
             {resultGroups.map((g) => (
-              <li key={g.catIndex}>
+              <li key={g.catIndex} className="result-motif-row">
+                <DifficultyIcon level={g.level} size={15} className="result-difficulty" title={DIFFICULTY_LABEL[g.level]} />
                 <GroupMotif
                   level={g.level}
                   layout="row"

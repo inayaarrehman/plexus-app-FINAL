@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { DIFFICULTY } from '../puzzles.js'
 import { getThreadForCategory } from '../utils/threads.js'
 import { isConnectionSaved, toggleSavedConnection } from '../utils/storage.js'
 import ThreadModal from './ThreadModal.jsx'
-import GroupMotif, { groupColor } from './GroupMotif.jsx'
+import { groupColor } from './GroupMotif.jsx'
+import { DifficultyTag } from './DifficultyIcon.jsx'
 
 const levelColor = (level) => groupColor(level)
-const levelName = (level) => DIFFICULTY.find((d) => d.level === level)?.name || ''
 
 // onKnowledgeSignal(tag, 'knew-it' | 'review-later') — Section 12's "I Knew
 // That" feature: a lightweight, entirely optional signal the player can
@@ -49,10 +48,7 @@ export default function ReviewConnections({ puzzle, onKnowledgeSignal }) {
               onClick={() => setOpenIndex(isOpen ? null : cat.catIndex)}
               aria-expanded={isOpen}
             >
-              <span className="accordion-level" style={{ color: levelColor(cat.level) }}>
-                <GroupMotif level={cat.level} size={18} title="" />
-                {levelName(cat.level)}
-              </span>
+              <DifficultyTag level={cat.level} className="accordion-level" />
               <span className="accordion-title">{cat.title}</span>
               <span className="accordion-caret">{isOpen ? 'Hide why' : 'Why?'}</span>
             </button>

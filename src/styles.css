@@ -5155,3 +5155,51 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 /* View connections list and the Home recap use the badge motif too. */
 .accordion-level .group-motif { margin-right: 6px; vertical-align: -5px; }
 .recap-strand-row .group-motif { margin-right: 2px; }
+
+/* ==================================================================
+   DIFFICULTY ICONS
+   A secondary icon set used only where difficulty is shown. Neutral ink
+   (or ivory on a room), never a group colour, so they read as "how hard"
+   rather than as a group's identity.
+   ================================================================== */
+.difficulty-icon { display: inline-block; flex-shrink: 0; vertical-align: middle; overflow: visible; }
+.difficulty-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--type-caption);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+/* Solved card: group motif + title on the left, difficulty on the right. */
+.strand-title { flex: 1 1 auto; }
+.strand-difficulty { margin-left: auto; padding-left: 6px; align-self: flex-start; margin-top: 3px; }
+
+/* Results stack: the difficulty icon leads each mini-Plexus row. */
+.result-motifs li.result-motif-row { display: flex; align-items: center; gap: 10px; line-height: 0; }
+.result-difficulty { color: var(--text-dim); }
+
+/* View Connections: the level label is the difficulty tag. */
+.difficulty-tag.accordion-level { text-transform: none; letter-spacing: 0; font-size: var(--type-caption); min-width: 64px; }
+
+/* How to play. */
+.howto-diff { display: inline-flex; align-items: center; gap: 3px; white-space: nowrap; font-weight: 600; color: var(--text); }
+
+/* ==================================================================
+   ARCHIVE HEADER: Back anchored left, "Archive" on the true centre.
+   Three columns, the two outer ones equal (1fr each), so the title column
+   sits on the page's centre line whatever width the Back label has.
+   ================================================================== */
+.archive .game-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+}
+.archive .game-header > :first-child { justify-self: start; }
+.archive .game-header .game-header-title { grid-column: 2; flex: none; text-align: center; padding: 0 8px; }
+.archive .game-header > :last-child { grid-column: 3; }
+/* Month selector on the same axis: equal-width arrows either side. */
+.archive-month-row { display: grid; grid-template-columns: 44px auto 44px; justify-content: center; }
