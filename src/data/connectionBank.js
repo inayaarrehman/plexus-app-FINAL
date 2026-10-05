@@ -47,6 +47,7 @@
 
 import migratedBankCategories from './migratedBankCategories.js'
 import connectionBankExtra from './connectionBankExtra.js'
+import connectionBankExtra2 from './connectionBankExtra2.js'
 import { SYSTEMS } from './constants.js'
 
 export const CONNECTION_TYPES = [
@@ -1234,6 +1235,12 @@ connectionBank.push(...migratedBankCategories)
 // medical content can be added continuously without touching this file or any
 // game logic; merged here into the single bank everything else imports.
 connectionBank.push(...connectionBankExtra)
+
+// Expansion pack 2 — system-coverage fill (src/data/connectionBankExtra2.js):
+// verified groups added specifically to give every organ system at least one
+// group in each difficulty tier, so Reproductive, Psychiatry, MSK, Dermatology
+// and GI can all generate puzzles.
+connectionBank.push(...connectionBankExtra2)
 
 export default connectionBank
 

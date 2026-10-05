@@ -1041,6 +1041,18 @@ console.log('\n[33] Cloud progress merge is monotonic (never loses a streak)')
 }
 
 // ---------------------------------------------------------------
+console.log('\n[34] Every organ system can generate a puzzle (content coverage)')
+{
+  const { assembleSystemPuzzle } = await import('../src/utils/puzzleAssembler.js')
+  const { SYSTEMS } = await import('../src/puzzles.js')
+  for (const system of SYSTEMS) {
+    let built = null
+    for (let i = 0; i < 8 && !built; i++) built = assembleSystemPuzzle(connectionBank, system, {})
+    assert(!!built, `system "${system}" can assemble a puzzle (has verified content in every tier)`)
+  }
+}
+
+// ---------------------------------------------------------------
 console.log(`\n${'='.repeat(40)}`)
 if (failures === 0) {
   console.log(`ALL CHECKS PASSED (${allPuzzles.length} puzzles validated: ${dailyPuzzles.length} daily, ${systemPuzzles.length} system)\n`)
