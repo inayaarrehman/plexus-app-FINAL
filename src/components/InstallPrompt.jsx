@@ -91,7 +91,7 @@ export default function InstallPrompt() {
       <div className="install-hint-body">
         <span className="install-hint-title">Add Plexus to your home screen</span>
         {deferred ? (
-          <span className="install-hint-text">Install it like an app — full screen, one tap to open.</span>
+          <span className="install-hint-text">Install it like an app. Full screen, opens in one tap.</span>
         ) : (
           <span className="install-hint-text">
             Tap the Share icon, then <strong>Add to Home Screen</strong>.

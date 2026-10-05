@@ -91,12 +91,15 @@ export default function Home({
         </p>
 
         {!dailyDone ? (
-          <button className="play-today-btn" onClick={onPlayDaily}>
-            Play today&rsquo;s puzzle
-            <span className="play-today-btn-arrow" aria-hidden="true">
-              &rarr;
-            </span>
-          </button>
+          <>
+            <p className="home-descriptor">16 concepts, 4 connections</p>
+            <button className="play-today-btn" onClick={onPlayDaily}>
+              Play today&rsquo;s puzzle
+              <span className="play-today-btn-arrow" aria-hidden="true">
+                &rarr;
+              </span>
+            </button>
+          </>
         ) : (
           <p className="home-done-line">
             Today complete
@@ -133,7 +136,7 @@ export default function Home({
 
       <section className="home-section">
         <h2 className="home-section-heading">3 Minutes</h2>
-        <p className="home-row-sub">A fast mix of medical association rounds.</p>
+        <p className="home-row-sub">How many can you solve in 3 minutes?</p>
         {challengeBest > 0 && <p className="home-row-sub">Personal best: {challengeBest.toLocaleString()}</p>}
         <button className="text-link home-link" onClick={onStartChallenge}>
           Start
@@ -155,7 +158,7 @@ export default function Home({
       </section>
 
       <section className="home-section">
-        <h2 className="home-section-heading">Explore by system</h2>
+        <h2 className="home-section-heading">Systems</h2>
         <p className="home-row-sub">{SYSTEMS_PREVIEW}</p>
         <button className="text-link home-link" onClick={onOpenSystems}>
           Browse systems

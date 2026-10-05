@@ -22,7 +22,7 @@ export default function AuthModal({ onClose, onAuthChanged }) {
   }, [])
 
   const afterSignedIn = async () => {
-    setNotice('Signed in — your progress is now saved to the cloud.')
+    setNotice('Signed in. Your progress is now saved to the cloud.')
     const u = await getCurrentUser()
     setUser(u)
     onAuthChanged?.()
@@ -146,7 +146,7 @@ export default function AuthModal({ onClose, onAuthChanged }) {
             {mode === 'in' ? 'New here? Create an account' : 'Already have an account? Sign in'}
           </button>
 
-          <p className="auth-guest-note">You can keep playing as a guest — signing in just backs up your progress.</p>
+          <p className="auth-guest-note">You can keep playing as a guest. Signing in just backs up your progress.</p>
         </div>
       )}
     </Modal>

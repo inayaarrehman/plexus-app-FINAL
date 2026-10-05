@@ -175,7 +175,7 @@ export default function Archive({ dailyHistory, onOpenDay, onBack }) {
       <p className="monthly-summary">
         {dailiesCompleted > 0
           ? `${dailiesCompleted} ${dailiesCompleted === 1 ? 'Daily' : 'Dailies'} completed`
-          : 'No Dailies completed yet this month — play today’s to begin.'}
+          : 'No Dailies completed yet this month. Play today’s to begin.'}
       </p>
 
       {saved.length > 0 && (

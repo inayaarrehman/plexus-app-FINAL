@@ -253,7 +253,7 @@ export default function Game({
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {
-      setMessage('Copy failed — select and copy manually')
+      setMessage('Copy failed. Select and copy it manually.')
     }
   }
 
@@ -264,13 +264,13 @@ export default function Game({
     const base = `${window.location.origin}${window.location.pathname}`
     const n = String(challengeDayNumber).padStart(3, '0')
     const url = `${base}#challenge/${challengeDayNumber}`
-    const text = `I challenged you to today’s Plexus — Daily ${n}\n${url}`
+    const text = `I challenged you to today’s Plexus, Daily ${n}\n${url}`
     try {
       await navigator.clipboard.writeText(text)
       setChallengeCopied(true)
       setTimeout(() => setChallengeCopied(false), 2000)
     } catch {
-      setMessage('Copy failed — select and copy manually')
+      setMessage('Copy failed. Select and copy it manually.')
     }
   }
 
@@ -341,7 +341,7 @@ export default function Game({
       {!gameOver && (
         <>
           {solvedCats.length === 0 && selected.length === 0 && (
-            <p className="board-hint">Find what connects.</p>
+            <p className="board-hint">Find the four concepts that belong together.</p>
           )}
           <div className="tile-grid">
             {remainingTiles.map((tile) => {
@@ -406,7 +406,7 @@ export default function Game({
           <p className="result-summary">
             {won
               ? `Solved with ${mistakes} mistake${mistakes === 1 ? '' : 's'}.`
-              : 'Out of guesses — here are the groups you missed.'}
+              : 'Out of guesses. Here are the groups you missed.'}
           </p>
 
           {isDaily && dailyStreak > 0 && (

@@ -278,7 +278,7 @@ export default function Race({ bank, initialCode = '', onExit }) {
 
         <p className="race-note">
           {live
-            ? 'One of you taps “Create a race” and shares the code or link; the other enters it. Then either of you starts — you’ll both race the same board at the same time.'
+            ? 'One of you taps “Create a race” and shares the code or link; the other enters it. Then either of you starts, and you’ll both race the same board at the same time.'
             : 'Both players enter the same code to get the identical challenge set, then compare times.'}
         </p>
       </div>
@@ -321,8 +321,8 @@ export default function Race({ bank, initialCode = '', onExit }) {
         <p className="race-note">
           {live
             ? oppOnline
-              ? 'Your opponent is here. Tap start when you’re both ready — it begins the race for both of you.'
-              : 'Share the code or link above. Once your friend joins you’ll see them here — or start now for a solo timed run.'
+              ? 'Your opponent is here. Tap start when you’re both ready. It begins the race for both of you.'
+              : 'Share the code or link above. Once your friend joins you’ll see them here, or start now for a solo timed run.'
             : 'Live sync is off (Supabase not configured). You can run the seeded race solo; a friend with the same code gets the identical questions.'}
         </p>
 
@@ -453,11 +453,11 @@ export default function Race({ bank, initialCode = '', onExit }) {
 
         <p className="race-note">
           {oppStillRacing
-            ? `${oppName} is still racing — their result will appear here when they finish.`
+            ? `${oppName} is still racing. Their result will appear here when they finish.`
             : live && oppResult
               ? 'Good race. Tap “Race again” for a fresh board with the same opponent.'
               : (
-                <>Opponent was offline — compare your time with a friend running code <strong>{code}</strong>.</>
+                <>No opponent joined. Compare your time with a friend running code <strong>{code}</strong>.</>
               )}
         </p>
 

@@ -54,6 +54,44 @@
   --difficulty-hard-ink: #f3f7ff;
   --difficulty-expert-ink: #faf3ff;
 
+  /* ---- Design tokens (consolidated) ----
+     One scale for spacing, radii, borders, transitions, shadows and type,
+     so every screen pulls from the same system instead of inventing its own
+     values. Added additively — existing rules keep working, new/!refined
+     rules reference these. */
+
+  /* Spacing — 4px base step. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* Radii — tiles moderate, cards a touch more, chips fully round. */
+  --radius-sm: 6px;
+  --radius-md: 10px;   /* game tiles, buttons */
+  --radius-lg: 14px;   /* primary cards / panels */
+  --radius-pill: 999px; /* ONLY genuine chips/status */
+
+  /* Borders — thin and subtle everywhere. */
+  --border-width: 1px;
+
+  /* Transitions — short and purposeful (120–180ms). */
+  --transition-fast: 120ms ease;
+  --transition-med: 160ms ease;
+
+  /* Shadows — minimal; only to signal elevation/interaction. */
+  --shadow-sm: 0 1px 2px rgba(27, 28, 46, 0.06);
+  --shadow-md: 0 4px 16px rgba(27, 28, 46, 0.1);
+
+  /* Type — system sans for UI; a system serif stack gives major headings an
+     editorial/academic feel with zero web-font loading (keeps the PWA fast
+     and offline-safe). */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+
   color-scheme: light;
 }
 
@@ -463,12 +501,20 @@ body.bg-home .secondary-btn:hover {
 .home-meta {
   color: var(--home-text-dim);
   font-size: 0.9rem;
-  margin: 6px 0 22px;
+  margin: 6px 0 10px;
 }
 
 .home-meta .home-daily-number {
   color: var(--difficulty-expert);
   font-weight: 700;
+}
+
+/* Quiet descriptor of today's puzzle, sitting just above the primary CTA so
+   the hierarchy reads: wordmark → which Daily + date → what it is → play. */
+.home-descriptor {
+  color: var(--home-text-dim);
+  font-size: 0.92rem;
+  margin: 0 0 20px;
 }
 
 .home-done-line {
@@ -1770,9 +1816,12 @@ body.bg-home .secondary-btn:hover {
    press/compression animation, and an unmistakable selected state. */
 .tile-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin: 10px 0 18px;
+  /* minmax(0, 1fr) lets columns shrink below their content's min-width so long
+     medical terms wrap instead of pushing the 4-column grid wider than the
+     screen (the cause of horizontal overflow on narrow phones). */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin: var(--space-3) 0 var(--space-5);
 }
 
 @media (max-width: 420px) {
@@ -1783,10 +1832,9 @@ body.bg-home .secondary-btn:hover {
 
 .tile {
   background: var(--bg-elevated);
-  border: 1.5px solid var(--border);
-  border-top-width: 3px;
+  border: var(--border-width) solid var(--border);
   color: var(--text);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 8px 6px;
   min-height: 72px;
   display: flex;
@@ -1803,20 +1851,9 @@ body.bg-home .secondary-btn:hover {
   line-height: 1.25;
   overflow-wrap: break-word;
   hyphens: auto;
-  box-shadow: 0 1px 0 rgba(23, 22, 15, 0.04);
-  transition: transform 0.1s ease, background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
-}
-
-/* A very subtle geometry variation across the grid — alternating corner
-   radius — purely decorative texture, never information-bearing (which
-   tile is which category is never hinted at before it's solved). */
-.tile:nth-child(4n+1),
-.tile:nth-child(4n+4) {
-  border-radius: 14px;
-}
-.tile:nth-child(4n+2),
-.tile:nth-child(4n+3) {
-  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), background var(--transition-fast),
+    border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 @media (min-width: 421px) {
@@ -1827,13 +1864,16 @@ body.bg-home .secondary-btn:hover {
   }
 }
 
-.tile:hover {
-  border-color: var(--text-dim);
-  transform: translateY(-1px);
+/* Hover is subtle (pointer devices only, so touch doesn't get a stuck state). */
+@media (hover: hover) {
+  .tile:hover {
+    border-color: var(--text-dim);
+    transform: translateY(-1px);
+  }
 }
 
 .tile:active {
-  transform: scale(0.95);
+  transform: scale(0.97);
 }
 
 /* Selection is never color-only: an accent top border plus a small filled
