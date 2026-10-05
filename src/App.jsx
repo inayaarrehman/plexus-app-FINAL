@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import connectionBank from './data/connectionBank.js'
 import Home from './components/Home.jsx'
 import Game from './components/Game.jsx'
@@ -21,6 +21,8 @@ import DevViewer from './components/DevViewer.jsx'
 import BrandMark from './components/BrandMark.jsx'
 import { dateKey, dayNumber, dateFromDayNumber } from './utils/game.js'
 import { getDailyPuzzleForDate } from './utils/dailyPuzzle.js'
+import { getDailyGate, isGatedView, GATED_VIEWS, LOCK_COPY, hasSeenUnlock, markUnlockSeen } from './utils/dailyGate.js'
+import LockGlyph from './components/LockGlyph.jsx'
 import { assembleSystemPuzzle } from './utils/puzzleAssembler.js'
 import { systemMasteryCounts } from './utils/mastery.js'
 import {
@@ -210,6 +212,28 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todayKey, refreshTick])
 
+  // Daily gate: 3-Minute, Race, Systems and Review open once the CURRENT
+  // Daily has been finished. Derived from the same Daily history as
+  // dailyDone (cloud-merged for signed-in players), so it survives refreshes
+  // and relocks by itself when a new Daily becomes current.
+  const gate = useMemo(() => getDailyGate(today), [todayKey, refreshTick]) // eslint-disable-line react-hooks/exhaustive-deps
+  const modesUnlocked = gate.unlocked
+
+  // Restrained locked-mode feedback: one short status line, plus a single
+  // pulse on the Play button so the way forward is obvious.
+  const [lockNotice, setLockNotice] = useState(0)
+  const lockTimer = useRef(null)
+  const showLocked = () => {
+    setLockNotice((n) => n + 1)
+    clearTimeout(lockTimer.current)
+    lockTimer.current = setTimeout(() => setLockNotice(0), 2800)
+  }
+  useEffect(() => () => clearTimeout(lockTimer.current), [])
+
+  // A race invite (#race=CODE) that arrives before today's Daily is finished
+  // is held here and used the first time Race is opened after unlocking.
+  const [pendingRaceCode, setPendingRaceCode] = useState('')
+
   const mastery = useMemo(() => getConceptMastery(), [refreshTick])
   const systemProgress = useMemo(() => getSystemProgress(), [refreshTick])
   const continueSystem = dailyDone ? systemProgress.lastPlayedSystem : null
@@ -259,12 +283,44 @@ export default function App() {
   }
 
   const navigate = (key) => {
+    if (!modesUnlocked && GATED_VIEWS.includes(key)) {
+      showLocked()
+      return
+    }
     if (key === 'challenge') setChallengePhase('intro')
     setView(key)
   }
 
+  // Route protection: whatever path leads into a gated view (nav, a hash
+  // link, an internal button, a stale state), it is sent back to Today with
+  // the same notice. Render-time check below keeps it from flashing.
+  const blockedView = !modesUnlocked && isGatedView(view, gameCtx?.mode)
+  useEffect(() => {
+    if (!blockedView) return
+    if (view === 'race' && raceInitialCode) setPendingRaceCode(raceInitialCode)
+    setGameCtx(null)
+    setView('home')
+    showLocked()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [blockedView])
+
+  // One-time unlock moment on Home after the Daily is finished.
+  const justUnlocked = modesUnlocked && view === 'home' && !hasSeenUnlock(gate.currentKey)
+  useEffect(() => {
+    if (!justUnlocked) return undefined
+    const t = setTimeout(() => markUnlockSeen(gate.currentKey), 1600)
+    return () => clearTimeout(t)
+  }, [justUnlocked, gate.currentKey])
+
   const openArchiveDay = (dateStr, puzzle, wasCompleted) => {
     const isToday = dateStr === todayKey
+    if (!isToday && !modesUnlocked) {
+      // A past Daily is Review content: locked until today's is finished.
+      setGameCtx(null)
+      setView('home')
+      showLocked()
+      return
+    }
     const [yy, mm, dd] = dateStr.split('-').map(Number)
     const challengeDayNumber = dayNumber(new Date(yy, mm - 1, dd))
     setGameCtx({
@@ -308,6 +364,10 @@ export default function App() {
   // Library's PLAY button) — no pre-generated file, no numbered puzzle to
   // pick. Biased away from already-mastered concepts via `mastery`.
   const playSystem = (system) => {
+    if (!modesUnlocked) {
+      showLocked()
+      return
+    }
     const puzzle = assembleSystemPuzzle(bank, system, {
       mastery,
       recentIds: getRecentCategories(),
@@ -336,6 +396,10 @@ export default function App() {
   }
 
   const handleContinueStudying = () => {
+    if (!modesUnlocked) {
+      showLocked()
+      return
+    }
     if (!continueSystem) {
       setView('systems')
       return
@@ -427,7 +491,7 @@ export default function App() {
     )
   }
 
-  if (view === 'game' && gameCtx) {
+  if (view === 'game' && gameCtx && !blockedView) {
     return (
       <div className="app-shell">
         <Game
@@ -450,7 +514,7 @@ export default function App() {
     )
   }
 
-  if (view === 'challenge') {
+  if (view === 'challenge' && !blockedView) {
     return (
       <div className="app-shell">
         {challengePhase !== 'playing' && <AppNav active="challenge" onNavigate={navigate} />}
@@ -459,7 +523,7 @@ export default function App() {
     )
   }
 
-  if (view === 'race') {
+  if (view === 'race' && !blockedView) {
     return (
       <div className="app-shell">
         <Race bank={bank} initialCode={raceInitialCode} onExit={goHome} />
@@ -467,7 +531,7 @@ export default function App() {
     )
   }
 
-  if (view === 'archive') {
+  if (view === 'archive' && !blockedView) {
     return (
       <div className="app-shell">
         <AppNav active="archive" onNavigate={navigate} />
@@ -476,7 +540,7 @@ export default function App() {
     )
   }
 
-  if (view === 'systems') {
+  if (view === 'systems' && !blockedView) {
     return (
       <div className="app-shell">
         <AppNav active="systems" onNavigate={navigate} />
@@ -494,7 +558,7 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <AppNav active="home" onNavigate={navigate} />
+      <AppNav active="home" onNavigate={navigate} locked={!modesUnlocked} onLocked={showLocked} />
       <Home
         dailyNumber={todayDayNumber}
         dailyDone={dailyDone}
@@ -505,17 +569,32 @@ export default function App() {
         challengeBest={challengeBest}
         dailiesCompleted={dailiesCompleted}
         onPlayDaily={openDailyToday}
-        onOpenSystems={() => setView('systems')}
+        onOpenSystems={() => navigate('systems')}
         onContinueStudying={handleContinueStudying}
         onStartChallenge={() => navigate('challenge')}
         onStartRace={() => {
-          setRaceInitialCode('')
+          if (!modesUnlocked) {
+            showLocked()
+            return
+          }
+          setRaceInitialCode(pendingRaceCode)
+          setPendingRaceCode('')
           setView('race')
         }}
+        locked={!modesUnlocked}
+        justUnlocked={justUnlocked}
+        onLocked={showLocked}
+        nudge={lockNotice}
         onOpenStats={() => setShowStats(true)}
         onOpenHowTo={() => setShowHowTo(true)}
         onOpenAccount={supaConfigured ? () => setShowAccount(true) : null}
       />
+      {lockNotice > 0 && (
+        <p key={lockNotice} className="lock-notice" role="status">
+          <LockGlyph size={13} />
+          {LOCK_COPY}
+        </p>
+      )}
       {showHowTo && <HowToModal onClose={() => setShowHowTo(false)} />}
       {showStats && <StatsModal stats={stats} onClose={() => setShowStats(false)} />}
       {showAccount && <AuthModal onClose={() => setShowAccount(false)} onAuthChanged={resyncProgress} />}

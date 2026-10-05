@@ -2,8 +2,8 @@
    PLEXUS: visual identity. A plexus is an interconnected network, so the
    product is built around nodes and connections, not medical cliches.
    Each major screen is its own gemstone "room", a full-bleed colour from
-   one family: Midnight intro, Indigo home, Cranberry Daily, Peacock
-   Systems, Cobalt 3-Minute, Raspberry Review. Rooms carry warm ivory text;
+   one family: Midnight intro, Indigo home, Garnet Daily, Peacock
+   Systems, Sapphire 3-Minute, Raspberry Review. Rooms carry warm ivory text;
    cream tiles carry Plexus Ink. The four node colours (terracotta, peacock,
    cobalt, plum) double as the four difficulty tiers and the four nodes of
    the Plexus mark. Room tokens live in :root below and the ROOMS block at
@@ -24,36 +24,36 @@
   --radius: 8px;
 
   /* ---- Canonical Plexus rooms ----
-     Midnight / Indigo / Cranberry / Peacock / Cobalt / Raspberry. Each major
+     Midnight / Indigo / Garnet / Peacock / Sapphire / Raspberry. Each major
      screen is one of these full-bleed gemstone rooms (body classes toggled in
      App.jsx). The rooms are the SAME in light and dark mode: they are already
      rich and moody, and every room uses warm ivory text (Plexus Ink only on
      cream surfaces such as tiles). -deep / -deeper are companions chosen
-     inside each family (indigo to deep indigo, cranberry to garnet, peacock
-     to deep teal, cobalt to midnight blue, raspberry to aubergine), used for
+     inside each family (indigo to deep indigo, garnet to wine, peacock to
+     deep blue-teal, sapphire to midnight blue, raspberry to aubergine), used for
      panels, pressed states and focus moments, never as a mechanical darken. */
   --room-midnight: #1e1238;
   --room-indigo: #50528f;
   --room-indigo-deep: #34366b;
   --room-indigo-deeper: #25274f;
-  --room-cranberry: #a44557;
-  --room-cranberry-deep: #7a2a3d;
-  --room-cranberry-deeper: #5a1d2c;
-  --room-peacock: #287f78;
-  --room-peacock-deep: #155a55;
-  --room-peacock-deeper: #0e403d;
-  --room-cobalt: #2c4aa0;
-  --room-cobalt-deep: #1c2a63;
-  --room-cobalt-deeper: #16204a;
+  --room-garnet: #843f50;
+  --room-garnet-deep: #61293a;
+  --room-garnet-deeper: #461d2a;
+  --room-peacock: #1c6874;
+  --room-peacock-deep: #134b55;
+  --room-peacock-deeper: #0d363f;
+  --room-sapphire: #244e9b;
+  --room-sapphire-deep: #1a3873;
+  --room-sapphire-deeper: #14295a;
   --room-raspberry: #6b3459;
   --room-raspberry-deep: #4a2240;
   --room-raspberry-deeper: #36182f;
 
   /* Which room each screen uses. */
   --bg-home: var(--room-indigo);
-  --bg-daily: var(--room-cranberry);
+  --bg-daily: var(--room-garnet);
   --bg-systems: var(--room-peacock);
-  --bg-challenge: var(--room-cobalt);
+  --bg-challenge: var(--room-sapphire);
   --bg-review: var(--room-raspberry);
 
   /* Text on the rooms. */
@@ -2894,7 +2894,7 @@ body.env-challenge {
    takes over" focus shift. The surrounding nav is already removed by
    App.jsx during play, so only timer / score / round / options remain. */
 body.bg-challenge-focus {
-  background: var(--room-cobalt-deeper);
+  background: var(--room-sapphire-deeper);
 }
 
 body.env-challenge .app-nav-item.active,
@@ -4737,37 +4737,37 @@ body.bg-home {
   --difficulty-expert: #dbcbdf;
 }
 body.env-daily {
-  --room: var(--room-cranberry);
-  --room-deep: var(--room-cranberry-deep);
-  --room-deeper: var(--room-cranberry-deeper);
+  --room: var(--room-garnet);
+  --room-deep: var(--room-garnet-deep);
+  --room-deeper: var(--room-garnet-deeper);
   --room-text: #fbf6ee;
-  --room-dim: #f1e1dc;
-  --difficulty-easy: #f3e1d6;
-  --difficulty-medium: #dbe7df;
-  --difficulty-hard: #e3e5e9;
-  --difficulty-expert: #ece1e7;
+  --room-dim: #dcc6c5;
+  --difficulty-easy: #e9c5b7;
+  --difficulty-medium: #b2d2cb;
+  --difficulty-hard: #c1cde3;
+  --difficulty-expert: #d7c6dd;
 }
 body.env-systems {
   --room: var(--room-peacock);
   --room-deep: var(--room-peacock-deep);
   --room-deeper: var(--room-peacock-deeper);
-  --room-text: #fffaf3;
-  --room-dim: #fffaf3;
-  --difficulty-easy: #fffaf3;
-  --difficulty-medium: #fffaf3;
-  --difficulty-hard: #fffaf3;
-  --difficulty-expert: #fffaf3;
+  --room-text: #fbf6ee;
+  --room-dim: #d5ded9;
+  --difficulty-easy: #f0d7cb;
+  --difficulty-medium: #cddfd8;
+  --difficulty-hard: #d5dbe7;
+  --difficulty-expert: #e4d7e3;
 }
 body.env-challenge {
-  --room: var(--room-cobalt);
-  --room-deep: var(--room-cobalt-deep);
-  --room-deeper: var(--room-cobalt-deeper);
+  --room: var(--room-sapphire);
+  --room-deep: var(--room-sapphire-deep);
+  --room-deeper: var(--room-sapphire-deeper);
   --room-text: #fbf6ee;
-  --room-dim: #bfc4d7;
-  --difficulty-easy: #e5bbac;
-  --difficulty-medium: #a6ccc5;
-  --difficulty-hard: #b5c4e1;
-  --difficulty-expert: #d0bdda;
+  --room-dim: #bfc7d7;
+  --difficulty-easy: #e6bdae;
+  --difficulty-medium: #a8cec6;
+  --difficulty-hard: #b9c7e1;
+  --difficulty-expert: #d2bfdb;
 }
 body.env-review {
   --room: var(--room-raspberry);
@@ -4962,4 +4962,103 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 .tile { overflow-wrap: break-word; letter-spacing: -0.012em; }
 @media (max-width: 420px) {
   .tile { font-size: clamp(0.7rem, 2.5vw, 0.88rem); }
+}
+
+/* ==================================================================
+   DAILY GATE
+   Locked modes stay visible: the row keeps its title and description,
+   its node art rests at low strength, and the action line becomes the lock
+   note. Tapping a locked mode shows one short status line and pulses Play.
+   ================================================================== */
+.lock-glyph { flex-shrink: 0; overflow: visible; }
+.lock-glyph .lock-node { fill: var(--room, var(--bg)); }
+
+.mode-row.is-locked { cursor: default; }
+.mode-row.is-locked .mode-visual { opacity: 0.42; filter: saturate(0.55); }
+.mode-lock {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+  font-size: var(--type-caption);
+  font-weight: 600;
+  color: var(--home-text-dim);
+}
+
+.app-nav-item.is-locked { color: var(--home-text-dim); }
+.app-nav-item.is-locked:hover { color: var(--home-text-dim); }
+.app-nav-item.is-locked { white-space: nowrap; }
+.app-nav-lock { margin-left: 3px; vertical-align: 0; }
+
+.lock-notice {
+  position: fixed;
+  left: 50%;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 16px;
+  max-width: calc(100vw - 32px);
+  border-radius: 12px;
+  background: var(--room-deep, var(--ink));
+  color: var(--room-text, var(--ivory-text));
+  border: 1px solid color-mix(in srgb, var(--room-text, #fbf6ee) 22%, transparent);
+  box-shadow: var(--shadow-md);
+  font-size: var(--type-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+  animation: lock-notice-in 180ms ease both;
+}
+.lock-notice .lock-node { fill: var(--room-deep, var(--ink)); }
+@keyframes lock-notice-in {
+  from { opacity: 0; transform: translate(-50%, 6px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.play-today-btn.is-nudged { animation: play-nudge 650ms ease 1; }
+@keyframes play-nudge {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--room-text, #fbf6ee) 60%, transparent); }
+  100% { box-shadow: 0 0 0 12px color-mix(in srgb, var(--room-text, #fbf6ee) 0%, transparent); }
+}
+
+/* The unlock moment (once per Daily, on returning Home): each row's node art
+   comes up to full strength while its lock lifts its shackle, the keyhole
+   becomes a lit node, and the lock steps aside for the action. Staggered. */
+.mode-row.is-unlocking .mode-visual { animation: mode-wake 700ms ease var(--unlock-delay, 0ms) both; }
+@keyframes mode-wake {
+  from { opacity: 0.42; filter: saturate(0.55); transform: scale(0.96); }
+  to { opacity: 1; filter: none; transform: scale(1); }
+}
+.mode-unlock-mark {
+  display: inline-flex;
+  vertical-align: -2px;
+  margin-right: 6px;
+  max-width: 20px;
+  overflow: visible;
+  animation: unlock-mark-out 420ms ease calc(var(--unlock-delay, 0ms) + 700ms) both;
+}
+.lock-glyph.is-open .lock-shackle {
+  transform-box: view-box;
+  transform-origin: 11.4px 8.2px;
+  animation: shackle-lift 380ms cubic-bezier(0.2, 0.9, 0.3, 1.2) calc(var(--unlock-delay, 0ms) + 200ms) both;
+}
+.lock-glyph.is-open .lock-node { animation: keyhole-lit 380ms ease calc(var(--unlock-delay, 0ms) + 260ms) both; }
+@keyframes shackle-lift {
+  from { transform: none; }
+  to { transform: translateY(-1.6px) rotate(32deg); }
+}
+@keyframes keyhole-lit {
+  from { fill: var(--room, var(--bg)); }
+  to { fill: var(--mode-accent, var(--node-peacock)); }
+}
+@keyframes unlock-mark-out {
+  from { opacity: 1; max-width: 20px; margin-right: 6px; }
+  to { opacity: 0; max-width: 0; margin-right: 0; }
+}
+@media (max-width: 360px) {
+  .app-nav-item.is-locked { padding-left: 2px; padding-right: 2px; }
+  .app-nav-lock { margin-left: 2px; }
 }

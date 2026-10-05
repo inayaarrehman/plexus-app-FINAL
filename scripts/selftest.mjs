@@ -1082,6 +1082,26 @@ console.log('\n[35] Supabase content maps to playable groups and merges onto the
   assert(mergeBank(base, []) === base, 'merge with no extras returns the base unchanged')
 }
 
+console.log('\n[36] Daily gate: today\'s Daily unlocks the other modes')
+{
+  const { evaluateGate, isDailyFinished, isGatedView } = await import('../src/utils/dailyGate.js')
+  const cur = { key: '2026-10-05', day: 1008, puzzleId: 'daily-2026-10-05' }
+  const prev = { key: '2026-10-04', day: 1007, puzzleId: 'daily-2026-10-04' }
+  const done = (k, id, extra = {}) => ({ [k]: { date: k, puzzleId: id, completed: true, won: true, ...extra } })
+  assert(!evaluateGate({ history: {}, current: cur, latest: cur }).unlocked, 'locked before today\'s Daily is finished')
+  assert(!evaluateGate({ history: done(prev.key, prev.puzzleId), current: cur, latest: cur }).unlocked, 'yesterday\'s completion does not unlock today')
+  assert(evaluateGate({ history: done(cur.key, cur.puzzleId), current: cur, latest: cur }).unlocked, 'finishing today\'s Daily unlocks')
+  assert(evaluateGate({ history: done(cur.key, cur.puzzleId, { won: false }), current: cur, latest: cur }).unlocked, 'a finished-but-lost Daily still unlocks (it cannot be replayed for credit)')
+  assert(!isDailyFinished(done(cur.key, 'daily-other'), cur.key, cur.puzzleId), 'a history entry for a different puzzle id does not count')
+  assert(isDailyFinished({ [cur.key]: { date: cur.key, completed: true } }, cur.key, cur.puzzleId), 'older entries without a puzzle id still count')
+  // Clock turned back one day to a completed Daily while the newer one is unfinished.
+  assert(!evaluateGate({ history: done(prev.key, prev.puzzleId), current: prev, latest: cur }).unlocked, 'turning the clock back to a completed day does not unlock')
+  assert(evaluateGate({ history: { ...done(prev.key, prev.puzzleId), ...done(cur.key, cur.puzzleId) }, current: prev, latest: cur }).unlocked, 'it does once the newest Daily is finished too')
+  assert(isGatedView('systems') && isGatedView('challenge') && isGatedView('race') && isGatedView('archive'), 'Systems, 3-Minute, Race and Review are gated')
+  assert(!isGatedView('home') && !isGatedView('game', 'daily'), 'Today and the Daily board are never gated')
+  assert(isGatedView('game', 'system') && isGatedView('game', 'archive'), 'system boards and past Dailies are gated')
+}
+
 // ---------------------------------------------------------------
 console.log(`\n${'='.repeat(40)}`)
 if (failures === 0) {

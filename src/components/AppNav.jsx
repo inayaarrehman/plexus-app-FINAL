@@ -1,4 +1,6 @@
 import React from 'react'
+import LockGlyph from './LockGlyph.jsx'
+import { LOCK_COPY } from '../utils/dailyGate.js'
 
 // Understated text navigation — no icons, no cards. Rendered above Home,
 // Systems and Archive/Review; deliberately NOT rendered around an active
@@ -12,18 +14,27 @@ const ITEMS = [
   { key: 'archive', label: 'Review' },
 ]
 
-export default function AppNav({ active, onNavigate }) {
+// `locked`: before today's Daily is finished, every destination except Today
+// stays visible with a small lock; tapping it calls `onLocked` (the shared
+// restrained notice) instead of navigating.
+export default function AppNav({ active, onNavigate, locked = false, onLocked }) {
   return (
     <nav className="app-nav" aria-label="Primary">
-      {ITEMS.map((item) => (
-        <button
-          key={item.key}
-          className={`app-nav-item ${active === item.key ? 'active' : ''}`}
-          onClick={() => onNavigate(item.key)}
-        >
-          {item.label}
-        </button>
-      ))}
+      {ITEMS.map((item) => {
+        const isLocked = locked && item.key !== 'home'
+        return (
+          <button
+            key={item.key}
+            className={`app-nav-item ${active === item.key ? 'active' : ''} ${isLocked ? 'is-locked' : ''}`}
+            onClick={() => (isLocked ? onLocked && onLocked() : onNavigate(item.key))}
+            aria-disabled={isLocked ? 'true' : undefined}
+            aria-label={isLocked ? `${item.label}. ${LOCK_COPY}` : undefined}
+          >
+            {item.label}
+            {isLocked && <LockGlyph size={11} className="app-nav-lock" />}
+          </button>
+        )
+      })}
     </nav>
   )
 }

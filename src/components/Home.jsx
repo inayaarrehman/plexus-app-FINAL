@@ -6,6 +6,8 @@ import BrandMark from './BrandMark.jsx'
 import HeroNetwork from './HeroNetwork.jsx'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import SolvedRecap from './SolvedRecap.jsx'
+import LockGlyph from './LockGlyph.jsx'
+import { LOCK_COPY } from '../utils/dailyGate.js'
 
 // Each system takes one accent from the four-colour Plexus palette, cycled by
 // position — same rule as the Systems page, so the home previews match.
@@ -98,6 +100,45 @@ function RaceGlyph() {
   )
 }
 
+// One secondary-mode row. Before today's Daily is finished the row stays
+// visible but locked: its action line becomes the lock note and a tap gives
+// the same restrained notice instead of opening the mode. Right after the
+// Daily is finished, `justUnlocked` plays a one-time shackle-lift on the
+// lock while the row's node art comes up to full strength.
+function ModeRow({ locked, justUnlocked, order, onOpen, onLocked, accent, visual, visualClass = '', title, sub, meta, action }) {
+  const cls = `mode-row ${locked ? 'is-locked' : ''} ${justUnlocked ? 'is-unlocking' : ''}`
+  return (
+    <button
+      className={cls}
+      onClick={locked ? onLocked : onOpen}
+      aria-disabled={locked ? 'true' : undefined}
+      style={{ ...(accent ? { '--mode-accent': accent } : null), '--unlock-delay': `${order * 140}ms` }}
+    >
+      <span className={`mode-visual ${visualClass}`}>{visual}</span>
+      <span className="mode-body">
+        <span className="mode-title">{title}</span>
+        <span className="mode-sub">{sub}</span>
+        {meta && !locked && <span className="mode-meta">{meta}</span>}
+        {locked ? (
+          <span className="mode-lock">
+            <LockGlyph size={14} />
+            {LOCK_COPY}
+          </span>
+        ) : (
+          <span className="mode-action">
+            {justUnlocked && (
+              <span className="mode-unlock-mark" aria-hidden="true">
+                <LockGlyph size={14} open />
+              </span>
+            )}
+            {action} <span aria-hidden="true">&rarr;</span>
+          </span>
+        )}
+      </span>
+    </button>
+  )
+}
+
 export default function Home({
   dailyNumber,
   dailyDone,
@@ -115,6 +156,10 @@ export default function Home({
   onOpenStats,
   onOpenHowTo,
   onOpenAccount,
+  locked = false,
+  justUnlocked = false,
+  onLocked,
+  nudge = 0,
 }) {
   const todayLabel = new Date().toLocaleDateString(undefined, {
     weekday: 'long',
@@ -182,7 +227,7 @@ export default function Home({
         {!dailyDone ? (
           <>
             <p className="home-hero-sub">16 concepts, 4 connections</p>
-            <button className="play-today-btn" onClick={onPlayDaily}>
+            <button key={`play-${nudge}`} className={`play-today-btn ${nudge ? 'is-nudged' : ''}`} onClick={onPlayDaily}>
               Play
               <span className="play-today-btn-arrow" aria-hidden="true"> &rarr;</span>
             </button>
@@ -224,41 +269,48 @@ export default function Home({
           </button>
         )}
 
-        <button className="mode-row" onClick={onStartChallenge} style={{ '--mode-accent': 'var(--node-peacock)' }}>
-          <span className="mode-visual">
-            <TimerGlyph />
-          </span>
-          <span className="mode-body">
-            <span className="mode-title">3 Minutes</span>
-            <span className="mode-sub">How many can you solve in 3 minutes?</span>
-            {challengeBest > 0 && <span className="mode-meta">Best {challengeBest.toLocaleString()}</span>}
-            <span className="mode-action">Start <span aria-hidden="true">&rarr;</span></span>
-          </span>
-        </button>
+        <ModeRow
+          locked={locked}
+          justUnlocked={justUnlocked}
+          order={0}
+          onOpen={onStartChallenge}
+          onLocked={onLocked}
+          accent="var(--node-peacock)"
+          visual={<TimerGlyph />}
+          title="3 Minutes"
+          sub="How many can you solve in 3 minutes?"
+          meta={challengeBest > 0 ? `Best ${challengeBest.toLocaleString()}` : null}
+          action="Start"
+        />
 
-        <button className="mode-row" onClick={onStartRace} style={{ '--mode-accent': 'var(--node-terracotta)' }}>
-          <span className="mode-visual mode-visual-race">
-            <RaceGlyph />
-          </span>
-          <span className="mode-body">
-            <span className="mode-title">Race</span>
-            <span className="mode-sub">Race a friend through the same Plexus.</span>
-            <span className="mode-action">Start a race <span aria-hidden="true">&rarr;</span></span>
-          </span>
-        </button>
+        <ModeRow
+          locked={locked}
+          justUnlocked={justUnlocked}
+          order={1}
+          onOpen={onStartRace}
+          onLocked={onLocked}
+          accent="var(--node-terracotta)"
+          visualClass="mode-visual-race"
+          visual={<RaceGlyph />}
+          title="Race"
+          sub="Race a friend through the same Plexus."
+          action="Start a race"
+        />
 
-        <button className="mode-row" onClick={onOpenSystems}>
-          <span className="mode-visual mode-visual-systems">
-            {SYSTEMS_PREVIEW.map((s) => (
-              <MiniGlyph key={s} system={s} size={30} />
-            ))}
-          </span>
-          <span className="mode-body">
-            <span className="mode-title">Systems</span>
-            <span className="mode-sub">Pick a system to practice.</span>
-            <span className="mode-action">Browse systems <span aria-hidden="true">&rarr;</span></span>
-          </span>
-        </button>
+        <ModeRow
+          locked={locked}
+          justUnlocked={justUnlocked}
+          order={2}
+          onOpen={onOpenSystems}
+          onLocked={onLocked}
+          visualClass="mode-visual-systems"
+          visual={SYSTEMS_PREVIEW.map((s) => (
+            <MiniGlyph key={s} system={s} size={30} />
+          ))}
+          title="Systems"
+          sub="Pick a system to practice."
+          action="Browse systems"
+        />
       </section>
 
       {recapOpen && <SolvedRecap categories={todayCategories} onClose={() => setRecapOpen(false)} />}
