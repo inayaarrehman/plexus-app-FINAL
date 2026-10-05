@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { DIFFICULTY } from '../puzzles.js'
+import { NODE_VARS } from '../data/constants.js'
 
 // The ambient homepage network (Sections 4–5, 14–15). Deliberately confined
 // to the hero's lower-right and bleeding off the right edge (the hero clips
@@ -10,7 +10,7 @@ import { DIFFICULTY } from '../puzzles.js'
 // none, behind content. Its complexity is a quiet, deterministic artifact of
 // how many Dailies have been completed (more history → a slightly richer
 // network, hard-capped) — no label, no score, never reduced by a missed day.
-const COLORS = DIFFICULTY.map((d) => d.color)
+const COLORS = NODE_VARS
 
 function hash(str) {
   let h = 2166136261 >>> 0

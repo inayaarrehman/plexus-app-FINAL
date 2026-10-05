@@ -1,5 +1,5 @@
 {
-  "name": "Plexus — Medical Pattern Recognition",
+  "name": "Plexus",
   "short_name": "Plexus",
   "description": "A daily medical connections puzzle. Sixteen clinical concepts, four hidden links. Find the connections.",
   "start_url": "/?source=pwa",
@@ -7,7 +7,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#1e1238",
-  "theme_color": "#1b1c2e",
+  "theme_color": "#1e1238",
   "categories": ["education", "games", "medical"],
   "icons": [
     {

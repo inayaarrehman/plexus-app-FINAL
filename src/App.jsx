@@ -235,9 +235,9 @@ export default function App() {
   // Purely presentational: paint each screen its own full-viewport Plexus
   // environment colour by toggling a class on <body> (so the colour bleeds
   // past the centred app-shell rather than stopping at it). Home is
-  // periwinkle, the Daily/Archive board is apricot, a system puzzle stays
-  // in the seafoam Systems room, Review is plum, and the 3-Minute
-  // Challenge is cobalt (deepened while a round is actually live). The
+  // indigo, the Daily/Archive board is cranberry, a system puzzle stays
+  // in the peacock Systems room, Review is raspberry, and the 3-Minute
+  // Challenge is cobalt (deepened to midnight blue while a round is live). The
   // hidden #dev route stays on the plain neutral surface. Toggles CSS
   // classes only — no effect on any game logic or state.
   useEffect(() => {

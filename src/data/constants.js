@@ -23,6 +23,17 @@ export const DIFFICULTY = [
   { level: 4, name: 'Plum', color: '#7a49b2', shape: '■', shapeLabel: 'square' },
 ]
 
+// The same four families as node GRAPHICS. These resolve to the base jewel
+// colours on cream surfaces and the intro, and to lifted, ivory-rimmed tints
+// inside the gemstone rooms (see --node-* in styles.css), so node art stays
+// multicoloured and visible on every room.
+export const NODE_VARS = [
+  'var(--node-terracotta, #bf5236)',
+  'var(--node-peacock, #087f78)',
+  'var(--node-cobalt, #3267c8)',
+  'var(--node-plum, #7a49b2)',
+]
+
 // The full organ-system library. A system with zero puzzles today still
 // shows up (as "coming soon") so the nav doesn't have to change shape as
 // content is added.

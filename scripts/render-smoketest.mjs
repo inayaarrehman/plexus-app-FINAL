@@ -690,7 +690,7 @@ check('Confetti renders a restrained jewel-tone burst (40 pieces by default)', (
   const html = renderToStaticMarkup(React.createElement(Confetti, {}))
   const pieces = (html.match(/confetti-piece/g) || []).length
   if (pieces !== 40) throw new Error(`expected 40 confetti pieces, found ${pieces}`)
-  if (!html.includes('--jewel-')) throw new Error('expected confetti coloured from the jewel palette')
+  if (!html.includes('--node-terracotta') || !html.includes('--node-plum')) throw new Error('expected confetti coloured from the Plexus node palette')
   return html
 })
 

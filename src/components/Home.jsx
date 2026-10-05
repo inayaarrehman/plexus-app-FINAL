@@ -9,7 +9,7 @@ import SolvedRecap from './SolvedRecap.jsx'
 
 // Each system takes one accent from the four-colour Plexus palette, cycled by
 // position — same rule as the Systems page, so the home previews match.
-const ACCENT_VARS = ['var(--jewel-terracotta)', 'var(--jewel-peacock)', 'var(--jewel-cobalt)', 'var(--jewel-plum)']
+const ACCENT_VARS = ['var(--node-terracotta)', 'var(--node-peacock)', 'var(--node-cobalt)', 'var(--node-plum)']
 const accentForSystem = (system) => ACCENT_VARS[Math.max(0, SYSTEMS.indexOf(system)) % ACCENT_VARS.length]
 
 // Three systems previewed on the home Systems row, drawn as the real organ
@@ -224,7 +224,7 @@ export default function Home({
           </button>
         )}
 
-        <button className="mode-row" onClick={onStartChallenge} style={{ '--mode-accent': 'var(--difficulty-medium)' }}>
+        <button className="mode-row" onClick={onStartChallenge} style={{ '--mode-accent': 'var(--node-peacock)' }}>
           <span className="mode-visual">
             <TimerGlyph />
           </span>
@@ -236,7 +236,7 @@ export default function Home({
           </span>
         </button>
 
-        <button className="mode-row" onClick={onStartRace} style={{ '--mode-accent': 'var(--difficulty-easy)' }}>
+        <button className="mode-row" onClick={onStartRace} style={{ '--mode-accent': 'var(--node-terracotta)' }}>
           <span className="mode-visual mode-visual-race">
             <RaceGlyph />
           </span>

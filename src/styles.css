@@ -1,16 +1,13 @@
 /* ---------------------------------------------------------------------
-   PLEXUS — visual identity. A plexus is an interconnected network: the
-   product is built around nodes + connections, not medical clichés.
-   Colour is architectural here, not decorative trim. Each major screen
-   is its own "Plexus environment" — a full-bleed background colour drawn
-   from ONE palette (periwinkle home, apricot Daily board, seafoam
-   Systems, cobalt 3-Minute, plum Review) so moving through the app feels
-   like walking between rooms of the same building rather than dropping
-   onto a white page. The four brand colours — coral/aqua/cobalt/plum —
-   also serve as the four difficulty tiers and the four nodes of the
-   Plexus mark. "Plexus Ink" (--text) is a single deep navy used as the
-   primary text colour across every environment, which is what keeps the
-   different backgrounds reading as one product.
+   PLEXUS: visual identity. A plexus is an interconnected network, so the
+   product is built around nodes and connections, not medical cliches.
+   Each major screen is its own gemstone "room", a full-bleed colour from
+   one family: Midnight intro, Indigo home, Cranberry Daily, Peacock
+   Systems, Cobalt 3-Minute, Raspberry Review. Rooms carry warm ivory text;
+   cream tiles carry Plexus Ink. The four node colours (terracotta, peacock,
+   cobalt, plum) double as the four difficulty tiers and the four nodes of
+   the Plexus mark. Room tokens live in :root below and the ROOMS block at
+   the end of this file maps them onto each screen.
    --------------------------------------------------------------------- */
 :root {
   --bg: #faf9f6;
@@ -22,22 +19,58 @@
      everywhere and ties the environments together. */
   --text: #1b1c2e;
   --text-dim: #6b6960;
-  --accent: #1f6f5c;
+  --accent: var(--jewel-peacock-ink);
   --accent-ink: #ffffff;
   --radius: 8px;
 
-  /* The five Plexus environment canvases (see the env-* body classes
-     toggled in App.jsx). Each is a confident, full-viewport colour — not
-     a barely-tinted white. Per-environment --text-dim/--border are tuned
-     inside each env block below so dim text and thin rules stay legible
-     on the colour (the neutral defaults are too low-contrast on them). */
-  --bg-home: #d3c8f8;      /* periwinkle / iris — Today / Daily home */
-  --bg-daily: #f6ddc9;     /* soft apricot — the Daily puzzle board */
-  --bg-systems: #cfe9e2;   /* seafoam / aqua — the Systems library */
-  --bg-review: #e7d8ee;    /* soft plum / orchid — Review */
-  --bg-challenge: #1c2a63; /* deep cobalt — the 3-Minute Challenge */
+  /* ---- Canonical Plexus rooms ----
+     Midnight / Indigo / Cranberry / Peacock / Cobalt / Raspberry. Each major
+     screen is one of these full-bleed gemstone rooms (body classes toggled in
+     App.jsx). The rooms are the SAME in light and dark mode: they are already
+     rich and moody, and every room uses warm ivory text (Plexus Ink only on
+     cream surfaces such as tiles). -deep / -deeper are companions chosen
+     inside each family (indigo to deep indigo, cranberry to garnet, peacock
+     to deep teal, cobalt to midnight blue, raspberry to aubergine), used for
+     panels, pressed states and focus moments, never as a mechanical darken. */
+  --room-midnight: #1e1238;
+  --room-indigo: #50528f;
+  --room-indigo-deep: #34366b;
+  --room-indigo-deeper: #25274f;
+  --room-cranberry: #a44557;
+  --room-cranberry-deep: #7a2a3d;
+  --room-cranberry-deeper: #5a1d2c;
+  --room-peacock: #287f78;
+  --room-peacock-deep: #155a55;
+  --room-peacock-deeper: #0e403d;
+  --room-cobalt: #2c4aa0;
+  --room-cobalt-deep: #1c2a63;
+  --room-cobalt-deeper: #16204a;
+  --room-raspberry: #6b3459;
+  --room-raspberry-deep: #4a2240;
+  --room-raspberry-deeper: #36182f;
+
+  /* Which room each screen uses. */
+  --bg-home: var(--room-indigo);
+  --bg-daily: var(--room-cranberry);
+  --bg-systems: var(--room-peacock);
+  --bg-challenge: var(--room-cobalt);
+  --bg-review: var(--room-raspberry);
+
+  /* Text on the rooms. */
+  --ink: #1b1c2e;
+  --ivory-text: #fbf6ee;
+  --tile-cream: #fbf6ee;
   --home-text-dim: #4a4658;
   --home-divider: rgba(27, 28, 46, 0.14);
+
+  /* Node colours ON a room: the jewel families lifted just enough to read
+     against the gemstone canvases, each set in a thin ivory rim. Elsewhere
+     (cream surfaces, the intro navy) nodes use the base --jewel-* values. */
+  --node-terracotta: var(--jewel-terracotta);
+  --node-peacock: var(--jewel-peacock);
+  --node-cobalt: var(--jewel-cobalt);
+  --node-plum: var(--jewel-plum);
+  --node-rim: transparent;
 
   /* Original 4-tier difficulty / brand palette — coral/aqua/cobalt/plum,
      not NYT's yellow/green/blue/purple. These exact hexes are kept in
@@ -131,19 +164,9 @@
     --border: #35331f;
     --text: #f3f1e9;
     --text-dim: #9a9686;
-    --accent: #4fb99e;
+    --accent: #38b8ae;
     --accent-ink: #0e2620;
     color-scheme: dark;
-
-    /* Deep, muted versions of each environment for dark mode — still
-       recognizably "the same room," just at dark-mode depth. Challenge
-       stays cobalt (it is intentionally dark in both themes). */
-    --bg-home: #251f47;
-    --bg-daily: #2b2018;
-    --bg-systems: #14302b;
-    --bg-review: #2a2036;
-    --home-text-dim: #b8b0d8;
-    --home-divider: rgba(255, 255, 255, 0.14);
 
     /* Lighter tints for the few places a difficulty color is used as TEXT
        on the page background (labels, sub-headings) rather than as a
@@ -227,35 +250,7 @@ body {
   transition: background-color 0.2s ease;
 }
 
-body.env-daily {
-  background: var(--bg-daily);
-  --text-dim: #6e4d3c;
-  --border: rgba(27, 28, 46, 0.16);
-}
-
-body.env-systems {
-  background: var(--bg-systems);
-  --text-dim: #37655c;
-  --border: rgba(27, 28, 46, 0.16);
-}
-
-body.env-review {
-  background: var(--bg-review);
-  --text-dim: #574364;
-  --border: rgba(27, 28, 46, 0.16);
-}
-
-@media (prefers-color-scheme: dark) {
-  body.env-daily,
-  body.env-systems,
-  body.env-review {
-    --text-dim: #9a9686;
-    --border: #35331f;
-  }
-  body.env-daily { background: var(--bg-daily); }
-  body.env-systems { background: var(--bg-systems); }
-  body.env-review { background: var(--bg-review); }
-}
+/* Room colours and inks: see the ROOMS block at the end of this file. */
 
 /* Comfortable one-handed tap targets everywhere. */
 button {
@@ -2373,7 +2368,7 @@ body.bg-home .secondary-btn:hover {
   padding: 10px 12px;
   background: transparent;
   border: 1px solid var(--border);
-  border-left: 3px solid var(--jewel-cobalt);
+  border-left: 3px solid var(--node-cobalt);
   border-radius: 8px;
   color: var(--text);
   cursor: pointer;
@@ -2381,7 +2376,7 @@ body.bg-home .secondary-btn:hover {
 }
 
 .follow-thread-btn:hover {
-  border-color: var(--jewel-cobalt);
+  border-color: var(--node-cobalt);
 }
 
 .follow-thread-label {
@@ -2445,7 +2440,7 @@ body.bg-home .secondary-btn:hover {
   height: 10px;
   border-radius: 50%;
   margin-top: 6px;
-  background: var(--jewel-cobalt);
+  background: var(--node-cobalt);
 }
 
 .thread-node-main {
@@ -2491,7 +2486,7 @@ body.bg-home .secondary-btn:hover {
 
 .thread-node-remember {
   background: rgba(53, 104, 196, 0.08);
-  border-left: 3px solid var(--jewel-cobalt);
+  border-left: 3px solid var(--node-cobalt);
   padding: 8px 12px;
   border-radius: 4px;
   font-size: 0.85rem;
@@ -2507,7 +2502,7 @@ body.bg-home .secondary-btn:hover {
   width: 2px;
   height: 16px;
   margin: 2px 0 8px 4px;
-  background: var(--jewel-cobalt);
+  background: var(--node-cobalt);
   opacity: 0.4;
   border-radius: 2px;
 }
@@ -2728,7 +2723,7 @@ body.bg-home .secondary-btn:hover {
 
 .challenge-lede {
   font-size: 1.02rem;
-  color: #f2f1fb;
+  color: var(--ivory-text);
   margin: 0 0 14px;
 }
 
@@ -2795,8 +2790,8 @@ body.bg-home .secondary-btn:hover {
   padding: 16px 40px;
   border: none;
   border-radius: 16px;
-  background: #f2f1fb;
-  color: #16204a;
+  background: var(--ivory-text);
+  color: var(--ink);
   font: inherit;
   font-weight: 800;
   font-size: 1.12rem;
@@ -2872,7 +2867,7 @@ body.bg-home .secondary-btn:hover {
 /* A momentary wrong-state wash behind the round while feedback shows. */
 .challenge-playing.is-wrong .challenge-board,
 .challenge-playing.is-wrong .challenge-options {
-  outline: 2px solid color-mix(in srgb, var(--jewel-terracotta) 70%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--node-terracotta) 70%, transparent);
   outline-offset: 6px;
   border-radius: 14px;
   transition: outline-color 0.1s ease;
@@ -2892,9 +2887,6 @@ body.bg-home .secondary-btn:hover {
    light directly on the cobalt canvas is set explicitly here. */
 body.env-challenge {
   background: var(--bg-challenge);
-  color: #f2f1fb;
-  --text-dim: #c3bdec;
-  --border: rgba(255, 255, 255, 0.2);
   --accent: #9db4ff;
 }
 
@@ -2902,12 +2894,12 @@ body.env-challenge {
    takes over" focus shift. The surrounding nav is already removed by
    App.jsx during play, so only timer / score / round / options remain. */
 body.bg-challenge-focus {
-  background: #16204a;
+  background: var(--room-cobalt-deeper);
 }
 
 body.env-challenge .app-nav-item.active,
 body.env-challenge .app-nav-item:hover {
-  color: #f2f1fb;
+  color: var(--ivory-text);
 }
 
 body.env-challenge .challenge-header {
@@ -2915,15 +2907,15 @@ body.env-challenge .challenge-header {
 }
 
 body.env-challenge .challenge-anchor {
-  color: #f2f1fb;
+  color: var(--ivory-text);
 }
 
 body.env-challenge .challenge-choice {
-  color: #f2f1fb;
+  color: var(--ivory-text);
 }
 
 body.env-challenge .challenge-results-label {
-  color: #f2f1fb;
+  color: var(--ivory-text);
 }
 
 /* Force the dark-mode difficulty tints (built for text on a dark
@@ -2944,17 +2936,17 @@ body.env-challenge .challenge-timer.urgent {
    ink-coloured secondary/link text all vanish against it — restyle for
    the dark canvas. Start becomes a bright surface; secondary/link light. */
 body.env-challenge .primary-btn {
-  background: #eceaff;
-  color: #16204a;
+  background: var(--ivory-text);
+  color: var(--ink);
 }
 
 body.env-challenge .secondary-btn {
-  color: #f2f1fb;
+  color: var(--ivory-text);
   border-color: rgba(255, 255, 255, 0.4);
 }
 
 body.env-challenge .secondary-btn:hover {
-  border-color: #f2f1fb;
+  border-color: var(--ivory-text);
 }
 
 .challenge-header {
@@ -3150,7 +3142,7 @@ body.env-challenge .secondary-btn:hover {
 
 .save-connection-btn.is-saved {
   color: var(--difficulty-expert);
-  border-color: color-mix(in srgb, var(--jewel-plum) 45%, var(--border));
+  border-color: color-mix(in srgb, var(--node-plum) 45%, var(--border));
 }
 
 .save-connection-mark {
@@ -3246,7 +3238,7 @@ body.env-challenge .secondary-btn:hover {
 
 /* Today: a subtle ring, never a red/streak warning. */
 .monthly-cell.is-today {
-  outline: 2px solid color-mix(in srgb, var(--jewel-cobalt) 60%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--text) 70%, transparent);
   outline-offset: -2px;
 }
 
@@ -3276,7 +3268,7 @@ body.env-challenge .secondary-btn:hover {
 }
 
 .saved-item {
-  border-left: 3px solid var(--jewel-plum);
+  border-left: 3px solid var(--node-plum);
   padding: 4px 0 4px 12px;
 }
 
@@ -3543,11 +3535,11 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   border-radius: 8px;
   border-left: 3px solid;
 }
-.challenge-split-label.split-a { border-left-color: var(--jewel-terracotta); }
-.challenge-split-label.split-b { border-left-color: var(--jewel-cobalt); }
+.challenge-split-label.split-a { border-left-color: var(--node-terracotta); }
+.challenge-split-label.split-b { border-left-color: var(--node-cobalt); }
 .challenge-split-tile { position: relative; }
-.challenge-split-tile.assigned-a { border-color: var(--jewel-terracotta); }
-.challenge-split-tile.assigned-b { border-color: var(--jewel-cobalt); }
+.challenge-split-tile.assigned-a { border-color: var(--node-terracotta); }
+.challenge-split-tile.assigned-b { border-color: var(--node-cobalt); }
 .challenge-split-badge {
   position: absolute;
   top: 4px;
@@ -3644,7 +3636,7 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   height: 22px;
   border-radius: 50%;
   background: #9db4ff;
-  color: #16204a;
+  color: var(--ink);
   font-size: 0.78rem;
   font-weight: 800;
   display: flex;
@@ -4062,7 +4054,7 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   gap: 12px;
   padding: 12px 14px;
   background: var(--surface, #23243a);
-  color: var(--text, #f2f1fb);
+  color: var(--text, var(--ivory-text));
   border: 1px solid var(--border);
   border-radius: 14px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
@@ -4080,7 +4072,7 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
 .install-hint-install {
   border: none;
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-ink);
   font-weight: 700;
   font-size: 0.82rem;
   padding: 8px 14px;
@@ -4116,7 +4108,7 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   margin-top: 4px;
   border: none;
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-ink);
   font-weight: 700;
   font-size: 0.95rem;
   padding: 11px 14px;
@@ -4298,10 +4290,10 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
 .mode-glyph .mg-node { fill: var(--home-text-dim); opacity: 0.45; }
 .mode-glyph .mg-node.is-on { fill: var(--mode-accent, var(--text)); opacity: 1; }
 .mode-glyph .mg-link { stroke: var(--mode-accent, var(--text)); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
-.mode-glyph .mg-a .mg-dot { fill: var(--jewel-terracotta); }
-.mode-glyph .mg-a .mg-path { stroke: var(--jewel-terracotta); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
-.mode-glyph .mg-b .mg-dot { fill: var(--jewel-cobalt); }
-.mode-glyph .mg-b .mg-path { stroke: var(--jewel-cobalt); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
+.mode-glyph .mg-a .mg-dot { fill: var(--node-terracotta); }
+.mode-glyph .mg-a .mg-path { stroke: var(--node-terracotta); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
+.mode-glyph .mg-b .mg-dot { fill: var(--node-cobalt); }
+.mode-glyph .mg-b .mg-path { stroke: var(--node-cobalt); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
 .mode-glyph-mini { flex: 0 0 auto; }
 
 @media (max-width: 380px) {
@@ -4621,10 +4613,10 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
 
 /* Wordmark under the hub, haloed in the background colour. */
 .sp-word {
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: 15px;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.24em;
   fill: var(--jewel-ivory);
   stroke: #1e1238;
   stroke-width: 10px;
@@ -4687,3 +4679,287 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
 .splash.sp3.is-static .sp-wave { opacity: 0; }
 .splash.sp3.is-static .sp-link { stroke-dashoffset: 0; opacity: var(--link-op, 0.5); }
 .splash.sp3.is-static .sp-word { opacity: 1; }
+
+/* ==================================================================
+   ROOMS
+   Every room is a gemstone canvas with warm ivory text. Each room sets
+   its own --room-* values (computed for contrast: text >= 4.6:1, secondary
+   text >= 4.6:1, difficulty text tints >= 4.6:1 on that room), and the
+   shared rules below map them onto the variables components already use.
+   Same values in light and dark mode.
+   ================================================================== */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/bricolage-grotesque-700.woff') format('woff');
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('/fonts/instrument-sans-400.woff') format('woff');
+  font-weight: 300 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('/fonts/instrument-sans-700.woff') format('woff');
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-display: 'Bricolage Grotesque', 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-ui: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: var(--font-ui);
+  --font-serif: var(--font-display); /* retired: anything still pointing here gets the display sans */
+  --type-display: clamp(2.3rem, 9.6vw, 2.9rem);
+  --type-title: 2rem;
+  --type-heading: 1.3rem;
+  --type-body: 1rem;
+  --type-secondary: 0.94rem;
+  --type-caption: 0.84rem;
+}
+
+html, body, button, input, select, textarea { font-family: var(--font-ui); }
+
+body.bg-home {
+  --room: var(--room-indigo);
+  --room-deep: var(--room-indigo-deep);
+  --room-deeper: var(--room-indigo-deeper);
+  --room-text: #fbf6ee;
+  --room-dim: #d2cfd7;
+  --difficulty-easy: #ebcabc;
+  --difficulty-medium: #b9d6ce;
+  --difficulty-hard: #c7d1e4;
+  --difficulty-expert: #dbcbdf;
+}
+body.env-daily {
+  --room: var(--room-cranberry);
+  --room-deep: var(--room-cranberry-deep);
+  --room-deeper: var(--room-cranberry-deeper);
+  --room-text: #fbf6ee;
+  --room-dim: #f1e1dc;
+  --difficulty-easy: #f3e1d6;
+  --difficulty-medium: #dbe7df;
+  --difficulty-hard: #e3e5e9;
+  --difficulty-expert: #ece1e7;
+}
+body.env-systems {
+  --room: var(--room-peacock);
+  --room-deep: var(--room-peacock-deep);
+  --room-deeper: var(--room-peacock-deeper);
+  --room-text: #fffaf3;
+  --room-dim: #fffaf3;
+  --difficulty-easy: #fffaf3;
+  --difficulty-medium: #fffaf3;
+  --difficulty-hard: #fffaf3;
+  --difficulty-expert: #fffaf3;
+}
+body.env-challenge {
+  --room: var(--room-cobalt);
+  --room-deep: var(--room-cobalt-deep);
+  --room-deeper: var(--room-cobalt-deeper);
+  --room-text: #fbf6ee;
+  --room-dim: #bfc4d7;
+  --difficulty-easy: #e5bbac;
+  --difficulty-medium: #a6ccc5;
+  --difficulty-hard: #b5c4e1;
+  --difficulty-expert: #d0bdda;
+}
+body.env-review {
+  --room: var(--room-raspberry);
+  --room-deep: var(--room-raspberry-deep);
+  --room-deeper: var(--room-raspberry-deeper);
+  --room-text: #fbf6ee;
+  --room-dim: #c9b2ba;
+  --difficulty-easy: #dfab99;
+  --difficulty-medium: #90c2ba;
+  --difficulty-hard: #a5b9de;
+  --difficulty-expert: #c6afd5;
+}
+
+body.bg-home, body.env-daily, body.env-systems, body.env-challenge, body.env-review {
+  background: var(--room);
+  color: var(--room-text);
+  color-scheme: dark;
+  --text: var(--room-text);
+  --text-dim: var(--room-dim);
+  --home-text-dim: var(--room-dim);
+  --home-divider: color-mix(in srgb, var(--room-text) 22%, transparent);
+  --border: color-mix(in srgb, var(--room-text) 30%, transparent);
+  --bg: var(--ink);                 /* label colour on ivory-filled buttons */
+  --bg-elevated: var(--room-deep);  /* panels, modals, result card */
+  --accent: var(--room-text);       /* focus rings, selection marks */
+  --accent-ink: var(--ink);
+  --node-terracotta: #e47a55;
+  --node-peacock: #36bdb0;
+  --node-cobalt: #7a9ff0;
+  --node-plum: #b083e4;
+  --node-rim: color-mix(in srgb, var(--room-text) 88%, transparent);
+  --shadow-sm: 0 1px 2px rgba(10, 6, 20, 0.22);
+  --shadow-md: 0 6px 18px rgba(10, 6, 20, 0.3);
+}
+
+/* Cream surfaces inside a room go back to Plexus Ink and the base jewels. */
+body .tile,
+body .strand,
+.cream-surface {
+  --text: var(--ink);
+  --text-dim: #4a4658;
+  --node-terracotta: var(--jewel-terracotta);
+  --node-peacock: var(--jewel-peacock);
+  --node-cobalt: var(--jewel-cobalt);
+  --node-plum: var(--jewel-plum);
+  --node-rim: transparent;
+  --difficulty-easy: var(--jewel-terracotta-ink);
+  --difficulty-medium: var(--jewel-peacock-ink);
+  --difficulty-hard: var(--jewel-cobalt);
+  --difficulty-expert: var(--jewel-plum);
+}
+
+/* ---- Puzzle tiles: cream pieces with a small edge, on every board ------ */
+.tile {
+  background: var(--tile-cream);
+  color: var(--ink);
+  border-color: transparent;
+  box-shadow: 0 2px 0 rgba(10, 6, 20, 0.28);
+  font-weight: 700;
+}
+@media (hover: hover) {
+  .tile:hover { border-color: color-mix(in srgb, var(--ink) 35%, transparent); }
+}
+.tile-selected {
+  background: var(--ink);
+  color: var(--ivory-text);
+  border-color: var(--ink);
+  box-shadow: 0 2px 0 rgba(10, 6, 20, 0.5);
+}
+.tile-selected::after { background: var(--ivory-text); }
+.tile-proposing::after { box-shadow: 0 0 0 3px color-mix(in srgb, var(--ivory-text) 30%, transparent); }
+
+/* Solved strands read as cream cards with the category colour on the edge. */
+.strand {
+  background: var(--tile-cream);
+  color: var(--ink);
+  box-shadow: 0 2px 0 rgba(10, 6, 20, 0.22);
+}
+.strand-term, .strand-title { color: var(--ink); }
+
+/* ---- Buttons on rooms --------------------------------------------------- */
+.primary-btn { font-family: var(--font-ui); font-weight: 700; }
+body.bg-home .secondary-btn,
+body.env-daily .secondary-btn,
+body.env-systems .secondary-btn,
+body.env-review .secondary-btn { border-color: color-mix(in srgb, var(--room-text) 45%, transparent); color: var(--room-text); }
+body.bg-home .secondary-btn:hover,
+body.env-daily .secondary-btn:hover,
+body.env-systems .secondary-btn:hover,
+body.env-review .secondary-btn:hover { border-color: var(--room-text); }
+.icon-btn:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
+
+/* ---- Navigation ---------------------------------------------------------- */
+.app-nav-item.active::after { background: var(--node-peacock); box-shadow: 0 0 0 1.5px var(--node-rim); }
+body.env-systems .app-nav-item.active::after { background: var(--room-text); box-shadow: none; }
+
+/* ---- Node graphics on rooms --------------------------------------------- */
+/* Lit nodes take the lifted jewel and an ivory rim; unlit parts are the
+   room's ivory at low strength, so progress never relies on hue alone. */
+.mode-glyph .mg-node { fill: var(--text); opacity: 0.32; }
+.mode-glyph .mg-node.is-on { opacity: 1; stroke: var(--node-rim); stroke-width: 1.2px; }
+.mode-glyph .mg-dot { stroke: var(--node-rim); stroke-width: 1.1px; }
+.puzzle-signature .sig-nodes circle { stroke: var(--node-rim); stroke-width: 1.1px; }
+.brand-mark circle { stroke: var(--node-rim); stroke-width: 1px; }
+.tone-accent .glyph-link { stroke: color-mix(in srgb, var(--text) 30%, transparent); }
+.tone-accent .glyph-node { fill: color-mix(in srgb, var(--text) 30%, transparent); stroke: none; }
+.tone-accent .glyph-link.is-on { stroke: var(--node-accent); }
+.tone-accent .glyph-node.is-on { fill: var(--node-accent); stroke: var(--node-rim); stroke-width: 1.3px; }
+@media (hover: hover) {
+  .system-node:hover { background: color-mix(in srgb, var(--room-text) 8%, transparent); }
+  .system-node:hover .tone-accent .glyph-node { fill: color-mix(in srgb, var(--node-accent) 72%, transparent); stroke: var(--node-rim); }
+}
+.system-node.is-pressed { background: color-mix(in srgb, var(--room-text) 12%, transparent); }
+.system-node.is-complete { background: color-mix(in srgb, var(--room-deep) 55%, transparent); }
+.system-node.is-empty { color: color-mix(in srgb, var(--text) 70%, transparent); }
+.system-node.is-empty .glyph-link { stroke: color-mix(in srgb, var(--text) 20%, transparent); }
+.system-node.is-empty .glyph-node { fill: color-mix(in srgb, var(--text) 18%, transparent); stroke: none; }
+.system-node:focus-visible { outline-color: var(--room-text); }
+
+/* ==================================================================
+   TYPE
+   Bricolage Grotesque for headings and identity moments, Instrument Sans
+   for everything else. Hierarchy through size and weight.
+   ================================================================== */
+.home-hero-title,
+.systems-title,
+.system-detail-title,
+.challenge-title,
+.challenge-results-heading,
+.challenge-invite-title,
+.monthly-title,
+.race-title,
+.modal-header h2,
+.home-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 1.02;
+}
+.home-hero-title { font-size: var(--type-display); }
+.systems-title,
+.challenge-title,
+.monthly-title,
+.race-title,
+.system-detail-title { font-size: var(--type-title); }
+.mode-title {
+  font-family: var(--font-display);
+  font-size: var(--type-heading);
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  line-height: 1.1;
+}
+.stat-num, .challenge-timer, .challenge-final-score, .race-result-num, .race-countdown, .race-code-value {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+/* Secondary copy: sentence case, readable size, no wide tracking. */
+.home-hero-eyebrow {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--type-secondary);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.home-hero-sub { font-size: 1.05rem; font-weight: 500; }
+.mode-sub { font-size: var(--type-secondary); line-height: 1.38; }
+.mode-meta { text-transform: none; letter-spacing: 0; font-size: var(--type-caption); font-weight: 600; opacity: 1; }
+.mode-action { font-size: var(--type-secondary); }
+.home-nav-link { font-size: var(--type-secondary); }
+.home-nav-wordmark {
+  font-family: var(--font-display);
+  text-transform: none;
+  letter-spacing: -0.03em;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+.app-nav-item { font-size: 0.92rem; }
+.game-header-title { font-size: var(--type-secondary); font-weight: 700; }
+.board-hint { font-size: var(--type-secondary); }
+.system-node-name { font-family: var(--font-display); font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
+.system-node-count { font-size: var(--type-caption); font-weight: 600; }
+.strand-title { font-family: var(--font-display); font-size: 1rem; letter-spacing: -0.01em; }
+.strand-term { font-size: 0.86rem; }
+
+.daily-id-label { text-transform: none; letter-spacing: 0; font-size: var(--type-secondary); }
+
+/* Sentence case for headings and labels that were set in tracked capitals. */
+.monthly-title { text-transform: none; letter-spacing: -0.028em; }
+.challenge-mixes { text-transform: none; letter-spacing: 0; font-size: var(--type-caption); }
+/* Long single-word terms on tiles wrap instead of clipping. */
+.tile { overflow-wrap: break-word; letter-spacing: -0.012em; }
+@media (max-width: 420px) {
+  .tile { font-size: clamp(0.7rem, 2.5vw, 0.88rem); }
+}

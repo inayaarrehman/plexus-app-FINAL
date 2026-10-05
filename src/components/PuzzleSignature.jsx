@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
-import { DIFFICULTY } from '../puzzles.js'
+import { NODE_VARS } from '../data/constants.js'
 import { puzzleSignature } from '../utils/puzzleSignature.js'
 
-const NODE_COLORS = DIFFICULTY.map((d) => d.color)
+const NODE_COLORS = NODE_VARS
 
 // The Daily's deterministic "Puzzle Signature" (Section 4). Same nodes in
 // both states: `resolved={false}` shows loose, unconnected nodes; when

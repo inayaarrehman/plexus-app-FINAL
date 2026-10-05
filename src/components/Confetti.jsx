@@ -19,10 +19,13 @@ import React, { useMemo } from 'react'
 
 const JEWELS = ['terracotta', 'peacock', 'cobalt', 'plum']
 const FALLBACK = { terracotta: '#bf5236', peacock: '#087f78', cobalt: '#3267c8', plum: '#7a49b2' }
+// Node colours, so the burst reads on whichever room the result card sits in
+// (lifted jewel tints on a room, base jewels elsewhere), with an occasional
+// warm ivory piece.
 const colorFor = (i) => {
+  if (i % 7 === 6) return 'var(--ivory-text, #fbf6ee)'
   const name = JEWELS[i % JEWELS.length]
-  const deep = i % 3 === 2 // every third piece takes the deeper variant for subtle depth
-  return `var(--jewel-${name}${deep ? '-deep' : ''}, ${FALLBACK[name]})`
+  return `var(--node-${name}, ${FALLBACK[name]})`
 }
 const SHAPES = ['rect', 'rect', 'rect', 'node', 'line'] // weighted toward rectangles
 

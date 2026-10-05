@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useCallback } from 'react'
-import { SYSTEMS, DIFFICULTY } from '../puzzles.js'
+import { SYSTEMS } from '../puzzles.js'
+import { NODE_VARS } from '../data/constants.js'
 import { categoriesForSystem, systemMasteryCounts } from '../utils/mastery.js'
 import { getSystemGlyph, resolveGlyph } from '../utils/systemGlyphs.js'
 import { haptics } from '../utils/haptics.js'
@@ -8,7 +9,7 @@ import { haptics } from '../utils/haptics.js'
 // Plexus palette, cycled by position (Coral → Teal → Cobalt → Plum, repeat)
 // rather than a unique hue per system. Colour is visual rhythm, not medical
 // classification, so Cardiology and GI can share coral.
-const ACCENT_COLORS = DIFFICULTY.map((d) => d.color)
+const ACCENT_COLORS = NODE_VARS
 function systemAccent(system) {
   const idx = SYSTEMS.indexOf(system)
   return ACCENT_COLORS[idx % ACCENT_COLORS.length] || ACCENT_COLORS[0]
