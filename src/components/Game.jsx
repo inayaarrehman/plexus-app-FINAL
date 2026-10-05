@@ -7,7 +7,6 @@ import { pickConnectionPhrase } from '../utils/connectionMicrocopy.js'
 import { buildShareText } from '../utils/shareText.js'
 import { computeDailyMicroStat } from '../utils/dailyMicroStat.js'
 import { pickConnectionOfDay } from '../utils/connectionOfDay.js'
-import Confetti from './Confetti.jsx'
 import BrandMark from './BrandMark.jsx'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import PlexusLine from './PlexusLine.jsx'
@@ -380,12 +379,11 @@ export default function Game({
 
       {gameOver && (
         <div className={`result-card ${won ? 'result-card-won' : ''} ${isPerfect ? 'result-card-perfect' : ''}`}>
-          {/* The earned celebration: confetti fires only on completing the
-              WHOLE puzzle (Daily or System) — never for an individual Strand,
-              one-away, or a 3-Minute question. */}
-          {won && <Confetti />}
-
-          {won && <BrandMark size={40} className="result-brandmark" animate decorative />}
+          {/* The completion payoff is the Plexus mark assembling — four
+              difficulty-coloured nodes wiring themselves together — above the
+              solved strands that have just drawn into their connected form.
+              The reward is the connections completing, not confetti. */}
+          {won && <BrandMark size={58} className="result-brandmark" animate decorative />}
 
           <h2>{resultTitle || (isDaily ? "Today's Results" : 'Puzzle Results')}</h2>
 

@@ -798,8 +798,8 @@ body.bg-home .secondary-btn:hover {
 .system-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px 18px;
-  max-width: 340px;
+  gap: 26px 14px;
+  max-width: 380px;
   margin: 0 auto;
   padding-bottom: 8px;
 }
@@ -809,55 +809,66 @@ body.bg-home .secondary-btn:hover {
    shadow — the node-organ illustration carries the system colour. Shorter and
    quieter than the old tactile tile, so it reads as a knowledge-graph entry
    rather than a dashboard button. */
+/* The organ glyph is the entry — no card. The node-network illustration sits
+   directly on the seafoam canvas; a faint accent wash and a tightening of the
+   glyph appear only on hover/press, so the page reads as a set of anatomical
+   constellations rather than a grid of buttons. */
 .system-node {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
-  aspect-ratio: 1.58 / 1; /* ~16-18% shorter than the previous tile */
-  padding: 8px 10px 9px;
+  gap: 8px;
+  padding: 14px 8px 12px;
   cursor: pointer;
   color: var(--text);
-  --system-card-base: color-mix(in srgb, var(--bg-systems) 45%, white);
-  border-radius: 14px; /* reduced corner radius — less app-icon, more card */
-  /* Pale, clean system-specific wash: the accent tinted into a lightened
-     seafoam base, so warm accents (coral) read as a soft blush rather than
-     muddying against the green environment. */
-  background: color-mix(in srgb, var(--node-accent) 12%, var(--system-card-base));
-  border: 1px solid color-mix(in srgb, var(--node-accent) 26%, transparent);
+  background: none;
+  border: none;
+  border-radius: var(--radius-lg);
   box-shadow: none;
-  transition: background 150ms ease, border-color 150ms ease, transform 140ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background 150ms ease, transform 140ms cubic-bezier(0.22, 1, 0.36, 1);
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
 
-/* Restrained press: a slight settle and a touch deeper wash — no shadow play. */
+/* Hover (pointer devices): a soft accent wash behind the glyph and the organ's
+   nodes brighten into the system accent. */
+@media (hover: hover) {
+  .system-node:hover {
+    background: color-mix(in srgb, var(--node-accent) 9%, transparent);
+  }
+  .system-node:hover .tone-accent .glyph-node {
+    fill: color-mix(in srgb, var(--node-accent) 72%, transparent);
+    stroke: var(--node-accent);
+  }
+  .system-node:hover .tone-accent .glyph-link {
+    stroke: color-mix(in srgb, var(--node-accent) 68%, transparent);
+  }
+}
+
+/* Restrained press: a slight settle and a touch deeper wash. */
 .system-node.is-pressed {
   transform: translateY(1px) scale(0.985);
-  background: color-mix(in srgb, var(--node-accent) 20%, var(--system-card-base));
-  border-color: color-mix(in srgb, var(--node-accent) 40%, transparent);
+  background: color-mix(in srgb, var(--node-accent) 13%, transparent);
 }
 
 .system-node:focus-visible {
   outline: 2.5px solid color-mix(in srgb, var(--node-accent) 55%, var(--text));
   outline-offset: 2px;
+  border-radius: var(--radius-lg);
 }
 
-/* Completion: a slightly richer wash and firmer border — the resolved network
-   carries the reward, no gold/trophy/badge. */
+/* Completion: a quiet persistent accent wash marks a finished system — the
+   resolved network carries the reward, no gold/trophy/badge. */
 .system-node.is-complete {
-  background: color-mix(in srgb, var(--node-accent) 19%, var(--system-card-base));
-  border-color: color-mix(in srgb, var(--node-accent) 42%, transparent);
+  background: color-mix(in srgb, var(--node-accent) 10%, transparent);
 }
 
-/* Coming Soon: an even paler, unformed branch — no padlock, red or overlay. */
+/* Coming Soon: an unformed, muted branch — no padlock, red or overlay. */
 .system-node.is-empty {
   cursor: default;
   color: color-mix(in srgb, var(--text) 55%, transparent);
-  background: color-mix(in srgb, var(--node-accent) 5%, var(--system-card-base));
-  border-color: color-mix(in srgb, var(--text) 12%, transparent);
 }
 
 /* The anatomical Plexus glyph, in the system colour — the main visual of the
@@ -865,9 +876,8 @@ body.bg-home .secondary-btn:hover {
    with real progress. */
 .system-node-glyph {
   width: 100%;
-  max-width: 108px;
-  aspect-ratio: 1.85 / 1; /* modest height keeps the card short; the cropped
-                             viewBox keeps the network legible. */
+  max-width: 128px;
+  aspect-ratio: 1.5 / 1; /* taller now that the glyph is the star, not a card detail */
   margin-top: 1px;
 }
 
@@ -924,15 +934,15 @@ body.bg-home .secondary-btn:hover {
    page. Unresolved parts are soft but clearly visible against the pale wash;
    resolved parts are full system colour. */
 .tone-accent .glyph-link {
-  stroke: color-mix(in srgb, var(--node-accent) 42%, transparent);
+  stroke: color-mix(in srgb, var(--node-accent) 48%, transparent);
 }
 .tone-accent .glyph-link.is-on {
   stroke: var(--node-accent);
   stroke-width: 3;
 }
 .tone-accent .glyph-node {
-  fill: color-mix(in srgb, var(--node-accent) 34%, transparent);
-  stroke: color-mix(in srgb, var(--node-accent) 52%, transparent);
+  fill: color-mix(in srgb, var(--node-accent) 44%, transparent);
+  stroke: color-mix(in srgb, var(--node-accent) 60%, transparent);
 }
 .tone-accent .glyph-node.is-on {
   fill: var(--node-accent);

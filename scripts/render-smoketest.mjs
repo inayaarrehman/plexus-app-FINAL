@@ -226,7 +226,9 @@ check('Game renders a live-assembled organ-system puzzle with a shareLabel and t
     })
   )
   if (!html.includes('result-card')) throw new Error('expected a result-card for a won system puzzle')
-  if (!html.includes('confetti-piece')) throw new Error('confetti fires on any full puzzle completion, including system puzzles')
+  // Completion now pays off with the assembling Plexus constellation, not confetti.
+  if (!html.includes('brand-mark-assemble')) throw new Error('expected the assembling Plexus constellation on a won puzzle')
+  if (html.includes('confetti-piece')) throw new Error('did not expect confetti; the completion payoff is the node constellation')
   return html
 })
 
