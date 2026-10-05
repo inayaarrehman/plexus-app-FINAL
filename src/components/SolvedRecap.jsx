@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { DIFFICULTY } from '../puzzles.js'
 import BrandMark from './BrandMark.jsx'
+import GroupMotif, { groupColor } from './GroupMotif.jsx'
 
-const levelColor = (level) => DIFFICULTY.find((d) => d.level === level)?.color || 'var(--text)'
+const levelColor = (level) => groupColor(level)
 
 // The hidden-delight recap (Sections 16–22): after today's Daily is solved,
 // tapping the Plexus logo briefly expands the mark into today's four solved
@@ -38,7 +38,7 @@ export default function SolvedRecap({ categories, onClose }) {
                   onClick={() => setOpenTitle(isOpen ? null : cat.title)}
                   aria-expanded={isOpen}
                 >
-                  <span className="recap-strand-node" aria-hidden="true" />
+                  <GroupMotif level={cat.level} size={20} title="" />
                   <span className="recap-strand-title">{cat.title}</span>
                 </button>
                 {isOpen && terms.length > 0 && <p className="recap-strand-terms">{terms.join(' · ')}</p>}

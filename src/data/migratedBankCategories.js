@@ -23,7 +23,7 @@ const migratedBankCategories = [
     "primarySystem": "Mixed / Step Review",
     "secondarySystems": [],
     "connectionType": "language",
-    "explanation": "Geography is one of medicine's favorite naming conventions — usually marking where a disease was first identified or a notable outbreak occurred.",
+    "explanation": "Geography is one of medicine's favorite naming conventions. It usually marks where a disease was first identified or a notable outbreak occurred.",
     "tileExplanations": [
       "Rickettsia rickettsii, first recognized in the Rocky Mountain region.",
       "Named after Marburg, Germany, where it was first identified in 1967.",
@@ -40,7 +40,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Places & Passages\" (sys-mixed-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Places & Passages\" (sys-mixed-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-mixed-0001-L2",
@@ -58,7 +58,7 @@ const migratedBankCategories = [
     "primarySystem": "Mixed / Step Review",
     "secondarySystems": [],
     "connectionType": "knowledge",
-    "explanation": "\"I ate ten eggs at twelve\" — the diaphragm has three major openings, each at a different vertebral level, each carrying specific structures.",
+    "explanation": "\"I ate ten eggs at twelve\": the diaphragm has three major openings, each at a different vertebral level, each carrying specific structures.",
     "tileExplanations": [
       "Passes through the aortic hiatus at T12.",
       "Passes through the esophageal hiatus at T10, alongside the vagus nerve.",
@@ -75,7 +75,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Places & Passages\" (sys-mixed-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Places & Passages\" (sys-mixed-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-mixed-0001-L3",
@@ -100,7 +100,7 @@ const migratedBankCategories = [
       "Becomes the ligamentum teres hepatis.",
       "Becomes the ligamentum venosum."
     ],
-    "remember": "Every fetal shunt leaves an adult remnant — closure is what changes, not disappearance.",
+    "remember": "Every fetal shunt leaves an adult remnant. Closure is what changes, not disappearance.",
     "tags": [
       "eponymous geography",
       "diaphragm",
@@ -110,7 +110,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Places & Passages\" (sys-mixed-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Places & Passages\" (sys-mixed-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-mixed-0001-L4",
@@ -145,7 +145,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Places & Passages\" (sys-mixed-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Places & Passages\" (sys-mixed-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-micro-0001-L1",
@@ -170,7 +170,7 @@ const migratedBankCategories = [
       "Acid-fast oocysts seen in stool of immunocompromised patients.",
       "Acid-fast oocysts causing prolonged watery diarrhea."
     ],
-    "remember": "Acid-fast is not just TB — Nocardia, Cryptosporidium, and Cyclospora all stain the same way.",
+    "remember": "Acid-fast is not just TB. Nocardia, Cryptosporidium, and Cyclospora all stain the same way.",
     "tags": [
       "acid-fast",
       "dimorphic fungi",
@@ -180,7 +180,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Micro Meets Path\" (sys-micro-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Micro Meets Path\" (sys-micro-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-micro-0001-L2",
@@ -198,14 +198,14 @@ const migratedBankCategories = [
     "primarySystem": "Microbiology",
     "secondarySystems": [],
     "connectionType": "knowledge",
-    "explanation": "Dimorphic fungi live as mold in the cool environment and convert to yeast at body temperature — each with its own geographic hotspot.",
+    "explanation": "Dimorphic fungi live as mold in the cool environment and convert to yeast at body temperature, and each has its own geographic hotspot.",
     "tileExplanations": [
       "Found in Ohio/Mississippi River valley soil, associated with bird/bat droppings.",
       "Found in the desert Southwest; causes 'Valley fever.'",
       "Found in the central/eastern US and Great Lakes region.",
       "Found in Latin America; causes a 'captain's wheel' yeast pattern."
     ],
-    "remember": "Dimorphic = mold in the cold, yeast in the heat — and each one has a home region.",
+    "remember": "Dimorphic = mold in the cold, yeast in the heat, and each one has a home region.",
     "tags": [
       "acid-fast",
       "dimorphic fungi",
@@ -215,7 +215,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Micro Meets Path\" (sys-micro-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Micro Meets Path\" (sys-micro-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-micro-0001-L3",
@@ -240,7 +240,7 @@ const migratedBankCategories = [
       "Causes leptospirosis, transmitted via animal urine-contaminated water.",
       "Causes relapsing fever, transmitted by lice."
     ],
-    "remember": "Thin, coiled, and hard to Gram stain — think spirochete, then narrow by exposure history.",
+    "remember": "Thin, coiled, and hard to Gram stain? Think spirochete, then narrow by exposure history.",
     "tags": [
       "acid-fast",
       "dimorphic fungi",
@@ -249,7 +249,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Micro Meets Path\" (sys-micro-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Micro Meets Path\" (sys-micro-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-micro-0001-L4",
@@ -284,7 +284,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Micro Meets Path\" (sys-micro-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Micro Meets Path\" (sys-micro-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-mixed-0002-L1",
@@ -309,7 +309,7 @@ const migratedBankCategories = [
       "Pain on hip extension suggests a retrocecal inflamed appendix irritating the psoas.",
       "Pain on internal rotation of the flexed hip suggests a pelvic appendix."
     ],
-    "remember": "Appendix position changes which sign shows up — retrocecal leads to psoas, pelvic leads to obturator.",
+    "remember": "Appendix position changes which sign shows up: retrocecal leads to psoas, pelvic leads to obturator.",
     "tags": [
       "appendicitis",
       "meningismus",
@@ -319,7 +319,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Physical Exam Signs\" (sys-mixed-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Physical Exam Signs\" (sys-mixed-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-mixed-0002-L2",
@@ -354,7 +354,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Physical Exam Signs\" (sys-mixed-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Physical Exam Signs\" (sys-mixed-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-mixed-0002-L3",
@@ -372,7 +372,7 @@ const migratedBankCategories = [
     "primarySystem": "Mixed / Step Review",
     "secondarySystems": [],
     "connectionType": "language",
-    "explanation": "Calcium stabilizes neuromuscular membranes — take it away and nerves/muscles fire too easily, and the heart's repolarization slows.",
+    "explanation": "Calcium stabilizes neuromuscular membranes. Take it away and nerves/muscles fire too easily, and the heart's repolarization slows.",
     "tileExplanations": [
       "Tapping the facial nerve causes facial muscle twitching.",
       "Inflating a BP cuff above systolic causes carpal spasm.",
@@ -389,7 +389,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Physical Exam Signs\" (sys-mixed-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Physical Exam Signs\" (sys-mixed-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-mixed-0002-L4",
@@ -414,7 +414,7 @@ const migratedBankCategories = [
       "Hypotension, JVD, and muffled heart sounds.",
       "Pericardial fluid dampens the electrical signal reaching surface leads."
     ],
-    "remember": "Tamponade squeezes the heart from outside — filling drops, sounds muffle, and the axis wobbles beat to beat.",
+    "remember": "Tamponade squeezes the heart from outside, so filling drops, sounds muffle, and the axis wobbles beat to beat.",
     "tags": [
       "appendicitis",
       "meningismus",
@@ -424,7 +424,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Physical Exam Signs\" (sys-mixed-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Physical Exam Signs\" (sys-mixed-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-biochem-0001-L1",
@@ -442,14 +442,14 @@ const migratedBankCategories = [
     "primarySystem": "Biochemistry/Genetics",
     "secondarySystems": [],
     "connectionType": "knowledge",
-    "explanation": "One mutated copy is enough to cause disease — often affecting a structural protein or a dose-sensitive pathway.",
+    "explanation": "One mutated copy is enough to cause disease, often affecting a structural protein or a dose-sensitive pathway.",
     "tileExplanations": [
       "CAG repeat expansion; one copy causes disease.",
       "Fibrillin-1 mutation affecting connective tissue.",
       "NF1 tumor suppressor mutation.",
       "LDL receptor mutation raising LDL from birth."
     ],
-    "remember": "AD conditions need just one bad copy — think structural proteins and growth-regulating genes.",
+    "remember": "AD conditions need just one bad copy. Think structural proteins and growth-regulating genes.",
     "tags": [
       "autosomal dominant",
       "autosomal recessive",
@@ -459,7 +459,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Genetics & Inheritance\" (sys-biochem-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Genetics & Inheritance\" (sys-biochem-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-biochem-0001-L2",
@@ -477,14 +477,14 @@ const migratedBankCategories = [
     "primarySystem": "Biochemistry/Genetics",
     "secondarySystems": [],
     "connectionType": "knowledge",
-    "explanation": "These are typically enzyme or transporter deficiencies — a single working copy usually makes enough protein to prevent disease.",
+    "explanation": "These are typically enzyme or transporter deficiencies, and a single working copy usually makes enough protein to prevent disease.",
     "tileExplanations": [
       "CFTR mutation; needs two mutated copies.",
       "Beta-globin mutation; needs two copies for disease.",
       "Phenylalanine hydroxylase deficiency; needs two copies.",
       "Hexosaminidase A deficiency; needs two copies."
     ],
-    "remember": "AR conditions usually knock out an enzyme — one working copy is usually enough to compensate.",
+    "remember": "AR conditions usually knock out an enzyme, and one working copy is usually enough to compensate.",
     "tags": [
       "autosomal dominant",
       "autosomal recessive",
@@ -494,7 +494,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Genetics & Inheritance\" (sys-biochem-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Genetics & Inheritance\" (sys-biochem-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-biochem-0001-L3",
@@ -512,7 +512,7 @@ const migratedBankCategories = [
     "primarySystem": "Biochemistry/Genetics",
     "secondarySystems": [],
     "connectionType": "knowledge",
-    "explanation": "With only one X chromosome, males need just one mutated copy to show disease — these conditions cluster heavily in men.",
+    "explanation": "With only one X chromosome, males need just one mutated copy to show disease, so these conditions cluster heavily in men.",
     "tileExplanations": [
       "Factor VIII deficiency; mostly affects males.",
       "Dystrophin mutation; mostly affects males.",
@@ -529,7 +529,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Genetics & Inheritance\" (sys-biochem-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Genetics & Inheritance\" (sys-biochem-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-biochem-0001-L4",
@@ -547,14 +547,14 @@ const migratedBankCategories = [
     "primarySystem": "Biochemistry/Genetics",
     "secondarySystems": [],
     "connectionType": "knowledge",
-    "explanation": "These diseases share a mechanism, not an inheritance pattern — an unstable repeated DNA sequence that expands and can worsen across generations.",
+    "explanation": "These diseases share a mechanism, not an inheritance pattern: an unstable repeated DNA sequence that expands and can worsen across generations.",
     "tileExplanations": [
       "CGG repeat expansion on the X chromosome.",
       "CTG repeat expansion.",
-      "GAA repeat expansion — an exception that is autosomal recessive.",
+      "GAA repeat expansion, an exception that is autosomal recessive.",
       "CAG repeat expansion; X-linked spinobulbar muscular atrophy."
     ],
-    "remember": "Repeat disorders often get worse each generation — that’s called anticipation.",
+    "remember": "Repeat disorders often get worse each generation, which is called anticipation.",
     "tags": [
       "autosomal dominant",
       "autosomal recessive",
@@ -564,7 +564,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Genetics & Inheritance\" (sys-biochem-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Genetics & Inheritance\" (sys-biochem-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-hemeonc-0001-L1",
@@ -582,7 +582,7 @@ const migratedBankCategories = [
     "primarySystem": "Heme/Onc",
     "secondarySystems": [],
     "connectionType": "knowledge",
-    "explanation": "Leukemias are named by cell line (lymphoid vs myeloid) and pace (acute vs chronic) — each combination has a classic age group and marker.",
+    "explanation": "Leukemias are named by cell line (lymphoid vs myeloid) and pace (acute vs chronic), and each combination has a classic age group and marker.",
     "tileExplanations": [
       "Most common childhood leukemia; lymphoblasts crowd the marrow.",
       "Myeloblasts, often with Auer rods; more common in adults.",
@@ -597,7 +597,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Onc & Heme\" (sys-hemeonc-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Onc & Heme\" (sys-hemeonc-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-hemeonc-0001-L2",
@@ -622,7 +622,7 @@ const migratedBankCategories = [
       "MYC-IGH fusion, defines Burkitt lymphoma.",
       "BCL2-IGH fusion, defines follicular lymphoma."
     ],
-    "remember": "A translocation is often the diagnosis — memorize the pairing, not just the number.",
+    "remember": "A translocation is often the diagnosis, so memorize the pairing, not just the number.",
     "tags": [
       "leukemias",
       "translocations",
@@ -631,7 +631,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Onc & Heme\" (sys-hemeonc-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Onc & Heme\" (sys-hemeonc-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-hemeonc-0001-L3",
@@ -649,7 +649,7 @@ const migratedBankCategories = [
     "primarySystem": "Heme/Onc",
     "secondarySystems": [],
     "connectionType": "knowledge",
-    "explanation": "Tumor markers are proteins a cancer sheds into the blood — useful for monitoring treatment response more than screening.",
+    "explanation": "Tumor markers are proteins a cancer sheds into the blood. They are more useful for monitoring treatment response more than screening.",
     "tileExplanations": [
       "Elevated in ovarian cancer.",
       "Elevated in pancreatic cancer.",
@@ -665,7 +665,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Onc & Heme\" (sys-hemeonc-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Onc & Heme\" (sys-hemeonc-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-hemeonc-0001-L4",
@@ -699,7 +699,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Onc & Heme\" (sys-hemeonc-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Onc & Heme\" (sys-hemeonc-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pharm-0001-L1",
@@ -719,10 +719,10 @@ const migratedBankCategories = [
     "connectionType": "mechanism",
     "explanation": "Blocking muscarinic receptors everywhere at once produces this whole-body constellation, classically from antihistamines, TCAs, or plant alkaloids.",
     "tileExplanations": [
-      "'Mad as a hatter' — central muscarinic blockade.",
-      "'Blind as a bat' — pupillary sphincter blockade.",
-      "'Red as a beet' — cutaneous vasodilation.",
-      "'Dry as a bone' — blocked secretions."
+      "'Mad as a hatter' from central muscarinic blockade.",
+      "'Blind as a bat' from pupillary sphincter blockade.",
+      "'Red as a beet' from cutaneous vasodilation.",
+      "'Dry as a bone' from blocked secretions."
     ],
     "remember": "The anticholinergic mnemonic ('mad, blind, red, dry, hot') is a whole toxidrome in five words.",
     "tags": [
@@ -734,7 +734,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Toxidromes & Pharm\" (sys-pharm-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Toxidromes & Pharm\" (sys-pharm-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pharm-0001-L2",
@@ -759,7 +759,7 @@ const migratedBankCategories = [
       "Weak opioid with added serotonergic activity.",
       "An antibiotic that also inhibits monoamine oxidase."
     ],
-    "remember": "Serotonin syndrome risk rises whenever two serotonin-raising drugs are combined — even unexpected ones like linezolid.",
+    "remember": "Serotonin syndrome risk rises whenever two serotonin-raising drugs are combined, even unexpected ones like linezolid.",
     "tags": [
       "toxidromes",
       "serotonin syndrome",
@@ -769,7 +769,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Toxidromes & Pharm\" (sys-pharm-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Toxidromes & Pharm\" (sys-pharm-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pharm-0001-L3",
@@ -787,7 +787,7 @@ const migratedBankCategories = [
     "primarySystem": "Pharmacology",
     "secondarySystems": [],
     "connectionType": "mechanism",
-    "explanation": "Each antidote works by directly countering its toxin's mechanism — replenishing what's depleted or blocking what's overactive.",
+    "explanation": "Each antidote works by directly countering its toxin's mechanism by replenishing what's depleted or blocking what's overactive.",
     "tileExplanations": [
       "Antidote for acetaminophen toxicity; replenishes glutathione.",
       "Antidote for methanol/ethylene glycol; blocks alcohol dehydrogenase.",
@@ -804,7 +804,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Toxidromes & Pharm\" (sys-pharm-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Toxidromes & Pharm\" (sys-pharm-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pharm-0001-L4",
@@ -822,12 +822,12 @@ const migratedBankCategories = [
     "primarySystem": "Pharmacology",
     "secondarySystems": [],
     "connectionType": "mechanism",
-    "explanation": "Once the enzyme or clearance system handling these drugs is saturated, a constant AMOUNT (not percentage) is cleared per unit time — Heparin is the debated 4th member here (see note).",
+    "explanation": "Once the enzyme or clearance system handling these drugs is saturated, a constant AMOUNT (not percentage) is cleared per unit time. Heparin is the debated 4th member here (see note).",
     "tileExplanations": [
       "Eliminated at a constant rate regardless of concentration.",
       "Follows zero-order kinetics at therapeutic-to-toxic doses.",
       "Switches to zero-order kinetics in overdose.",
-      "Cleared by saturable mechanisms — dose-dependent kinetics often taught as \"zero-order-like,\" though sources disagree on how clean-cut this classification is."
+      "Cleared by saturable mechanisms. These dose-dependent kinetics are often taught as \"zero-order-like,\" though sources disagree on how clean-cut this classification is."
     ],
     "remember": "PEA: Phenytoin, Ethanol, Aspirin (in overdose) are the textbook-clean zero-order drugs.",
     "tags": [
@@ -839,7 +839,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "needs_review",
-    "notes": "Migrated from hand-written puzzle \"Toxidromes & Pharm\" (sys-pharm-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely. CONTENT AUDIT: Heparin's classification as a \"classic\" zero-order drug is contested across pharmacology references; verify against a current source before fully trusting this category."
+    "notes": "Migrated from hand-written puzzle \"Toxidromes & Pharm\" (sys-pharm-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely. CONTENT AUDIT: Heparin's classification as a \"classic\" zero-order drug is contested across pharmacology references; verify against a current source before fully trusting this category."
   },
   {
     "id": "bank-migrated-sys-mixed-0003-L1",
@@ -874,7 +874,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Congenital & Development\" (sys-mixed-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Congenital & Development\" (sys-mixed-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-mixed-0003-L2",
@@ -892,7 +892,7 @@ const migratedBankCategories = [
     "primarySystem": "Mixed / Step Review",
     "secondarySystems": [],
     "connectionType": "anatomy",
-    "explanation": "Each pharyngeal arch carries its own cartilage, nerve, and muscle — arch number predicts which adult structure it becomes.",
+    "explanation": "Each pharyngeal arch carries its own cartilage, nerve, and muscle, and arch number predicts which adult structure it becomes.",
     "tileExplanations": [
       "Derived from the first pharyngeal arch (Meckel's cartilage).",
       "Derived from the second pharyngeal arch (Reichert's cartilage).",
@@ -909,7 +909,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Congenital & Development\" (sys-mixed-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Congenital & Development\" (sys-mixed-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-mixed-0003-L3",
@@ -944,7 +944,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Congenital & Development\" (sys-mixed-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Congenital & Development\" (sys-mixed-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-mixed-0003-L4",
@@ -962,7 +962,7 @@ const migratedBankCategories = [
     "primarySystem": "Mixed / Step Review",
     "secondarySystems": [],
     "connectionType": "knowledge",
-    "explanation": "All arise from incomplete closure of the neural tube early in development — low maternal folate is the classic shared risk factor.",
+    "explanation": "All arise from incomplete closure of the neural tube early in development. Low maternal folate is the classic shared risk factor.",
     "tileExplanations": [
       "Failure of vertebral arch fusion without herniation of neural tissue.",
       "Failure of the rostral neuropore to close, absent forebrain/skull.",
@@ -979,7 +979,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Congenital & Development\" (sys-mixed-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Congenital & Development\" (sys-mixed-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-cardio-0001-L1",
@@ -1004,7 +1004,7 @@ const migratedBankCategories = [
       "Blood leaks backward into the right atrium during systole.",
       "Blood shunts left-to-right through the septal defect during systole."
     ],
-    "remember": "Systolic murmurs happen while the ventricle squeezes — regurgitant AV valves and forward-flow obstruction both fit.",
+    "remember": "Systolic murmurs happen while the ventricle squeezes, so regurgitant AV valves and forward-flow obstruction both fit.",
     "tags": [
       "murmurs",
       "systole",
@@ -1014,7 +1014,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Heart Sounds & ECG Clues\" (sys-cardio-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Heart Sounds & ECG Clues\" (sys-cardio-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-cardio-0001-L2",
@@ -1032,14 +1032,14 @@ const migratedBankCategories = [
     "primarySystem": "Cardiology",
     "secondarySystems": [],
     "connectionType": "physiology",
-    "explanation": "These occur between S2 and S1, while the ventricles fill — either through a narrowed inflow valve or a leaking outflow valve.",
+    "explanation": "These occur between S2 and S1, while the ventricles fill, either through a narrowed inflow valve or a leaking outflow valve.",
     "tileExplanations": [
       "Blood leaks backward from the aorta into the LV during diastole.",
       "A narrowed valve obstructs LA-to-LV filling during diastole.",
       "Blood leaks backward from the pulmonary artery into the RV during diastole.",
       "A severe aortic regurgitation jet hits the mitral valve, mimicking mitral stenosis."
     ],
-    "remember": "Diastolic murmurs point to filling problems — a stiff inflow valve or a leaky outflow valve.",
+    "remember": "Diastolic murmurs point to filling problems: a stiff inflow valve or a leaky outflow valve.",
     "tags": [
       "murmurs",
       "systole",
@@ -1049,7 +1049,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Heart Sounds & ECG Clues\" (sys-cardio-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Heart Sounds & ECG Clues\" (sys-cardio-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-cardio-0001-L3",
@@ -1067,7 +1067,7 @@ const migratedBankCategories = [
     "primarySystem": "Cardiology",
     "secondarySystems": [],
     "connectionType": "knowledge",
-    "explanation": "Inspiration increases venous return to the right heart, augmenting any right-sided murmur (Rivero-Carvallo sign) — including these conditions that produce one.",
+    "explanation": "Inspiration increases venous return to the right heart, augmenting any right-sided murmur (Rivero-Carvallo sign), including these conditions that produce one.",
     "tileExplanations": [
       "Increased right heart filling on inspiration augments flow across the stenotic valve.",
       "Increased right heart filling on inspiration augments the murmur.",
@@ -1084,7 +1084,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Heart Sounds & ECG Clues\" (sys-cardio-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Heart Sounds & ECG Clues\" (sys-cardio-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-cardio-0001-L4",
@@ -1104,12 +1104,12 @@ const migratedBankCategories = [
     "connectionType": "language",
     "explanation": "Each of these is a distinctive ECG waveform that, once recognized, points straight to one diagnosis.",
     "tileExplanations": [
-      "Beat-to-beat QRS amplitude variation from the heart swinging in pericardial fluid — tamponade.",
+      "Beat-to-beat QRS amplitude variation from the heart swinging in pericardial fluid, seen in tamponade.",
       "Slurred QRS upstroke from ventricular pre-excitation in Wolff-Parkinson-White syndrome.",
       "A hump at the QRS-ST junction, classic for hypothermia.",
       "A small deflection after the QRS in arrhythmogenic right ventricular cardiomyopathy."
     ],
-    "remember": "A named ECG wave is a pattern-recognition shortcut — learn the wave, then the disease.",
+    "remember": "A named ECG wave is a pattern-recognition shortcut. Learn the wave, then the disease.",
     "tags": [
       "murmurs",
       "systole",
@@ -1119,7 +1119,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Heart Sounds & ECG Clues\" (sys-cardio-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Heart Sounds & ECG Clues\" (sys-cardio-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-cardio-0002-L1",
@@ -1154,7 +1154,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Shock, Pressures & Flow\" (sys-cardio-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Shock, Pressures & Flow\" (sys-cardio-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-cardio-0002-L2",
@@ -1189,7 +1189,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Shock, Pressures & Flow\" (sys-cardio-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Shock, Pressures & Flow\" (sys-cardio-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-cardio-0002-L3",
@@ -1207,7 +1207,7 @@ const migratedBankCategories = [
     "primarySystem": "Cardiology",
     "secondarySystems": [],
     "connectionType": "physiology",
-    "explanation": "PCWP estimates left atrial pressure — anything that raises LA pressure, whether from LV failure or valve disease, raises the wedge.",
+    "explanation": "PCWP estimates left atrial pressure, so anything that raises LA pressure, whether from LV failure or valve disease, raises the wedge.",
     "tileExplanations": [
       "A failing LV backs pressure up into the left atrium and pulmonary veins.",
       "A narrowed valve raises left atrial pressure directly.",
@@ -1224,7 +1224,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Shock, Pressures & Flow\" (sys-cardio-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Shock, Pressures & Flow\" (sys-cardio-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-cardio-0002-L4",
@@ -1242,14 +1242,14 @@ const migratedBankCategories = [
     "primarySystem": "Cardiology",
     "secondarySystems": [],
     "connectionType": "physiology",
-    "explanation": "Each raises systolic pressure, lowers diastolic pressure, or both — by increasing stroke volume or dropping peripheral resistance.",
+    "explanation": "Each raises systolic pressure, lowers diastolic pressure, or both, by increasing stroke volume or dropping peripheral resistance.",
     "tileExplanations": [
       "Diastolic runoff back into the LV drops diastolic pressure.",
       "Increased contractility and reduced systemic vascular resistance widen the pulse pressure.",
       "Compensatory increased stroke volume and reduced viscosity widen the pulse pressure.",
       "A low-resistance shunt drops diastolic pressure while stroke volume rises."
     ],
-    "remember": "A wide pulse pressure means high flow or a leaky diastolic runoff — think AR, thyrotoxicosis, anemia, or an AV fistula.",
+    "remember": "A wide pulse pressure means high flow or a leaky diastolic runoff. Think AR, thyrotoxicosis, anemia, or an AV fistula.",
     "tags": [
       "cardiogenic shock",
       "obstructive shock",
@@ -1259,7 +1259,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Shock, Pressures & Flow\" (sys-cardio-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Shock, Pressures & Flow\" (sys-cardio-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-cardio-0003-L1",
@@ -1284,7 +1284,7 @@ const migratedBankCategories = [
       "Intrinsic sinus node dysfunction causes inappropriate bradycardia.",
       "High vagal tone from conditioning slows resting heart rate."
     ],
-    "remember": "Bradycardia = something is slowing the pacemaker or its output — drug, hormone, disease, or training.",
+    "remember": "Bradycardia = something is slowing the pacemaker or its output: drug, hormone, disease, or training.",
     "tags": [
       "bradycardia",
       "narrow-complex tachycardia",
@@ -1294,7 +1294,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Arrhythmias & Conduction\" (sys-cardio-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Arrhythmias & Conduction\" (sys-cardio-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-cardio-0003-L2",
@@ -1329,7 +1329,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Arrhythmias & Conduction\" (sys-cardio-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Arrhythmias & Conduction\" (sys-cardio-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-cardio-0003-L3",
@@ -1364,7 +1364,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Arrhythmias & Conduction\" (sys-cardio-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Arrhythmias & Conduction\" (sys-cardio-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-cardio-0003-L4",
@@ -1389,7 +1389,7 @@ const migratedBankCategories = [
       "These drugs prolong repolarization by design, risking excessive QT prolongation.",
       "Slow rates prolong the QT interval and allow early afterdepolarizations."
     ],
-    "remember": "Torsades needs a long QT as the setup — magnesium, channel mutations, drugs, and bradycardia are the classic triggers.",
+    "remember": "Torsades needs a long QT as the setup. Magnesium, channel mutations, drugs, and bradycardia are the classic triggers.",
     "tags": [
       "bradycardia",
       "narrow-complex tachycardia",
@@ -1399,7 +1399,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Arrhythmias & Conduction\" (sys-cardio-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Arrhythmias & Conduction\" (sys-cardio-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pulm-0001-L1",
@@ -1417,7 +1417,7 @@ const migratedBankCategories = [
     "primarySystem": "Pulmonary",
     "secondarySystems": [],
     "connectionType": "physiology",
-    "explanation": "Each narrows the airways, so air gets trapped and is exhaled slowly — a reduced FEV1/FVC ratio.",
+    "explanation": "Each narrows the airways, so air gets trapped and is exhaled slowly, giving a reduced FEV1/FVC ratio.",
     "tileExplanations": [
       "Chronic airway inflammation and destruction narrow airflow, especially on exhalation.",
       "Reversible bronchoconstriction and airway inflammation narrow the airways.",
@@ -1433,7 +1433,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Obstructive vs Restrictive Physiology\" (sys-pulm-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Obstructive vs Restrictive Physiology\" (sys-pulm-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pulm-0001-L2",
@@ -1451,7 +1451,7 @@ const migratedBankCategories = [
     "primarySystem": "Pulmonary",
     "secondarySystems": [],
     "connectionType": "physiology",
-    "explanation": "Each limits how much the lungs (or chest wall) can expand, reducing total lung capacity — a normal or high FEV1/FVC ratio.",
+    "explanation": "Each limits how much the lungs (or chest wall) can expand, reducing total lung capacity with a normal or high FEV1/FVC ratio.",
     "tileExplanations": [
       "Scarring stiffens the lung parenchyma, limiting expansion.",
       "Granulomatous inflammation stiffens lung tissue over time.",
@@ -1467,7 +1467,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Obstructive vs Restrictive Physiology\" (sys-pulm-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Obstructive vs Restrictive Physiology\" (sys-pulm-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pulm-0001-L3",
@@ -1501,7 +1501,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Obstructive vs Restrictive Physiology\" (sys-pulm-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Obstructive vs Restrictive Physiology\" (sys-pulm-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pulm-0001-L4",
@@ -1526,7 +1526,7 @@ const migratedBankCategories = [
       "More circulating hemoglobin increases gas-binding capacity.",
       "Increased pulmonary blood flow increases DLCO."
     ],
-    "remember": "DLCO rises when there is extra blood/hemoglobin to bind CO, or extra capillary recruitment — hemorrhage, polycythemia, shunt, and exercise all fit.",
+    "remember": "DLCO rises when there is extra blood/hemoglobin to bind CO, or extra capillary recruitment. Hemorrhage, polycythemia, shunt, and exercise all fit.",
     "tags": [
       "obstructive lung disease",
       "restrictive lung disease",
@@ -1535,7 +1535,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Obstructive vs Restrictive Physiology\" (sys-pulm-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Obstructive vs Restrictive Physiology\" (sys-pulm-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pulm-0002-L1",
@@ -1560,7 +1560,7 @@ const migratedBankCategories = [
       "Urinary protein loss lowers oncotic pressure, favoring fluid leakage.",
       "Low oncotic pressure lets fluid leak into the pleural space."
     ],
-    "remember": "Transudate = a pressure/protein problem, not a pleural problem — Light's criteria negative.",
+    "remember": "Transudate = a pressure/protein problem, not a pleural problem (Light's criteria negative).",
     "tags": [
       "pleural effusion",
       "upper lobe disease",
@@ -1569,7 +1569,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Pleural Fluid & Zonal Lung Disease\" (sys-pulm-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Pleural Fluid & Zonal Lung Disease\" (sys-pulm-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pulm-0002-L2",
@@ -1594,7 +1594,7 @@ const migratedBankCategories = [
       "Pleural inflammation from infarction produces an exudate.",
       "Pleural infection provokes an intensely exudative, lymphocyte-rich effusion."
     ],
-    "remember": "Exudate = the pleura itself is inflamed, infected, or invaded — Light's criteria positive.",
+    "remember": "Exudate = the pleura itself is inflamed, infected, or invaded (Light's criteria positive).",
     "tags": [
       "pleural effusion",
       "upper lobe disease",
@@ -1603,7 +1603,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Pleural Fluid & Zonal Lung Disease\" (sys-pulm-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Pleural Fluid & Zonal Lung Disease\" (sys-pulm-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pulm-0002-L3",
@@ -1621,7 +1621,7 @@ const migratedBankCategories = [
     "primarySystem": "Pulmonary",
     "secondarySystems": [],
     "connectionType": "knowledge",
-    "explanation": "Each preferentially affects the upper lobes — from high oxygen tension favoring TB reactivation to inhaled particle deposition patterns in pneumoconioses.",
+    "explanation": "Each preferentially affects the upper lobes, from high oxygen tension favoring TB reactivation to inhaled particle deposition patterns in pneumoconioses.",
     "tileExplanations": [
       "High oxygen tension in the upper lobes favors mycobacterial growth.",
       "Inhaled silica particles preferentially deposit in the upper lung zones.",
@@ -1637,7 +1637,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Pleural Fluid & Zonal Lung Disease\" (sys-pulm-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Pleural Fluid & Zonal Lung Disease\" (sys-pulm-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pulm-0002-L4",
@@ -1655,7 +1655,7 @@ const migratedBankCategories = [
     "primarySystem": "Pulmonary",
     "secondarySystems": [],
     "connectionType": "knowledge",
-    "explanation": "Each preferentially affects the lower lobes — from gravity-dependent aspiration to the basal fibrosis pattern of IPF and asbestos exposure.",
+    "explanation": "Each preferentially affects the lower lobes, from gravity-dependent aspiration to the basal fibrosis pattern of IPF and asbestos exposure.",
     "tileExplanations": [
       "Classically starts at the lung bases.",
       "Gravity carries aspirated material into the lower/posterior lobes.",
@@ -1671,7 +1671,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Pleural Fluid & Zonal Lung Disease\" (sys-pulm-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Pleural Fluid & Zonal Lung Disease\" (sys-pulm-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pulm-0003-L1",
@@ -1689,14 +1689,14 @@ const migratedBankCategories = [
     "primarySystem": "Pulmonary",
     "secondarySystems": [],
     "connectionType": "physiology",
-    "explanation": "Each impairs gas exchange within the lung itself — a V/Q mismatch or a shunt — while the drive to breathe stays intact.",
+    "explanation": "Each impairs gas exchange within the lung itself (a V/Q mismatch or a shunt) while the drive to breathe stays intact.",
     "tileExplanations": [
       "Ventilated but under-perfused lung creates V/Q mismatch.",
       "Fluid-filled alveoli are perfused but poorly ventilated, mismatching V/Q.",
       "Fluid in alveoli impairs oxygen diffusion into the blood.",
       "Deoxygenated blood bypasses ventilated alveoli entirely."
     ],
-    "remember": "A high A-a gradient means the problem is IN the lung — V/Q mismatch or shunt.",
+    "remember": "A high A-a gradient means the problem is IN the lung: V/Q mismatch or shunt.",
     "tags": [
       "A-a gradient",
       "hypoventilation",
@@ -1706,7 +1706,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Gas Exchange & V/Q\" (sys-pulm-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Gas Exchange & V/Q\" (sys-pulm-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pulm-0003-L2",
@@ -1724,14 +1724,14 @@ const migratedBankCategories = [
     "primarySystem": "Pulmonary",
     "secondarySystems": [],
     "connectionType": "physiology",
-    "explanation": "Each reduces the drive or ability to breathe without directly damaging the lungs themselves — the lung's own gas exchange machinery is fine.",
+    "explanation": "Each reduces the drive or ability to breathe without directly damaging the lungs themselves. The lung's own gas exchange machinery is fine.",
     "tileExplanations": [
       "Suppresses the central respiratory drive without damaging the lungs.",
       "Absent respiratory drive during sleep, lungs otherwise normal.",
       "Respiratory muscle weakness impairs the ability to breathe, not the lungs themselves.",
       "Chest wall load reduces ventilation, though gas exchange machinery is intact."
     ],
-    "remember": "Hypoventilation with a normal A-a gradient means the lungs are fine — the pump or the drive to breathe is the problem.",
+    "remember": "Hypoventilation with a normal A-a gradient means the lungs are fine. The pump or the drive to breathe is the problem.",
     "tags": [
       "A-a gradient",
       "hypoventilation",
@@ -1741,7 +1741,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Gas Exchange & V/Q\" (sys-pulm-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Gas Exchange & V/Q\" (sys-pulm-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pulm-0003-L3",
@@ -1759,7 +1759,7 @@ const migratedBankCategories = [
     "primarySystem": "Pulmonary",
     "secondarySystems": [],
     "connectionType": "physiology",
-    "explanation": "Each reflects a tissue that needs more oxygen right now — exercising muscle, for example — and each makes hemoglobin let go of oxygen more readily.",
+    "explanation": "Each reflects a tissue that needs more oxygen right now (exercising muscle, for example), and each makes hemoglobin let go of oxygen more readily.",
     "tileExplanations": [
       "Heat reduces hemoglobin’s oxygen affinity, favoring unloading.",
       "Binds deoxyhemoglobin preferentially, promoting oxygen release.",
@@ -1776,7 +1776,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Gas Exchange & V/Q\" (sys-pulm-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Gas Exchange & V/Q\" (sys-pulm-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pulm-0003-L4",
@@ -1794,7 +1794,7 @@ const migratedBankCategories = [
     "primarySystem": "Pulmonary",
     "secondarySystems": [],
     "connectionType": "physiology",
-    "explanation": "V/Q ratio varies by location and pathology — from pure dead space (ventilated, not perfused) to pure shunt (perfused, not ventilated), with the healthy lung's apex-to-base gradient in between.",
+    "explanation": "V/Q ratio varies by location and pathology, from pure dead space (ventilated, not perfused) to pure shunt (perfused, not ventilated), with the healthy lung's apex-to-base gradient in between.",
     "tileExplanations": [
       "Ventilation without perfusion drives the V/Q ratio toward infinity.",
       "Perfusion without ventilation drives the V/Q ratio toward zero.",
@@ -1811,7 +1811,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Gas Exchange & V/Q\" (sys-pulm-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Gas Exchange & V/Q\" (sys-pulm-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-renal-0001-L1",
@@ -1845,7 +1845,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Acid-Base Disorders\" (sys-renal-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Acid-Base Disorders\" (sys-renal-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-renal-0001-L2",
@@ -1879,7 +1879,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Acid-Base Disorders\" (sys-renal-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Acid-Base Disorders\" (sys-renal-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-renal-0001-L3",
@@ -1913,7 +1913,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Acid-Base Disorders\" (sys-renal-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Acid-Base Disorders\" (sys-renal-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-renal-0001-L4",
@@ -1938,7 +1938,7 @@ const migratedBankCategories = [
       "Respiratory muscle weakness limits ventilation, retaining CO2.",
       "Chest wall load limits ventilation, retaining CO2."
     ],
-    "remember": "Respiratory acidosis = CO2 is not being blown off fast enough — drive, lungs, or muscles are the usual culprits.",
+    "remember": "Respiratory acidosis = CO2 is not being blown off fast enough. Drive, lungs, or muscles are the usual culprits.",
     "tags": [
       "anion gap acidosis",
       "metabolic alkalosis",
@@ -1947,7 +1947,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Acid-Base Disorders\" (sys-renal-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Acid-Base Disorders\" (sys-renal-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-renal-0002-L1",
@@ -1972,7 +1972,7 @@ const migratedBankCategories = [
       "Low oncotic pressure from hypoalbuminemia lets fluid leak into tissue.",
       "The liver ramps up lipoprotein synthesis in response to low oncotic pressure."
     ],
-    "remember": "Nephrotic syndrome is one mechanism (a leaky filter) causing four linked findings — protein loss drives everything else.",
+    "remember": "Nephrotic syndrome is one mechanism (a leaky filter) causing four linked findings. Protein loss drives everything else.",
     "tags": [
       "nephrotic syndrome",
       "nephritic syndrome",
@@ -1982,7 +1982,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Nephrotic, Nephritic & Glomerular Patterns\" (sys-renal-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Nephrotic, Nephritic & Glomerular Patterns\" (sys-renal-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-renal-0002-L2",
@@ -2007,7 +2007,7 @@ const migratedBankCategories = [
       "Glomerular inflammation reduces the filtration rate itself.",
       "The filtration barrier is disrupted, but less severely than in nephrotic syndrome."
     ],
-    "remember": "Nephritic syndrome is about inflammation and reduced filtration — blood in the urine, not massive protein loss.",
+    "remember": "Nephritic syndrome is about inflammation and reduced filtration: blood in the urine, not massive protein loss.",
     "tags": [
       "nephrotic syndrome",
       "nephritic syndrome",
@@ -2017,7 +2017,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Nephrotic, Nephritic & Glomerular Patterns\" (sys-renal-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Nephrotic, Nephritic & Glomerular Patterns\" (sys-renal-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-renal-0002-L3",
@@ -2042,7 +2042,7 @@ const migratedBankCategories = [
       "Immune complex deposition can be severe enough to form crescents.",
       "Occasionally severe enough to progress to a crescentic pattern."
     ],
-    "remember": "Crescents on biopsy mean rapidly progressive glomerulonephritis — a nephrology emergency, whatever the underlying cause.",
+    "remember": "Crescents on biopsy mean rapidly progressive glomerulonephritis, a nephrology emergency, whatever the underlying cause.",
     "tags": [
       "nephrotic syndrome",
       "nephritic syndrome",
@@ -2052,7 +2052,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Nephrotic, Nephritic & Glomerular Patterns\" (sys-renal-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Nephrotic, Nephritic & Glomerular Patterns\" (sys-renal-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-renal-0002-L4",
@@ -2077,7 +2077,7 @@ const migratedBankCategories = [
       "IgA deposits in the mesangium define IgA nephropathy (Berger disease).",
       "Basement membrane splitting from subendothelial deposits in membranoproliferative GN."
     ],
-    "remember": "Glomerular pathology is pattern recognition — linear, spike-and-dome, mesangial, and tram-track each name one disease.",
+    "remember": "Glomerular pathology is pattern recognition. Linear, spike-and-dome, mesangial, and tram-track each name one disease.",
     "tags": [
       "nephrotic syndrome",
       "nephritic syndrome",
@@ -2087,7 +2087,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Nephrotic, Nephritic & Glomerular Patterns\" (sys-renal-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Nephrotic, Nephritic & Glomerular Patterns\" (sys-renal-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-renal-0003-L1",
@@ -2123,7 +2123,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Electrolytes, Diuretics & Water Balance\" (sys-renal-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Electrolytes, Diuretics & Water Balance\" (sys-renal-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-renal-0003-L2",
@@ -2159,7 +2159,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Electrolytes, Diuretics & Water Balance\" (sys-renal-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Electrolytes, Diuretics & Water Balance\" (sys-renal-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-renal-0003-L3",
@@ -2184,7 +2184,7 @@ const migratedBankCategories = [
       "Act on the collecting duct, blocking sodium reabsorption or aldosterone’s effect.",
       "Block bicarbonate reabsorption in the proximal tubule."
     ],
-    "remember": "Diuretic site of action predicts its electrolyte effects — learn the nephron map, not just the drug names.",
+    "remember": "Diuretic site of action predicts its electrolyte effects, so learn the nephron map, not just the drug names.",
     "tags": [
       "hyperkalemia",
       "hypokalemia",
@@ -2195,7 +2195,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Electrolytes, Diuretics & Water Balance\" (sys-renal-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Electrolytes, Diuretics & Water Balance\" (sys-renal-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-renal-0003-L4",
@@ -2215,12 +2215,12 @@ const migratedBankCategories = [
     "connectionType": "knowledge",
     "explanation": "DI and SIADH are opposite water-balance disorders, and each finding here maps to exactly one of them.",
     "tileExplanations": [
-      "Inadequate ADH action means the kidney cannot concentrate urine — diabetes insipidus.",
-      "Excess ADH action inappropriately concentrates urine — SIADH.",
+      "Inadequate ADH action means the kidney cannot concentrate urine, which is diabetes insipidus.",
+      "Excess ADH action inappropriately concentrates urine, which is SIADH.",
       "Central DI improves because the missing ADH is being replaced.",
       "Reducing water intake corrects SIADH's dilutional hyponatremia."
     ],
-    "remember": "DI can't concentrate urine (too dilute); SIADH can't dilute it (too concentrated) — opposite problems, opposite fixes.",
+    "remember": "DI can't concentrate urine (too dilute); SIADH can't dilute it (too concentrated). Opposite problems, opposite fixes.",
     "tags": [
       "hyperkalemia",
       "hypokalemia",
@@ -2231,7 +2231,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Electrolytes, Diuretics & Water Balance\" (sys-renal-0003) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Electrolytes, Diuretics & Water Balance\" (sys-renal-0003). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-neuro-0001-L1",
@@ -2249,7 +2249,7 @@ const migratedBankCategories = [
     "primarySystem": "Neurology",
     "secondarySystems": [],
     "connectionType": "anatomy",
-    "explanation": "The MCA supplies the lateral cortex — face/arm motor and sensory cortex, plus language or attention areas depending on hemisphere.",
+    "explanation": "The MCA supplies the lateral cortex: face/arm motor and sensory cortex, plus language or attention areas depending on hemisphere.",
     "tileExplanations": [
       "The MCA supplies the lateral motor cortex representing the face and arm.",
       "The dominant (usually left) MCA territory includes Broca's and Wernicke's areas.",
@@ -2266,7 +2266,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Stroke Syndromes & Vascular Territories\" (sys-neuro-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Stroke Syndromes & Vascular Territories\" (sys-neuro-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-neuro-0001-L2",
@@ -2284,14 +2284,14 @@ const migratedBankCategories = [
     "primarySystem": "Neurology",
     "secondarySystems": [],
     "connectionType": "anatomy",
-    "explanation": "The ACA supplies the medial frontal and parietal cortex — leg motor cortex and frontal lobe structures governing behavior and continence.",
+    "explanation": "The ACA supplies the medial frontal and parietal cortex: leg motor cortex and frontal lobe structures governing behavior and continence.",
     "tileExplanations": [
       "The ACA supplies the medial motor cortex representing the leg.",
       "Medial frontal lobe involvement disrupts bladder inhibition.",
       "Frontal lobe territory governs behavior and executive function.",
       "Frontal lobe damage impairs the learned motor pattern of walking."
     ],
-    "remember": "ACA stroke = leg weak, face/arm spared — the mirror image of MCA.",
+    "remember": "ACA stroke = leg weak, face/arm spared, the mirror image of MCA.",
     "tags": [
       "MCA stroke",
       "ACA stroke",
@@ -2301,7 +2301,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Stroke Syndromes & Vascular Territories\" (sys-neuro-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Stroke Syndromes & Vascular Territories\" (sys-neuro-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-neuro-0001-L3",
@@ -2326,7 +2326,7 @@ const migratedBankCategories = [
       "A lacune affecting both motor and cerebellar pathways causes weakness with incoordination.",
       "A lacune in the pons affects corticobulbar and corticospinal fibers together."
     ],
-    "remember": "Lacunar strokes are small-vessel, deep, and produce one clean deficit — no cortical signs like aphasia or neglect.",
+    "remember": "Lacunar strokes are small-vessel, deep, and produce one clean deficit, with no cortical signs like aphasia or neglect.",
     "tags": [
       "MCA stroke",
       "ACA stroke",
@@ -2336,7 +2336,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Stroke Syndromes & Vascular Territories\" (sys-neuro-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Stroke Syndromes & Vascular Territories\" (sys-neuro-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-neuro-0001-L4",
@@ -2354,14 +2354,14 @@ const migratedBankCategories = [
     "primarySystem": "Neurology",
     "secondarySystems": [],
     "connectionType": "language",
-    "explanation": "Brainstem lesions produce very specific, often 'crossed' findings — the exact combination of cranial nerve and long-tract signs pinpoints the level of the lesion.",
+    "explanation": "Brainstem lesions produce very specific, often 'crossed' findings. The exact combination of cranial nerve and long-tract signs pinpoints the level of the lesion.",
     "tileExplanations": [
       "A ventral pontine (basilar artery) lesion spares consciousness but severs nearly all motor output except vertical gaze.",
       "Damage to crossed and uncrossed pathways at the medulla causes a classic crossed sensory pattern.",
       "A lesion in the medial longitudinal fasciculus disconnects the two eyes’ horizontal gaze coordination.",
       "Vestibular and cerebellar pathway involvement produces vertigo with ipsilateral ataxia."
     ],
-    "remember": "Brainstem syndromes are named by their specific sign combination — crossed findings mean the brainstem, not the cortex.",
+    "remember": "Brainstem syndromes are named by their specific sign combination. Crossed findings mean the brainstem, not the cortex.",
     "tags": [
       "MCA stroke",
       "ACA stroke",
@@ -2371,7 +2371,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Stroke Syndromes & Vascular Territories\" (sys-neuro-0001) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Stroke Syndromes & Vascular Territories\" (sys-neuro-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-neuro-0002-L1",
@@ -2396,7 +2396,7 @@ const migratedBankCategories = [
       "Increased muscle tone with a ratchety quality on passive movement.",
       "Impaired postural reflexes appear later in disease progression."
     ],
-    "remember": "TRAP: Tremor, Rigidity, Akinesia/bradykinesia, Postural instability — the core of Parkinson disease.",
+    "remember": "TRAP: Tremor, Rigidity, Akinesia/bradykinesia, Postural instability. These are the core of Parkinson disease.",
     "tags": [
       "Parkinson disease",
       "chorea",
@@ -2406,7 +2406,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Movement Disorders & Neurodegeneration\" (sys-neuro-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Movement Disorders & Neurodegeneration\" (sys-neuro-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-neuro-0002-L2",
@@ -2431,7 +2431,7 @@ const migratedBankCategories = [
       "Long-term dopaminergic therapy can itself produce chorea-like movements.",
       "Antiphospholipid or other autoantibodies can affect the basal ganglia."
     ],
-    "remember": "Chorea points to basal ganglia trouble — genetic, post-infectious, drug-induced, or autoimmune.",
+    "remember": "Chorea points to basal ganglia trouble: genetic, post-infectious, drug-induced, or autoimmune.",
     "tags": [
       "Parkinson disease",
       "chorea",
@@ -2441,7 +2441,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Movement Disorders & Neurodegeneration\" (sys-neuro-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Movement Disorders & Neurodegeneration\" (sys-neuro-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-neuro-0002-L3",
@@ -2476,7 +2476,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Movement Disorders & Neurodegeneration\" (sys-neuro-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Movement Disorders & Neurodegeneration\" (sys-neuro-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-neuro-0002-L4",
@@ -2501,7 +2501,7 @@ const migratedBankCategories = [
       "The mutant polyglutamine-expanded protein in Huntington disease.",
       "Aggregates in a subset of frontotemporal dementia and ALS."
     ],
-    "remember": "Neurodegeneration is a proteinopathy — learn the protein-disease pairing, not just the disease name.",
+    "remember": "Neurodegeneration is a proteinopathy, so learn the protein-disease pairing, not just the disease name.",
     "tags": [
       "Parkinson disease",
       "chorea",
@@ -2511,7 +2511,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Movement Disorders & Neurodegeneration\" (sys-neuro-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Movement Disorders & Neurodegeneration\" (sys-neuro-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pharm-0002-L1",
@@ -2529,14 +2529,14 @@ const migratedBankCategories = [
     "primarySystem": "Pharmacology",
     "secondarySystems": [],
     "connectionType": "mechanism",
-    "explanation": "Beta-blockade reduces heart rate, contractility, and sympathetic drive — useful across a surprisingly broad set of conditions.",
+    "explanation": "Beta-blockade reduces heart rate, contractility, and sympathetic drive, making it useful across a surprisingly broad set of conditions.",
     "tileExplanations": [
       "Reduced cardiac output and renin release lower blood pressure.",
       "Slows AV nodal conduction, controlling ventricular rate.",
       "Reduces myocardial oxygen demand and arrhythmia risk after infarction.",
       "Mechanism unclear, but proven to reduce migraine frequency."
     ],
-    "remember": "Beta-blockers show up everywhere sympathetic drive is a problem — pressure, rate, remodeling, and even migraine.",
+    "remember": "Beta-blockers show up everywhere sympathetic drive is a problem: pressure, rate, remodeling, and even migraine.",
     "tags": [
       "beta-blockers",
       "alpha blockers",
@@ -2546,7 +2546,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Autonomic & Receptor Pharmacology\" (sys-pharm-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Autonomic & Receptor Pharmacology\" (sys-pharm-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pharm-0002-L2",
@@ -2571,7 +2571,7 @@ const migratedBankCategories = [
       "Loss of vasoconstrictive tone on standing drops blood pressure.",
       "Vasodilation triggers baroreceptor-mediated compensatory tachycardia."
     ],
-    "remember": "Alpha-1 blockade relaxes smooth muscle everywhere it’s found — vessels and the prostate — with orthostatic hypotension as the price.",
+    "remember": "Alpha-1 blockade relaxes smooth muscle everywhere it’s found (vessels and the prostate), with orthostatic hypotension as the price.",
     "tags": [
       "beta-blockers",
       "alpha blockers",
@@ -2581,7 +2581,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Autonomic & Receptor Pharmacology\" (sys-pharm-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Autonomic & Receptor Pharmacology\" (sys-pharm-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pharm-0002-L3",
@@ -2599,7 +2599,7 @@ const migratedBankCategories = [
     "primarySystem": "Pharmacology",
     "secondarySystems": [],
     "connectionType": "mechanism",
-    "explanation": "Blocking muscarinic receptors removes parasympathetic tone throughout the body — pupils dilate, secretions dry up, and smooth muscle relaxes.",
+    "explanation": "Blocking muscarinic receptors removes parasympathetic tone throughout the body. Pupils dilate, secretions dry up, and smooth muscle relaxes.",
     "tileExplanations": [
       "Blocked pupillary sphincter tone leaves the pupil dilated.",
       "Blocked salivary gland muscarinic receptors reduce secretions.",
@@ -2616,7 +2616,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Autonomic & Receptor Pharmacology\" (sys-pharm-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Autonomic & Receptor Pharmacology\" (sys-pharm-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   },
   {
     "id": "bank-migrated-sys-pharm-0002-L4",
@@ -2641,7 +2641,7 @@ const migratedBankCategories = [
       "Acts on peripheral mu-opioid receptors in the gut but doesn't cross the blood-brain barrier.",
       "Blocks 5-HT3 receptors in the chemoreceptor trigger zone and gut, reducing nausea."
     ],
-    "remember": "A drug's effect is defined by its receptor AND where that receptor sits — same class, different location, very different effect.",
+    "remember": "A drug's effect is defined by its receptor AND where that receptor sits. Same class, different location, very different effect.",
     "tags": [
       "beta-blockers",
       "alpha blockers",
@@ -2651,7 +2651,7 @@ const migratedBankCategories = [
     ],
     "overlapTags": [],
     "status": "verified",
-    "notes": "Migrated from hand-written puzzle \"Autonomic & Receptor Pharmacology\" (sys-pharm-0002) — already reviewed content, now a standalone bank category so the assembler can recombine it freely."
+    "notes": "Migrated from hand-written puzzle \"Autonomic & Receptor Pharmacology\" (sys-pharm-0002). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely."
   }
 ]
 

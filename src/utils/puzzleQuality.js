@@ -99,7 +99,7 @@ export function puzzleQualityScore(puzzle, { recentConcepts = [], recentArchetyp
   // Medical accuracy (hard gate): every category must be verified (or a
   // hand-authored published Daily category with no bank link).
   const allDefensible = cats.every((c) => c.bankStatus === 'verified' || c.bankStatus === 'authored')
-  if (!allDefensible) flags.push('contains a non-verified category — not eligible for play')
+  if (!allDefensible) flags.push('contains a non-verified category, so it is not eligible for play')
 
   // Category distinctness: low pairwise tag overlap + system spread.
   const distinctSystems = new Set(cats.flatMap((c) => c.systems)).size

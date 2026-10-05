@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { DIFFICULTY } from '../puzzles.js'
 import { buildTiles, isFullMatch, isOneAway, shuffle, attemptKey, isDuplicateAttempt, MAX_MISTAKES, STREAK_MILESTONES } from '../utils/game.js'
 import { loadProgress, saveProgress } from '../utils/storage.js'
 import { getCompletionPhrase } from '../utils/completionPhrases.js'
@@ -10,13 +9,12 @@ import { pickConnectionOfDay } from '../utils/connectionOfDay.js'
 import BrandMark from './BrandMark.jsx'
 import Confetti from './Confetti.jsx'
 import PuzzleSignature from './PuzzleSignature.jsx'
+import GroupMotif, { groupColor } from './GroupMotif.jsx'
 import PlexusLine from './PlexusLine.jsx'
 import ReviewConnections from './ReviewConnections.jsx'
 import { haptics } from '../utils/haptics.js'
 
-const levelColor = (level) => DIFFICULTY.find((d) => d.level === level)?.color || '#888'
-const levelShape = (level) => DIFFICULTY.find((d) => d.level === level)?.shape || '?'
-const levelShapeLabel = (level) => DIFFICULTY.find((d) => d.level === level)?.shapeLabel || ''
+const levelColor = (level) => groupColor(level)
 
 export default function Game({
   puzzle,
@@ -279,6 +277,16 @@ export default function Game({
     .filter((c) => solvedCats.includes(c.catIndex))
     .sort((a, b) => solvedCats.indexOf(a.catIndex) - solvedCats.indexOf(b.catIndex))
 
+  // Results stack: groups found by a correct guess, in the order they were
+  // found, then any group revealed after running out of guesses.
+  const foundOrder = guessLog.filter((g) => g.correct).map((g) => g.catIndexes[0])
+  const resultGroups = [
+    ...foundOrder.map((ci) => ({ ...puzzle.categories[ci], catIndex: ci, found: true })),
+    ...puzzle.categories
+      .map((c, i) => ({ ...c, catIndex: i, found: false }))
+      .filter((c) => !foundOrder.includes(c.catIndex)),
+  ]
+
   return (
     <div className="game">
       <div className="game-header">
@@ -321,8 +329,8 @@ export default function Game({
             style={{ '--strand-color': levelColor(c.level) }}
           >
             <div className="strand-head">
-              <span className="strand-badge" aria-label={levelShapeLabel(c.level)}>
-                {levelShape(c.level)}
+              <span className="strand-badge strand-motif">
+                <GroupMotif level={c.level} size={24} animate={popCatIndex === c.catIndex} />
               </span>
               <span className="strand-title">{c.title}</span>
             </div>
@@ -392,17 +400,25 @@ export default function Game({
 
           {won && <p className="completion-phrase">{completionPhrase}</p>}
 
-          <div className="result-grid" role="img" aria-label={`${guessLog.length} guesses: ${shareText}`}>
-            {guessLog.map((g, i) => (
-              <div className="result-grid-row" key={i}>
-                {g.levels.map((lv, j) => (
-                  <span key={j} className="result-square" style={{ backgroundColor: levelColor(lv) }}>
-                    {levelShape(lv)}
-                  </span>
-                ))}
-              </div>
+          {/* Four mini-Plexuses, one per connection group: found groups in the
+              order they were solved, connected in their own pattern; any group
+              not found shows as four loose nodes. */}
+          <ol
+            className="result-motifs"
+            aria-label={`${foundOrder.length} of ${puzzle.categories.length} connections found`}
+          >
+            {resultGroups.map((g) => (
+              <li key={g.catIndex}>
+                <GroupMotif
+                  level={g.level}
+                  layout="row"
+                  size={84}
+                  missed={!g.found}
+                  title={`${g.title}: ${g.found ? 'found' : 'not found'}`}
+                />
+              </li>
             ))}
-          </div>
+          </ol>
 
           <p className="result-summary">
             {won
@@ -428,7 +444,7 @@ export default function Game({
               </button>
             )}
             <button className="secondary-btn" onClick={() => setShowReview((v) => !v)}>
-              {showReview ? 'Hide Review' : 'Review Connections'}
+              {showReview ? 'Hide Connections' : 'View Connections'}
             </button>
             <button className="secondary-btn" onClick={onExit}>
               Keep Playing

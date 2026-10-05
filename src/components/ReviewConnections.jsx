@@ -3,10 +3,10 @@ import { DIFFICULTY } from '../puzzles.js'
 import { getThreadForCategory } from '../utils/threads.js'
 import { isConnectionSaved, toggleSavedConnection } from '../utils/storage.js'
 import ThreadModal from './ThreadModal.jsx'
+import GroupMotif, { groupColor } from './GroupMotif.jsx'
 
-const levelColor = (level) => DIFFICULTY.find((d) => d.level === level)?.color || '#888'
+const levelColor = (level) => groupColor(level)
 const levelName = (level) => DIFFICULTY.find((d) => d.level === level)?.name || ''
-const levelShape = (level) => DIFFICULTY.find((d) => d.level === level)?.shape || ''
 
 // onKnowledgeSignal(tag, 'knew-it' | 'review-later') — Section 12's "I Knew
 // That" feature: a lightweight, entirely optional signal the player can
@@ -50,9 +50,7 @@ export default function ReviewConnections({ puzzle, onKnowledgeSignal }) {
               aria-expanded={isOpen}
             >
               <span className="accordion-level" style={{ color: levelColor(cat.level) }}>
-                <span className="difficulty-shape" aria-hidden="true">
-                  {levelShape(cat.level)}
-                </span>
+                <GroupMotif level={cat.level} size={18} title="" />
                 {levelName(cat.level)}
               </span>
               <span className="accordion-title">{cat.title}</span>

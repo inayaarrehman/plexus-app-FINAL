@@ -343,6 +343,12 @@ export default function LibraryEditor() {
   }
 
   const save = async (fields, tiles) => {
+    // House rule: no em dashes in any Plexus copy. Catch them here so new
+    // connections never store one (rewrite the sentence, don't swap in a hyphen).
+    if (JSON.stringify({ fields, tiles }).includes('\u2014')) {
+      setError('This connection has an em dash in it. Rewrite that sentence with a period, comma, colon or parentheses, then save.')
+      return
+    }
     setBusy(true)
     setError('')
     try {
@@ -385,10 +391,10 @@ export default function LibraryEditor() {
         </div>
         {diag && (
           <ul className="led-diag-results">
-            <li>Host: <code>{diag.host || '—'}</code></li>
+            <li>Host: <code>{diag.host || 'none'}</code></li>
             <li>Signed in: <strong>{diag.signedIn ? 'yes' : 'no'}</strong> · Admin: <strong>{diag.admin ? 'yes' : 'no'}</strong></li>
-            <li>Read — connections: <strong>{String(diag.reads?.connections ?? '—')}</strong>, concepts: <strong>{String(diag.reads?.concepts ?? '—')}</strong>, sources: <strong>{String(diag.reads?.sources ?? '—')}</strong></li>
-            <li>Write test: {diag.write?.ok ? <strong style={{ color: 'var(--difficulty-medium)' }}>passed ✓</strong> : <strong style={{ color: 'var(--difficulty-easy)' }}>failed — {diag.write?.error || 'n/a'}</strong>}</li>
+            <li>Read: connections: <strong>{String(diag.reads?.connections ?? 'none')}</strong>, concepts: <strong>{String(diag.reads?.concepts ?? 'none')}</strong>, sources: <strong>{String(diag.reads?.sources ?? 'none')}</strong></li>
+            <li>Write test: {diag.write?.ok ? <strong style={{ color: 'var(--difficulty-medium)' }}>passed ✓</strong> : <strong style={{ color: 'var(--difficulty-easy)' }}>failed: {diag.write?.error || 'n/a'}</strong>}</li>
             {diag.errors?.length > 0 && <li className="led-diag-err">{diag.errors.join(' · ')}</li>}
           </ul>
         )}
@@ -410,7 +416,7 @@ export default function LibraryEditor() {
           ))}
         </div>
         <span className={`led-admin ${admin ? 'is-admin' : ''}`}>
-          {admin ? 'Admin session' : signedIn ? 'Signed in (not admin — writes blocked by RLS)' : 'Not signed in (read-only)'}
+          {admin ? 'Admin session' : signedIn ? 'Signed in (not an admin, so writes are blocked by RLS)' : 'Not signed in (read-only)'}
         </span>
       </div>
 

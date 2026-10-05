@@ -43,3 +43,9 @@ accuracy comes first, so nothing is auto-published.
   step (official curated dailies) — ask when you want it.
 - The bundled bank remains the offline/base layer; you don't need to migrate it
   into Supabase.
+
+## Punctuation rule: no em dashes
+
+No em dash character (U+2014) in any Plexus copy: remember lines, explanations, tile notes ("why"), titles, sources, results, buttons, errors, anything a player can read. Do not swap it for a hyphen. Rewrite the sentence with a period, comma, colon or parentheses so it reads naturally.
+
+The Library editor refuses to save a connection that contains one, and `node scripts/selftest.mjs` fails if any bundled content has one.

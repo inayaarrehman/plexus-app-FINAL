@@ -328,7 +328,7 @@ export default function App() {
       mode: isToday ? 'daily' : 'archive',
       progressKey: `daily-${dateStr}`,
       headerLabel: isToday ? `Daily #${todayDayNumber}` : `Archive · ${dateStr}`,
-      resultTitle: isToday ? "Today's Results" : `Result — ${dateStr}`,
+      resultTitle: isToday ? "Today's Results" : `Result for ${dateStr}`,
       dailyNumber: puzzle.number,
       dailyStreak: stats.currentStreak,
       dateForHistory: dateStr,

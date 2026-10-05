@@ -29,10 +29,10 @@ const connectionBankExtra2 = [
     secondarySystems: ['Endocrine'],
     connectionType: 'physiology',
     explanation:
-      'The pituitary gonadotropins (FSH, LH) act on the ovary, which in turn produces estrogen then progesterone — the four hormones whose rise and fall define the menstrual cycle.',
+      'The pituitary gonadotropins (FSH, LH) act on the ovary, which in turn produces estrogen then progesterone. These are the four hormones whose rise and fall define the menstrual cycle.',
     tileExplanations: [
-      'Follicle-stimulating hormone — stimulates granulosa cells and follicular growth in the follicular phase.',
-      'Luteinizing hormone — its mid-cycle surge triggers ovulation.',
+      'Follicle-stimulating hormone stimulates granulosa cells and follicular growth in the follicular phase.',
+      'Luteinizing hormone: its mid-cycle surge triggers ovulation.',
       'Produced by granulosa cells; dominates the proliferative (follicular) phase.',
       'Produced by the corpus luteum; dominates the secretory (luteal) phase.',
     ],
@@ -51,14 +51,14 @@ const connectionBankExtra2 = [
     secondarySystems: [],
     connectionType: 'knowledge',
     explanation:
-      'Each physically blocks sperm from reaching the egg rather than acting hormonally — the defining feature of barrier contraception.',
+      'Each physically blocks sperm from reaching the egg rather than acting hormonally, the defining feature of barrier contraception.',
     tileExplanations: [
       'A sheath worn on the penis; also reduces STI transmission.',
       'A pouch lining the vagina; also offers some STI protection.',
       'A dome placed over the cervix, used with spermicide.',
       'A smaller cap fitted snugly over the cervix, used with spermicide.',
     ],
-    remember: 'Barrier methods (condoms, diaphragm, cervical cap) physically block sperm — no hormones involved.',
+    remember: 'Barrier methods (condoms, diaphragm, cervical cap) physically block sperm. No hormones involved.',
     tags: ['contraception', 'barrier-method'],
     overlapTags: ['sti-prevention'],
     status: 'verified',
@@ -73,12 +73,12 @@ const connectionBankExtra2 = [
     secondarySystems: ['Endocrine'],
     connectionType: 'pathology',
     explanation:
-      'Each prevents menarche by a different mechanism — gonadal, uterine, receptor, or outflow — making them classic causes of primary amenorrhea.',
+      'Each prevents menarche by a different mechanism (gonadal, uterine, receptor, or outflow), making them classic causes of primary amenorrhea.',
     tileExplanations: [
-      '45,X gonadal dysgenesis — streak ovaries produce no estrogen.',
-      'MRKH — congenital absence of the uterus and upper vagina.',
-      '46,XY with nonfunctional androgen receptors — no uterus, testes present.',
-      'An anatomic outflow obstruction — menses occur but cannot exit.',
+      '45,X gonadal dysgenesis: streak ovaries produce no estrogen.',
+      'MRKH: congenital absence of the uterus and upper vagina.',
+      '46,XY with nonfunctional androgen receptors: no uterus, testes present.',
+      'An anatomic outflow obstruction. Menses occur but cannot exit.',
     ],
     remember: 'Primary amenorrhea = no menarche: think gonad (Turner), uterus (Müllerian agenesis), receptor (AIS), or outflow (imperforate hymen).',
     tags: ['amenorrhea', 'development', 'gonadal-dysgenesis'],
@@ -142,7 +142,7 @@ const connectionBankExtra2 = [
       'All arise from primordial germ cells and typically occur in younger patients, each with a characteristic tumor marker or histology.',
     tileExplanations: [
       'The female counterpart of seminoma; often secretes LDH.',
-      'Endodermal sinus tumor — secretes AFP; Schiller-Duval bodies.',
+      'Endodermal sinus tumor: secretes AFP; Schiller-Duval bodies.',
       'Secretes β-hCG; spreads hematogenously.',
       'The most common ovarian germ cell tumor; contains multiple tissue types.',
     ],
@@ -161,12 +161,12 @@ const connectionBankExtra2 = [
     secondarySystems: [],
     connectionType: 'pathology',
     explanation:
-      'Each is a cause of antepartum hemorrhage distinguished by pain, timing, and fetal status — a high-yield obstetric emergency differential.',
+      'Each is a cause of antepartum hemorrhage distinguished by pain, timing, and fetal status. A high-yield obstetric emergency differential.',
     tileExplanations: [
-      'Placenta over the internal os — classically painless bright-red bleeding.',
-      'Premature placental separation — painful bleeding with a tender, firm uterus.',
-      'Fetal vessels cross the os — bleeding with fetal bradycardia at membrane rupture.',
-      'Full-thickness uterine tear — pain, loss of fetal station, often prior C-section.',
+      'Placenta over the internal os, classically painless bright-red bleeding.',
+      'Premature placental separation: painful bleeding with a tender, firm uterus.',
+      'Fetal vessels cross the os, causing bleeding with fetal bradycardia at membrane rupture.',
+      'Full-thickness uterine tear: pain, loss of fetal station, often prior C-section.',
     ],
     remember: '3rd-trimester bleed: previa (painless), abruption (painful), vasa previa (bleed + fetal distress at ROM), rupture (pain + lost station).',
     tags: ['antepartum-hemorrhage', 'obstetric-emergency'],
@@ -185,12 +185,12 @@ const connectionBankExtra2 = [
     explanation:
       'HELLP is a severe variant of preeclampsia; its name is its triad of lab findings, and RUQ pain reflects the hepatic involvement.',
     tileExplanations: [
-      'Microangiopathic hemolysis — schistocytes, low haptoglobin.',
+      'Microangiopathic hemolysis: schistocytes, low haptoglobin.',
       'Hepatic involvement raises AST/ALT.',
       'Platelet consumption produces thrombocytopenia.',
       'Hepatic swelling/ischemia causes RUQ or epigastric pain.',
     ],
-    remember: 'HELLP = Hemolysis, Elevated Liver enzymes, Low Platelets — a severe preeclampsia variant with RUQ pain.',
+    remember: 'HELLP = Hemolysis, Elevated Liver enzymes, Low Platelets. A severe preeclampsia variant with RUQ pain.',
     tags: ['hellp', 'preeclampsia', 'pregnancy-complication'],
     overlapTags: ['microangiopathic-hemolysis', 'hypertension-in-pregnancy'],
     status: 'verified',
@@ -233,12 +233,12 @@ const connectionBankExtra2 = [
     explanation:
       'Positive symptoms are experiences "added" to normal function and respond best to dopamine-antagonist antipsychotics.',
     tileExplanations: [
-      'Perceptions without stimulus — most often auditory in schizophrenia.',
+      'Perceptions without stimulus, most often auditory in schizophrenia.',
       'Fixed false beliefs resistant to contrary evidence.',
       'Derailment, tangentiality, or word salad.',
       'Catatonia or purposeless, bizarre activity.',
     ],
-    remember: 'Positive symptoms ADD experiences: hallucinations, delusions, disorganized speech/behavior — dopamine-driven.',
+    remember: 'Positive symptoms ADD experiences: hallucinations, delusions, disorganized speech/behavior. Dopamine-driven.',
     tags: ['schizophrenia', 'positive-symptoms', 'psychosis'],
     overlapTags: ['dopamine'],
     status: 'verified',
@@ -277,10 +277,10 @@ const connectionBankExtra2 = [
     explanation:
       'Dopamine (D2) blockade by antipsychotics produces a sequence of movement side effects with a characteristic time course from hours to months.',
     tileExplanations: [
-      'Hours to days — sustained muscle contraction (e.g. torticollis, oculogyric crisis); treat with anticholinergics.',
-      'Days to weeks — subjective restlessness and inability to sit still.',
-      'Weeks — bradykinesia, rigidity, and tremor mimicking Parkinson disease.',
-      'Months to years — often irreversible choreoathetoid movements (e.g. lip-smacking).',
+      'Hours to days: sustained muscle contraction (e.g. torticollis, oculogyric crisis); treat with anticholinergics.',
+      'Days to weeks: subjective restlessness and inability to sit still.',
+      'Weeks: bradykinesia, rigidity, and tremor mimicking Parkinson disease.',
+      'Months to years: often irreversible choreoathetoid movements (e.g. lip-smacking).',
     ],
     remember: 'EPS timeline: acute dystonia (hours) → akathisia (days) → parkinsonism (weeks) → tardive dyskinesia (months–years).',
     tags: ['extrapyramidal-symptoms', 'antipsychotic', 'dopamine-blockade'],
@@ -299,10 +299,10 @@ const connectionBankExtra2 = [
     explanation:
       'Each has a narrow therapeutic window or a serious dose-independent toxicity, so safe use requires ongoing blood monitoring.',
     tileExplanations: [
-      'Narrow therapeutic index — monitor levels plus renal and thyroid function.',
+      'Narrow therapeutic index. Monitor levels plus renal and thyroid function.',
       'Monitor drug levels, liver enzymes, and platelets (also teratogenic).',
-      'Monitor levels and CBC — risk of agranulocytosis and aplastic anemia; auto-induces its own metabolism.',
-      'Requires scheduled absolute neutrophil counts — risk of agranulocytosis.',
+      'Monitor levels and CBC (risk of agranulocytosis and aplastic anemia); auto-induces its own metabolism.',
+      'Requires scheduled absolute neutrophil counts due to risk of agranulocytosis.',
     ],
     remember: 'Monitor: lithium (levels, renal/thyroid), valproate & carbamazepine (levels, LFTs/CBC), clozapine (ANC for agranulocytosis).',
     tags: ['therapeutic-monitoring', 'mood-stabilizer', 'clozapine'],
@@ -319,11 +319,11 @@ const connectionBankExtra2 = [
     secondarySystems: ['Pharmacology'],
     connectionType: 'pharmacology',
     explanation:
-      'Each supports abstinence by a different mechanism — reducing reward, easing withdrawal-related dysphoria, creating aversion, or modulating glutamate/GABA.',
+      'Each supports abstinence by a different mechanism: reducing reward, easing withdrawal-related dysphoria, creating aversion, or modulating glutamate/GABA.',
     tileExplanations: [
-      'Opioid antagonist — reduces craving and the reward of drinking.',
-      'Modulates glutamate/GABA — helps maintain abstinence.',
-      'Inhibits aldehyde dehydrogenase — causes an aversive reaction to alcohol.',
+      'Opioid antagonist that reduces craving and the reward of drinking.',
+      'Modulates glutamate/GABA and helps maintain abstinence.',
+      'Inhibits aldehyde dehydrogenase, causing an aversive reaction to alcohol.',
       'Anticonvulsant used off-label to reduce heavy drinking.',
     ],
     remember: 'AUD pharmacotherapy: naltrexone (craving), acamprosate (abstinence), disulfiram (aversion), topiramate (off-label).',
@@ -348,8 +348,8 @@ const connectionBankExtra2 = [
       'All are rheumatoid-factor-negative, HLA-B27-associated inflammatory arthritides that favor the axial skeleton and entheses.',
     tileExplanations: [
       'Axial arthritis with sacroiliitis and "bamboo spine."',
-      'Arthritis with psoriasis — dactylitis and "pencil-in-cup" deformity.',
-      'Post-infectious arthritis — "can\'t see, can\'t pee, can\'t climb a tree."',
+      'Arthritis with psoriasis: dactylitis and "pencil-in-cup" deformity.',
+      'Post-infectious arthritis: "can\'t see, can\'t pee, can\'t climb a tree."',
       'Arthritis associated with inflammatory bowel disease.',
     ],
     remember: 'Seronegative spondyloarthropathies (RF-negative, HLA-B27): ankylosing spondylitis, psoriatic, reactive, enteropathic.',
@@ -389,7 +389,7 @@ const connectionBankExtra2 = [
     secondarySystems: [],
     connectionType: 'visual',
     explanation:
-      'The classic OA tetrad reflects cartilage loss and reactive bone changes — distinct from the erosions and osteopenia of rheumatoid arthritis.',
+      'The classic OA tetrad reflects cartilage loss and reactive bone changes, distinct from the erosions and osteopenia of rheumatoid arthritis.',
     tileExplanations: [
       'Cartilage loss narrows the joint space (often asymmetric).',
       'Reactive bony outgrowths at joint margins.',
@@ -572,8 +572,8 @@ const connectionBankExtra2 = [
       'These are life-threatening hypersensitivity reactions, often drug-triggered, defined by the extent of epidermal detachment and systemic involvement.',
     tileExplanations: [
       'Mucosal involvement with epidermal detachment of <10% of body surface area.',
-      'The severe end of the same spectrum — detachment of >30% of BSA.',
-      'Drug Reaction with Eosinophilia and Systemic Symptoms — rash, fever, organ involvement.',
+      'The severe end of the same spectrum, with detachment of >30% of BSA.',
+      'Drug Reaction with Eosinophilia and Systemic Symptoms: rash, fever, organ involvement.',
       'Targetoid lesions with mucosal involvement, often post-infectious or drug-related.',
     ],
     remember: 'Severe drug/skin reactions: SJS (<10% BSA), TEN (>30% BSA), DRESS (eosinophilia + organ involvement), EM major (target lesions).',
@@ -619,9 +619,9 @@ const connectionBankExtra2 = [
     explanation:
       'Each is an inherited syndrome that raises colorectal cancer risk, distinguished by its gene, polyp type, and extra-intestinal features.',
     tileExplanations: [
-      'DNA mismatch-repair defect (HNPCC) — few polyps, right-sided cancers, endometrial risk.',
-      'APC mutation — hundreds to thousands of adenomas; near-100% cancer risk without colectomy.',
-      'STK11 mutation — hamartomatous polyps with mucocutaneous (lip) pigmentation.',
+      'DNA mismatch-repair defect (HNPCC): few polyps, right-sided cancers, endometrial risk.',
+      'APC mutation: hundreds to thousands of adenomas; near-100% cancer risk without colectomy.',
+      'STK11 mutation: hamartomatous polyps with mucocutaneous (lip) pigmentation.',
       'Hamartomatous polyps in childhood with increased GI cancer risk.',
     ],
     remember: 'Hereditary CRC: Lynch (MMR, right-sided), FAP (APC, thousands of polyps), Peutz-Jeghers (STK11, hamartomas + lip pigment), juvenile polyposis.',
@@ -641,7 +641,7 @@ const connectionBankExtra2 = [
     explanation:
       'A serum-ascites albumin gradient ≥1.1 g/dL indicates portal hypertension; each of these raises portal/hepatic venous pressure.',
     tileExplanations: [
-      'The most common cause — sinusoidal portal hypertension.',
+      'The most common cause: sinusoidal portal hypertension.',
       'Elevated central venous pressure transmits back to the hepatic veins.',
       'Hepatic vein outflow obstruction raises sinusoidal pressure.',
       'Impaired cardiac filling raises systemic and hepatic venous pressure.',

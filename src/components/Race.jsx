@@ -351,7 +351,7 @@ export default function Race({ bank, initialCode = '', onExit }) {
         <div className="race-live">
           <span className="race-live-you">You {correctCount}/{total}</span>
           <span className="race-live-opp">
-            {oppName} {showOpp ? `${oppProgress.correct}/${total}` : `—/${total}`}
+            {oppName} {showOpp ? `${oppProgress.correct}/${total}` : `?/${total}`}
           </span>
         </div>
         <div className="race-progress-track" aria-hidden="true">

@@ -17,10 +17,10 @@
 // values, and its dark-mode block for the separate, lighter tints used
 // where a difficulty color is the TEXT color on a page background instead.
 export const DIFFICULTY = [
-  { level: 1, name: 'Terracotta', color: '#bf5236', shape: '●', shapeLabel: 'circle' },
-  { level: 2, name: 'Peacock', color: '#087f78', shape: '▲', shapeLabel: 'triangle' },
-  { level: 3, name: 'Cobalt', color: '#3267c8', shape: '◆', shapeLabel: 'diamond' },
-  { level: 4, name: 'Plum', color: '#7a49b2', shape: '■', shapeLabel: 'square' },
+  { level: 1, name: 'Burnt coral', color: '#c25b40', motif: 'chain' },
+  { level: 2, name: 'Peacock', color: '#0b7480', motif: 'hub' },
+  { level: 3, name: 'Sapphire', color: '#2c57b0', motif: 'cluster' },
+  { level: 4, name: 'Amethyst', color: '#7848b2', motif: 'mesh' },
 ]
 
 // The same four families as node GRAPHICS. These resolve to the base jewel

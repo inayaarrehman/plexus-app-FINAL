@@ -524,7 +524,8 @@ console.log('\n[13c] Polish-pass features: completion phrases, share text, daily
   const share = buildShareText({ isDaily: true, dailyNumber: 5, puzzleTitle: sample.title, guessLog, won: true, mistakes: 0, dailyStreak: 4 })
   assert(share.includes('PLEXUS'), 'share text identifies the app by its own name')
   assert(!share.includes('🟨') && !share.includes('🟩') && !share.includes('🟦') && !share.includes('🟪'), 'share text never uses the NYT-style colored-square emoji grid')
-  assert(/[●▲◆■]/.test(share), 'share text uses the app\'s own shape glyphs')
+  assert(/🟠/.test(share) && /🟢/.test(share) && /🔵/.test(share) && /🟣/.test(share), 'share text draws each concept as a node in its group colour')
+  assert(!/[●▲◆■]/.test(share), 'share text no longer uses the old shape glyphs')
 
   const microStatPerfect = computeDailyMicroStat({ mistakes: 0, guessLog: [], dailyPerfectStreak: 0 })
   assert(microStatPerfect === 'No mistakes today.', 'a zero-mistake day with no streak yet reports "No mistakes today."')
@@ -1100,6 +1101,27 @@ console.log('\n[36] Daily gate: today\'s Daily unlocks the other modes')
   assert(isGatedView('systems') && isGatedView('challenge') && isGatedView('race') && isGatedView('archive'), 'Systems, 3-Minute, Race and Review are gated')
   assert(!isGatedView('home') && !isGatedView('game', 'daily'), 'Today and the Daily board are never gated')
   assert(isGatedView('game', 'system') && isGatedView('game', 'archive'), 'system boards and past Dailies are gated')
+}
+
+console.log('\n[37] No em dashes in any bundled Plexus copy')
+{
+  const files = ['connectionBank', 'connectionBankExtra', 'connectionBankExtra2', 'migratedBankCategories', 'dailyPuzzles', 'generatedPuzzles', 'systemPuzzles']
+  const offenders = []
+  const walk = (v, path) => {
+    if (typeof v === 'string') { if (v.includes('\u2014')) offenders.push(`${path}: ${v.slice(0, 80)}`) }
+    else if (Array.isArray(v)) v.forEach((x, i) => walk(x, `${path}[${i}]`))
+    else if (v && typeof v === 'object') Object.entries(v).forEach(([k, x]) => walk(x, `${path}.${k}`))
+  }
+  for (const f of files) {
+    const mod = await import(`../src/data/${f}.js`)
+    walk(mod, f)
+  }
+  assert(offenders.length === 0, `no em dash in any bundled content string${offenders.length ? ': ' + offenders.slice(0, 3).join(' | ') : ''}`)
+  const { GROUP_META } = await import('../src/components/GroupMotif.jsx').catch(() => ({ GROUP_META: null }))
+  if (GROUP_META) {
+    const motifs = new Set(Object.values(GROUP_META).map((g) => g.motif))
+    assert(motifs.size === 4, 'each of the four groups has its own connection pattern')
+  }
 }
 
 // ---------------------------------------------------------------

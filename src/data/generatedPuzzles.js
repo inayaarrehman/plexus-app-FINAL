@@ -31,13 +31,13 @@ const generatedPuzzles = [
       "cross-system"
     ],
     "status": "published",
-    "source": "Generated from the connection bank — verified categories, assembled for tile compatibility and type diversity.",
+    "source": "Generated from the connection bank: verified categories, assembled for tile compatibility and type diversity.",
     "categories": [
       {
         "level": 1,
         "title": "Causes of acute pancreatitis",
         "explanation": "Each is a well-established trigger of acinar cell injury and premature enzyme activation in the pancreas.",
-        "remember": "The big two causes of pancreatitis are gallstones and alcohol — the rest is a shorter differential.",
+        "remember": "The big two causes of pancreatitis are gallstones and alcohol. The rest is a shorter differential.",
         "connectionType": "knowledge",
         "tags": [
           "pancreatitis",
@@ -47,7 +47,7 @@ const generatedPuzzles = [
         "items": [
           {
             "term": "Gallstones",
-            "why": "The single most common cause — a stone obstructing the ampulla triggers pancreatitis."
+            "why": "The single most common cause: a stone obstructing the ampulla triggers pancreatitis."
           },
           {
             "term": "Alcohol use",
@@ -66,7 +66,7 @@ const generatedPuzzles = [
       {
         "level": 2,
         "title": "Causes of a widened pulse pressure",
-        "explanation": "Each raises stroke volume, lowers diastolic pressure via runoff, or both — widening the gap between systolic and diastolic pressure.",
+        "explanation": "Each raises stroke volume, lowers diastolic pressure via runoff, or both, widening the gap between systolic and diastolic pressure.",
         "remember": "A wide pulse pressure means high flow or a leaky diastolic runoff.",
         "connectionType": "physiology",
         "tags": [
@@ -97,7 +97,7 @@ const generatedPuzzles = [
         "level": 3,
         "title": "___ body",
         "explanation": "Each eponym/term is followed by \"body\" in pathology, despite describing completely unrelated structures.",
-        "remember": "\"___ body\" spans four unrelated fields — the suffix is doing all the connecting, not the biology.",
+        "remember": "\"___ body\" spans four unrelated fields. The suffix is doing all the connecting, not the biology.",
         "connectionType": "language",
         "tags": [
           "eponyms",
@@ -108,27 +108,27 @@ const generatedPuzzles = [
         "items": [
           {
             "term": "Lewy",
-            "why": "Lewy body — an intraneuronal alpha-synuclein aggregate seen in Parkinson disease and Lewy body dementia."
+            "why": "Lewy body: an intraneuronal alpha-synuclein aggregate seen in Parkinson disease and Lewy body dementia."
           },
           {
             "term": "Heinz",
-            "why": "Heinz body — denatured, precipitated hemoglobin seen in G6PD deficiency."
+            "why": "Heinz body: denatured, precipitated hemoglobin seen in G6PD deficiency."
           },
           {
             "term": "Howell-Jolly",
-            "why": "Howell-Jolly body — a nuclear remnant in red cells seen after splenectomy or in asplenia."
+            "why": "Howell-Jolly body: a nuclear remnant in red cells seen after splenectomy or in asplenia."
           },
           {
             "term": "Psammoma",
-            "why": "Psammoma body — a concentric, laminated calcification seen in papillary thyroid cancer, meningioma, and serous ovarian tumors."
+            "why": "Psammoma body: a concentric, laminated calcification seen in papillary thyroid cancer, meningioma, and serous ovarian tumors."
           }
         ]
       },
       {
         "level": 4,
         "title": "A measurement that falls as the disease gets worse",
-        "explanation": "Each disease is tracked by a specific number that falls as severity worsens — GFR, ejection fraction, FEV1, and DLCO, respectively.",
-        "remember": "Four organ systems, four falling numbers — each disease has its own quiet, quantifiable severity marker.",
+        "explanation": "Each disease is tracked by a specific number that falls as severity worsens: GFR, ejection fraction, FEV1, and DLCO, respectively.",
+        "remember": "Four organ systems, four falling numbers. Each disease has its own quiet, quantifiable severity marker.",
         "connectionType": "cross-system",
         "tags": [
           "disease-severity",
@@ -183,7 +183,7 @@ const generatedPuzzles = [
       "cross-system"
     ],
     "status": "published",
-    "source": "Generated from the connection bank — verified categories, assembled for tile compatibility and type diversity.",
+    "source": "Generated from the connection bank: verified categories, assembled for tile compatibility and type diversity.",
     "categories": [
       {
         "level": 1,
@@ -200,7 +200,7 @@ const generatedPuzzles = [
         "items": [
           {
             "term": "Ankylosing spondylitis",
-            "why": "The classic HLA-B27 disease — inflammatory back pain and sacroiliitis."
+            "why": "The classic HLA-B27 disease, with inflammatory back pain and sacroiliitis."
           },
           {
             "term": "Reactive arthritis",
@@ -220,7 +220,7 @@ const generatedPuzzles = [
         "level": 2,
         "title": "External carotid artery branches",
         "explanation": "Each is a direct branch of the external carotid artery, supplying the face, tongue, deep face/skull base, or thyroid.",
-        "remember": "The external carotid feeds the face and neck structures — the internal carotid feeds the brain and orbit.",
+        "remember": "The external carotid feeds the face and neck structures, while the internal carotid feeds the brain and orbit.",
         "connectionType": "anatomy",
         "tags": [
           "carotid-anatomy",
@@ -250,7 +250,7 @@ const generatedPuzzles = [
         "level": 3,
         "title": "___ phenomenon",
         "explanation": "Each eponym is followed by \"phenomenon,\" describing unrelated vascular, dermatologic, immunologic, or endocrine findings.",
-        "remember": "Four \"phenomena,\" four mechanisms — vasospasm, koebnerization, immune complex injury, and counter-regulatory hormone rebound.",
+        "remember": "Four \"phenomena,\" four mechanisms: vasospasm, koebnerization, immune complex injury, and counter-regulatory hormone rebound.",
         "connectionType": "language",
         "tags": [
           "eponyms",
@@ -260,19 +260,19 @@ const generatedPuzzles = [
         "items": [
           {
             "term": "Raynaud",
-            "why": "Raynaud phenomenon — episodic digital vasospasm triggered by cold or stress."
+            "why": "Raynaud phenomenon is episodic digital vasospasm triggered by cold or stress."
           },
           {
             "term": "Koebner",
-            "why": "Koebner phenomenon — new skin lesions at sites of trauma, seen in psoriasis and lichen planus."
+            "why": "Koebner phenomenon: new skin lesions at sites of trauma, seen in psoriasis and lichen planus."
           },
           {
             "term": "Arthus",
-            "why": "Arthus phenomenon — a local type III hypersensitivity reaction to a repeated antigen injection."
+            "why": "Arthus phenomenon is a local type III hypersensitivity reaction to a repeated antigen injection."
           },
           {
             "term": "Somogyi",
-            "why": "Somogyi phenomenon — rebound morning hyperglycemia after nocturnal hypoglycemia."
+            "why": "Somogyi phenomenon is rebound morning hyperglycemia after nocturnal hypoglycemia."
           }
         ]
       },
@@ -335,13 +335,13 @@ const generatedPuzzles = [
       "endocrine-feedback"
     ],
     "status": "published",
-    "source": "Generated from the connection bank — verified categories, assembled for tile compatibility and type diversity.",
+    "source": "Generated from the connection bank: verified categories, assembled for tile compatibility and type diversity.",
     "categories": [
       {
         "level": 1,
         "title": "QT-prolonging drug classes",
         "explanation": "Each drug class is a well-recognized cause of QT prolongation, raising torsades de pointes risk.",
-        "remember": "QT-prolonging drug classes span antiarrhythmics, antibiotics, and antipsychotics — always worth a mental checklist.",
+        "remember": "QT-prolonging drug classes span antiarrhythmics, antibiotics, and antipsychotics. They are always worth a mental checklist.",
         "connectionType": "pharmacology",
         "tags": [
           "QT_interval",
@@ -372,7 +372,7 @@ const generatedPuzzles = [
         "level": 2,
         "title": "Hypocomplementemic diseases",
         "explanation": "Each consumes complement through immune-complex-mediated activation, producing low serum C3/C4.",
-        "remember": "Low complement points to immune-complex disease consuming it — SLE, PSGN, MPGN, and cryoglobulinemia are the classic four.",
+        "remember": "Low complement points to immune-complex disease consuming it. SLE, PSGN, MPGN, and cryoglobulinemia are the classic four.",
         "connectionType": "laboratory",
         "tags": [
           "complement",
@@ -402,7 +402,7 @@ const generatedPuzzles = [
         "level": 3,
         "title": "___ nodes",
         "explanation": "Each eponym is followed by \"node(s)\" but describes findings across completely different diseases.",
-        "remember": "DIP is Heberden, PIP is Bouchard — Osler nodes are tender (endocarditis), Virchow node is a lymph node (malignancy).",
+        "remember": "DIP is Heberden, PIP is Bouchard. Osler nodes are tender (endocarditis), Virchow node is a lymph node (malignancy).",
         "connectionType": "language",
         "tags": [
           "eponyms",
@@ -412,19 +412,19 @@ const generatedPuzzles = [
         "items": [
           {
             "term": "Osler",
-            "why": "Osler nodes — tender nodules on fingers/toes in infective endocarditis (immune complex-mediated)."
+            "why": "Osler nodes are tender nodules on fingers/toes in infective endocarditis (immune complex-mediated)."
           },
           {
             "term": "Heberden",
-            "why": "Heberden nodes — bony DIP joint nodules in osteoarthritis."
+            "why": "Heberden nodes are bony DIP joint nodules in osteoarthritis."
           },
           {
             "term": "Bouchard",
-            "why": "Bouchard nodes — bony PIP joint nodules in osteoarthritis."
+            "why": "Bouchard nodes are bony PIP joint nodules in osteoarthritis."
           },
           {
             "term": "Virchow",
-            "why": "Virchow node — a firm left supraclavicular lymph node, classically from metastatic gastric cancer."
+            "why": "Virchow node is a firm left supraclavicular lymph node, classically from metastatic gastric cancer."
           }
         ]
       },
@@ -432,7 +432,7 @@ const generatedPuzzles = [
         "level": 4,
         "title": "Elevated because the target tissue is resistant, not because more is needed",
         "explanation": "In each, a signaling hormone is elevated not from oversecretion but because its target tissue fails to respond normally, so the body compensates by making more.",
-        "remember": "A high hormone level does not always mean oversecretion — sometimes the target simply will not listen.",
+        "remember": "A high hormone level does not always mean oversecretion. Sometimes the target simply will not listen.",
         "connectionType": "mechanism",
         "tags": [
           "hormone-resistance",
@@ -442,7 +442,7 @@ const generatedPuzzles = [
         "items": [
           {
             "term": "Insulin resistance",
-            "why": "Cells resist insulin's effect, so the pancreas compensates by secreting more — hyperinsulinemia."
+            "why": "Cells resist insulin's effect, so the pancreas compensates by secreting more, causing hyperinsulinemia."
           },
           {
             "term": "Pseudohypoparathyroidism",
@@ -489,13 +489,13 @@ const generatedPuzzles = [
       "hpg-axis"
     ],
     "status": "published",
-    "source": "Generated from the connection bank — verified categories, assembled for tile compatibility and type diversity.",
+    "source": "Generated from the connection bank: verified categories, assembled for tile compatibility and type diversity.",
     "categories": [
       {
         "level": 1,
         "title": "Noncaseating granulomas",
         "explanation": "Each classically forms granulomas without the central necrosis seen in caseating (infectious) granulomas.",
-        "remember": "Noncaseating granulomas point away from infection — think sarcoid, Crohn, beryllium, or a foreign body.",
+        "remember": "Noncaseating granulomas point away from infection. Think sarcoid, Crohn, beryllium, or a foreign body.",
         "connectionType": "pathology",
         "tags": [
           "granuloma",
@@ -526,7 +526,7 @@ const generatedPuzzles = [
         "level": 2,
         "title": "Endoderm-derived tissues",
         "explanation": "Each arises from embryonic endoderm, the germ layer that lines the gut tube and its outgrowths.",
-        "remember": "Endoderm becomes the gut tube and everything that buds off it — liver, pancreas, thyroid, lungs.",
+        "remember": "Endoderm becomes the gut tube and everything that buds off it: liver, pancreas, thyroid, lungs.",
         "connectionType": "anatomy",
         "tags": [
           "embryology",
@@ -556,7 +556,7 @@ const generatedPuzzles = [
         "level": 3,
         "title": "___ triad",
         "explanation": "Each eponym names a classic three-part clinical or pathophysiologic triad.",
-        "remember": "A triad eponym is a memory shortcut — three findings, one diagnosis.",
+        "remember": "A triad eponym is a memory shortcut: three findings, one diagnosis.",
         "connectionType": "language",
         "tags": [
           "eponyms",
@@ -567,19 +567,19 @@ const generatedPuzzles = [
         "items": [
           {
             "term": "Virchow",
-            "why": "Virchow triad — stasis, endothelial injury, hypercoagulability (thrombosis risk factors)."
+            "why": "Virchow triad: stasis, endothelial injury, hypercoagulability (thrombosis risk factors)."
           },
           {
             "term": "Charcot",
-            "why": "Charcot triad — fever, jaundice, RUQ pain (ascending cholangitis)."
+            "why": "Charcot triad: fever, jaundice, RUQ pain (ascending cholangitis)."
           },
           {
             "term": "Beck",
-            "why": "Beck triad — hypotension, JVD, muffled heart sounds (cardiac tamponade)."
+            "why": "Beck triad: hypotension, JVD, muffled heart sounds (cardiac tamponade)."
           },
           {
             "term": "Whipple",
-            "why": "Whipple triad — hypoglycemic symptoms, low glucose, relief with glucose (confirms hypoglycemia's cause)."
+            "why": "Whipple triad: hypoglycemic symptoms, low glucose, relief with glucose (confirms hypoglycemia's cause)."
           }
         ]
       },
@@ -643,13 +643,13 @@ const generatedPuzzles = [
       "terminology"
     ],
     "status": "published",
-    "source": "Generated from the connection bank — verified categories, assembled for tile compatibility and type diversity.",
+    "source": "Generated from the connection bank: verified categories, assembled for tile compatibility and type diversity.",
     "categories": [
       {
         "level": 1,
         "title": "Causes of secondary hypertension",
         "explanation": "Each is an identifiable, potentially reversible cause of hypertension rather than primary (essential) hypertension.",
-        "remember": "Secondary hypertension has a name and a mechanism — always worth screening for it when the picture is atypical.",
+        "remember": "Secondary hypertension has a name and a mechanism. It is always worth screening for when the picture is atypical.",
         "connectionType": "knowledge",
         "tags": [
           "secondary-hypertension",
@@ -679,7 +679,7 @@ const generatedPuzzles = [
         "level": 2,
         "title": "Gq-coupled receptors",
         "explanation": "Each couples to Gq, activating phospholipase C to raise IP3 and intracellular calcium.",
-        "remember": "Gq raises IP3/calcium — α1, H1, V1, and M1 all share this pathway.",
+        "remember": "Gq raises IP3/calcium. α1, H1, V1, and M1 all share this pathway.",
         "connectionType": "mechanism",
         "tags": [
           "G-protein-coupled-receptors",
@@ -710,7 +710,7 @@ const generatedPuzzles = [
         "level": 3,
         "title": "Food/color-based pathology descriptions",
         "explanation": "Each is a memorable food-based descriptor for a specific gross pathology finding.",
-        "remember": "Food-based descriptors are a shortcut to a gross-pathology image — picture the food, then picture the disease.",
+        "remember": "Food-based descriptors are a shortcut to a gross-pathology image. Picture the food, then picture the disease.",
         "connectionType": "visual",
         "tags": [
           "gross-pathology",
@@ -720,19 +720,19 @@ const generatedPuzzles = [
         "items": [
           {
             "term": "Nutmeg liver",
-            "why": "Nutmeg liver — a mottled cut surface from chronic passive congestion, resembling a cut nutmeg seed."
+            "why": "Nutmeg liver: a mottled cut surface from chronic passive congestion, resembling a cut nutmeg seed."
           },
           {
             "term": "Currant jelly stool",
-            "why": "Currant jelly stool — dark red, mucoid stool classically seen in intussusception."
+            "why": "Currant jelly stool is dark red, mucoid stool classically seen in intussusception."
           },
           {
             "term": "Blueberry muffin rash",
-            "why": "Blueberry muffin rash — bluish-purple dermal nodules from extramedullary hematopoiesis in congenital infection."
+            "why": "Blueberry muffin rash: bluish-purple dermal nodules from extramedullary hematopoiesis in congenital infection."
           },
           {
             "term": "Chocolate cyst",
-            "why": "Chocolate cyst — a blood-filled ovarian cyst from endometriosis, so-named for its dark, thickened contents."
+            "why": "Chocolate cyst: a blood-filled ovarian cyst from endometriosis, so-named for its dark, thickened contents."
           }
         ]
       },
@@ -740,7 +740,7 @@ const generatedPuzzles = [
         "level": 4,
         "title": "Starts with \"hyper-\" but produces a LOW value",
         "explanation": "Each condition's name describes what is elevated, but its downstream physiologic effect is a DECREASE in a different measured value.",
-        "remember": "The prefix names what is increased — the physiologic consequence can still be a decrease in something else entirely.",
+        "remember": "The prefix names what is increased. The physiologic consequence can still be a decrease in something else entirely.",
         "connectionType": "meta-wordplay",
         "tags": [
           "acid-base",
@@ -793,13 +793,13 @@ const generatedPuzzles = [
       "nomenclature"
     ],
     "status": "published",
-    "source": "Generated from the connection bank — verified categories, assembled for tile compatibility and type diversity.",
+    "source": "Generated from the connection bank: verified categories, assembled for tile compatibility and type diversity.",
     "categories": [
       {
         "level": 1,
         "title": "Causes of hypokalemia",
         "explanation": "Each lowers serum potassium either by increasing renal or GI losses, or by shifting potassium into cells.",
-        "remember": "Hypokalemia: losing it (renal or GI) or shifting it into cells — insulin is the classic intracellular shift.",
+        "remember": "Hypokalemia: losing it (renal or GI) or shifting it into cells. Insulin is the classic intracellular shift.",
         "connectionType": "knowledge",
         "tags": [
           "hypokalemia",
@@ -858,8 +858,8 @@ const generatedPuzzles = [
       {
         "level": 3,
         "title": "Portal ___",
-        "explanation": "Each term follows \"portal\" in hepatic anatomy/physiology, unlike the eponym-suffix categories — here the shared word comes first.",
-        "remember": "\"Portal\" describes hepatic venous anatomy and its consequences — vein, pressure, triad, and circulation are all connected to it.",
+        "explanation": "Each term follows \"portal\" in hepatic anatomy/physiology, unlike the eponym-suffix categories. Here the shared word comes first.",
+        "remember": "\"Portal\" describes hepatic venous anatomy and its consequences. Vein, pressure, triad, and circulation are all connected to it.",
         "connectionType": "meta-wordplay",
         "tags": [
           "liver-anatomy",
@@ -869,19 +869,19 @@ const generatedPuzzles = [
         "items": [
           {
             "term": "vein",
-            "why": "Portal vein — carries nutrient-rich blood from the gut to the liver."
+            "why": "Portal vein carries nutrient-rich blood from the gut to the liver."
           },
           {
             "term": "hypertension",
-            "why": "Portal hypertension — elevated pressure in the portal venous system, classically from cirrhosis."
+            "why": "Portal hypertension is elevated pressure in the portal venous system, classically from cirrhosis."
           },
           {
             "term": "triad",
-            "why": "Portal triad — the bile duct, hepatic artery, and portal vein found together in each hepatic lobule."
+            "why": "Portal triad: the bile duct, hepatic artery, and portal vein found together in each hepatic lobule."
           },
           {
             "term": "circulation",
-            "why": "Portal circulation — a venous system draining into a second capillary bed instead of directly to the heart."
+            "why": "Portal circulation is a venous system draining into a second capillary bed instead of directly to the heart."
           }
         ]
       },
@@ -889,7 +889,7 @@ const generatedPuzzles = [
         "level": 4,
         "title": "Diseases named after geographic locations",
         "explanation": "Each disease is named for the geographic location where it was first identified or is classically associated with, not for a person or a mechanism.",
-        "remember": "A disease named for a place tells you nothing about its biology — only about geography and discovery history.",
+        "remember": "A disease named for a place tells you nothing about its biology, only about geography and discovery history.",
         "connectionType": "language",
         "tags": [
           "microbiology",

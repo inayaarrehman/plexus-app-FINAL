@@ -90,7 +90,7 @@ export function assemblePuzzleFromCategories(categories, meta) {
   const byDifficulty = {}
   categories.forEach((c) => {
     if (byDifficulty[c.difficulty]) {
-      throw new Error(`two categories share difficulty "${c.difficulty}" — need exactly one per tier`)
+      throw new Error(`two categories share difficulty "${c.difficulty}"; need exactly one per tier`)
     }
     byDifficulty[c.difficulty] = c
   })
@@ -127,7 +127,7 @@ export function assemblePuzzleFromCategories(categories, meta) {
     systems: allSystems,
     topicTags: [...new Set(categories.flatMap((c) => c.tags))],
     status: 'published',
-    source: 'Generated from the connection bank — verified categories, assembled for tile compatibility and type diversity.',
+    source: 'Generated from the connection bank: verified categories, assembled for tile compatibility and type diversity.',
     categories: puzzleCategories,
   }
 }

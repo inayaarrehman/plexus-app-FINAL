@@ -314,7 +314,7 @@ check('Game shows "Perfect connection." (not a rotating phrase) on a zero-mistak
   return html
 })
 
-check('Game share text uses the app\'s own shape language, not NYT Connections\' colored-square emoji grid', () => {
+check('Game results show four Plexus group motifs (no shape glyphs, no NYT square grid)', () => {
   const p = dailyPuzzles[1]
   const tiles = buildTiles(p)
   const key = 'smoketest-sharetext'
@@ -349,7 +349,16 @@ check('Game share text uses the app\'s own shape language, not NYT Connections\'
   if (html.includes('🟨') || html.includes('🟩') || html.includes('🟦') || html.includes('🟪')) {
     throw new Error('share text must not reuse the NYT Connections colored-square emoji grid')
   }
-  if (!html.includes('PLEXUS')) throw new Error('expected the share text/aria-label to identify the app by its own name')
+  const rows = (html.match(/group-motif group-motif-row/g) || []).length
+  if (rows !== 4) throw new Error(`expected four mini-Plexus result rows, found ${rows}`)
+  if (!html.includes('4 of 4 connections found')) throw new Error('expected the results stack to say how many connections were found')
+  const badges = (html.match(/strand-badge strand-motif/g) || []).length
+  if (badges !== 4) throw new Error(`expected a motif badge on each solved strand, found ${badges}`)
+  for (const m of ['motif-chain', 'motif-hub', 'motif-cluster', 'motif-mesh']) {
+    if (!html.includes(m)) throw new Error(`expected the ${m} pattern`)
+  }
+  if (/[●▲◆■]/.test(html) || html.includes('result-square')) throw new Error('old shape glyphs must be gone')
+  if (!html.includes('View Connections')) throw new Error('expected "View Connections"')
   return html
 })
 

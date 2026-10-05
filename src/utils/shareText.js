@@ -1,21 +1,12 @@
-// Builds the spoiler-free share text. Keeps the useful mechanic shared by
-// most grouping-puzzle games (one line per guess, so a friend can see the
-// attempt pattern without seeing the answers) but renders it in the app's
-// own visual language rather than NYT Connections' colored-square emoji
-// grid: our own four shapes (matching the same shape/difficulty pairing
-// used on-screen, not colors — this also means the shared text is legible
-// to a color-blind recipient and renders identically everywhere, since
-// emoji-square color can vary by platform/font), our own header format,
-// and a footer line NYT's format doesn't have at all.
-import { DIFFICULTY } from '../data/constants.js'
-
-const SHAPE_BY_LEVEL = DIFFICULTY.reduce((acc, d) => {
-  acc[d.level] = d.shape
-  return acc
-}, {})
+// Builds the spoiler-free share text: one line per guess, so a friend sees
+// the attempt pattern without the answers. Each concept is a node, coloured
+// by its connection group with the four round emoji that render reliably
+// everywhere (burnt coral, peacock, sapphire, amethyst). The richer node
+// patterns live in the app; plain text stays compact and copyable.
+const NODE_BY_LEVEL = { 1: '🟠', 2: '🟢', 3: '🔵', 4: '🟣' }
 
 function guessRows(guessLog) {
-  return guessLog.map((g) => g.levels.map((lv) => SHAPE_BY_LEVEL[lv] || '?').join(' ')).join('\n')
+  return guessLog.map((g) => g.levels.map((lv) => NODE_BY_LEVEL[lv] || '⚪').join('')).join('\n')
 }
 
 export function buildShareText({ isDaily, dailyNumber, puzzleTitle, shareLabel, guessLog, won, mistakes, dailyStreak }) {

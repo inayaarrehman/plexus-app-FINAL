@@ -17,13 +17,13 @@ const dailyPuzzles = [
     systems: ['Mixed / Step Review'],
     topicTags: ['JVP', 'HLA associations', 'QT prolongation', 'granulomas'],
     status: 'published',
-    source: 'Internal question bank — board-review style',
+    source: 'Internal question bank, board-review style',
     categories: [
       {
         level: 1,
         title: 'Causes of elevated JVP',
         explanation:
-          "Anything that backs blood up into the right atrium — pump failure, valve failure, or a pericardium that won't let the heart fill — shows up as a distended neck vein.",
+          "Anything that backs blood up into the right atrium (pump failure, valve failure, or a pericardium that won't let the heart fill) shows up as a distended neck vein.",
         remember: 'Elevated JVP = something is stopping blood from getting into (or through) the right heart.',
         items: [
           { term: 'Right heart failure', why: 'Systemic venous congestion backs up into the jugular veins.' },
@@ -37,7 +37,7 @@ const dailyPuzzles = [
         title: 'HLA-associated diseases',
         explanation:
           'Each of these autoimmune/immune-mediated conditions has a well-known HLA allele association that shows up constantly on exams.',
-        remember: 'HLA associations are board-favorite pairings — B27, DQ2/8, DR3/4, and DQB1*06:02 are the ones to know.',
+        remember: 'HLA associations are board-favorite pairings. B27, DQ2/8, DR3/4, and DQB1*06:02 are the ones to know.',
         items: [
           { term: 'Ankylosing spondylitis', why: 'Strongly linked to HLA-B27.' },
           { term: 'Celiac disease', why: 'Linked to HLA-DQ2/DQ8.' },
@@ -49,7 +49,7 @@ const dailyPuzzles = [
         level: 3,
         title: 'Prolong the QT interval',
         explanation:
-          'All four slow ventricular repolarization — through drugs, electrolytes, or inherited channel defects — and share the same downstream risk: torsades de pointes.',
+          'All four slow ventricular repolarization (through drugs, electrolytes, or inherited channel defects) and share the same downstream risk: torsades de pointes.',
         remember: 'Anything that delays repolarization (drug, lyte, or gene) prolongs QT and risks torsades.',
         items: [
           { term: 'Amiodarone', why: 'A class III antiarrhythmic that blocks potassium channels, prolonging repolarization.' },
@@ -62,8 +62,8 @@ const dailyPuzzles = [
         level: 4,
         title: 'Diseases with granulomas',
         explanation:
-          "Granulomas are the immune system's way of walling off something it can't clear — an organism, foreign material, or in autoimmune disease, itself.",
-        remember: 'Granulomas are not just TB — sarcoid, Crohn, and GPA all wall things off too.',
+          "Granulomas are the immune system's way of walling off something it can't clear: an organism, foreign material, or in autoimmune disease, itself.",
+        remember: 'Granulomas are not just TB. Sarcoid, Crohn, and GPA all wall things off too.',
         items: [
           { term: 'Sarcoidosis', why: 'Non-caseating granulomas, classically pulmonary/hilar.' },
           { term: 'Tuberculosis', why: 'Caseating granulomas containing acid-fast bacilli.' },
@@ -82,14 +82,14 @@ const dailyPuzzles = [
     systems: ['Mixed / Step Review'],
     topicTags: ['inclusion bodies', 'portal system', 'wordplay'],
     status: 'published',
-    source: 'Internal question bank — board-review style',
+    source: 'Internal question bank, board-review style',
     categories: [
       {
         level: 1,
         title: 'Descriptor involves an animal',
         explanation:
-          'Medicine borrows animal imagery whenever a finding looks like one — an odd but effective way to remember a distinctive exam or pathology finding.',
-        remember: 'When a finding gets an animal nickname, picture the animal — it usually nails the finding.',
+          'Medicine borrows animal imagery whenever a finding looks like one. It is an odd but effective way to remember a distinctive exam or pathology finding.',
+        remember: 'When a finding gets an animal nickname, picture the animal. It usually nails the finding.',
         items: [
           { term: 'Butterfly rash', why: 'The malar rash of lupus, shaped like a butterfly across the cheeks and nose.' },
           { term: 'Buffalo hump', why: 'Dorsocervical fat pad of Cushing syndrome.' },
@@ -101,8 +101,8 @@ const dailyPuzzles = [
         level: 2,
         title: '"___ bodies" (eponymous inclusions)',
         explanation:
-          'Pathologists love naming inclusion bodies after whoever first described them — each is a microscopic signature of one specific disease.',
-        remember: "A named 'body' on a slide is shorthand for one disease — learn the pairing, not the person.",
+          'Pathologists love naming inclusion bodies after whoever first described them. Each is a microscopic signature of one specific disease.',
+        remember: "A named 'body' on a slide is shorthand for one disease. Learn the pairing, not the person.",
         items: [
           { term: 'Lewy', why: 'Alpha-synuclein inclusions in Parkinson disease and Lewy body dementia.' },
           { term: 'Aschoff', why: 'Granulomas found in the myocardium in rheumatic fever.' },
@@ -114,7 +114,7 @@ const dailyPuzzles = [
         level: 3,
         title: 'Portal ___',
         explanation:
-          "'Portal' describes the liver's unique blood-supply system — a second capillary bed between two veins — and everything downstream of it when that system backs up.",
+          "'Portal' describes the liver's unique blood-supply system (a second capillary bed between two veins) and everything downstream of it when that system backs up.",
         remember: "'Portal' always points back to blood flowing gut to liver, and what happens when that flow is blocked.",
         items: [
           { term: 'Hypertension', why: 'Elevated pressure in the portal venous system, usually from cirrhosis.' },
@@ -127,8 +127,8 @@ const dailyPuzzles = [
         level: 4,
         title: 'Starts with "hyper" but causes a LOW value',
         explanation:
-          "Each condition's name describes what's overactive — the hormone, drive, or process — not the lab value that results from it.",
-        remember: "Don't let the prefix fool you — 'hyper-' describes the driver, not always the number it produces.",
+          "Each condition's name describes what's overactive (the hormone, drive, or process), not the lab value that results from it.",
+        remember: "Don't let the prefix fool you: 'hyper-' describes the driver, not always the number it produces.",
         items: [
           { term: 'Hyperventilation', why: 'Blowing off CO2 faster than it is produced causes hypocapnia.' },
           { term: 'Hyperparathyroidism', why: 'Excess PTH increases renal phosphate wasting, causing hypophosphatemia.' },
@@ -147,25 +147,25 @@ const dailyPuzzles = [
     systems: ['Mixed / Step Review'],
     topicTags: ['eponymous triads', 'imaging patterns', 'paraneoplastic syndromes'],
     status: 'published',
-    source: 'Internal question bank — board-review style',
+    source: 'Internal question bank, board-review style',
     categories: [
       {
         level: 1,
         title: 'Eponymous medical triads',
         explanation: 'Each triad is a memorable three-finding pattern pointing to one specific diagnosis.',
-        remember: 'A named triad is a diagnosis shortcut — learn the three findings as a set, not separately.',
+        remember: 'A named triad is a diagnosis shortcut. Learn the three findings as a set, not separately.',
         items: [
-          { term: "Charcot's triad", why: 'Fever, jaundice, and RUQ pain — ascending cholangitis.' },
-          { term: "Beck's triad", why: 'Hypotension, JVD, and muffled heart sounds — tamponade.' },
-          { term: "Virchow's triad", why: 'Stasis, endothelial injury, and hypercoagulability — thrombosis risk.' },
-          { term: "Cushing's triad", why: 'Hypertension, bradycardia, and irregular respirations — rising ICP.' },
+          { term: "Charcot's triad", why: 'Fever, jaundice, and RUQ pain point to ascending cholangitis.' },
+          { term: "Beck's triad", why: 'Hypotension, JVD, and muffled heart sounds point to tamponade.' },
+          { term: "Virchow's triad", why: 'Stasis, endothelial injury, and hypercoagulability raise thrombosis risk.' },
+          { term: "Cushing's triad", why: 'Hypertension, bradycardia, and irregular respirations signal rising ICP.' },
         ],
       },
       {
         level: 2,
         title: 'Classic imaging descriptions',
         explanation:
-          'Radiology loves a good visual metaphor — each phrase is shorthand for a specific, recognizable imaging pattern.',
+          'Radiology loves a good visual metaphor. Each phrase is shorthand for a specific, recognizable imaging pattern.',
         remember: 'Learn the picture the phrase paints, and the diagnosis usually follows.',
         items: [
           { term: 'String of pearls', why: "Dilated ovarian follicles arranged around the ovary's edge in PCOS." },
@@ -179,7 +179,7 @@ const dailyPuzzles = [
         title: 'Eponymous cells in pathology',
         explanation:
           'Each named cell type is a microscopic fingerprint that helps pathologists pin down a specific disease at a glance.',
-        remember: 'A named giant/inclusion cell is pattern recognition at the microscope — learn cell shape, then disease.',
+        remember: 'A named giant/inclusion cell is pattern recognition at the microscope. Learn cell shape, then disease.',
         items: [
           { term: 'Reed-Sternberg cells', why: "Binucleate 'owl-eye' cells diagnostic of Hodgkin lymphoma." },
           { term: 'Anitschkow cells', why: 'Activated macrophages with caterpillar-shaped nuclei, found in Aschoff bodies in rheumatic fever.' },
@@ -191,8 +191,8 @@ const dailyPuzzles = [
         level: 4,
         title: 'Paraneoplastic syndromes',
         explanation:
-          "Tumors can act at a distance — secreting hormone-like substances or triggering autoimmunity — causing symptoms unrelated to the tumor's physical location.",
-        remember: 'Lung cancer is the paraneoplastic overachiever — know which cell type causes which syndrome.',
+          "Tumors can act at a distance, secreting hormone-like substances or triggering autoimmunity, and cause symptoms unrelated to the tumor's physical location.",
+        remember: 'Lung cancer is the paraneoplastic overachiever. Know which cell type causes which syndrome.',
         items: [
           { term: 'Lambert-Eaton myasthenic syndrome', why: 'Antibodies against presynaptic calcium channels, classically with small cell lung cancer.' },
           { term: 'SIADH', why: 'Ectopic ADH secretion, classically from small cell lung cancer.' },

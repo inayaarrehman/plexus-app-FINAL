@@ -72,6 +72,15 @@
   --node-plum: var(--jewel-plum);
   --node-rim: transparent;
 
+  /* Connection-group colours (the four groups in every puzzle). Jewel
+     families tuned a step richer: burnt coral, peacock, sapphire, amethyst.
+     Base values are for cream surfaces (strand cards, tiles); inside a room
+     they resolve to the lifted node tints so they stay visible there. */
+  --group-coral: #c25b40;
+  --group-peacock: #0b7480;
+  --group-sapphire: #2c57b0;
+  --group-amethyst: #7848b2;
+
   /* Original 4-tier difficulty / brand palette — coral/aqua/cobalt/plum,
      not NYT's yellow/green/blue/purple. These exact hexes are kept in
      sync with src/data/constants.js's DIFFICULTY.color (used for
@@ -4706,6 +4715,10 @@ body.bg-home, body.env-daily, body.env-systems, body.env-challenge, body.env-rev
   --node-cobalt: #7a9ff0;
   --node-plum: #b083e4;
   --node-rim: color-mix(in srgb, var(--room-text) 88%, transparent);
+  --group-coral: var(--node-terracotta);
+  --group-peacock: var(--node-peacock);
+  --group-sapphire: var(--node-cobalt);
+  --group-amethyst: var(--node-plum);
   --shadow-sm: 0 1px 2px rgba(10, 6, 20, 0.22);
   --shadow-md: 0 6px 18px rgba(10, 6, 20, 0.3);
 }
@@ -4721,6 +4734,10 @@ body .strand,
   --node-cobalt: var(--jewel-cobalt);
   --node-plum: var(--jewel-plum);
   --node-rim: transparent;
+  --group-coral: #c25b40;
+  --group-peacock: #0b7480;
+  --group-sapphire: #2c57b0;
+  --group-amethyst: #7848b2;
   --difficulty-easy: var(--jewel-terracotta-ink);
   --difficulty-medium: var(--jewel-peacock-ink);
   --difficulty-hard: var(--jewel-cobalt);
@@ -5083,3 +5100,58 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 @media (max-width: 360px) {
   .app-nav-item { white-space: nowrap; font-size: 0.76rem; }
 }
+
+/* ==================================================================
+   GROUP MOTIFS
+   Four nodes per group; the way they connect (chain, hub, cluster, mesh)
+   plus colour identifies the group. Links are thin and lighter than the
+   nodes; on a room each node is set in the ivory rim like all node art.
+   ================================================================== */
+.group-motif { display: inline-block; flex-shrink: 0; overflow: visible; vertical-align: middle; }
+.motif-link { fill: none; stroke: var(--motif-color); stroke-width: 1.7; stroke-linecap: round; opacity: 0.72; }
+.group-motif-row .motif-link { stroke-width: 1.8; }
+.motif-node { fill: var(--motif-color); stroke: var(--node-rim, transparent); stroke-width: 1.1; }
+.group-motif.is-missed .motif-node { fill: none; stroke: var(--motif-color); stroke-width: 1.4; opacity: 0.75; }
+
+/* Assembly on solve: nodes appear, then the links draw. ~280ms, no bounce. */
+.group-motif.is-assembling .motif-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: motif-node-in 140ms ease-out calc(var(--i) * 30ms) both;
+}
+.group-motif.is-assembling .motif-link {
+  stroke-dasharray: 1;
+  animation: motif-link-draw 150ms ease-out calc(120ms + var(--i) * 25ms) both;
+}
+@keyframes motif-node-in { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: scale(1); } }
+@keyframes motif-link-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+/* Solved strand header: the motif replaces the old coloured square. */
+.strand-badge.strand-motif {
+  width: 26px;
+  height: 26px;
+  background: none;
+  border-radius: 0;
+  color: inherit;
+}
+
+/* Concept separators: each concept is a small node; on wide layouts a short
+   link joins it to the next, in the group colour. */
+.strand-dot { width: 8px; height: 8px; }
+.strand-node + .strand-node::before { width: 12px; height: 1.6px; opacity: 0.5; }
+
+/* Results: four stacked mini-Plexuses, one per connection group. */
+.result-motifs {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 16px;
+  padding: 0;
+  list-style: none;
+}
+.result-motifs li { display: block; line-height: 0; }
+
+/* View connections list and the Home recap use the badge motif too. */
+.accordion-level .group-motif { margin-right: 6px; vertical-align: -5px; }
+.recap-strand-row .group-motif { margin-right: 2px; }

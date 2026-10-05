@@ -32,13 +32,13 @@ function PuzzleDetail({ puzzle }) {
           {puzzle.date ? ` (${puzzle.date})` : ''}
         </span>
         <span>
-          <strong>Systems:</strong> {(puzzle.systems || []).join(', ') || '—'}
+          <strong>Systems:</strong> {(puzzle.systems || []).join(', ') || 'none'}
         </span>
         <span>
-          <strong>Tags:</strong> {(puzzle.topicTags || []).join(', ') || '—'}
+          <strong>Tags:</strong> {(puzzle.topicTags || []).join(', ') || 'none'}
         </span>
         <span>
-          <strong>Source:</strong> {puzzle.source || '—'}
+          <strong>Source:</strong> {puzzle.source || 'none'}
         </span>
       </div>
 
@@ -60,7 +60,7 @@ function PuzzleDetail({ puzzle }) {
           .map((cat, i) => (
             <div className="dev-category" key={i} style={{ borderLeftColor: levelColor(cat.level) }}>
               <div className="dev-category-title" style={{ color: levelColor(cat.level) }}>
-                {DIFFICULTY.find((d) => d.level === cat.level)?.name} — {cat.title}
+                {DIFFICULTY.find((d) => d.level === cat.level)?.name}: {cat.title}
               </div>
               {(cat.connectionType || cat.bankCategoryId) && (
                 <p className="dev-category-sub">
@@ -103,23 +103,23 @@ function BankCategoryDetail({ category }) {
           <strong>Type:</strong> {category.connectionType}
         </span>
         <span>
-          <strong>Primary system:</strong> {category.primarySystem || '—'}
+          <strong>Primary system:</strong> {category.primarySystem || 'none'}
         </span>
         <span>
-          <strong>Secondary systems:</strong> {(category.secondarySystems || []).join(', ') || '—'}
+          <strong>Secondary systems:</strong> {(category.secondarySystems || []).join(', ') || 'none'}
         </span>
         <span>
-          <strong>All systems:</strong> {(category.systems || []).join(', ') || '—'}
+          <strong>All systems:</strong> {(category.systems || []).join(', ') || 'none'}
         </span>
         <span>
-          <strong>Tags:</strong> {(category.tags || []).join(', ') || '—'}
+          <strong>Tags:</strong> {(category.tags || []).join(', ') || 'none'}
         </span>
       </div>
 
       {category.source && (
         <p className="dev-category-sub">
           Source: {category.source.sourceTitle}
-          {category.source.sourceURL ? ` — ${category.source.sourceURL}` : ''}
+          {category.source.sourceURL ? `, ${category.source.sourceURL}` : ''}
           {category.source.dateReviewed ? ` (reviewed ${category.source.dateReviewed})` : ''}
         </p>
       )}
@@ -199,7 +199,7 @@ function DailyPreview() {
     <>
       <p className="section-sub">
         Ranked candidate Dailies assembled from verified categories only. Runtime Daily selection stays deterministic by
-        date — this is the authoring/curation layer.
+        date. This is the authoring and curation layer.
       </p>
       <div style={{ display: 'flex', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
         <button className="secondary-btn" onClick={regenerate}>
@@ -264,7 +264,7 @@ function DailyPreview() {
             {ordered.map((cat, i) => (
               <div className="dev-category" key={i} style={{ borderLeftColor: levelColor(cat.level) }}>
                 <div className="dev-category-title" style={{ color: levelColor(cat.level) }}>
-                  {DIFFICULTY.find((d) => d.level === cat.level)?.name} — {cat.title}
+                  {DIFFICULTY.find((d) => d.level === cat.level)?.name}: {cat.title}
                 </div>
                 <p className="dev-category-sub">
                   archetype: {categoryArchetype(cat)} · type: {cat.connectionType} · from: {cat.bankCategoryId}
@@ -323,7 +323,7 @@ function DailyPreview() {
           return (
             <div className="dev-category" key={mode}>
               <div className="dev-category-title">
-                {mode} — {info.status} ({info.distinctValid} distinct valid)
+                {mode}: {info.status} ({info.distinctValid} distinct valid)
               </div>
               {rej && <p className="dev-category-sub">top rejections: {rej}</p>}
             </div>
@@ -336,7 +336,7 @@ function DailyPreview() {
       </h2>
       <p className="section-sub">
         Verified Hard/Expert categories that read as cross-domain (a conservative flag for curator opt-in to the new{' '}
-        <code>plexus</code> type — content is never relabelled automatically).
+        <code>plexus</code> type. Content is never relabelled automatically).
       </p>
       <div className="dev-categories">
         {getPlexusCandidates().map((c) => (
@@ -416,7 +416,7 @@ export default function DevViewer() {
   return (
     <div className="app-shell dev-viewer">
       <h1 className="dev-heading">Dev Viewer</h1>
-      <p className="section-sub">Internal only — not linked from app navigation.</p>
+      <p className="section-sub">Internal only. Not linked from app navigation.</p>
 
       <div className="dev-tabs">
         <button className={`dev-tab ${tab === 'puzzles' ? 'active' : ''}`} onClick={() => setTab('puzzles')}>

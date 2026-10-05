@@ -62,7 +62,7 @@ systemPuzzles.forEach((puzzle) => {
     // so primarySystem is unambiguous. If that ever changes, this will
     // need the same manual primarySystem review connectionBank.js's
     // hand-authored multi-system categories already got.
-    const baseNotes = `Migrated from hand-written puzzle "${puzzle.title}" (${puzzle.id}) — already reviewed content, now a standalone bank category so the assembler can recombine it freely.`
+    const baseNotes = `Migrated from hand-written puzzle "${puzzle.title}" (${puzzle.id}). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely.`
     const entry = {
       id: `bank-migrated-${puzzle.id}-L${category.level}`,
       title: category.title,
