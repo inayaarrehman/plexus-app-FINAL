@@ -1003,6 +1003,44 @@ console.log('\n[32] Daily board changes every day (regression: not stuck on one 
 }
 
 // ---------------------------------------------------------------
+console.log('\n[33] Cloud progress merge is monotonic (never loses a streak)')
+{
+  const { mergeStats, mergeDailyHistory, mergeChallenge, mergeSnapshots } = await import('../src/utils/progressSync.js')
+
+  // Two devices: one has a longer historical max, the other has the more
+  // recent (and higher) current streak. Merge must keep the best of each.
+  const deviceA = { maxStreak: 12, currentStreak: 3, lastCompletedDailyKey: '2026-10-01', gamesPlayed: 20, gamesWon: 18, maxPerfectStreak: 5, currentPerfectStreak: 1, mistakeDistribution: [10, 4, 2, 1, 3] }
+  const deviceB = { maxStreak: 7, currentStreak: 6, lastCompletedDailyKey: '2026-10-04', gamesPlayed: 15, gamesWon: 14, maxPerfectStreak: 3, currentPerfectStreak: 4, mistakeDistribution: [12, 2, 1, 0, 0] }
+  const m = mergeStats(deviceA, deviceB)
+  assert(m.maxStreak === 12, `merge keeps the higher max streak (got ${m.maxStreak})`)
+  assert(m.currentStreak === 6 && m.lastCompletedDailyKey === '2026-10-04', 'current streak follows the most recent day')
+  assert(m.gamesPlayed === 20 && m.gamesWon === 18, 'lifetime counts never shrink')
+  assert(m.mistakeDistribution[0] === 12, 'mistake distribution is element-wise max')
+
+  // Symmetry of the protective guarantee: neither order can reduce a max.
+  const m2 = mergeStats(deviceB, deviceA)
+  assert(m2.maxStreak === 12 && m2.currentStreak === 6, 'merge is order-independent for the protected fields')
+
+  // Daily history union: completed beats incomplete; fewer mistakes wins.
+  const hA = { '2026-10-01': { date: '2026-10-01', completed: true, won: true, mistakes: 2 }, '2026-10-02': { date: '2026-10-02', completed: false } }
+  const hB = { '2026-10-02': { date: '2026-10-02', completed: true, won: true, mistakes: 1 }, '2026-10-03': { date: '2026-10-03', completed: true, won: true, mistakes: 0 } }
+  const hm = mergeDailyHistory(hA, hB)
+  assert(Object.keys(hm).length === 3, 'daily history is unioned across devices')
+  assert(hm['2026-10-02'].completed && hm['2026-10-02'].mistakes === 1, 'the better (completed, fewer mistakes) daily entry wins')
+
+  // Challenge bests take the max; history de-dupes and caps.
+  const cm = mergeChallenge({ personalBest: 800, history: [{ completedAt: 'a', score: 800 }] }, { personalBest: 950, history: [{ completedAt: 'a', score: 800 }, { completedAt: 'b', score: 950 }] })
+  assert(cm.personalBest === 950, 'challenge personal best takes the max')
+  assert(cm.history.length === 2, 'challenge history de-duplicates by completedAt')
+
+  // Whole-snapshot merge never lowers the headline streak, in either direction.
+  const snapA = { stats: deviceA, dailyHistory: hA, challenge: {} }
+  const snapB = { stats: deviceB, dailyHistory: hB, challenge: {} }
+  const sm = mergeSnapshots(snapA, snapB)
+  assert(sm.stats.maxStreak >= Math.max(deviceA.maxStreak, deviceB.maxStreak), 'snapshot merge preserves the highest max streak')
+}
+
+// ---------------------------------------------------------------
 console.log(`\n${'='.repeat(40)}`)
 if (failures === 0) {
   console.log(`ALL CHECKS PASSED (${allPuzzles.length} puzzles validated: ${dailyPuzzles.length} daily, ${systemPuzzles.length} system)\n`)

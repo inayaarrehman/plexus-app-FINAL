@@ -9,7 +9,12 @@ import Race from './components/Race.jsx'
 import { raceCodeFromHash } from './utils/raceEngine.js'
 import AppNav from './components/AppNav.jsx'
 import InstallPrompt from './components/InstallPrompt.jsx'
+import AuthModal from './components/AuthModal.jsx'
 import HowToModal from './components/HowToModal.jsx'
+import { isSupabaseConfigured } from './lib/supabaseClient.js'
+import { onAuthChange } from './lib/auth.js'
+import { syncProgress, pushProgress } from './lib/progressRepo.js'
+import { snapshotLocal } from './utils/progressSync.js'
 import StatsModal from './components/StatsModal.jsx'
 import DevViewer from './components/DevViewer.jsx'
 import BrandMark from './components/BrandMark.jsx'
@@ -132,7 +137,36 @@ export default function App() {
   const [raceInitialCode, setRaceInitialCode] = useState('')
   const [showHowTo, setShowHowTo] = useState(false)
   const [showStats, setShowStats] = useState(false)
+  const [showAccount, setShowAccount] = useState(false)
   const [stats, setStats] = useState(loadStats())
+  const supaConfigured = isSupabaseConfigured()
+
+  // Pull the signed-in player's cloud progress, merge it with what's on this
+  // device (monotonic — never loses a streak), and refresh the UI. Runs on load
+  // if already signed in, and on every sign-in / sign-out.
+  const resyncProgress = () => {
+    if (!supaConfigured) return
+    syncProgress()
+      .then((merged) => {
+        if (merged) {
+          setStats(loadStats())
+          setRefreshTick((t) => t + 1)
+        }
+      })
+      .catch(() => {
+        /* best-effort — offline / not signed in is fine */
+      })
+  }
+
+  useEffect(() => {
+    if (!supaConfigured) return undefined
+    resyncProgress()
+    const off = onAuthChange(() => resyncProgress())
+    return () => {
+      if (typeof off === 'function') off()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [supaConfigured])
   const [refreshTick, setRefreshTick] = useState(0)
   const [systemPlayNotice, setSystemPlayNotice] = useState(null)
 
@@ -335,6 +369,9 @@ export default function App() {
       setStats(updated)
     }
     setRefreshTick((t) => t + 1)
+    // Back up the just-updated progress to the cloud (no-op for guests / when
+    // Supabase isn't configured). Fire-and-forget — never blocks the UI.
+    if (supaConfigured) pushProgress(snapshotLocal())
   }
 
   if (isDevRoute) {
@@ -460,9 +497,11 @@ export default function App() {
         }}
         onOpenStats={() => setShowStats(true)}
         onOpenHowTo={() => setShowHowTo(true)}
+        onOpenAccount={supaConfigured ? () => setShowAccount(true) : null}
       />
       {showHowTo && <HowToModal onClose={() => setShowHowTo(false)} />}
       {showStats && <StatsModal stats={stats} onClose={() => setShowStats(false)} />}
+      {showAccount && <AuthModal onClose={() => setShowAccount(false)} onAuthChanged={resyncProgress} />}
       <InstallPrompt />
     </div>
   )

@@ -102,3 +102,34 @@ In `#dev` → **Editor**:
 Regular users can only read public verified content + published dailies and
 manage their own profile/results/races. Editing concepts, connections, sources
 and official daily puzzles requires `profiles.is_admin = true`, enforced by RLS.
+
+---
+
+## Accounts + cloud streaks (migration 0003)
+
+This makes a player's **streak, daily history, and challenge bests** follow them
+across devices instead of living only in one browser. Playing stays optional —
+guests still play on localStorage; signing in just backs progress up.
+
+### 1. Run the migration
+Supabase → **SQL Editor → New query** → paste all of
+`supabase/migrations/0003_profiles_progress.sql` → **Run**. Creates
+`user_progress` (one JSON row per user) with row-level security so each player
+can only touch their own row. (You do **not** need `0002_daily_race.sql`.)
+
+### 2. Make sign-up frictionless (recommended for now)
+Supabase → **Authentication → Providers → Email** is on by default. For the
+smoothest early experience, Supabase → **Authentication → Sign In / Providers**
+→ turn **"Confirm email" OFF** so new players can sign in immediately without a
+confirmation email. (You can turn it back on later once you set up a custom
+email sender; the default Supabase email has strict rate limits.)
+
+### 3. Deploy and test
+After deploying, open the app → **Account** (top of the home screen):
+- **Create account** with an email + password → you're signed in, and a
+  `user_progress` row appears in **Table Editor → user_progress**.
+- Play the Daily, then sign in with the same account in a different browser →
+  your streak and history come across.
+
+Nothing about guest play changes, and the merge is monotonic — syncing can only
+protect a streak, never shrink it.

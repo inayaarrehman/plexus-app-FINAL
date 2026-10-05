@@ -23,6 +23,7 @@ export default function Home({
   onStartRace,
   onOpenStats,
   onOpenHowTo,
+  onOpenAccount,
 }) {
   const todayLabel = new Date().toLocaleDateString(undefined, {
     weekday: 'long',
@@ -58,6 +59,11 @@ export default function Home({
         <button className="text-link home-topbar-link" onClick={onOpenHowTo}>
           How to play
         </button>
+        {onOpenAccount && (
+          <button className="text-link home-topbar-link" onClick={onOpenAccount}>
+            Account
+          </button>
+        )}
       </div>
 
       <section className="home-section home-hero-section">

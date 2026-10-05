@@ -121,6 +121,17 @@ export function recordDailyHistory(entry) {
   return history
 }
 
+// Replace the whole daily-history map (used by cloud sync after merging the
+// local and cloud histories). Best-effort, like every other write here.
+export function setDailyHistory(history) {
+  try {
+    localStorage.setItem(DAILY_HISTORY_KEY, JSON.stringify(history || {}))
+  } catch {
+    // ignore
+  }
+  return history
+}
+
 // ---------------------------------------------------------------------
 // System Library progress. Tracks per-puzzle and per-system aggregates,
 // plus which system was played most recently (for "Continue Studying").
@@ -447,6 +458,12 @@ function saveChallengeStats(stats) {
 //            conceptTagsMissed, organSystemsMissed, highestMultiplier, completedAt }
 // Returns { stats, isNewBest } so the results screen can show "New personal
 // best" without recomputing anything itself.
+// Replace the whole challenge-stats object (used by cloud sync after merging).
+export function replaceChallengeStats(stats) {
+  saveChallengeStats({ ...defaultChallengeStats(), ...(stats || {}) })
+  return getChallengeStats()
+}
+
 export function recordChallengeResult(summary) {
   const stats = getChallengeStats()
   const isNewBest = summary.score > stats.personalBest
