@@ -4087,3 +4087,166 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
 .auth-error { color: var(--difficulty-easy); font-size: 0.84rem; margin: 0; }
 .auth-notice { color: var(--difficulty-medium); font-size: 0.84rem; margin: 0; }
 .auth-guest-note { font-size: 0.78rem; color: var(--text-dim); text-align: center; margin: 2px 0 0; }
+
+/* ================================================================== */
+/* Home redesign — composed hero + editorial mode rows with node art. */
+/* Keeps the lavender room; adds designed presence without cards.      */
+/* ================================================================== */
+
+/* Deliberate top navigation: brand anchored left, links grouped right. */
+.home-nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-1) 0 var(--space-6);
+}
+.home-nav-brand { display: inline-flex; align-items: center; gap: 8px; }
+.home-nav-brand .brand-mark { color: var(--text); flex-shrink: 0; }
+.home-nav-wordmark {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.home-nav-links { display: inline-flex; align-items: center; gap: var(--space-4); flex-shrink: 0; }
+.home-nav-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--home-text-dim);
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+.home-nav-link:hover { color: var(--text); }
+
+/* On phones the Plexus wordmark in the nav gives way to just the node mark so
+   the three links always fit on one line; the hero's "Today's Plexus" carries
+   the name. The wordmark returns on wider screens. */
+@media (max-width: 479px) {
+  .home-nav-wordmark { display: none; }
+  .home-nav-links { gap: var(--space-4); }
+}
+
+/* Hero: the Daily as the composed centrepiece. */
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-4) 0 var(--space-7);
+}
+.home-hero > *:not(.hero-network) { position: relative; z-index: 1; }
+.home-hero-head { margin-bottom: var(--space-4); }
+.home-sig,
+.home-sig-btn { display: inline-block; line-height: 0; margin-bottom: var(--space-3); }
+.home-sig-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-med);
+}
+.home-sig-btn:hover { transform: scale(1.06); }
+.home-sig-btn:active { transform: scale(0.94); }
+.home-hero-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--home-text-dim);
+  margin: 0 0 8px;
+}
+.home-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 9vw, 3rem);
+  line-height: 1.03;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  color: var(--text);
+  margin: 0;
+}
+.home-hero-sub {
+  color: var(--home-text-dim);
+  font-size: 1rem;
+  margin: 10px 0 var(--space-5);
+}
+.home-hero-sub .home-streak-count { color: var(--difficulty-easy); font-weight: 700; }
+
+/* Editorial mode rows: a node visual + heading + one line + action. No card,
+   no border; a faint hover wash and the node art carry the presence. */
+.home-modes {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.mode-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-5) var(--space-3);
+  border-radius: var(--radius-lg);
+  transition: background var(--transition-med), transform var(--transition-fast);
+}
+.mode-row:hover { background: color-mix(in srgb, var(--text) 5%, transparent); }
+.mode-row:active { transform: scale(0.995); }
+.mode-visual {
+  flex: 0 0 auto;
+  width: 66px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.mode-visual-systems { gap: 0; }
+.mode-visual-systems .mode-glyph-mini { margin-left: -12px; }
+.mode-visual-systems .mode-glyph-mini:first-child { margin-left: 0; }
+.mode-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 auto; }
+.mode-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.mode-sub { font-size: 0.9rem; line-height: 1.35; color: var(--home-text-dim); overflow-wrap: break-word; }
+.mode-meta {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--home-text-dim);
+  opacity: 0.8;
+  margin-top: 2px;
+}
+.mode-action { font-size: 0.85rem; font-weight: 700; color: var(--text); margin-top: 6px; }
+.mode-action span { display: inline-block; transition: transform var(--transition-med); }
+.mode-row:hover .mode-action span { transform: translateX(3px); }
+
+/* Mode node glyphs. Lit nodes/links take the row's accent; the rest are faint. */
+.mode-glyph .mg-node { fill: var(--home-text-dim); opacity: 0.45; }
+.mode-glyph .mg-node.is-on { fill: var(--mode-accent, var(--text)); opacity: 1; }
+.mode-glyph .mg-link { stroke: var(--mode-accent, var(--text)); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
+.mode-glyph .mg-a .mg-dot { fill: var(--difficulty-easy); }
+.mode-glyph .mg-a .mg-path { stroke: var(--difficulty-easy); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
+.mode-glyph .mg-b .mg-dot { fill: var(--difficulty-hard); }
+.mode-glyph .mg-b .mg-path { stroke: var(--difficulty-hard); stroke-width: 2; stroke-linecap: round; opacity: 0.5; }
+.mode-glyph-mini { flex: 0 0 auto; }
+
+@media (max-width: 380px) {
+  .mode-visual { width: 48px; height: 48px; }
+  .mode-visual-systems { width: auto; }
+  .home-nav-links { gap: var(--space-3); }
+}

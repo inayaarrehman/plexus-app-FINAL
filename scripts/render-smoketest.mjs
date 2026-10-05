@@ -88,8 +88,10 @@ check('Home renders the "Play today\'s puzzle" CTA before the daily is done (no 
       onOpenHowTo: () => {},
     })
   )
-  if (!html.includes("Play today")) throw new Error('expected the primary "Play today\'s puzzle" CTA before the daily is done')
-  if (html.includes('home-row-title')) throw new Error('did not expect a Continue section before the daily is done')
+  if (!html.includes('home-hero-title')) throw new Error('expected the "Today\'s Plexus" hero heading before the daily is done')
+  if (!html.includes('16 concepts, 4 connections')) throw new Error('expected the concept/connection descriptor')
+  if (!html.includes('play-today-btn')) throw new Error('expected the primary Play CTA before the daily is done')
+  if (html.includes('mode-title">Continue')) throw new Error('did not expect a Continue row before the daily is done')
   if (html.includes('primary-recommendation') || html.includes('study-grid')) {
     throw new Error('did not expect any leftover card-based Home markup from earlier design phases')
   }
@@ -114,9 +116,9 @@ check('Home renders a plain-text "Today complete" line + a Continue section afte
       onOpenHowTo: () => {},
     })
   )
-  if (!html.includes('home-done-line')) throw new Error('expected the "Today complete" line once the daily is done')
-  if (!html.includes('Cardiology')) throw new Error('expected the Continue section to name the last-played system')
-  if (!html.includes('18 of 42 connections solved')) throw new Error('expected the Continue section to show progress as "X of Y connections solved"')
+  if (!html.includes('Today complete')) throw new Error('expected the "Today complete" line once the daily is done')
+  if (!html.includes('Cardiology')) throw new Error('expected the Continue row to name the last-played system')
+  if (!html.includes('18 of 42 connections solved')) throw new Error('expected the Continue row to show progress as "X of Y connections solved"')
   if (!html.includes('7 day streak')) throw new Error('expected the streak shown as plain text, not a decorated pill')
   if (!html.includes('2,840')) throw new Error('expected the 3-Minute Challenge personal best to render')
   return html
@@ -140,7 +142,7 @@ check('Home omits the Continue section with no play history yet, but still offer
       onOpenHowTo: () => {},
     })
   )
-  if (html.includes('home-row-title')) throw new Error('did not expect a Continue section with no last-played system')
+  if (html.includes('mode-title">Continue')) throw new Error('did not expect a Continue row with no last-played system')
   if (!html.includes('3 Minutes')) throw new Error('expected the 3 Minutes section to always be offered')
   return html
 })
