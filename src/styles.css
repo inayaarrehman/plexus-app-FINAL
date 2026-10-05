@@ -4427,3 +4427,79 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
 .splash.is-static .splash-wordmark { opacity: 1; }
 .splash.is-static .splash-frag,
 .splash.is-static .splash-wave { opacity: 0; }
+
+/* --- Splash v2: pieces fly fully OFF-SCREEN and back (overrides above) ---
+   Timeline (3.1s): 0–14% draw in · 30% burst · 31–43% fly off the edges ·
+   43–55% empty screen, hub pulsing · 55–74% everything streaks back in ·
+   74–88% snap + paths redraw · 80–92% wordmark · 91–100% fade to Home. */
+.splash { overflow: hidden; }
+
+@keyframes splash-node {
+  0%   { transform: translate(0, 0) scale(0); opacity: 0; }
+  9%   { transform: translate(0, 0) scale(1.18); opacity: 1; animation-timing-function: ease-out; }
+  15%  { transform: translate(0, 0) scale(1); }
+  28%  { transform: translate(0, 0) scale(1); animation-timing-function: ease-in; }
+  30%  { transform: translate(0, 0) scale(0.86); animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1); }
+  31%  { transform: translate(0, 0) scale(1.25); animation-timing-function: cubic-bezier(0.3, 0, 0.9, 0.6); }
+  43%  { transform: translate(var(--dx), var(--dy)) scale(1.5); animation-timing-function: step-end; }
+  55%  { transform: translate(var(--dx), var(--dy)) scale(1.5); animation-timing-function: cubic-bezier(0.1, 0.4, 0.2, 1); }
+  74%  { transform: translate(0, 0) scale(1.2); animation-timing-function: ease-out; }
+  80%  { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+
+@keyframes splash-hub {
+  0%, 6% { transform: scale(0); opacity: 0; }
+  14%  { transform: scale(1); opacity: 1; }
+  28%  { transform: scale(1); }
+  30%  { transform: scale(0.7); }
+  32%  { transform: scale(2.4); opacity: 1; }
+  40%  { transform: scale(0.6); opacity: 0.85; }
+  47%  { transform: scale(0.9); opacity: 1; }
+  52%  { transform: scale(0.6); opacity: 0.85; }
+  70%  { transform: scale(0.75); }
+  76%  { transform: scale(1.35); opacity: 1; }
+  82%, 100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes splash-path {
+  0%, 10% { stroke-dashoffset: 1; opacity: 0; }
+  12%  { opacity: 0.55; }
+  26%  { stroke-dashoffset: 0; opacity: 0.55; }
+  29%  { stroke-dashoffset: 0; opacity: 0.55; }
+  32%  { stroke-dashoffset: 0; opacity: 0; }
+  74%  { stroke-dashoffset: 1; opacity: 0; }
+  75%  { stroke-dashoffset: 1; opacity: 0.6; }
+  88%, 100% { stroke-dashoffset: 0; opacity: 0.55; }
+}
+
+/* Fragments burst off-screen with the nodes, then stream back in and
+   dissolve into the reassembling mark. */
+@keyframes splash-frag {
+  0%, 30% { transform: translate(0, 0) scale(1); opacity: 0; }
+  31%  { transform: translate(0, 0) scale(1); opacity: 1; animation-timing-function: cubic-bezier(0.25, 0, 0.85, 0.6); }
+  42%  { transform: translate(var(--fx), var(--fy)) scale(1.6); opacity: 1; animation-timing-function: step-end; }
+  54%  { transform: translate(var(--fx), var(--fy)) scale(1.6); opacity: 1; animation-timing-function: cubic-bezier(0.1, 0.4, 0.2, 1); }
+  72%  { transform: translate(0, 0) scale(0.6); opacity: 0.9; }
+  76%  { transform: translate(0, 0) scale(0.2); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Shockwave sweeps past the farthest corner of the screen. */
+@keyframes splash-wave {
+  0%, 30% { transform: scale(0.4); opacity: 0; }
+  31%  { opacity: 0.85; animation-timing-function: cubic-bezier(0.15, 0.6, 0.3, 1); }
+  46%  { transform: scale(var(--wave-scale, 20)); opacity: 0; }
+  100% { transform: scale(var(--wave-scale, 20)); opacity: 0; }
+}
+.splash-wave { stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+
+@keyframes splash-word {
+  0%, 80% { opacity: 0; transform: translateY(6px); letter-spacing: 0.5em; }
+  92%, 100% { opacity: 1; transform: translateY(0); letter-spacing: 0.32em; }
+}
+
+@keyframes splash-out {
+  0%, 91% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
