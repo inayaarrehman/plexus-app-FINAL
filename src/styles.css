@@ -5166,24 +5166,24 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 .difficulty-tag {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   font-size: var(--type-caption);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1;
-  color: var(--text-dim);
+  color: var(--text);
   white-space: nowrap;
 }
 
 /* Solved card: group motif + title on the left, difficulty on the right. */
 .strand-title { flex: 1 1 auto; }
-.strand-difficulty { margin-left: auto; padding-left: 6px; align-self: flex-start; margin-top: 3px; }
+.strand-difficulty { margin-left: auto; padding-left: 8px; align-self: flex-start; margin-top: 1px; }
 
 /* Results stack: the difficulty icon leads each mini-Plexus row. */
 .result-motifs li.result-motif-row { display: flex; align-items: center; gap: 10px; line-height: 0; }
-.result-difficulty { color: var(--text-dim); }
+
 
 /* View Connections: the level label is the difficulty tag. */
-.difficulty-tag.accordion-level { text-transform: none; letter-spacing: 0; font-size: var(--type-caption); min-width: 64px; }
+.difficulty-tag.accordion-level { text-transform: none; letter-spacing: 0; font-size: var(--type-caption); min-width: 74px; }
 
 /* How to play. */
 .howto-diff { display: inline-flex; align-items: center; gap: 3px; white-space: nowrap; font-weight: 600; color: var(--text); }

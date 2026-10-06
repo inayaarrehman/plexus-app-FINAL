@@ -330,9 +330,6 @@ export default function Game({
             style={{ '--strand-color': levelColor(c.level) }}
           >
             <div className="strand-head">
-              <span className="strand-badge strand-motif">
-                <GroupMotif level={c.level} size={24} animate={popCatIndex === c.catIndex} />
-              </span>
               <span className="strand-title">{c.title}</span>
               <DifficultyTag level={c.level} className="strand-difficulty" />
             </div>
@@ -411,7 +408,7 @@ export default function Game({
           >
             {resultGroups.map((g) => (
               <li key={g.catIndex} className="result-motif-row">
-                <DifficultyIcon level={g.level} size={15} className="result-difficulty" title={DIFFICULTY_LABEL[g.level]} />
+                <DifficultyIcon level={g.level} size={18} className="result-difficulty" title={DIFFICULTY_LABEL[g.level]} />
                 <GroupMotif
                   level={g.level}
                   layout="row"

@@ -352,8 +352,10 @@ check('Game results show four Plexus group motifs (no shape glyphs, no NYT squar
   const rows = (html.match(/group-motif group-motif-row/g) || []).length
   if (rows !== 4) throw new Error(`expected four mini-Plexus result rows, found ${rows}`)
   if (!html.includes('4 of 4 connections found')) throw new Error('expected the results stack to say how many connections were found')
-  const badges = (html.match(/strand-badge strand-motif/g) || []).length
-  if (badges !== 4) throw new Error(`expected a motif badge on each solved strand, found ${badges}`)
+  const tags = (html.match(/difficulty-tag strand-difficulty/g) || []).length
+  if (tags !== 4) throw new Error(`expected a difficulty tag on each solved strand, found ${tags}`)
+  if (html.includes('strand-motif')) throw new Error('solved cards should carry one symbol system (no group motif badge)')
+  for (const w of ['Easy', 'Medium', 'Hard', 'Expert']) if (!html.includes(`>${w}<`)) throw new Error(`expected the ${w} label`)
   for (const m of ['motif-chain', 'motif-hub', 'motif-cluster', 'motif-mesh']) {
     if (!html.includes(m)) throw new Error(`expected the ${m} pattern`)
   }

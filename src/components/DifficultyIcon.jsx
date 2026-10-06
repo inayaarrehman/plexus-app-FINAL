@@ -1,4 +1,5 @@
 import React from 'react'
+import { groupColor } from './GroupMotif.jsx'
 
 // ---------------------------------------------------------------------
 // Difficulty icons: a secondary icon system, used ONLY to mark difficulty.
@@ -14,8 +15,9 @@ import React from 'react'
 // on a 24 grid, round caps and joins, no fills except one small node per
 // icon (the cross's centre, the end of the trace, the drop's core, the
 // serpent's head), which ties them to the Plexus node language. They draw in
-// currentColor (neutral ink or ivory), never in a group colour, so they don't
-// read as the identity of a connection group.
+// the difficulty's jewel tone (base tone on cream, lifted tint on a room).
+// On solved cards they replace the old group motif, so each card carries one
+// symbol system: medical icon + difficulty word.
 
 export const DIFFICULTY_LABEL = { 1: 'Easy', 2: 'Medium', 3: 'Hard', 4: 'Expert' }
 
@@ -37,12 +39,12 @@ const ICONS = {
   },
   // Expert: the rod of Asclepius, a staff with one serpent.
   4: {
-    d: 'M12 2.8v18.6M16.4 4.9c-1.2-.2-2.3.1-3.2.6-1.6.9-3.6 1.6-3.6 3 0 1.5 4.8 1.4 4.8 3.3 0 1.8-4.6 1.7-4.6 3.5 0 .9.9 1.6 2.2 2.1',
-    node: [16.4, 4.9],
+    d: 'M12 3v18M16.2 5.4c-1.5-.4-3.2-.2-4.4.4-1.4.7-2.4 1.6-2.4 2.8 0 2.4 5.2 1.9 5.2 4.6 0 1.6-1.6 2.6-2.6 3.1',
+    node: [16.2, 5.4],
   },
 }
 
-export default function DifficultyIcon({ level, size = 16, className = '', title, decorative = false }) {
+export default function DifficultyIcon({ level, size = 18, className = '', title, decorative = false }) {
   const icon = ICONS[level] || ICONS[1]
   const label = title || DIFFICULTY_LABEL[level] || ''
   return (
@@ -52,19 +54,20 @@ export default function DifficultyIcon({ level, size = 16, className = '', title
       height={size}
       viewBox="0 0 24 24"
       fill="none"
+      style={{ color: groupColor(level) }}
       role={decorative ? undefined : 'img'}
       aria-label={decorative ? undefined : label}
       aria-hidden={decorative ? 'true' : undefined}
       focusable="false"
     >
-      <path d={icon.d} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx={icon.node[0]} cy={icon.node[1]} r="1.7" fill="currentColor" />
+      <path d={icon.d} stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx={icon.node[0]} cy={icon.node[1]} r="1.8" fill="currentColor" />
     </svg>
   )
 }
 
 // Icon + word, for places that label difficulty explicitly.
-export function DifficultyTag({ level, size = 14, className = '' }) {
+export function DifficultyTag({ level, size = 18, className = '' }) {
   return (
     <span className={`difficulty-tag ${className}`}>
       <DifficultyIcon level={level} size={size} decorative />
