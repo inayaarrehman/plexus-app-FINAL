@@ -349,16 +349,17 @@ check('Game results show four Plexus group motifs (no shape glyphs, no NYT squar
   if (html.includes('🟨') || html.includes('🟩') || html.includes('🟦') || html.includes('🟪')) {
     throw new Error('share text must not reuse the NYT Connections colored-square emoji grid')
   }
-  const rows = (html.match(/group-motif group-motif-row/g) || []).length
-  if (rows !== 4) throw new Error(`expected four mini-Plexus result rows, found ${rows}`)
+  const rows = (html.match(/class="result-motif-row"/g) || []).length
+  if (rows !== 4) throw new Error(`expected four result rows, found ${rows}`)
+  if ((html.match(/class="result-node"/g) || []).length !== 16) throw new Error('expected four nodes per result row')
+  if (html.includes('group-motif-row')) throw new Error('results should not draw a second network per row')
+  const order = [...html.matchAll(/difficulty-icon difficulty-icon-(\d) result-difficulty/g)].map((m) => m[1]).join('')
+  if (order !== '1234') throw new Error(`expected results ordered Easy to Expert, got ${order}`)
   if (!html.includes('4 of 4 connections found')) throw new Error('expected the results stack to say how many connections were found')
   const tags = (html.match(/difficulty-tag strand-difficulty/g) || []).length
   if (tags !== 4) throw new Error(`expected a difficulty tag on each solved strand, found ${tags}`)
   if (html.includes('strand-motif')) throw new Error('solved cards should carry one symbol system (no group motif badge)')
   for (const w of ['Easy', 'Medium', 'Hard', 'Expert']) if (!html.includes(`>${w}<`)) throw new Error(`expected the ${w} label`)
-  for (const m of ['motif-chain', 'motif-hub', 'motif-cluster', 'motif-mesh']) {
-    if (!html.includes(m)) throw new Error(`expected the ${m} pattern`)
-  }
   if (/[●▲◆■]/.test(html) || html.includes('result-square')) throw new Error('old shape glyphs must be gone')
   if (!html.includes('View Connections')) throw new Error('expected "View Connections"')
   return html

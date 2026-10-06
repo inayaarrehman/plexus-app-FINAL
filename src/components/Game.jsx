@@ -9,7 +9,7 @@ import { pickConnectionOfDay } from '../utils/connectionOfDay.js'
 import BrandMark from './BrandMark.jsx'
 import Confetti from './Confetti.jsx'
 import PuzzleSignature from './PuzzleSignature.jsx'
-import GroupMotif, { groupColor } from './GroupMotif.jsx'
+import { groupColor } from './GroupMotif.jsx'
 import DifficultyIcon, { DifficultyTag, DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
 import PlexusLine from './PlexusLine.jsx'
 import ReviewConnections from './ReviewConnections.jsx'
@@ -278,15 +278,12 @@ export default function Game({
     .filter((c) => solvedCats.includes(c.catIndex))
     .sort((a, b) => solvedCats.indexOf(a.catIndex) - solvedCats.indexOf(b.catIndex))
 
-  // Results stack: groups found by a correct guess, in the order they were
-  // found, then any group revealed after running out of guesses.
+  // Results summary: one row per difficulty, Easy to Expert. A group is
+  // "found" when a correct guess solved it (a loss reveals the rest unfound).
   const foundOrder = guessLog.filter((g) => g.correct).map((g) => g.catIndexes[0])
-  const resultGroups = [
-    ...foundOrder.map((ci) => ({ ...puzzle.categories[ci], catIndex: ci, found: true })),
-    ...puzzle.categories
-      .map((c, i) => ({ ...c, catIndex: i, found: false }))
-      .filter((c) => !foundOrder.includes(c.catIndex)),
-  ]
+  const resultGroups = puzzle.categories
+    .map((c, i) => ({ ...c, catIndex: i, found: foundOrder.includes(i) }))
+    .sort((a, b) => a.level - b.level)
 
   return (
     <div className="game">
@@ -399,23 +396,26 @@ export default function Game({
 
           {won && <p className="completion-phrase">{completionPhrase}</p>}
 
-          {/* Four mini-Plexuses, one per connection group: found groups in the
-              order they were solved, connected in their own pattern; any group
-              not found shows as four loose nodes. */}
+          {/* One row per difficulty, Easy to Expert: the medical icon names the
+              difficulty and four nodes in its colour stand for the four
+              concepts (filled when the group was solved, open when it wasn't). */}
           <ol
             className="result-motifs"
             aria-label={`${foundOrder.length} of ${puzzle.categories.length} connections found`}
           >
             {resultGroups.map((g) => (
               <li key={g.catIndex} className="result-motif-row">
-                <DifficultyIcon level={g.level} size={18} className="result-difficulty" title={DIFFICULTY_LABEL[g.level]} />
-                <GroupMotif
-                  level={g.level}
-                  layout="row"
-                  size={84}
-                  missed={!g.found}
-                  title={`${g.title}: ${g.found ? 'found' : 'not found'}`}
-                />
+                <DifficultyIcon level={g.level} size={20} className="result-difficulty" decorative />
+                <span
+                  className={`result-nodes ${g.found ? '' : 'is-missed'}`}
+                  style={{ '--node-color': groupColor(g.level) }}
+                  role="img"
+                  aria-label={`${DIFFICULTY_LABEL[g.level]}: ${g.title}, ${g.found ? 'solved' : 'not solved'}`}
+                >
+                  {g.items.map((it) => (
+                    <span key={it.term} className="result-node" />
+                  ))}
+                </span>
               </li>
             ))}
           </ol>

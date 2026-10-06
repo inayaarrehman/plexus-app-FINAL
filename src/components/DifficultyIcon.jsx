@@ -11,7 +11,7 @@ import { groupColor } from './GroupMotif.jsx'
 //   level 2  Medium  EKG tracing
 //   level 3  Hard    droplet
 //   level 4  Expert  rod of Asclepius
-// One construction for all four so they read as a family: a single 1.8 stroke
+// One construction for all four so they read as a family: a single 2.1 stroke
 // on a 24 grid, round caps and joins, no fills except one small node per
 // icon (the cross's centre, the end of the trace, the drop's core, the
 // serpent's head), which ties them to the Plexus node language. They draw in
@@ -29,8 +29,8 @@ const ICONS = {
   },
   // Medium: one beat of an EKG, flat baseline either side.
   2: {
-    d: 'M2.5 13.2h4.3l1.9-3.2 2.4 7.6 2.7-12.1 2.2 7.7h5.5',
-    node: [21.5, 13.2],
+    d: 'M2.5 13h4.2l1.9-3.6 2.4 8.4 2.7-13.4 2.3 8.6h5.5',
+    node: [21.5, 13],
   },
   // Hard: a clean drop, slightly fuller at the base.
   3: {
@@ -39,12 +39,13 @@ const ICONS = {
   },
   // Expert: the rod of Asclepius, a staff with one serpent.
   4: {
-    d: 'M12 3v18M16.2 5.4c-1.5-.4-3.2-.2-4.4.4-1.4.7-2.4 1.6-2.4 2.8 0 2.4 5.2 1.9 5.2 4.6 0 1.6-1.6 2.6-2.6 3.1',
-    node: [16.2, 5.4],
+    d: 'M12 3v18M17 5.8c-2.2-1-6.6-.6-8.2 1.1-1.9 2 6.4 2.7 6.4 5.4 0 1.7-2.6 2.6-4.2 3.3',
+    node: [17, 5.8],
+    r: 2.1,
   },
 }
 
-export default function DifficultyIcon({ level, size = 18, className = '', title, decorative = false }) {
+export default function DifficultyIcon({ level, size = 20, className = '', title, decorative = false }) {
   const icon = ICONS[level] || ICONS[1]
   const label = title || DIFFICULTY_LABEL[level] || ''
   return (
@@ -60,14 +61,14 @@ export default function DifficultyIcon({ level, size = 18, className = '', title
       aria-hidden={decorative ? 'true' : undefined}
       focusable="false"
     >
-      <path d={icon.d} stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx={icon.node[0]} cy={icon.node[1]} r="1.8" fill="currentColor" />
+      <path d={icon.d} stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx={icon.node[0]} cy={icon.node[1]} r={icon.r || 1.9} fill="currentColor" />
     </svg>
   )
 }
 
 // Icon + word, for places that label difficulty explicitly.
-export function DifficultyTag({ level, size = 18, className = '' }) {
+export function DifficultyTag({ level, size = 20, className = '' }) {
   return (
     <span className={`difficulty-tag ${className}`}>
       <DifficultyIcon level={level} size={size} decorative />

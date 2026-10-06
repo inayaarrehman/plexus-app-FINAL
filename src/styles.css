@@ -5203,3 +5203,15 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 .archive .game-header > :last-child { grid-column: 3; }
 /* Month selector on the same axis: equal-width arrows either side. */
 .archive-month-row { display: grid; grid-template-columns: 44px auto 44px; justify-content: center; }
+
+/* Results summary rows: [difficulty icon]  ● ● ● ●  */
+.result-motifs li.result-motif-row { gap: 14px; }
+.result-nodes { display: inline-flex; align-items: center; gap: 9px; }
+.result-node {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--node-color);
+  box-shadow: 0 0 0 1.5px var(--node-rim, transparent);
+}
+.result-nodes.is-missed .result-node { background: none; box-shadow: inset 0 0 0 1.6px var(--node-color); opacity: 0.8; }
