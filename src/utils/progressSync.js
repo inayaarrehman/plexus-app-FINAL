@@ -5,6 +5,7 @@
 //   • stats         — streaks + lifetime counts (medconnections.stats.v1)
 //   • dailyHistory  — per-date Daily results (powers Archive + streak)
 //   • challenge     — 3-Minute personal bests
+//   • progression   — XP ledger, Your Kit, Career acknowledgements (union by id)
 // Everything merges MONOTONICALLY so syncing can only ever protect progress,
 // never lose it: streaks/bests take the max, the current streak follows the
 // most-recently-completed day, and daily history is unioned per date keeping
@@ -20,6 +21,8 @@ import {
   getChallengeStats,
   replaceChallengeStats,
 } from './storage.js'
+import { mergeStates as mergeProgression } from '../progression/engine.js'
+import { loadProgression, replaceProgression } from '../progression/store.js'
 
 const SNAPSHOT_VERSION = 1
 
@@ -120,6 +123,8 @@ export function mergeSnapshots(a = {}, b = {}) {
     stats: mergeStats(a.stats, b.stats),
     dailyHistory: mergeDailyHistory(a.dailyHistory, b.dailyHistory),
     challenge: mergeChallenge(a.challenge, b.challenge),
+    // Progression merges by event id, so the same award on two devices counts once.
+    progression: mergeProgression(a.progression, b.progression),
   }
 }
 
@@ -130,6 +135,7 @@ export function snapshotLocal() {
     stats: loadStats(),
     dailyHistory: getDailyHistory(),
     challenge: getChallengeStats(),
+    progression: loadProgression(),
   }
 }
 
@@ -138,4 +144,5 @@ export function applySnapshot(snap) {
   if (snap.stats) saveStats(snap.stats)
   if (snap.dailyHistory) setDailyHistory(snap.dailyHistory)
   if (snap.challenge) replaceChallengeStats(snap.challenge)
+  if (snap.progression) replaceProgression(snap.progression)
 }

@@ -10,6 +10,7 @@ import {
 } from '../utils/challengeEngine.js'
 import { getChallengeStats, recordChallengeResult, recordWeakSpots } from '../utils/storage.js'
 import { haptics } from '../utils/haptics.js'
+import { recordChallengeSession } from '../progression/store.js'
 
 // The timed mode is 3 minutes (formerly 5). Kept as a single constant so
 // there are no other "five minute" assumptions hiding in the component.
@@ -201,6 +202,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
         completedAt: new Date().toISOString(),
       }
       const { stats, isNewBest: newBest } = recordChallengeResult(summary)
+      recordChallengeSession({ completedAt: summary.completedAt, roundsCorrect: correctActions, isNewBest: newBest })
       setPersonalBest(stats.personalBest)
       setIsNewBest(newBest)
       setResultsExtra({

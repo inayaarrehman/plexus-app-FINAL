@@ -8,6 +8,7 @@ import PuzzleSignature from './PuzzleSignature.jsx'
 import SolvedRecap from './SolvedRecap.jsx'
 import LockGlyph from './LockGlyph.jsx'
 import { LOCK_COPY } from '../utils/dailyGate.js'
+import { LevelLine } from './CareerParts.jsx'
 
 // Each system takes one accent from the four-colour Plexus palette, cycled by
 // position — same rule as the Systems page, so the home previews match.
@@ -156,6 +157,8 @@ export default function Home({
   onOpenStats,
   onOpenHowTo,
   onOpenAccount,
+  onOpenCareer,
+  career = null,
   locked = false,
   justUnlocked = false,
   onLocked,
@@ -191,13 +194,26 @@ export default function Home({
           <span className="home-nav-wordmark">Plexus</span>
         </span>
         <div className="home-nav-links">
-          <button className="home-nav-link" onClick={onOpenStats}>Stats</button>
+          {onOpenCareer ? (
+            <button className="home-nav-link" onClick={onOpenCareer}>Career</button>
+          ) : (
+            <button className="home-nav-link" onClick={onOpenStats}>Stats</button>
+          )}
           <button className="home-nav-link" onClick={onOpenHowTo}>How to play</button>
           {onOpenAccount && (
             <button className="home-nav-link" onClick={onOpenAccount}>Account</button>
           )}
         </div>
       </nav>
+
+      {career && onOpenCareer && (
+        <button className="home-career" onClick={onOpenCareer} aria-label={`Career: ${career.info.stage.name}, level ${career.info.level}`}>
+          <span className="home-career-rank">
+            <b>{career.info.stage.name}</b> · Level {career.info.level}
+          </span>
+          <LevelLine info={career.info} width={96} height={14} className="home-career-line" />
+        </button>
+      )}
 
       {/* DAILY — the composed centrepiece. "Today's Plexus" is the heading;
           the Daily number and date are secondary metadata; the seeded node
@@ -312,6 +328,13 @@ export default function Home({
           action="Browse systems"
         />
       </section>
+
+      {career && onOpenCareer && (
+        <button className="home-rounds" onClick={onOpenCareer}>
+          {career.rounds.complete ? 'Rounds complete' : `Rounds ${career.rounds.done} of ${career.rounds.goals.length}`}
+          <span> · resets Monday</span>
+        </button>
+      )}
 
       {recapOpen && <SolvedRecap categories={todayCategories} onClose={() => setRecapOpen(false)} />}
     </div>

@@ -23,6 +23,9 @@ import { dateKey, dayNumber, dateFromDayNumber } from './utils/game.js'
 import { getDailyPuzzleForDate } from './utils/dailyPuzzle.js'
 import { getDailyGate, isGatedView, GATED_VIEWS, LOCK_COPY, hasSeenUnlock, markUnlockSeen } from './utils/dailyGate.js'
 import LockGlyph from './components/LockGlyph.jsx'
+import Career from './components/Career.jsx'
+import { recordDailyFinish, recordSystemFinish, backfillIfNeeded, streakInfo, loadProgression, careerSnapshot } from './progression/store.js'
+import { SYSTEMS } from './data/constants.js'
 import { assembleSystemPuzzle } from './utils/puzzleAssembler.js'
 import { systemMasteryCounts } from './utils/mastery.js'
 import {
@@ -234,6 +237,24 @@ export default function App() {
   // is held here and used the first time Race is opened after unlocking.
   const [pendingRaceCode, setPendingRaceCode] = useState('')
 
+  // Daily streak from the Daily history (breaks on a missed day; a Streak
+  // Shield can cover one). Replaces the old stats counter everywhere it shows.
+  const streak = useMemo(
+    () => streakInfo(loadProgression(), getDailyHistory(), todayKey),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [todayKey, refreshTick]
+  )
+
+  // Compact Career read for the Home identity line and Rounds line.
+  const careerHome = useMemo(() => {
+    try {
+      return careerSnapshot({ history: getDailyHistory(), todayKey })
+    } catch {
+      return null
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [todayKey, refreshTick])
+
   const mastery = useMemo(() => getConceptMastery(), [refreshTick])
   const systemProgress = useMemo(() => getSystemProgress(), [refreshTick])
   const continueSystem = dailyDone ? systemProgress.lastPlayedSystem : null
@@ -256,6 +277,26 @@ export default function App() {
     if (view === 'home') setRefreshTick((t) => t + 1)
   }, [view])
 
+  // One-time Career backfill for players who were here before progression:
+  // credit what history records reliably, then never run again.
+  useEffect(() => {
+    try {
+      const m = getConceptMastery()
+      const bankById = Object.fromEntries(bank.map((c) => [c.id, c]))
+      const systems = SYSTEMS.filter((sys) => {
+        const c = systemMasteryCounts(bank, sys, m)
+        return c.total > 0 && c.solved >= c.total
+      })
+      const sp = getSystemProgress()
+      const systemWins = Object.values(sp.perSystem || {}).reduce((n, x) => n + (x.completed || 0), 0)
+      const r = backfillIfNeeded({ history: getDailyHistory(), mastery: m, bankById, systems, challenge: getChallengeStats(), systemWins })
+      if (r) setRefreshTick((t) => t + 1)
+    } catch {
+      /* best-effort */
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   // Purely presentational: paint each screen its own full-viewport Plexus
   // environment colour by toggling a class on <body> (so the colour bleeds
   // past the centred app-shell rather than stopping at it). Home is
@@ -274,6 +315,7 @@ export default function App() {
     b.classList.toggle('env-systems', !isDevRoute && (view === 'systems' || isSystemBoard))
     b.classList.toggle('env-review', !isDevRoute && view === 'archive')
     b.classList.toggle('env-challenge', !isDevRoute && view === 'challenge')
+    b.classList.toggle('env-career', !isDevRoute && view === 'career')
     b.classList.toggle('bg-challenge-focus', !isDevRoute && view === 'challenge' && challengePhase === 'playing')
   }, [view, gameCtx, challengePhase, isDevRoute])
 
@@ -330,7 +372,7 @@ export default function App() {
       headerLabel: isToday ? `Daily #${todayDayNumber}` : `Archive · ${dateStr}`,
       resultTitle: isToday ? "Today's Results" : `Result for ${dateStr}`,
       dailyNumber: puzzle.number,
-      dailyStreak: stats.currentStreak,
+      dailyStreak: streak.current,
       dateForHistory: dateStr,
       challengeDayNumber,
       isToday,
@@ -407,9 +449,10 @@ export default function App() {
     playSystem(continueSystem)
   }
 
-  const handleFinish = ({ won, mistakes, guessLog, puzzle }) => {
-    if (!gameCtx) return
+  const handleFinish = ({ won, mistakes, guessLog, puzzle, toolsUsed = 0 }) => {
+    if (!gameCtx) return null
     const { mode, dateForHistory, isToday, system } = gameCtx
+    let progression = null
 
     recordWeakSpots(buildWeakSpotResults(puzzle, guessLog))
     recordNearMissConfusions(buildNearMissResults(puzzle, guessLog))
@@ -431,6 +474,16 @@ export default function App() {
         })
         const updated = recordResult({ won, mistakes, isDaily: true, dailyKey: dateForHistory, countsTowardStreak: isToday })
         setStats(updated)
+        progression = recordDailyFinish({
+          dateKey: dateForHistory,
+          isToday,
+          puzzle,
+          won,
+          mistakes,
+          guessLog,
+          toolsUsed,
+          history: getDailyHistory(),
+        })
       }
     } else if (mode === 'system') {
       recordConceptMastery(buildMasteryResults(puzzle, guessLog))
@@ -448,11 +501,20 @@ export default function App() {
       })
       const updated = recordResult({ won, mistakes, isDaily: false, countsTowardStreak: false })
       setStats(updated)
+      const counts = systemMasteryCounts(bank, system, getConceptMastery())
+      progression = recordSystemFinish({
+        puzzle,
+        system,
+        won,
+        guessLog,
+        systemComplete: counts.total > 0 && counts.solved >= counts.total,
+      })
     }
     setRefreshTick((t) => t + 1)
     // Back up the just-updated progress to the cloud (no-op for guests / when
     // Supabase isn't configured). Fire-and-forget — never blocks the UI.
     if (supaConfigured) pushProgress(snapshotLocal())
+    return progression
   }
 
   if (isDevRoute) {
@@ -503,13 +565,21 @@ export default function App() {
           resultTitle={gameCtx.resultTitle}
           shareLabel={gameCtx.mode === 'system' ? gameCtx.system : undefined}
           dailyNumber={gameCtx.dailyNumber}
-          dailyStreak={gameCtx.isToday ? stats.currentStreak : 0}
+          dailyStreak={gameCtx.isToday ? streak.current : 0}
           dailyPerfectStreak={gameCtx.isToday ? stats.currentPerfectStreak : 0}
           challengeDayNumber={gameCtx.mode === 'system' ? null : gameCtx.challengeDayNumber}
           onExit={goHome}
           onFinish={handleFinish}
           onKnowledgeSignal={recordKnowledgeSignal}
         />
+      </div>
+    )
+  }
+
+  if (view === 'career') {
+    return (
+      <div className="app-shell">
+        <Career history={getDailyHistory()} todayKey={todayKey} stats={stats} onBack={goHome} />
       </div>
     )
   }
@@ -535,7 +605,7 @@ export default function App() {
     return (
       <div className="app-shell">
         <AppNav active="archive" onNavigate={navigate} />
-        <Archive dailyHistory={getDailyHistory()} onOpenDay={openArchiveDay} onBack={goHome} currentStreak={stats.currentStreak} />
+        <Archive dailyHistory={getDailyHistory()} onOpenDay={openArchiveDay} onBack={goHome} currentStreak={streak.current} />
       </div>
     )
   }
@@ -562,7 +632,7 @@ export default function App() {
       <Home
         dailyNumber={todayDayNumber}
         dailyDone={dailyDone}
-        currentStreak={stats.currentStreak}
+        currentStreak={streak.current}
         continueSystem={continueSystem}
         continueSystemSolved={continueSystemCounts.solved}
         continueSystemTotal={continueSystemCounts.total}
@@ -586,6 +656,8 @@ export default function App() {
         onLocked={showLocked}
         nudge={lockNotice}
         onOpenStats={() => setShowStats(true)}
+        onOpenCareer={() => setView('career')}
+        career={careerHome}
         onOpenHowTo={() => setShowHowTo(true)}
         onOpenAccount={supaConfigured ? () => setShowAccount(true) : null}
       />

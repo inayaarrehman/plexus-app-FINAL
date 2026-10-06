@@ -1124,6 +1124,66 @@ console.log('\n[37] No em dashes in any bundled Plexus copy')
   }
 }
 
+console.log('\n[38] Career progression engine: XP, levels, streaks, Rounds, Kit, merge, backfill')
+{
+  const _store = {}
+  const _prevLS = globalThis.localStorage
+  globalThis.localStorage = { getItem: (k) => _store[k] ?? null, setItem: (k, v) => { _store[k] = v }, removeItem: (k) => { delete _store[k] } }
+  const E = await import('../src/progression/engine.js')
+  const S = await import('../src/progression/store.js')
+  const K = await import('../src/progression/streak.js')
+  const C = await import('../src/progression/config.js')
+  const store = _store
+  // levels
+  const li=E.levelInfo(6520); assert(li.level===11&&li.toNext===740&&li.stage.name==='Medical Student'&&li.milestone==='Boards','level 11 at 6520')
+  assert(E.levelInfo(19690).stage.name==='Resident','resident at 19690'); assert(E.levelInfo(51150).stage.name==='Attending','attending'); assert(E.levelInfo(10_000_000).level>60,'no dead end')
+  // idempotent + taper
+  let s=E.emptyState(); const at=new Date(2026,9,5,12).getTime()
+  assert(E.award(s,{id:'a',xp:100,kind:'daily',at})===100 && E.award(s,{id:'a',xp:100,kind:'daily',at})===0,'idempotent')
+  let p=0; for(let i=0;i<14;i++) p+=E.award(s,{id:'sp'+i,xp:50,kind:'syspuzzle',at})
+  assert(p===600+Math.floor(100*0.5),'taper after 600 practice: '+p)
+  assert(E.award(s,{id:'next',xp:50,kind:'syspuzzle',at:at+86400000})===50,'taper resets next day')
+  // streak
+  const h={'2026-10-01':{completed:true,won:true,completedAt:'2026-10-01T15:00:00'},'2026-10-02':{completed:true,won:true,completedAt:'2026-10-02T15:00:00'},'2026-10-04':{completed:true,won:true,completedAt:'2026-10-04T15:00:00'}}
+  assert(K.currentStreak(h,'2026-10-05')===1,'missed day breaks streak (yesterday counts)')
+  assert(K.currentStreak(h,'2026-10-05',{shielded:new Set(['2026-10-03'])})===3,'shield bridges a covered day')
+  assert(K.currentStreak(h,'2026-10-12')===0,'long gap: streak 0')
+  assert(K.needsShield({...h,'2026-10-06':{completed:true,won:true}},'2026-10-06')==='2026-10-05','shield needed for yesterday')
+  assert(K.longestStreak(h)===2,'longest real streak')
+  const late={'2026-10-01':{completed:true,won:true,completedAt:'2026-10-03T10:00:00'}}; assert(K.currentStreak(late,'2026-10-02')===0,'archive late finish is not a streak day')
+  // store: daily flow
+  const puzzle={id:'daily-2026-10-05',categories:[{level:1},{level:2},{level:3},{level:4}]}
+  const gl=[0,1,2,3].map(i=>({correct:true,catIndexes:[i,i,i,i]}))
+  const hist={'2026-10-05':{completed:true,won:true,mistakes:0,completedAt:new Date().toISOString()}}
+  const today=E.localDayKey(Date.now())
+  const r=S.recordDailyFinish({dateKey:today,isToday:true,puzzle:{...puzzle,id:'daily-'+today},won:true,mistakes:0,guessLog:gl,history:{[today]:hist['2026-10-05']}})
+  assert(r.gained===175,'daily + perfect + connections = 175, got '+r.gained)
+  const r2=S.recordDailyFinish({dateKey:today,isToday:true,puzzle:{...puzzle,id:'daily-'+today},won:true,mistakes:0,guessLog:gl,history:{[today]:hist['2026-10-05']}})
+  assert(r2.gained===0,'same Daily twice pays nothing')
+  assert(r.levelUp && r.after.level===2,'level up to 2'); assert(r.grants.includes('curbside'),'level 2 grants Curbside')
+  assert(S.spendCurbside('x')===true,'curbside usable'); 
+  // system complete one-time
+  const sp={id:'system-live-cardio-1',categories:[{level:1},{level:2},{level:3},{level:4}]}
+  const rs=S.recordSystemFinish({puzzle:sp,system:'Cardiology',won:true,guessLog:gl,systemComplete:true}); assert(rs.gained===50+50+300,'system finish + complete = 400, got '+rs.gained)
+  const rs2=S.recordSystemFinish({puzzle:{...sp,id:'system-live-cardio-2'},system:'Cardiology',won:true,guessLog:gl,systemComplete:true}); assert(!rs2.lines.some(l=>l[0].includes('complete')),'system bonus only once')
+  // merge
+  const A=S.loadProgression(); const B=E.emptyState(); E.award(B,{id:'daily:2020-01-01',xp:100,kind:'daily',at}); const M=E.mergeStates(A,B); assert(E.totalXp(M)===E.totalXp(A)+100,'merge unions ledgers')
+  assert(E.totalXp(E.mergeStates(A,A))===E.totalXp(A),'merging the same state does not double')
+  // backfill
+  for(const k of Object.keys(store)) delete store[k]
+  const bh={'2026-09-01':{completed:true,won:true,mistakes:0,completedAt:'2026-09-01T10:00:00'},'2026-09-02':{completed:true,won:false,mistakes:4,completedAt:'2026-09-02T10:00:00'},'2026-08-01':{completed:true,won:true,mistakes:1,completedAt:'2026-09-03T10:00:00'}}
+  const bf=S.backfillIfNeeded({history:bh,mastery:{c1:{timesSolved:2}},bankById:{c1:{difficulty:'hard'}},systems:[],challenge:{history:[{completedAt:'x',roundsCorrect:10}],personalBest:500},systemWins:3})
+  const tot=E.totalXp(S.loadProgression())
+  assert(tot===(100+50+25)+(100)+(50+50)+30+150+30+15,'backfill total '+tot)
+  assert(S.backfillIfNeeded({history:bh})===null,'backfill runs once')
+  // rounds goals rotate and differ week to week
+  for(let w=0;w<12;w++){const a=E.roundsGoals(w).map(g=>g.id).join(),b=E.roundsGoals(w+1).map(g=>g.id).join();assert(a!==b,'weeks differ '+w)}
+  assert(!C.ROUNDS_POOL.some(g=>/race/i.test(g.label)),'no live-race Rounds goal')
+  const allNames = [...C.STAGES.map((x) => x.name), ...C.MILESTONES.map((x) => x.name), ...Object.values(C.KIT).map((k) => k.name + ' ' + k.desc)].join(' ')
+  assert(!/\b(Dr\.|MD|DO)\b/.test(allNames) && !allNames.includes('\u2014'), 'no credential language or em dashes in Career names')
+  globalThis.localStorage = _prevLS
+}
+
 // ---------------------------------------------------------------
 console.log(`\n${'='.repeat(40)}`)
 if (failures === 0) {

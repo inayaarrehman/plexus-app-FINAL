@@ -8,6 +8,9 @@ import { computeDailyMicroStat } from '../utils/dailyMicroStat.js'
 import { pickConnectionOfDay } from '../utils/connectionOfDay.js'
 import BrandMark from './BrandMark.jsx'
 import Confetti from './Confetti.jsx'
+import XpResult from './XpResult.jsx'
+import { loadProgression, spendCurbside } from '../progression/store.js'
+import { kitCounts } from '../progression/engine.js'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import { groupColor } from './GroupMotif.jsx'
 import DifficultyIcon, { DifficultyTag, DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
@@ -43,6 +46,8 @@ export default function Game({
       guessLog: [],
       gameOver: false,
       won: false,
+      toolsUsed: 0,
+      curbside: [],
     }
   }, [progressKey, puzzle])
 
@@ -58,6 +63,12 @@ export default function Game({
   const [guessLog, setGuessLog] = useState(initial.guessLog)
   const [gameOver, setGameOver] = useState(initial.gameOver)
   const [won, setWon] = useState(initial.won)
+  // Your Kit on the board: tools used this puzzle (a used tool removes Perfect
+  // eligibility) and the two tiles a Curbside is currently highlighting.
+  const [toolsUsed, setToolsUsed] = useState(initial.toolsUsed || 0)
+  const [curbside, setCurbside] = useState(initial.curbside || [])
+  const [curbsideLeft, setCurbsideLeft] = useState(() => kitCounts(loadProgression()).curbside || 0)
+  const [xpResult, setXpResult] = useState(null)
 
   const [selected, setSelected] = useState([])
   const [shakeIds, setShakeIds] = useState([])
@@ -86,15 +97,37 @@ export default function Game({
       guessLog,
       gameOver,
       won,
+      toolsUsed,
+      curbside,
     })
-  }, [progressKey, puzzle.id, tiles, solvedCats, mistakes, guessLog, gameOver, won])
+  }, [progressKey, puzzle.id, tiles, solvedCats, mistakes, guessLog, gameOver, won, toolsUsed, curbside])
 
   useEffect(() => {
     if (gameOver && !finishReported.current && !alreadyOverAtLoad.current) {
       finishReported.current = true
-      onFinish({ won, mistakes, guessLog, puzzle })
+      const res = onFinish({ won, mistakes, guessLog, puzzle, toolsUsed })
+      if (res && typeof res === 'object') setXpResult(res)
     }
-  }, [gameOver, won, mistakes, guessLog, puzzle, onFinish])
+  }, [gameOver, won, mistakes, guessLog, puzzle, onFinish, toolsUsed])
+
+  // Curbside: highlight two tiles from the easiest unsolved group. Uses one
+  // from Your Kit and marks the puzzle as tool-assisted (no Perfect).
+  const curbsideTiles = curbside.filter((text) => tiles.some((t) => t.text === text && !solvedCats.includes(t.catIndex)))
+  const handleCurbside = () => {
+    if (gameOver || curbsideTiles.length > 0) return
+    const unsolved = puzzle.categories
+      .map((c, i) => ({ ...c, catIndex: i }))
+      .filter((c) => !solvedCats.includes(c.catIndex))
+      .sort((a, b) => a.level - b.level)
+    const target = unsolved[0]
+    if (!target) return
+    const pair = tiles.filter((t) => t.catIndex === target.catIndex).slice(0, 2).map((t) => t.text)
+    if (pair.length < 2 || !spendCurbside(puzzle.id)) return
+    setCurbside(pair)
+    setToolsUsed((n) => n + 1)
+    setCurbsideLeft(kitCounts(loadProgression()).curbside || 0)
+    haptics.select()
+  }
 
   const flashMessage = (text, ms = 1500) => {
     setMessage(text)
@@ -216,10 +249,11 @@ export default function Game({
   const isMilestone = isDaily && won && STREAK_MILESTONES.includes(dailyStreak)
 
   const completionPhrase = useMemo(
-    () => (gameOver && won ? getCompletionPhrase({ puzzleId: puzzle.id, mistakes }) : ''),
-    [gameOver, won, puzzle.id, mistakes]
+    // A tool-assisted solve isn't "perfect", so it takes the ordinary phrase.
+    () => (gameOver && won ? getCompletionPhrase({ puzzleId: puzzle.id, mistakes: mistakes === 0 && toolsUsed > 0 ? 1 : mistakes }) : ''),
+    [gameOver, won, puzzle.id, mistakes, toolsUsed]
   )
-  const isPerfect = won && mistakes === 0
+  const isPerfect = won && mistakes === 0 && toolsUsed === 0
 
   const dailyMicroStat = useMemo(
     () => (isDaily && gameOver && won ? computeDailyMicroStat({ mistakes, guessLog, dailyPerfectStreak }) : null),
@@ -241,9 +275,10 @@ export default function Game({
         guessLog,
         won,
         mistakes,
+        toolsUsed,
         dailyStreak,
       }),
-    [isDaily, dailyNumber, puzzle.title, shareLabel, guessLog, won, mistakes, dailyStreak]
+    [isDaily, dailyNumber, puzzle.title, shareLabel, guessLog, won, mistakes, toolsUsed, dailyStreak]
   )
 
   const handleShare = async () => {
@@ -359,7 +394,7 @@ export default function Game({
                     isSelected && selected.length >= 2 ? 'tile-proposing' : ''
                   } ${isSelected && selected.length === 4 ? 'tile-grouped' : ''} ${
                     isShaking ? 'tile-break' : ''
-                  } ${isOneAwayPulse ? 'tile-oneaway-pulse' : ''}`}
+                  } ${isOneAwayPulse ? 'tile-oneaway-pulse' : ''} ${curbsideTiles.includes(tile.text) ? 'tile-curbside' : ''}`}
                   onClick={() => toggleTile(tile)}
                 >
                   {tile.text}
@@ -379,6 +414,15 @@ export default function Game({
               Submit
             </button>
           </div>
+          {(curbsideLeft > 0 || curbsideTiles.length > 0) && (
+            <div className="kit-bar">
+              <button className="kit-use" onClick={handleCurbside} disabled={curbsideTiles.length > 0}>
+                <span className="kit-use-name">Curbside</span>
+                <span className="kit-use-count">×{curbsideLeft}</span>
+              </button>
+              {curbsideTiles.length > 0 && <span className="kit-hint">These two belong together.</span>}
+            </div>
+          )}
         </>
       )}
 
@@ -433,6 +477,8 @@ export default function Game({
           )}
 
           {dailyMicroStat && <p className="daily-micro-stat">{dailyMicroStat}</p>}
+
+          {xpResult && <XpResult result={xpResult} />}
 
           <div className="result-actions">
             <button className="primary-btn" onClick={handleShare}>

@@ -9,6 +9,7 @@ import {
 } from '../utils/raceEngine.js'
 import { openLiveRace, isSupabaseConfigured } from '../lib/liveRace.js'
 import { haptics } from '../utils/haptics.js'
+import { recordRaceFinish, recordRaceWin } from '../progression/store.js'
 
 // ---------------------------------------------------------------------
 // Race Mode — "Race a friend through the same Plexus," live.
@@ -71,6 +72,29 @@ export default function Race({ bank, initialCode = '', onExit }) {
   useEffect(() => {
     phaseRef.current = phase
   }, [phase])
+
+  // Career XP: finishing a race pays once per run; a win adds a bonus when the
+  // opponent's result arrives. A run with no opponent counts as a solo run.
+  const raceRunRef = useRef(null)
+  const raceRecordedRef = useRef({ finish: false, win: false })
+  useEffect(() => {
+    if (phase === 'playing' && !raceRunRef.current) {
+      raceRunRef.current = `${code}:${Date.now()}`
+      raceRecordedRef.current = { finish: false, win: false }
+    }
+    if (phase !== 'playing' && phase !== 'results') raceRunRef.current = null
+    if (phase === 'results' && raceRunRef.current && !raceRecordedRef.current.finish) {
+      raceRecordedRef.current.finish = true
+      recordRaceFinish({ raceId: raceRunRef.current, solo: !(oppOnline || oppResult) })
+    }
+  }, [phase, code, oppOnline, oppResult])
+  useEffect(() => {
+    if (phase !== 'results' || !raceRunRef.current || !oppResult || raceRecordedRef.current.win) return
+    if (raceVerdict({ correct: correctCount, timeMs: elapsedMs }, oppResult) === 'win') {
+      raceRecordedRef.current.win = true
+      recordRaceWin({ raceId: raceRunRef.current })
+    }
+  }, [phase, oppResult, correctCount, elapsedMs])
 
   useEffect(
     () => () => {
