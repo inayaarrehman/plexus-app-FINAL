@@ -331,7 +331,7 @@ export default function Home({
 
       {career && onOpenCareer && (
         <button className="home-rounds" onClick={onOpenCareer}>
-          {career.rounds.complete ? 'Rounds complete' : `Rounds ${career.rounds.done} of ${career.rounds.goals.length}`}
+          {career.rounds.complete ? 'This Week complete' : `This Week ${career.rounds.done} of ${career.rounds.goals.length}`}
           <span> · resets Monday</span>
         </button>
       )}

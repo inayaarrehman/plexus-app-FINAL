@@ -99,3 +99,138 @@ export function KitIcon({ item, size = 24, className = '' }) {
 }
 
 export const fmt = (n) => Number(n || 0).toLocaleString('en-US')
+
+// ---------------------------------------------------------------------
+// Career path: the four stages as nodes on one thin Plexus path.
+// Completed stages stay lit in their jewel tone, the current stage is the
+// largest node with an ivory ring, future stages are open and quiet. The link
+// out of the current stage fills with progress toward the next stage.
+// ---------------------------------------------------------------------
+const STAGE_TONES = ['var(--node-terracotta)', 'var(--node-peacock)', 'var(--node-cobalt)', 'var(--node-plum)']
+const PATH_PTS = [
+  [50, 58],
+  [150, 36],
+  [250, 60],
+  [350, 38],
+]
+// A few faint satellite nodes give the path a Plexus texture around stages
+// that have been reached; future stages have none.
+const SATELLITES = [
+  [[24, 78], [70, 84]],
+  [[124, 14], [178, 18]],
+  [[226, 84], [280, 82]],
+  [[328, 16], [376, 60]],
+]
+export function CareerPath({ info, stageFrac = 0, className = '' }) {
+  const cur = STAGES.findIndex((s) => s.key === info.stage.key)
+  return (
+    <div className={`career-path ${className}`}>
+      <svg viewBox="0 0 400 96" className="cp-svg" role="img" aria-label={`Career path: ${STAGES.map((s) => s.name).join(', ')}. Current stage ${info.stage.name}.`}>
+        {SATELLITES.map((sats, i) =>
+          i <= cur
+            ? sats.map(([x, y], j) => (
+                <g key={`s${i}${j}`}>
+                  <line className="cp-sat-link" x1={PATH_PTS[i][0]} y1={PATH_PTS[i][1]} x2={x} y2={y} />
+                  <circle className="cp-sat" cx={x} cy={y} r="2.6" style={{ fill: STAGE_TONES[i] }} />
+                </g>
+              ))
+            : null
+        )}
+        {PATH_PTS.slice(0, -1).map(([x1, y1], i) => {
+          const [x2, y2] = PATH_PTS[i + 1]
+          const done = i < cur
+          const active = i === cur
+          const fx = x1 + (x2 - x1) * stageFrac
+          const fy = y1 + (y2 - y1) * stageFrac
+          return (
+            <g key={`l${i}`}>
+              <line className={`cp-link ${done ? 'is-done' : ''}`} x1={x1} y1={y1} x2={x2} y2={y2} />
+              {active && stageFrac > 0 && (
+                <line className="cp-progress" x1={x1} y1={y1} x2={fx} y2={fy} style={{ stroke: STAGE_TONES[i] }} />
+              )}
+            </g>
+          )
+        })}
+        {PATH_PTS.map(([x, y], i) => {
+          const state = i < cur ? 'is-done' : i === cur ? 'is-current' : 'is-future'
+          return (
+            <g key={`n${i}`} className={`cp-stage ${state}`}>
+              {i === cur && <circle className="cp-ring" cx={x} cy={y} r="17" />}
+              <circle
+                className="cp-node"
+                cx={x}
+                cy={y}
+                r={i === cur ? 10.5 : 7}
+                style={i <= cur ? { fill: STAGE_TONES[i] } : undefined}
+              />
+            </g>
+          )
+        })}
+      </svg>
+      <ol className="cp-labels">
+        {STAGES.map((s, i) => (
+          <li key={s.key} className={i < cur ? 'is-done' : i === cur ? 'is-current' : 'is-future'}>
+            {s.name}
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
+}
+
+// ---------------------------------------------------------------------
+// Milestone path: the levels of the current stage as small nodes, grouped
+// under the stage's milestones (from MILESTONES in config). Lit up to the
+// current level; the link to the next level fills with level progress. This
+// is the page's one level-progress indicator.
+// ---------------------------------------------------------------------
+export function MilestonePath({ info, milestones, className = '' }) {
+  const idx = STAGES.findIndex((s) => s.key === info.stage.key)
+  const next = STAGES[idx + 1]
+  let from = info.stage.from
+  let to = next ? next.from - 1 : Math.max(info.level + 3, from + 7)
+  if (!next) from = Math.max(info.stage.from, to - 7)
+  const levels = []
+  for (let L = from; L <= to; L++) levels.push(L)
+  // Milestone groups inside the visible levels.
+  const groups = []
+  milestones.forEach((m, i) => {
+    const end = (milestones[i + 1]?.from || Infinity) - 1
+    const a = Math.max(m.from, from)
+    const b = Math.min(end, to)
+    if (a <= b) groups.push({ name: m.name, from: a, to: b, count: b - a + 1 })
+  })
+  const n = levels.length
+  const frac = info.cost > 0 ? Math.min(1, info.intoLevel / info.cost) : 0
+  return (
+    <div className={`milestone-path ${className}`}>
+      <div className="mp-track" role="img" aria-label={`Level ${info.level}, ${info.toNext} XP to level ${info.level + 1}`}>
+        {levels.map((L, i) => {
+          const lit = L <= info.level
+          const isCur = L === info.level
+          const isStart = groups.some((g) => g.from === L)
+          return (
+            <span key={L} className="mp-cell" style={{ flex: 1 }}>
+              {i < n - 1 && (
+                <span className="mp-link">
+                  <span className="mp-link-fill" style={{ width: L < info.level ? '100%' : isCur ? `${Math.round(frac * 100)}%` : '0%' }} />
+                </span>
+              )}
+              <span className={`mp-node ${lit ? 'is-lit' : ''} ${isCur ? 'is-current' : ''} ${isStart ? 'is-start' : ''}`} />
+            </span>
+          )
+        })}
+      </div>
+      <div className="mp-labels">
+        {groups.map((g) => {
+          const state = info.level > g.to ? 'is-done' : info.level >= g.from ? 'is-current' : 'is-future'
+          return (
+            <span key={g.name} className={`mp-label ${state}`} style={{ flex: g.count }}>
+              {g.name}
+            </span>
+          )
+        })}
+      </div>
+    </div>
+  )
+}

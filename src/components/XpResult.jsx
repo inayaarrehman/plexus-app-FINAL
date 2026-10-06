@@ -37,7 +37,7 @@ export default function XpResult({ result }) {
       </p>
       {items.length > 0 && <p className="xp-items">{items.join(' · ')}</p>}
       {rounds && (
-        <p className="xp-rounds">{rounds.complete ? 'Rounds complete' : `Rounds ${rounds.done} of ${rounds.goals.length}`}</p>
+        <p className="xp-rounds">{rounds.complete ? 'This Week complete' : `This Week ${rounds.done} of ${rounds.goals.length}`}</p>
       )}
     </div>
   )

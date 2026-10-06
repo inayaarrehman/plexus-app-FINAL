@@ -5402,3 +5402,97 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 .kit-use-count { color: var(--text-dim); font-variant-numeric: tabular-nums; }
 .kit-hint { font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
 .tile.tile-curbside { box-shadow: 0 0 0 2.5px var(--node-peacock), 0 2px 0 rgba(10, 6, 20, 0.28); }
+
+/* ---- Career v2: the career path is the centrepiece ---- */
+.career-head { margin-top: 4px; }
+.career-level { margin: 8px 0 0; }
+
+.career-path { max-width: 440px; margin: 18px auto 0; }
+.cp-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.cp-link { stroke: color-mix(in srgb, var(--text) 20%, transparent); stroke-width: 1.8; stroke-linecap: round; }
+.cp-link.is-done { stroke: color-mix(in srgb, var(--text) 62%, transparent); }
+.cp-progress { stroke-width: 3; stroke-linecap: round; }
+.cp-sat-link { stroke: color-mix(in srgb, var(--text) 22%, transparent); stroke-width: 1.2; }
+.cp-sat { stroke: var(--node-rim); stroke-width: 0.8; opacity: 0.85; }
+.cp-node { fill: none; stroke: color-mix(in srgb, var(--text) 42%, transparent); stroke-width: 1.6; }
+.cp-stage.is-done .cp-node,
+.cp-stage.is-current .cp-node { stroke: var(--node-rim); stroke-width: 1.6; }
+.cp-stage.is-current .cp-node { stroke-width: 2.2; }
+.cp-ring { fill: none; stroke: color-mix(in srgb, var(--text) 38%, transparent); stroke-width: 1.2; }
+.cp-labels {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  text-align: center;
+  font-size: var(--type-caption);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.cp-labels li { padding: 0 2px; text-wrap: balance; }
+.cp-labels .is-done { color: var(--text-dim); }
+.cp-labels .is-current { color: var(--text); font-weight: 700; }
+.cp-labels .is-future { color: color-mix(in srgb, var(--text) 52%, transparent); }
+
+.milestone-path { max-width: 380px; margin: 26px auto 0; padding: 0 4px; }
+.mp-track { display: flex; align-items: center; height: 16px; }
+.mp-cell { position: relative; display: flex; align-items: center; height: 16px; min-width: 0; }
+.mp-link {
+  position: absolute;
+  left: 5px;
+  right: -5px;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background: color-mix(in srgb, var(--text) 20%, transparent);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.mp-link-fill { display: block; height: 100%; background: var(--node-peacock); border-radius: 2px; }
+.mp-node {
+  position: relative;
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-left: 1px;
+  box-shadow: inset 0 0 0 1.4px color-mix(in srgb, var(--text) 48%, transparent);
+  background: var(--room);
+  flex: none;
+}
+.mp-node.is-start { width: 10px; height: 10px; margin-left: 0; }
+.mp-node.is-lit { background: var(--node-peacock); box-shadow: 0 0 0 1.2px var(--node-rim); }
+.mp-node.is-current { width: 13px; height: 13px; margin-left: -1.5px; box-shadow: 0 0 0 2px var(--node-rim); }
+.mp-labels { display: flex; margin-top: 8px; font-size: var(--type-caption); font-weight: 600; line-height: 1.2; }
+.mp-label { min-width: 0; padding-right: 6px; text-wrap: balance; }
+.mp-label.is-done { color: var(--text-dim); }
+.mp-label.is-current { color: var(--text); font-weight: 700; }
+.mp-label.is-future { color: color-mix(in srgb, var(--text) 52%, transparent); }
+
+.career-xp-block { text-align: center; margin: 26px 0 0; }
+.career-xp-block .career-xp { margin: 0; font-size: 1.9rem; }
+.career-tonext { margin: 4px 0 0; font-size: var(--type-secondary); font-weight: 600; color: var(--text-dim); }
+.career-xp-block .career-next { margin: 6px 0 0; font-size: var(--type-secondary); font-weight: 700; color: var(--text); }
+
+/* Compact stats: numbers over labels, three across, no rules or boxes. */
+.career-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px 10px;
+  max-width: 420px;
+  margin: 32px auto 0;
+  padding: 0;
+  border-top: none;
+  text-align: center;
+}
+.career-stats div { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 3px; padding: 0; border-bottom: none; }
+.career-stats dd { margin: 0; font-family: var(--font-display); font-size: 1.25rem; letter-spacing: -0.01em; font-weight: 700; font-variant-numeric: tabular-nums; }
+.career-stats dt { color: var(--text-dim); font-size: var(--type-caption); font-weight: 600; }
+@media (max-width: 340px) {
+  .career-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.career-week { max-width: 420px; margin: 34px auto 0; padding-top: 22px; border-top: 1px solid var(--home-divider); }
+.rounds-reward { margin: 10px 0 0; font-size: var(--type-secondary); font-weight: 700; }
+.career-week .rounds-foot { margin: 3px 0 0; }

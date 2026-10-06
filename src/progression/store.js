@@ -80,7 +80,7 @@ function followUps(state, ctx) {
   const rp = roundsProgress(state, now)
   if (rp.complete && !state.ledger[`rounds:${rp.week.key}`]) {
     ctx.gained += award(state, { id: `rounds:${rp.week.key}`, xp: XP.rounds, kind: 'rounds', at: now })
-    ctx.lines.push(['Rounds complete', XP.rounds])
+    ctx.lines.push(['This Week', XP.rounds])
     if (rp.week.index % 2 === 0) {
       const item = ROUNDS_ITEM_ROTATION[(rp.week.index / 2) % ROUNDS_ITEM_ROTATION.length]
       if (grant(state, { id: `rounds:${rp.week.key}:item`, item, source: 'rounds', at: now }) && ctx.grants) ctx.grants.push(item)
