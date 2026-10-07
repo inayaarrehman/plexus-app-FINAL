@@ -1367,6 +1367,50 @@ console.log('\n[39] Name the connection: matcher, bonus XP, no penalties')
   globalThis.localStorage = _prevLS
 }
 
+console.log('\n[40] Legal: footer, disclaimers, privacy matches the code, account deletion')
+{
+  const fs = await import('node:fs')
+  const L = await import('../src/legal/config.js')
+  assert(L.DISCLAIMER_TEXT === 'Plexus is an educational game and is not a substitute for professional medical advice, diagnosis, treatment, or clinical judgment. Do not use Plexus to make patient-care decisions.', 'educational disclaimer word for word')
+  assert(L.ACCURACY_TEXT === 'Medical information in Plexus may contain errors or become outdated. Users should verify information with authoritative clinical and educational sources.', 'accuracy statement word for word')
+  assert(L.AGE_TEXT.includes('not intended for children under 13'), 'under-13 statement')
+  assert(L.COPYRIGHT === '© 2026 Plexus. All rights reserved.', 'copyright line')
+  const legal = fs.readFileSync('src/components/Legal.jsx', 'utf8')
+  const all = legal + fs.readFileSync('src/components/LegalFooter.jsx', 'utf8') + fs.readFileSync('src/legal/config.js', 'utf8') + fs.readFileSync('src/components/AuthModal.jsx', 'utf8')
+  assert(!all.includes('®') && !/Plexus\(R\)/.test(all), 'no registered trademark symbol')
+  assert(!/100\s*%|fully secure|totally secure|guarantee(?:d|s)? (?:your|that|the) (?:data|security)/i.test(legal), 'no absolute security claims')
+  assert(!all.includes('—'), 'no em dashes in legal copy')
+  // Privacy names every outside service the code actually uses
+  const src = (f) => fs.readFileSync(f, 'utf8')
+  if (src('src/lib/supabaseClient.js').includes('createClient')) assert(legal.includes('Supabase'), 'Privacy names Supabase')
+  if (fs.existsSync('api/recall-judge.js') && src('api/recall-judge.js').includes('api.anthropic.com')) assert(legal.includes('Anthropic'), 'Privacy names Anthropic for the answer check')
+  if (fs.existsSync('vercel.json')) assert(legal.includes('Vercel'), 'Privacy names the host')
+  if (src('src/lib/liveRace.js').includes('channel(')) assert(legal.includes('Supabase Realtime'), 'Privacy covers live races')
+  // and nothing collects what the page says Plexus does not collect
+  const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(d + '/' + e.name) : /\.(jsx?|html)$/.test(e.name) ? [d + '/' + e.name] : []))
+  const code = [...walk('src').filter((f) => !f.startsWith('src/data/')), 'index.html'].map((f) => src(f)).join('\n')
+  assert(!/navigator\.geolocation|gtag\(|googletagmanager|posthog|mixpanel|segment\.io|plausible\.io|@vercel\/analytics|sentry|hotjar|fbq\(/i.test(code), 'no trackers or location: if one is added, update the Privacy page first')
+  assert(!/document\.cookie\s*=/.test(code), 'no cookies set by Plexus')
+  // the cloud progress table is limited to its owner
+  const mig3 = src('supabase/migrations/0003_profiles_progress.sql')
+  assert(/user_id = auth\.uid\(\)/.test(mig3) && /enable row level security/.test(mig3), 'cloud progress readable only by its owner (as the page says)')
+  // account deletion: the caller only, cascades, no service key in the app
+  const mig4 = src('supabase/migrations/0004_delete_account.sql')
+  assert(/delete from auth\.users where id = uid/.test(mig4) && /auth\.uid\(\)/.test(mig4) && /grant execute on function public\.delete_my_account\(\) to authenticated/.test(mig4) && /revoke all/.test(mig4), 'delete_my_account deletes only the caller and is limited to signed-in users')
+  for (const t of ['profiles', 'user_progress']) assert(new RegExp(`create table if not exists public\\.${t}[\\s\\S]*?references auth\\.users \\(id\\) on delete cascade`).test(src('supabase/migrations/0001_library.sql') + mig3), t + ' is removed with the account')
+  assert(/rpc\('delete_my_account'\)/.test(src('src/lib/auth.js')) && !/service_role|SERVICE_ROLE/.test(code), 'deletion runs as the player; no service-role key in browser code')
+  // clearing this device only touches Plexus keys
+  const D = await import('../src/legal/deviceData.js')
+  const mem = { k: { 'plexus.a': 1, 'medconnections.b': 1, 'sb-x-auth-token': 1, 'other.site': 1 }, get length() { return Object.keys(this.k).length }, key(i) { return Object.keys(this.k)[i] }, removeItem(k) { delete this.k[k] } }
+  const prevL = globalThis.localStorage, prevS = globalThis.sessionStorage
+  globalThis.localStorage = mem; globalThis.sessionStorage = undefined
+  D.clearDeviceData()
+  assert(Object.keys(mem.k).join() === 'other.site', 'clear device removes only Plexus keys')
+  globalThis.localStorage = prevL; globalThis.sessionStorage = prevS
+  // no contact address invented
+  if (!L.CONTACT_EMAIL) assert(!/@[a-z0-9-]+\.[a-z]{2,}/i.test(legal.replace(/mailto:\$\{CONTACT_EMAIL\}/, '')), 'no contact email hardcoded in the pages while none is set')
+}
+
 // ---------------------------------------------------------------
 console.log(`\n${'='.repeat(40)}`)
 if (failures === 0) {

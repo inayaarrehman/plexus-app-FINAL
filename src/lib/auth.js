@@ -100,3 +100,27 @@ export async function isAdmin() {
   const p = await getProfile()
   return Boolean(p?.is_admin)
 }
+
+// Account deletion ----------------------------------------------------------
+// Deletes the signed-in player's account and, through the database's cascade
+// rules, their profile and cloud progress (supabase/migrations/0004). Runs as
+// the player, so no service-role key is involved. Returns
+// { ok } | { ok: false, reason: 'not-configured' | 'guest' | 'unavailable', error }
+export async function deleteMyAccount() {
+  const sb = await getSupabase()
+  if (!sb) return { ok: false, reason: 'not-configured' }
+  const { data: userData } = await sb.auth.getUser()
+  if (!userData?.user) return { ok: false, reason: 'guest' }
+  const { error } = await sb.rpc('delete_my_account')
+  if (error) {
+    // The function is missing until migration 0004 has been run.
+    const missing = /delete_my_account|function|schema cache|not find/i.test(error.message || '')
+    return { ok: false, reason: missing ? 'unavailable' : 'error', error: error.message }
+  }
+  try {
+    await sb.auth.signOut()
+  } catch {
+    /* the session is already invalid once the user is gone */
+  }
+  return { ok: true }
+}

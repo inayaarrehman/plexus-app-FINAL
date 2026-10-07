@@ -5456,3 +5456,56 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 @media (prefers-reduced-motion: no-preference) {
   .recall-note { animation: xp-level 300ms ease-out both; }
 }
+
+/* ==================================================================
+   LEGAL: footer, Terms / Privacy / Disclaimer pages, Account data
+   Quiet, on the existing rooms and type scale. No new colours.
+   ================================================================== */
+.legal-footer { margin: 34px 0 6px; text-align: center; color: var(--text-dim); font-size: var(--type-caption); }
+.legal-links { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; }
+.legal-link { color: var(--text-dim); font-weight: 600; text-decoration: none; padding: 6px 2px; }
+.legal-link:hover, .legal-link:focus-visible { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+.legal-link.is-current { color: var(--text); }
+.legal-copyright { margin: 4px 0 0; font-size: var(--type-caption); color: var(--text-dim); }
+.home-legal { margin-top: 40px; }
+
+.legal .game-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+}
+.legal .game-header > :first-child { justify-self: start; }
+.legal .game-header .game-header-title { grid-column: 2; flex: none; text-align: center; padding: 0 8px; }
+.legal-body { max-width: 620px; margin: 8px auto 0; line-height: 1.6; font-size: var(--type-secondary); }
+.legal-title { font-family: var(--font-display); font-weight: 700; font-size: var(--type-display); letter-spacing: -0.03em; line-height: 1.05; margin: 6px 0 14px; }
+.legal-body h2 { font-family: var(--font-display); font-size: var(--type-heading); letter-spacing: -0.015em; margin: 26px 0 6px; }
+.legal-body p { margin: 0 0 10px; }
+.legal-body ul { margin: 0 0 10px; padding-left: 20px; }
+.legal-body li { margin: 0 0 8px; }
+.legal-body a { color: var(--text); text-underline-offset: 3px; }
+.legal-lead { font-size: 1.02rem; font-weight: 600; }
+.legal-updated { margin-top: 24px !important; color: var(--text-dim); font-size: var(--type-caption); }
+
+/* Account: Your data, sign-up note and legal links */
+.auth-data { margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+.auth-data-title { margin: 0; font-size: 0.85rem; font-weight: 700; }
+.auth-data-actions { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.auth-link-btn { background: none; border: none; padding: 4px 0; color: var(--text-dim); font: inherit; font-size: 0.85rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.auth-link-btn:hover { color: var(--text); }
+.auth-confirm { display: flex; flex-direction: column; gap: 10px; }
+.auth-confirm-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.auth-confirm-row > button { flex: 1 1 140px; }
+.auth-btn-danger {
+  border: 1px solid #b4483f;
+  background: #b4483f;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.auth-btn-danger:disabled { opacity: 0.55; cursor: default; }
+.auth-terms-note { margin: 0; font-size: 0.8rem; color: var(--text-dim); line-height: 1.45; }
+.auth-terms-note a { color: inherit; font-weight: 600; text-underline-offset: 3px; }
+.auth-legal { margin: 8px 0 0; }

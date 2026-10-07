@@ -9,6 +9,7 @@ import SolvedRecap from './SolvedRecap.jsx'
 import LockGlyph from './LockGlyph.jsx'
 import { LOCK_COPY } from '../utils/dailyGate.js'
 import { LevelLine } from './RecordParts.jsx'
+import LegalFooter from './LegalFooter.jsx'
 
 // Each system takes one accent from the four-colour Plexus palette, cycled by
 // position — same rule as the Systems page, so the home previews match.
@@ -158,6 +159,7 @@ export default function Home({
   onOpenHowTo,
   onOpenAccount,
   onOpenRecord,
+  onOpenLegal,
   record = null,
   locked = false,
   justUnlocked = false,
@@ -335,6 +337,8 @@ export default function Home({
           <span> · resets Monday</span>
         </button>
       )}
+
+      <LegalFooter onNavigate={onOpenLegal} className="home-legal" />
 
       {recapOpen && <SolvedRecap categories={todayCategories} onClose={() => setRecapOpen(false)} />}
     </div>

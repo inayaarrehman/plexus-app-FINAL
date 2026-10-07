@@ -10,6 +10,7 @@ import { raceCodeFromHash } from './utils/raceEngine.js'
 import AppNav from './components/AppNav.jsx'
 import InstallPrompt from './components/InstallPrompt.jsx'
 import AuthModal from './components/AuthModal.jsx'
+import Legal, { LEGAL_PAGES } from './components/Legal.jsx'
 import HowToModal from './components/HowToModal.jsx'
 import { isSupabaseConfigured } from './lib/supabaseClient.js'
 import { onAuthChange } from './lib/auth.js'
@@ -126,10 +127,28 @@ export default function App() {
   }
   const [isDevRoute, setIsDevRoute] = useState(() => window.location.hash === '#dev')
   const [challengeInvite, setChallengeInvite] = useState(() => parseChallengeHash())
+  // Terms / Privacy / Disclaimer have their own links (#terms etc.) so they can
+  // be shared, and open over whatever screen is current. Never locked.
+  const parseLegalHash = () => {
+    const h = window.location.hash.replace(/^#/, '')
+    return LEGAL_PAGES.includes(h) ? h : null
+  }
+  const [legalPage, setLegalPage] = useState(() => parseLegalHash())
+  const openLegal = (page) => {
+    window.location.hash = page
+    setLegalPage(page)
+  }
+  const closeLegal = () => {
+    setLegalPage(null)
+    if (LEGAL_PAGES.includes(window.location.hash.replace(/^#/, ''))) {
+      history.replaceState(null, '', window.location.pathname + window.location.search)
+    }
+  }
   useEffect(() => {
     const onHashChange = () => {
       setIsDevRoute(window.location.hash === '#dev')
       setChallengeInvite(parseChallengeHash())
+      setLegalPage(parseLegalHash())
     }
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)
@@ -308,16 +327,18 @@ export default function App() {
   useEffect(() => {
     const b = document.body
     const gameMode = gameCtx?.mode
-    const isDailyBoard = view === 'game' && (gameMode === 'daily' || gameMode === 'archive')
-    const isSystemBoard = view === 'game' && gameMode === 'system'
-    b.classList.toggle('bg-home', !isDevRoute && view === 'home')
+    // Legal pages sit on the Home room whatever is underneath.
+    const v = legalPage ? 'legal' : view
+    const isDailyBoard = v === 'game' && (gameMode === 'daily' || gameMode === 'archive')
+    const isSystemBoard = v === 'game' && gameMode === 'system'
+    b.classList.toggle('bg-home', !isDevRoute && (v === 'home' || v === 'legal'))
     b.classList.toggle('env-daily', !isDevRoute && isDailyBoard)
-    b.classList.toggle('env-systems', !isDevRoute && (view === 'systems' || isSystemBoard))
-    b.classList.toggle('env-review', !isDevRoute && view === 'archive')
-    b.classList.toggle('env-challenge', !isDevRoute && view === 'challenge')
-    b.classList.toggle('env-record', !isDevRoute && view === 'record')
-    b.classList.toggle('bg-challenge-focus', !isDevRoute && view === 'challenge' && challengePhase === 'playing')
-  }, [view, gameCtx, challengePhase, isDevRoute])
+    b.classList.toggle('env-systems', !isDevRoute && (v === 'systems' || isSystemBoard))
+    b.classList.toggle('env-review', !isDevRoute && v === 'archive')
+    b.classList.toggle('env-challenge', !isDevRoute && v === 'challenge')
+    b.classList.toggle('env-record', !isDevRoute && v === 'record')
+    b.classList.toggle('bg-challenge-focus', !isDevRoute && v === 'challenge' && challengePhase === 'playing')
+  }, [view, legalPage, gameCtx, challengePhase, isDevRoute])
 
   const goHome = () => {
     setGameCtx(null)
@@ -553,6 +574,14 @@ export default function App() {
     )
   }
 
+  if (legalPage && !isDevRoute) {
+    return (
+      <div className="app-shell">
+        <Legal page={legalPage} onBack={closeLegal} onNavigate={openLegal} />
+      </div>
+    )
+  }
+
   if (view === 'game' && gameCtx && !blockedView) {
     return (
       <div className="app-shell">
@@ -661,6 +690,7 @@ export default function App() {
         record={recordHome}
         onOpenHowTo={() => setShowHowTo(true)}
         onOpenAccount={supaConfigured ? () => setShowAccount(true) : null}
+        onOpenLegal={openLegal}
       />
       {lockNotice > 0 && (
         <p key={lockNotice} className="lock-notice" role="status">
@@ -670,7 +700,7 @@ export default function App() {
       )}
       {showHowTo && <HowToModal onClose={() => setShowHowTo(false)} />}
       {showStats && <StatsModal stats={stats} onClose={() => setShowStats(false)} />}
-      {showAccount && <AuthModal onClose={() => setShowAccount(false)} onAuthChanged={resyncProgress} />}
+      {showAccount && <AuthModal onClose={() => setShowAccount(false)} onAuthChanged={resyncProgress} onOpenLegal={openLegal} />}
       <InstallPrompt />
     </div>
   )
