@@ -40,14 +40,14 @@ function softHyphenateWord(word) {
   if (word.length < 8 || /[^A-Za-z]/.test(word)) return word
   const lower = word.toLowerCase()
   const cuts = new Set()
-  for (const p of PREFIXES) {
-    let i = lower.indexOf(p)
-    while (i !== -1) {
-      const end = i + p.length
-      if (i >= MIN_PART) cuts.add(i)
-      if (end <= lower.length - MIN_PART && end >= MIN_PART) cuts.add(end)
-      i = lower.indexOf(p, i + 1)
-    }
+  // Prefixes only at the start of the word, chained (hyper + para + ...), so a
+  // prefix inside another word ("hemato" in "exanthematous") is not a cut.
+  let pos = 0
+  for (let guard = 0; guard < 6; guard++) {
+    const p = PREFIXES.filter((x) => lower.startsWith(x, pos)).sort((a, b) => b.length - a.length)[0]
+    if (!p) break
+    pos += p.length
+    if (pos >= MIN_PART && pos <= lower.length - MIN_PART) cuts.add(pos)
   }
   for (const s of SUFFIXES) {
     const i = lower.lastIndexOf(s)
@@ -63,7 +63,7 @@ function softHyphenateWord(word) {
   const bounds = [0, ...kept, word.length]
   for (let b = 0; b < bounds.length - 1; b++) {
     const [from, to] = [bounds[b], bounds[b + 1]]
-    if (to - from <= 8) continue
+    if (to - from <= 9) continue
     const cut = middleCut(lower, from, to)
     if (cut) kept.push(cut)
   }
@@ -80,7 +80,8 @@ function softHyphenateWord(word) {
 const VOWEL = /[aeiouy]/
 function middleCut(lower, from, to) {
   const mid = Math.floor((from + to) / 2)
-  const ok = (k) => k - from >= MIN_PART && to - k >= MIN_PART
+  // Never split a letter pair that is read as one sound (th, ch, ph, sh, gh, rh).
+  const ok = (k) => k - from >= MIN_PART && to - k >= MIN_PART && !/^[ctpsgr]h$/.test(lower.slice(k - 1, k + 1))
   for (let d = 0; d <= 3; d++) {
     for (const k of [mid - d, mid + d]) {
       if (ok(k) && !VOWEL.test(lower[k - 1]) && !VOWEL.test(lower[k]) && VOWEL.test(lower[k + 1] || '')) return k

@@ -12,14 +12,14 @@ import XpResult from './XpResult.jsx'
 import { loadProgression, spendCurbside, recordCategoryBonus } from '../progression/store.js'
 import { XP } from '../progression/config.js'
 import { judgeAnswer } from '../recall/judge.js'
-import { wordTokens } from '../recall/normalize.js'
 import { logEvent } from '../utils/events.js'
 import { kitCounts } from '../progression/engine.js'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import { groupColor } from './GroupMotif.jsx'
-import DifficultyIcon, { DifficultyTag, DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
+import DifficultyIcon, { DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
 import ReviewConnections from './ReviewConnections.jsx'
 import TileText from './TileText.jsx'
+import SolvedGroup, { ConvergeMark } from './SolvedGroup.jsx'
 import { haptics } from '../utils/haptics.js'
 
 const levelColor = (level) => groupColor(level)
@@ -79,6 +79,13 @@ export default function Game({
   // status: open | clarify | checking | correct | missed | skipped
   const [recall, setRecall] = useState(initial.recall || {})
   const [recallDrafts, setRecallDrafts] = useState({})
+  // Only one group is open for naming at a time (the most recently solved).
+  const [activeRecall, setActiveRecall] = useState(null)
+  // Brief confirmation after naming, and the group whose title is revealing.
+  const [recallFlash, setRecallFlash] = useState(null) // { catIndex, text, kind }
+  const [revealCat, setRevealCat] = useState(null)
+  const flashTimer = useRef(null)
+  const revealTimer = useRef(null)
 
   const [selected, setSelected] = useState([])
   const [shakeIds, setShakeIds] = useState([])
@@ -216,6 +223,7 @@ export default function Game({
       setPopCatIndex(catIndex)
       if (recallEnabled) {
         setRecall((prev) => (prev[catIndex] ? prev : { ...prev, [catIndex]: { status: 'open' } }))
+        setActiveRecall(catIndex)
         logEvent('recall_prompt_shown')
       }
       haptics.correct() // connection formed
@@ -287,6 +295,22 @@ export default function Game({
     return c?.bankCategoryId || c?.id || `group-${catIndex}`
   }
   const setRecallStatus = (catIndex, patch) => setRecall((prev) => ({ ...prev, [catIndex]: { ...prev[catIndex], ...patch } }))
+  // Close the naming step: the official title reveals (lines draw in) and the
+  // card settles into its solved state. An optional short confirmation shows
+  // for a moment, then the card is just the connection.
+  const revealGroup = (catIndex, flash = null) => {
+    setActiveRecall((cur) => (cur === catIndex ? null : cur))
+    setRevealCat(catIndex)
+    clearTimeout(revealTimer.current)
+    revealTimer.current = setTimeout(() => setRevealCat(null), 450)
+    clearTimeout(flashTimer.current)
+    setRecallFlash(flash ? { catIndex, ...flash } : null)
+    if (flash) flashTimer.current = setTimeout(() => setRecallFlash(null), 2600)
+  }
+  useEffect(() => () => {
+    clearTimeout(flashTimer.current)
+    clearTimeout(revealTimer.current)
+  }, [])
 
   const submitRecall = async (catIndex) => {
     const entry = recall[catIndex]
@@ -305,6 +329,7 @@ export default function Game({
     }
     if (band === 'high') {
       setRecallStatus(catIndex, { status: 'correct', answer: text })
+      revealGroup(catIndex, { text: `Correct · +${XP.categoryBonus} XP`, kind: 'correct' })
       logEvent('recall_accepted')
       haptics.correct()
       const r = recordCategoryBonus({ puzzleId: puzzle.id, groupId: groupIdOf(catIndex) })
@@ -318,14 +343,17 @@ export default function Game({
       // Still related but not specific enough: show the connection, with the
       // words their answer did not cover in bold.
       setRecallStatus(catIndex, { status: 'close', answer: text, missing })
+      revealGroup(catIndex, { text: 'Close. The connection is more specific. No mistake counted.', kind: 'close' })
       logEvent('recall_rejected')
     } else {
       setRecallStatus(catIndex, { status: 'missed', answer: text })
+      revealGroup(catIndex, { text: 'Not quite. No mistake counted.', kind: 'missed' })
       logEvent('recall_rejected')
     }
   }
   const skipRecall = (catIndex) => {
     setRecallStatus(catIndex, { status: 'skipped' })
+    revealGroup(catIndex)
     logEvent('recall_skipped')
   }
   const recallPending = (catIndex) => ['open', 'clarify', 'checking'].includes(recall[catIndex]?.status)
@@ -444,82 +472,23 @@ export default function Game({
           and leads into the completion mark on the result card below. */}
       <div className={`strand-stack ${gameOver ? 'strand-stack-complete' : ''}`}>
         {orderedSolvedCats.map((c) => (
-          <div
+          <SolvedGroup
             key={c.catIndex}
-            className={`strand ${popCatIndex === c.catIndex ? 'strand-form' : ''} ${
-              popCatIndex === c.catIndex && c.level === 4 ? 'strand-form-expert' : ''
-            }`}
-            style={{ '--strand-color': levelColor(c.level) }}
-          >
-            <div className="strand-head">
-              {recallPending(c.catIndex) ? (
-                <span className="strand-title strand-title-recall">Name the connection · +{XP.categoryBonus} XP</span>
-              ) : (
-                <span className="strand-title">{c.title}</span>
-              )}
-              <DifficultyTag level={c.level} className="strand-difficulty" />
-            </div>
-            <ol className="strand-nodes">
-              {c.items.map((it) => (
-                <li className="strand-node" key={it.term}>
-                  <span className="strand-dot" aria-hidden="true" />
-                  <span className="strand-term">{it.term}</span>
-                </li>
-              ))}
-            </ol>
-            {recallPending(c.catIndex) && (
-              <form
-                className="recall-form"
-                onSubmit={(e) => {
-                  e.preventDefault()
-                  submitRecall(c.catIndex)
-                }}
-              >
-                <input
-                  className="recall-input"
-                  type="text"
-                  value={recallDrafts[c.catIndex] || ''}
-                  onChange={(e) => setRecallDrafts((d) => ({ ...d, [c.catIndex]: e.target.value }))}
-                  placeholder="Type the connection"
-                  aria-label="Name the connection"
-                  maxLength={120}
-                  autoComplete="off"
-                  autoCorrect="off"
-                  autoCapitalize="none"
-                  spellCheck={false}
-                  enterKeyHint="done"
-                  disabled={recall[c.catIndex]?.status === 'checking'}
-                />
-                <button type="submit" className="recall-submit" disabled={!(recallDrafts[c.catIndex] || '').trim() || recall[c.catIndex]?.status === 'checking'}>
-                  {recall[c.catIndex]?.status === 'checking' ? 'Checking' : 'Submit'}
-                </button>
-                <button type="button" className="recall-skip" onClick={() => skipRecall(c.catIndex)} disabled={recall[c.catIndex]?.status === 'checking'}>
-                  Skip
-                </button>
-                {recall[c.catIndex]?.status === 'clarify' && (
-                  <p className="recall-note" role="status">
-                    {recall[c.catIndex].broader ? 'Close, but the connection is more specific than that. One more try?' : 'Close. Be a little more specific. One more try?'}
-                    <span className="recall-safe">Your solve is safe and no mistake was counted.</span>
-                  </p>
-                )}
-              </form>
-            )}
-            {recall[c.catIndex]?.status === 'correct' && (
-              <p className="recall-note recall-correct" role="status">Correct · +{XP.categoryBonus} XP</p>
-            )}
-            {recall[c.catIndex]?.status === 'close' && (
-              <p className="recall-note" role="status">
-                Close! The specific connection is <MissingWords title={c.title} missing={recall[c.catIndex].missing} />.
-                <span className="recall-safe">No bonus this time. Your solve and mistakes are unchanged.</span>
-              </p>
-            )}
-            {recall[c.catIndex]?.status === 'missed' && (
-              <p className="recall-note" role="status">
-                Your name for this group didn’t match the connection above.
-                <span className="recall-safe">No bonus this time. Your solve and mistakes are unchanged.</span>
-              </p>
-            )}
-          </div>
+            category={c}
+            color={levelColor(c.level)}
+            forming={popCatIndex === c.catIndex}
+            revealing={revealCat === c.catIndex || (popCatIndex === c.catIndex && !recallPending(c.catIndex))}
+            pending={recallPending(c.catIndex)}
+            open={activeRecall === c.catIndex}
+            entry={recall[c.catIndex]}
+            draft={recallDrafts[c.catIndex] || ''}
+            flash={recallFlash?.catIndex === c.catIndex ? recallFlash : null}
+            bonusXp={XP.categoryBonus}
+            onOpen={() => setActiveRecall(c.catIndex)}
+            onDraft={(v) => setRecallDrafts((d) => ({ ...d, [c.catIndex]: v }))}
+            onSubmit={() => submitRecall(c.catIndex)}
+            onSkip={() => skipRecall(c.catIndex)}
+          />
         ))}
       </div>
 
@@ -603,28 +572,32 @@ export default function Game({
 
           {won && <p className="completion-phrase">{completionPhrase}</p>}
 
-          {/* One row per difficulty, Easy to Expert: the medical icon names the
-              difficulty and four nodes in its colour stand for the four
-              concepts (filled when the group was solved, open when it wasn't). */}
+          {/* The four connections, Easy to Expert, each a converge mark (four
+              concepts into one) on a thin spine that rises toward the finished
+              Plexus above: 4 concepts make a connection, 4 connections make a
+              Plexus. The title leads; difficulty is quiet metadata. */}
           <ol
-            className="result-motifs"
+            className="result-connections"
             aria-label={`${foundOrder.length} of ${puzzle.categories.length} connections found`}
           >
-            {resultGroups.map((g) => (
-              <li key={g.catIndex} className="result-motif-row">
-                <DifficultyIcon level={g.level} size={20} className="result-difficulty" decorative />
-                <span
-                  className={`result-nodes ${g.found ? '' : 'is-missed'}`}
-                  style={{ '--node-color': groupColor(g.level) }}
-                  role="img"
-                  aria-label={`${DIFFICULTY_LABEL[g.level]}: ${g.title}, ${g.found ? 'solved' : 'not solved'}`}
-                >
-                  {g.items.map((it) => (
-                    <span key={it.term} className="result-node" />
-                  ))}
-                </span>
-              </li>
-            ))}
+            {resultGroups.map((g) => {
+              const unnamed = recallPending(g.catIndex)
+              return (
+                <li key={g.catIndex} className={`rc-row ${g.found ? '' : 'is-missed'}`} style={{ '--strand-color': groupColor(g.level) }}>
+                  <ConvergeMark className="rc-mark" />
+                  <span className="rc-text">
+                    <span className={`rc-title ${unnamed ? 'is-unnamed' : ''}`}>
+                      {unnamed ? `Name it above · +${XP.categoryBonus} XP` : g.title}
+                    </span>
+                    <span className="rc-meta">
+                      <DifficultyIcon level={g.level} size={13} decorative />
+                      {DIFFICULTY_LABEL[g.level]}
+                      {!g.found && ' · not found'}
+                    </span>
+                  </span>
+                </li>
+              )
+            })}
           </ol>
 
           <p className="result-summary">
@@ -651,7 +624,7 @@ export default function Game({
             </div>
           )}
           <button className="result-review-toggle" onClick={() => setShowReview((v) => !v)} aria-expanded={showReview}>
-            {showReview ? 'Hide the review' : `Review all ${puzzle.categories.length} connections`}
+            {showReview ? 'Hide connections' : 'Show connections'}
             <span aria-hidden="true">{showReview ? ' ▴' : ' ▾'}</span>
           </button>
           {showReview && <ReviewConnections puzzle={puzzle} onKnowledgeSignal={onKnowledgeSignal} />}
@@ -699,18 +672,6 @@ function mergeBonus(x, r) {
     grants: [...(x.grants || []), ...(r.grants || [])],
     rounds: r.rounds || x.rounds,
   }
-}
-
-// The category name with the words a close answer did not cover in bold.
-function MissingWords({ title, missing = [] }) {
-  const miss = new Set(missing)
-  return (
-    <span className="recall-title">
-      {wordTokens(title).map((w, i) =>
-        w.toks.some((t) => miss.has(t)) ? <b key={i}>{w.part}</b> : <React.Fragment key={i}>{w.part}</React.Fragment>
-      )}
-    </span>
-  )
 }
 
 // Which Kit tools the player has already had explained (per device).

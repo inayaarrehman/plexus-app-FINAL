@@ -1391,10 +1391,9 @@ console.log('\n[39] Name the connection: matcher, bonus XP, no penalties')
   assert(api.includes('process.env.ANTHROPIC_API_KEY') && !/sk-ant-/.test(api), 'server function reads its key from the environment only')
   const client = ['src/recall/judge.js', 'src/recall/matcher.js', 'src/recall/normalize.js', 'src/components/Game.jsx'].map((f) => fs.readFileSync(f, 'utf8')).join('\n')
   assert(!/ANTHROPIC|sk-ant-|x-api-key/i.test(client), 'no model key or provider call in browser code')
-  const game = fs.readFileSync('src/components/Game.jsx', 'utf8')
-  for (const t of ['Name the connection · +', 'Close. Be a little more specific.', 'Close! The specific connection is', 'no mistake was counted', 'Your solve and mistakes are unchanged', 'Correct · +', 'Skip']) assert(game.includes(t), 'copy present: ' + t)
-  const newText = ['src/recall/judge.js', 'src/recall/matcher.js', 'src/recall/normalize.js', 'api/recall-judge.js', 'src/utils/events.js'].map((f) => fs.readFileSync(f, 'utf8')).join('') + game.slice(game.indexOf('{recallPending(c.catIndex) ? ('), game.indexOf('function MissingWords'))
-  assert(!/Not quite\./.test(game.slice(game.indexOf('{recallPending(c.catIndex) ? ('))), 'the ambiguous "Not quite." label is gone from naming feedback')
+  const game = fs.readFileSync('src/components/Game.jsx', 'utf8') + fs.readFileSync('src/components/SolvedGroup.jsx', 'utf8')
+  for (const t of ['Name the connection · +', 'Close. Be a little more specific.', 'No mistake counted', 'Correct · +', 'Not quite.', 'Skip']) assert(game.includes(t), 'copy present: ' + t)
+  const newText = ['src/recall/judge.js', 'src/recall/matcher.js', 'src/recall/normalize.js', 'api/recall-judge.js', 'src/utils/events.js'].map((f) => fs.readFileSync(f, 'utf8')).join('') + fs.readFileSync('src/components/SolvedGroup.jsx', 'utf8')
   assert(!newText.includes('—'), 'no em dashes in the new copy')
   globalThis.localStorage = _prevLS
 }

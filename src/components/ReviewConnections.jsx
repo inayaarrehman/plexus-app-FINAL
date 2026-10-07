@@ -48,8 +48,8 @@ export default function ReviewConnections({ puzzle, onKnowledgeSignal }) {
               onClick={() => setOpenIndex(isOpen ? null : cat.catIndex)}
               aria-expanded={isOpen}
             >
-              <DifficultyTag level={cat.level} className="accordion-level" />
               <span className="accordion-title">{cat.title}</span>
+              <DifficultyTag level={cat.level} size={14} className="accordion-level" />
               <span className="accordion-caret">{isOpen ? 'Hide why' : 'Why?'}</span>
             </button>
             {isOpen && (
