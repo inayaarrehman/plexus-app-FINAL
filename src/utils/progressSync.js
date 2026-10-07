@@ -5,7 +5,7 @@
 //   • stats         — streaks + lifetime counts (medconnections.stats.v1)
 //   • dailyHistory  — per-date Daily results (powers Archive + streak)
 //   • challenge     — 3-Minute personal bests
-//   • progression   — XP ledger, Your Kit, Career acknowledgements (union by id)
+//   • progression   — XP ledger, Your Kit, level acknowledgements (union by id)
 // Everything merges MONOTONICALLY so syncing can only ever protect progress,
 // never lose it: streaks/bests take the max, the current streak follows the
 // most-recently-completed day, and daily history is unioned per date keeping

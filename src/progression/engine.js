@@ -7,13 +7,16 @@
 //     ledger: { [eventId]: { xp, base, kind, at, m? } },   // every XP award
 //     kit:    { grants: { [id]: { item, qty, source, at } },
 //               uses:   { [id]: { item, at, m? } } },
-//     seen:   { level, stages: { [stageKey]: true } },      // UI acknowledgements
+//     seen:   { level, stages? },                           // UI acknowledgements
+//             (`stages` is a legacy field from the removed rank system. It is
+//              kept and merged untouched so older saves and devices stay
+//              compatible, but nothing reads it.)
 //     migrated: <timestamp or null>,                         // one-time backfill
 //     profile: { displayName? },
 //   }
 // Every award and grant is keyed by a stable id (e.g. "daily:2026-10-05",
 // "system:Endocrine", "level:12"), so refreshes, replays and a second device
-// can never pay twice. Level, stage, totals and Rounds progress are derived
+// can never pay twice. Level, totals and weekly goal progress are derived
 // from the ledger, never stored, so they cannot drift.
 
 import {
@@ -21,8 +24,6 @@ import {
   PRACTICE_TAPER_AFTER,
   PRACTICE_TAPER_RATE,
   levelCost,
-  STAGES,
-  MILESTONES,
   KIT,
   ROUNDS_POOL,
   ROUNDS_ROTATION,
@@ -95,7 +96,7 @@ export function award(state, { id, xp, kind, at = Date.now(), m }) {
   return paid
 }
 
-// ---- levels and stages ----
+// ---- levels ----
 export function levelInfo(xp) {
   let level = 1
   let start = 0
@@ -105,9 +106,6 @@ export function levelInfo(xp) {
     level += 1
     cost = levelCost(level)
   }
-  const stage = stageFor(level)
-  const stageIdx = STAGES.indexOf(stage)
-  const nextStage = STAGES[stageIdx + 1] || null
   return {
     level,
     xp,
@@ -116,27 +114,11 @@ export function levelInfo(xp) {
     intoLevel: xp - start,
     cost,
     toNext: start + cost - xp,
-    stage,
-    nextStage,
-    milestone: milestoneFor(level),
   }
 }
-export function stageFor(level) {
-  let s = STAGES[0]
-  for (const st of STAGES) if (level >= st.from) s = st
-  return s
-}
-export function milestoneFor(level) {
-  let m = MILESTONES[0]
-  for (const ms of MILESTONES) if (level >= ms.from) m = ms
-  return m.name
-}
-export function stageIndex(key) {
-  return STAGES.findIndex((s) => s.key === key)
-}
-export function itemOpen(item, stageKey) {
-  const need = stageIndex(KIT[item]?.stage || 'premed')
-  return stageIndex(stageKey) >= need
+// A Kit tool is open once the player reaches its unlock level.
+export function itemOpen(item, level) {
+  return level >= (KIT[item]?.unlock || 1)
 }
 
 // ---- Your Kit ----

@@ -1,29 +1,13 @@
 import React from 'react'
 import { KIT } from '../progression/config.js'
-import BrandMark from './BrandMark.jsx'
-import { LevelLine, StageBadge, fmt } from './CareerParts.jsx'
+import { LevelLine, fmt } from './RecordParts.jsx'
 
-// The Career block on the results card. Normal case: total XP, a one-line
-// breakdown, the level line, and Rounds if it moved. A level-up changes the
-// level line and number. A career-stage promotion replaces the block with a
-// larger constellation, the new stage, its badge and what was added to Your Kit.
+// The XP block on the results card: total XP, a one-line breakdown, the level
+// line, items received and This Week if it moved. A level-up lights the next
+// node and updates the level number; nothing more dramatic than that.
 export default function XpResult({ result }) {
-  const { gained, lines, after, levelUp, promotion, grants, rounds } = result
+  const { gained, lines, after, levelUp, grants, rounds } = result
   const items = summarizeGrants(grants)
-
-  if (promotion) {
-    return (
-      <div className="xp-result xp-promotion" role="status">
-        <BrandMark size={96} className="promo-mark" animate decorative />
-        <p className="promo-kicker">Promoted to</p>
-        <p className="promo-stage">{promotion.name}</p>
-        <p className="promo-level">Level {after.level}</p>
-        <StageBadge stageKey={promotion.key} size={52} className="promo-badge" />
-        {items.length > 0 && <p className="xp-items">{items.join(' · ')}</p>}
-        {gained > 0 && <p className="xp-sub">+{fmt(gained)} XP</p>}
-      </div>
-    )
-  }
 
   if (!(gained > 0) && items.length === 0) return null
 

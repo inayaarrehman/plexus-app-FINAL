@@ -1124,7 +1124,7 @@ console.log('\n[37] No em dashes in any bundled Plexus copy')
   }
 }
 
-console.log('\n[38] Career progression engine: XP, levels, streaks, Rounds, Kit, merge, backfill')
+console.log('\n[38] Progression engine: XP, levels, streaks, This Week, Kit, merge, backfill, no ranks')
 {
   const _store = {}
   const _prevLS = globalThis.localStorage
@@ -1135,8 +1135,9 @@ console.log('\n[38] Career progression engine: XP, levels, streaks, Rounds, Kit,
   const C = await import('../src/progression/config.js')
   const store = _store
   // levels
-  const li=E.levelInfo(6520); assert(li.level===11&&li.toNext===740&&li.stage.name==='Medical Student'&&li.milestone==='Boards','level 11 at 6520')
-  assert(E.levelInfo(19690).stage.name==='Resident','resident at 19690'); assert(E.levelInfo(51150).stage.name==='Attending','attending'); assert(E.levelInfo(10_000_000).level>60,'no dead end')
+  const li=E.levelInfo(6520); assert(li.level===11&&li.toNext===740,'level 11 at 6520')
+  assert(E.levelInfo(19690).level===18&&E.levelInfo(51150).level===26,'level curve unchanged'); assert(E.levelInfo(10_000_000).level>60,'no maximum level')
+  assert(!('stage' in li)&&!('milestone' in li)&&C.STAGES===undefined&&C.MILESTONES===undefined,'no ranks or rank milestones in the model')
   // idempotent + taper
   let s=E.emptyState(); const at=new Date(2026,9,5,12).getTime()
   assert(E.award(s,{id:'a',xp:100,kind:'daily',at})===100 && E.award(s,{id:'a',xp:100,kind:'daily',at})===0,'idempotent')
@@ -1178,9 +1179,43 @@ console.log('\n[38] Career progression engine: XP, levels, streaks, Rounds, Kit,
   assert(S.backfillIfNeeded({history:bh})===null,'backfill runs once')
   // rounds goals rotate and differ week to week
   for(let w=0;w<12;w++){const a=E.roundsGoals(w).map(g=>g.id).join(),b=E.roundsGoals(w+1).map(g=>g.id).join();assert(a!==b,'weeks differ '+w)}
-  assert(!C.ROUNDS_POOL.some(g=>/race/i.test(g.label)),'no live-race Rounds goal')
-  const allNames = [...C.STAGES.map((x) => x.name), ...C.MILESTONES.map((x) => x.name), ...Object.values(C.KIT).map((k) => k.name + ' ' + k.desc)].join(' ')
-  assert(!/\b(Dr\.|MD|DO)\b/.test(allNames) && !allNames.includes('\u2014'), 'no credential language or em dashes in Career names')
+  assert(!C.ROUNDS_POOL.some(g=>/race/i.test(g.label)),'no live-race weekly goal')
+  const allNames = Object.values(C.KIT).map((k) => k.name + ' ' + k.desc).join(' ')
+  assert(!/\b(Dr\.|MD|DO)\b/.test(allNames) && !allNames.includes('\u2014'), 'no credential language or em dashes in Kit names')
+  // Kit opens by level; each tool is first granted at the level it unlocks
+  for (const [item, def] of Object.entries(C.KIT)) {
+    assert(Number.isInteger(def.unlock) && !('stage' in def), item+' has a level unlock')
+    assert(!E.itemOpen(item, def.unlock - 1) && E.itemOpen(item, def.unlock), item+' opens at level '+def.unlock)
+    if (item !== 'shield') { let first=null; for (let L=2;L<40&&first===null;L++) if (C.levelRewards(L).includes(item)) first=L; assert(first!==null && first>=def.unlock && first<=Math.max(def.unlock,2), item+' first granted at level '+first) }
+  }
+  assert(C.KIT['time-out'].unlock<=14 && C.KIT['second-opinion'].unlock<=12, 'core tools within weeks, not months')
+  // same number of items per level as before, so no level ever adds a grant
+  const oldCount=(L)=>L<2?0:(L===6||L===18)?3:L===26?6:1
+  for (let L=1;L<=60;L++) assert(C.levelRewards(L).length===oldCount(L),'reward count unchanged at level '+L)
+  // migration: a save from the rank system keeps every point, item and flag
+  for(const k of Object.keys(store)) delete store[k]
+  const old=E.emptyState(); old.seen={level:7,stages:{student:true}}
+  E.award(old,{id:'bf-daily',xp:2200,kind:'bf-daily',at})
+  const oldItems={2:'curbside',3:'curbside',4:'curbside',5:'curbside',6:['lab','imaging','curbside'],7:'curbside'}
+  for (const [L,v] of Object.entries(oldItems)) [].concat(v).forEach((item,i)=>E.grant(old,{id:`level:${L}:${i}`,item,source:'level',at}))
+  E.grant(old,{id:'rounds:2026-W40:item',item:'time-out',source:'rounds',at})
+  old.migrated=at
+  localStorage.setItem('plexus.progression.v1', JSON.stringify(old))
+  const beforeCounts=E.kitCounts(E.normalize(old))
+  const mr=S.recordChallengeSession({completedAt:'mig-1',roundsCorrect:0,personalBest:false})
+  const after=S.loadProgression()
+  assert(E.totalXp(after)===2200,'migration keeps XP: '+E.totalXp(after))
+  assert(E.levelInfo(E.totalXp(after)).level===7,'migration keeps level 7')
+  assert(JSON.stringify(E.kitCounts(after))===JSON.stringify(beforeCounts),'migration keeps Kit exactly, no new or duplicate grants')
+  assert(after.kit.grants['level:5:0'].item==='curbside','a grant from the old schedule stays as it was')
+  assert(after.seen.stages.student===true && !('promotion' in mr),'legacy stage flag kept, no promotion in results')
+  assert(E.mergeStates(after,old).seen.stages.student===true,'legacy field survives a merge')
+  // no rank language left in the progression UI or engine
+  const fs = await import('node:fs')
+  const progFiles=['src/components/Record.jsx','src/components/RecordParts.jsx','src/components/XpResult.jsx','src/components/Home.jsx','src/App.jsx','src/progression/config.js','src/progression/engine.js','src/progression/store.js']
+  const rank=/Premed|Medical Student|Resident|Attending|First Shadow|Interview Season|White Coat|Preclinical|Clerkships|Match Season|\bIntern\b|PGY|\bChief\b|Promot|\bCareer\b/
+  for (const f of progFiles) { const t=fs.readFileSync(f,'utf8'); const m=t.match(rank); assert(!m, f+' has no rank language'+(m?': '+m[0]:'')) }
+  assert(!fs.existsSync('src/components/Career.jsx')&&!fs.existsSync('src/components/CareerParts.jsx'),'old Career components removed')
   globalThis.localStorage = _prevLS
 }
 

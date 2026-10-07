@@ -23,8 +23,8 @@ import { dateKey, dayNumber, dateFromDayNumber } from './utils/game.js'
 import { getDailyPuzzleForDate } from './utils/dailyPuzzle.js'
 import { getDailyGate, isGatedView, GATED_VIEWS, LOCK_COPY, hasSeenUnlock, markUnlockSeen } from './utils/dailyGate.js'
 import LockGlyph from './components/LockGlyph.jsx'
-import Career from './components/Career.jsx'
-import { recordDailyFinish, recordSystemFinish, backfillIfNeeded, streakInfo, loadProgression, careerSnapshot } from './progression/store.js'
+import Record from './components/Record.jsx'
+import { recordDailyFinish, recordSystemFinish, backfillIfNeeded, streakInfo, loadProgression, recordSnapshot } from './progression/store.js'
 import { SYSTEMS } from './data/constants.js'
 import { assembleSystemPuzzle } from './utils/puzzleAssembler.js'
 import { systemMasteryCounts } from './utils/mastery.js'
@@ -245,10 +245,10 @@ export default function App() {
     [todayKey, refreshTick]
   )
 
-  // Compact Career read for the Home identity line and Rounds line.
-  const careerHome = useMemo(() => {
+  // Compact progression read for the Home level line and This Week line.
+  const recordHome = useMemo(() => {
     try {
-      return careerSnapshot({ history: getDailyHistory(), todayKey })
+      return recordSnapshot({ history: getDailyHistory(), todayKey })
     } catch {
       return null
     }
@@ -277,7 +277,7 @@ export default function App() {
     if (view === 'home') setRefreshTick((t) => t + 1)
   }, [view])
 
-  // One-time Career backfill for players who were here before progression:
+  // One-time XP backfill for players who were here before progression:
   // credit what history records reliably, then never run again.
   useEffect(() => {
     try {
@@ -315,7 +315,7 @@ export default function App() {
     b.classList.toggle('env-systems', !isDevRoute && (view === 'systems' || isSystemBoard))
     b.classList.toggle('env-review', !isDevRoute && view === 'archive')
     b.classList.toggle('env-challenge', !isDevRoute && view === 'challenge')
-    b.classList.toggle('env-career', !isDevRoute && view === 'career')
+    b.classList.toggle('env-record', !isDevRoute && view === 'record')
     b.classList.toggle('bg-challenge-focus', !isDevRoute && view === 'challenge' && challengePhase === 'playing')
   }, [view, gameCtx, challengePhase, isDevRoute])
 
@@ -576,10 +576,10 @@ export default function App() {
     )
   }
 
-  if (view === 'career') {
+  if (view === 'record') {
     return (
       <div className="app-shell">
-        <Career history={getDailyHistory()} todayKey={todayKey} stats={stats} onBack={goHome} />
+        <Record history={getDailyHistory()} todayKey={todayKey} stats={stats} onBack={goHome} />
       </div>
     )
   }
@@ -656,8 +656,8 @@ export default function App() {
         onLocked={showLocked}
         nudge={lockNotice}
         onOpenStats={() => setShowStats(true)}
-        onOpenCareer={() => setView('career')}
-        career={careerHome}
+        onOpenRecord={() => setView('record')}
+        record={recordHome}
         onOpenHowTo={() => setShowHowTo(true)}
         onOpenAccount={supaConfigured ? () => setShowAccount(true) : null}
       />

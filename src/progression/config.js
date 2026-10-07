@@ -1,12 +1,11 @@
 // ---------------------------------------------------------------------
 // Plexus progression: every tunable number lives here.
 // ---------------------------------------------------------------------
-// XP values, the level curve, career stages, milestone names, Rounds goals
-// and Your Kit rules. Components and the engine read from this file only, so
-// the economy can be retuned without touching UI code.
+// XP values, the level curve, level rewards, weekly goals (shown as This
+// Week) and Your Kit rules. Components and the engine read from this file
+// only, so the economy can be retuned without touching UI code.
 //
-// Career stages are Plexus ranks. They are never written as credentials
-// (no "Dr.", MD, DO or degree language anywhere).
+// Progression is levels only. There are no ranks or titles.
 
 export const XP = {
   daily: 100, // today's Daily finished
@@ -42,65 +41,48 @@ export const STREAK_MILESTONES = [
 ]
 
 // XP needed to go from level L to L+1. Rises gently, never ends: there is no
-// maximum level, so Attending is not a dead end.
+// maximum level.
 export function levelCost(level) {
   const n = level - 1
   return Math.round((150 + 60 * n + 6 * n * n) / 10) * 10
 }
 
-// Career stages by starting level. Medical Student is deliberately the
-// longest stage (12 levels, four milestones). A later tier after Attending can
-// be appended here without changing any saved data.
-export const STAGES = [
-  { key: 'premed', name: 'Premed', from: 1 },
-  { key: 'student', name: 'Medical Student', from: 6 },
-  { key: 'resident', name: 'Resident', from: 18 },
-  { key: 'attending', name: 'Attending', from: 26 },
-  // Future, not exposed yet: { key: 'attending-2', name: 'Attending II', from: 36 }, ...
-]
-
-export const MILESTONES = [
-  { from: 1, name: 'First Shadow' },
-  { from: 3, name: 'Interview Season' },
-  { from: 5, name: 'White Coat' },
-  { from: 6, name: 'Preclinical' },
-  { from: 9, name: 'Boards' },
-  { from: 12, name: 'Clerkships' },
-  { from: 15, name: 'Match Season' },
-  { from: 18, name: 'Intern' },
-  { from: 20, name: 'PGY-2' },
-  { from: 22, name: 'PGY-3' },
-  { from: 24, name: 'Chief' },
-  { from: 26, name: 'Attending' },
-]
-
 // ---- Your Kit ----
 // `ready`: works in this version. The rest are earned and kept now, and switch
 // on in a later update without any change to saved data.
+// `unlock`: the level a tool opens at. Tools earned earlier (for example from
+// This Week) are kept and show up once the level is reached.
 export const KIT = {
-  curbside: { name: 'Curbside', desc: 'Highlights two concepts that belong together.', stage: 'premed', ready: true },
-  lab: { name: 'Lab', desc: 'Rules out one tile in your current selection.', stage: 'student', ready: false },
-  imaging: { name: 'Imaging', desc: 'Shows what kind of connection one group is.', stage: 'student', ready: false },
-  readout: { name: 'Readout', desc: 'Shows the difficulty of one unsolved group.', stage: 'student', ready: false },
-  shield: { name: 'Streak Shield', desc: 'Covers one missed day so your streak continues. Used automatically.', stage: 'premed', ready: true, max: 2 },
-  'second-opinion': { name: 'Second Opinion', desc: 'Takes back one mistake.', stage: 'resident', ready: false },
-  'time-out': { name: 'Time Out', desc: 'Adds 30 seconds to a 3-Minute session.', stage: 'resident', ready: false },
+  curbside: { name: 'Curbside', desc: 'Highlights two concepts that belong together.', unlock: 1, ready: true },
+  lab: { name: 'Lab', desc: 'Rules out one tile in your current selection.', unlock: 5, ready: false },
+  imaging: { name: 'Imaging', desc: 'Shows what kind of connection one group is.', unlock: 6, ready: false },
+  readout: { name: 'Readout', desc: 'Shows the difficulty of one unsolved group.', unlock: 8, ready: false },
+  shield: { name: 'Streak Shield', desc: 'Covers one missed day so your streak continues. Used automatically.', unlock: 1, ready: true, max: 2 },
+  'second-opinion': { name: 'Second Opinion', desc: 'Takes back one mistake.', unlock: 12, ready: false },
+  'time-out': { name: 'Time Out', desc: 'Adds 30 seconds to a 3-Minute session.', unlock: 14, ready: false },
 }
 export const KIT_ORDER = ['curbside', 'lab', 'imaging', 'readout', 'shield', 'second-opinion', 'time-out']
 
-// Fixed level rewards, shown in advance on the Career page. No randomness.
-const STUDENT_CYCLE = ['curbside', 'lab', 'readout', 'imaging']
-const RESIDENT_CYCLE = ['lab', 'second-opinion', 'imaging', 'time-out', 'curbside', 'readout']
-const ATTENDING_CYCLE = ['curbside', 'lab', 'imaging', 'readout', 'second-opinion', 'time-out']
+// Fixed level rewards, shown in advance on the Record page. No randomness.
+// Grants are stored by id (level:L:i), so a level that was already reached
+// keeps whatever it granted at the time. Levels 2 to 17 each grant one item,
+// levels 6 and 18 grant three, so nothing is granted twice or added later.
+// Each tool is first granted at the level it unlocks.
+const EARLY = {
+  2: ['curbside'], 3: ['curbside'], 4: ['curbside'], 5: ['lab'],
+  6: ['lab', 'imaging', 'curbside'],
+  7: ['curbside'], 8: ['readout'], 9: ['lab'], 10: ['imaging'], 11: ['curbside'],
+  12: ['second-opinion'], 13: ['readout'], 14: ['time-out'], 15: ['lab'], 16: ['imaging'], 17: ['curbside'],
+  18: ['second-opinion', 'time-out', 'curbside'],
+}
+const CYCLE_19 = ['lab', 'second-opinion', 'imaging', 'time-out', 'curbside', 'readout']
+const CYCLE_27 = ['curbside', 'lab', 'imaging', 'readout', 'second-opinion', 'time-out']
 export function levelRewards(level) {
   if (level < 2) return []
-  if (level <= 5) return ['curbside']
-  if (level === 6) return ['lab', 'imaging', 'curbside']
-  if (level <= 17) return [STUDENT_CYCLE[(level - 7) % STUDENT_CYCLE.length]]
-  if (level === 18) return ['second-opinion', 'time-out', 'curbside']
-  if (level <= 25) return [RESIDENT_CYCLE[(level - 19) % RESIDENT_CYCLE.length]]
-  if (level === 26) return [...ATTENDING_CYCLE]
-  return [ATTENDING_CYCLE[(level - 27) % ATTENDING_CYCLE.length]]
+  if (EARLY[level]) return [...EARLY[level]]
+  if (level <= 25) return [CYCLE_19[(level - 19) % CYCLE_19.length]]
+  if (level === 26) return [...CYCLE_27]
+  return [CYCLE_27[(level - 27) % CYCLE_27.length]]
 }
 export const PERFECT_REWARD_EVERY = 5 // every 5th perfect Daily: Curbside +1
 export const ROUNDS_ITEM_ROTATION = ['curbside', 'lab', 'time-out', 'imaging'] // every other week

@@ -2,9 +2,8 @@
 // Progression store: the only place that reads/writes progression state.
 // ---------------------------------------------------------------------
 // Each record* function loads the state, adds awards under stable ids, runs
-// the follow-ups (level rewards, promotions, streak milestones, Rounds), saves,
-// and returns a summary the UI can show (XP gained, level change, promotion,
-// items received). Calling any of them twice for the same event is harmless.
+// the follow-ups (level rewards, streak milestones, This Week), saves, and
+// returns a summary the UI can show (XP gained, level change, items received). Calling any of them twice for the same event is harmless.
 
 import {
   XP,
@@ -24,7 +23,6 @@ import {
   levelInfo,
   kitCounts,
   roundsProgress,
-  stageIndex,
   localDayKey,
 } from './engine.js'
 import { currentStreak, longestStreak, needsShield, isStreakDay } from './streak.js'
@@ -76,7 +74,7 @@ function followUps(state, ctx) {
       if (grant(state, { id: `level:${L}:${i}`, item, source: 'level', at: now }) && ctx.grants) ctx.grants.push(item)
     })
   }
-  // Rounds: complete when all three goals are done; reward once per week.
+  // This Week: complete when all three goals are done; reward once per week.
   const rp = roundsProgress(state, now)
   if (rp.complete && !state.ledger[`rounds:${rp.week.key}`]) {
     ctx.gained += award(state, { id: `rounds:${rp.week.key}`, xp: XP.rounds, kind: 'rounds', at: now })
@@ -85,7 +83,7 @@ function followUps(state, ctx) {
       const item = ROUNDS_ITEM_ROTATION[(rp.week.index / 2) % ROUNDS_ITEM_ROTATION.length]
       if (grant(state, { id: `rounds:${rp.week.key}:item`, item, source: 'rounds', at: now }) && ctx.grants) ctx.grants.push(item)
     }
-    // Rounds XP can itself cross a level: grant those rewards too.
+    // This Week XP can itself cross a level: grant those rewards too.
     const again = levelInfo(totalXp(state))
     for (let L = info.level + 1; L <= again.level; L++) {
       levelRewards(L).forEach((item, i) => {
@@ -95,18 +93,13 @@ function followUps(state, ctx) {
   }
 }
 
-function run(fn, { silent = false } = {}) {
+function run(fn) {
   const state = loadProgression()
   const before = levelInfo(totalXp(state))
   const ctx = { gained: 0, lines: [], grants: [], at: Date.now() }
   fn(state, ctx)
   followUps(state, ctx)
   const after = levelInfo(totalXp(state))
-  let promotion = null
-  if (stageIndex(after.stage.key) > stageIndex(before.stage.key) && !state.seen.stages[after.stage.key]) {
-    promotion = silent ? null : after.stage
-    state.seen.stages[after.stage.key] = true
-  }
   state.seen.level = Math.max(state.seen.level, after.level)
   saveProgression(state)
   return {
@@ -116,7 +109,6 @@ function run(fn, { silent = false } = {}) {
     before,
     after,
     levelUp: after.level > before.level,
-    promotion,
     rounds: roundsProgress(state),
   }
 }
@@ -213,7 +205,7 @@ export function recordChallengeSession({ completedAt, roundsCorrect = 0, isNewBe
     if (xp > 0) {
       ctx.gained += award(state, { id, xp, kind: 'challenge', at })
     } else if (!state.ledger[id]) {
-      // A session with nothing correct still counts as played for Rounds.
+      // A session with nothing correct still counts as played for This Week.
       state.ledger[id] = { xp: 0, base: 0, kind: 'challenge', at }
     }
     ctx.lines.push(['3 Minutes', state.ledger[id]?.xp || 0])
@@ -304,12 +296,12 @@ export function backfillIfNeeded({ history = {}, mastery = {}, bankById = {}, sy
   })
   state.migrated = at
   saveProgression(state)
-  // Level rewards and stage acknowledgements, without a promotion moment.
-  return run(() => {}, { silent: true })
+  // Level rewards for the backfilled XP.
+  return run(() => {})
 }
 
 // ---- read model for the UI ----
-export function careerSnapshot({ history = {}, todayKey }) {
+export function recordSnapshot({ history = {}, todayKey }) {
   const state = loadProgression()
   const xp = totalXp(state)
   const info = levelInfo(xp)

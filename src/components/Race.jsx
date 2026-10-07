@@ -73,7 +73,7 @@ export default function Race({ bank, initialCode = '', onExit }) {
     phaseRef.current = phase
   }, [phase])
 
-  // Career XP: finishing a race pays once per run; a win adds a bonus when the
+  // XP: finishing a race pays once per run; a win adds a bonus when the
   // opponent's result arrives. A run with no opponent counts as a solo run.
   const raceRunRef = useRef(null)
   const raceRecordedRef = useRef({ finish: false, win: false })
