@@ -5414,3 +5414,45 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 .kit-hint { font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
 .tile.tile-curbside { box-shadow: 0 0 0 2.5px var(--node-peacock), 0 2px 0 rgba(10, 6, 20, 0.28); }
 
+
+/* ==================================================================
+   NAME THE CONNECTION (today's Daily)
+   Sits inside the solved strand: the title waits behind a short prompt,
+   one compact row to answer or skip. Ink on the cream strand, no modal.
+   ================================================================== */
+.strand-title-recall { font-family: var(--font-ui); font-size: var(--type-secondary); font-weight: 700; letter-spacing: 0; color: color-mix(in srgb, var(--ink) 78%, transparent); }
+.recall-form { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 11px; }
+.recall-input {
+  flex: 1 1 160px;
+  min-width: 0;
+  height: 40px;
+  padding: 0 12px;
+  border: 1.5px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, #fff 70%, var(--tile-cream));
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 16px; /* 16px keeps iOS from zooming the page on focus */
+}
+.recall-input::placeholder { color: color-mix(in srgb, var(--ink) 48%, transparent); }
+.recall-input:focus { outline: none; border-color: var(--strand-color); box-shadow: 0 0 0 2px color-mix(in srgb, var(--strand-color) 35%, transparent); }
+.recall-submit,
+.recall-skip {
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: var(--type-caption);
+  font-weight: 700;
+  cursor: pointer;
+}
+.recall-submit { border: none; background: var(--ink); color: var(--tile-cream); }
+.recall-submit:disabled { opacity: 0.4; cursor: default; }
+.recall-skip { border: none; background: none; color: color-mix(in srgb, var(--ink) 70%, transparent); padding: 0 6px; }
+.recall-skip:disabled { opacity: 0.4; }
+.recall-note { flex-basis: 100%; margin: 8px 0 0; font-size: var(--type-caption); font-weight: 700; color: color-mix(in srgb, var(--ink) 75%, transparent); }
+.recall-form .recall-note { margin-top: 0; }
+.recall-correct { color: var(--ink); }
+@media (prefers-reduced-motion: no-preference) {
+  .recall-note { animation: xp-level 300ms ease-out both; }
+}

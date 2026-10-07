@@ -38,6 +38,14 @@
 //   notes           optional — why something is needs_review/rejected,
 //                   or a caveat worth knowing before publishing
 //
+// Optional, for "Name the connection" (see src/recall/). None of these is
+// required: without them the title is the answer and the matcher handles
+// wording, plurals, abbreviations, word order and small typos.
+//   canonical       the answer, if it should differ from `title`
+//   aliases         a few common other ways to say it
+//   keyTerms        words that carry the concept (weighted more heavily)
+//   doNotAccept     phrases that are too broad and must not pass
+//
 // Only 'verified' categories are ever eligible for auto-assembled
 // puzzles (see puzzleAssembler.js) or the Daily Puzzle. 'needs_review'
 // categories stay in the bank (visible in the Dev Viewer's bank browser)
@@ -108,6 +116,9 @@ const connectionBank = [
   {
     id: 'bank-easy-02',
     title: 'QT-prolonging drug classes',
+    aliases: ['Drugs that prolong the QT interval', 'Long QT drugs'],
+    keyTerms: ['QT'],
+    doNotAccept: ['Arrhythmia drugs', 'Cardiac drugs', 'Antiarrhythmics'],
     tiles: ['Sotalol', 'Macrolides', 'Fluoroquinolones', 'Antipsychotics'],
     difficulty: 'easy',
     systems: ['Pharmacology', 'Cardiology'],
@@ -258,6 +269,9 @@ const connectionBank = [
   {
     id: 'bank-easy-09',
     title: 'Nephrotic-pattern glomerular diseases',
+    aliases: ['Causes of nephrotic syndrome', 'Nephrotic syndrome causes', 'Nephrotic diseases', 'Diseases causing nephrotic syndrome'],
+    keyTerms: ['nephrotic'],
+    doNotAccept: ['Kidney diseases', 'Glomerular diseases', 'Proteinuria'],
     tiles: ['Minimal change disease', 'Focal segmental glomerulosclerosis', 'Membranous nephropathy', 'Diabetic nephropathy'],
     difficulty: 'easy',
     systems: ['Renal'],

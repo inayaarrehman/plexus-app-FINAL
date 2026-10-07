@@ -49,3 +49,24 @@ accuracy comes first, so nothing is auto-published.
 No em dash character (U+2014) in any Plexus copy: remember lines, explanations, tile notes ("why"), titles, sources, results, buttons, errors, anything a player can read. Do not swap it for a hyphen. Rewrite the sentence with a period, comma, colon or parentheses so it reads naturally.
 
 The Library editor refuses to save a connection that contains one, and `node scripts/selftest.mjs` fails if any bundled content has one.
+
+## Name the connection (optional fields)
+
+On today's Daily, players can type what links a solved group for +10 XP. The
+group's `title` is the answer. Wording does not have to match: the app
+handles case, punctuation, plurals, word order, common abbreviations (IE,
+ACEi, HTN, meds) and small typos, and asks a server check when it is unsure.
+
+You can add up to four optional fields to a category. None is required.
+
+| Field | What it is | Example |
+|---|---|---|
+| `canonical` | The answer, if it should differ from the title | `'Organisms causing infective endocarditis'` |
+| `aliases` | A few obvious other ways to say it | `['Endocarditis pathogens', 'IE organisms']` |
+| `keyTerms` | Words that carry the concept | `['endocarditis']` |
+| `doNotAccept` | Phrases too broad to pass | `['Bacteria', 'Heart infection']` |
+
+Three to five aliases is plenty. Use `doNotAccept` for the vague answers you
+expect people to try. A few examples are already in the bank: QT-prolonging
+drug classes, Nephrotic-pattern glomerular diseases, and Organisms causing
+infective endocarditis.

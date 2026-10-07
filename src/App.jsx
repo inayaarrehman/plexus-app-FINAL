@@ -571,6 +571,7 @@ export default function App() {
           onExit={goHome}
           onFinish={handleFinish}
           onKnowledgeSignal={recordKnowledgeSignal}
+          recallEnabled={gameCtx.mode === 'daily' && !!gameCtx.isToday}
         />
       </div>
     )

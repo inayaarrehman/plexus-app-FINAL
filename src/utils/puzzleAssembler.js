@@ -112,6 +112,11 @@ export function assemblePuzzleFromCategories(categories, meta) {
       connectionType: c.connectionType,
       tags: c.tags,
       bankCategoryId: c.id,
+      // Name the connection (optional authoring fields, see src/recall/)
+      ...(c.canonical ? { canonical: c.canonical } : {}),
+      ...(c.aliases ? { aliases: c.aliases } : {}),
+      ...(c.keyTerms ? { keyTerms: c.keyTerms } : {}),
+      ...(c.doNotAccept ? { doNotAccept: c.doNotAccept } : {}),
       items: c.tiles.map((tile, i) => ({ term: tile, why: c.tileExplanations[i] })),
     }
   })

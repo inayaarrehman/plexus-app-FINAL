@@ -451,6 +451,9 @@ const connectionBankExtra = [
   {
     id: 'bank-ext-031',
     title: 'Organisms causing infective endocarditis',
+    aliases: ['Bacteria causing infective endocarditis', 'Infective endocarditis organisms', 'Endocarditis pathogens', 'Causes of bacterial endocarditis', 'IE organisms'],
+    keyTerms: ['endocarditis'],
+    doNotAccept: ['Bacteria', 'Infection', 'Heart infection', 'Endocarditis'],
     tiles: ['Staphylococcus aureus', 'Viridans streptococci', 'Enterococcus', 'Streptococcus gallolyticus'],
     difficulty: 'medium',
     systems: ['Microbiology', 'Cardiology'],

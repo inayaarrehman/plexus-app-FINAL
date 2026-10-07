@@ -9,7 +9,10 @@ import { pickConnectionOfDay } from '../utils/connectionOfDay.js'
 import BrandMark from './BrandMark.jsx'
 import Confetti from './Confetti.jsx'
 import XpResult from './XpResult.jsx'
-import { loadProgression, spendCurbside } from '../progression/store.js'
+import { loadProgression, spendCurbside, recordCategoryBonus } from '../progression/store.js'
+import { XP } from '../progression/config.js'
+import { judgeAnswer } from '../recall/judge.js'
+import { logEvent } from '../utils/events.js'
 import { kitCounts } from '../progression/engine.js'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import { groupColor } from './GroupMotif.jsx'
@@ -34,6 +37,7 @@ export default function Game({
   onExit,
   onFinish,
   onKnowledgeSignal,
+  recallEnabled = false,
 }) {
   const initial = useMemo(() => {
     const saved = loadProgress(progressKey)
@@ -48,6 +52,7 @@ export default function Game({
       won: false,
       toolsUsed: 0,
       curbside: [],
+      recall: {},
     }
   }, [progressKey, puzzle])
 
@@ -69,6 +74,10 @@ export default function Game({
   const [curbside, setCurbside] = useState(initial.curbside || [])
   const [curbsideLeft, setCurbsideLeft] = useState(() => kitCounts(loadProgression()).curbside || 0)
   const [xpResult, setXpResult] = useState(null)
+  // Name the connection (today's Daily): per solved group, keyed by catIndex.
+  // status: open | clarify | checking | correct | missed | skipped
+  const [recall, setRecall] = useState(initial.recall || {})
+  const [recallDrafts, setRecallDrafts] = useState({})
 
   const [selected, setSelected] = useState([])
   const [shakeIds, setShakeIds] = useState([])
@@ -99,8 +108,10 @@ export default function Game({
       won,
       toolsUsed,
       curbside,
+      // A check in flight is saved as open, so a refresh simply asks again.
+      recall: Object.fromEntries(Object.entries(recall).map(([k, v]) => [k, v.status === 'checking' ? { ...v, status: v.clarified ? 'clarify' : 'open' } : v])),
     })
-  }, [progressKey, puzzle.id, tiles, solvedCats, mistakes, guessLog, gameOver, won, toolsUsed, curbside])
+  }, [progressKey, puzzle.id, tiles, solvedCats, mistakes, guessLog, gameOver, won, toolsUsed, curbside, recall])
 
   useEffect(() => {
     if (gameOver && !finishReported.current && !alreadyOverAtLoad.current) {
@@ -185,6 +196,10 @@ export default function Game({
         { levels: [selected[0].level, selected[0].level, selected[0].level, selected[0].level], catIndexes, correct: true, durationMs, attemptKey: key },
       ])
       setPopCatIndex(catIndex)
+      if (recallEnabled) {
+        setRecall((prev) => (prev[catIndex] ? prev : { ...prev, [catIndex]: { status: 'open' } }))
+        logEvent('recall_prompt_shown')
+      }
       haptics.correct() // connection formed
       setTimeout(() => setPopCatIndex(null), 700)
       setSelected([])
@@ -245,6 +260,48 @@ export default function Game({
   }
 
   const mistakesLeft = MAX_MISTAKES - mistakes
+
+  // ---- Name the connection ----
+  // Optional and separate from solving: a wrong or skipped answer never costs
+  // a mistake, Perfect, streak or a tool. One clarification at most.
+  const groupIdOf = (catIndex) => {
+    const c = puzzle.categories[catIndex]
+    return c?.bankCategoryId || c?.id || `group-${catIndex}`
+  }
+  const setRecallStatus = (catIndex, patch) => setRecall((prev) => ({ ...prev, [catIndex]: { ...prev[catIndex], ...patch } }))
+
+  const submitRecall = async (catIndex) => {
+    const entry = recall[catIndex]
+    const text = (recallDrafts[catIndex] || '').trim()
+    if (!entry || !text || entry.status === 'checking') return
+    setRecallStatus(catIndex, { status: 'checking' })
+    logEvent('recall_submitted')
+    let band = 'low'
+    try {
+      band = (await judgeAnswer(text, puzzle.categories[catIndex])).band
+    } catch {
+      band = 'low'
+    }
+    if (band === 'high') {
+      setRecallStatus(catIndex, { status: 'correct', answer: text })
+      logEvent('recall_accepted')
+      haptics.correct()
+      const r = recordCategoryBonus({ puzzleId: puzzle.id, groupId: groupIdOf(catIndex) })
+      // Named after the puzzle finished: add it to the results already shown.
+      if (r && r.gained > 0) setXpResult((x) => (x ? mergeBonus(x, r) : x))
+    } else if (band === 'medium' && !entry.clarified) {
+      setRecallStatus(catIndex, { status: 'clarify', clarified: true })
+      logEvent('recall_clarify')
+    } else {
+      setRecallStatus(catIndex, { status: 'missed', answer: text })
+      logEvent('recall_rejected')
+    }
+  }
+  const skipRecall = (catIndex) => {
+    setRecallStatus(catIndex, { status: 'skipped' })
+    logEvent('recall_skipped')
+  }
+  const recallPending = (catIndex) => ['open', 'clarify', 'checking'].includes(recall[catIndex]?.status)
 
   const isMilestone = isDaily && won && STREAK_MILESTONES.includes(dailyStreak)
 
@@ -308,6 +365,12 @@ export default function Game({
     }
   }
 
+  // Connection of the day names a group; wait while that group's name is
+  // still being asked for.
+  const connectionOfDayPending = connectionOfDay
+    ? puzzle.categories.some((c, i) => c.title === connectionOfDay.title && recallPending(i))
+    : false
+
   const orderedSolvedCats = puzzle.categories
     .map((c, i) => ({ ...c, catIndex: i }))
     .filter((c) => solvedCats.includes(c.catIndex))
@@ -362,7 +425,11 @@ export default function Game({
             style={{ '--strand-color': levelColor(c.level) }}
           >
             <div className="strand-head">
-              <span className="strand-title">{c.title}</span>
+              {recallPending(c.catIndex) ? (
+                <span className="strand-title strand-title-recall">Name the connection for +{XP.categoryBonus} XP</span>
+              ) : (
+                <span className="strand-title">{c.title}</span>
+              )}
               <DifficultyTag level={c.level} className="strand-difficulty" />
             </div>
             <ol className="strand-nodes">
@@ -373,6 +440,46 @@ export default function Game({
                 </li>
               ))}
             </ol>
+            {recallPending(c.catIndex) && (
+              <form
+                className="recall-form"
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  submitRecall(c.catIndex)
+                }}
+              >
+                <input
+                  className="recall-input"
+                  type="text"
+                  value={recallDrafts[c.catIndex] || ''}
+                  onChange={(e) => setRecallDrafts((d) => ({ ...d, [c.catIndex]: e.target.value }))}
+                  placeholder="Type the connection"
+                  aria-label="Name the connection"
+                  maxLength={120}
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="none"
+                  spellCheck={false}
+                  enterKeyHint="done"
+                  disabled={recall[c.catIndex]?.status === 'checking'}
+                />
+                <button type="submit" className="recall-submit" disabled={!(recallDrafts[c.catIndex] || '').trim() || recall[c.catIndex]?.status === 'checking'}>
+                  {recall[c.catIndex]?.status === 'checking' ? 'Checking' : 'Submit'}
+                </button>
+                <button type="button" className="recall-skip" onClick={() => skipRecall(c.catIndex)} disabled={recall[c.catIndex]?.status === 'checking'}>
+                  Skip
+                </button>
+                {recall[c.catIndex]?.status === 'clarify' && (
+                  <p className="recall-note" role="status">Close. Be a little more specific.</p>
+                )}
+              </form>
+            )}
+            {recall[c.catIndex]?.status === 'correct' && (
+              <p className="recall-note recall-correct" role="status">Correct · +{XP.categoryBonus} XP</p>
+            )}
+            {recall[c.catIndex]?.status === 'missed' && (
+              <p className="recall-note" role="status">Not quite.</p>
+            )}
           </div>
         ))}
       </div>
@@ -499,8 +606,8 @@ export default function Game({
 
           {showReview && <ReviewConnections puzzle={puzzle} onKnowledgeSignal={onKnowledgeSignal} />}
 
-          {connectionOfDay && <PlexusLine className="result-divider" />}
-          {connectionOfDay && (
+          {connectionOfDay && !connectionOfDayPending && <PlexusLine className="result-divider" />}
+          {connectionOfDay && !connectionOfDayPending && (
             <div className="connection-of-day">
               <h3 className="connection-of-day-heading">Connection of the day</h3>
               <p className="connection-of-day-title">{connectionOfDay.title}</p>
@@ -511,4 +618,24 @@ export default function Game({
       )}
     </div>
   )
+}
+
+// Fold a bonus earned after the finish into the results already on screen.
+function mergeBonus(x, r) {
+  const lines = x.lines.map((l) => [...l])
+  const i = lines.findIndex((l) => l[0] === 'Category bonus')
+  if (i >= 0) lines[i][1] += r.gained
+  else {
+    const p = lines.findIndex((l) => l[0] === 'Perfect')
+    lines.splice(p >= 0 ? p : lines.length, 0, ['Category bonus', r.gained])
+  }
+  return {
+    ...x,
+    gained: x.gained + r.gained,
+    lines,
+    after: r.after,
+    levelUp: x.levelUp || r.levelUp,
+    grants: [...(x.grants || []), ...(r.grants || [])],
+    rounds: r.rounds || x.rounds,
+  }
 }

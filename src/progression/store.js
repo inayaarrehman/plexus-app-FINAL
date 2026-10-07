@@ -113,6 +113,21 @@ function run(fn) {
   }
 }
 
+// ---- Name the connection (today's Daily only) ----
+// One bonus per group, ever: the id ties it to the puzzle and the group, so a
+// replay, a refresh or a second phrasing pays nothing more.
+export function categoryBonusId(puzzleId, groupId) {
+  return `category-bonus:${puzzleId}:${groupId}`
+}
+export function recordCategoryBonus({ puzzleId, groupId }) {
+  if (!puzzleId || groupId == null) return null
+  return run((state, ctx) => {
+    const xp = award(state, { id: categoryBonusId(puzzleId, groupId), xp: XP.categoryBonus, kind: 'recall', at: ctx.at, m: { puzzleId, groupId } })
+    ctx.gained += xp
+    if (xp > 0) ctx.lines.push(['Category bonus', xp])
+  })
+}
+
 // ---- Daily (today or Archive) ----
 // Call only for a FIRST finish of that date (App.handleFinish already knows).
 export function recordDailyFinish({ dateKey, isToday, puzzle, won, mistakes, guessLog, toolsUsed = 0, history }) {
@@ -134,6 +149,14 @@ export function recordDailyFinish({ dateKey, isToday, puzzle, won, mistakes, gue
     })
     ctx.gained += conn
     ctx.lines.push(['Connections', conn])
+    // Name the connection: bonuses were paid as each group was named. Show
+    // them on the results line (they are already in the ledger).
+    const named = Object.values(state.ledger).filter((e) => e.kind === 'recall' && e.m?.puzzleId === puzzle.id)
+    const namedXp = named.reduce((a, e) => a + (e.xp || 0), 0)
+    if (namedXp > 0) {
+      ctx.gained += namedXp
+      ctx.lines.push(['Category bonus', namedXp])
+    }
     if (isToday && won && mistakes === 0 && toolsUsed === 0) {
       const p = award(state, { id: `perfect:${dateKey}`, xp: XP.perfect, kind: 'perfect', at })
       ctx.gained += p
