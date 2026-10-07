@@ -350,10 +350,12 @@ check('Game results show four Plexus group motifs (no shape glyphs, no NYT squar
     throw new Error('share text must not reuse the NYT Connections colored-square emoji grid')
   }
   // 4 connections lead into 1 Plexus: one row per connection, each with a
-  // converge mark (four nodes into one), the title first, difficulty quiet.
+  // single node in its colour, the title first, difficulty quiet.
   const rows = (html.match(/class="rc-row /g) || []).length
   if (rows !== 4) throw new Error(`expected four connection rows, found ${rows}`)
-  if ((html.match(/class="converge-mark rc-mark"/g) || []).length !== 4) throw new Error('expected a converge mark per row')
+  if ((html.match(/class="rc-node"/g) || []).length !== 4) throw new Error('expected one connection node per row')
+  if (!html.includes('class="plexus-merge"')) throw new Error('expected the four connections to draw into the Plexus mark')
+  if (html.includes('converge-mark')) throw new Error('the old fan icons should be gone')
   const levels = [...html.matchAll(/class="rc-meta"><svg[^>]*class="difficulty-icon difficulty-icon-(\d)/g)].map((m) => m[1]).join('')
   if (levels !== '1234') throw new Error(`expected results ordered Easy to Expert, got ${levels}`)
   if (!html.includes('4 of 4 connections found')) throw new Error('expected the results list to say how many connections were found')
@@ -361,7 +363,7 @@ check('Game results show four Plexus group motifs (no shape glyphs, no NYT squar
   if (!/<span class="rc-title ">[^<]+<\/span><span class="rc-meta">/.test(html)) throw new Error('row title should come before difficulty')
   const metas = (html.match(/class="strand-meta"/g) || []).length
   if (metas !== 4) throw new Error(`expected quiet difficulty metadata on each solved card, found ${metas}`)
-  if ((html.match(/class="converge-mark strand-converge"/g) || []).length !== 4) throw new Error('each solved card shows the converge mark')
+  if ((html.match(/class="strand-node"/g) || []).length !== 16) throw new Error('each solved card shows its four concepts as linked nodes')
   if (html.includes('strand-motif') || html.includes('result-motif-row')) throw new Error('old motif/legend rows must be gone')
   for (const w of ['Easy', 'Medium', 'Hard', 'Expert']) if (!html.includes(w)) throw new Error(`expected the ${w} label`)
   if (/[●▲◆■]/.test(html) || html.includes('result-square')) throw new Error('old shape glyphs must be gone')

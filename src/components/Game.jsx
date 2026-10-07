@@ -19,7 +19,7 @@ import { groupColor } from './GroupMotif.jsx'
 import DifficultyIcon, { DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
 import ReviewConnections from './ReviewConnections.jsx'
 import TileText from './TileText.jsx'
-import SolvedGroup, { ConvergeMark } from './SolvedGroup.jsx'
+import SolvedGroup from './SolvedGroup.jsx'
 import { haptics } from '../utils/haptics.js'
 
 const levelColor = (level) => groupColor(level)
@@ -88,6 +88,10 @@ export default function Game({
   const revealTimer = useRef(null)
 
   const [selected, setSelected] = useState([])
+  // A correct guess first connects on the board (tiles pulse, light up as
+  // nodes and draw lines to a shared point) before it becomes a solved group.
+  const [connecting, setConnecting] = useState(null) // { catIndex, color, points, hub, w, h }
+  const gridRef = useRef(null)
   const [shakeIds, setShakeIds] = useState([])
   const [oneAwayIds, setOneAwayIds] = useState([])
   const [message, setMessage] = useState('')
@@ -177,7 +181,7 @@ export default function Game({
   const remainingTiles = tiles.filter((t) => !solvedCats.includes(t.catIndex))
 
   const toggleTile = (tile) => {
-    if (gameOver) return
+    if (gameOver || connecting) return
     const already = selected.find((t) => t.text === tile.text && t.catIndex === tile.catIndex)
     if (!already && selected.length < 4) haptics.select() // proposing a connection
     setSelected((prev) => {
@@ -199,7 +203,7 @@ export default function Game({
   const handleDeselect = () => setSelected([])
 
   const handleSubmit = () => {
-    if (selected.length !== 4 || gameOver) return
+    if (selected.length !== 4 || gameOver || connecting) return
     // Duplicate detection is keyed on the four tiles' STABLE identities
     // (order-independent, exact), not on which categories they came from —
     // see isDuplicateAttempt/attemptKey. This is the fix for false
@@ -212,6 +216,27 @@ export default function Game({
 
     if (isFullMatch(selected)) {
       const catIndex = selected[0].catIndex
+      const sel = selected
+      haptics.correct() // connection formed
+      const commit = () => solveGroup(sel, catIndex, catIndexes, key)
+      const cluster = measureCluster(gridRef.current, sel)
+      if (!cluster || prefersReducedMotion()) {
+        commit()
+        return
+      }
+      setConnecting({ catIndex, color: levelColor(sel[0].level), ...cluster })
+      setTimeout(() => {
+        setConnecting(null)
+        commit()
+      }, CONNECT_MS)
+      return
+    }
+    handleWrongGuess(levels, catIndexes, key, alreadyGuessed)
+  }
+
+  // The solved group takes its place (same bookkeeping as before).
+  const solveGroup = (selected, catIndex, catIndexes, key) => {
+    {
       const now = Date.now()
       const durationMs = now - lastSolveTimeRef.current
       lastSolveTimeRef.current = now
@@ -226,7 +251,6 @@ export default function Game({
         setActiveRecall(catIndex)
         logEvent('recall_prompt_shown')
       }
-      haptics.correct() // connection formed
       setTimeout(() => setPopCatIndex(null), 700)
       setSelected([])
 
@@ -246,9 +270,10 @@ export default function Game({
         lastMicroRef.current = phrase
         flashMessage(phrase, 900)
       }
-      return
     }
+  }
 
+  const handleWrongGuess = (levels, catIndexes, key, alreadyGuessed) => {
     // Wrong guess. The haptic is identical for every wrong guess (including
     // One Away) so it can never signal how close the selection was.
     setGuessLog((prev) => [...prev, { levels, catIndexes, correct: false, attemptKey: key }])
@@ -497,19 +522,23 @@ export default function Game({
           {solvedCats.length === 0 && selected.length === 0 && (
             <p className="board-hint">Find the four concepts that belong together.</p>
           )}
-          <div className="tile-grid">
+          <div className={`tile-grid ${connecting ? 'is-connecting' : ''}`} ref={gridRef}>
             {remainingTiles.map((tile) => {
               const isSelected = selected.some((t) => t.text === tile.text && t.catIndex === tile.catIndex)
               const isShaking = shakeIds.includes(tile.text)
               const isOneAwayPulse = oneAwayIds.includes(tile.text)
+              const isConnecting = connecting?.catIndex === tile.catIndex
               return (
                 <button
                   key={tile.text}
+                  style={isConnecting ? { '--strand-color': connecting.color } : undefined}
                   className={`tile ${isSelected ? 'tile-selected' : ''} ${
                     isSelected && selected.length >= 2 ? 'tile-proposing' : ''
                   } ${isSelected && selected.length === 4 ? 'tile-grouped' : ''} ${
                     isShaking ? 'tile-break' : ''
-                  } ${isOneAwayPulse ? 'tile-oneaway-pulse' : ''} ${curbsideTiles.includes(tile.text) ? 'tile-curbside' : ''}`}
+                  } ${isOneAwayPulse ? 'tile-oneaway-pulse' : ''} ${curbsideTiles.includes(tile.text) ? 'tile-curbside' : ''} ${
+                    isConnecting ? 'tile-connecting' : ''
+                  }`}
                   onClick={() => toggleTile(tile)}
                   data-term={tile.text}
                 >
@@ -517,6 +546,22 @@ export default function Game({
                 </button>
               )
             })}
+            {connecting && (
+              <svg
+                className="connect-overlay"
+                viewBox={`0 0 ${connecting.w} ${connecting.h}`}
+                style={{ '--strand-color': connecting.color }}
+                aria-hidden="true"
+              >
+                {connecting.points.map(([x, y], i) => (
+                  <line key={i} className="connect-line" x1={x} y1={y} x2={connecting.hub[0]} y2={connecting.hub[1]} pathLength="1" />
+                ))}
+                {connecting.points.map(([x, y], i) => (
+                  <circle key={`n${i}`} className="connect-node" cx={x} cy={y} r="4.5" />
+                ))}
+                <circle className="connect-hub" cx={connecting.hub[0]} cy={connecting.hub[1]} r="5.5" />
+              </svg>
+            )}
           </div>
 
           <div className="game-controls">
@@ -565,6 +610,9 @@ export default function Game({
               and just as its nodes land a restrained jewel-tone confetti burst
               comes out of it, then settles as the result appears. The Daily
               gets a slightly fuller burst than a system puzzle. */}
+          {/* The four solved connections feed into the finished Plexus: one
+              thin line per group, in its colour, drawing into the mark. */}
+          {won && <PlexusMerge colors={resultGroups.map((g) => groupColor(g.level))} />}
           {won && <BrandMark size={58} className="result-brandmark" animate decorative />}
           {won && <Confetti count={isDaily ? 44 : 32} originY={45} seed={puzzle.id.length * 97 + mistakes} />}
 
@@ -584,7 +632,7 @@ export default function Game({
               const unnamed = recallPending(g.catIndex)
               return (
                 <li key={g.catIndex} className={`rc-row ${g.found ? '' : 'is-missed'}`} style={{ '--strand-color': groupColor(g.level) }}>
-                  <ConvergeMark className="rc-mark" />
+                  <span className="rc-node" aria-hidden="true" />
                   <span className="rc-text">
                     <span className={`rc-title ${unnamed ? 'is-unnamed' : ''}`}>
                       {unnamed ? `Name it above · +${XP.categoryBonus} XP` : g.title}
@@ -691,4 +739,57 @@ function markKitIntroSeen(item) {
   } catch {
     /* storage unavailable: the explanation simply shows again next time */
   }
+}
+
+// ---- Solve animation helpers ----
+// How long the four tiles spend connecting on the board before they become a
+// solved group (the card then forms in about 220ms: under 500ms in all).
+const CONNECT_MS = 260
+
+function prefersReducedMotion() {
+  try {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  } catch {
+    return false
+  }
+}
+
+// Centers of the four tiles (relative to the grid) and their shared point.
+function measureCluster(grid, tiles) {
+  if (!grid) return null
+  const box = grid.getBoundingClientRect()
+  const points = []
+  for (const t of tiles) {
+    const el = [...grid.querySelectorAll('.tile')].find((n) => n.dataset.term === t.text)
+    if (!el) return null
+    const r = el.getBoundingClientRect()
+    // A node at the top edge of each tile, so the terms stay readable.
+    points.push([r.left - box.left + r.width / 2, r.top - box.top + 9])
+  }
+  const hub = [points.reduce((a, p) => a + p[0], 0) / points.length, points.reduce((a, p) => a + p[1], 0) / points.length]
+  return { points, hub, w: Math.max(1, box.width), h: Math.max(1, box.height) }
+}
+
+// Four lines, one per solved group, curving from the solved groups above into
+// the Plexus mark: 4 connections make 1 Plexus.
+function PlexusMerge({ colors }) {
+  const W = 240
+  const H = 46
+  const xs = [30, 90, 150, 210]
+  return (
+    <svg className="plexus-merge" viewBox={`0 0 ${W} ${H}`} width={W} height={H} aria-hidden="true" focusable="false">
+      {xs.map((x, i) => (
+        <path
+          key={i}
+          className="pm-line"
+          d={`M ${x} 2 C ${x} ${H * 0.55}, ${W / 2} ${H * 0.45}, ${W / 2} ${H - 2}`}
+          pathLength="1"
+          style={{ stroke: colors[i], animationDelay: `${i * 40}ms` }}
+        />
+      ))}
+      {xs.map((x, i) => (
+        <circle key={`n${i}`} className="pm-node" cx={x} cy="3" r="3" style={{ fill: colors[i], animationDelay: `${i * 40}ms` }} />
+      ))}
+    </svg>
+  )
 }

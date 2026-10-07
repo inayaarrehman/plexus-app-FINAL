@@ -7,28 +7,14 @@ import { softHyphenate } from './TileText.jsx'
 // A solved group: four concepts that have become one connection.
 // ---------------------------------------------------------------------
 // Hierarchy: the connection (category title) leads, the four concepts sit
-// under it, difficulty is small metadata in the corner. A small converge mark
-// (four nodes drawn into one) sits beside the title, and when the title is
-// revealed the lines draw in and the title settles (about 250ms).
+// under it as linked nodes, difficulty is small metadata in the corner. When
+// the group forms, its nodes light up one after another, the links between
+// them draw in and the title resolves (about 250ms, after the tiles have
+// connected on the board).
 //
 // On today's Daily the title first waits behind an optional "Name the
 // connection" step. Only one group is open for naming at a time; any other
 // unnamed group stays as a compact row the player can open or skip.
-
-export function ConvergeMark({ className = '' }) {
-  const ys = [3, 9, 15, 21]
-  return (
-    <svg className={`converge-mark ${className}`} width="28" height="24" viewBox="0 0 28 24" aria-hidden="true" focusable="false">
-      {ys.map((y) => (
-        <line key={`l${y}`} className="cm-line" x1="3" y1={y} x2="23" y2="12" pathLength="1" />
-      ))}
-      {ys.map((y) => (
-        <circle key={`n${y}`} className="cm-node" cx="3" cy={y} r="2" />
-      ))}
-      <circle className="cm-hub" cx="23.5" cy="12" r="3.2" />
-    </svg>
-  )
-}
 
 // The category name with the words a close answer did not cover in bold.
 function TitleWithMissing({ title, missing = [] }) {
@@ -67,12 +53,9 @@ export default function SolvedGroup({
         {pending ? (
           <span className="strand-title strand-title-recall">Name the connection · +{bonusXp} XP</span>
         ) : (
-          <>
-            <ConvergeMark className="strand-converge" />
-            <span className="strand-title">
-              <TitleWithMissing title={category.title} missing={entry?.status === 'close' ? entry.missing : []} />
-            </span>
-          </>
+          <span className="strand-title">
+            <TitleWithMissing title={category.title} missing={entry?.status === 'close' ? entry.missing : []} />
+          </span>
         )}
         <span className="strand-meta" aria-label={`Difficulty: ${DIFFICULTY_LABEL[category.level]}`}>
           <DifficultyIcon level={category.level} size={15} decorative />

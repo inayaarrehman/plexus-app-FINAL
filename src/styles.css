@@ -5797,3 +5797,92 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 .strand.is-compact .strand-dot { width: 5px; height: 5px; }
 .strand.is-compact .recall-compact { margin-top: 8px; }
 .strand.is-compact .recall-open, .strand.is-compact .recall-skip-small { min-height: 36px; height: 36px; padding: 0 14px; }
+
+/* ==================================================================
+   CONNECTIONS FORMING (solved state v3)
+   1. On the board: the four tiles pulse, light up as nodes and draw lines to
+      a shared point (260ms).
+   2. The solved group forms: nodes light up in turn, the links between them
+      draw in, the title resolves (about 220ms).
+   3. At the end, one line per group draws into the Plexus mark.
+   No bounce, glow or particles; reduced motion skips straight to the end.
+   ================================================================== */
+.tile-grid { position: relative; }
+.tile.tile-connecting {
+  background: color-mix(in srgb, var(--strand-color) 12%, var(--tile-cream));
+  color: var(--ink);
+  box-shadow: 0 0 0 2px var(--strand-color), 0 2px 0 rgba(10, 6, 20, 0.22);
+  transition: background 120ms ease-out, color 120ms ease-out;
+}
+.tile.tile-connecting::after { opacity: 0; }
+.connect-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 2; }
+.connect-line { stroke: var(--strand-color); stroke-width: 2; stroke-linecap: round; opacity: 0.75; }
+.connect-node, .connect-hub { fill: var(--strand-color); stroke: var(--tile-cream); stroke-width: 2; transform-box: fill-box; transform-origin: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .tile.tile-connecting { animation: tile-connect 260ms ease-out both; }
+  .connect-line { stroke-dasharray: 1; stroke-dashoffset: 1; animation: line-draw 170ms ease-out 60ms forwards; }
+  .connect-node { animation: node-in 120ms ease-out both; }
+  .connect-hub { opacity: 0; animation: node-in 110ms ease-out 190ms forwards; }
+}
+@keyframes tile-connect { 0% { transform: none; } 30% { transform: scale(1.03); } 100% { transform: scale(0.97); } }
+@keyframes line-draw { to { stroke-dashoffset: 0; } }
+@keyframes node-in { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: none; } }
+
+/* The solved group: a compact ivory card, a thin coloured edge, the title
+   first, the four concepts as linked nodes, difficulty in the corner. */
+.strand-stack, .strand-stack-complete { gap: 6px; }
+.strand-stack-complete::before { display: none; }
+.strand { padding: 10px 12px 10px 13px; border-left-width: 3px; border-radius: 12px; box-shadow: 0 1px 0 rgba(10, 6, 20, 0.18); }
+.strand-head { margin-bottom: 6px; align-items: baseline; gap: 8px; }
+.strand-title { font-size: 0.98rem; line-height: 1.2; }
+.strand-meta { align-self: flex-start; margin-top: 1px; }
+.strand-nodes { gap: 4px 4px; }
+.strand-node { gap: 6px; }
+.strand-dot { width: 7px; height: 7px; }
+.strand-node + .strand-node::before { width: 12px; height: 1.5px; opacity: 0.5; transform-origin: left center; }
+.strand-term { font-size: 0.82rem; }
+@media (max-width: 520px) {
+  .strand-nodes { gap: 5px 14px; }
+  /* Keep each row linked on phones: a short link into the second column. */
+  .strand:not(.is-compact) .strand-node:nth-child(2n)::before {
+    display: block;
+    content: '';
+    width: 10px;
+    height: 1.5px;
+    margin-left: -12px;
+    border-radius: 2px;
+    background: var(--strand-color);
+    opacity: 0.45;
+    flex-shrink: 0;
+    transform-origin: left center;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .strand.strand-form, .strand.strand-form-expert { animation: group-form 220ms ease-out both; box-shadow: 0 1px 0 rgba(10, 6, 20, 0.18); }
+  .strand.strand-form .strand-dot { animation: node-in 120ms ease-out both; }
+  .strand.strand-form .strand-node:nth-child(2) .strand-dot { animation-delay: 40ms; }
+  .strand.strand-form .strand-node:nth-child(3) .strand-dot { animation-delay: 80ms; }
+  .strand.strand-form .strand-node:nth-child(4) .strand-dot { animation-delay: 120ms; }
+  .strand.strand-form .strand-node + .strand-node::before,
+  .strand.strand-form .strand-node:nth-child(2n)::before { animation: link-draw 120ms ease-out both; }
+  .strand.strand-form .strand-node:nth-child(3)::before { animation-delay: 40ms; }
+  .strand.strand-form .strand-node:nth-child(4)::before { animation-delay: 80ms; }
+  .strand.strand-form .strand-title, .strand.is-revealing .strand-title { animation: title-in 160ms ease-out 100ms both; }
+}
+@keyframes group-form { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes link-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* Four connections into one Plexus. */
+.plexus-merge { display: block; margin: -4px auto -2px; overflow: visible; max-width: 100%; height: auto; }
+.pm-line { fill: none; stroke-width: 1.6; stroke-linecap: round; opacity: 0.85; }
+.pm-node { stroke: var(--room, transparent); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .pm-line { stroke-dasharray: 1; stroke-dashoffset: 1; animation: line-draw 380ms ease-out forwards; }
+  .pm-node { animation: node-in 160ms ease-out both; }
+}
+.result-card .result-brandmark { margin-top: 0; }
+
+/* Results rows: a single node in the group's colour, title first. */
+.result-connections::before, .result-connections::after { display: none; }
+.rc-node { flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--strand-color); margin-top: 5px; align-self: flex-start; }
+.rc-row.is-missed .rc-node { background: none; box-shadow: inset 0 0 0 1.5px var(--strand-color); }
