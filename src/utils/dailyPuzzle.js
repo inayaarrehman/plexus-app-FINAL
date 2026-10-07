@@ -2,6 +2,8 @@ import dailyPuzzles from '../data/dailyPuzzles.js'
 import connectionBank from '../data/connectionBank.js'
 import { dateKey, dayNumber } from './game.js'
 import { dailySeedString, buildDailyFromSeed } from './dailySeed.js'
+import { PINNED_DAILIES, PINNED_THROUGH } from '../data/dailyLock.js'
+import { assemblePuzzleFromCategories, categoriesCompatible } from './puzzleAssembler.js'
 
 // Resolves which Daily Puzzle a given date should show. Everyone who opens the
 // app on the same calendar date gets the SAME puzzle, and it changes at local
@@ -22,6 +24,24 @@ export function getDailyPuzzleForDate(date, bank = connectionBank) {
 
   const explicit = published.find((p) => p.date === key)
   if (explicit) return explicit
+
+  // Dailies that already went out keep their four categories (see dailyLock.js).
+  if (key <= PINNED_THROUGH && PINNED_DAILIES[key]) {
+    // Pinned ids are stored easy to expert; keep that day's tiers even if a
+    // category's difficulty label was corrected later.
+    const TIERS = ['easy', 'medium', 'hard', 'expert']
+    const cats = PINNED_DAILIES[key].map((id, i) => {
+      const c = bank.find((x) => x.id === id)
+      return c ? { ...c, difficulty: TIERS[i] } : null
+    })
+    if (cats.every(Boolean) && categoriesCompatible(cats)) {
+      const puzzle = assemblePuzzleFromCategories(cats, { id: `daily-${key}`, number: dayNumber(date), title: 'Daily Plexus' })
+      puzzle.type = 'daily'
+      puzzle.date = key
+      puzzle.seed = dailySeedString(key)
+      return puzzle
+    }
+  }
 
   const generated = buildDailyFromSeed(bank, dailySeedString(key), {
     number: dayNumber(date),

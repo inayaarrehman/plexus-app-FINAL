@@ -89,7 +89,7 @@ check('Home renders the "Play today\'s puzzle" CTA before the daily is done (no 
     })
   )
   if (!html.includes('home-hero-title')) throw new Error('expected the "Today\'s Plexus" hero heading before the daily is done')
-  if (!html.includes('16 concepts, 4 connections')) throw new Error('expected the concept/connection descriptor')
+  if (!html.includes('Sort 16 medical concepts into 4 groups')) throw new Error('expected the premise line')
   if (!html.includes('play-today-btn')) throw new Error('expected the primary Play CTA before the daily is done')
   if (html.includes('mode-title">Continue')) throw new Error('did not expect a Continue row before the daily is done')
   if (html.includes('primary-recommendation') || html.includes('study-grid')) {
@@ -361,7 +361,7 @@ check('Game results show four Plexus group motifs (no shape glyphs, no NYT squar
   if (html.includes('strand-motif')) throw new Error('solved cards should carry one symbol system (no group motif badge)')
   for (const w of ['Easy', 'Medium', 'Hard', 'Expert']) if (!html.includes(`>${w}<`)) throw new Error(`expected the ${w} label`)
   if (/[●▲◆■]/.test(html) || html.includes('result-square')) throw new Error('old shape glyphs must be gone')
-  if (!html.includes('View Connections')) throw new Error('expected "View Connections"')
+  if (!html.includes('Review all 4 connections')) throw new Error('expected the review link')
   return html
 })
 
@@ -666,7 +666,7 @@ for (const type of ['doubleAgent', 'completeTheChain', 'linkTwo', 'sameOrDiffere
     } else if (type === 'completeTheChain') {
       if (round.sequence.filter((s) => s === null).length !== 1 || round.options.length !== 4) throw new Error('expected one blank + 4 options')
     } else if (type === 'linkTwo') {
-      if (round.options.length !== 8 || round.options.filter((o) => o.correct).length !== 2) throw new Error('expected 8 options, 2 correct')
+      if (round.options.length !== 6 || round.options.filter((o) => o.correct).length !== 2) throw new Error('expected 6 options, 2 correct')
     } else if (type === 'sameOrDifferent') {
       if (round.pair.length !== 2 || !['same', 'different'].includes(round.answer)) throw new Error('expected a 2-concept pair + verdict')
     } else if (type === 'split') {

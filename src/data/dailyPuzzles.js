@@ -7,6 +7,7 @@
 // In a real backend this file becomes one row per date in a `daily_puzzles`
 // table; the shape here is designed to map onto that directly.
 
+import { applyPuzzleCorrections, DAILY_CORRECTIONS } from './contentCorrections.js'
 const dailyPuzzles = [
   {
     id: 'daily-0001',
@@ -204,4 +205,5 @@ const dailyPuzzles = [
   },
 ]
 
-export default dailyPuzzles
+// Content review corrections are applied here (see contentCorrections.js).
+export default applyPuzzleCorrections(dailyPuzzles, DAILY_CORRECTIONS)

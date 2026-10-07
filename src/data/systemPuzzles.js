@@ -2,6 +2,7 @@
 // unlike the once-a-day Daily Puzzle. In a real backend this is the same
 // `puzzles` table as dailyPuzzles.js, just with type='system' and date=null.
 
+import { applyPuzzleCorrections, SYSTEM_CORRECTIONS } from './contentCorrections.js'
 const systemPuzzles = [
   // ---------------------------------------------------------------
   // Reassigned from the original general pool
@@ -1250,4 +1251,5 @@ const systemPuzzles = [
   },
 ]
 
-export default systemPuzzles
+// Content review corrections are applied here (see contentCorrections.js).
+export default applyPuzzleCorrections(systemPuzzles, SYSTEM_CORRECTIONS)

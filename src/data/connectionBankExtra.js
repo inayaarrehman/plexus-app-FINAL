@@ -20,6 +20,7 @@
 //     Microbiology, Multisystem/General→"Mixed / Step Review".
 // ---------------------------------------------------------------------
 
+import { applyBankCorrections } from './contentCorrections.js'
 const connectionBankExtra = [
   // =====================================================================
   // EASY
@@ -1204,4 +1205,5 @@ connectionBankExtra.forEach((c) => {
   c.systems = [c.primarySystem, ...c.secondarySystems.filter((s) => s !== c.primarySystem)]
 })
 
-export default connectionBankExtra
+// Content review corrections are applied here (see contentCorrections.js).
+export default applyBankCorrections(connectionBankExtra)

@@ -146,11 +146,15 @@ function scorePhrase(userToks, target, boost) {
   // "Causes of X" is not "Signs of X".
   const cRel = RELATION_FAMILY.filter((f) => C.includes(f))
   const uRel = RELATION_FAMILY.filter((f) => userToks.includes(f))
-  const relationClash = cRel.length > 0 && uRel.length > 0 && !uRel.some((f) => cRel.includes(f))
+  // For drug groups, "drugs causing X" and "drug toxicity / adverse effects"
+  // describe the same relationship.
+  const drugGroup = C.some((t) => t === 'DRUG' || /^(inhibitor|blocker|agonist|antagonist|antibiotic|nsaid|ssri)$/.test(t))
+  const same = (f) => cRel.includes(f) || (drugGroup && ((f === 'ADVERSE' && cRel.includes('CAUSE')) || (f === 'CAUSE' && cRel.includes('ADVERSE'))))
+  const relationClash = cRel.length > 0 && uRel.length > 0 && !uRel.some(same)
   // Asking about signs, treatment or adverse effects of something when the
   // category names the thing itself is a different question; let it be
   // judged rather than accepted outright.
-  const extraFrame = userToks.some((u) => ['FINDING', 'TREAT', 'ADVERSE'].includes(u) && !C.includes(u))
+  const extraFrame = userToks.some((u) => ['FINDING', 'TREAT', 'ADVERSE'].includes(u) && !C.includes(u) && !(u === 'ADVERSE' && drugGroup && C.includes('CAUSE')))
   const contradiction = opposite || negation || relationClash
 
   // The answer must say something specific, not just "bacteria" or "drugs".
@@ -163,7 +167,14 @@ function scorePhrase(userToks, target, boost) {
   const strayKnown = userToks.some((u) => !CONCEPT_NAMES.has(u) && !GENERIC.has(u) && !SOFT.has(u) && VOCAB_ALL?.has(u) && weight(u, boost) >= 2 && !C.some((c) => wordMatch(u, c)))
   const swap = topMissed && strayKnown
 
-  return { recall, precision, anchorHit, framesMissing, contradiction, userSpecific, swap, extraFrame }
+  // Category words the answer did not cover (for "the specific connection is").
+  const missing = content.filter((t) => !matchedC.includes(t))
+  // Related but broader or narrower: shares real words or the frame with the
+  // category, misses its most specific word, and names nothing contradictory.
+  const sharedContent = matchedC.filter((t) => !CONCEPT_NAMES.has(t) && !GENERIC.has(t) && !SOFT.has(t)).length
+  const related = !anchorHit && (sharedContent >= 1 || frames.length > 0 && framesMissing.length === 0) && recall >= 0.3
+
+  return { recall, precision, anchorHit, framesMissing, contradiction, userSpecific, swap, extraFrame, missing, related }
 }
 
 // match(answer, group) -> { band: 'high'|'medium'|'low', via, score }
@@ -188,12 +199,15 @@ export function matchAnswer(answer, group) {
     if (!best || score > best.score) best = { ...s, score }
   }
   if (!best || !best.userSpecific || best.contradiction || best.swap) return { band: 'low', via: 'overlap', score: best?.score || 0 }
+  const extra = { missing: best.missing }
 
   if (best.anchorHit && best.framesMissing.length === 0 && !best.extraFrame && best.recall >= 0.6 && best.precision >= 0.6) {
-    return { band: 'high', via: 'overlap', score: best.score }
+    return { band: 'high', via: 'overlap', score: best.score, ...extra }
   }
-  if ((best.anchorHit && best.recall >= 0.35) || best.recall >= 0.5) return { band: 'medium', via: 'overlap', score: best.score }
-  return { band: 'low', via: 'overlap', score: best.score }
+  if ((best.anchorHit && best.recall >= 0.35) || best.recall >= 0.5) return { band: 'medium', via: 'overlap', score: best.score, ...extra }
+  // On topic but less specific ("lung toxicity" for "pulmonary fibrosis").
+  if (best.related) return { band: 'medium', via: 'related', score: best.score, ...extra }
+  return { band: 'low', via: 'overlap', score: best.score, ...extra }
 }
 
 // The group fields the matcher reads, from a puzzle category.

@@ -27,9 +27,26 @@
 // ---------------------------------------------------------------------
 
 import { categoriesCompatible, normalizeTile, shuffleWith } from './puzzleAssembler.js'
-import { NEW_BUILDERS, validateModeRound, COGNITIVE_TASK, assessModes } from './challengeModesPlus.js'
+import { NEW_BUILDERS, validateModeRound, COGNITIVE_TASK, assessModes, isWordplay, nearMissesOf } from './challengeModesPlus.js'
 
-export { COGNITIVE_TASK, assessModes }
+export { COGNITIVE_TASK, assessModes, isWordplay }
+
+// One line per format telling the player exactly what to do. Shown under the
+// prompt on every round.
+export const INSTRUCTIONS = {
+  miniConnections: 'Two groups of four are mixed together. Tap four that belong together, then Submit.',
+  rapidAssociation: 'Tap the 4 that belong to this group, then Submit.',
+  impostor: 'Four of these share a connection. Tap the one that does not.',
+  completeConnection: 'These three share a connection. Tap the one that completes the group.',
+  commonLink: 'Tap the connection these four share.',
+  linkTwo: 'Exactly 2 of these belong to this group. Tap both, then Submit.',
+  sameOrDifferent: 'Do both of these belong to the group above?',
+  doubleAgent: 'Tap the one concept that belongs to both groups.',
+  matchTheLink: 'Tap a concept, then tap the group it belongs to. Submit when all four are matched.',
+  split: 'Tap each concept to place it in A or B (tap again to switch), then Submit.',
+  chain: 'Tap the steps in order, first to last. Tap a placed step to remove it, then Submit.',
+  completeTheChain: 'Tap the missing step.',
+}
 
 // The four original modes plus commonLink ("Which Connection?").
 export const CORE_ROUND_TYPES = ['miniConnections', 'impostor', 'rapidAssociation', 'completeConnection']
@@ -70,6 +87,15 @@ const SPEED_BONUS_THRESHOLD_MS = 8000
 function verifiedCategories(bank) {
   return bank.filter((c) => c.status === 'verified')
 }
+// Categories usable for single-concept rounds: not wordplay, and with at
+// least `need` curated near misses (plausible wrong answers with reasons).
+function quizCategories(bank, need = 4) {
+  return verifiedCategories(bank).filter((c) => !isWordplay(c) && nearMissesOf(c).length >= need)
+}
+function pickNearMisses(anchor, count, rng) {
+  const list = shuffleWith(nearMissesOf(anchor), rng).slice(0, count)
+  return list.length === count ? list : null
+}
 
 // ---------------------------------------------------------------------
 // Distractors
@@ -80,7 +106,9 @@ function verifiedCategories(bank) {
 // higher-weight end so repeats stay varied across sessions.
 function weightedCandidates(bank, anchor, { useTitles = false } = {}) {
   const anchorTileSet = new Set(anchor.tiles.map(normalizeTile))
-  const others = verifiedCategories(bank).filter((c) => c.id !== anchor.id)
+  const others = verifiedCategories(bank).filter(
+    (c) => c.id !== anchor.id && !isWordplay(c) && !c.tiles.some((t) => anchorTileSet.has(normalizeTile(t)))
+  )
   const seen = new Set()
   const candidates = []
 
@@ -168,36 +196,37 @@ function buildMiniConnectionsRound(bank, rng) {
 }
 
 function buildImpostorRound(bank, rng) {
-  const verified = verifiedCategories(bank)
-  if (verified.length === 0) return null
-  const anchor = verified[Math.floor(rng() * verified.length)]
-  const [impostorText] = pickDistractors(bank, anchor, 1, rng)
-  if (!impostorText) return null
+  const pool = quizCategories(bank, 1)
+  if (pool.length === 0) return null
+  const anchor = pool[Math.floor(rng() * pool.length)]
+  const near = pickNearMisses(anchor, 1, rng)
+  if (!near) return null
+  const [impostor] = near
   const options = shuffleWith(
-    [...anchor.tiles.map((text) => ({ text, correct: false })), { text: impostorText, correct: true }],
+    [...anchor.tiles.map((text) => ({ text, correct: false })), { text: impostor.text, correct: true }],
     rng
   )
   return {
     type: 'impostor',
-    prompt: 'Remove the impostor.',
+    prompt: 'Find the impostor.',
     categoryId: anchor.id,
     categoryTitle: anchor.title,
     options,
-    correctAnswer: impostorText,
-    explanation: anchor.explanation,
+    correctAnswer: impostor.text,
+    explanation: `The other four are ${anchor.title}. ${impostor.text}: ${impostor.why}`,
     conceptTags: [anchor.title],
     systems: anchor.systems,
   }
 }
 
 function buildRapidAssociationRound(bank, rng) {
-  const verified = verifiedCategories(bank)
-  if (verified.length === 0) return null
-  const anchor = verified[Math.floor(rng() * verified.length)]
-  const distractors = pickDistractors(bank, anchor, 4, rng)
-  if (distractors.length < 4) return null
+  const pool = quizCategories(bank, 4)
+  if (pool.length === 0) return null
+  const anchor = pool[Math.floor(rng() * pool.length)]
+  const near = pickNearMisses(anchor, 4, rng)
+  if (!near) return null
   const options = shuffleWith(
-    [...anchor.tiles.map((text) => ({ text, correct: true })), ...distractors.map((text) => ({ text, correct: false }))],
+    [...anchor.tiles.map((text) => ({ text, correct: true })), ...near.map((n) => ({ text: n.text, correct: false, why: n.why }))],
     rng
   )
   return {
@@ -214,16 +243,16 @@ function buildRapidAssociationRound(bank, rng) {
 }
 
 function buildCompleteConnectionRound(bank, rng) {
-  const verified = verifiedCategories(bank)
-  if (verified.length === 0) return null
-  const anchor = verified[Math.floor(rng() * verified.length)]
+  const pool = quizCategories(bank, 3)
+  if (pool.length === 0) return null
+  const anchor = pool[Math.floor(rng() * pool.length)]
   const shownIndex = Math.floor(rng() * anchor.tiles.length)
   const missing = anchor.tiles[shownIndex]
   const shown = anchor.tiles.filter((_, i) => i !== shownIndex)
-  const distractors = pickDistractors(bank, anchor, 3, rng)
-  if (distractors.length < 3) return null
+  const near = pickNearMisses(anchor, 3, rng)
+  if (!near) return null
   const options = shuffleWith(
-    [{ text: missing, correct: true }, ...distractors.map((text) => ({ text, correct: false }))],
+    [{ text: missing, correct: true }, ...near.map((n) => ({ text: n.text, correct: false, why: n.why }))],
     rng
   )
   return {
@@ -234,7 +263,7 @@ function buildCompleteConnectionRound(bank, rng) {
     categoryTitle: anchor.title,
     options,
     correctAnswer: missing,
-    explanation: anchor.explanation,
+    explanation: `${anchor.title}. ${anchor.explanation || ''}`.trim(),
     conceptTags: [anchor.title],
     systems: anchor.systems,
   }
@@ -243,9 +272,9 @@ function buildCompleteConnectionRound(bank, rng) {
 // The reverse of Rapid Association: four tiles are shown, the player picks
 // the category title that links them from a set of plausible alternatives.
 function buildCommonLinkRound(bank, rng) {
-  const verified = verifiedCategories(bank)
-  if (verified.length === 0) return null
-  const anchor = verified[Math.floor(rng() * verified.length)]
+  const pool = verifiedCategories(bank).filter((c) => !isWordplay(c))
+  if (pool.length === 0) return null
+  const anchor = pool[Math.floor(rng() * pool.length)]
   const distractorTitles = pickDistractors(bank, anchor, 3, rng, { useTitles: true })
   if (distractorTitles.length < 3) return null
   const options = shuffleWith(

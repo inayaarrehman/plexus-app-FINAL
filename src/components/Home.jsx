@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { SYSTEMS, DIFFICULTY } from '../puzzles.js'
 import { getDailyPuzzleForDate } from '../utils/dailyPuzzle.js'
+import { pickConnectionOfDay } from '../utils/connectionOfDay.js'
 import { getSystemGlyph } from '../utils/systemGlyphs.js'
 import BrandMark from './BrandMark.jsx'
 import HeroNetwork from './HeroNetwork.jsx'
@@ -124,7 +125,7 @@ function ModeRow({ locked, justUnlocked, order, onOpen, onLocked, accent, visual
         {locked ? (
           <span className="mode-lock">
             <LockGlyph size={14} />
-            {LOCK_COPY}
+            Locked
           </span>
         ) : (
           <span className="mode-action">
@@ -177,12 +178,8 @@ export default function Home({
   const todayCategories = dailyDone ? todayPuzzle?.categories || [] : []
 
   // Connection of the day: a verified takeaway from today's completed Daily.
-  const connectionOfDay = useMemo(() => {
-    if (!dailyDone || todayCategories.length === 0) return null
-    const withRemember = todayCategories.filter((c) => c.remember)
-    if (withRemember.length === 0) return null
-    return withRemember[dailyNumber % withRemember.length]
-  }, [dailyDone, todayCategories, dailyNumber])
+  // Same pick as the results screen (utils/connectionOfDay.js).
+  const connectionOfDay = useMemo(() => (dailyDone ? pickConnectionOfDay(todayPuzzle) : null), [dailyDone, todayPuzzle])
 
   const seed = todayPuzzle?.id || `daily-${dailyNumber}`
 
@@ -208,14 +205,6 @@ export default function Home({
         </div>
       </nav>
 
-      {record && onOpenRecord && (
-        <button className="home-level" onClick={onOpenRecord} aria-label={`Record: level ${record.info.level}, ${record.info.toNext} XP to level ${record.info.level + 1}`}>
-          <span className="home-level-text">
-            <b>Level {record.info.level}</b> · {record.info.toNext.toLocaleString('en-US')} XP to Level {record.info.level + 1}
-          </span>
-          <LevelLine info={record.info} width={84} height={14} className="home-level-line" />
-        </button>
-      )}
 
       {/* DAILY — the composed centrepiece. "Today's Plexus" is the heading;
           the Daily number and date are secondary metadata; the seeded node
@@ -244,7 +233,7 @@ export default function Home({
 
         {!dailyDone ? (
           <>
-            <p className="home-hero-sub">16 concepts, 4 connections</p>
+            <p className="home-hero-sub">Sort 16 medical concepts into 4 groups that share a hidden link.</p>
             <button key={`play-${nudge}`} className={`play-today-btn ${nudge ? 'is-nudged' : ''}`} onClick={onPlayDaily}>
               Play
               <span className="play-today-btn-arrow" aria-hidden="true"> &rarr;</span>
@@ -274,6 +263,11 @@ export default function Home({
       {/* SECONDARY MODES — editorial feature rows, each anchored by its own
           Plexus node visual rather than a generic icon or card. */}
       <section className="home-modes">
+        {locked && (
+          <p className="home-unlock-note">
+            <LockGlyph size={13} /> Finish today’s Plexus to unlock 3 Minutes, Race and Systems.
+          </p>
+        )}
         {dailyDone && continueSystem && (
           <button className="mode-row" onClick={onContinueStudying}>
             <span className="mode-visual" style={{ color: accentForSystem(continueSystem) }}>
@@ -332,8 +326,17 @@ export default function Home({
       </section>
 
       {record && onOpenRecord && (
+        <button className="home-level home-level-bottom" onClick={onOpenRecord} aria-label={`Record: level ${record.info.level}, ${record.info.toNext} XP to level ${record.info.level + 1}`}>
+          <span className="home-level-text">
+            <b>Level {record.info.level}</b> · {record.info.toNext.toLocaleString('en-US')} XP to Level {record.info.level + 1}
+          </span>
+          <LevelLine info={record.info} width={84} height={14} className="home-level-line" />
+        </button>
+      )}
+
+      {record && onOpenRecord && (
         <button className="home-rounds" onClick={onOpenRecord}>
-          {record.rounds.complete ? 'This Week complete' : `This Week ${record.rounds.done} of ${record.rounds.goals.length}`}
+          {record.rounds.complete ? 'This Week: all 3 goals done' : `This Week: ${record.rounds.done} of ${record.rounds.goals.length} goals done`}
           <span> · resets Monday</span>
         </button>
       )}

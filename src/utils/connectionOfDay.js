@@ -5,9 +5,10 @@
 // to the player by the time this shows.
 export function pickConnectionOfDay(puzzle) {
   if (!puzzle || !Array.isArray(puzzle.categories)) return null
-  const expert = puzzle.categories.find((c) => c.level === 4)
-  const hard = puzzle.categories.find((c) => c.level === 3)
-  const chosen = expert || hard
+  // The hardest group that has a one-line takeaway. The results screen and
+  // Home both call this, so they always feature the same connection.
+  const ranked = puzzle.categories.slice().sort((a, b) => b.level - a.level)
+  const chosen = ranked.find((c) => c.remember) || ranked[0]
   if (!chosen) return null
-  return { title: chosen.title, explanation: chosen.explanation }
+  return { title: chosen.title, explanation: chosen.explanation, remember: chosen.remember || '' }
 }

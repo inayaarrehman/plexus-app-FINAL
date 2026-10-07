@@ -49,6 +49,9 @@ function index(bank) {
   const byTitle = new Map()
   for (const c of verified) if (!byTitle.has(c.title)) byTitle.set(c.title, c)
   const cats = [...byTitle.values()]
+  // Categories usable in single-concept formats: not wordplay, with curated
+  // near misses to draw plausible wrong answers from.
+  const quiz = cats.filter((c) => !isWordplay(c) && nearMissesOf(c).length >= 4)
   // normalized tile -> Set of category titles it appears in
   const tileTitles = new Map()
   for (const c of cats) {
@@ -58,8 +61,21 @@ function index(bank) {
       tileTitles.get(k).add(c.title)
     }
   }
-  _cache = { bank, cats, byTitle, tileTitles }
+  _cache = { bank, cats, quiz, byTitle, tileTitles }
   return _cache
+}
+
+// Wordplay groups ("___ triad", eponym fragments) are fine on a board but their
+// tiles are not complete concepts on their own, so the 3-Minute formats that
+// show single concepts or ask about membership never use them.
+export function isWordplay(c) {
+  return c.connectionType === 'language' || c.connectionType === 'meta-wordplay' || String(c.title || '').includes('___')
+}
+// Curated near misses for a category (complete concepts that do NOT belong,
+// each with a reason), minus anything that is actually one of its tiles.
+export function nearMissesOf(c) {
+  const own = new Set((c.tiles || []).map(normalizeTile))
+  return (c.nearMisses || []).filter((n) => n && n.text && !own.has(normalizeTile(n.text)))
 }
 
 const pick = (arr, rng) => arr[Math.floor(rng() * arr.length)]
@@ -109,7 +125,7 @@ export function buildSplit(bank, rng) {
 export function buildMatchTheLink(bank, rng) {
   const idx = index(bank)
   for (let attempt = 0; attempt < 40; attempt++) {
-    const chosen = sample(idx.cats, 4, rng)
+    const chosen = sample(idx.cats.filter((c) => !isWordplay(c)), 4, rng)
     if (chosen.length < 4) return null
     const labels = chosen.map((c) => c.title)
     const concepts = []
@@ -149,7 +165,8 @@ export function buildDoubleAgent(bank, rng) {
   const duals = [...idx.tileTitles.entries()].filter(([, titles]) => titles.size >= 2)
   if (duals.length === 0) return null
   for (const [normText, titleSet] of shuffleWith(duals, rng)) {
-    const titles = shuffleWith([...titleSet], rng)
+    const titles = shuffleWith([...titleSet].filter((t) => idx.quiz.some((c) => c.title === t)), rng)
+    if (titles.length < 2) continue
     const [A, B] = titles
     // The intended dual concept's original (display) text.
     const a = idx.byTitle.get(A)
@@ -158,9 +175,9 @@ export function buildDoubleAgent(bank, rng) {
     // Distractors: some A-only, some B-only, some neither — NONE dual.
     const aOnly = exclusiveTiles(idx, A, B).filter((t) => normalizeTile(t) !== normText)
     const bOnly = exclusiveTiles(idx, B, A).filter((t) => normalizeTile(t) !== normText)
-    const neither = idx.cats
-      .filter((c) => c.title !== A && c.title !== B)
-      .flatMap((c) => c.tiles)
+    // "Neither" option: a curated near miss of one of the two groups.
+    const neither = [...nearMissesOf(idx.byTitle.get(A)), ...nearMissesOf(idx.byTitle.get(B))]
+      .map((n) => n.text)
       .filter((t) => !belongsTo(idx, t, A) && !belongsTo(idx, t, B))
     const distractors = [...sample(aOnly, 2, rng), ...sample(bOnly, 2, rng), ...sample(neither, 1, rng)]
       .filter(Boolean)
@@ -184,30 +201,23 @@ export function buildDoubleAgent(bank, rng) {
   return null
 }
 
-// LINK TWO — exactly two of the shown concepts share the named relationship.
+// LINK TWO — exactly two of the shown concepts belong to the named group.
+// The other four are that group's curated near misses.
 export function buildLinkTwo(bank, rng) {
   const idx = index(bank)
-  for (let attempt = 0; attempt < 40; attempt++) {
-    const target = pick(idx.cats, rng)
+  if (idx.quiz.length === 0) return null
+  for (let attempt = 0; attempt < 20; attempt++) {
+    const target = pick(idx.quiz, rng)
     const correct = sample(target.tiles, 2, rng)
-    if (correct.length < 2) continue
-    // Distractors: tiles NOT belonging to the target relationship, and whose
-    // source categories don't share a tag with the target (reduces the
-    // chance a distractor is coincidentally a real member).
-    const targetTags = new Set([...(target.tags || []), ...(target.overlapTags || [])].map((t) => t.toLowerCase()))
-    const pool = idx.cats
-      .filter((c) => c.title !== target.title && !(c.tags || []).some((t) => targetTags.has(t.toLowerCase())))
-      .flatMap((c) => c.tiles)
-      .filter((t) => !belongsTo(idx, t, target.title))
-    const distractors = sample([...new Set(pool)], 6, rng)
-    if (distractors.length < 6) continue
+    const near = sample(nearMissesOf(target), 4, rng)
+    if (correct.length < 2 || near.length < 4) continue
     const options = shuffleWith(
-      [...correct.map((text) => ({ text, correct: true })), ...distractors.map((text) => ({ text, correct: false }))],
+      [...correct.map((text) => ({ text, correct: true })), ...near.map((n) => ({ text: n.text, correct: false, why: n.why }))],
       rng
     )
     return {
       type: 'linkTwo',
-      prompt: `Which two are ${target.title.toLowerCase().startsWith('causes') ? target.title.toLowerCase() : target.title}?`,
+      prompt: target.title,
       anchorLabel: target.title,
       options,
       correctAnswers: correct,
@@ -219,51 +229,42 @@ export function buildLinkTwo(bank, rng) {
   return null
 }
 
-// SAME OR DIFFERENT — do two concepts share a verified connection?
+// BELONGS? (type id kept as sameOrDifferent for saved stats) — the group is
+// named, two concepts are shown, and the player says whether BOTH belong.
+// "No" rounds pair a real member with one of the group's curated near misses,
+// so the answer never depends on an unstated relationship.
 export function buildSameOrDifferent(bank, rng) {
   const idx = index(bank)
-  const wantSame = rng() < 0.5
-  for (let attempt = 0; attempt < 60; attempt++) {
-    if (wantSame) {
-      const c = pick(idx.cats, rng)
-      const [t1, t2] = sample(c.tiles, 2, rng)
-      if (!t1 || !t2) continue
-      return {
-        type: 'sameOrDifferent',
-        prompt: 'Same connection?',
-        pair: [t1, t2],
-        answer: 'same',
-        systems: c.systems || [],
-        conceptTags: [c.title],
-        explanation: `Both are ${c.title}.`,
-      }
-    }
-    // DIFFERENT: two concepts whose title-sets are disjoint AND whose source
-    // categories share no tags/overlap — so there is no other verified
-    // relationship that would make "different" a false statement.
-    const c1 = pick(idx.cats, rng)
-    const c2 = pick(idx.cats, rng)
-    if (c1.title === c2.title) continue
-    const tags1 = new Set([...(c1.tags || []), ...(c1.overlapTags || [])].map((t) => t.toLowerCase()))
-    if ((c2.tags || []).some((t) => tags1.has(t.toLowerCase()))) continue
-    const t1 = pick(c1.tiles, rng)
-    const t2 = pick(c2.tiles, rng)
-    if (normalizeTile(t1) === normalizeTile(t2)) continue
-    // Disjoint title-sets = they never co-occur in any verified category.
-    const s1 = titlesOf(idx, t1)
-    const s2 = titlesOf(idx, t2)
-    if ([...s1].some((x) => s2.has(x))) continue
+  if (idx.quiz.length === 0) return null
+  const c = pick(idx.quiz, rng)
+  if (rng() < 0.5) {
+    const [t1, t2] = sample(c.tiles, 2, rng)
+    if (!t1 || !t2) return null
     return {
       type: 'sameOrDifferent',
-      prompt: 'Same connection?',
+      prompt: c.title,
+      anchorLabel: c.title,
       pair: [t1, t2],
-      answer: 'different',
-      systems: [...new Set([...(c1.systems || []), ...(c2.systems || [])])],
-      conceptTags: [c1.title, c2.title],
-      explanation: `${t1} and ${t2} don’t share a verified connection.`,
+      answer: 'same',
+      systems: c.systems || [],
+      conceptTags: [c.title],
+      explanation: `${t1} and ${t2} both belong to ${c.title}.`,
     }
   }
-  return null
+  const member = pick(c.tiles, rng)
+  const nm = pick(nearMissesOf(c), rng)
+  if (!member || !nm) return null
+  return {
+    type: 'sameOrDifferent',
+    prompt: c.title,
+    anchorLabel: c.title,
+    pair: shuffleWith([member, nm.text], rng),
+    answer: 'different',
+    outsider: nm.text,
+    systems: c.systems || [],
+    conceptTags: [c.title],
+    explanation: `${nm.text} does not belong: ${nm.why}`,
+  }
 }
 
 // CHAIN — order four steps of a verified sequence.
@@ -288,8 +289,8 @@ export function buildCompleteTheChain(bank, rng) {
   const chain = pick(chainBank, rng)
   const missingIndex = 1 + Math.floor(rng() * 2) // hide step 2 or 3 (a middle step)
   const missing = chain.steps[missingIndex]
-  const others = chainBank.filter((c) => c.id !== chain.id).flatMap((c) => c.steps)
-  const distractors = sample([...new Set(others.filter((s) => s !== missing))], 3, rng)
+  // Curated wrong steps for this chain (never steps from unrelated chains).
+  const distractors = sample((chain.decoys || []).filter((s) => !chain.steps.includes(s)), 3, rng)
   if (distractors.length < 3) return null
   const sequence = chain.steps.map((s, i) => (i === missingIndex ? null : s))
   return {
@@ -366,7 +367,7 @@ export function validateModeRound(round, bank) {
   }
 
   if (round.type === 'linkTwo') {
-    if (round.options.length !== 8) return { valid: false, reason: 'linkTwo: expected 8 options' }
+    if (round.options.length !== 6) return { valid: false, reason: 'linkTwo: expected 6 options' }
     if (round.options.filter((o) => o.correct).length !== 2) return { valid: false, reason: 'linkTwo: need exactly 2 correct' }
     for (const o of round.options) {
       if (o.correct) continue
@@ -377,9 +378,10 @@ export function validateModeRound(round, bank) {
 
   if (round.type === 'sameOrDifferent') {
     const [t1, t2] = round.pair
-    const shared = [...titlesOf(idx, t1)].some((x) => titlesOf(idx, t2).has(x))
-    if (round.answer === 'same' && !shared) return { valid: false, reason: 'sameOrDifferent: "same" but no shared connection' }
-    if (round.answer === 'different' && shared) return { valid: false, reason: 'sameOrDifferent: "different" but they share one' }
+    if (!round.anchorLabel) return { valid: false, reason: 'belongs: the group must be named' }
+    const inGroup = [t1, t2].filter((t) => belongsTo(idx, t, round.anchorLabel)).length
+    if (round.answer === 'same' && inGroup !== 2) return { valid: false, reason: 'belongs: "yes" but not both are members' }
+    if (round.answer === 'different' && inGroup !== 1) return { valid: false, reason: 'belongs: "no" must pair one member with one outsider' }
     return { valid: true }
   }
 

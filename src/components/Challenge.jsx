@@ -7,9 +7,11 @@ import {
   speedBonus,
   computeActionPoints,
   composeNextRound,
+  INSTRUCTIONS,
 } from '../utils/challengeEngine.js'
 import { getChallengeStats, recordChallengeResult, recordWeakSpots } from '../utils/storage.js'
 import { haptics } from '../utils/haptics.js'
+import TileText from './TileText.jsx'
 import { recordChallengeSession } from '../progression/store.js'
 
 // The timed mode is 3 minutes (formerly 5). Kept as a single constant so
@@ -19,6 +21,8 @@ const DURATION_MS = 3 * 60 * 1000
 // then straight to the next round — detailed explanations wait until after
 // the session, so the player spends the 3 minutes thinking, not waiting.
 const TRANSITION_MS = 380
+// A wrong answer holds a moment longer so the correct answer can be read.
+const WRONG_TRANSITION_MS = 1100
 
 function formatTime(ms) {
   const totalSeconds = Math.max(0, Math.ceil(ms / 1000))
@@ -65,6 +69,11 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
   const [isNewBest, setIsNewBest] = useState(false)
   const [resultsExtra, setResultsExtra] = useState({ strongestSystem: null, reviewSystem: null })
   const [showReviewMisses, setShowReviewMisses] = useState(false)
+  // Every wrong round, for the end-of-run review: what was asked, what the
+  // player chose, the correct answer and why.
+  const [mistakes, setMistakes] = useState([])
+  const [answerNote, setAnswerNote] = useState(null) // shown briefly after a wrong answer
+  const logMistake = (entry) => setMistakes((prev) => [...prev, entry])
 
   const lockRef = useRef(false)
   const roundStartRef = useRef(null)
@@ -117,6 +126,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
     setActiveConcept(null)
     setMatches({})
     setChainOrder([])
+    setAnswerNote(null)
     roundStartRef.current = Date.now()
     lockRef.current = false
   }
@@ -134,6 +144,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
     setSystemsMissed({})
     setIsNewBest(false)
     setShowReviewMisses(false)
+    setMistakes([])
     endAtRef.current = Date.now() + DURATION_MS
     setTimeLeftMs(DURATION_MS)
     setPhase('playing')
@@ -313,6 +324,12 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
       const g = round.groups[gid]
       recordMiss(g.tag, null, g.explanation)
     })
+    logMistake({
+      label: `Two groups: ${round.groups.a.title} and ${round.groups.b.title}`,
+      yours: selected.join(', '),
+      answer: ['a', 'b'].map((gid) => `${round.groups[gid].title}: ${round.tiles.filter((t) => t.groupId === gid).map((t) => t.text).join(', ')}`).join(' · '),
+      explanation: 'Those four mixed the two groups. The board stays open for another try.',
+    })
     bumpSystems(setSystemsMissed, round.systems)
     setTimeout(() => {
       setFeedback(null)
@@ -331,11 +348,19 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
       applyCorrect(BASE_POINTS.rapidAssociation, responseMs, round.systems)
     } else {
       applyIncorrect(round.anchor, round.correctAnswers.join(', '), round.explanation, round.systems)
+      const wrongPicks = round.options.filter((o) => !o.correct && selected.includes(o.text))
+      logMistake({
+        label: round.anchor,
+        yours: selected.join(', '),
+        answer: round.correctAnswers.join(', '),
+        explanation: [round.explanation, ...wrongPicks.map((o) => `${o.text}: ${o.why}`)].filter(Boolean).join(' '),
+      })
+      setAnswerNote(`Answer: ${round.correctAnswers.join(', ')}`)
     }
     setTimeout(() => {
       setRoundsCompleted((n) => n + 1)
       nextRound()
-    }, TRANSITION_MS)
+    }, correct ? TRANSITION_MS : WRONG_TRANSITION_MS)
   }
 
   const handleMultiSubmit = () => {
@@ -354,26 +379,37 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
     } else {
       const tag = round.categoryTitle || round.anchor || round.labelA || round.anchorLabel
       applyIncorrect(tag, round.correctAnswer, round.explanation, round.systems)
+      logMistake({
+        label: mistakeLabel(round),
+        yours: option.text,
+        answer: round.correctAnswer,
+        explanation: [round.explanation, option.why ? `${option.text}: ${option.why}` : ''].filter(Boolean).join(' '),
+      })
+      setAnswerNote(`Answer: ${round.correctAnswer}`)
     }
     setTimeout(() => {
       setRoundsCompleted((n) => n + 1)
       nextRound()
-    }, TRANSITION_MS)
+    }, option.correct ? TRANSITION_MS : WRONG_TRANSITION_MS)
   }
 
   // Shared resolver for the expanded modes: one correct/incorrect verdict,
   // brief confirmation, then straight to the next round (no explanations
   // mid-round — those wait for results, keeping the 3 minutes fast).
-  const resolveRound = (correct, { missTag, missText, explanation } = {}) => {
+  const resolveRound = (correct, { missTag, missText, explanation, yours } = {}) => {
     if (lockRef.current) return
     lockRef.current = true
     const responseMs = finishAction(correct)
     if (correct) applyCorrect(BASE_POINTS[round.type], responseMs, round.systems)
-    else applyIncorrect(missTag, missText, explanation, round.systems)
+    else {
+      applyIncorrect(missTag, missText, explanation, round.systems)
+      logMistake({ label: mistakeLabel(round), yours: yours || '', answer: missText, explanation })
+      setAnswerNote(`Answer: ${missText}`)
+    }
     setTimeout(() => {
       setRoundsCompleted((n) => n + 1)
       nextRound()
-    }, TRANSITION_MS)
+    }, correct ? TRANSITION_MS : WRONG_TRANSITION_MS)
   }
 
   // Link Two: pick exactly the two that share the named relationship.
@@ -381,14 +417,25 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
     if (selected.length !== 2 || lockRef.current) return
     const correctSet = new Set(round.correctAnswers)
     const correct = selected.every((s) => correctSet.has(s))
-    resolveRound(correct, { missTag: round.anchorLabel, missText: round.correctAnswers.join(', '), explanation: round.explanation })
+    const wrongPicks = round.options.filter((o) => !o.correct && selected.includes(o.text))
+    resolveRound(correct, {
+      missTag: round.anchorLabel,
+      missText: round.correctAnswers.join(', '),
+      explanation: [round.explanation, ...wrongPicks.map((o) => `${o.text}: ${o.why}`)].filter(Boolean).join(' '),
+      yours: selected.join(', '),
+    })
   }
 
   // Same or Different: one tap answers.
   const handleSameOrDifferent = (answer) => {
     if (lockRef.current || feedback) return
     setResolvedOption(answer)
-    resolveRound(answer === round.answer, { missTag: round.conceptTags?.[0], missText: round.answer, explanation: round.explanation })
+    resolveRound(answer === round.answer, {
+      missTag: round.conceptTags?.[0],
+      missText: round.answer === 'same' ? 'Yes, both belong' : `No, ${round.outsider} does not belong`,
+      explanation: round.explanation,
+      yours: answer === 'same' ? 'Yes' : 'No',
+    })
   }
 
   // Split: assign each tile to a bucket, then submit.
@@ -396,12 +443,21 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
     if (feedback) return
     setAssignments((prev) => ({ ...prev, [text]: prev[text] === group ? undefined : group }))
   }
+  // One tap cycles a concept: unplaced -> A -> B -> unplaced.
+  const cycleTile = (text) => {
+    if (feedback) return
+    setAssignments((prev) => ({ ...prev, [text]: prev[text] === 'a' ? 'b' : prev[text] === 'b' ? undefined : 'a' }))
+  }
   const handleSplitSubmit = () => {
     if (lockRef.current) return
     const allAssigned = round.tiles.every((t) => assignments[t.text] === 'a' || assignments[t.text] === 'b')
     if (!allAssigned) return
     const correct = round.tiles.every((t) => assignments[t.text] === t.group)
-    resolveRound(correct, { missTag: round.labelA, missText: `${round.labelA} / ${round.labelB}`, explanation: round.explanation })
+    resolveRound(correct, {
+      missTag: round.labelA,
+      missText: ['a', 'b'].map((g) => `${g === 'a' ? round.labelA : round.labelB}: ${round.tiles.filter((t) => t.group === g).map((t) => t.text).join(', ')}`).join(' · '),
+      explanation: round.explanation,
+    })
   }
 
   // Match the Link: tap a concept, then tap its link.
@@ -414,7 +470,11 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
     if (lockRef.current) return
     if (round.concepts.some((c) => !matches[c])) return
     const correct = round.concepts.every((c) => matches[c] === round.answer[c])
-    resolveRound(correct, { missTag: round.conceptTags?.[0], missText: 'the correct links', explanation: round.explanation })
+    resolveRound(correct, {
+      missTag: round.conceptTags?.[0],
+      missText: round.concepts.map((c) => `${c} → ${round.answer[c]}`).join(' · '),
+      explanation: round.explanation,
+    })
   }
 
   // Chain: tap steps into order (tap a placed step to pull it back).
@@ -425,7 +485,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
   const handleChainSubmit = () => {
     if (lockRef.current || chainOrder.length !== round.order.length) return
     const correct = round.order.every((step, i) => chainOrder[i] === step)
-    resolveRound(correct, { missTag: round.title, missText: round.order.join(' → '), explanation: round.explanation })
+    resolveRound(correct, { missTag: round.title, missText: round.order.join(' → '), explanation: round.explanation, yours: chainOrder.join(' → ') })
   }
 
   // -------------------------------------------------------------------
@@ -510,28 +570,31 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
           <button className="primary-btn" onClick={startChallenge}>
             Play again
           </button>
-          {missEntries.length > 0 && (
+          {mistakes.length > 0 && (
             <button className="secondary-btn" onClick={() => setShowReviewMisses((v) => !v)}>
-              {showReviewMisses ? 'Hide misses' : 'Review misses'}
+              {showReviewMisses ? 'Hide mistakes' : `Review ${mistakes.length} mistake${mistakes.length === 1 ? '' : 's'}`}
             </button>
           )}
         </div>
 
         {showReviewMisses && (
-          <div className="challenge-review-misses">
-            {missEntries.map(([tag, info]) => (
-              <div className="challenge-miss-item" key={tag}>
-                <div className="challenge-miss-tag">{tag.toUpperCase()}</div>
-                {info.missText && (
+          <ol className="challenge-review-misses">
+            {mistakes.map((m, i) => (
+              <li className="challenge-miss-item" key={i}>
+                <div className="challenge-miss-tag">{m.label}</div>
+                {m.yours && (
                   <div className="challenge-miss-text">
-                    You missed: <strong>{info.missText}</strong>
+                    You chose: <span>{m.yours}</span>
                   </div>
                 )}
-                {info.explanation && <p className="challenge-miss-explanation">{info.explanation}</p>}
-                <p className="challenge-miss-note">Saved to Weak Spots.</p>
-              </div>
+                <div className="challenge-miss-text">
+                  Answer: <strong>{m.answer}</strong>
+                </div>
+                {m.explanation && <p className="challenge-miss-explanation">{m.explanation}</p>}
+              </li>
             ))}
-          </div>
+            <li className="challenge-miss-note">Missed topics are saved to Weak Spots.</li>
+          </ol>
         )}
 
         <button className="text-link" onClick={onExit}>
@@ -559,6 +622,13 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
         </span>
       </div>
 
+      <p className="challenge-instruction">{INSTRUCTIONS[round.type]}</p>
+      {answerNote && feedback === 'incorrect' && (
+        <p className="challenge-answer-note" role="status">
+          {answerNote}
+        </p>
+      )}
+
       {(round.type === 'miniConnections' || round.type === 'rapidAssociation') && (
         <>
           {round.type === 'rapidAssociation' && <p className="challenge-anchor">{round.anchor}</p>}
@@ -570,11 +640,14 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
               return (
                 <button
                   key={text}
-                  className={`tile ${isSelected ? 'tile-selected' : ''} ${feedback === 'incorrect' && isSelected ? 'tile-shake' : ''}`}
+                  className={`tile ${isSelected ? 'tile-selected' : ''} ${feedback === 'incorrect' && isSelected ? 'tile-shake' : ''} ${
+                    feedback === 'incorrect' && round.type === 'rapidAssociation' && t.correct ? 'tile-answer' : ''
+                  }`}
                   onClick={() => handleToggle(text)}
                   disabled={!!feedback}
+                  data-term={text}
                 >
-                  {text}
+                  <TileText>{text}</TileText>
                 </button>
               )
             })}
@@ -596,7 +669,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
                 key={o.text}
                 className={`challenge-choice ${
                   feedback && o.text === resolvedOption ? (o.correct ? 'is-correct' : 'is-incorrect') : ''
-                }`}
+                } ${feedback === 'incorrect' && o.correct ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick(o)}
                 disabled={!!feedback}
               >
@@ -623,7 +696,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
                 key={o.text}
                 className={`challenge-choice ${
                   feedback && o.text === resolvedOption ? (o.correct ? 'is-correct' : 'is-incorrect') : ''
-                }`}
+                } ${feedback === 'incorrect' && o.correct ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick(o)}
                 disabled={!!feedback}
               >
@@ -649,7 +722,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
                 key={o.text}
                 className={`challenge-choice ${
                   feedback && o.text === resolvedOption ? (o.both ? 'is-correct' : 'is-incorrect') : ''
-                }`}
+                } ${feedback === 'incorrect' && o.both ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick({ ...o, correct: o.both })}
                 disabled={!!feedback}
               >
@@ -679,7 +752,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
                 key={o.text}
                 className={`challenge-choice ${
                   feedback && o.text === resolvedOption ? (o.correct ? 'is-correct' : 'is-incorrect') : ''
-                }`}
+                } ${feedback === 'incorrect' && o.correct ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick(o)}
                 disabled={!!feedback}
               >
@@ -694,18 +767,20 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
       {round.type === 'linkTwo' && (
         <>
           <p className="challenge-anchor">{round.prompt}</p>
-          <p className="challenge-prompt">Pick two.</p>
           <div className="tile-grid challenge-tile-grid">
             {round.options.map((o) => {
               const isSel = selected.includes(o.text)
               return (
                 <button
                   key={o.text}
-                  className={`tile ${isSel ? 'tile-selected' : ''} ${feedback === 'incorrect' && isSel ? 'tile-shake' : ''}`}
+                  className={`tile ${isSel ? 'tile-selected' : ''} ${feedback === 'incorrect' && isSel ? 'tile-shake' : ''} ${
+                    feedback === 'incorrect' && o.correct ? 'tile-answer' : ''
+                  }`}
                   onClick={() => handleToggle(o.text, 2)}
                   disabled={!!feedback}
+                  data-term={o.text}
                 >
-                  {o.text}
+                  <TileText>{o.text}</TileText>
                 </button>
               )
             })}
@@ -718,28 +793,28 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
         </>
       )}
 
-      {/* Same or different */}
+      {/* Belongs? (one named group, two concepts, Yes / No) */}
       {round.type === 'sameOrDifferent' && (
         <>
+          <p className="challenge-anchor">{round.prompt}</p>
           <div className="challenge-sod-pair">
             <span className="challenge-sod-concept">{round.pair[0]}</span>
             <span className="challenge-sod-concept">{round.pair[1]}</span>
           </div>
-          <p className="challenge-prompt">{round.prompt}</p>
           <div className="challenge-sod-actions">
             <button
               className={`secondary-btn ${feedback && resolvedOption === 'same' ? (round.answer === 'same' ? 'is-correct' : 'is-incorrect') : ''}`}
               onClick={() => handleSameOrDifferent('same')}
               disabled={!!feedback}
             >
-              Same
+              Yes, both
             </button>
             <button
               className={`secondary-btn ${feedback && resolvedOption === 'different' ? (round.answer === 'different' ? 'is-correct' : 'is-incorrect') : ''}`}
               onClick={() => handleSameOrDifferent('different')}
               disabled={!!feedback}
             >
-              Different
+              No
             </button>
           </div>
         </>
@@ -764,8 +839,9 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
                   }`}
                   onClick={() => cycleTile(t.text)}
                   disabled={!!feedback}
+                  data-term={t.text}
                 >
-                  {t.text}
+                  <TileText>{t.text}</TileText>
                   {g && <span className={`challenge-split-badge ${g}`}>{g === 'a' ? 'A' : 'B'}</span>}
                 </button>
               )
@@ -846,4 +922,30 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
       )}
     </div>
   )
+}
+
+// What a mistake was about, for the end-of-run review.
+function mistakeLabel(round) {
+  switch (round.type) {
+    case 'impostor':
+      return `Impostor among ${round.categoryTitle}`
+    case 'completeConnection':
+      return `Complete: ${round.categoryTitle}`
+    case 'commonLink':
+      return `What links: ${(round.shown || []).join(', ')}`
+    case 'doubleAgent':
+      return `In both ${round.labelA} and ${round.labelB}`
+    case 'completeTheChain':
+    case 'chain':
+      return round.title
+    case 'linkTwo':
+    case 'sameOrDifferent':
+      return round.anchorLabel
+    case 'split':
+      return `${round.labelA} or ${round.labelB}`
+    case 'matchTheLink':
+      return 'Match each concept to its group'
+    default:
+      return round.anchor || round.categoryTitle || ''
+  }
 }

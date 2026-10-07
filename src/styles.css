@@ -5448,7 +5448,7 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 }
 .recall-submit { border: none; background: var(--ink); color: var(--tile-cream); }
 .recall-submit:disabled { opacity: 0.4; cursor: default; }
-.recall-skip { border: none; background: none; color: color-mix(in srgb, var(--ink) 70%, transparent); padding: 0 6px; }
+.recall-skip { border: 1.5px solid color-mix(in srgb, var(--ink) 35%, transparent); background: none; color: var(--ink); }
 .recall-skip:disabled { opacity: 0.4; }
 .recall-note { flex-basis: 100%; margin: 8px 0 0; font-size: var(--type-caption); font-weight: 700; color: color-mix(in srgb, var(--ink) 75%, transparent); }
 .recall-form .recall-note { margin-top: 0; }
@@ -5509,3 +5509,117 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 .auth-terms-note { margin: 0; font-size: 0.8rem; color: var(--text-dim); line-height: 1.45; }
 .auth-terms-note a { color: inherit; font-weight: 600; text-underline-offset: 3px; }
 .auth-legal { margin: 8px 0 0; }
+
+/* ==================================================================
+   3-MINUTE: instructions, answer reveal, mistake review
+   ================================================================== */
+.challenge-instruction { margin: 2px 0 10px; font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; line-height: 1.4; }
+.challenge-answer-note { margin: -4px 0 10px; font-size: var(--type-secondary); font-weight: 700; color: #f6c7b9; }
+.challenge-choice.is-answer { box-shadow: inset 0 0 0 2px #4fd6cd; color: #4fd6cd; }
+.tile.tile-answer { box-shadow: 0 0 0 3px #4fd6cd, 0 2px 0 rgba(10, 6, 20, 0.28); }
+ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
+.challenge-review-misses .challenge-miss-tag { font-size: 0.9rem; letter-spacing: 0; }
+.challenge-miss-text span { font-weight: 600; }
+
+.recall-safe { display: block; margin-top: 3px; font-weight: 600; color: color-mix(in srgb, var(--ink) 62%, transparent); }
+.recall-title b { font-weight: 800; color: var(--ink); }
+
+/* ==================================================================
+   TILE TEXT: long terms stay inside the tile at every width and zoom
+   ================================================================== */
+/* Each tile is a size container, so its label can scale to the tile. */
+.tile { container-type: inline-size; }
+.tile-text {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  /* Shrink only as much as the longest word needs (--lw = its length in
+     characters, set per tile), between a readable floor and the normal size. */
+  font-size: clamp(0.7rem, calc(100cqi / (var(--lw, 10) * 0.6)), 1em);
+  /* Soft hyphens (added in TileText.jsx) and the browser's own hyphenation
+     come first; an arbitrary break only if a word still cannot fit. */
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-wrap: balance;
+}
+/* Very narrow phones (and high browser zoom): give the board a little more
+   width and the label a slightly lower floor so whole words still fit. */
+@media (max-width: 360px) {
+  .game .tile-grid, .challenge .tile-grid { margin-inline: -6px; gap: 5px; }
+  .tile { padding-left: 3px; padding-right: 3px; }
+  .tile-text { font-size: clamp(0.66rem, calc(100cqi / (var(--lw, 10) * 0.6)), 1em); }
+}
+
+/* ==================================================================
+   YOUR KIT ON THE BOARD: description, first-use explanation, highlight
+   ================================================================== */
+.kit-desc { font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
+.kit-intro { flex-basis: 100%; max-width: 420px; margin: 4px auto 0; padding: 12px 14px; border-radius: 12px; background: var(--tile-cream); color: var(--ink); text-align: left; box-shadow: 0 2px 0 rgba(10, 6, 20, 0.22); }
+.kit-intro-text { margin: 0 0 10px; font-size: var(--type-secondary); line-height: 1.45; }
+.kit-intro-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.kit-intro-use, .kit-intro-cancel { min-height: 38px; padding: 0 14px; border-radius: 999px; font-family: var(--font-ui); font-size: var(--type-caption); font-weight: 700; cursor: pointer; }
+.kit-intro-use { border: none; background: var(--ink); color: var(--tile-cream); }
+.kit-intro-cancel { border: 1.5px solid color-mix(in srgb, var(--ink) 35%, transparent); background: none; color: var(--ink); }
+/* Curbside tiles: a thick teal ring, a tinted face and a corner node, so the
+   pair stands out by shape as well as colour. */
+.tile.tile-curbside {
+  position: relative;
+  background: color-mix(in srgb, var(--node-peacock) 16%, var(--tile-cream));
+  box-shadow: 0 0 0 3px var(--node-peacock), 0 0 0 6px color-mix(in srgb, var(--node-peacock) 30%, transparent), 0 2px 0 rgba(10, 6, 20, 0.28);
+}
+.tile.tile-curbside::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--node-peacock);
+  box-shadow: 0 0 0 1.5px var(--ink);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tile.tile-curbside { animation: curbside-in 420ms ease-out both; }
+}
+@keyframes curbside-in { 0% { transform: scale(0.94); } 60% { transform: scale(1.04); } 100% { transform: none; } }
+
+/* ==================================================================
+   RESULTS: result and streak first, takeaway, actions, then compact XP
+   ================================================================== */
+.result-takeaway { margin: 18px 0 4px; }
+.result-review-toggle {
+  display: inline-block;
+  margin: 6px 0 14px;
+  padding: 6px 2px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--type-secondary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.result-card .xp-result { margin: 18px 0 4px; padding-top: 14px; border-top: 1px solid var(--home-divider, var(--border)); gap: 1px; }
+.result-card .xp-total { font-size: 1.2rem; }
+.result-card .xp-lines { margin: 0 0 4px; }
+.xp-items { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px; margin: 8px 0 0; font-size: var(--type-caption); }
+.xp-items-label { color: var(--text-dim); font-weight: 600; }
+.xp-item { padding: 3px 9px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--text) 30%, transparent); font-weight: 700; }
+/* Keep reward motion brief so nothing waits on it. */
+@media (prefers-reduced-motion: no-preference) {
+  .xp-result .ll-fill { animation-duration: 450ms; animation-delay: 150ms; }
+  .xp-result.is-level-up .ll-node.is-current { animation-duration: 300ms; animation-delay: 450ms; }
+  .xp-result.is-level-up .xp-level b { animation-duration: 250ms; animation-delay: 450ms; }
+  .xp-result.is-level-up .xp-items { animation-duration: 250ms; animation-delay: 500ms; }
+}
+
+/* ==================================================================
+   HOME: premise, one unlock note, level info in a supporting spot
+   ================================================================== */
+.home-unlock-note { display: flex; align-items: center; gap: 6px; margin: 0 0 6px; font-size: var(--type-caption); font-weight: 700; color: var(--home-text-dim); }
+.home-level.home-level-bottom { margin: 18px 0 0; padding: 12px 0 4px; border-bottom: none; border-top: 1px solid var(--home-divider); }
+.home-level-bottom + .home-rounds { margin-top: 0; padding-top: 4px; border-top: none; }

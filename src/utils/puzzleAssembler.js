@@ -77,7 +77,28 @@ export function scoreCombo(categories) {
   const base = categories.reduce((sum, c) => sum + scoreCategory(c), 0)
   const uniqueTypes = new Set(categories.map((c) => c.connectionType)).size
   const uniqueSystems = new Set(categories.flatMap((c) => c.systems)).size
-  return base + uniqueTypes * 3 + uniqueSystems
+  return base + uniqueTypes * 3 + uniqueSystems + redHerringBonus(categories)
+}
+
+// Plausible competition between groups, so a board is more than four separate
+// lists: a tile of one group that is a curated near miss for another group, or
+// a group whose overlapTags name another group's concepts. Tiles still belong
+// to exactly one group (categoriesCompatible), so the solution stays single.
+export function redHerringPairs(categories) {
+  let pairs = 0
+  for (const a of categories) {
+    for (const b of categories) {
+      if (a === b) continue
+      const near = new Set((b.nearMisses || []).map((n) => normalizeTile(n.text)))
+      pairs += a.tiles.filter((t) => near.has(normalizeTile(t))).length
+      const bTags = new Set((b.tags || []).map((t) => String(t).toLowerCase()))
+      if ((a.overlapTags || []).some((t) => bTags.has(String(t).toLowerCase()))) pairs += 1
+    }
+  }
+  return pairs
+}
+function redHerringBonus(categories) {
+  return Math.min(8, redHerringPairs(categories) * 2)
 }
 
 // Builds one playable puzzle object from exactly 4 bank categories

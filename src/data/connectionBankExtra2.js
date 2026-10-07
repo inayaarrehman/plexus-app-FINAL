@@ -15,6 +15,7 @@
 // relationship, not obscure wording.
 // ---------------------------------------------------------------------
 
+import { applyBankCorrections } from './contentCorrections.js'
 const connectionBankExtra2 = [
   // =====================================================================
   // REPRODUCTIVE  (was empty — add all four tiers)
@@ -653,4 +654,5 @@ const connectionBankExtra2 = [
   },
 ]
 
-export default connectionBankExtra2
+// Content review corrections are applied here (see contentCorrections.js).
+export default applyBankCorrections(connectionBankExtra2)

@@ -39,7 +39,9 @@ export function buildDailyFromSeed(bank, seedStr, { number = 0, date = null } = 
 
   const pick = (arr) => arr[Math.floor(rng() * arr.length)]
   let best = null
-  for (let attempt = 0; attempt < 60; attempt++) {
+  // 200 candidate boards per date: enough to find ones where groups compete
+  // with each other (see redHerringPairs) without losing variety.
+  for (let attempt = 0; attempt < 200; attempt++) {
     const combo = [pick(byTier.easy), pick(byTier.medium), pick(byTier.hard), pick(byTier.expert)]
     if (!comboUsable(combo)) continue
     const score = scoreCombo(combo)

@@ -1,3 +1,4 @@
+import { INSTRUCTIONS } from '../utils/challengeEngine.js'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import {
   RACE_LENGTH,
@@ -391,23 +392,23 @@ export default function Race({ bank, initialCode = '', onExit }) {
           {isRapid && <p className="race-anchor">{round.anchor}</p>}
           {round.type === 'commonLink' && (
             <>
-              <p className="race-prompt">What links these?</p>
+              <p className="race-prompt">{INSTRUCTIONS.commonLink}</p>
               <p className="race-shown">{round.shown.join(' · ')}</p>
             </>
           )}
           {round.type === 'completeConnection' && (
             <>
-              <p className="race-prompt">Complete the connection</p>
+              <p className="race-prompt">{INSTRUCTIONS.completeConnection}</p>
               <p className="race-shown">{round.shown.join(' · ')}</p>
             </>
           )}
           {round.type === 'impostor' && (
             <>
-              <p className="race-prompt">Remove the impostor</p>
+              <p className="race-prompt">One of these is not in this group. Tap it.</p>
               <p className="race-shown">{round.categoryTitle}</p>
             </>
           )}
-          {isRapid && <p className="race-prompt">Select four</p>}
+          {isRapid && <p className="race-prompt">{INSTRUCTIONS.rapidAssociation}</p>}
 
           <div className="race-options">
             {round.options.map((opt) => {

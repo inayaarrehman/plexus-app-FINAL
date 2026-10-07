@@ -57,6 +57,7 @@ import migratedBankCategories from './migratedBankCategories.js'
 import connectionBankExtra from './connectionBankExtra.js'
 import connectionBankExtra2 from './connectionBankExtra2.js'
 import { SYSTEMS } from './constants.js'
+import { applyBankCorrections } from './contentCorrections.js'
 
 export const CONNECTION_TYPES = [
   'knowledge',
@@ -1256,7 +1257,8 @@ connectionBank.push(...connectionBankExtra)
 // and GI can all generate puzzles.
 connectionBank.push(...connectionBankExtra2)
 
-export default connectionBank
+// Content review corrections are applied here (see contentCorrections.js).
+export default applyBankCorrections(connectionBank)
 
 // Structural validator for a single bank category — used by the Dev Viewer's
 // "paste a category to validate" box, and by anything that ingests new

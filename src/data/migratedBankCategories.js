@@ -6,6 +6,7 @@
 // available to the dynamic per-system puzzle assembler. Merged into the
 // bank by src/data/connectionBank.js.
 
+import { applyBankCorrections } from './contentCorrections.js'
 const migratedBankCategories = [
   {
     "id": "bank-migrated-sys-mixed-0001-L1",
@@ -2655,4 +2656,5 @@ const migratedBankCategories = [
   }
 ]
 
-export default migratedBankCategories
+// Content review corrections are applied here (see contentCorrections.js).
+export default applyBankCorrections(migratedBankCategories)

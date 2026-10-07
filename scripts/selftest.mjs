@@ -931,29 +931,43 @@ console.log('\n[28] Race Mode — seeded challenge is deterministic and renderab
   assert(r1.every((x) => RACE_ROUND_TYPES.includes(x.type)), 'race rounds are all renderable single-screen types')
 }
 
-console.log('\n[29] 3-Minute distractors are strongly same-system (NBME-style)')
+console.log('\n[29] 3-Minute distractors are curated near misses, never fragments or random tiles')
 {
   let seed = 123
   const rng = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff)
-  const byText = new Map()
-  for (const c of connectionBank.filter((c) => c.status === 'verified')) {
-    for (const t of c.tiles) if (!byText.has(t.toLowerCase())) byText.set(t.toLowerCase(), c.systems)
-  }
-  let same = 0
-  let total = 0
-  for (let i = 0; i < 40; i++) {
-    const r = genChallengeRound(connectionBank, { rng, roundTypes: ['rapidAssociation'] })
-    if (!r) continue
-    const anchor = connectionBank.find((c) => c.id === r.categoryId)
-    for (const o of r.options.filter((o) => !o.correct)) {
-      const sys = byText.get(o.text.toLowerCase())
-      if (!sys) continue
-      total += 1
-      if (sys.some((s) => anchor.systems.includes(s))) same += 1
+  const wordplayTiles = new Set(
+    connectionBank.filter((c) => c.title.includes('___')).flatMap((c) => c.tiles.map((t) => t.toLowerCase()))
+  )
+  let checked = 0
+  for (const type of ['rapidAssociation', 'impostor', 'completeConnection', 'linkTwo', 'sameOrDifferent']) {
+    for (let i = 0; i < 30; i++) {
+      const r = genChallengeRound(connectionBank, { rng, roundTypes: [type] })
+      assert(r, type + ' round builds')
+      if (!r) continue
+      const title = r.anchor || r.categoryTitle || r.anchorLabel
+      const anchor = (r.categoryId && connectionBank.find((c) => c.id === r.categoryId)) || connectionBank.find((c) => c.title === title && c.status === 'verified')
+      const near = new Set(connectionBank.filter((c) => c.title === title).flatMap((c) => c.nearMisses || []).map((n) => n.text.toLowerCase()))
+      const wrong = type === 'impostor' ? [r.correctAnswer] : type === 'sameOrDifferent' ? (r.outsider ? [r.outsider] : []) : r.options.filter((o) => !o.correct).map((o) => o.text)
+      for (const w of wrong) {
+        checked++
+        assert(near.has(w.toLowerCase()), type + ': "' + w + '" is a curated near miss of ' + title)
+        assert(!wordplayTiles.has(w.toLowerCase()), type + ': no wordplay fragment as an option')
+      }
+      assert(!(anchor && (anchor.connectionType === 'language' || anchor.title.includes('___'))), type + ': never built on a wordplay group')
     }
   }
-  assert(total > 0 && same / total >= 0.85, `>=85% of distractors share the anchor's system (got ${Math.round((100 * same) / total)}%)`)
+  assert(checked > 100, 'checked ' + checked + ' distractors')
+  // every curated near miss has a reason and is not one of its own tiles
+  for (const c of connectionBank.filter((c) => c.nearMisses)) {
+    for (const n of c.nearMisses) assert(n.why && n.why.length > 10 && !c.tiles.map((t) => t.toLowerCase()).includes(n.text.toLowerCase()), 'near miss has a reason and is not a member: ' + c.id)
+  }
+  // "Same connection?" is gone: every Yes/No round names its group
+  for (let i = 0; i < 20; i++) {
+    const r = genChallengeRound(connectionBank, { rng, roundTypes: ['sameOrDifferent'] })
+    assert(r.prompt !== 'Same connection?' && r.anchorLabel && r.prompt === r.anchorLabel, 'Yes/No round names its group')
+  }
 }
+
 
 console.log('\n[30] Supabase layer is additive — app runs in local mode when unconfigured')
 {
@@ -1266,7 +1280,24 @@ console.log('\n[39] Name the connection: matcher, bonus XP, no penalties')
  ['ACE inhibitor adverse effects', {}, 'antihypertensives','low'],
  ['ACE inhibitor adverse effects', {}, 'drugs for blood pressure','low'],
  ['Causes of hypercalcemia', {}, 'hypercalcemia causes','high'],
- ['Causes of hypercalcemia', {}, 'causes of high calcium','any'],
+ ['Causes of hypercalcemia', {}, 'causes of high calcium','high'],
+ ['Drugs causing pulmonary fibrosis', {}, 'Drugs causing lung toxicity','medium'],
+ ['Drugs causing pulmonary fibrosis', {}, 'drugs that cause lung fibrosis','high'],
+ ['Drugs causing pulmonary fibrosis', {}, 'pulmonary fibrosis drugs','high'],
+ ['Drugs causing pulmonary fibrosis', {}, 'drugs causing kidney damage','low'],
+ ['Drugs causing pulmonary fibrosis', {}, 'chemotherapy drugs','nothigh'],
+ ['Causes of hypercalcemia', {}, 'causes of low calcium','low'],
+ ['Causes of hypercalcemia', {}, 'causes of hypercalcaemia','high'],
+ ['Causes of hypokalemia', {}, 'reasons for low potassium','high'],
+ ['Causes of hypokalemia', {}, 'causes of hyperkalemia','low'],
+ ['Causes of microcytic anemia', {}, 'microcytic anaemia causes','high'],
+ ['Severe cutaneous drug reactions', {}, 'severe skin drug reactions','high'],
+ ['Severe cutaneous drug reactions', {}, 'skin rashes','nothigh'],
+ ['Drugs causing pulmonary fibrosis', {}, 'lung toxicity drugs','medium'],
+ ['Drugs causing pulmonary fibrosis', {}, 'drugs with pulmonary fibrosis as a side effect','high'],
+ ['ACE inhibitor adverse effects', {}, 'what ace inhibitors cause','notlow'],
+ ['Signs of hypocalcemia', {}, 'causes of hypocalcemia','low'],
+
  ['Causes of hypercalcemia', {}, 'causes of hypocalcemia','low'],
  ['Causes of hypercalcemia', {}, 'things that cause hypercalcaemia','high'],
  ['Causes of hypercalcemia', {}, 'causes of hypercalcmia','high'],
@@ -1361,8 +1392,9 @@ console.log('\n[39] Name the connection: matcher, bonus XP, no penalties')
   const client = ['src/recall/judge.js', 'src/recall/matcher.js', 'src/recall/normalize.js', 'src/components/Game.jsx'].map((f) => fs.readFileSync(f, 'utf8')).join('\n')
   assert(!/ANTHROPIC|sk-ant-|x-api-key/i.test(client), 'no model key or provider call in browser code')
   const game = fs.readFileSync('src/components/Game.jsx', 'utf8')
-  for (const t of ['Name the connection for +', 'Close. Be a little more specific.', 'Not quite.', 'Correct · +', 'Skip']) assert(game.includes(t), 'copy present: ' + t)
-  const newText = ['src/recall/judge.js', 'src/recall/matcher.js', 'src/recall/normalize.js', 'api/recall-judge.js', 'src/utils/events.js'].map((f) => fs.readFileSync(f, 'utf8')).join('') + game.slice(game.indexOf('{recallPending(c.catIndex) ? ('), game.indexOf('</form>'))
+  for (const t of ['Name the connection · +', 'Close. Be a little more specific.', 'Close! The specific connection is', 'no mistake was counted', 'Your solve and mistakes are unchanged', 'Correct · +', 'Skip']) assert(game.includes(t), 'copy present: ' + t)
+  const newText = ['src/recall/judge.js', 'src/recall/matcher.js', 'src/recall/normalize.js', 'api/recall-judge.js', 'src/utils/events.js'].map((f) => fs.readFileSync(f, 'utf8')).join('') + game.slice(game.indexOf('{recallPending(c.catIndex) ? ('), game.indexOf('function MissingWords'))
+  assert(!/Not quite\./.test(game.slice(game.indexOf('{recallPending(c.catIndex) ? ('))), 'the ambiguous "Not quite." label is gone from naming feedback')
   assert(!newText.includes('—'), 'no em dashes in the new copy')
   globalThis.localStorage = _prevLS
 }

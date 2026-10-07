@@ -12,13 +12,14 @@ import XpResult from './XpResult.jsx'
 import { loadProgression, spendCurbside, recordCategoryBonus } from '../progression/store.js'
 import { XP } from '../progression/config.js'
 import { judgeAnswer } from '../recall/judge.js'
+import { wordTokens } from '../recall/normalize.js'
 import { logEvent } from '../utils/events.js'
 import { kitCounts } from '../progression/engine.js'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import { groupColor } from './GroupMotif.jsx'
 import DifficultyIcon, { DifficultyTag, DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
-import PlexusLine from './PlexusLine.jsx'
 import ReviewConnections from './ReviewConnections.jsx'
+import TileText from './TileText.jsx'
 import { haptics } from '../utils/haptics.js'
 
 const levelColor = (level) => groupColor(level)
@@ -124,6 +125,23 @@ export default function Game({
   // Curbside: highlight two tiles from the easiest unsolved group. Uses one
   // from Your Kit and marks the puzzle as tool-assisted (no Perfect).
   const curbsideTiles = curbside.filter((text) => tiles.some((t) => t.text === text && !solvedCats.includes(t.catIndex)))
+  // First use of a tool explains it before anything is spent; after that a
+  // tap uses it straight away (no repeated confirmations).
+  const [curbsideIntro, setCurbsideIntro] = useState(false)
+  const onCurbsideTap = () => {
+    if (gameOver || curbsideTiles.length > 0) return
+    if (!kitIntroSeen('curbside')) {
+      setCurbsideIntro(true)
+      return
+    }
+    handleCurbside()
+  }
+  const confirmCurbside = () => {
+    markKitIntroSeen('curbside')
+    setCurbsideIntro(false)
+    handleCurbside()
+  }
+
   const handleCurbside = () => {
     if (gameOver || curbsideTiles.length > 0) return
     const unsolved = puzzle.categories
@@ -277,8 +295,11 @@ export default function Game({
     setRecallStatus(catIndex, { status: 'checking' })
     logEvent('recall_submitted')
     let band = 'low'
+    let missing = []
     try {
-      band = (await judgeAnswer(text, puzzle.categories[catIndex])).band
+      const verdict = await judgeAnswer(text, puzzle.categories[catIndex])
+      band = verdict.band
+      missing = verdict.missing || []
     } catch {
       band = 'low'
     }
@@ -290,8 +311,14 @@ export default function Game({
       // Named after the puzzle finished: add it to the results already shown.
       if (r && r.gained > 0) setXpResult((x) => (x ? mergeBonus(x, r) : x))
     } else if (band === 'medium' && !entry.clarified) {
-      setRecallStatus(catIndex, { status: 'clarify', clarified: true })
+      // One more try, with a hint about what is missing.
+      setRecallStatus(catIndex, { status: 'clarify', clarified: true, broader: missing.length > 0 })
       logEvent('recall_clarify')
+    } else if (band === 'medium') {
+      // Still related but not specific enough: show the connection, with the
+      // words their answer did not cover in bold.
+      setRecallStatus(catIndex, { status: 'close', answer: text, missing })
+      logEvent('recall_rejected')
     } else {
       setRecallStatus(catIndex, { status: 'missed', answer: text })
       logEvent('recall_rejected')
@@ -426,7 +453,7 @@ export default function Game({
           >
             <div className="strand-head">
               {recallPending(c.catIndex) ? (
-                <span className="strand-title strand-title-recall">Name the connection for +{XP.categoryBonus} XP</span>
+                <span className="strand-title strand-title-recall">Name the connection · +{XP.categoryBonus} XP</span>
               ) : (
                 <span className="strand-title">{c.title}</span>
               )}
@@ -470,15 +497,27 @@ export default function Game({
                   Skip
                 </button>
                 {recall[c.catIndex]?.status === 'clarify' && (
-                  <p className="recall-note" role="status">Close. Be a little more specific.</p>
+                  <p className="recall-note" role="status">
+                    {recall[c.catIndex].broader ? 'Close, but the connection is more specific than that. One more try?' : 'Close. Be a little more specific. One more try?'}
+                    <span className="recall-safe">Your solve is safe and no mistake was counted.</span>
+                  </p>
                 )}
               </form>
             )}
             {recall[c.catIndex]?.status === 'correct' && (
               <p className="recall-note recall-correct" role="status">Correct · +{XP.categoryBonus} XP</p>
             )}
+            {recall[c.catIndex]?.status === 'close' && (
+              <p className="recall-note" role="status">
+                Close! The specific connection is <MissingWords title={c.title} missing={recall[c.catIndex].missing} />.
+                <span className="recall-safe">No bonus this time. Your solve and mistakes are unchanged.</span>
+              </p>
+            )}
             {recall[c.catIndex]?.status === 'missed' && (
-              <p className="recall-note" role="status">Not quite.</p>
+              <p className="recall-note" role="status">
+                Your name for this group didn’t match the connection above.
+                <span className="recall-safe">No bonus this time. Your solve and mistakes are unchanged.</span>
+              </p>
             )}
           </div>
         ))}
@@ -503,8 +542,9 @@ export default function Game({
                     isShaking ? 'tile-break' : ''
                   } ${isOneAwayPulse ? 'tile-oneaway-pulse' : ''} ${curbsideTiles.includes(tile.text) ? 'tile-curbside' : ''}`}
                   onClick={() => toggleTile(tile)}
+                  data-term={tile.text}
                 >
-                  {tile.text}
+                  <TileText>{tile.text}</TileText>
                 </button>
               )
             })}
@@ -523,11 +563,27 @@ export default function Game({
           </div>
           {(curbsideLeft > 0 || curbsideTiles.length > 0) && (
             <div className="kit-bar">
-              <button className="kit-use" onClick={handleCurbside} disabled={curbsideTiles.length > 0}>
+              <button className="kit-use" onClick={onCurbsideTap} disabled={curbsideTiles.length > 0 || curbsideIntro} aria-describedby="curbside-desc">
                 <span className="kit-use-name">Curbside</span>
                 <span className="kit-use-count">×{curbsideLeft}</span>
               </button>
-              {curbsideTiles.length > 0 && <span className="kit-hint">These two belong together.</span>}
+              {curbsideTiles.length > 0 ? (
+                <span className="kit-hint">These two belong together.</span>
+              ) : (
+                <span className="kit-desc" id="curbside-desc">Highlights two tiles that belong together.</span>
+              )}
+              {curbsideIntro && (
+                <div className="kit-intro" role="group" aria-label="About Curbside">
+                  <p className="kit-intro-text">
+                    <b>Curbside</b> highlights two tiles from the same group. It uses 1 of your {curbsideLeft}
+                    {isDaily ? ', and a Daily solved with a tool does not count as Perfect.' : '.'}
+                  </p>
+                  <div className="kit-intro-actions">
+                    <button className="kit-intro-use" onClick={confirmCurbside}>Use Curbside</button>
+                    <button className="kit-intro-cancel" onClick={() => setCurbsideIntro(false)}>Not now</button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </>
@@ -585,7 +641,21 @@ export default function Game({
 
           {dailyMicroStat && <p className="daily-micro-stat">{dailyMicroStat}</p>}
 
-          {xpResult && <XpResult result={xpResult} />}
+          {/* One takeaway right away (the same Connection of the day Home
+              shows), with the full review one tap away. */}
+          {connectionOfDay && !connectionOfDayPending && (
+            <div className="connection-of-day result-takeaway">
+              <h3 className="connection-of-day-heading">Connection of the day</h3>
+              <p className="connection-of-day-title">{connectionOfDay.title}</p>
+              <p className="connection-of-day-explanation">{connectionOfDay.remember || connectionOfDay.explanation}</p>
+            </div>
+          )}
+          <button className="result-review-toggle" onClick={() => setShowReview((v) => !v)} aria-expanded={showReview}>
+            {showReview ? 'Hide the review' : `Review all ${puzzle.categories.length} connections`}
+            <span aria-hidden="true">{showReview ? ' ▴' : ' ▾'}</span>
+          </button>
+          {showReview && <ReviewConnections puzzle={puzzle} onKnowledgeSignal={onKnowledgeSignal} />}
+
 
           <div className="result-actions">
             <button className="primary-btn" onClick={handleShare}>
@@ -596,24 +666,15 @@ export default function Game({
                 {challengeCopied ? 'Link copied!' : 'Challenge a friend'}
               </button>
             )}
-            <button className="secondary-btn" onClick={() => setShowReview((v) => !v)}>
-              {showReview ? 'Hide Connections' : 'View Connections'}
-            </button>
             <button className="secondary-btn" onClick={onExit}>
               Keep Playing
             </button>
           </div>
 
-          {showReview && <ReviewConnections puzzle={puzzle} onKnowledgeSignal={onKnowledgeSignal} />}
+          {/* XP, level and Kit rewards: secondary, compact, after the actions. */}
+          {xpResult && <XpResult result={xpResult} />}
 
-          {connectionOfDay && !connectionOfDayPending && <PlexusLine className="result-divider" />}
-          {connectionOfDay && !connectionOfDayPending && (
-            <div className="connection-of-day">
-              <h3 className="connection-of-day-heading">Connection of the day</h3>
-              <p className="connection-of-day-title">{connectionOfDay.title}</p>
-              <p className="connection-of-day-explanation">{connectionOfDay.explanation}</p>
-            </div>
-          )}
+
         </div>
       )}
     </div>
@@ -637,5 +698,36 @@ function mergeBonus(x, r) {
     levelUp: x.levelUp || r.levelUp,
     grants: [...(x.grants || []), ...(r.grants || [])],
     rounds: r.rounds || x.rounds,
+  }
+}
+
+// The category name with the words a close answer did not cover in bold.
+function MissingWords({ title, missing = [] }) {
+  const miss = new Set(missing)
+  return (
+    <span className="recall-title">
+      {wordTokens(title).map((w, i) =>
+        w.toks.some((t) => miss.has(t)) ? <b key={i}>{w.part}</b> : <React.Fragment key={i}>{w.part}</React.Fragment>
+      )}
+    </span>
+  )
+}
+
+// Which Kit tools the player has already had explained (per device).
+const KIT_INTRO_KEY = 'plexus.kitIntro.v1'
+function kitIntroSeen(item) {
+  try {
+    return Boolean(JSON.parse(localStorage.getItem(KIT_INTRO_KEY) || '{}')[item])
+  } catch {
+    return false
+  }
+}
+function markKitIntroSeen(item) {
+  try {
+    const seen = JSON.parse(localStorage.getItem(KIT_INTRO_KEY) || '{}')
+    seen[item] = true
+    localStorage.setItem(KIT_INTRO_KEY, JSON.stringify(seen))
+  } catch {
+    /* storage unavailable: the explanation simply shows again next time */
   }
 }

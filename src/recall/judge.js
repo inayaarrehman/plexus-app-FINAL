@@ -65,7 +65,7 @@ export async function judgeAnswer(answer, category) {
   const tiles = (category.items || []).map((i) => i.term)
   const band = await semantic(answer, target, tiles)
   if (!band) return local
-  return { band, via: 'semantic', score: local.score }
+  return { band, via: 'semantic', score: local.score, missing: local.missing }
 }
 
 // For tests and the matcher harness.
