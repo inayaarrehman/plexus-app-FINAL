@@ -5886,3 +5886,37 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 .result-connections::before, .result-connections::after { display: none; }
 .rc-node { flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--strand-color); margin-top: 5px; align-self: flex-start; }
 .rc-row.is-missed .rc-node { background: none; box-shadow: inset 0 0 0 1.5px var(--strand-color); }
+
+/* ==================================================================
+   CONNECTIONS FORMING, slower and calmer (about 650ms in all)
+   board: tiles pulse and their nodes light (0 to 160ms), lines draw into a
+   shared point (120 to 360ms); then the group settles (about 300ms): nodes
+   light in turn, links draw, the title resolves.
+   ================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  .tile.tile-connecting { animation: tile-connect 380ms cubic-bezier(0.3, 0, 0.2, 1) both; }
+  .connect-node { animation: node-in 160ms ease-out both; }
+  .connect-line { animation: line-draw 240ms cubic-bezier(0.3, 0, 0.2, 1) 120ms forwards; }
+  .connect-hub { animation: node-in 140ms ease-out 300ms forwards; }
+  .strand.strand-form, .strand.strand-form-expert { animation: group-form 280ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .strand.strand-form .strand-dot { animation: node-in 160ms ease-out both; }
+  .strand.strand-form .strand-node:nth-child(2) .strand-dot { animation-delay: 50ms; }
+  .strand.strand-form .strand-node:nth-child(3) .strand-dot { animation-delay: 100ms; }
+  .strand.strand-form .strand-node:nth-child(4) .strand-dot { animation-delay: 150ms; }
+  .strand.strand-form .strand-node + .strand-node::before,
+  .strand.strand-form .strand-node:nth-child(2n)::before { animation: link-draw 160ms ease-out 40ms both; }
+  .strand.strand-form .strand-node:nth-child(3)::before { animation-delay: 90ms; }
+  .strand.strand-form .strand-node:nth-child(4)::before { animation-delay: 140ms; }
+  .strand.strand-form .strand-title, .strand.is-revealing .strand-title { animation: title-in 220ms ease-out 120ms both; }
+}
+@keyframes tile-connect { 0% { transform: none; } 35% { transform: scale(1.025); } 100% { transform: scale(0.98); } }
+
+/* While a solved group waits to be named, the board rests. */
+.tile-grid.is-paused .tile { opacity: 0.45; cursor: default; }
+.tile-grid.is-paused .tile:hover { transform: none; }
+.board-paused-hint { color: var(--text-dim); font-weight: 600; }
+
+/* Difficulty is plain, quiet text now (no icons). */
+.strand-meta { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.01em; color: color-mix(in srgb, var(--ink) 50%, transparent); }
+.rc-meta { font-size: 0.7rem; }
+.accordion-level { flex: none; font-size: var(--type-caption); font-weight: 600; color: var(--text-dim); }

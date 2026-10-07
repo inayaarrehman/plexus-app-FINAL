@@ -16,7 +16,7 @@ import { logEvent } from '../utils/events.js'
 import { kitCounts } from '../progression/engine.js'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import { groupColor } from './GroupMotif.jsx'
-import DifficultyIcon, { DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
+import { DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
 import ReviewConnections from './ReviewConnections.jsx'
 import TileText from './TileText.jsx'
 import SolvedGroup from './SolvedGroup.jsx'
@@ -140,7 +140,7 @@ export default function Game({
   // tap uses it straight away (no repeated confirmations).
   const [curbsideIntro, setCurbsideIntro] = useState(false)
   const onCurbsideTap = () => {
-    if (gameOver || curbsideTiles.length > 0) return
+    if (gameOver || curbsideTiles.length > 0 || namingGate) return
     if (!kitIntroSeen('curbside')) {
       setCurbsideIntro(true)
       return
@@ -181,7 +181,7 @@ export default function Game({
   const remainingTiles = tiles.filter((t) => !solvedCats.includes(t.catIndex))
 
   const toggleTile = (tile) => {
-    if (gameOver || connecting) return
+    if (gameOver || connecting || namingGate) return
     const already = selected.find((t) => t.text === tile.text && t.catIndex === tile.catIndex)
     if (!already && selected.length < 4) haptics.select() // proposing a connection
     setSelected((prev) => {
@@ -203,7 +203,7 @@ export default function Game({
   const handleDeselect = () => setSelected([])
 
   const handleSubmit = () => {
-    if (selected.length !== 4 || gameOver || connecting) return
+    if (selected.length !== 4 || gameOver || connecting || namingGate) return
     // Duplicate detection is keyed on the four tiles' STABLE identities
     // (order-independent, exact), not on which categories they came from —
     // see isDuplicateAttempt/attemptKey. This is the fix for false
@@ -257,12 +257,10 @@ export default function Game({
       const isFinalGroup = solvedCats.length + 1 === 4
       if (isFinalGroup) {
         // The whole-puzzle payoff (mark + confetti + "Connected.") takes
-        // over — no individual microcopy on the final group.
-        setTimeout(() => {
-          haptics.complete() // the network completes
-          setWon(true)
-          setGameOver(true)
-        }, 500)
+        // over, with no individual microcopy on the final group. On today's
+        // Daily it waits until the last group's naming step is resolved
+        // (see the effect below), so results never show an unnamed group.
+        if (!recallEnabled) finishWon(500)
       } else {
         // Individual connection: a brief rotating positive line near the
         // board. NOT "Connected." — that's reserved for full completion.
@@ -382,6 +380,33 @@ export default function Game({
     logEvent('recall_skipped')
   }
   const recallPending = (catIndex) => ['open', 'clarify', 'checking'].includes(recall[catIndex]?.status)
+  // A solved group waiting to be named (or skipped). While one is waiting the
+  // board is paused: name it or skip it to keep solving.
+  const pendingRecall = recallEnabled ? solvedCats.find((ci) => recallPending(ci)) : undefined
+  const namingGate = pendingRecall !== undefined
+
+  const finishTimer = useRef(null)
+  const finishWon = (delay) => {
+    clearTimeout(finishTimer.current)
+    finishTimer.current = setTimeout(() => {
+      haptics.complete() // the network completes
+      setWon(true)
+      setGameOver(true)
+    }, delay)
+  }
+  // All four groups solved and named (or skipped): the Plexus completes.
+  useEffect(() => {
+    if (!recallEnabled || gameOver || solvedCats.length !== 4 || namingGate) return
+    if (!guessLog.some((g) => g.correct)) return
+    finishWon(650)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [recallEnabled, gameOver, solvedCats.length, namingGate])
+  // The waiting group is always the open one (also after a reload).
+  useEffect(() => {
+    if (pendingRecall !== undefined && activeRecall !== pendingRecall) setActiveRecall(pendingRecall)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingRecall])
+  useEffect(() => () => clearTimeout(finishTimer.current), [])
 
   const isMilestone = isDaily && won && STREAK_MILESTONES.includes(dailyStreak)
 
@@ -522,7 +547,12 @@ export default function Game({
           {solvedCats.length === 0 && selected.length === 0 && (
             <p className="board-hint">Find the four concepts that belong together.</p>
           )}
-          <div className={`tile-grid ${connecting ? 'is-connecting' : ''}`} ref={gridRef}>
+          {namingGate && !connecting && (
+            <p className="board-hint board-paused-hint" role="status">
+              Name the connection or skip to keep solving.
+            </p>
+          )}
+          <div className={`tile-grid ${connecting ? 'is-connecting' : ''} ${namingGate && !connecting ? 'is-paused' : ''}`} ref={gridRef} aria-disabled={namingGate || undefined}>
             {remainingTiles.map((tile) => {
               const isSelected = selected.some((t) => t.text === tile.text && t.catIndex === tile.catIndex)
               const isShaking = shakeIds.includes(tile.text)
@@ -565,13 +595,13 @@ export default function Game({
           </div>
 
           <div className="game-controls">
-            <button className="secondary-btn" onClick={handleShuffle}>
+            <button className="secondary-btn" onClick={handleShuffle} disabled={namingGate || !!connecting}>
               Shuffle
             </button>
-            <button className="secondary-btn" onClick={handleDeselect} disabled={selected.length === 0}>
+            <button className="secondary-btn" onClick={handleDeselect} disabled={selected.length === 0 || namingGate || !!connecting}>
               Deselect
             </button>
-            <button className="primary-btn" onClick={handleSubmit} disabled={selected.length !== 4}>
+            <button className="primary-btn" onClick={handleSubmit} disabled={selected.length !== 4 || namingGate || !!connecting}>
               Submit
             </button>
           </div>
@@ -610,9 +640,6 @@ export default function Game({
               and just as its nodes land a restrained jewel-tone confetti burst
               comes out of it, then settles as the result appears. The Daily
               gets a slightly fuller burst than a system puzzle. */}
-          {/* The four solved connections feed into the finished Plexus: one
-              thin line per group, in its colour, drawing into the mark. */}
-          {won && <PlexusMerge colors={resultGroups.map((g) => groupColor(g.level))} />}
           {won && <BrandMark size={58} className="result-brandmark" animate decorative />}
           {won && <Confetti count={isDaily ? 44 : 32} originY={45} seed={puzzle.id.length * 97 + mistakes} />}
 
@@ -629,16 +656,14 @@ export default function Game({
             aria-label={`${foundOrder.length} of ${puzzle.categories.length} connections found`}
           >
             {resultGroups.map((g) => {
-              const unnamed = recallPending(g.catIndex)
               return (
                 <li key={g.catIndex} className={`rc-row ${g.found ? '' : 'is-missed'}`} style={{ '--strand-color': groupColor(g.level) }}>
                   <span className="rc-node" aria-hidden="true" />
                   <span className="rc-text">
-                    <span className={`rc-title ${unnamed ? 'is-unnamed' : ''}`}>
-                      {unnamed ? `Name it above · +${XP.categoryBonus} XP` : g.title}
+                    <span className="rc-title ">
+                      {g.title}
                     </span>
                     <span className="rc-meta">
-                      <DifficultyIcon level={g.level} size={13} decorative />
                       {DIFFICULTY_LABEL[g.level]}
                       {!g.found && ' · not found'}
                     </span>
@@ -743,8 +768,8 @@ function markKitIntroSeen(item) {
 
 // ---- Solve animation helpers ----
 // How long the four tiles spend connecting on the board before they become a
-// solved group (the card then forms in about 220ms: under 500ms in all).
-const CONNECT_MS = 260
+// solved group (the card then forms in about 300ms: about 650ms in all).
+const CONNECT_MS = 380
 
 function prefersReducedMotion() {
   try {
@@ -770,26 +795,3 @@ function measureCluster(grid, tiles) {
   return { points, hub, w: Math.max(1, box.width), h: Math.max(1, box.height) }
 }
 
-// Four lines, one per solved group, curving from the solved groups above into
-// the Plexus mark: 4 connections make 1 Plexus.
-function PlexusMerge({ colors }) {
-  const W = 240
-  const H = 46
-  const xs = [30, 90, 150, 210]
-  return (
-    <svg className="plexus-merge" viewBox={`0 0 ${W} ${H}`} width={W} height={H} aria-hidden="true" focusable="false">
-      {xs.map((x, i) => (
-        <path
-          key={i}
-          className="pm-line"
-          d={`M ${x} 2 C ${x} ${H * 0.55}, ${W / 2} ${H * 0.45}, ${W / 2} ${H - 2}`}
-          pathLength="1"
-          style={{ stroke: colors[i], animationDelay: `${i * 40}ms` }}
-        />
-      ))}
-      {xs.map((x, i) => (
-        <circle key={`n${i}`} className="pm-node" cx={x} cy="3" r="3" style={{ fill: colors[i], animationDelay: `${i * 40}ms` }} />
-      ))}
-    </svg>
-  )
-}

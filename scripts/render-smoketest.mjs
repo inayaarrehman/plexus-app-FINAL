@@ -354,10 +354,11 @@ check('Game results show four Plexus group motifs (no shape glyphs, no NYT squar
   const rows = (html.match(/class="rc-row /g) || []).length
   if (rows !== 4) throw new Error(`expected four connection rows, found ${rows}`)
   if ((html.match(/class="rc-node"/g) || []).length !== 4) throw new Error('expected one connection node per row')
-  if (!html.includes('class="plexus-merge"')) throw new Error('expected the four connections to draw into the Plexus mark')
+  if (html.includes('plexus-merge')) throw new Error('the feeder lines above the constellation should be gone')
+  if (html.includes('difficulty-icon')) throw new Error('solved cards and results should not use difficulty icons')
   if (html.includes('converge-mark')) throw new Error('the old fan icons should be gone')
-  const levels = [...html.matchAll(/class="rc-meta"><svg[^>]*class="difficulty-icon difficulty-icon-(\d)/g)].map((m) => m[1]).join('')
-  if (levels !== '1234') throw new Error(`expected results ordered Easy to Expert, got ${levels}`)
+  const levels = [...html.matchAll(/class="rc-meta">(Easy|Medium|Hard|Expert)/g)].map((m) => m[1]).join(',')
+  if (levels !== 'Easy,Medium,Hard,Expert') throw new Error(`expected results ordered Easy to Expert, got ${levels}`)
   if (!html.includes('4 of 4 connections found')) throw new Error('expected the results list to say how many connections were found')
   // the title leads each row, difficulty follows as metadata
   if (!/<span class="rc-title ">[^<]+<\/span><span class="rc-meta">/.test(html)) throw new Error('row title should come before difficulty')

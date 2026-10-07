@@ -3,7 +3,7 @@ import { getThreadForCategory } from '../utils/threads.js'
 import { isConnectionSaved, toggleSavedConnection } from '../utils/storage.js'
 import ThreadModal from './ThreadModal.jsx'
 import { groupColor } from './GroupMotif.jsx'
-import { DifficultyTag } from './DifficultyIcon.jsx'
+import { DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
 
 const levelColor = (level) => groupColor(level)
 
@@ -49,7 +49,7 @@ export default function ReviewConnections({ puzzle, onKnowledgeSignal }) {
               aria-expanded={isOpen}
             >
               <span className="accordion-title">{cat.title}</span>
-              <DifficultyTag level={cat.level} size={14} className="accordion-level" />
+              <span className="accordion-level">{DIFFICULTY_LABEL[cat.level]}</span>
               <span className="accordion-caret">{isOpen ? 'Hide why' : 'Why?'}</span>
             </button>
             {isOpen && (
