@@ -194,7 +194,7 @@ export default function Home({
         </span>
         <div className="home-nav-links">
           {onOpenRecord ? (
-            <button className="home-nav-link" onClick={onOpenRecord}>Record</button>
+            <button className="home-nav-link" onClick={onOpenRecord}>My Plexus</button>
           ) : (
             <button className="home-nav-link" onClick={onOpenStats}>Stats</button>
           )}
@@ -326,7 +326,7 @@ export default function Home({
       </section>
 
       {record && onOpenRecord && (
-        <button className="home-level home-level-bottom" onClick={onOpenRecord} aria-label={`Record: level ${record.info.level}, ${record.info.toNext} XP to level ${record.info.level + 1}`}>
+        <button className="home-level home-level-bottom" onClick={onOpenRecord} aria-label={`My Plexus: level ${record.info.level}, ${record.info.toNext} XP to level ${record.info.level + 1}`}>
           <span className="home-level-text">
             <b>Level {record.info.level}</b> · {record.info.toNext.toLocaleString('en-US')} XP to Level {record.info.level + 1}
           </span>

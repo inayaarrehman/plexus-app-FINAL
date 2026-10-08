@@ -608,7 +608,7 @@ export default function App() {
 
   if (view === 'record') {
     return (
-      <div className="app-shell">
+      <div className="app-shell app-shell-wide">
         <Record history={getDailyHistory()} todayKey={todayKey} stats={stats} onBack={goHome} />
       </div>
     )
