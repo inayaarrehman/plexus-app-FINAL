@@ -9,7 +9,10 @@
     "preview": "vite preview --port 4173 --strictPort",
     "selftest": "node scripts/selftest.mjs",
     "test:render": "tsx scripts/render-smoketest.mjs",
-    "test": "npm run selftest && npm run test:render"
+    "test": "npm run selftest && npm run test:render",
+    "library:import": "node scripts/library/import.mjs",
+    "library:status": "node scripts/library/import.mjs --status",
+    "library:test": "node scripts/library/test.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",

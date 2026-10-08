@@ -1,0 +1,4 @@
+{
+  "about": "Decide flagged pairs here. Key: the two ids joined by \" | \" (sorted). Value: \"distinct\" (different relationships, both stay) or \"same\" (one relationship).",
+  "pairs": {}
+}

@@ -1,0 +1,1878 @@
+{
+ "about": "The existing bank, kept as the timed library for 3 Minutes and Race. New uploads never go here. Statuses are as recorded in the bank. Flags are for review only; nothing has been removed.",
+ "library": "timed",
+ "modes": [
+  "challenge",
+  "race"
+ ],
+ "generatedFrom": "src/data/connectionBank.js (with contentCorrections applied)",
+ "counts": {
+  "entries": 212,
+  "verified": 206,
+  "needsReview": 6,
+  "other": 0,
+  "sameRelationshipPairs": 4,
+  "possibleDuplicatePairs": 7
+ },
+ "pairs": [
+  {
+   "a": "bank-easy-05",
+   "b": "bank-ext-103",
+   "kind": "uncertain",
+   "shared": 3,
+   "titleSim": 0.2
+  },
+  {
+   "a": "bank-easy-08",
+   "b": "bank-migrated-sys-renal-0003-L2",
+   "kind": "uncertain",
+   "shared": 1,
+   "titleSim": 1
+  },
+  {
+   "a": "bank-easy-11",
+   "b": "bank-migrated-sys-pulm-0001-L2",
+   "kind": "uncertain",
+   "shared": 1,
+   "titleSim": 1
+  },
+  {
+   "a": "bank-easy-12",
+   "b": "bank-migrated-sys-pulm-0001-L1",
+   "kind": "same",
+   "shared": 4,
+   "titleSim": 1
+  },
+  {
+   "a": "bank-easy-15",
+   "b": "bank-migrated-sys-mixed-0003-L1",
+   "kind": "same",
+   "shared": 4,
+   "titleSim": 0.6
+  },
+  {
+   "a": "bank-medium-08",
+   "b": "bank-migrated-sys-cardio-0001-L1",
+   "kind": "same",
+   "shared": 3,
+   "titleSim": 1
+  },
+  {
+   "a": "bank-medium-09",
+   "b": "bank-migrated-sys-cardio-0001-L2",
+   "kind": "same",
+   "shared": 3,
+   "titleSim": 1
+  },
+  {
+   "a": "bank-medium-10",
+   "b": "bank-migrated-sys-cardio-0002-L4",
+   "kind": "uncertain",
+   "shared": 2,
+   "titleSim": 1
+  },
+  {
+   "a": "bank-medium-11",
+   "b": "bank-migrated-sys-cardio-0002-L2",
+   "kind": "uncertain",
+   "shared": 3,
+   "titleSim": 0.2
+  },
+  {
+   "a": "bank-medium-14",
+   "b": "bank-migrated-sys-renal-0001-L3",
+   "kind": "uncertain",
+   "shared": 2,
+   "titleSim": 1
+  },
+  {
+   "a": "bank-migrated-sys-renal-0001-L3",
+   "b": "bank-migrated-sys-renal-0003-L2",
+   "kind": "uncertain",
+   "shared": 3,
+   "titleSim": 0.25
+  }
+ ],
+ "entries": [
+  {
+   "id": "bank-easy-01",
+   "title": "Causes of elevated JVP",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-02",
+   "title": "QT-prolonging drugs",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-03",
+   "title": "Noncaseating granulomas",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Immunology",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-04",
+   "title": "Granulomatous infections with necrotizing (caseating) granulomas",
+   "status": "needs_review",
+   "difficulty": "easy",
+   "primarySystem": "Microbiology",
+   "flags": [
+    {
+     "flag": "needs_review",
+     "note": "Coccidioidomycosis (and to a lesser extent blastomycosis) granulomas are described inconsistently across pathology references as caseating vs. non-caseating/suppurative-granulomatous. It is worth confirming against a current pathology source before this is eligible for the Daily Puzzle. TB and histoplasmosis are unambiguous."
+    }
+   ]
+  },
+  {
+   "id": "bank-easy-05",
+   "title": "HLA-B27-associated spondyloarthropathies",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "MSK",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-06",
+   "title": "Causes of digital clubbing",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-07",
+   "title": "Causes of hypercalcemia",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Endocrine",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-08",
+   "title": "Causes of hypokalemia",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-09",
+   "title": "Nephrotic-pattern glomerular diseases",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-10",
+   "title": "Nephritic-pattern glomerular diseases",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-11",
+   "title": "Restrictive lung diseases",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-12",
+   "title": "Obstructive lung diseases",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-13",
+   "title": "Causes of acute pancreatitis",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "GI",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-14",
+   "title": "Causes of secondary hypertension",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Endocrine",
+   "flags": []
+  },
+  {
+   "id": "bank-easy-15",
+   "title": "Cyanotic congenital heart disease",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-01",
+   "title": "Gs-coupled receptors (increased cAMP)",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-02",
+   "title": "Gq-coupled receptors",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-03",
+   "title": "Gi-coupled receptors",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-04",
+   "title": "Structures traversing the cavernous sinus",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-05",
+   "title": "External carotid artery branches",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-06",
+   "title": "Neural crest derivatives",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Biochemistry/Genetics",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-07",
+   "title": "Endoderm-derived tissues",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Biochemistry/Genetics",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-08",
+   "title": "Systolic murmurs",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-09",
+   "title": "Diastolic murmurs",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-10",
+   "title": "Causes of a widened pulse pressure",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-11",
+   "title": "Causes of pulsus paradoxus",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-12",
+   "title": "Hypocomplementemic diseases",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Immunology",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-13",
+   "title": "Causes of eosinophilia",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Immunology",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-14",
+   "title": "Causes of metabolic alkalosis",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-15",
+   "title": "Causes of type IV renal tubular acidosis",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-medium-16",
+   "title": "Causes of high-output heart failure",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-hard-01",
+   "title": "___ body",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-hard-02",
+   "title": "___ triad",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-hard-03",
+   "title": "___ nodes",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-hard-04",
+   "title": "___ spots",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-hard-05",
+   "title": "___ lines",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-hard-06",
+   "title": "___ sign",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-hard-07",
+   "title": "___ phenomenon",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-hard-08",
+   "title": "Portal ___",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "GI",
+   "flags": []
+  },
+  {
+   "id": "bank-hard-09",
+   "title": "Named after a food that is not a fruit",
+   "status": "needs_review",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": [
+    {
+     "flag": "needs_review",
+     "note": "Content audit: the food-vs-color split is weaker than intended: 3 of the 4 \"color-based\" tiles (bank-hard-10) are themselves fruit/food names (strawberry, cherry, peau d'orange evokes citrus peel), so a tile could plausibly sort into either category. Needs the distinguishing axis redefined (e.g. \"names a specific food/dish\" vs. \"names only a color\") before re-verifying alongside bank-hard-10."
+    }
+   ]
+  },
+  {
+   "id": "bank-hard-10",
+   "title": "Named after a fruit",
+   "status": "needs_review",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": [
+    {
+     "flag": "needs_review",
+     "note": "Content audit: paired with bank-hard-09. Several tiles here (strawberry, cherry, peau d'orange) are themselves food/fruit-derived names, so the food-vs-color boundary against bank-hard-09 is ambiguous. Needs the distinguishing axis redefined before re-verifying."
+    }
+   ]
+  },
+  {
+   "id": "bank-hard-11",
+   "title": "Star-related medical terminology",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-expert-01",
+   "title": "Starts with \"hyper-\" but produces a LOW value",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-expert-02",
+   "title": "Starts with \"hypo-\" but produces a HIGH value",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-expert-03",
+   "title": "Excess hormone that suppresses its own upstream signal",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Endocrine",
+   "flags": []
+  },
+  {
+   "id": "bank-expert-04",
+   "title": "Diseases named after geographic locations",
+   "status": "needs_review",
+   "difficulty": "medium",
+   "primarySystem": "Microbiology",
+   "flags": [
+    {
+     "flag": "needs_review",
+     "note": "status is needs_review"
+    }
+   ]
+  },
+  {
+   "id": "bank-expert-05",
+   "title": "Hormone runs high because the target tissue is resistant",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Endocrine",
+   "flags": []
+  },
+  {
+   "id": "bank-expert-06",
+   "title": "A measurement that falls as the disease gets worse",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-neuro-01",
+   "title": "Causes of peripheral neuropathy",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-neuro-02",
+   "title": "Nerve lesions that localize on eye exam",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-neuro-03",
+   "title": "Spinal cord lesion patterns",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-neuro-04",
+   "title": "Neuro deficits that are ipsilateral, not crossed",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-expert-07",
+   "title": "A compensatory response that creates its own measurable abnormality",
+   "status": "needs_review",
+   "difficulty": "expert",
+   "primarySystem": "Renal",
+   "flags": [
+    {
+     "flag": "needs_review",
+     "note": "status is needs_review"
+    }
+   ]
+  },
+  {
+   "id": "bank-migrated-sys-mixed-0001-L1",
+   "title": "Diseases named after places",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-mixed-0001-L2",
+   "title": "Passes through the diaphragm",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-mixed-0001-L3",
+   "title": "Fetal circulatory structure → adult remnant",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-mixed-0001-L4",
+   "title": "Inherited/acquired hypercoagulable states",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-micro-0001-L1",
+   "title": "Acid-fast organisms",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Microbiology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-micro-0001-L2",
+   "title": "Dimorphic fungi",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Microbiology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-micro-0001-L3",
+   "title": "Spirochetes",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Microbiology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-micro-0001-L4",
+   "title": "Obligate intracellular organisms",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Microbiology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-mixed-0002-L1",
+   "title": "Signs of appendicitis",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-mixed-0002-L2",
+   "title": "Signs of meningeal irritation",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-mixed-0002-L3",
+   "title": "Signs of hypocalcemia",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-mixed-0002-L4",
+   "title": "Findings in cardiac tamponade",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-biochem-0001-L1",
+   "title": "Autosomal dominant conditions",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Biochemistry/Genetics",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-biochem-0001-L2",
+   "title": "Autosomal recessive conditions",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Biochemistry/Genetics",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-biochem-0001-L3",
+   "title": "X-linked recessive conditions",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Biochemistry/Genetics",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-biochem-0001-L4",
+   "title": "Trinucleotide repeat disorders",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Biochemistry/Genetics",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-hemeonc-0001-L1",
+   "title": "Leukemias",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Heme/Onc",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-hemeonc-0001-L2",
+   "title": "Translocations that define blood cancers",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Heme/Onc",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-hemeonc-0001-L3",
+   "title": "Tumor markers",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Heme/Onc",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-hemeonc-0001-L4",
+   "title": "Classic lab/pathology findings in leukemia",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Heme/Onc",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pharm-0001-L1",
+   "title": "Anticholinergic toxidrome ('mad, blind, red, dry')",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pharm-0001-L2",
+   "title": "Can precipitate serotonin syndrome",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pharm-0001-L3",
+   "title": "Antidotes",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pharm-0001-L4",
+   "title": "Zero-order elimination kinetics",
+   "status": "needs_review",
+   "difficulty": "expert",
+   "primarySystem": "Pharmacology",
+   "flags": [
+    {
+     "flag": "needs_review",
+     "note": "Migrated from hand-written puzzle \"Toxidromes & Pharm\" (sys-pharm-0001). This is already reviewed content, now a standalone bank category so the assembler can recombine it freely. CONTENT AUDIT: Heparin's classification as a \"classic\" zero-order drug is contested across pharmacology references; verify against a current source before fully trusting this category."
+    }
+   ]
+  },
+  {
+   "id": "bank-migrated-sys-mixed-0003-L1",
+   "title": "Cyanotic congenital heart defects",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Mixed / Step Review",
+   "flags": [
+    {
+     "flag": "same_relationship_as",
+     "other": "bank-easy-15"
+    }
+   ]
+  },
+  {
+   "id": "bank-migrated-sys-mixed-0003-L2",
+   "title": "Pharyngeal arch derivatives",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-mixed-0003-L3",
+   "title": "TORCH infections",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-mixed-0003-L4",
+   "title": "Neural tube defects",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-cardio-0001-L1",
+   "title": "Systolic murmurs",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Cardiology",
+   "flags": [
+    {
+     "flag": "same_relationship_as",
+     "other": "bank-medium-08"
+    }
+   ]
+  },
+  {
+   "id": "bank-migrated-sys-cardio-0001-L2",
+   "title": "Diastolic murmurs",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Cardiology",
+   "flags": [
+    {
+     "flag": "same_relationship_as",
+     "other": "bank-medium-09"
+    }
+   ]
+  },
+  {
+   "id": "bank-migrated-sys-cardio-0001-L3",
+   "title": "Right-sided valve disease that gets louder with inspiration",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-cardio-0001-L4",
+   "title": "Named ECG waveform findings",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-cardio-0002-L1",
+   "title": "Causes of cardiogenic shock",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-cardio-0002-L2",
+   "title": "Causes of obstructive shock",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Cardiology",
+   "flags": [
+    {
+     "flag": "possible_duplicate_of",
+     "other": "bank-medium-11"
+    }
+   ]
+  },
+  {
+   "id": "bank-migrated-sys-cardio-0002-L3",
+   "title": "Raises pulmonary capillary wedge pressure",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-cardio-0002-L4",
+   "title": "Causes of a widened pulse pressure",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Cardiology",
+   "flags": [
+    {
+     "flag": "possible_duplicate_of",
+     "other": "bank-medium-10"
+    }
+   ]
+  },
+  {
+   "id": "bank-migrated-sys-cardio-0003-L1",
+   "title": "Causes of bradycardia",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-cardio-0003-L2",
+   "title": "Causes of narrow-complex tachycardia",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-cardio-0003-L3",
+   "title": "AV block type",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-cardio-0003-L4",
+   "title": "Torsades de pointes risk factors",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pulm-0001-L1",
+   "title": "Obstructive lung diseases",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Pulmonary",
+   "flags": [
+    {
+     "flag": "same_relationship_as",
+     "other": "bank-easy-12"
+    }
+   ]
+  },
+  {
+   "id": "bank-migrated-sys-pulm-0001-L2",
+   "title": "Restrictive lung diseases",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Pulmonary",
+   "flags": [
+    {
+     "flag": "possible_duplicate_of",
+     "other": "bank-easy-11"
+    }
+   ]
+  },
+  {
+   "id": "bank-migrated-sys-pulm-0001-L3",
+   "title": "Causes of a low DLCO",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pulm-0001-L4",
+   "title": "Causes of an increased DLCO",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pulm-0002-L1",
+   "title": "Causes of a transudative pleural effusion",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pulm-0002-L2",
+   "title": "Causes of an exudative pleural effusion",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pulm-0002-L3",
+   "title": "Upper lobe predominant lung disease",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pulm-0002-L4",
+   "title": "Lower lobe predominant lung disease",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pulm-0003-L1",
+   "title": "Causes of a high A-a gradient",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pulm-0003-L2",
+   "title": "Hypoventilation with a NORMAL A-a gradient",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pulm-0003-L3",
+   "title": "Shifts the oxygen-hemoglobin curve RIGHT (unloads O2 more easily)",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pulm-0003-L4",
+   "title": "Points along the V/Q ratio spectrum",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-renal-0001-L1",
+   "title": "Causes of anion gap metabolic acidosis",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-renal-0001-L2",
+   "title": "Causes of non-anion gap metabolic acidosis",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-renal-0001-L3",
+   "title": "Causes of metabolic alkalosis",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Renal",
+   "flags": [
+    {
+     "flag": "possible_duplicate_of",
+     "other": "bank-medium-14"
+    }
+   ]
+  },
+  {
+   "id": "bank-migrated-sys-renal-0001-L4",
+   "title": "Causes of respiratory acidosis",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-renal-0002-L1",
+   "title": "Nephrotic syndrome findings",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-renal-0002-L2",
+   "title": "Nephritic syndrome findings",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-renal-0002-L3",
+   "title": "Diseases with 'crescents' on biopsy (RPGN)",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-renal-0002-L4",
+   "title": "Matches a microscopy pattern to its disease",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-renal-0003-L1",
+   "title": "Causes of hyperkalemia",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-renal-0003-L2",
+   "title": "Causes of hypokalemia",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Renal",
+   "flags": [
+    {
+     "flag": "possible_duplicate_of",
+     "other": "bank-easy-08"
+    },
+    {
+     "flag": "possible_duplicate_of",
+     "other": "bank-migrated-sys-renal-0001-L3"
+    }
+   ]
+  },
+  {
+   "id": "bank-migrated-sys-renal-0003-L3",
+   "title": "Diuretic classes by nephron site",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-renal-0003-L4",
+   "title": "Diabetes insipidus vs SIADH",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-neuro-0001-L1",
+   "title": "Signs of a middle cerebral artery stroke",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-neuro-0001-L2",
+   "title": "Signs of an anterior cerebral artery stroke",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-neuro-0001-L3",
+   "title": "Lacunar stroke syndromes",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-neuro-0001-L4",
+   "title": "Named brainstem syndromes",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-neuro-0002-L1",
+   "title": "Features of Parkinson disease",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-neuro-0002-L2",
+   "title": "Causes of chorea",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-neuro-0002-L3",
+   "title": "The four most common dementias",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-neuro-0002-L4",
+   "title": "Misfolded protein aggregates in neurodegeneration",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pharm-0002-L1",
+   "title": "Indications for beta-blockers",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pharm-0002-L2",
+   "title": "Alpha blockade: uses and effects",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pharm-0002-L3",
+   "title": "Muscarinic antagonist effect",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-migrated-sys-pharm-0002-L4",
+   "title": "Drug effects explained by receptor type and location",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-001",
+   "title": "Fat-soluble vitamins",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Biochemistry/Genetics",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-002",
+   "title": "Live attenuated vaccines",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Microbiology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-003",
+   "title": "Causes of target cells on smear",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Heme/Onc",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-004",
+   "title": "Adverse effects of loop diuretics",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-005",
+   "title": "Causes of unconjugated hyperbilirubinemia",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "GI",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-006",
+   "title": "Drugs causing photosensitivity",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-007",
+   "title": "Features of anaphylaxis",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Immunology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-008",
+   "title": "Features of osteoarthritis",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "MSK",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-009",
+   "title": "Diseases prevented by the MMRV vaccine",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Microbiology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-020",
+   "title": "Drugs that slow AV nodal conduction",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-021",
+   "title": "Associations of obstructive sleep apnea",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-022",
+   "title": "Causes of nephrogenic diabetes insipidus",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-023",
+   "title": "Features of carcinoid syndrome",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "GI",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-024",
+   "title": "Consequences of portal hypertension",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "GI",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-025",
+   "title": "Features of Cushing syndrome",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Endocrine",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-026",
+   "title": "Features of primary adrenal insufficiency",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Endocrine",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-027",
+   "title": "Causes of microcytic anemia",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Heme/Onc",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-028",
+   "title": "Causes of macrocytic anemia",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Heme/Onc",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-029",
+   "title": "Features of serotonin syndrome",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Psychiatry",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-030",
+   "title": "Features of neuroleptic malignant syndrome",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Psychiatry",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-031",
+   "title": "Organisms causing infective endocarditis",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Microbiology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-032",
+   "title": "Organisms causing atypical pneumonia",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Microbiology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-033",
+   "title": "Drugs causing gingival hyperplasia",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-034",
+   "title": "Upper motor neuron signs",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-035",
+   "title": "Lower motor neuron signs",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-036",
+   "title": "Causes of erythema nodosum",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Dermatology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-037",
+   "title": "Conditions associated with berry aneurysms",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-050",
+   "title": "Findings in tetralogy of Fallot",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-051",
+   "title": "Causes of restrictive cardiomyopathy",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-052",
+   "title": "Causes of respiratory alkalosis",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-053",
+   "title": "Findings in tension pneumothorax",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Pulmonary",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-054",
+   "title": "Drugs causing acute interstitial nephritis",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-055",
+   "title": "Causes of microvesicular hepatic steatosis",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "GI",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-056",
+   "title": "Components of MEN1",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Endocrine",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-057",
+   "title": "Causes of hypocalcemia",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Endocrine",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-058",
+   "title": "Causes of microangiopathic hemolytic anemia",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Heme/Onc",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-059",
+   "title": "Oncologic emergencies",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Heme/Onc",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-060",
+   "title": "Radiographic findings in rheumatoid arthritis",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "MSK",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-061",
+   "title": "Type III hypersensitivity diseases",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Immunology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-062",
+   "title": "Drugs causing pulmonary fibrosis",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-063",
+   "title": "Adverse effects of lithium",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Psychiatry",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-064",
+   "title": "Mitochondrial disorders",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Biochemistry/Genetics",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-065",
+   "title": "Features of normal pressure hydrocephalus",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Neurology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-066",
+   "title": "Features of sarcoidosis",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-067",
+   "title": "Positive Nikolsky sign conditions",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Dermatology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-068",
+   "title": "Organisms with polysaccharide capsules",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Microbiology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-080",
+   "title": "Causes of right axis deviation",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Cardiology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-081",
+   "title": "Causes of renal papillary necrosis",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Renal",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-082",
+   "title": "Conditions associated with pheochromocytoma",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Endocrine",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-083",
+   "title": "Organisms causing bloody diarrhea",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Microbiology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-084",
+   "title": "ANCA-associated vasculitides",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Immunology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-085",
+   "title": "Drugs requiring therapeutic drug monitoring",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Pharmacology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-086",
+   "title": "Lysosomal storage diseases",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Biochemistry/Genetics",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-087",
+   "title": "Paraneoplastic syndromes",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Mixed / Step Review",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-088",
+   "title": "Disease-specific autoantibodies",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Immunology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-089",
+   "title": "Hormones that drive the menstrual cycle",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Reproductive",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-090",
+   "title": "Barrier methods of contraception",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Reproductive",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-091",
+   "title": "Causes of primary amenorrhea",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Reproductive",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-092",
+   "title": "Hallmark features of PCOS",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Reproductive",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-093",
+   "title": "Causes of elevated maternal serum AFP",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Reproductive",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-094",
+   "title": "Ovarian germ cell tumors",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Reproductive",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-095",
+   "title": "Causes of third-trimester bleeding",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Reproductive",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-096",
+   "title": "Features of HELLP syndrome",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Reproductive",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-097",
+   "title": "Selective serotonin reuptake inhibitors (SSRIs)",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Psychiatry",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-098",
+   "title": "Positive symptoms of schizophrenia",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Psychiatry",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-099",
+   "title": "Benzodiazepines",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Psychiatry",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-100",
+   "title": "Extrapyramidal symptoms of antipsychotics",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Psychiatry",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-101",
+   "title": "Psychiatric drugs needing serum or lab monitoring",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Psychiatry",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-102",
+   "title": "Medications for alcohol use disorder",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Psychiatry",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-103",
+   "title": "Seronegative spondyloarthropathies",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "MSK",
+   "flags": [
+    {
+     "flag": "possible_duplicate_of",
+     "other": "bank-easy-05"
+    }
+   ]
+  },
+  {
+   "id": "bank-ext-104",
+   "title": "Rotator cuff muscles",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "MSK",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-105",
+   "title": "Radiographic findings in osteoarthritis",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "MSK",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-106",
+   "title": "Muscular dystrophies and related myopathies",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "MSK",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-107",
+   "title": "Primary bone tumors",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "MSK",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-108",
+   "title": "Primary skin lesions by morphology",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Dermatology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-109",
+   "title": "Common benign skin growths",
+   "status": "verified",
+   "difficulty": "easy",
+   "primarySystem": "Dermatology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-110",
+   "title": "Features of psoriasis",
+   "status": "verified",
+   "difficulty": "medium",
+   "primarySystem": "Dermatology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-111",
+   "title": "Autoimmune blistering diseases",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "Dermatology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-112",
+   "title": "Skin cancers",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Dermatology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-113",
+   "title": "Severe cutaneous drug reactions",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "Dermatology",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-114",
+   "title": "Inherited hyperbilirubinemia syndromes",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "GI",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-115",
+   "title": "Hereditary colorectal cancer syndromes",
+   "status": "verified",
+   "difficulty": "expert",
+   "primarySystem": "GI",
+   "flags": []
+  },
+  {
+   "id": "bank-ext-116",
+   "title": "Causes of high-SAAG (portal hypertensive) ascites",
+   "status": "verified",
+   "difficulty": "hard",
+   "primarySystem": "GI",
+   "flags": []
+  }
+ ]
+}
