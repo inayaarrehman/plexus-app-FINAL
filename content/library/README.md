@@ -49,6 +49,8 @@ Every connection is compared:
 Tiles and titles are compared after normalising case, punctuation, plurals and word order.
 
 - **Titles** are also reduced to a subject: filler such as "classic" or "source-listed" is dropped, and the kind of relationship is kept. So "Conditions that can produce X" matches "Causes of X", but "Causes of X" never matches "Findings of X".
+- **Alternate names.** Subjects are also compared through each row's accepted alternate names, so "PNH diagnostic clues" meets "Clues to paroxysmal nocturnal hemoglobinuria".
+- **Tile wording.** Direction synonyms count as the same word (elevated = increased = raised; reduced = decreased = low). Generic trailing words (vaccine, use, exposure, infection, therapy) are ignored, so "MMR vaccine" = "MMR". "Disease" and "syndrome" are kept, because Cushing disease and Cushing syndrome differ.
 - **Reworded tiles** ("Overriding aorta" / "Aorta overriding the septum") are caught by comparing the words used across all four tiles, when the subjects also agree. These are always held for a decision, never merged automatically.
 - **Reviewer-separated pairs.** When a row's notes name the other row's id (for example "shares 3 tiles with ENDO-034 - do not co-place"), the reviewer saw both and kept them as separate connections. They are recorded as distinct and kept off the same board. Different wording, ids, tile order or file format do not make a connection new.
 
@@ -171,6 +173,6 @@ Each upload is staged under its own subject. "Genetics" is not one of the app's 
 ## Checks
 
 ```
-node scripts/library/test.mjs          # importer checks on placeholder rows (62 checks)
+node scripts/library/test.mjs          # importer checks on placeholder rows (64 checks)
 node scripts/library/timed-snapshot.mjs  # refresh the timed-library manifest
 ```

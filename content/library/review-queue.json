@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T07:17:00.886Z",
+ "generatedAt": "2026-10-08T07:29:43.843Z",
  "active": false,
  "medicalHolds": [
   {
@@ -92,6 +92,19 @@
    ],
    "status": "AI_REVIEWED_REVISED",
    "issue": "The review replaced the source tile \"Histamine\" with \"ATP\", stating histamine is not a canonical platelet dense-granule constituent. This contradicts the cited Bootcamp page (p. 47) and is supported only by outside references in Notes (Holinstat 2017; Yao & Kahr 2025). Confirm the correction and add the reference to Source, or record that this is accepted (same question as PLX-BCH-009)."
+  },
+  {
+   "id": "IMM-012",
+   "system": "Immunology",
+   "title": "Sites containing secretory IgA",
+   "tiles": [
+    "Breast milk",
+    "Saliva",
+    "Tears",
+    "Mucosa-associated lymphoid tissue"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The review replaced the source tile \"Sweat\" with \"Tears\". Notes state the Bootcamp source (p. 37) supports only breast milk, saliva and MALT, and that \"Tears\" rests on the added outside references (Woof & Mestecky, Immunol Rev 2005; Li et al 2019). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds)."
   }
  ],
  "duplicateDecisions": [
@@ -99,7 +112,7 @@
    "key": "PLX-BCH-002 | PLX-HEM-002",
    "kind": "treated as the same relationship (set aside); confirm",
    "held": null,
-   "sharedRelationship": "\"vitamin k dependent clotting factor\" vs \"vitamin k dependent procoagulant factor\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "sharedRelationship": "both are \"vitamin k dependent clotting factor\"; 4 of 4 tiles identical; tile wording 100% the same",
    "a": {
     "id": "PLX-BCH-002",
     "library": "new",
@@ -165,7 +178,7 @@
    "key": "PLEXUS-GEN-003 | PLX-BCH-010",
    "kind": "possible duplicate (held)",
    "held": "PLEXUS-GEN-003",
-   "sharedRelationship": "\"drug disrupt microtubule function\" vs \"drug disrupting microtubule dynamic\"; 2 of 4 tiles identical",
+   "sharedRelationship": "both are \"drug disrupt microtubule function\"; 2 of 4 tiles identical",
    "a": {
     "id": "PLX-BCH-010",
     "library": "new",
@@ -361,9 +374,9 @@
   },
   {
    "key": "PLEXUS-GEN-007 | PLX-HEM-029",
-   "kind": "possible duplicate (held)",
-   "held": "PLX-HEM-029",
-   "sharedRelationship": "\"orotic aciduria ump synthase deficiency\" vs \"findings / associations of hereditary orotic aciduria\"; 3 of 4 tiles identical; tile wording 62% the same",
+   "kind": "treated as the same relationship (set aside); confirm",
+   "held": null,
+   "sharedRelationship": "both are \"orotic aciduria ump synthase deficiency\"; 3 of 4 tiles identical; tile wording 62% the same",
    "a": {
     "id": "PLEXUS-GEN-007",
     "library": "new",
@@ -396,7 +409,7 @@
    "key": "PLEXUS-GEN-020 | PLX-HEM-012",
    "kind": "possible duplicate (held)",
    "held": "PLX-HEM-012",
-   "sharedRelationship": "\"findings / associations of vaso occlusive sickle cell disease\" vs \"findings / associations of sickle cell vaso occlusive\"; 2 of 4 tiles identical",
+   "sharedRelationship": "both are \"findings / associations of vaso occlusive sickle cell disease\"; 2 of 4 tiles identical",
    "a": {
     "id": "PLEXUS-GEN-020",
     "library": "new",
@@ -424,6 +437,39 @@
     "status": "AI_REVIEWED_PASS"
    },
    "decide": "decisions.json → pairs → \"PLEXUS-GEN-020 | PLX-HEM-012\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "IMM-017 | PLX-HEM-009",
+   "kind": "possible duplicate (held)",
+   "held": "IMM-017",
+   "sharedRelationship": "both are \"findings / associations of pnh\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "PLX-HEM-009",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "PNH diagnostic clues",
+    "tiles": [
+     "Acquired PIGA mutation",
+     "Loss of CD55 and CD59",
+     "Complement-mediated hemolysis",
+     "Unusual-site venous thrombosis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "IMM-017",
+    "library": "new",
+    "system": "Immunology",
+    "title": "Clues to paroxysmal nocturnal hemoglobinuria",
+    "tiles": [
+     "Loss of CD55 / CD59",
+     "Coombs-negative hemolysis",
+     "Hemoglobinuria",
+     "Hepatic vein thrombosis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"IMM-017 | PLX-HEM-009\": \"same\" or \"distinct\""
   }
  ],
  "timedOverlaps": [
@@ -494,7 +540,7 @@
   {
    "key": "CARD-001 | bank-ext-050",
    "kind": "possible repeat of a timed entry",
-   "sharedRelationship": "\"defect tetralogy fallot\" vs \"findings / associations of tetralogy fallot\"; 2 of 4 tiles identical; tile wording 82% the same",
+   "sharedRelationship": "both are \"defect tetralogy fallot\"; 2 of 4 tiles identical; tile wording 82% the same",
    "a": {
     "id": "CARD-001",
     "library": "new",
@@ -780,6 +826,38 @@
    "decide": "decisions.json → pairs → \"DERM-029 | bank-ext-110\": \"same\" (exclude timed entry at activation) or \"distinct\""
   },
   {
+   "key": "ENDO-019 | bank-migrated-sys-mixed-0002-L3",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "both are \"findings / associations of hypocalcemic neuromuscular excitability\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "ENDO-019",
+    "library": "new",
+    "system": "Endocrine",
+    "title": "Manifestations of hypocalcemic neuromuscular excitability",
+    "tiles": [
+     "Chvostek sign",
+     "Trousseau sign",
+     "Tetany",
+     "Seizures"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-migrated-sys-mixed-0002-L3",
+    "library": "timed",
+    "system": "Mixed / Step Review",
+    "title": "Signs of hypocalcemia",
+    "tiles": [
+     "Chvostek's sign",
+     "Trousseau's sign",
+     "Carpopedal spasm",
+     "Prolonged QT interval"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"ENDO-019 | bank-migrated-sys-mixed-0002-L3\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
    "key": "ENDO-029 | bank-ext-082",
    "kind": "possible repeat of a timed entry",
    "sharedRelationship": "\"findings / associations of hereditary syndrome pheochromocytoma\" vs \"causes of + findings / associations of pheochromocytoma\"; 3 of 4 tiles identical; tile wording 80% the same",
@@ -845,8 +923,8 @@
   },
   {
    "key": "GI-033 | bank-ext-114",
-   "kind": "possible repeat of a timed entry",
-   "sharedRelationship": "\"hereditary bilirubin handling disorder\" vs \"inherited hyperbilirubinemia syndrome\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "both are \"hereditary bilirubin handling disorder\"; 4 of 4 tiles identical; tile wording 100% the same",
    "a": {
     "id": "GI-033",
     "library": "new",
@@ -873,7 +951,7 @@
     ],
     "status": "verified"
    },
-   "decide": "decisions.json → pairs → \"GI-033 | bank-ext-114\": \"same\" (exclude timed entry at activation) or \"distinct\""
+   "decide": "no decision needed unless you disagree"
   },
   {
    "key": "GI-043 | bank-ext-001",
@@ -906,6 +984,38 @@
     "status": "verified"
    },
    "decide": "no decision needed unless you disagree"
+  },
+  {
+   "key": "GI-056 | bank-ext-023",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "both are \"findings / associations of systemic carcinoid syndrome\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "GI-056",
+    "library": "new",
+    "system": "GI",
+    "title": "Systemic manifestations of carcinoid syndrome",
+    "tiles": [
+     "Flushing",
+     "Watery diarrhea",
+     "Bronchospasm",
+     "Right-sided valvular fibrosis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-023",
+    "library": "timed",
+    "system": "GI",
+    "title": "Features of carcinoid syndrome",
+    "tiles": [
+     "Flushing",
+     "Diarrhea",
+     "Wheezing",
+     "Right-sided valvular disease"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"GI-056 | bank-ext-023\": \"same\" (exclude timed entry at activation) or \"distinct\""
   },
   {
    "key": "GI-062 | bank-ext-115",
@@ -1034,6 +1144,70 @@
     "status": "needs_review"
    },
    "decide": "decisions.json → pairs → \"PLX-HEM-042 | bank-easy-04\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "IMM-018 | bank-ext-002",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"live attenuated viral vaccine\" vs \"live attenuated vaccine\"; 3 of 4 tiles identical",
+   "a": {
+    "id": "IMM-018",
+    "library": "new",
+    "system": "Immunology",
+    "title": "Live attenuated viral vaccines",
+    "tiles": [
+     "MMR vaccine",
+     "Varicella vaccine",
+     "Rotavirus vaccine",
+     "Yellow fever vaccine"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-002",
+    "library": "timed",
+    "system": "Microbiology",
+    "title": "Live attenuated vaccines",
+    "tiles": [
+     "MMR",
+     "Varicella",
+     "Rotavirus",
+     "Intranasal influenza"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"IMM-018 | bank-ext-002\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "IMM-030 | bank-ext-061",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"immune complex hypersensitivity example\" vs \"type iii hypersensitivity disease\"; 3 of 4 tiles identical",
+   "a": {
+    "id": "IMM-030",
+    "library": "new",
+    "system": "Immunology",
+    "title": "Classic immune-complex hypersensitivity examples",
+    "tiles": [
+     "Serum sickness",
+     "Arthus reaction",
+     "Poststreptococcal glomerulonephritis",
+     "Immune-complex lupus nephritis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-061",
+    "library": "timed",
+    "system": "Immunology",
+    "title": "Type III hypersensitivity diseases",
+    "tiles": [
+     "Serum sickness",
+     "Poststreptococcal glomerulonephritis",
+     "Systemic lupus erythematosus",
+     "Arthus reaction"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"IMM-030 | bank-ext-061\": \"same\" (exclude timed entry at activation) or \"distinct\""
   }
  ],
  "boardReviews": [

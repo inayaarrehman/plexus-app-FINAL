@@ -1,12 +1,12 @@
 # Plexus new library: pending review queue
 
-Generated 2026-10-08T07:17:00.886Z. Staging only; the library is not active and the live app is unchanged.
+Generated 2026-10-08T07:29:43.843Z. Staging only; the library is not active and the live app is unchanged.
 
 | Category | Open |
 |---|---|
-| Medical / source holds | 7 |
-| Duplicate decisions (new library) | 10 |
-| Timed-library overlaps | 15 to decide, 4 recorded |
+| Medical / source holds | 8 |
+| Duplicate decisions (new library) | 11 |
+| Timed-library overlaps | 18 to decide, 5 recorded |
 | Board ambiguity reviews | 2 |
 | Blocked boards | 0 |
 | Difficulty calibration warnings | 1 |
@@ -47,9 +47,14 @@ Tiles: ADP · Calcium · Serotonin · ATP
 
 Issue: The review replaced the source tile "Histamine" with "ATP", stating histamine is not a canonical platelet dense-granule constituent. This contradicts the cited Bootcamp page (p. 47) and is supported only by outside references in Notes (Holinstat 2017; Yao & Kahr 2025). Confirm the correction and add the reference to Source, or record that this is accepted (same question as PLX-BCH-009).
 
+### IMM-012 · Sites containing secretory IgA (Immunology, AI_REVIEWED_REVISED)
+Tiles: Breast milk · Saliva · Tears · Mucosa-associated lymphoid tissue
+
+Issue: The review replaced the source tile "Sweat" with "Tears". Notes state the Bootcamp source (p. 37) supports only breast milk, saliva and MALT, and that "Tears" rests on the added outside references (Woof & Mestecky, Immunol Rev 2005; Li et al 2019). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).
+
 ## 2. Duplicate decisions (new library)
 ### Vitamin K-dependent clotting factors  /  Vitamin K-dependent procoagulant factors
-treated as the same relationship (set aside); confirm. Shared relationship: "vitamin k dependent clotting factor" vs "vitamin k dependent procoagulant factor"; 4 of 4 tiles identical; tile wording 100% the same.
+treated as the same relationship (set aside); confirm. Shared relationship: both are "vitamin k dependent clotting factor"; 4 of 4 tiles identical; tile wording 100% the same.
 
 | | PLX-BCH-002 (new, Biochemistry/Genetics) | PLX-HEM-002 (new, Heme/Onc) |
 |---|---|---|
@@ -77,7 +82,7 @@ treated as the same relationship (set aside); confirm. Shared relationship: "fat
 Decide: decisions.json → pairs → "GI-043 | PLX-BCH-008": "same" or "distinct"
 
 ### Drugs that disrupt microtubule function  /  Drugs disrupting microtubule dynamics
-possible duplicate (held). Shared relationship: "drug disrupt microtubule function" vs "drug disrupting microtubule dynamic"; 2 of 4 tiles identical.
+possible duplicate (held). Shared relationship: both are "drug disrupt microtubule function"; 2 of 4 tiles identical.
 
 | | PLX-BCH-010 (new, Biochemistry/Genetics) | PLEXUS-GEN-003 (new, Genetics) |
 |---|---|---|
@@ -165,7 +170,7 @@ treated as the same relationship (set aside); confirm. Shared relationship: "ant
 Decide: decisions.json → pairs → "PLEXUS-GEN-002 | PLX-HEM-046": "same" or "distinct"
 
 ### Orotic aciduria from UMP synthase deficiency  /  Hereditary orotic-aciduria clues
-possible duplicate (held). Shared relationship: "orotic aciduria ump synthase deficiency" vs "findings / associations of hereditary orotic aciduria"; 3 of 4 tiles identical; tile wording 62% the same.
+treated as the same relationship (set aside); confirm. Shared relationship: both are "orotic aciduria ump synthase deficiency"; 3 of 4 tiles identical; tile wording 62% the same.
 
 | | PLEXUS-GEN-007 (new, Genetics) | PLX-HEM-029 (new, Heme/Onc) |
 |---|---|---|
@@ -176,11 +181,10 @@ possible duplicate (held). Shared relationship: "orotic aciduria ump synthase de
 | Tile 4 | Normal ammonia | Normal ammonia |
 | Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
 
-Held until decided: PLX-HEM-029.
 Decide: decisions.json → pairs → "PLEXUS-GEN-007 | PLX-HEM-029": "same" or "distinct"
 
 ### Vaso-occlusive complications of sickle cell disease  /  Sickle-cell vaso-occlusive manifestations
-possible duplicate (held). Shared relationship: "findings / associations of vaso occlusive sickle cell disease" vs "findings / associations of sickle cell vaso occlusive"; 2 of 4 tiles identical.
+possible duplicate (held). Shared relationship: both are "findings / associations of vaso occlusive sickle cell disease"; 2 of 4 tiles identical.
 
 | | PLEXUS-GEN-020 (new, Genetics) | PLX-HEM-012 (new, Heme/Onc) |
 |---|---|---|
@@ -193,6 +197,21 @@ possible duplicate (held). Shared relationship: "findings / associations of vaso
 
 Held until decided: PLX-HEM-012.
 Decide: decisions.json → pairs → "PLEXUS-GEN-020 | PLX-HEM-012": "same" or "distinct"
+
+### PNH diagnostic clues  /  Clues to paroxysmal nocturnal hemoglobinuria
+possible duplicate (held). Shared relationship: both are "findings / associations of pnh"; 1 of 4 tiles identical.
+
+| | PLX-HEM-009 (new, Heme/Onc) | IMM-017 (new, Immunology) |
+|---|---|---|
+| Title | PNH diagnostic clues | Clues to paroxysmal nocturnal hemoglobinuria |
+| Tile 1 | Acquired PIGA mutation | Loss of CD55 / CD59 |
+| Tile 2 | Loss of CD55 and CD59 | Coombs-negative hemolysis |
+| Tile 3 | Complement-mediated hemolysis | Hemoglobinuria |
+| Tile 4 | Unusual-site venous thrombosis | Hepatic vein thrombosis |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: IMM-017.
+Decide: decisions.json → pairs → "IMM-017 | PLX-HEM-009": "same" or "distinct"
 
 ## 3. Timed-library overlaps
 ### Fat-soluble vitamins  /  Fat-soluble vitamins
@@ -224,7 +243,7 @@ possible repeat of a timed entry. Shared relationship: "storage disease enzyme r
 Decide: decisions.json → pairs → "PLX-BCH-079 | bank-ext-086": "same" (exclude timed entry at activation) or "distinct"
 
 ### The four defects in tetralogy of Fallot  /  Findings in tetralogy of Fallot
-possible repeat of a timed entry. Shared relationship: "defect tetralogy fallot" vs "findings / associations of tetralogy fallot"; 2 of 4 tiles identical; tile wording 82% the same.
+possible repeat of a timed entry. Shared relationship: both are "defect tetralogy fallot"; 2 of 4 tiles identical; tile wording 82% the same.
 
 | | CARD-001 (new, Cardiology) | bank-ext-050 (timed, Cardiology) |
 |---|---|---|
@@ -349,6 +368,20 @@ possible repeat of a timed entry. Shared relationship: both are "findings / asso
 
 Decide: decisions.json → pairs → "DERM-029 | bank-ext-110": "same" (exclude timed entry at activation) or "distinct"
 
+### Manifestations of hypocalcemic neuromuscular excitability  /  Signs of hypocalcemia
+possible repeat of a timed entry. Shared relationship: both are "findings / associations of hypocalcemic neuromuscular excitability"; 2 of 4 tiles identical.
+
+| | ENDO-019 (new, Endocrine) | bank-migrated-sys-mixed-0002-L3 (timed, Mixed / Step Review) |
+|---|---|---|
+| Title | Manifestations of hypocalcemic neuromuscular excitability | Signs of hypocalcemia |
+| Tile 1 | Chvostek sign | Chvostek's sign |
+| Tile 2 | Trousseau sign | Trousseau's sign |
+| Tile 3 | Tetany | Carpopedal spasm |
+| Tile 4 | Seizures | Prolonged QT interval |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "ENDO-019 | bank-migrated-sys-mixed-0002-L3": "same" (exclude timed entry at activation) or "distinct"
+
 ### Hereditary syndromes associated with pheochromocytoma  /  Conditions associated with pheochromocytoma
 possible repeat of a timed entry. Shared relationship: "findings / associations of hereditary syndrome pheochromocytoma" vs "causes of + findings / associations of pheochromocytoma"; 3 of 4 tiles identical; tile wording 80% the same.
 
@@ -378,7 +411,7 @@ same relationship as a timed entry (timed entry to be excluded at activation). S
 Decide: no decision needed unless you disagree
 
 ### Hereditary bilirubin-handling disorders  /  Inherited hyperbilirubinemia syndromes
-possible repeat of a timed entry. Shared relationship: "hereditary bilirubin handling disorder" vs "inherited hyperbilirubinemia syndrome"; 4 of 4 tiles identical; tile wording 100% the same.
+same relationship as a timed entry (timed entry to be excluded at activation). Shared relationship: both are "hereditary bilirubin handling disorder"; 4 of 4 tiles identical; tile wording 100% the same.
 
 | | GI-033 (new, GI) | bank-ext-114 (timed, GI) |
 |---|---|---|
@@ -389,7 +422,7 @@ possible repeat of a timed entry. Shared relationship: "hereditary bilirubin han
 | Tile 4 | Rotor syndrome | Rotor syndrome |
 | Status | AI_REVIEWED_PASS | verified |
 
-Decide: decisions.json → pairs → "GI-033 | bank-ext-114": "same" (exclude timed entry at activation) or "distinct"
+Decide: no decision needed unless you disagree
 
 ### Fat-soluble vitamins at risk in pancreatic fat malabsorption  /  Fat-soluble vitamins
 same relationship as a timed entry (timed entry to be excluded at activation). Shared relationship: "fat soluble vitamin risk pancreatic fat malabsorption" vs "fat soluble vitamin"; 4 of 4 tiles identical; tile wording 100% the same.
@@ -404,6 +437,20 @@ same relationship as a timed entry (timed entry to be excluded at activation). S
 | Status | AI_REVIEWED_PASS | verified |
 
 Decide: no decision needed unless you disagree
+
+### Systemic manifestations of carcinoid syndrome  /  Features of carcinoid syndrome
+possible repeat of a timed entry. Shared relationship: both are "findings / associations of systemic carcinoid syndrome"; 1 of 4 tiles identical.
+
+| | GI-056 (new, GI) | bank-ext-023 (timed, GI) |
+|---|---|---|
+| Title | Systemic manifestations of carcinoid syndrome | Features of carcinoid syndrome |
+| Tile 1 | Flushing | Flushing |
+| Tile 2 | Watery diarrhea | Diarrhea |
+| Tile 3 | Bronchospasm | Wheezing |
+| Tile 4 | Right-sided valvular fibrosis | Right-sided valvular disease |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "GI-056 | bank-ext-023": "same" (exclude timed entry at activation) or "distinct"
 
 ### Autosomal dominant hereditary colorectal cancer syndromes  /  Hereditary colorectal cancer syndromes
 possible repeat of a timed entry. Shared relationship: "autosomal dominant hereditary colorectal cancer syndrome" vs "hereditary colorectal cancer syndrome"; 3 of 4 tiles identical; tile wording 100% the same.
@@ -460,6 +507,34 @@ possible repeat of a timed entry. Shared relationship: "infection causing caseat
 | Status | AI_REVIEWED_REVISED | needs_review |
 
 Decide: decisions.json → pairs → "PLX-HEM-042 | bank-easy-04": "same" (exclude timed entry at activation) or "distinct"
+
+### Live attenuated viral vaccines  /  Live attenuated vaccines
+possible repeat of a timed entry. Shared relationship: "live attenuated viral vaccine" vs "live attenuated vaccine"; 3 of 4 tiles identical.
+
+| | IMM-018 (new, Immunology) | bank-ext-002 (timed, Microbiology) |
+|---|---|---|
+| Title | Live attenuated viral vaccines | Live attenuated vaccines |
+| Tile 1 | MMR vaccine | MMR |
+| Tile 2 | Varicella vaccine | Varicella |
+| Tile 3 | Rotavirus vaccine | Rotavirus |
+| Tile 4 | Yellow fever vaccine | Intranasal influenza |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "IMM-018 | bank-ext-002": "same" (exclude timed entry at activation) or "distinct"
+
+### Classic immune-complex hypersensitivity examples  /  Type III hypersensitivity diseases
+possible repeat of a timed entry. Shared relationship: "immune complex hypersensitivity example" vs "type iii hypersensitivity disease"; 3 of 4 tiles identical.
+
+| | IMM-030 (new, Immunology) | bank-ext-061 (timed, Immunology) |
+|---|---|---|
+| Title | Classic immune-complex hypersensitivity examples | Type III hypersensitivity diseases |
+| Tile 1 | Serum sickness | Serum sickness |
+| Tile 2 | Arthus reaction | Poststreptococcal glomerulonephritis |
+| Tile 3 | Poststreptococcal glomerulonephritis | Systemic lupus erythematosus |
+| Tile 4 | Immune-complex lupus nephritis | Arthus reaction |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "IMM-030 | bank-ext-061": "same" (exclude timed entry at activation) or "distinct"
 
 ## 4. Board ambiguity reviews
 ### biochemistry-genetics-starter-5 (Biochemistry/Genetics)

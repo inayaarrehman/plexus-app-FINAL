@@ -71,12 +71,25 @@ export function words(text) {
     .map((w) => (w.length > 3 && w.endsWith('s') && !w.endsWith('ss') && !w.endsWith('us') && !w.endsWith('is') ? w.slice(0, -1) : w))
 }
 const KEYS = new Map()
+// Tile keys also drop a few generic trailing words, so "MMR vaccine" = "MMR",
+// "Alcohol use" = "Alcohol" and "Mumps infection" = "Mumps". "Disease" and
+// "syndrome" are kept: Cushing disease and Cushing syndrome differ.
+const TILE_GENERIC = new Set(['vaccine', 'use', 'exposure', 'infection', 'therapy'])
 export const tileKey = (t) => {
   const s = String(t ?? '')
-  if (!KEYS.has(s)) KEYS.set(s, words(s).join(' '))
+  if (!KEYS.has(s)) {
+    const w = words(s)
+    const core = w.filter((x) => !TILE_GENERIC.has(x))
+    KEYS.set(s, (core.length ? core : w).join(' '))
+  }
   return KEYS.get(s)
 }
-export const titleKey = tileKey
+const TITLE_KEYS = new Map()
+export const titleKey = (t) => {
+  const s = String(t ?? '')
+  if (!TITLE_KEYS.has(s)) TITLE_KEYS.set(s, words(s).join(' '))
+  return TITLE_KEYS.get(s)
+}
 export function jaccard(a, b) {
   const A = new Set(a)
   const B = new Set(b)
@@ -236,6 +249,16 @@ export const subjectKey = (title) => [...new Set(words(title).filter((w) => !FIL
 // explanation talk about another connection's subject.
 export const topicKey = (title) => words(title).filter((w) => !FILLER.has(w) && !RELATION[w]).join(' ')
 const tileWords = (c) => [...new Set((c.tiles || []).flatMap((t) => words(t)))]
+function subjectParts(text) {
+  const k = subjectKey(text).split(' ').filter(Boolean)
+  return { rel: k.filter((w) => w === 'CAUSE' || w === 'FIND').join(' '), topic: k.filter((w) => w !== 'CAUSE' && w !== 'FIND').join(' ') }
+}
+function subjectsMeet(a, b) {
+  const names = (c) => [c.title, ...(Array.isArray(c.alternateNames) ? c.alternateNames : [])].filter(Boolean).map(subjectParts)
+  const A = names(a)
+  const B = names(b)
+  return A.some((x) => x.topic.split(' ').length >= 1 && x.topic.length >= 3 && B.some((y) => y.topic === x.topic && (x.rel === y.rel || !x.rel || !y.rel)))
+}
 export function compare(a, b) {
   const ak = new Set(a.tiles.map(tileKey))
   const shared = b.tiles.map(tileKey).filter((t) => ak.has(t)).length
@@ -245,7 +268,12 @@ export function compare(a, b) {
   const sa = subjectKey(a.title)
   const sb = subjectKey(b.title)
   const sameTitle = ta === tb
-  const sameSubject = !!sa && sa === sb && sa.replace(/CAUSE|FIND/g, '').trim() !== ''
+  // Subjects are also compared through each row's accepted alternate names, so
+  // an abbreviation in one title ("PNH diagnostic clues") meets the full name
+  // in the other ("Clues to paroxysmal nocturnal hemoglobinuria"). Two
+  // subjects match when their topic words are the same and their relationship
+  // kinds agree (or one names no kind).
+  const sameSubject = (!!sa && sa === sb && sa.replace(/CAUSE|FIND/g, '').trim() !== '') || subjectsMeet(a, b)
   // Reworded tiles ("Overriding aorta" / "Aorta overriding the septum") are
   // caught by comparing the words used across all four tiles.
   const wordSim = jaccard(tileWords(a), tileWords(b))

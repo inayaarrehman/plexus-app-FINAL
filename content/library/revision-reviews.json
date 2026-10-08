@@ -112,6 +112,20 @@
       "evidence": "Only the cytogenetic notation was corrected (t(15,17) to the standard t(15;17)); content unchanged and verified.",
       "contentHash": "d7f50473e22bf939d32b496f5bfa6dbc9f23fe18d92f0ea8b88e89edc3a17035",
       "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "IMM-012": {
+      "endorsedFinalRow": true,
+      "outstanding": "The review replaced the source tile \"Sweat\" with \"Tears\". Notes state the Bootcamp source (p. 37) supports only breast milk, saliva and MALT, and that \"Tears\" rests on the added outside references (Woof & Mestecky, Immunol Rev 2005; Li et al 2019). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).",
+      "evidence": "Notes: \"REVISED: original tile Sweat replaced with Tears ... Original Bootcamp source cited only for breast milk, saliva and MALT; the tears replacement is supported by the added references.\"",
+      "contentHash": "61a82676da6402060fb34a63ea89122affd4213711a91b0c3e684ecaf24df589",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "IMM-033": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"REVISED: title broadened from immune transfusion hemolysis to immune-mediated hemolysis because the four-marker pattern is not transfusion-specific.\" Tiles are as in the source (pp. 62-63); only the title scope was widened, with qualifiers stated. Nothing left unresolved.",
+      "contentHash": "7ceac8ce7da1bf1d6e20ec46b7aed2c511b385fa62bbdface74a4d797fae2a6b",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
     }
   }
 }

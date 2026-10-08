@@ -13912,7 +13912,14 @@
    "duplicateOf": null,
    "heldFor": [],
    "timedSame": [],
-   "timedUncertain": [],
+   "timedUncertain": [
+    {
+     "id": "bank-migrated-sys-mixed-0002-L3",
+     "title": "Signs of hypocalcemia",
+     "shared": 2,
+     "titleSim": 0
+    }
+   ],
    "pool": "daily",
    "starterBoard": null,
    "placementNote": null
@@ -17966,15 +17973,14 @@
    "difficultyWarnings": [],
    "duplicateOf": null,
    "heldFor": [],
-   "timedSame": [],
-   "timedUncertain": [
+   "timedSame": [
     {
      "id": "bank-ext-114",
      "title": "Inherited hyperbilirubinemia syndromes",
-     "shared": 4,
-     "titleSim": 0
+     "shared": 4
     }
    ],
+   "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
    "placementNote": null
@@ -19657,7 +19663,14 @@
    "duplicateOf": null,
    "heldFor": [],
    "timedSame": [],
-   "timedUncertain": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-023",
+     "title": "Features of carcinoid syndrome",
+     "shared": 1,
+     "titleSim": 0.4
+    }
+   ],
    "pool": "daily",
    "starterBoard": null,
    "placementNote": null
@@ -24728,13 +24741,11 @@
    },
    "problems": [],
    "difficultyWarnings": [],
-   "duplicateOf": null,
-   "heldFor": [
-    "PLEXUS-GEN-007"
-   ],
+   "duplicateOf": "PLEXUS-GEN-007",
+   "heldFor": [],
    "timedSame": [],
    "timedUncertain": [],
-   "pool": "held",
+   "pool": "duplicate",
    "starterBoard": null
   },
   "PLX-HEM-030": {
@@ -27374,6 +27385,2871 @@
    "pool": "systemsStarter",
    "starterBoard": "heme-onc-starter-1",
    "placementNote": null
+  },
+  "IMM-001": {
+   "id": "IMM-001",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-001",
+     "Connection Title": "Secondary lymphoid tissues",
+     "Tile 1": "Spleen",
+     "Tile 2": "Lymph nodes",
+     "Tile 3": "Peyer's patches",
+     "Tile 4": "Tonsils",
+     "Connection Type": "Anatomic classification",
+     "Explanation": "These are sites where mature lymphocytes encounter antigen and mount adaptive responses, rather than the primary sites of lymphocyte development.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Peripheral lymphoid tissues",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Lymphoid Tissue - primary versus secondary tissues; PDF p. 3",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: all four are secondary (peripheral) lymphoid organs (Chapel and Haeney, Essentials of Clinical Immunology 7e, 2023). Board overlap: do not pair on the same board with a primary-lymphoid category (bone marrow/thymus)."
+    },
+    "title": "Secondary lymphoid tissues",
+    "connectionType": "Anatomic classification",
+    "explanation": "These are sites where mature lymphocytes encounter antigen and mount adaptive responses, rather than the primary sites of lymphocyte development.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Peripheral lymphoid tissues"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Lymphoid Tissue - primary versus secondary tissues; PDF p. 3",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: all four are secondary (peripheral) lymphoid organs (Chapel and Haeney, Essentials of Clinical Immunology 7e, 2023). Board overlap: do not pair on the same board with a primary-lymphoid category (bone marrow/thymus).",
+    "tiles": [
+     "Spleen",
+     "Lymph nodes",
+     "Peyer's patches",
+     "Tonsils"
+    ]
+   },
+   "contentHash": "b8ab5f54e29245a9242bb360c1e88ba4e0e71dd36033ac3ad3ce2c5c30967933",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 2,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-002": {
+   "id": "IMM-002",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-002",
+     "Connection Title": "Findings of leukocyte adhesion deficiency type 1",
+     "Tile 1": "Delayed umbilical cord separation",
+     "Tile 2": "Absent pus at infection sites",
+     "Tile 3": "Poor wound healing",
+     "Tile 4": "Defective firm leukocyte adhesion",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "Defective CD18-containing beta-2 integrins impair firm adhesion and tissue recruitment of leukocytes, producing this characteristic clinical pattern.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "LAD-1 clues",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Inflammation - disorders of leukocyte migration; PDF p. 18",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: ITGB2/CD18 beta-2 integrin defect; delayed cord separation, absent pus, impaired wound healing, defective firm adhesion are classic (Bonilla et al., JACI 2015;136:1186)."
+    },
+    "title": "Findings of leukocyte adhesion deficiency type 1",
+    "connectionType": "Disease-finding association",
+    "explanation": "Defective CD18-containing beta-2 integrins impair firm adhesion and tissue recruitment of leukocytes, producing this characteristic clinical pattern.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "LAD-1 clues"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Inflammation - disorders of leukocyte migration; PDF p. 18",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: ITGB2/CD18 beta-2 integrin defect; delayed cord separation, absent pus, impaired wound healing, defective firm adhesion are classic (Bonilla et al., JACI 2015;136:1186).",
+    "tiles": [
+     "Delayed umbilical cord separation",
+     "Absent pus at infection sites",
+     "Poor wound healing",
+     "Defective firm leukocyte adhesion"
+    ]
+   },
+   "contentHash": "3eb0fc49a38a6be9b3a9e8497ad9d99f8213e8bb293d37c4be3c8368c11117c7",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 3,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-003": {
+   "id": "IMM-003",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-003",
+     "Connection Title": "Clues to Chediak-Higashi syndrome",
+     "Tile 1": "Partial albinism",
+     "Tile 2": "Giant cytoplasmic granules",
+     "Tile 3": "Peripheral neuropathy",
+     "Tile 4": "LYST mutation",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "LYST dysfunction causes abnormal lysosomal trafficking; the pigmentary, hematologic and neurologic findings together identify Chediak-Higashi syndrome.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Chediak-Higashi features",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Inflammation - Chediak-Higashi syndrome; PDF p. 18",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: LYST mutation with partial albinism, giant granules, peripheral neuropathy (Bonilla et al., JACI 2015). Recurrent pyogenic infection is also characteristic but correctly not forced as a 4th tile."
+    },
+    "title": "Clues to Chediak-Higashi syndrome",
+    "connectionType": "Disease-finding association",
+    "explanation": "LYST dysfunction causes abnormal lysosomal trafficking; the pigmentary, hematologic and neurologic findings together identify Chediak-Higashi syndrome.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Chediak-Higashi features"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Inflammation - Chediak-Higashi syndrome; PDF p. 18",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: LYST mutation with partial albinism, giant granules, peripheral neuropathy (Bonilla et al., JACI 2015). Recurrent pyogenic infection is also characteristic but correctly not forced as a 4th tile.",
+    "tiles": [
+     "Partial albinism",
+     "Giant cytoplasmic granules",
+     "Peripheral neuropathy",
+     "LYST mutation"
+    ]
+   },
+   "contentHash": "7fae4c004b675246bbca5e79fe7380c13b640145519e7371a2eea07b2aad66fb",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 4,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-004": {
+   "id": "IMM-004",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-004",
+     "Connection Title": "Growth factors in inflammatory tissue repair",
+     "Tile 1": "FGF",
+     "Tile 2": "VEGF",
+     "Tile 3": "TGF-beta",
+     "Tile 4": "PDGF",
+     "Connection Type": "Physiologic process",
+     "Explanation": "These growth factors participate in repair after inflammation through angiogenesis, fibroblast recruitment or extracellular matrix deposition; their individual effects are not identical.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Mediators of tissue repair",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Inflammation - chronic inflammatory response; PDF p. 19",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified distinct roles: PDGF (fibroblast/smooth-muscle recruitment), TGF-beta (ECM/fibrosis), VEGF (angiogenesis), FGF (angiogenesis/fibroblast) (standard pathology references, e.g., Kumar, Robbins Basic Pathology 10e, 2018). Retain 'repair' wording; VEGF is not a collagen inducer. Board overlap: TGF-beta also anchors Treg group IMM-008."
+    },
+    "title": "Growth factors in inflammatory tissue repair",
+    "connectionType": "Physiologic process",
+    "explanation": "These growth factors participate in repair after inflammation through angiogenesis, fibroblast recruitment or extracellular matrix deposition; their individual effects are not identical.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Mediators of tissue repair"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Inflammation - chronic inflammatory response; PDF p. 19",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified distinct roles: PDGF (fibroblast/smooth-muscle recruitment), TGF-beta (ECM/fibrosis), VEGF (angiogenesis), FGF (angiogenesis/fibroblast) (standard pathology references, e.g., Kumar, Robbins Basic Pathology 10e, 2018). Retain 'repair' wording; VEGF is not a collagen inducer. Board overlap: TGF-beta also anchors Treg group IMM-008.",
+    "tiles": [
+     "FGF",
+     "VEGF",
+     "TGF-beta",
+     "PDGF"
+    ]
+   },
+   "contentHash": "66c9affdd48ccbeeae9bf9a2212d787f34cb1b74436fd5005350ac053d705c90",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 5,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-2",
+   "placementNote": null
+  },
+  "IMM-005": {
+   "id": "IMM-005",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-005",
+     "Connection Title": "Th2-associated cytokines",
+     "Tile 1": "IL-4",
+     "Tile 2": "IL-5",
+     "Tile 3": "IL-10",
+     "Tile 4": "IL-13",
+     "Connection Type": "Cell-secreted mediators",
+     "Explanation": "These cytokines are associated with Th2 responses; IL-4 and IL-13 support type 2 immunity, IL-5 supports eosinophils, and IL-10 has immunoregulatory effects.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Cytokines associated with Th2 responses",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Cytokines - Th2 response; PDF p. 23",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Core Th2 (type 2) cytokines IL-4/IL-5/IL-13 verified (Nakayama et al., Annu Rev Immunol 2017; Masopust et al., Guidelines for T cell nomenclature, Nat Rev Immunol 2026). Qualifier: IL-10 is historically Th2 but is now a broadly expressed regulatory cytokine (Rasquinha et al., J Immunol 2021); retain 'Th2-associated' wording. Board overlap: IL-10 also anchors Treg group IMM-008 - do not place both on one board."
+    },
+    "title": "Th2-associated cytokines",
+    "connectionType": "Cell-secreted mediators",
+    "explanation": "These cytokines are associated with Th2 responses; IL-4 and IL-13 support type 2 immunity, IL-5 supports eosinophils, and IL-10 has immunoregulatory effects.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Cytokines associated with Th2 responses"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Cytokines - Th2 response; PDF p. 23",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Core Th2 (type 2) cytokines IL-4/IL-5/IL-13 verified (Nakayama et al., Annu Rev Immunol 2017; Masopust et al., Guidelines for T cell nomenclature, Nat Rev Immunol 2026). Qualifier: IL-10 is historically Th2 but is now a broadly expressed regulatory cytokine (Rasquinha et al., J Immunol 2021); retain 'Th2-associated' wording. Board overlap: IL-10 also anchors Treg group IMM-008 - do not place both on one board.",
+    "tiles": [
+     "IL-4",
+     "IL-5",
+     "IL-10",
+     "IL-13"
+    ]
+   },
+   "contentHash": "6f1be047ec2a32f1f6946ce3eee1da927d5388d48eaf26f41a5fbbdc2ba0c440",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 6,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-2",
+   "placementNote": null
+  },
+  "IMM-006": {
+   "id": "IMM-006",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-006",
+     "Connection Title": "MHC class I presentation clues",
+     "Tile 1": "CD8 recognition",
+     "Tile 2": "Beta-2 microglobulin",
+     "Tile 3": "Endogenous peptide presentation",
+     "Tile 4": "Expression on most nucleated cells",
+     "Connection Type": "Molecular pathway",
+     "Explanation": "MHC class I molecules include beta-2 microglobulin and usually display intracellularly derived peptides to CD8 T cells; most nucleated cells express them.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "MHC I characteristics",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "T-cells - MHC class I; PDF p. 27",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Chapel and Haeney 2023). Qualifier: cross-presentation is the exception; retain 'usual/endogenous' wording."
+    },
+    "title": "MHC class I presentation clues",
+    "connectionType": "Molecular pathway",
+    "explanation": "MHC class I molecules include beta-2 microglobulin and usually display intracellularly derived peptides to CD8 T cells; most nucleated cells express them.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "MHC I characteristics"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "T-cells - MHC class I; PDF p. 27",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Chapel and Haeney 2023). Qualifier: cross-presentation is the exception; retain 'usual/endogenous' wording.",
+    "tiles": [
+     "CD8 recognition",
+     "Beta-2 microglobulin",
+     "Endogenous peptide presentation",
+     "Expression on most nucleated cells"
+    ]
+   },
+   "contentHash": "3443f9fb279f9ad865a8914dadaf9a5813c7dc2795423e75e92e225bc3b1fbb4",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 7,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-4",
+   "placementNote": null
+  },
+  "IMM-007": {
+   "id": "IMM-007",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-007",
+     "Connection Title": "MHC class II presentation clues",
+     "Tile 1": "CD4 recognition",
+     "Tile 2": "Invariant chain",
+     "Tile 3": "HLA-DP / DQ / DR",
+     "Tile 4": "Exogenous peptide presentation",
+     "Connection Type": "Molecular pathway",
+     "Explanation": "MHC class II typically presents endocytosed antigen to CD4 T cells. The invariant chain protects its peptide-binding groove during assembly; DP, DQ and DR encode class II molecules.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "MHC II characteristics",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "T-cells - MHC class II; PDF p. 27",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: CD4, invariant chain (CD74), HLA-DP/DQ/DR, exogenous pathway (Chapel and Haeney 2023). Qualifier: autophagy can load endogenous peptides onto MHC II."
+    },
+    "title": "MHC class II presentation clues",
+    "connectionType": "Molecular pathway",
+    "explanation": "MHC class II typically presents endocytosed antigen to CD4 T cells. The invariant chain protects its peptide-binding groove during assembly; DP, DQ and DR encode class II molecules.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "MHC II characteristics"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "T-cells - MHC class II; PDF p. 27",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: CD4, invariant chain (CD74), HLA-DP/DQ/DR, exogenous pathway (Chapel and Haeney 2023). Qualifier: autophagy can load endogenous peptides onto MHC II.",
+    "tiles": [
+     "CD4 recognition",
+     "Invariant chain",
+     "HLA-DP / DQ / DR",
+     "Exogenous peptide presentation"
+    ]
+   },
+   "contentHash": "bdcdbbcf38db3675780750c7ff85d75ffa5ec31b4509e4e3307c4d8d19c4231d",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 8,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-008": {
+   "id": "IMM-008",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-008",
+     "Connection Title": "Regulatory T-cell identity and function",
+     "Tile 1": "CD25 expression",
+     "Tile 2": "FOXP3",
+     "Tile 3": "IL-10 secretion",
+     "Tile 4": "TGF-beta secretion",
+     "Connection Type": "Cell identity and function",
+     "Explanation": "Conventional regulatory T cells are characterized by FOXP3 and high CD25 expression and can suppress immune responses through mechanisms including IL-10 and TGF-beta.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Treg-associated features",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "T-cells - regulatory T-cell activation; PDF p. 28",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: FOXP3 (lineage-defining), high CD25, IL-10 and TGF-beta suppression (Lu et al., Nat Rev Immunol 2017; Georgiev et al., J Clin Immunol 2019). None individually Treg-specific; the combination identifies Tregs. Board overlap: IL-10 shared with IMM-005, TGF-beta with IMM-004."
+    },
+    "title": "Regulatory T-cell identity and function",
+    "connectionType": "Cell identity and function",
+    "explanation": "Conventional regulatory T cells are characterized by FOXP3 and high CD25 expression and can suppress immune responses through mechanisms including IL-10 and TGF-beta.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Treg-associated features"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "T-cells - regulatory T-cell activation; PDF p. 28",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: FOXP3 (lineage-defining), high CD25, IL-10 and TGF-beta suppression (Lu et al., Nat Rev Immunol 2017; Georgiev et al., J Clin Immunol 2019). None individually Treg-specific; the combination identifies Tregs. Board overlap: IL-10 shared with IMM-005, TGF-beta with IMM-004.",
+    "tiles": [
+     "CD25 expression",
+     "FOXP3",
+     "IL-10 secretion",
+     "TGF-beta secretion"
+    ]
+   },
+   "contentHash": "287f247b660fd17b26d2875da011724a764723013d80ea034182b1b819173ed3",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 9,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-4",
+   "placementNote": null
+  },
+  "IMM-009": {
+   "id": "IMM-009",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-009",
+     "Connection Title": "Surface molecules on mature naive B cells",
+     "Tile 1": "CD19",
+     "Tile 2": "CD20",
+     "Tile 3": "CD21",
+     "Tile 4": "MHC class II",
+     "Connection Type": "Cell-surface association",
+     "Explanation": "These surface molecules are expressed on mature naive B cells; MHC II enables presentation of processed antigen to helper T cells.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Mature B-cell surface molecules",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "B-cells - naive mature B-cell; PDF p. 31",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified for mature naive B cells (Chapel and Haeney 2023). Qualifier: markers shift with differentiation (plasma cells lose CD19/CD20); MHC II is shared with other APCs - retain 'mature naive B cell' framing."
+    },
+    "title": "Surface molecules on mature naive B cells",
+    "connectionType": "Cell-surface association",
+    "explanation": "These surface molecules are expressed on mature naive B cells; MHC II enables presentation of processed antigen to helper T cells.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Mature B-cell surface molecules"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "B-cells - naive mature B-cell; PDF p. 31",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified for mature naive B cells (Chapel and Haeney 2023). Qualifier: markers shift with differentiation (plasma cells lose CD19/CD20); MHC II is shared with other APCs - retain 'mature naive B cell' framing.",
+    "tiles": [
+     "CD19",
+     "CD20",
+     "CD21",
+     "MHC class II"
+    ]
+   },
+   "contentHash": "a9329a7a81abc5d6d947eb235685ebbd417013a23df661655a148326bc0e71ab",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 10,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-2",
+   "placementNote": null
+  },
+  "IMM-010": {
+   "id": "IMM-010",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-010",
+     "Connection Title": "Features of T-dependent B-cell activation",
+     "Tile 1": "Protein antigen",
+     "Tile 2": "MHC class II presentation",
+     "Tile 3": "CD40-CD40L interaction",
+     "Tile 4": "Helper T-cell involvement",
+     "Connection Type": "Molecular pathway",
+     "Explanation": "B cells internalize protein antigen and present peptides through MHC II; helper T-cell interactions, including CD40L binding CD40, support the T-dependent antibody response.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "T-cell help for B cells",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "B-cells - Th-dependent activation; PDF p. 32",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Chapel and Haeney 2023). Board overlap: MHC II shared with IMM-007/IMM-009; CD40-CD40L shared with IMM-025."
+    },
+    "title": "Features of T-dependent B-cell activation",
+    "connectionType": "Molecular pathway",
+    "explanation": "B cells internalize protein antigen and present peptides through MHC II; helper T-cell interactions, including CD40L binding CD40, support the T-dependent antibody response.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "T-cell help for B cells"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "B-cells - Th-dependent activation; PDF p. 32",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Chapel and Haeney 2023). Board overlap: MHC II shared with IMM-007/IMM-009; CD40-CD40L shared with IMM-025.",
+    "tiles": [
+     "Protein antigen",
+     "MHC class II presentation",
+     "CD40-CD40L interaction",
+     "Helper T-cell involvement"
+    ]
+   },
+   "contentHash": "b534d2334b468e07bb059976c9b7f0baa612bd328f6310eae9beeaff1805545e",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 11,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-5",
+   "placementNote": null
+  },
+  "IMM-011": {
+   "id": "IMM-011",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-011",
+     "Connection Title": "Associations of IgG",
+     "Tile 1": "Placental antibody transfer",
+     "Tile 2": "Opsonization",
+     "Tile 3": "Classical complement activation",
+     "Tile 4": "Predominant serum immunoglobulin",
+     "Connection Type": "Immunoglobulin function",
+     "Explanation": "IgG is the most abundant serum immunoglobulin, crosses the placenta and mediates opsonization; appropriate IgG subclasses can activate classical complement.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "IgG functions and properties",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Antibodies - IgG; PDF p. 37",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Woof and Mestecky, Immunol Rev 2005). Qualifier: classical complement activation is subclass-dependent (IgG1/IgG3 strong, IgG2 weak, IgG4 poor) - do not imply all subclasses activate complement equally."
+    },
+    "title": "Associations of IgG",
+    "connectionType": "Immunoglobulin function",
+    "explanation": "IgG is the most abundant serum immunoglobulin, crosses the placenta and mediates opsonization; appropriate IgG subclasses can activate classical complement.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "IgG functions and properties"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Antibodies - IgG; PDF p. 37",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Woof and Mestecky, Immunol Rev 2005). Qualifier: classical complement activation is subclass-dependent (IgG1/IgG3 strong, IgG2 weak, IgG4 poor) - do not imply all subclasses activate complement equally.",
+    "tiles": [
+     "Placental antibody transfer",
+     "Opsonization",
+     "Classical complement activation",
+     "Predominant serum immunoglobulin"
+    ]
+   },
+   "contentHash": "4c939c7bc5100ffc462824e244451dcdaf109417e3404f46b6ea1349ceea4319",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 12,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-3",
+   "placementNote": null
+  },
+  "IMM-012": {
+   "id": "IMM-012",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-012",
+     "Connection Title": "Sites containing secretory IgA",
+     "Tile 1": "Breast milk",
+     "Tile 2": "Saliva",
+     "Tile 3": "Tears",
+     "Tile 4": "Mucosa-associated lymphoid tissue",
+     "Connection Type": "Immunoglobulin distribution",
+     "Explanation": "Secretory IgA predominates at these mucosal/secretory sites and in breast milk, mediating mucosal and passive protection; tears are a canonical secretory-IgA fluid.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "IgA-associated secretions and tissue; secretory IgA sites",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Antibodies - IgA; PDF p. 37",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "REVISED: original tile 'Sweat' replaced with 'Tears.' Tears are a canonical secretory-IgA site (Woof and Mestecky, Immunol Rev 2005; Li et al., Biomed Res Int 2019); sweat IgA exists (Okada et al., J Invest Dermatol 1988) but is non-standard for boards. Original Bootcamp source cited only for breast milk, saliva and MALT; the tears replacement is supported by the added references."
+    },
+    "title": "Sites containing secretory IgA",
+    "connectionType": "Immunoglobulin distribution",
+    "explanation": "Secretory IgA predominates at these mucosal/secretory sites and in breast milk, mediating mucosal and passive protection; tears are a canonical secretory-IgA fluid.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "IgA-associated secretions and tissue",
+     "secretory IgA sites"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Antibodies - IgA; PDF p. 37",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "REVISED: original tile 'Sweat' replaced with 'Tears.' Tears are a canonical secretory-IgA site (Woof and Mestecky, Immunol Rev 2005; Li et al., Biomed Res Int 2019); sweat IgA exists (Okada et al., J Invest Dermatol 1988) but is non-standard for boards. Original Bootcamp source cited only for breast milk, saliva and MALT; the tears replacement is supported by the added references.",
+    "tiles": [
+     "Breast milk",
+     "Saliva",
+     "Tears",
+     "Mucosa-associated lymphoid tissue"
+    ]
+   },
+   "contentHash": "61a82676da6402060fb34a63ea89122affd4213711a91b0c3e684ecaf24df589",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 13,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": null,
+    "reviewer": "OpenEvidence",
+    "outstanding": "The review replaced the source tile \"Sweat\" with \"Tears\". Notes state the Bootcamp source (p. 37) supports only breast milk, saliva and MALT, and that \"Tears\" rests on the added outside references (Woof & Mestecky, Immunol Rev 2005; Li et al 2019). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).",
+    "approved": false,
+    "state": "held"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "review",
+   "starterBoard": null
+  },
+  "IMM-013": {
+   "id": "IMM-013",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-013",
+     "Connection Title": "IgM characteristics",
+     "Tile 1": "Secreted pentamer",
+     "Tile 2": "J-chain linkage",
+     "Tile 3": "Early primary antibody response",
+     "Tile 4": "Efficient complement activation",
+     "Connection Type": "Immunoglobulin structure and function",
+     "Explanation": "Secreted IgM is commonly pentameric with a J chain and is prominent early in a primary response; antigen-bound IgM efficiently activates classical complement.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "IgM structure and functions",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Antibodies - IgM; PDF p. 37",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Woof and Mestecky 2005). Qualifier: membrane IgM is monomeric; 'pentamer' refers to the usual secreted form."
+    },
+    "title": "IgM characteristics",
+    "connectionType": "Immunoglobulin structure and function",
+    "explanation": "Secreted IgM is commonly pentameric with a J chain and is prominent early in a primary response; antigen-bound IgM efficiently activates classical complement.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "IgM structure and functions"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Antibodies - IgM; PDF p. 37",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Woof and Mestecky 2005). Qualifier: membrane IgM is monomeric; 'pentamer' refers to the usual secreted form.",
+    "tiles": [
+     "Secreted pentamer",
+     "J-chain linkage",
+     "Early primary antibody response",
+     "Efficient complement activation"
+    ]
+   },
+   "contentHash": "08bdd740db264cef7775ee8566c204739a99b0b072c53473c9edd16dffa096a3",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 14,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-4",
+   "placementNote": null
+  },
+  "IMM-014": {
+   "id": "IMM-014",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-014",
+     "Connection Title": "IgE-associated immune events",
+     "Tile 1": "Mast-cell Fc receptor binding",
+     "Tile 2": "Allergen-induced crosslinking",
+     "Tile 3": "Type I hypersensitivity",
+     "Tile 4": "Helminth defense",
+     "Connection Type": "Immunoglobulin function",
+     "Explanation": "IgE binds high-affinity receptors on mast cells; allergen crosslinking can trigger immediate hypersensitivity, while IgE also participates in defense against helminths.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "IgE-mediated responses",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Antibodies - IgE; PDF p. 37",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: FcepsilonRI binding, allergen crosslinking triggers type I hypersensitivity, antihelminth role (Chapel and Haeney 2023)."
+    },
+    "title": "IgE-associated immune events",
+    "connectionType": "Immunoglobulin function",
+    "explanation": "IgE binds high-affinity receptors on mast cells; allergen crosslinking can trigger immediate hypersensitivity, while IgE also participates in defense against helminths.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "IgE-mediated responses"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Antibodies - IgE; PDF p. 37",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: FcepsilonRI binding, allergen crosslinking triggers type I hypersensitivity, antihelminth role (Chapel and Haeney 2023).",
+    "tiles": [
+     "Mast-cell Fc receptor binding",
+     "Allergen-induced crosslinking",
+     "Type I hypersensitivity",
+     "Helminth defense"
+    ]
+   },
+   "contentHash": "76a6df6ea7793242b3ce038b29766472c54fdc36df98b79828c78c0bb4aea8f7",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 15,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-015": {
+   "id": "IMM-015",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-015",
+     "Connection Title": "Later terminal complement components",
+     "Tile 1": "C6",
+     "Tile 2": "C7",
+     "Tile 3": "C8",
+     "Tile 4": "C9",
+     "Connection Type": "Molecular complex membership",
+     "Explanation": "These proteins join C5b to build the membrane attack complex, the pore-forming terminal complement complex.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Proteins recruited to C5b; terminal/MAC components",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Complement - common pathway; PDF p. 41",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: C6-C9 are recruited to C5b to form MAC (C5b-9) (Chapel and Haeney 2023). Subset note: C5b is part of the complete complex but intentionally excluded; the title's 'later/terminal' wording is accurate."
+    },
+    "title": "Later terminal complement components",
+    "connectionType": "Molecular complex membership",
+    "explanation": "These proteins join C5b to build the membrane attack complex, the pore-forming terminal complement complex.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Proteins recruited to C5b",
+     "terminal/MAC components"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Complement - common pathway; PDF p. 41",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: C6-C9 are recruited to C5b to form MAC (C5b-9) (Chapel and Haeney 2023). Subset note: C5b is part of the complete complex but intentionally excluded; the title's 'later/terminal' wording is accurate.",
+    "tiles": [
+     "C6",
+     "C7",
+     "C8",
+     "C9"
+    ]
+   },
+   "contentHash": "ea37cc214a8bf674d027c47b533cea77d406ab4c30b619d339400280d292c149",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 16,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-5",
+   "placementNote": null
+  },
+  "IMM-016": {
+   "id": "IMM-016",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-016",
+     "Connection Title": "C1-inhibitor deficiency angioedema clues",
+     "Tile 1": "Autosomal dominant inheritance",
+     "Tile 2": "Increased bradykinin",
+     "Tile 3": "Low C4",
+     "Tile 4": "Recurrent bowel-wall edema",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "Hereditary C1-inhibitor deficiency causes excess bradykinin, reduced C4 and recurrent non-pitting edema that can involve the intestinal wall.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Hereditary angioedema due to C1-inhibitor deficiency",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Complement - C1 esterase inhibitor deficiency and case; PDF pp. 42-43",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: autosomal dominant SERPING1 deficiency, bradykinin excess, low C4, recurrent bowel-wall edema (Bonilla et al., JACI 2015). Qualifier: distinct from HAE with normal C1-INH (normal C4)."
+    },
+    "title": "C1-inhibitor deficiency angioedema clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "Hereditary C1-inhibitor deficiency causes excess bradykinin, reduced C4 and recurrent non-pitting edema that can involve the intestinal wall.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Hereditary angioedema due to C1-inhibitor deficiency"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Complement - C1 esterase inhibitor deficiency and case; PDF pp. 42-43",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: autosomal dominant SERPING1 deficiency, bradykinin excess, low C4, recurrent bowel-wall edema (Bonilla et al., JACI 2015). Qualifier: distinct from HAE with normal C1-INH (normal C4).",
+    "tiles": [
+     "Autosomal dominant inheritance",
+     "Increased bradykinin",
+     "Low C4",
+     "Recurrent bowel-wall edema"
+    ]
+   },
+   "contentHash": "8d4819c945f0c457997e23d69345f37fcc2a19de31019e7ca2acd4e7d3229627",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 17,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-017": {
+   "id": "IMM-017",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-017",
+     "Connection Title": "Clues to paroxysmal nocturnal hemoglobinuria",
+     "Tile 1": "Loss of CD55 / CD59",
+     "Tile 2": "Coombs-negative hemolysis",
+     "Tile 3": "Hemoglobinuria",
+     "Tile 4": "Hepatic vein thrombosis",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "Loss of GPI-anchored complement regulators causes complement-mediated hemolysis in PNH; unusual-site thrombosis, including hepatic venous thrombosis, is a characteristic association.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "PNH associations",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Complement - paroxysmal nocturnal hemoglobinuria; PDF p. 42",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: PIGA-related loss of GPI-anchored CD55/CD59, Coombs-negative intravascular hemolysis, hemoglobinuria, atypical-site thrombosis incl hepatic vein/Budd-Chiari (Brodsky RA, Blood 2014;124:2804). Qualifier: 'can occur' findings, not obligatory."
+    },
+    "title": "Clues to paroxysmal nocturnal hemoglobinuria",
+    "connectionType": "Disease-finding association",
+    "explanation": "Loss of GPI-anchored complement regulators causes complement-mediated hemolysis in PNH; unusual-site thrombosis, including hepatic venous thrombosis, is a characteristic association.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "PNH associations"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Complement - paroxysmal nocturnal hemoglobinuria; PDF p. 42",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: PIGA-related loss of GPI-anchored CD55/CD59, Coombs-negative intravascular hemolysis, hemoglobinuria, atypical-site thrombosis incl hepatic vein/Budd-Chiari (Brodsky RA, Blood 2014;124:2804). Qualifier: 'can occur' findings, not obligatory.",
+    "tiles": [
+     "Loss of CD55 / CD59",
+     "Coombs-negative hemolysis",
+     "Hemoglobinuria",
+     "Hepatic vein thrombosis"
+    ]
+   },
+   "contentHash": "56344c3e48fd87d2b2c5463ad657c52a8eaa973633a478456fde44efa6494258",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 18,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [
+    "PLX-HEM-009"
+   ],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "held",
+   "starterBoard": null
+  },
+  "IMM-018": {
+   "id": "IMM-018",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-018",
+     "Connection Title": "Live attenuated viral vaccines",
+     "Tile 1": "MMR vaccine",
+     "Tile 2": "Varicella vaccine",
+     "Tile 3": "Rotavirus vaccine",
+     "Tile 4": "Yellow fever vaccine",
+     "Connection Type": "Vaccine mechanism",
+     "Explanation": "Each uses attenuated live virus to stimulate immunity. The MMR product contains three attenuated viruses; the other tiles each refer to a separate vaccine.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Live viral vaccines",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Vaccinations - live attenuated examples; PDF p. 46",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified live attenuated viral vaccines: MMR, varicella, rotavirus, yellow fever (Kelso et al., AAAAI Practice Parameter 2012; Pollard and Bijker, Nat Rev Immunol 2021)."
+    },
+    "title": "Live attenuated viral vaccines",
+    "connectionType": "Vaccine mechanism",
+    "explanation": "Each uses attenuated live virus to stimulate immunity. The MMR product contains three attenuated viruses; the other tiles each refer to a separate vaccine.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Live viral vaccines"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Vaccinations - live attenuated examples; PDF p. 46",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified live attenuated viral vaccines: MMR, varicella, rotavirus, yellow fever (Kelso et al., AAAAI Practice Parameter 2012; Pollard and Bijker, Nat Rev Immunol 2021).",
+    "tiles": [
+     "MMR vaccine",
+     "Varicella vaccine",
+     "Rotavirus vaccine",
+     "Yellow fever vaccine"
+    ]
+   },
+   "contentHash": "671335942a33c749e24e3f031322cb4625bc11f05bcc6be021cfa4fcf5977f4c",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 19,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-002",
+     "title": "Live attenuated vaccines",
+     "shared": 3,
+     "titleSim": 0.75
+    }
+   ],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-019": {
+   "id": "IMM-019",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-019",
+     "Connection Title": "Protein-antigen vaccines",
+     "Tile 1": "Acellular pertussis vaccine",
+     "Tile 2": "Hepatitis B vaccine",
+     "Tile 3": "HPV vaccine",
+     "Tile 4": "Tetanus toxoid vaccine",
+     "Connection Type": "Vaccine antigen classification",
+     "Explanation": "Each delivers protein antigen rather than a replicating organism: selected pertussis proteins, hepatitis B surface antigen, HPV capsid proteins, or inactivated tetanus toxin.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Vaccines using protein antigens; non-live protein/subunit and toxoid vaccines",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Vaccinations - subunit protein and toxoid vaccines; PDF p. 46",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Pollard and Bijker, Nat Rev Immunol 2021): acellular pertussis (purified protein), recombinant HBsAg, HPV VLP, tetanus toxoid. 'Protein antigen' is the shared relationship; manufacturing method differs. Board overlap: HBV and HPV also appear in IMM-020 - do not place both connections on one board."
+    },
+    "title": "Protein-antigen vaccines",
+    "connectionType": "Vaccine antigen classification",
+    "explanation": "Each delivers protein antigen rather than a replicating organism: selected pertussis proteins, hepatitis B surface antigen, HPV capsid proteins, or inactivated tetanus toxin.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Vaccines using protein antigens",
+     "non-live protein/subunit and toxoid vaccines"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Vaccinations - subunit protein and toxoid vaccines; PDF p. 46",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Pollard and Bijker, Nat Rev Immunol 2021): acellular pertussis (purified protein), recombinant HBsAg, HPV VLP, tetanus toxoid. 'Protein antigen' is the shared relationship; manufacturing method differs. Board overlap: HBV and HPV also appear in IMM-020 - do not place both connections on one board.",
+    "tiles": [
+     "Acellular pertussis vaccine",
+     "Hepatitis B vaccine",
+     "HPV vaccine",
+     "Tetanus toxoid vaccine"
+    ]
+   },
+   "contentHash": "0bddde4a819200851ed3515f34b69d61d23e7bbb159e6e45427a9c69ef63340b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 20,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-4",
+   "placementNote": null
+  },
+  "IMM-020": {
+   "id": "IMM-020",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-020",
+     "Connection Title": "Source-listed non-live viral vaccines",
+     "Tile 1": "Hepatitis A vaccine",
+     "Tile 2": "Salk polio vaccine",
+     "Tile 3": "Hepatitis B vaccine",
+     "Tile 4": "HPV vaccine",
+     "Connection Type": "Vaccine classification",
+     "Explanation": "Hepatitis A and Salk polio vaccines use inactivated virus; hepatitis B and HPV vaccines use recombinant viral proteins. All four are non-live viral vaccines.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Non-live vaccines against viral diseases",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Vaccinations - whole inactivated and subunit protein examples; PDF p. 46",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Pollard and Bijker 2021; Kelso et al. 2012): hep A and Salk/IPV inactivated; HBV and HPV recombinant - all non-live viral. Title correctly spans inactivated + recombinant. Board overlap: HBV/HPV shared with IMM-019."
+    },
+    "title": "Source-listed non-live viral vaccines",
+    "connectionType": "Vaccine classification",
+    "explanation": "Hepatitis A and Salk polio vaccines use inactivated virus; hepatitis B and HPV vaccines use recombinant viral proteins. All four are non-live viral vaccines.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Non-live vaccines against viral diseases"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Vaccinations - whole inactivated and subunit protein examples; PDF p. 46",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Pollard and Bijker 2021; Kelso et al. 2012): hep A and Salk/IPV inactivated; HBV and HPV recombinant - all non-live viral. Title correctly spans inactivated + recombinant. Board overlap: HBV/HPV shared with IMM-019.",
+    "tiles": [
+     "Hepatitis A vaccine",
+     "Salk polio vaccine",
+     "Hepatitis B vaccine",
+     "HPV vaccine"
+    ]
+   },
+   "contentHash": "8edaf6774878e509f18bb1fa41c6096f0c8bd04903788a00b01c7f17881e2790",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 21,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-3",
+   "placementNote": null
+  },
+  "IMM-021": {
+   "id": "IMM-021",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-021",
+     "Connection Title": "SCID screening and presentation clues",
+     "Tile 1": "Low T-cell receptor excision circles",
+     "Tile 2": "Absent thymic shadow",
+     "Tile 3": "Profound T-cell lymphopenia",
+     "Tile 4": "Infantile opportunistic infections",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "SCID disrupts T-cell development or function, often producing low TRECs, marked T-cell lymphopenia and early severe infections; lack of a thymic shadow is a classic supporting clue.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Severe combined immunodeficiency clues",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Immunodeficiency Syndromes - SCID; PDF p. 49",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: low TRECs on newborn screening, absent thymic shadow, profound T-cell lymphopenia, early opportunistic infection (Bonilla et al., JACI 2015). Qualifier: B/NK-cell pattern varies by genotype - these are characteristic clues, not universal requirements."
+    },
+    "title": "SCID screening and presentation clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "SCID disrupts T-cell development or function, often producing low TRECs, marked T-cell lymphopenia and early severe infections; lack of a thymic shadow is a classic supporting clue.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Severe combined immunodeficiency clues"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Immunodeficiency Syndromes - SCID; PDF p. 49",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: low TRECs on newborn screening, absent thymic shadow, profound T-cell lymphopenia, early opportunistic infection (Bonilla et al., JACI 2015). Qualifier: B/NK-cell pattern varies by genotype - these are characteristic clues, not universal requirements.",
+    "tiles": [
+     "Low T-cell receptor excision circles",
+     "Absent thymic shadow",
+     "Profound T-cell lymphopenia",
+     "Infantile opportunistic infections"
+    ]
+   },
+   "contentHash": "e7dbad7e693a7d9148ab73a0b7b37de3cf3db0bf22ea7af706493ddf23597506",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 22,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-2",
+   "placementNote": null
+  },
+  "IMM-022": {
+   "id": "IMM-022",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-022",
+     "Connection Title": "Clues to X-linked agammaglobulinemia",
+     "Tile 1": "BTK mutation",
+     "Tile 2": "Very low mature B-cell count",
+     "Tile 3": "Markedly reduced immunoglobulins",
+     "Tile 4": "Underdeveloped tonsils",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "BTK-related failure of B-cell maturation produces very few mature B cells, deficient antibody production and small or absent lymphoid structures such as tonsils.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Bruton agammaglobulinemia features",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Immunodeficiency Syndromes - Bruton agammaglobulinemia; PDF p. 49",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: BTK mutation, markedly reduced/absent mature B cells, panhypogammaglobulinemia, absent/small tonsils and lymph nodes (Bonilla et al., JACI 2015)."
+    },
+    "title": "Clues to X-linked agammaglobulinemia",
+    "connectionType": "Disease-finding association",
+    "explanation": "BTK-related failure of B-cell maturation produces very few mature B cells, deficient antibody production and small or absent lymphoid structures such as tonsils.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Bruton agammaglobulinemia features"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Immunodeficiency Syndromes - Bruton agammaglobulinemia; PDF p. 49",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: BTK mutation, markedly reduced/absent mature B cells, panhypogammaglobulinemia, absent/small tonsils and lymph nodes (Bonilla et al., JACI 2015).",
+    "tiles": [
+     "BTK mutation",
+     "Very low mature B-cell count",
+     "Markedly reduced immunoglobulins",
+     "Underdeveloped tonsils"
+    ]
+   },
+   "contentHash": "ffc47c44bfdd7d15222d9d22ffc443b9af624d106bf8fddfc0bb535bef1e7d1b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 23,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-1",
+   "placementNote": null
+  },
+  "IMM-023": {
+   "id": "IMM-023",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-023",
+     "Connection Title": "DiGeorge immune-endocrine clues",
+     "Tile 1": "Thymic hypoplasia",
+     "Tile 2": "T-cell deficiency",
+     "Tile 3": "Low PTH",
+     "Tile 4": "Hypocalcemia",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "DiGeorge-associated abnormal pharyngeal apparatus development can impair thymic and parathyroid development, linking T-cell deficiency to low PTH and hypocalcemia.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "DiGeorge syndrome findings",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Immunodeficiency Syndromes - thymic aplasia; PDF p. 49",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: 22q11.2 deletion, thymic hypoplasia/T-cell deficiency, hypoparathyroidism with low PTH and hypocalcemia (Mustillo et al., J Clin Immunol 2023). Qualifier: immune severity is a spectrum (complete aplasia is uncommon)."
+    },
+    "title": "DiGeorge immune-endocrine clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "DiGeorge-associated abnormal pharyngeal apparatus development can impair thymic and parathyroid development, linking T-cell deficiency to low PTH and hypocalcemia.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "DiGeorge syndrome findings"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Immunodeficiency Syndromes - thymic aplasia; PDF p. 49",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: 22q11.2 deletion, thymic hypoplasia/T-cell deficiency, hypoparathyroidism with low PTH and hypocalcemia (Mustillo et al., J Clin Immunol 2023). Qualifier: immune severity is a spectrum (complete aplasia is uncommon).",
+    "tiles": [
+     "Thymic hypoplasia",
+     "T-cell deficiency",
+     "Low PTH",
+     "Hypocalcemia"
+    ]
+   },
+   "contentHash": "7b0ca17220cb9de4d1a8fbc37e98f3d6d85c86e3234eb40a23f92a38e0f7f255",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 24,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-024": {
+   "id": "IMM-024",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-024",
+     "Connection Title": "Selective IgA deficiency associations",
+     "Tile 1": "Low IgA with preserved IgG / IgM",
+     "Tile 2": "Giardia-associated diarrhea",
+     "Tile 3": "False-negative tTG-IgA testing",
+     "Tile 4": "Anti-IgA-associated transfusion anaphylaxis",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "Selective IgA deficiency can compromise mucosal defense, interfere with IgA-based celiac testing and, in a small subset of patients, be associated with anaphylactic transfusion reactions involving anti-IgA antibodies.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Selective IgA deficiency clues",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Immunodeficiency Syndromes - selective IgA deficiency; PDF p. 50",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: IgA <7 mg/dL with normal IgG/IgM; Giardia susceptibility; false-negative tTG-IgA requires IgG-based celiac testing (Rubio-Tapia et al., ACG 2023); anti-IgA anaphylactic transfusion reaction is a recognized but rare and debated association (Bonilla et al., JACI 2015; Soutar et al., Br J Haematol 2023). Keep 'can occur' framing for the transfusion tile."
+    },
+    "title": "Selective IgA deficiency associations",
+    "connectionType": "Disease-finding association",
+    "explanation": "Selective IgA deficiency can compromise mucosal defense, interfere with IgA-based celiac testing and, in a small subset of patients, be associated with anaphylactic transfusion reactions involving anti-IgA antibodies.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Selective IgA deficiency clues"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Immunodeficiency Syndromes - selective IgA deficiency; PDF p. 50",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: IgA <7 mg/dL with normal IgG/IgM; Giardia susceptibility; false-negative tTG-IgA requires IgG-based celiac testing (Rubio-Tapia et al., ACG 2023); anti-IgA anaphylactic transfusion reaction is a recognized but rare and debated association (Bonilla et al., JACI 2015; Soutar et al., Br J Haematol 2023). Keep 'can occur' framing for the transfusion tile.",
+    "tiles": [
+     "Low IgA with preserved IgG / IgM",
+     "Giardia-associated diarrhea",
+     "False-negative tTG-IgA testing",
+     "Anti-IgA-associated transfusion anaphylaxis"
+    ]
+   },
+   "contentHash": "cf9837822001a2dc1c5bbd1b70d536e0991431fb7f8e7e017ff0ad5a4500e884",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 25,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-025": {
+   "id": "IMM-025",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-025",
+     "Connection Title": "CD40L-deficient hyper-IgM clues",
+     "Tile 1": "Defective CD40 ligand",
+     "Tile 2": "Impaired class switching",
+     "Tile 3": "Normal or elevated IgM",
+     "Tile 4": "Low IgG / IgA / IgE",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "Deficient T-cell CD40 ligand impairs class switching and T-cell help, leaving IgM preserved or elevated while switched isotypes are reduced.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "X-linked hyper-IgM syndrome features",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Immunodeficiency Syndromes - hyper-IgM syndrome; PDF p. 50",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: CD40LG (CD40L) deficiency impairs class-switch recombination; normal/elevated IgM with low IgG/IgA/IgE (Bonilla et al., JACI 2015). Title correctly specifies the CD40L subtype (other causes: AID, CD40, NEMO)."
+    },
+    "title": "CD40L-deficient hyper-IgM clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "Deficient T-cell CD40 ligand impairs class switching and T-cell help, leaving IgM preserved or elevated while switched isotypes are reduced.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "X-linked hyper-IgM syndrome features"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Immunodeficiency Syndromes - hyper-IgM syndrome; PDF p. 50",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: CD40LG (CD40L) deficiency impairs class-switch recombination; normal/elevated IgM with low IgG/IgA/IgE (Bonilla et al., JACI 2015). Title correctly specifies the CD40L subtype (other causes: AID, CD40, NEMO).",
+    "tiles": [
+     "Defective CD40 ligand",
+     "Impaired class switching",
+     "Normal or elevated IgM",
+     "Low IgG / IgA / IgE"
+    ]
+   },
+   "contentHash": "cd19391beaf14eb3df0a7f538c5b7b3fadb5324af9d2b841b7cd2af2e0ba6f19",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 26,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-026": {
+   "id": "IMM-026",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-026",
+     "Connection Title": "STAT3 hyper-IgE syndrome clues",
+     "Tile 1": "STAT3 mutation",
+     "Tile 2": "Cold abscesses",
+     "Tile 3": "Eczema",
+     "Tile 4": "Elevated IgE",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "STAT3-related hyper-IgE syndrome combines a characteristic immune defect with eczema, high IgE and recurrent abscesses that may show little overt inflammation.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Job syndrome features",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Immunodeficiency Syndromes - Job syndrome; PDF p. 50",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: autosomal dominant STAT3 loss-of-function (Job) syndrome - eczema, cold (non-inflamed) abscesses, very high IgE (Bonilla et al., JACI 2015). Qualifier: distinct from DOCK8 deficiency; cold abscesses characteristic, not mandatory."
+    },
+    "title": "STAT3 hyper-IgE syndrome clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "STAT3-related hyper-IgE syndrome combines a characteristic immune defect with eczema, high IgE and recurrent abscesses that may show little overt inflammation.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Job syndrome features"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Immunodeficiency Syndromes - Job syndrome; PDF p. 50",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: autosomal dominant STAT3 loss-of-function (Job) syndrome - eczema, cold (non-inflamed) abscesses, very high IgE (Bonilla et al., JACI 2015). Qualifier: distinct from DOCK8 deficiency; cold abscesses characteristic, not mandatory.",
+    "tiles": [
+     "STAT3 mutation",
+     "Cold abscesses",
+     "Eczema",
+     "Elevated IgE"
+    ]
+   },
+   "contentHash": "982e8eb5180202b9eeb679971e8cae6a4a328b3f730c0a9eb772c968c10c15be",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 27,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-027": {
+   "id": "IMM-027",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-027",
+     "Connection Title": "Wiskott-Aldrich syndrome clues",
+     "Tile 1": "WAS protein defect",
+     "Tile 2": "Eczema with recurrent infections",
+     "Tile 3": "Thrombocytopenia",
+     "Tile 4": "Unusually small platelets",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "WAS protein dysfunction produces an immune deficiency classically accompanied by eczema and microthrombocytopenia.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Wiskott-Aldrich findings",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Immunodeficiency Syndromes - Wiskott-Aldrich syndrome; PDF p. 50",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: WAS gene defect, triad of eczema, (micro)thrombocytopenia with small platelets, recurrent infection (Bonilla et al., JACI 2015). 'Small platelets' reflects the classic untreated pattern."
+    },
+    "title": "Wiskott-Aldrich syndrome clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "WAS protein dysfunction produces an immune deficiency classically accompanied by eczema and microthrombocytopenia.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Wiskott-Aldrich findings"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Immunodeficiency Syndromes - Wiskott-Aldrich syndrome; PDF p. 50",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: WAS gene defect, triad of eczema, (micro)thrombocytopenia with small platelets, recurrent infection (Bonilla et al., JACI 2015). 'Small platelets' reflects the classic untreated pattern.",
+    "tiles": [
+     "WAS protein defect",
+     "Eczema with recurrent infections",
+     "Thrombocytopenia",
+     "Unusually small platelets"
+    ]
+   },
+   "contentHash": "6174cb180688e1806edc8b49f0384bf928cc96dc254453bf6efc6d9c5cd0a8ed",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 28,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-028": {
+   "id": "IMM-028",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-028",
+     "Connection Title": "X-linked inborn errors of immunity",
+     "Tile 1": "BTK-related agammaglobulinemia",
+     "Tile 2": "CD40L-deficient hyper-IgM syndrome",
+     "Tile 3": "Wiskott-Aldrich syndrome",
+     "Tile 4": "FOXP3-related IPEX",
+     "Connection Type": "Inheritance pattern",
+     "Explanation": "Each named gene-related disorder has X-linked inheritance; the qualifiers prevent extrapolation to unrelated causes of similar phenotypes.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "X-linked immune disorders",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Immunodeficiency Syndromes - inheritance and gene defects; PDF pp. 49-52",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified X-linked inheritance: BTK (XLA), CD40LG (X-linked hyper-IgM), WAS, FOXP3 (IPEX) (Bonilla et al., JACI 2015; Lu et al., Nat Rev Immunol 2017). Board overlap: these disease tiles duplicate clue groups IMM-022/025/027 - never place on the same 16-tile board."
+    },
+    "title": "X-linked inborn errors of immunity",
+    "connectionType": "Inheritance pattern",
+    "explanation": "Each named gene-related disorder has X-linked inheritance; the qualifiers prevent extrapolation to unrelated causes of similar phenotypes.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "X-linked immune disorders"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Immunodeficiency Syndromes - inheritance and gene defects; PDF pp. 49-52",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified X-linked inheritance: BTK (XLA), CD40LG (X-linked hyper-IgM), WAS, FOXP3 (IPEX) (Bonilla et al., JACI 2015; Lu et al., Nat Rev Immunol 2017). Board overlap: these disease tiles duplicate clue groups IMM-022/025/027 - never place on the same 16-tile board.",
+    "tiles": [
+     "BTK-related agammaglobulinemia",
+     "CD40L-deficient hyper-IgM syndrome",
+     "Wiskott-Aldrich syndrome",
+     "FOXP3-related IPEX"
+    ]
+   },
+   "contentHash": "de042baa4398b7ab874c40794564b8e9f4b92d3301fe262c933ca18d1b560c24",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 29,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-029": {
+   "id": "IMM-029",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-029",
+     "Connection Title": "Cytotoxic type II hypersensitivity examples",
+     "Tile 1": "Autoimmune hemolytic anemia",
+     "Tile 2": "Immune thrombocytopenia",
+     "Tile 3": "Acute hemolytic transfusion reaction",
+     "Tile 4": "Hemolytic disease of the fetus and newborn",
+     "Connection Type": "Shared pathophysiology",
+     "Explanation": "Antibodies directed against blood-cell antigens cause immune destruction of erythrocytes or platelets in these classic type II hypersensitivity examples.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Antibody-mediated blood-cell destruction",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Hypersensitivity Reactions - type II destructive mechanism; PDF p. 56",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified antibody-mediated (type II) cytopenias (Chapel and Haeney 2023; Uzzaman and Cho, Allergy Asthma Proc 2012)."
+    },
+    "title": "Cytotoxic type II hypersensitivity examples",
+    "connectionType": "Shared pathophysiology",
+    "explanation": "Antibodies directed against blood-cell antigens cause immune destruction of erythrocytes or platelets in these classic type II hypersensitivity examples.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Antibody-mediated blood-cell destruction"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Hypersensitivity Reactions - type II destructive mechanism; PDF p. 56",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified antibody-mediated (type II) cytopenias (Chapel and Haeney 2023; Uzzaman and Cho, Allergy Asthma Proc 2012).",
+    "tiles": [
+     "Autoimmune hemolytic anemia",
+     "Immune thrombocytopenia",
+     "Acute hemolytic transfusion reaction",
+     "Hemolytic disease of the fetus and newborn"
+    ]
+   },
+   "contentHash": "75e03deabaa6b325db31cb1c6cfe5cb67537888d9285055d1d86dd215d1a7bfd",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 30,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-1",
+   "placementNote": null
+  },
+  "IMM-030": {
+   "id": "IMM-030",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-030",
+     "Connection Title": "Classic immune-complex hypersensitivity examples",
+     "Tile 1": "Serum sickness",
+     "Tile 2": "Arthus reaction",
+     "Tile 3": "Poststreptococcal glomerulonephritis",
+     "Tile 4": "Immune-complex lupus nephritis",
+     "Connection Type": "Shared pathophysiology",
+     "Explanation": "Antigen-antibody complexes drive tissue inflammation in these type III examples; the lupus tile specifies immune-complex renal disease rather than all manifestations of SLE.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Type III hypersensitivity examples",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Hypersensitivity Reactions - type III mechanism, serum sickness and Arthus; PDF pp. 57, 59",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified immune-complex (type III) diseases (Chapel and Haeney 2023). Lupus nephritis is explicitly qualified as the immune-complex manifestation. Do not substitute 'serum sickness-like reaction.'"
+    },
+    "title": "Classic immune-complex hypersensitivity examples",
+    "connectionType": "Shared pathophysiology",
+    "explanation": "Antigen-antibody complexes drive tissue inflammation in these type III examples; the lupus tile specifies immune-complex renal disease rather than all manifestations of SLE.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Type III hypersensitivity examples"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Hypersensitivity Reactions - type III mechanism, serum sickness and Arthus; PDF pp. 57, 59",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified immune-complex (type III) diseases (Chapel and Haeney 2023). Lupus nephritis is explicitly qualified as the immune-complex manifestation. Do not substitute 'serum sickness-like reaction.'",
+    "tiles": [
+     "Serum sickness",
+     "Arthus reaction",
+     "Poststreptococcal glomerulonephritis",
+     "Immune-complex lupus nephritis"
+    ]
+   },
+   "contentHash": "463575083835a09e7062e0ef91dbc0b5d38198f3205f14083e1f8dc9b8e43636",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 31,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-061",
+     "title": "Type III hypersensitivity diseases",
+     "shared": 3,
+     "titleSim": 0.13
+    }
+   ],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-5",
+   "placementNote": null
+  },
+  "IMM-031": {
+   "id": "IMM-031",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-031",
+     "Connection Title": "Delayed cell-mediated immune reactions",
+     "Tile 1": "Nickel allergic contact dermatitis",
+     "Tile 2": "Poison ivy dermatitis",
+     "Tile 3": "Tuberculin skin-test reaction",
+     "Tile 4": "Candida delayed skin-test reaction",
+     "Connection Type": "Shared pathophysiology",
+     "Explanation": "These reactions depend on antigen-specific T-cell responses rather than an immediate IgE-mediated process; the skin tests assess delayed cellular reactivity.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Type IV delayed hypersensitivity",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Hypersensitivity Reactions - type IV diagnostics and skin differential; PDF p. 58",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified delayed-type (type IV) reactions (Chapel and Haeney 2023; Uzzaman and Cho 2012). Qualifier: 'Candida' tile = delayed recall skin test, not candidal infection - retain this wording to avoid ambiguity."
+    },
+    "title": "Delayed cell-mediated immune reactions",
+    "connectionType": "Shared pathophysiology",
+    "explanation": "These reactions depend on antigen-specific T-cell responses rather than an immediate IgE-mediated process; the skin tests assess delayed cellular reactivity.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Type IV delayed hypersensitivity"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Hypersensitivity Reactions - type IV diagnostics and skin differential; PDF p. 58",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified delayed-type (type IV) reactions (Chapel and Haeney 2023; Uzzaman and Cho 2012). Qualifier: 'Candida' tile = delayed recall skin test, not candidal infection - retain this wording to avoid ambiguity.",
+    "tiles": [
+     "Nickel allergic contact dermatitis",
+     "Poison ivy dermatitis",
+     "Tuberculin skin-test reaction",
+     "Candida delayed skin-test reaction"
+    ]
+   },
+   "contentHash": "1990fad4074ae6aa99c43055a448c3a8281064d88b25bd319e539af680580ec4",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 32,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-033": {
+   "id": "IMM-033",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-033",
+     "Connection Title": "Laboratory evidence of immune-mediated hemolysis",
+     "Tile 1": "Positive direct antiglobulin test",
+     "Tile 2": "Increased LDH",
+     "Tile 3": "Increased bilirubin",
+     "Tile 4": "Decreased haptoglobin",
+     "Connection Type": "Laboratory pattern",
+     "Explanation": "Immune destruction of red cells produces a positive direct antiglobulin test with elevated LDH and indirect bilirubin and low haptoglobin; this pattern applies to immune hemolysis generally, including transfusion-related and autoimmune causes.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Immune hemolysis laboratory pattern; autoimmune hemolytic anemia labs",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Transfusion Reactions - acute and delayed hemolytic reactions; PDF pp. 62-63",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "REVISED: title broadened from 'immune transfusion hemolysis' to 'immune-mediated hemolysis' because the four-marker pattern is not transfusion-specific. Competing category: autoimmune hemolytic anemia fits equally (standard hematology references, e.g., Brodsky, Blood 2014). Qualifier: DAT can be negative in some immune hemolysis; do not present as transfusion-specific or diagnostic in isolation."
+    },
+    "title": "Laboratory evidence of immune-mediated hemolysis",
+    "connectionType": "Laboratory pattern",
+    "explanation": "Immune destruction of red cells produces a positive direct antiglobulin test with elevated LDH and indirect bilirubin and low haptoglobin; this pattern applies to immune hemolysis generally, including transfusion-related and autoimmune causes.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Immune hemolysis laboratory pattern",
+     "autoimmune hemolytic anemia labs"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Transfusion Reactions - acute and delayed hemolytic reactions; PDF pp. 62-63",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "REVISED: title broadened from 'immune transfusion hemolysis' to 'immune-mediated hemolysis' because the four-marker pattern is not transfusion-specific. Competing category: autoimmune hemolytic anemia fits equally (standard hematology references, e.g., Brodsky, Blood 2014). Qualifier: DAT can be negative in some immune hemolysis; do not present as transfusion-specific or diagnostic in isolation.",
+    "tiles": [
+     "Positive direct antiglobulin test",
+     "Increased LDH",
+     "Increased bilirubin",
+     "Decreased haptoglobin"
+    ]
+   },
+   "contentHash": "7ceac8ce7da1bf1d6e20ec46b7aed2c511b385fa62bbdface74a4d797fae2a6b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 33,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": "ai-review-revised",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-034": {
+   "id": "IMM-034",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-034",
+     "Connection Title": "TRALI clinical and mechanistic clues",
+     "Tile 1": "Noncardiogenic pulmonary edema",
+     "Tile 2": "Pulmonary neutrophil activation",
+     "Tile 3": "Increased pulmonary vascular permeability",
+     "Tile 4": "New lung infiltrates after transfusion",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "TRALI involves acute inflammatory pulmonary injury following transfusion, with capillary leak and noncardiogenic edema rather than hydrostatic volume overload.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Transfusion-related acute lung injury clues",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Transfusion Reactions - transfusion-related acute lung injury; PDF p. 65",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: noncardiogenic pulmonary edema from neutrophil-mediated increased permeability, new bilateral infiltrates within 6h of transfusion (Soutar et al., Br J Haematol 2023). Qualifier: distinguish from TACO (hydrostatic); donor antibodies are not always detectable."
+    },
+    "title": "TRALI clinical and mechanistic clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "TRALI involves acute inflammatory pulmonary injury following transfusion, with capillary leak and noncardiogenic edema rather than hydrostatic volume overload.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Transfusion-related acute lung injury clues"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Transfusion Reactions - transfusion-related acute lung injury; PDF p. 65",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: noncardiogenic pulmonary edema from neutrophil-mediated increased permeability, new bilateral infiltrates within 6h of transfusion (Soutar et al., Br J Haematol 2023). Qualifier: distinguish from TACO (hydrostatic); donor antibodies are not always detectable.",
+    "tiles": [
+     "Noncardiogenic pulmonary edema",
+     "Pulmonary neutrophil activation",
+     "Increased pulmonary vascular permeability",
+     "New lung infiltrates after transfusion"
+    ]
+   },
+   "contentHash": "d7328246f66923f9eaf2a9421b24546072ac28087c77013db8aebe1bb50ed76d",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 34,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-1",
+   "placementNote": null
+  },
+  "IMM-035": {
+   "id": "IMM-035",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-035",
+     "Connection Title": "Hyperacute graft rejection clues",
+     "Tile 1": "Preexisting recipient antibodies",
+     "Tile 2": "Minutes after graft reperfusion",
+     "Tile 3": "Graft microvascular thrombosis",
+     "Tile 4": "Fibrinoid vascular necrosis",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "Preformed recipient antibodies recognizing donor antigens can cause rapid vascular injury, thrombosis and ischemic graft destruction.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Hyperacute transplant rejection",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Transplant Rejection - hyperacute rejection; PDF p. 71",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: preformed recipient anti-donor (ABO/HLA) antibodies cause within-minutes microvascular thrombosis and fibrinoid necrosis (Suthanthiran and Strom, NEJM 1994;331:365)."
+    },
+    "title": "Hyperacute graft rejection clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "Preformed recipient antibodies recognizing donor antigens can cause rapid vascular injury, thrombosis and ischemic graft destruction.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Hyperacute transplant rejection"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Transplant Rejection - hyperacute rejection; PDF p. 71",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: preformed recipient anti-donor (ABO/HLA) antibodies cause within-minutes microvascular thrombosis and fibrinoid necrosis (Suthanthiran and Strom, NEJM 1994;331:365).",
+    "tiles": [
+     "Preexisting recipient antibodies",
+     "Minutes after graft reperfusion",
+     "Graft microvascular thrombosis",
+     "Fibrinoid vascular necrosis"
+    ]
+   },
+   "contentHash": "4f916839158b6363d25238a134dffc9ee583d48c16144b1e1d6cd2650f9d38d0",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 35,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-036": {
+   "id": "IMM-036",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-036",
+     "Connection Title": "Chronic graft rejection histology",
+     "Tile 1": "Graft arteriosclerosis",
+     "Tile 2": "Interstitial fibrosis",
+     "Tile 3": "Vascular smooth-muscle proliferation",
+     "Tile 4": "Graft tissue atrophy",
+     "Connection Type": "Histopathologic pattern",
+     "Explanation": "Chronic rejection is associated with progressive vascular narrowing, fibrosis and loss of graft tissue over time.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Chronic transplant rejection morphology",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Transplant Rejection - chronic rejection; PDF p. 73",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: graft vasculopathy/arteriosclerosis, intimal smooth-muscle proliferation, interstitial fibrosis, parenchymal atrophy (Suthanthiran and Strom, NEJM 1994). Qualifier: morphology varies by transplanted organ; findings are supportive, not each individually required."
+    },
+    "title": "Chronic graft rejection histology",
+    "connectionType": "Histopathologic pattern",
+    "explanation": "Chronic rejection is associated with progressive vascular narrowing, fibrosis and loss of graft tissue over time.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Chronic transplant rejection morphology"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Transplant Rejection - chronic rejection; PDF p. 73",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: graft vasculopathy/arteriosclerosis, intimal smooth-muscle proliferation, interstitial fibrosis, parenchymal atrophy (Suthanthiran and Strom, NEJM 1994). Qualifier: morphology varies by transplanted organ; findings are supportive, not each individually required.",
+    "tiles": [
+     "Graft arteriosclerosis",
+     "Interstitial fibrosis",
+     "Vascular smooth-muscle proliferation",
+     "Graft tissue atrophy"
+    ]
+   },
+   "contentHash": "6e4c79b98279d3997eb29300b56d47f40f86eddd22511c4cf0ded18fd17ba404",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 36,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-3",
+   "placementNote": null
+  },
+  "IMM-037": {
+   "id": "IMM-037",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-037",
+     "Connection Title": "Graft-versus-host disease associations",
+     "Tile 1": "Donor T-cell attack on host",
+     "Tile 2": "Maculopapular rash",
+     "Tile 3": "Diarrhea",
+     "Tile 4": "Jaundice",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "Immunocompetent donor T cells may injure recipient skin, gut and liver after transplantation, producing the classic GVHD pattern.",
+     "Organ System": "Immunology",
+     "Discipline": "Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "GVHD mechanism and manifestations",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Transplant Rejection - graft-versus-host disease; PDF p. 74",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: donor T cells attack host skin (rash), gut (diarrhea), liver (cholestatic jaundice) (Chapel and Haeney 2023). Classic syndrome pattern, not a required 4-part checklist."
+    },
+    "title": "Graft-versus-host disease associations",
+    "connectionType": "Disease-finding association",
+    "explanation": "Immunocompetent donor T cells may injure recipient skin, gut and liver after transplantation, producing the classic GVHD pattern.",
+    "organSystems": "Immunology",
+    "discipline": "Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "GVHD mechanism and manifestations"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Transplant Rejection - graft-versus-host disease; PDF p. 74",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: donor T cells attack host skin (rash), gut (diarrhea), liver (cholestatic jaundice) (Chapel and Haeney 2023). Classic syndrome pattern, not a required 4-part checklist.",
+    "tiles": [
+     "Donor T-cell attack on host",
+     "Maculopapular rash",
+     "Diarrhea",
+     "Jaundice"
+    ]
+   },
+   "contentHash": "4885d17d064ff990655d210f8c029d56ecf91289d2d8ba851500f85e4a9cbc99",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 37,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "IMM-038": {
+   "id": "IMM-038",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-038",
+     "Connection Title": "Drugs inhibiting IL-2 production or signaling",
+     "Tile 1": "Cyclosporine",
+     "Tile 2": "Tacrolimus",
+     "Tile 3": "Sirolimus",
+     "Tile 4": "Basiliximab",
+     "Connection Type": "Related pharmacologic pathway",
+     "Explanation": "Cyclosporine and tacrolimus reduce IL-2 transcription through calcineurin inhibition; sirolimus inhibits mTOR downstream of IL-2 signaling, and basiliximab blocks CD25, the IL-2 receptor alpha chain.",
+     "Organ System": "Immunology",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Inhibitors along the IL-2 activation pathway",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Transplant Rejection - immunosuppressive pharmacology; PDF p. 76",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Halloran, NEJM 2004;351:2715; Schrezenmeier et al., Transplantation 2024, PMID 37309030): calcineurin inhibitors block IL-2 transcription, sirolimus blocks mTOR downstream of IL-2R, basiliximab targets CD25 (IL-2Ralpha). Category correctly spans IL-2 production and signaling, not calcineurin alone."
+    },
+    "title": "Drugs inhibiting IL-2 production or signaling",
+    "connectionType": "Related pharmacologic pathway",
+    "explanation": "Cyclosporine and tacrolimus reduce IL-2 transcription through calcineurin inhibition; sirolimus inhibits mTOR downstream of IL-2 signaling, and basiliximab blocks CD25, the IL-2 receptor alpha chain.",
+    "organSystems": "Immunology",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Inhibitors along the IL-2 activation pathway"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Transplant Rejection - immunosuppressive pharmacology; PDF p. 76",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Halloran, NEJM 2004;351:2715; Schrezenmeier et al., Transplantation 2024, PMID 37309030): calcineurin inhibitors block IL-2 transcription, sirolimus blocks mTOR downstream of IL-2R, basiliximab targets CD25 (IL-2Ralpha). Category correctly spans IL-2 production and signaling, not calcineurin alone.",
+    "tiles": [
+     "Cyclosporine",
+     "Tacrolimus",
+     "Sirolimus",
+     "Basiliximab"
+    ]
+   },
+   "contentHash": "c6d4b5b0632870ce12831f73954de86e0de1d1ff707e541d7e46cf161ec197f6",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 38,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-1",
+   "placementNote": null
+  },
+  "IMM-039": {
+   "id": "IMM-039",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-039",
+     "Connection Title": "Systemic glucocorticoid adverse effects",
+     "Tile 1": "Osteoporosis",
+     "Tile 2": "Hyperglycemia",
+     "Tile 3": "Iatrogenic Cushing syndrome",
+     "Tile 4": "Femoral-head osteonecrosis",
+     "Connection Type": "Shared drug adverse effect",
+     "Explanation": "Systemic glucocorticoid exposure can cause each of these adverse effects; likelihood depends on dose, duration and individual susceptibility.",
+     "Organ System": "Immunology",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Complications of systemic steroid exposure",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Transplant Rejection - glucocorticoids; PDF p. 77",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified dose/duration-dependent adverse effects: osteoporosis, hyperglycemia, iatrogenic Cushing syndrome, avascular necrosis of the femoral head (standard pharmacology references, e.g., Katzung, Basic and Clinical Pharmacology 15e, 2021). 'Can occur,' not universal."
+    },
+    "title": "Systemic glucocorticoid adverse effects",
+    "connectionType": "Shared drug adverse effect",
+    "explanation": "Systemic glucocorticoid exposure can cause each of these adverse effects; likelihood depends on dose, duration and individual susceptibility.",
+    "organSystems": "Immunology",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Complications of systemic steroid exposure"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Transplant Rejection - glucocorticoids; PDF p. 77",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified dose/duration-dependent adverse effects: osteoporosis, hyperglycemia, iatrogenic Cushing syndrome, avascular necrosis of the femoral head (standard pharmacology references, e.g., Katzung, Basic and Clinical Pharmacology 15e, 2021). 'Can occur,' not universal.",
+    "tiles": [
+     "Osteoporosis",
+     "Hyperglycemia",
+     "Iatrogenic Cushing syndrome",
+     "Femoral-head osteonecrosis"
+    ]
+   },
+   "contentHash": "d4827e28affa251c84d5cbcda86c34e0109a0880d7cf285a1108d93a21e7970f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 39,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-5",
+   "placementNote": null
+  },
+  "IMM-040": {
+   "id": "IMM-040",
+   "library": "new",
+   "system": "Immunology",
+   "content": {
+    "raw": {
+     "Connection ID": "IMM-040",
+     "Connection Title": "Anti-TNF biologics",
+     "Tile 1": "Infliximab",
+     "Tile 2": "Adalimumab",
+     "Tile 3": "Golimumab",
+     "Tile 4": "Certolizumab",
+     "Connection Type": "Shared drug target",
+     "Explanation": "These biologics neutralize TNF-alpha signaling. Certolizumab is a pegylated antigen-binding fragment; the relationship does not require all four to be intact antibodies.",
+     "Organ System": "Immunology",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "TNF-alpha inhibitors",
+     "Source": "Bootcamp.com Immunology.pdf",
+     "Source Section": "Transplant Rejection - TNF inhibitors; PDF p. 78",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified TNF-alpha inhibitors (FDA labels; standard pharmacology references). Certolizumab is a PEGylated Fab' (no Fc) - a title requiring four intact monoclonal antibodies would be incorrect. Etanercept (TNF-receptor fusion protein) is a defensible alternate TNF inhibitor if a substitute is ever needed."
+    },
+    "title": "Anti-TNF biologics",
+    "connectionType": "Shared drug target",
+    "explanation": "These biologics neutralize TNF-alpha signaling. Certolizumab is a pegylated antigen-binding fragment; the relationship does not require all four to be intact antibodies.",
+    "organSystems": "Immunology",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "TNF-alpha inhibitors"
+    ],
+    "sources": "Bootcamp.com Immunology.pdf",
+    "sourceSection": "Transplant Rejection - TNF inhibitors; PDF p. 78",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified TNF-alpha inhibitors (FDA labels; standard pharmacology references). Certolizumab is a PEGylated Fab' (no Fc) - a title requiring four intact monoclonal antibodies would be incorrect. Etanercept (TNF-receptor fusion protein) is a defensible alternate TNF inhibitor if a substitute is ever needed.",
+    "tiles": [
+     "Infliximab",
+     "Adalimumab",
+     "Golimumab",
+     "Certolizumab"
+    ]
+   },
+   "contentHash": "8535ac849a397514e157775fc7bc5987120cea0813ef9966ece8f4167632939c",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Immunology_reviewed_connections.csv",
+    "fileSha": "741c455344a1",
+    "row": 40,
+    "importedAt": "2026-10-08T07:29:31.517Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "immunology-starter-3",
+   "placementNote": null
   }
  },
  "starterBoards": {
@@ -28061,6 +30937,103 @@
     "flags": [],
     "ambiguityReview": "none"
    }
+  ],
+  "Immunology": [
+   {
+    "n": 1,
+    "id": "immunology-starter-1",
+    "formedAt": "2026-10-08T07:29:31.517Z",
+    "ids": [
+     "IMM-022",
+     "IMM-029",
+     "IMM-034",
+     "IMM-038"
+    ],
+    "difficultyWarnings": [],
+    "signature": "bec9c256",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 2,
+    "id": "immunology-starter-2",
+    "formedAt": "2026-10-08T07:29:31.517Z",
+    "ids": [
+     "IMM-021",
+     "IMM-009",
+     "IMM-005",
+     "IMM-004"
+    ],
+    "difficultyWarnings": [],
+    "signature": "61512f0d",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 3,
+    "id": "immunology-starter-3",
+    "formedAt": "2026-10-08T07:29:31.517Z",
+    "ids": [
+     "IMM-020",
+     "IMM-011",
+     "IMM-040",
+     "IMM-036"
+    ],
+    "difficultyWarnings": [],
+    "signature": "ebc27fa9",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 4,
+    "id": "immunology-starter-4",
+    "formedAt": "2026-10-08T07:29:31.517Z",
+    "ids": [
+     "IMM-013",
+     "IMM-006",
+     "IMM-008",
+     "IMM-019"
+    ],
+    "difficultyWarnings": [],
+    "signature": "a32dff53",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 5,
+    "id": "immunology-starter-5",
+    "formedAt": "2026-10-08T07:29:31.517Z",
+    "ids": [
+     "IMM-015",
+     "IMM-039",
+     "IMM-030",
+     "IMM-010"
+    ],
+    "difficultyWarnings": [],
+    "signature": "daf617b2",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   }
   ]
  },
  "imports": [
@@ -28133,6 +31106,16 @@
    "added": 65,
    "revised": 0,
    "unchanged": 0
+  },
+  {
+   "file": "Plexus_Immunology_reviewed_connections.csv",
+   "fileSha": "741c455344a1",
+   "system": "Immunology",
+   "importedAt": "2026-10-08T07:29:31.517Z",
+   "rows": 39,
+   "added": 39,
+   "revised": 0,
+   "unchanged": 0
   }
  ],
  "timedExclusionsAtActivation": [
@@ -28150,9 +31133,14 @@
    "timedId": "bank-ext-024",
    "timedTitle": "Consequences of portal hypertension",
    "replacedBy": "GI-029"
+  },
+  {
+   "timedId": "bank-ext-114",
+   "timedTitle": "Inherited hyperbilirubinemia syndromes",
+   "replacedBy": "GI-033"
   }
  ],
- "updatedAt": "2026-10-08T07:17:34.934Z",
+ "updatedAt": "2026-10-08T07:30:07.623Z",
  "active": false,
  "pairs": [
   {
@@ -28162,7 +31150,7 @@
    "decided": null,
    "shared": 4,
    "titleSim": 0.67,
-   "sameSubject": false,
+   "sameSubject": true,
    "wordSim": 1,
    "reviewerDistinct": false,
    "sameSystem": false
@@ -28198,7 +31186,7 @@
    "decided": null,
    "shared": 2,
    "titleSim": 0.29,
-   "sameSubject": false,
+   "sameSubject": true,
    "wordSim": 0.33,
    "reviewerDistinct": false,
    "sameSystem": false
@@ -28213,6 +31201,18 @@
    "sameSubject": false,
    "wordSim": 0.38,
    "reviewerDistinct": true,
+   "sameSystem": true
+  },
+  {
+   "a": "PLX-BCH-020",
+   "b": "PLX-BCH-055",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0,
+   "sameSubject": false,
+   "wordSim": 0.22,
+   "reviewerDistinct": false,
    "sameSystem": true
   },
   {
@@ -28238,6 +31238,18 @@
    "wordSim": 0.33,
    "reviewerDistinct": false,
    "sameSystem": true
+  },
+  {
+   "a": "PLX-BCH-053",
+   "b": "PLX-HEM-021",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0.33,
+   "sameSubject": false,
+   "wordSim": 0.2,
+   "reviewerDistinct": false,
+   "sameSystem": false
   },
   {
    "a": "PLX-BCH-054",
@@ -28272,6 +31284,30 @@
    "titleSim": 0.13,
    "sameSubject": false,
    "wordSim": 0.5,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
+   "a": "CARD-011",
+   "b": "CARD-054",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0,
+   "sameSubject": false,
+   "wordSim": 0.42,
+   "reviewerDistinct": false,
+   "sameSystem": true
+  },
+  {
+   "a": "CARD-041",
+   "b": "IMM-004",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0,
+   "sameSubject": false,
+   "wordSim": 0.25,
    "reviewerDistinct": false,
    "sameSystem": false
   },
@@ -28386,11 +31422,11 @@
   {
    "a": "PLEXUS-GEN-007",
    "b": "PLX-HEM-029",
-   "kind": "uncertain",
+   "kind": "same",
    "decided": null,
    "shared": 3,
    "titleSim": 0.29,
-   "sameSubject": false,
+   "sameSubject": true,
    "wordSim": 0.62,
    "reviewerDistinct": false,
    "sameSystem": false
@@ -28402,8 +31438,32 @@
    "decided": null,
    "shared": 2,
    "titleSim": 0.57,
-   "sameSubject": false,
+   "sameSubject": true,
    "wordSim": 0.56,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
+   "a": "PLX-HEM-009",
+   "b": "IMM-017",
+   "kind": "uncertain",
+   "decided": null,
+   "shared": 1,
+   "titleSim": 0.17,
+   "sameSubject": true,
+   "wordSim": 0.28,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
+   "a": "PLX-HEM-010",
+   "b": "IMM-033",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0.29,
+   "sameSubject": false,
+   "wordSim": 0.45,
    "reviewerDistinct": false,
    "sameSystem": false
   },
@@ -28418,22 +31478,34 @@
    "wordSim": 0.5,
    "reviewerDistinct": false,
    "sameSystem": true
+  },
+  {
+   "a": "IMM-019",
+   "b": "IMM-020",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0.13,
+   "sameSubject": false,
+   "wordSim": 0.36,
+   "reviewerDistinct": false,
+   "sameSystem": true
   }
  ],
  "counts": {
   "all": {
-   "rows": 370,
-   "passedReview": 363,
+   "rows": 409,
+   "passedReview": 401,
    "passedReviewHuman": 0,
-   "passedReviewAi": 363,
-   "heldMedical": 7,
+   "passedReviewAi": 401,
+   "heldMedical": 8,
    "rejected": 0,
    "needsFix": 0,
    "heldDuplicate": 6,
-   "setAsideDuplicate": 4,
-   "usable": 353,
-   "starter": 140,
-   "daily": 213
+   "setAsideDuplicate": 5,
+   "usable": 390,
+   "starter": 160,
+   "daily": 230
   },
   "bySystem": {
    "Biochemistry/Genetics": {
@@ -28528,11 +31600,25 @@
     "heldMedical": 2,
     "rejected": 0,
     "needsFix": 0,
-    "heldDuplicate": 4,
-    "setAsideDuplicate": 3,
+    "heldDuplicate": 3,
+    "setAsideDuplicate": 4,
     "usable": 56,
     "starter": 20,
     "daily": 36
+   },
+   "Immunology": {
+    "rows": 39,
+    "passedReview": 38,
+    "passedReviewHuman": 0,
+    "passedReviewAi": 38,
+    "heldMedical": 1,
+    "rejected": 0,
+    "needsFix": 0,
+    "heldDuplicate": 1,
+    "setAsideDuplicate": 0,
+    "usable": 37,
+    "starter": 20,
+    "daily": 17
    }
   }
  }
