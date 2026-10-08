@@ -1,4 +1,5 @@
 {
-  "about": "Decide flagged pairs here. Key: the two ids joined by \" | \" (sorted). Value: \"distinct\" (different relationships, both stay) or \"same\" (one relationship).",
-  "pairs": {}
+  "about": "Your decisions. pairs: key is the two ids joined by \" | \" (sorted); value \"distinct\" (different relationships, both stay) or \"same\" (one relationship). boards: key is a starter board id; value \"cleared:<signature>\" after an ambiguity review (lapses if any member changes), or \"rebuild\" to release a blocked board and form a new one.",
+  "pairs": {},
+  "boards": {}
 }

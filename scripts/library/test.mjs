@@ -61,7 +61,9 @@ beta.push({ ...row('beta', 'medium', 9), tiles: ['x', 'y', 'z'] })
 const out2 = run(write('beta.json', beta), 'Pulmonary')
 s = state()
 ok(Object.values(s.records).filter((r) => r.system === 'Cardiology').length === 28 && JSON.stringify(s.starterBoards.Cardiology) === boardsBefore, 'the earlier system and its starter boards are unchanged')
-ok(s.starterBoards.Pulmonary.length === 3 && /SHORTAGE: 2 board/.test(out2), 'only 3 expert connections: 3 boards formed, shortage of 2 reported')
+ok(s.starterBoards.Pulmonary.length === 4 && /SHORTAGE: 1 board/.test(out2), '18 eligible connections: 4 boards formed (exact tiers not required), shortage of 1 reported')
+ok(s.starterBoards.Pulmonary.every((b) => b.structural === 'pass'), 'every formed board passes structural checks')
+ok(L.boardFair(['easy', 'easy', 'easy', 'easy'].map((t, i) => row('same', t, i))), 'an all-one-difficulty board is allowed')
 ok(s.records['beta-copy'].pool === 'duplicate' && s.records['beta-copy'].duplicateOf === 'alpha-easy-6', 'a reworded, reordered copy of an earlier upload is a duplicate, not new')
 ok(s.records['beta-easy-9'].pool === 'review' && !s.records['beta-easy-9'].verification.approved, 'an unresolved entry stays unapproved and out of every pool')
 ok(s.records['beta-medium-9'].pool === 'needsFix', 'a malformed entry is reported, not repaired')
@@ -73,6 +75,82 @@ s = state()
 const rv = s.records['alpha-easy-7']
 ok(rv.version === 2 && rv.history.length === 1 && rv.history[0].content.explanation === 'Placeholder.' && rv.content.explanation === 'Placeholder, revised.', 'a revised row keeps its id, bumps its version and keeps the old version')
 ok(JSON.stringify(s.starterBoards.Cardiology) === boardsBefore, 'a revision does not reshuffle starter boards')
+
+// 4b. A revision that breaks a starter board flags it instead of reshuffling.
+const board1 = state().starterBoards.Cardiology[0]
+const [m0, m1] = board1.ids
+const clashTile = state().records[m1].content.tiles[0]
+run(write('alpha-v3.json', alpha2.map((r) => (r.id === m0 ? { ...r, tiles: [clashTile, ...r.tiles.slice(1)] } : r))), 'Cardiology')
+s = state()
+const fb = s.starterBoards.Cardiology[0]
+ok(fb.status === 'blocked' && !fb.publishable && fb.block.some((i) => /share the tile/.test(i)) && fb.revalidated.afterRevisionOf.includes(m0), 'a revision that breaks a starter board blocks it from publication')
+ok(fb.id === JSON.parse(boardsBefore)[0].id && JSON.stringify(s.starterBoards.Cardiology.map((b) => b.ids)) === JSON.stringify(JSON.parse(boardsBefore).map((b) => b.ids)), 'the blocked board keeps its id and reservation; no reshuffle')
+fs.writeFileSync(path.join(lib, 'decisions.json'), JSON.stringify({ pairs: {}, boards: { [fb.id]: 'rebuild' } }))
+run(write('alpha-v3.json', alpha2.map((r) => (r.id === m0 ? { ...r, tiles: [clashTile, ...r.tiles.slice(1)] } : r))), 'Cardiology')
+s = state()
+ok(s.starterBoards.Cardiology.length === 5 && s.starterBoards.Cardiology.every((b) => b.status === 'ready'), 'after you choose rebuild, a valid replacement board is formed')
+fs.writeFileSync(path.join(lib, 'decisions.json'), JSON.stringify({ pairs: {}, boards: {} }))
+
+// 4c. Reviewer notes: explicit "do not combine" blocks, other mentions flag.
+const chk = (x, y) => L.pairCheck(x, y)
+let r1 = chk(row('nb', 'easy', 1, { notes: 'Board overlap: keep separate from nb-medium-1.' }), row('nb', 'medium', 1))
+ok(r1.block.length === 1, 'an explicit keep-separate note naming another id blocks the pair')
+r1 = chk(row('nb', 'easy', 1, { notes: 'Board overlap with nb-medium-1.' }), row('nb', 'medium', 1))
+ok(r1.block.length === 0 && r1.flag.length === 1, 'a note that only mentions another id is flagged, not blocked')
+r1 = chk(row('nb', 'easy', 2, { notes: 'Trypsin-like: keep nbmedium2w3 off this board.' }), row('nb', 'medium', 2))
+ok(r1.block.length === 1, 'an explicit instruction naming another connection\'s tile blocks the pair')
+r1 = chk(row('nb', 'easy', 2, { notes: 'Compare nbmedium2w3 for contrast.' }), row('nb', 'medium', 2))
+ok(r1.block.length === 0 && r1.flag.length === 1, 'a tile merely mentioned in a note is flagged')
+r1 = chk(row('nb', 'easy', 3, { explanation: 'Unlike nbhard3w2, these are fine.' }), row('nb', 'hard', 3))
+ok(r1.block.length === 0 && r1.flag.some((f) => /named in/.test(f)), 'a tile named in another explanation is an ambiguity flag, not a block')
+r1 = chk(row('nb', 'easy', 4, { tiles: ['Cu/Zn superoxide dismutase (SOD1)', 'p', 'q', 'r'] }), row('nb', 'hard', 4, { tiles: ['SOD1', 's', 't', 'u'] }))
+ok(r1.block.some((x) => /share the tile/.test(x)), 'a tile alias in parentheses counts as the same tile')
+r1 = chk(row('nb', 'easy', 5, { title: 'Group one', alternateNames: ['Shared name'] }), row('nb', 'hard', 5, { title: 'Shared name' }))
+ok(r1.block.some((x) => /share the name/.test(x)), 'a title that matches another group\'s alternate name blocks the pair')
+const gen = L.boardCheck([row('g', 'easy', 1, { notes: 'Avoid additional sugar tiles on the same board.' }), row('g', 'medium', 1), row('g', 'hard', 1), row('g', 'expert', 1)])
+ok(gen.block.length === 0 && gen.flags.some((f) => /instruction to check/.test(f)), 'a general avoid-instruction naming no tile is a review flag on the board')
+
+// 4d. Labels: unmapped stays unresolved; AI-review labels carry their basis;
+// conditional labels need a determination tied to the exact content.
+run(write('labels.json', [row('lab', 'easy', 1, { status: 'AI_REVIEWED_PASS' }), row('lab', 'easy', 2, { status: 'AI_REVIEWED_REVISED' })]), 'GI')
+ok(state().records['lab-easy-1'].pool === 'review' && state().records['lab-easy-1'].verification.status === 'AI_REVIEWED_PASS', 'an unmapped label is kept as written and stays unresolved')
+let refused = false
+try {
+  run(write('labels.json', [row('lab', 'easy', 1, { status: 'AI_REVIEWED_PASS' })]), 'GI', ['--assume-approved', 'AI_REVIEWED_PASS'])
+} catch {
+  refused = true
+}
+ok(refused, 'a projection without --dry-run is refused')
+const proj = run(write('labels.json', [row('lab', 'easy', 1, { status: 'AI_REVIEWED_PASS' }), row('lab', 'easy', 2, { status: 'AI_REVIEWED_REVISED' })]), 'GI', ['--dry-run', '--assume-approved', 'AI_REVIEWED_PASS'])
+ok(/PROJECTION/.test(proj) && state().records['lab-easy-1'].pool === 'review', 'a dry-run projection reports but saves nothing')
+ok(state().records['lab-easy-1'].content.raw.status === 'AI_REVIEWED_PASS', 'the original row is kept verbatim')
+fs.writeFileSync(path.join(lib, 'status-map.json'), JSON.stringify({ ...L.DEFAULT_STATUS_MAP, aiReviewEligible: { labels: ['AI_REVIEWED_PASS'], reviewer: 'Reviewer X' }, aiReviewConditional: { labels: ['AI_REVIEWED_REVISED'], reviewer: 'Reviewer X' } }))
+run(write('labels.json', [row('lab', 'easy', 1, { status: 'AI_REVIEWED_PASS' }), row('lab', 'easy', 2, { status: 'AI_REVIEWED_REVISED' })]), 'GI')
+let v1 = state().records['lab-easy-1'].verification
+ok(v1.approved && v1.basis === 'ai-review' && v1.humanVerified === false && v1.status === 'AI_REVIEWED_PASS', 'an AI-review label is eligible, keeps its label and is never marked human verified')
+ok(state().records['lab-easy-2'].verification.state === 'held' && /No determination/.test(state().records['lab-easy-2'].verification.outstanding), 'a revised row without a determination is held')
+const h2 = state().records['lab-easy-2'].contentHash
+fs.writeFileSync(path.join(lib, 'revision-reviews.json'), JSON.stringify({ rows: { 'lab-easy-2': { endorsedFinalRow: true, outstanding: null, contentHash: h2 } } }))
+run(write('labels.json', [row('lab', 'easy', 1, { status: 'AI_REVIEWED_PASS' }), row('lab', 'easy', 2, { status: 'AI_REVIEWED_REVISED' })]), 'GI')
+ok(state().records['lab-easy-2'].verification.basis === 'ai-review-revised', 'an endorsed revised row with nothing outstanding becomes eligible')
+run(write('labels.json', [row('lab', 'easy', 1, { status: 'AI_REVIEWED_PASS' }), row('lab', 'easy', 2, { status: 'AI_REVIEWED_REVISED', explanation: 'changed again' })]), 'GI')
+ok(state().records['lab-easy-2'].verification.state === 'held' && /changed after/.test(state().records['lab-easy-2'].verification.outstanding), 'if the revised row changes again, it is held for a fresh determination')
+fs.writeFileSync(path.join(lib, 'revision-reviews.json'), JSON.stringify({ rows: { 'lab-easy-2': { endorsedFinalRow: true, outstanding: 'Source does not support tile 1.' } } }))
+run(write('labels.json', [row('lab', 'easy', 1, { status: 'AI_REVIEWED_PASS' }), row('lab', 'easy', 2, { status: 'AI_REVIEWED_REVISED', explanation: 'changed again' })]), 'GI')
+ok(state().records['lab-easy-2'].verification.outstanding === 'Source does not support tile 1.', 'an outstanding issue is shown as written')
+
+// 4e. Ambiguity review clearance is tied to the board's content.
+const flaggedRows = [row('amb', 'easy', 1, { notes: 'Compare ambmedium1w1.' }), row('amb', 'medium', 1), row('amb', 'hard', 1), row('amb', 'expert', 1)]
+run(write('amb.json', flaggedRows), 'Endocrine')
+let eb = state().starterBoards.Endocrine[0]
+ok(eb.status === 'review' && eb.structural === 'pass' && !eb.publishable, 'a board with an ambiguity flag passes structure but waits for review')
+fs.writeFileSync(path.join(lib, 'decisions.json'), JSON.stringify({ pairs: {}, boards: { [eb.id]: `cleared:${eb.signature}` } }))
+run(write('amb.json', flaggedRows), 'Endocrine')
+ok(state().starterBoards.Endocrine[0].status === 'ready', 'clearing the review with the board signature makes it ready')
+run(write('amb.json', flaggedRows.map((r, i) => (i === 2 ? { ...r, explanation: 'revised' } : r))), 'Endocrine')
+eb = state().starterBoards.Endocrine[0]
+ok(eb.status === 'review' && /again/.test(eb.ambiguityReview), 'a revision after clearance puts the board back into review')
+fs.writeFileSync(path.join(lib, 'decisions.json'), JSON.stringify({ pairs: {}, boards: {} }))
 
 // 5. Rows without ids get stable ids; re-import matches them.
 const noId = TIERS.map((t) => {

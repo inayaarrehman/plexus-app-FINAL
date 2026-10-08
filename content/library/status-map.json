@@ -1,0 +1,31 @@
+{
+  "about": "Which verification labels make a row eligible for the staged library. Labels are matched case-insensitively and are never rewritten. Only the project owner changes this file.",
+  "approved": [
+    "approved",
+    "verified",
+    "reviewed and approved",
+    "final"
+  ],
+  "rejected": [
+    "rejected",
+    "retired",
+    "withdrawn"
+  ],
+  "aiReviewEligible": {
+    "labels": [
+      "AI_REVIEWED_PASS"
+    ],
+    "reviewer": "OpenEvidence",
+    "authorizedBy": "project owner, 2026-10-07",
+    "note": "AI review under the owner's authorized review workflow. Eligible for staging; not independently human verified, and must never be presented as such."
+  },
+  "aiReviewConditional": {
+    "labels": [
+      "AI_REVIEWED_REVISED"
+    ],
+    "reviewer": "OpenEvidence",
+    "authorizedBy": "project owner, 2026-10-07",
+    "rule": "Eligible only if the review endorsed the final corrected row and left no unresolved concern. Per-row determinations are in revision-reviews.json and lapse if the row changes."
+  },
+  "unresolved": []
+}

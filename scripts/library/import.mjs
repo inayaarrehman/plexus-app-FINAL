@@ -30,13 +30,35 @@ const flag = (name) => {
 }
 const DRY = args.includes('--dry-run')
 const STATUS_ONLY = args.includes('--status')
-const file = args.find((a, i) => !a.startsWith('--') && !['--system'].includes(args[i - 1]))
+const file = args.find((a, i) => !a.startsWith('--') && !['--system', '--assume-approved'].includes(args[i - 1]))
 const system = flag('--system')
 const now = process.env.PLEXUS_IMPORT_TIME || new Date().toISOString()
 
 const readJson = (p, fallback) => (fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : fallback)
 const state = readJson(STATE, { schema: 1, records: {}, starterBoards: {}, imports: [] })
-const decisions = readJson(DECISIONS, { pairs: {} }).pairs || {}
+const decisionFile = readJson(DECISIONS, { pairs: {}, boards: {} })
+const decisions = decisionFile.pairs || {}
+const boardDecisions = decisionFile.boards || {}
+// Which verification labels count as approved. Only you change this file.
+const STATUS_MAP_FILE = path.join(DIR, 'status-map.json')
+const statusMap = { ...L.DEFAULT_STATUS_MAP, ...readJson(STATUS_MAP_FILE, {}) }
+// Per-row determinations for conditionally eligible labels (for example
+// AI_REVIEWED_REVISED): did the review endorse the final corrected row, and is
+// anything outstanding? Tied to the row's content hash, so a later revision
+// needs a fresh determination.
+const REVISION_REVIEWS = path.join(DIR, 'revision-reviews.json')
+const revisionReviews = readJson(REVISION_REVIEWS, { rows: {} }).rows || {}
+// Projection only: --assume-approved "LABEL,LABEL" shows what the pools would
+// be if those labels were approved. Refused unless --dry-run, so it can never
+// mark anything approved.
+const assume = flag('--assume-approved')
+if (assume) {
+  if (!DRY) {
+    console.error('--assume-approved is a projection and only works with --dry-run.')
+    process.exit(2)
+  }
+  statusMap.approved = [...statusMap.approved, ...assume.split(',').map((x) => x.trim())]
+}
 
 // ---------------- reading the upload ----------------
 function parseCsv(text) {
@@ -161,7 +183,7 @@ const records = Object.values(state.records).sort((a, b) => (a.origin.importedAt
 const conn = (r) => ({ ...r.content, id: r.id, tiles: r.content.tiles || [] })
 const order = new Map(records.map((r, i) => [r.id, i]))
 for (const r of records) {
-  r.verification = L.verificationOf(r.content.status)
+  r.verification = L.verificationOf(r.content.status, statusMap, { id: r.id, contentHash: r.contentHash, revisionReviews })
   r.problems = L.rowProblems(r.content)
   r.duplicateOf = null
   r.heldFor = []
@@ -211,38 +233,82 @@ const shortages = {}
 for (const sys of systemsInLib) {
   const mine = records.filter((r) => r.system === sys && eligible(r))
   const byId = new Map(mine.map((r) => [r.id, r]))
-  // Keep starter boards from earlier imports when they are still valid, so a
-  // later upload never reshuffles a system's starter set.
+  // Starter boards from earlier imports are kept, never reshuffled, and
+  // revalidated on every import. A board whose members changed or no longer
+  // pass keeps its id and its reservation but is BLOCKED from activation and
+  // publication until resolved (fix the content, or decisions.json → boards →
+  // "rebuild"). A board with ambiguity flags needs REVIEW: it is cleared by
+  // decisions.json → boards → "cleared:<signature>", and the clearance lapses
+  // automatically if any member's content changes (the signature changes).
   const kept = []
   for (const b of state.starterBoards[sys] || []) {
-    const members = b.ids.map((id) => byId.get(id))
-    if (members.every(Boolean) && L.boardFair(members.map(conn))) kept.push(b)
+    if (boardDecisions[b.id] === 'rebuild') continue
+    const block = []
+    const members = b.ids.map((id) => state.records[id])
+    members.forEach((r, i) => {
+      if (!r) block.push(`${b.ids[i]} is no longer in the library`)
+      else if (!eligible(r)) block.push(`${r.id} "${r.content.title}" is no longer eligible (${r.pool}${r.verification.outstanding ? ': ' + r.verification.outstanding : ''})`)
+    })
+    const live = members.filter((r) => r && eligible(r))
+    const check = live.length === 4 ? L.boardCheck(live.map(conn)) : { block: [], flags: [] }
+    block.push(...check.block)
+    const revisedNow = b.ids.filter((id) => changes.revised.includes(id))
+    Object.assign(b, boardState(b, members, block, check.flags))
+    if (revisedNow.length) b.revalidated = { at: now, afterRevisionOf: revisedNow, result: b.status }
+    kept.push(b)
   }
   const taken = new Set(kept.flatMap((b) => b.ids))
   const need = L.STARTER_BOARDS_PER_SYSTEM - kept.length
-  const found = need > 0 ? L.findDisjointBoards(mine.filter((r) => !taken.has(r.id)).map(conn), need, { seed: sys }) : []
+  const found = need > 0 ? L.buildBoards(mine.filter((r) => !taken.has(r.id)).map(conn), need, { seed: sys }) : []
   const used = new Set(kept.map((b) => b.n))
   let n = 1
   const fresh = found.map((board) => {
     while (used.has(n)) n++
     used.add(n)
-    return { n, id: `${L.slug(sys)}-starter-${n}`, ids: [...board].sort((a, b) => L.TIERS.indexOf(a.difficulty) - L.TIERS.indexOf(b.difficulty)).map((c) => c.id) }
+    const ids = [...board].sort((a, b) => L.TIERS.indexOf(a.difficulty) - L.TIERS.indexOf(b.difficulty)).map((c) => c.id)
+    const b = { n, id: `${L.slug(sys)}-starter-${n}`, formedAt: now, ids }
+    const check = L.boardCheck(board)
+    return Object.assign(b, boardState(b, ids.map((id) => state.records[id]), check.block, check.flags))
   })
   const boards = [...kept, ...fresh].sort((a, b) => a.n - b.n)
   state.starterBoards[sys] = boards
   for (const b of boards)
     for (const id of b.ids) {
       const r = byId.get(id)
+      if (!r) continue
       r.pool = 'systemsStarter'
       r.starterBoard = b.id
     }
-  if (boards.length < L.STARTER_BOARDS_PER_SYSTEM) {
+  const passing = boards.filter((b) => b.status !== 'blocked').length
+  if (passing < L.STARTER_BOARDS_PER_SYSTEM) {
     const tierCounts = Object.fromEntries(L.TIERS.map((t) => [t, mine.filter((r) => r.content.difficulty === t).length]))
-    shortages[sys] = { boards: boards.length, missing: L.STARTER_BOARDS_PER_SYSTEM - boards.length, approvedByTier: tierCounts }
+    shortages[sys] = { boards: passing, blocked: boards.length - passing, missing: L.STARTER_BOARDS_PER_SYSTEM - passing, approvedByTier: tierCounts }
+  }
+}
+function boardState(b, members, block, flags) {
+  const signature = L.sha(members.map((r) => (r ? r.contentHash : 'missing')).join('|')).slice(0, 8)
+  const decision = boardDecisions[b.id]
+  const cleared = typeof decision === 'string' && decision === `cleared:${signature}`
+  const staleClear = typeof decision === 'string' && decision.startsWith('cleared:') && !cleared
+  const status = block.length ? 'blocked' : flags.length && !cleared ? 'review' : 'ready'
+  return {
+    signature,
+    status,
+    publishable: status === 'ready',
+    structural: block.length ? 'fail' : 'pass',
+    block,
+    flags,
+    ambiguityReview: flags.length ? (cleared ? 'cleared' : staleClear ? 'needed again (content changed since it was cleared)' : 'needed') : 'none',
+    issues: undefined,
   }
 }
 const dailyPool = records.filter((r) => r.pool === 'daily')
+// Capacity check only. Daily boards are rebuilt across ALL systems every time,
+// so this system's Daily connections stay free to mix with later subjects.
+// No Daily connection is assigned to a board here.
 const dailyBoards = L.countDailyBoards(dailyPool.map(conn))
+const dailyFlagged = dailyBoards.filter((ids) => L.boardCheck(ids.map((id) => conn(state.records[id]))).flags.length).length
+const dailyMixed = dailyBoards.filter((ids) => new Set(ids.map((id) => state.records[id].system)).size > 1).length
 const timedExclusions = [...new Map(records.filter(eligible).flatMap((r) => r.timedSame.map((t) => [t.id, { timedId: t.id, timedTitle: t.title, replacedBy: r.id }]))).values()]
 
 // ---------------- write ----------------
@@ -253,7 +319,8 @@ state.active = false // flipped only at activation, when all uploads are in
 if (!DRY) {
   fs.mkdirSync(DIR, { recursive: true })
   fs.writeFileSync(STATE, JSON.stringify(state, null, 1) + '\n')
-  if (!fs.existsSync(DECISIONS)) fs.writeFileSync(DECISIONS, JSON.stringify({ about: 'Decide flagged pairs here. Key: the two ids joined by " | " (sorted). Value: "distinct" (different relationships, both stay) or "same" (one relationship).', pairs: {} }, null, 2) + '\n')
+  fs.writeFileSync(DECISIONS, JSON.stringify({ about: 'Your decisions. pairs: key is the two ids joined by " | " (sorted); value "distinct" (different relationships, both stay) or "same" (one relationship). boards: key is a starter board id; value "cleared:<signature>" after an ambiguity review (lapses if any member changes), or "rebuild" to release a blocked board and form a new one.', pairs: decisions, boards: boardDecisions }, null, 2) + '\n')
+  if (!fs.existsSync(STATUS_MAP_FILE)) fs.writeFileSync(STATUS_MAP_FILE, JSON.stringify({ about: 'Which verification labels count as approved. Labels are matched case-insensitively. A label in none of these lists stays unresolved. Only the project owner changes this.', ...L.DEFAULT_STATUS_MAP }, null, 2) + '\n')
 }
 
 // ---------------- report ----------------
@@ -268,13 +335,30 @@ if (importEntry) {
   say(`# Import: ${sys}`)
   say(`File ${importEntry.file} (${importEntry.rows} rows) · ${DRY ? 'DRY RUN, nothing saved' : 'saved to staging'} · live content unchanged`)
   say()
+  const labels = {}
+  for (const r of mine) {
+    const k = `${r.verification.status ?? '(none)'} → ${r.verification.state}${r.verification.basis ? ` (${r.verification.basis}${r.verification.reviewer ? ', ' + r.verification.reviewer : ''}${r.verification.humanVerified ? '' : ', not human verified'})` : ''}`
+    labels[k] = (labels[k] || 0) + 1
+  }
+  say(`Verification: ${Object.entries(labels).map(([k, v]) => `${v} ${k}`).join(' · ')}${assume ? ` (PROJECTION: assuming ${assume} approved)` : ''}`)
+  const heldRev = mine.filter((r) => r.verification.state === 'held')
+  for (const r of heldRev) say(`  HELD ${r.id} "${r.content.title}": ${r.verification.outstanding}`)
   say(`Rows: ${changes.added.length} new, ${changes.revised.length} revised, ${changes.unchanged.length} unchanged${changes.keptFromEarlier.length ? `, ${changes.keptFromEarlier.length} from an earlier ${sys} upload not in this file (kept)` : ''}`)
-  say(`Unique approved connections: ${approvedUnique} (of ${mine.length} ${sys} records)`)
+  say(`Unique eligible connections: ${approvedUnique} (of ${mine.length} ${sys} records)`)
   const b = state.starterBoards[sys] || []
-  say(`Systems starter boards: ${b.length} of ${L.STARTER_BOARDS_PER_SYSTEM} formed (${b.length * 4} connections reserved)`)
+  const cnt = (st) => b.filter((x) => x.status === st).length
+  say(`Systems starter boards: ${b.length} of ${L.STARTER_BOARDS_PER_SYSTEM} formed (${b.length * 4} connections reserved) · pass structural checks ${b.length - cnt('blocked')} · ready ${cnt('ready')} · need ambiguity review ${cnt('review')} · blocked ${cnt('blocked')}`)
+  for (const x of b) {
+    const cs = x.ids.map((id) => state.records[id])
+    say(`  ${x.id} · ${x.status.toUpperCase()} · structural ${x.structural} · signature ${x.signature} [${cs.map((r) => r?.content.difficulty || '?').join(', ')}]`)
+    for (const r of cs) say(`      ${r ? `${r.id} ${r.content.title}: ${r.content.tiles.join(' / ')}` : '?'}`)
+    if (x.revalidated && x.revalidated.at === now) say(`    revalidated after revision of ${x.revalidated.afterRevisionOf.join(', ')}: ${x.revalidated.result}`)
+    for (const i of x.block || []) say(`    BLOCK: ${i}`)
+    for (const i of x.flags || []) say(`    review: ${i}`)
+  }
   if (shortages[sys]) {
     const s = shortages[sys]
-    say(`  SHORTAGE: ${s.missing} board(s) short. Approved by difficulty: ${L.TIERS.map((t) => `${t} ${s.approvedByTier[t]}`).join(', ')}. Each board needs one of each, with no shared tiles or overlapping concepts.`)
+    say(`  SHORTAGE: ${s.missing} board(s) short of 5 passing structural checks${s.blocked ? ` (${s.blocked} blocked)` : ''}. Eligible by difficulty: ${L.TIERS.map((t) => `${t} ${s.approvedByTier[t]}`).join(', ')}.`)
   }
   const sysDaily = mine.filter((r) => r.pool === 'daily').length
   say(`Remaining for Daily from ${sys}: ${sysDaily}`)
@@ -292,8 +376,8 @@ if (importEntry) {
   const review = mine.filter((r) => r.pool === 'review')
   const fix = mine.filter((r) => r.pool === 'needsFix')
   const rej = mine.filter((r) => r.pool === 'excluded')
-  say(`Not approved (kept, not in any pool): ${review.length}${review.length ? ' · statuses: ' + [...new Set(review.map((r) => r.verification.status ?? '(none)'))].join(', ') : ''}`)
-  for (const r of review) say(`  - ${r.id} "${r.content.title}" status ${r.verification.status ?? '(none)'}`)
+  say(`Not eligible yet (kept, not in any pool): ${review.length}`)
+  for (const r of review) say(`  - ${r.id} "${r.content.title}" status ${r.verification.status ?? '(none)'} (${r.verification.state})`)
   say(`Rejected: ${rej.length}`)
   say(`Need a fix before use: ${fix.length}`)
   for (const r of fix) say(`  - ${r.id} "${r.content.title || '(no title)'}": ${r.problems.join('; ')}`)
@@ -302,10 +386,11 @@ if (importEntry) {
 }
 say('## Cumulative (staged, not live)')
 say(`Systems imported: ${systemsInLib.length ? systemsInLib.join(', ') : 'none yet'}`)
-say(`Records ${records.length} · approved and unique ${count(eligible)} · Systems starter ${count((r) => r.pool === 'systemsStarter')} · Daily ${dailyPool.length}`)
-say(`Held ${count((r) => r.pool === 'held')} · duplicates ${count((r) => r.pool === 'duplicate')} · not approved ${count((r) => r.pool === 'review')} · need a fix ${count((r) => r.pool === 'needsFix')} · rejected ${count((r) => r.pool === 'excluded')}`)
-say(`Starter shortages: ${Object.keys(shortages).length ? Object.entries(shortages).map(([s, v]) => `${s} ${v.boards}/5`).join(', ') : 'none'}`)
-say(`Daily capacity: estimate ${Math.floor(dailyPool.length / 4)} boards (${dailyPool.length} ÷ 4) · actually formed and checked ${dailyBoards.length} disjoint boards`)
+say(`Records ${records.length} · eligible and unique ${count(eligible)} (human verified ${count((r) => eligible(r) && r.verification.humanVerified)}, AI-reviewed ${count((r) => eligible(r) && !r.verification.humanVerified)}) · Systems starter ${count((r) => r.pool === 'systemsStarter')} · Daily ${dailyPool.length}`)
+say(`Held as possible duplicates ${count((r) => r.pool === 'held')} · duplicates ${count((r) => r.pool === 'duplicate')} · not eligible yet ${count((r) => r.pool === 'review')} · need a fix ${count((r) => r.pool === 'needsFix')} · rejected ${count((r) => r.pool === 'excluded')}`)
+const allBoards = systemsInLib.flatMap((x) => state.starterBoards[x] || [])
+say(`Starter boards: ${systemsInLib.map((x) => `${x} ${(state.starterBoards[x] || []).filter((b) => b.status !== 'blocked').length}/5 passing`).join(', ') || 'none'} · ready ${allBoards.filter((b) => b.status === 'ready').length} · need ambiguity review ${allBoards.filter((b) => b.status === 'review').length} · blocked ${allBoards.filter((b) => b.status === 'blocked').length} · shortages: ${Object.keys(shortages).length ? Object.keys(shortages).join(', ') : 'none'}`)
+say(`Daily: ${dailyPool.length} connections, unassigned and shared across all systems · estimate ${Math.floor(dailyPool.length / 4)} boards (${dailyPool.length} ÷ 4) · capacity check formed ${dailyBoards.length} disjoint boards passing structural checks (${dailyFlagged} of them would need ambiguity review; ${dailyMixed} mix systems)`)
 say(`Timed entries to exclude at activation: ${timedExclusions.length}`)
 const report = lines.join('\n')
 console.log(report)

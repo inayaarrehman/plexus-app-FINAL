@@ -23,11 +23,21 @@ Each import writes a report to `content/library/reports/`.
 - **Idempotent.** Re-importing the same file changes nothing.
 - **IDs.** The file's own id is used when present. It must not clash with a timed-library id or with another system's id. A clash is refused and reported. Rows without an id get a stable id (`nl-<system>-<hash>`). When re-uploaded, they match the existing record that has the same four tiles.
 - **Revisions.** A changed row keeps its id and bumps `version`. The previous content goes into `history`. If a revision changes the title and tiles almost entirely under the same id, it is flagged for confirmation.
-- **Preserved as written:** tiles, tile explanations, explanation, remember line, qualifiers, sources, verification status and reviewer fields. Any column the importer does not recognise is kept under `content.extra`. Content is never rewritten. A malformed row is reported, not repaired.
+- **Preserved as written:** the full original row is kept verbatim under `content.raw`, alongside the mapped fields: tiles, tile explanations, explanation, remember line, qualifiers, sources, verification status and reviewer fields. Any column the importer does not recognise is kept under `content.extra`. Content is never rewritten. A malformed row is reported, not repaired.
 
 ## Verification status
 
-Only `approved`, `verified`, `reviewed and approved` and `final` count as approved. `rejected`, `retired` and `withdrawn` are excluded. Any other status, or a missing one, stays **unresolved**. Unresolved rows are kept but go into no pool, and are never marked approved.
+Labels are stored exactly as written and never relabelled. `content/library/status-map.json` decides which labels make a row eligible, and only the project owner changes it. Every eligible row records its basis:
+
+| Basis | Labels | Meaning |
+|---|---|---|
+| `human` | `approved`, `verified`, `reviewed and approved`, `final` | Independent human verification |
+| `ai-review` | `AI_REVIEWED_PASS` | AI review (OpenEvidence) under the owner's authorized workflow. Eligible for staging, `humanVerified: false`. Never presented as human verified. |
+| `ai-review-revised` | `AI_REVIEWED_REVISED` | Eligible only when `revision-reviews.json` records that the review endorsed the final corrected row with nothing outstanding. The determination is tied to the row's content hash, so a later change to that row holds it again. |
+
+`rejected`, `retired` and `withdrawn` are excluded. Any other label stays unresolved: kept, but in no pool.
+
+To see what the pools would look like if a label were approved, without saving anything, add `--dry-run --assume-approved "LABEL"`. `--assume-approved` is refused without `--dry-run`.
 
 ## Duplicate checks
 
@@ -66,23 +76,40 @@ Each record has an explicit `pool`:
 | `needsFix` | Structurally incomplete |
 | `excluded` | Rejected |
 
-**Starter boards.** Each system reserves 20 connections for five starter boards, provided they can form fair boards. Once formed, a starter board stays fixed through later uploads and revisions unless one of its members stops being eligible.
+**Starter boards.** Each system reserves 20 connections for five starter boards. Board checks come in two strengths.
 
-A board is structurally fair when it meets all of these:
+**Block.** The board cannot be formed when any of these apply:
+- the same tile appears twice, including a tile's alias in parentheses ("Cu/Zn superoxide dismutase (SOD1)" also blocks "SOD1")
+- two connections share a title or accepted alternate name
+- two connections may be the same connection
+- an explicit reviewer instruction ("do not co-place", "do not combine", "keep separate", "keep ... off this board", "avoid ... on the board") names the other connection's id or one of its tiles
 
-- it has one connection per difficulty tier
-- no tile text repeats (so there is one solution)
-- no two of its connections share a title or two concept tags
-- no two of its connections are possible duplicates
+**Flag.** The board can be formed, but needs an ambiguity review before publication when:
+- a note mentions the other connection's id or tiles without such an instruction
+- a tile of one connection is named in another's title or explanation
+- two connections share two concept tags
+- a general board instruction names no specific id or tile ("avoid additional homocysteine-elevating tiles"), so a person has to judge whether the other groups qualify
 
-Whether a tile medically also fits another group still needs a person to judge. When a file supplies `nearMisses`, they are recorded so a reviewer can check them.
+Difficulty balance is a preference: mixed boards with a harder connection are chosen first, but a board where all four are the same difficulty is allowed. Boards without flags are preferred.
+
+**Board states:**
+
+| State | Meaning |
+|---|---|
+| `ready` | Passes structural checks, with no flags or with flags cleared. Publishable. |
+| `review` | Passes structural checks, but has ambiguity flags. Clear it with `"boards": { "<id>": "cleared:<signature>" }` in `decisions.json`. The signature changes whenever a member's content changes, so a clearance lapses automatically after a revision. |
+| `blocked` | A previously formed board that no longer passes, for example after a revision. It keeps its id and its reservation, but cannot be activated or published until it is fixed or you set `"rebuild"`. |
+
+Starter boards are never reshuffled by later uploads; they are revalidated on every import.
 
 **Shortages.** When a system cannot fill five boards, the report gives the shortfall and the approved count per difficulty. Nothing is invented or reused to fill the gap.
 
-**Daily.** Every other approved, unique connection is reserved for Daily. The report gives two Daily figures:
+**Daily.** Every other eligible, unique connection is reserved for Daily. Daily connections are **not** assigned to boards in staging. They stay one shared pool so later subjects can form mixed-system boards. Each report gives two figures:
 
 - an **estimate**: connections ÷ 4
-- the number of **disjoint fair boards actually formed** from that pool
+- a **capacity check**: how many disjoint boards passing structural checks can be formed from the whole pool right now, how many of those would need an ambiguity review, and how many mix systems
+
+The capacity check is recomputed each time and saves nothing.
 
 ## At activation (not done yet; only when every upload is in)
 
@@ -94,18 +121,19 @@ Whether a tile medically also fits another group still needs a person to judge. 
    - Each system starts from its five starter boards.
    - It grows only from Dailies that have already been released, so future Daily content is never spent early.
 4. **3 Minutes and Race:** draw only from the timed library, minus `timedExclusionsAtActivation`.
-5. **Every selection path follows the same split:**
+5. **Difficulty colours:** new-library boards need not have one connection per tier (Biochemistry has no expert, for example). The board renderer must assign colour order from the board, not assume levels 1 to 4 are unique.
+6. **Every selection path follows the same split:**
    - bundled content
    - Supabase library additions (`mergeBank` needs a library column)
    - generators: `buildDailyFromSeed`, `assembleSystemPuzzle`, `autoGeneratePuzzles`, `composeNextRound`, `buildRaceChallenge`
    - fallbacks
 
    A mode with too little content in its own library reports a shortage. It never falls back to the other library.
-6. Player progress (history, XP ledger, streaks, Systems mastery) is keyed by puzzle and category ids. It is kept as is.
+7. Player progress (history, XP ledger, streaks, Systems mastery) is keyed by puzzle and category ids. It is kept as is.
 
 ## Checks
 
 ```
-node scripts/library/test.mjs          # importer checks on placeholder rows (21 checks)
+node scripts/library/test.mjs          # importer checks on placeholder rows (46 checks)
 node scripts/library/timed-snapshot.mjs  # refresh the timed-library manifest
 ```

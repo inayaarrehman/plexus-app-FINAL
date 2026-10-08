@@ -12,13 +12,17 @@
   "needsReview": 6,
   "other": 0,
   "sameRelationshipPairs": 4,
-  "possibleDuplicatePairs": 7
+  "possibleDuplicatePairs": 7,
+  "auditSamePairs": 9,
+  "auditDistinctOverlapPairs": 2,
+  "auditPairsMissedByMatcher": 0
  },
  "pairs": [
   {
    "a": "bank-easy-05",
    "b": "bank-ext-103",
    "kind": "uncertain",
+   "audit": "same relationship",
    "shared": 3,
    "titleSim": 0.2
   },
@@ -26,6 +30,7 @@
    "a": "bank-easy-08",
    "b": "bank-migrated-sys-renal-0003-L2",
    "kind": "uncertain",
+   "audit": "same relationship",
    "shared": 1,
    "titleSim": 1
   },
@@ -33,6 +38,7 @@
    "a": "bank-easy-11",
    "b": "bank-migrated-sys-pulm-0001-L2",
    "kind": "uncertain",
+   "audit": "same relationship",
    "shared": 1,
    "titleSim": 1
   },
@@ -40,6 +46,7 @@
    "a": "bank-easy-12",
    "b": "bank-migrated-sys-pulm-0001-L1",
    "kind": "same",
+   "audit": "same relationship",
    "shared": 4,
    "titleSim": 1
   },
@@ -47,6 +54,7 @@
    "a": "bank-easy-15",
    "b": "bank-migrated-sys-mixed-0003-L1",
    "kind": "same",
+   "audit": "same relationship",
    "shared": 4,
    "titleSim": 0.6
   },
@@ -54,6 +62,7 @@
    "a": "bank-medium-08",
    "b": "bank-migrated-sys-cardio-0001-L1",
    "kind": "same",
+   "audit": "same relationship",
    "shared": 3,
    "titleSim": 1
   },
@@ -61,6 +70,7 @@
    "a": "bank-medium-09",
    "b": "bank-migrated-sys-cardio-0001-L2",
    "kind": "same",
+   "audit": "same relationship",
    "shared": 3,
    "titleSim": 1
   },
@@ -68,6 +78,7 @@
    "a": "bank-medium-10",
    "b": "bank-migrated-sys-cardio-0002-L4",
    "kind": "uncertain",
+   "audit": "same relationship",
    "shared": 2,
    "titleSim": 1
   },
@@ -75,6 +86,7 @@
    "a": "bank-medium-11",
    "b": "bank-migrated-sys-cardio-0002-L2",
    "kind": "uncertain",
+   "audit": "different relationships, heavy overlap",
    "shared": 3,
    "titleSim": 0.2
   },
@@ -82,6 +94,7 @@
    "a": "bank-medium-14",
    "b": "bank-migrated-sys-renal-0001-L3",
    "kind": "uncertain",
+   "audit": "same relationship",
    "shared": 2,
    "titleSim": 1
   },
@@ -89,6 +102,7 @@
    "a": "bank-migrated-sys-renal-0001-L3",
    "b": "bank-migrated-sys-renal-0003-L2",
    "kind": "uncertain",
+   "audit": "different relationships, heavy overlap",
    "shared": 3,
    "titleSim": 0.25
   }

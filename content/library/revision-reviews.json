@@ -1,0 +1,26 @@
+{
+  "about": "Per-row determinations for conditionally eligible labels. endorsedFinalRow true and outstanding null makes the row eligible. contentHash ties the determination to the exact row; if the row changes, it is held again.",
+  "rows": {
+    "PLX-BCH-009": {
+      "endorsedFinalRow": true,
+      "outstanding": "The corrected tile (Tetanus toxin, replacing Clostridium tetani) is supported only by the outside citation in Notes (Yen and Thwaites, Lancet 2019). The row still cites Bootcamp Cell Biology > Cytoskeleton p. 8, and Notes say that source names the organism. Confirm the correction and add the supporting reference to the Source field, or record that the mismatch is accepted.",
+      "evidence": "Notes: \"REVISED: Tile 1 Clostridium tetani replaced with Tetanus toxin and title changed from Pathogens to Agents ... Original source names the organism.\"",
+      "contentHash": "318512107276d90f2faa2557cb25f9770a7a6329d9b17475c21c4855232c0f33",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "PLX-BCH-011": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"REVISED: Tile 4 narrowed from Superoxide dismutase to Cu/Zn superoxide dismutase (SOD1) - copper is the catalytic metal of SOD1/SOD3, whereas mitochondrial SOD2 is Mn-dependent (Lutsenko et al., Physiol Rev 2025).\" The narrowing stays within the cited source; the remaining note is a board placement instruction (no Mn-SOD tile on the same board), which the board checks apply.",
+      "contentHash": "b109985cff7072a67a13006e29404ba5c1d8b10845f14a06f737fc25ab83e085",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "PLX-BCH-023": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"REVISED: Tile 3 Normal urinalysis replaced with Normal/near-normal urinary glycosaminoglycans - the actual discriminator from MPS ... (Cusmano-Ozog et al., CAP/ACMG, Genet Med Open 2024).\" The explanation matches the corrected tile; the remaining note names a competing category (Hurler syndrome) for board review.",
+      "contentHash": "0bbade0ae1b12803fcc2edf29e09a6a8f7e32fc7e79a1bdedcbd97fa2b94f99b",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    }
+  }
+}
