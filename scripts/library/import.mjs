@@ -47,6 +47,11 @@ const statusMap = { ...L.DEFAULT_STATUS_MAP, ...readJson(STATUS_MAP_FILE, {}) }
 // AI_REVIEWED_REVISED): did the review endorse the final corrected row, and is
 // anything outstanding? Tied to the row's content hash, so a later revision
 // needs a fresh determination.
+// Manual ambiguity flags on specific starter boards, for medical overlaps the
+// automatic checks cannot see. Each entry names who raised it. A flagged
+// board needs review; the flag lapses when the board's signature changes.
+const BOARD_FLAGS = path.join(DIR, 'board-flags.json')
+const manualBoardFlags = readJson(BOARD_FLAGS, { boards: {} }).boards || {}
 const REVISION_REVIEWS = path.join(DIR, 'revision-reviews.json')
 const revisionReviews = readJson(REVISION_REVIEWS, { rows: {} }).rows || {}
 // Projection only: --assume-approved "LABEL,LABEL" shows what the pools would
@@ -289,8 +294,10 @@ for (const sys of systemsInLib) {
     shortages[sys] = { boards: passing, blocked: boards.length - passing, missing: L.STARTER_BOARDS_PER_SYSTEM - passing, approvedByTier: tierCounts }
   }
 }
-function boardState(b, members, block, flags) {
+function boardState(b, members, block, autoFlags) {
   const signature = L.sha(members.map((r) => (r ? r.contentHash : 'missing')).join('|')).slice(0, 8)
+  const manual = (manualBoardFlags[b.id] || []).filter((f) => !f.signature || f.signature === signature).map((f) => `${f.text} (raised by ${f.by})`)
+  const flags = [...autoFlags, ...manual]
   const decision = boardDecisions[b.id]
   const cleared = typeof decision === 'string' && decision === `cleared:${signature}`
   const staleClear = typeof decision === 'string' && decision.startsWith('cleared:') && !cleared

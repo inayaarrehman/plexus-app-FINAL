@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T07:00:01.015Z",
+ "generatedAt": "2026-10-08T07:03:57.335Z",
  "active": false,
  "medicalHolds": [
   {
@@ -27,9 +27,81 @@
    ],
    "status": "AI_REVIEWED_REVISED",
    "issue": "Tile 4 was changed by the review from the source's \"Thermoregulatory smooth muscle\" to \"Cold hypersensitivity\", a new clinical feature supported by outside references in Notes (Lee et al, J Hand Surg Eur Vol 2009; Chen et al, JAMA Otolaryngol 2017). The row still cites Bootcamp Vascular Tumors > Glomus Tumor p. 110 only. Confirm the new tile and add the supporting reference to Source, or record that this is accepted (same question as PLX-BCH-009)."
+  },
+  {
+   "id": "GI-011",
+   "system": "GI",
+   "title": "Physiologic inhibitors of gastric acid secretion",
+   "tiles": [
+    "Somatostatin",
+    "Secretin",
+    "Cholecystokinin",
+    "Prostaglandin E2"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The review replaced the source tile \"GIP\" with \"Cholecystokinin\" (GIP inhibits acid only at supraphysiologic doses). Support for the new tile comes from outside references in Notes (Schubert & Rehfeld, Compr Physiol 2019; Chung et al, Gastroenterology 1994), not from the cited Bootcamp pages (pp. 36, 38-39). Confirm the new tile and add the supporting reference to Source, or record that this is accepted."
+  },
+  {
+   "id": "GI-012",
+   "system": "GI",
+   "title": "Intestinal hormones that slow gastric emptying",
+   "tiles": [
+    "Secretin",
+    "Cholecystokinin",
+    "Peptide YY",
+    "GLP-1"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The review replaced the source tile \"GIP\" with \"Peptide YY\" (controlled human studies show GIP does not slow gastric emptying). Support for the new tile comes from outside references in Notes (Meier et al 2004; Goyal et al 2019), not from the cited Bootcamp page (p. 38). Confirm the new tile and add the supporting reference to Source, or record that this is accepted."
+  },
+  {
+   "id": "GI-050",
+   "system": "GI",
+   "title": "Malabsorption disorders causing enteric hyperoxaluria (calcium oxalate stones)",
+   "tiles": [
+    "Celiac disease",
+    "Chronic pancreatitis",
+    "Small intestinal bacterial overgrowth",
+    "Crohn disease"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The review replaced the source tile \"Whipple disease\" with \"Chronic pancreatitis\". The Source Section now also lists Pancreas / Chronic Pancreatitis p. 127, but the oxalate-stone link is supported by outside references in Notes (Coe et al, NEJM 1992; Ermer et al 2023). Notes also rate the SIBO tile as only \"moderately supported\". Confirm the new tile (and SIBO) and add the supporting reference to Source, or record that this is accepted."
   }
  ],
  "duplicateDecisions": [
+  {
+   "key": "GI-043 | PLX-BCH-008",
+   "kind": "treated as the same relationship (set aside); confirm",
+   "held": null,
+   "sharedRelationship": "\"fat soluble vitamin\" vs \"fat soluble vitamin risk pancreatic fat malabsorption\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "PLX-BCH-008",
+    "library": "new",
+    "system": "Biochemistry/Genetics",
+    "title": "Fat-soluble vitamins",
+    "tiles": [
+     "Vitamin A",
+     "Vitamin D",
+     "Vitamin E",
+     "Vitamin K"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "GI-043",
+    "library": "new",
+    "system": "GI",
+    "title": "Fat-soluble vitamins at risk in pancreatic fat malabsorption",
+    "tiles": [
+     "Vitamin A",
+     "Vitamin D",
+     "Vitamin E",
+     "Vitamin K"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"GI-043 | PLX-BCH-008\": \"same\" or \"distinct\""
+  },
   {
    "key": "CARD-017 | PLX-BCH-031",
    "kind": "possible duplicate (held)",
@@ -416,6 +488,134 @@
     "status": "verified"
    },
    "decide": "decisions.json → pairs → \"ENDO-029 | bank-ext-082\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "GI-029 | bank-ext-024",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"findings / associations of portal hypertension\" vs \"consequence portal hypertension\"; 3 of 4 tiles identical; tile wording 71% the same",
+   "a": {
+    "id": "GI-029",
+    "library": "new",
+    "system": "GI",
+    "title": "Manifestations of portal hypertension",
+    "tiles": [
+     "Esophageal varices",
+     "Anorectal varices",
+     "Caput medusae",
+     "Splenomegaly"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-024",
+    "library": "timed",
+    "system": "GI",
+    "title": "Consequences of portal hypertension",
+    "tiles": [
+     "Esophageal varices",
+     "Caput medusae",
+     "Splenomegaly",
+     "Ascites"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"GI-029 | bank-ext-024\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "GI-033 | bank-ext-114",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"hereditary bilirubin handling disorder\" vs \"inherited hyperbilirubinemia syndrome\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "GI-033",
+    "library": "new",
+    "system": "GI",
+    "title": "Hereditary bilirubin-handling disorders",
+    "tiles": [
+     "Gilbert syndrome",
+     "Crigler-Najjar syndrome",
+     "Dubin-Johnson syndrome",
+     "Rotor syndrome"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-114",
+    "library": "timed",
+    "system": "GI",
+    "title": "Inherited hyperbilirubinemia syndromes",
+    "tiles": [
+     "Gilbert syndrome",
+     "Crigler-Najjar syndrome",
+     "Dubin-Johnson syndrome",
+     "Rotor syndrome"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"GI-033 | bank-ext-114\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "GI-043 | bank-ext-001",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "\"fat soluble vitamin risk pancreatic fat malabsorption\" vs \"fat soluble vitamin\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "GI-043",
+    "library": "new",
+    "system": "GI",
+    "title": "Fat-soluble vitamins at risk in pancreatic fat malabsorption",
+    "tiles": [
+     "Vitamin A",
+     "Vitamin D",
+     "Vitamin E",
+     "Vitamin K"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-001",
+    "library": "timed",
+    "system": "Biochemistry/Genetics",
+    "title": "Fat-soluble vitamins",
+    "tiles": [
+     "Vitamin A",
+     "Vitamin D",
+     "Vitamin E",
+     "Vitamin K"
+    ],
+    "status": "verified"
+   },
+   "decide": "no decision needed unless you disagree"
+  },
+  {
+   "key": "GI-062 | bank-ext-115",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"autosomal dominant hereditary colorectal cancer syndrome\" vs \"hereditary colorectal cancer syndrome\"; 3 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "GI-062",
+    "library": "new",
+    "system": "GI",
+    "title": "Autosomal dominant hereditary colorectal cancer syndromes",
+    "tiles": [
+     "Lynch syndrome",
+     "Familial adenomatous polyposis",
+     "Peutz-Jeghers syndrome",
+     "Juvenile polyposis syndrome"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-115",
+    "library": "timed",
+    "system": "GI",
+    "title": "Hereditary colorectal cancer syndromes",
+    "tiles": [
+     "Lynch syndrome",
+     "Familial adenomatous polyposis",
+     "Peutz-Jeghers syndrome",
+     "Juvenile polyposis"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"GI-062 | bank-ext-115\": \"same\" (exclude timed entry at activation) or \"distinct\""
   }
  ],
  "boardReviews": [
@@ -473,6 +673,61 @@
     "PLX-BCH-077 board instruction to check against the other groups: \"Avoid a competing neurotransmitter-deficiency category on the same board.\""
    ],
    "clear": "decisions.json → boards → \"biochemistry-genetics-starter-5\": \"cleared:4b155f2b\""
+  },
+  {
+   "board": "gi-starter-3",
+   "system": "GI",
+   "signature": "3deee08a",
+   "connections": [
+    {
+     "id": "GI-022",
+     "title": "Wilson disease diagnostic associations",
+     "difficulty": "easy",
+     "tiles": [
+      "ATP7B mutation",
+      "Low ceruloplasmin",
+      "Increased urinary copper",
+      "Kayser-Fleischer rings"
+     ]
+    },
+    {
+     "id": "GI-035",
+     "title": "Clinical findings of obstructive cholestasis",
+     "difficulty": "easy",
+     "tiles": [
+      "Jaundice",
+      "Dark urine",
+      "Pale stools",
+      "Pruritus"
+     ]
+    },
+    {
+     "id": "GI-038",
+     "title": "Primary biliary cholangitis clues",
+     "difficulty": "medium",
+     "tiles": [
+      "Antimitochondrial antibodies",
+      "Small intrahepatic bile duct destruction",
+      "Portal-tract (florid duct) granulomas",
+      "Xanthelasma"
+     ]
+    },
+    {
+     "id": "GI-027",
+     "title": "Markers of impaired synthetic/metabolic function in advanced cirrhosis",
+     "difficulty": "medium",
+     "tiles": [
+      "Prolonged PT/INR",
+      "Low albumin",
+      "Hypoglycemia",
+      "Hyperammonemia"
+     ]
+    }
+   ],
+   "flags": [
+    "\"Pruritus\" and \"Jaundice\" (obstructive cholestasis group) are also classic presenting clues of primary biliary cholangitis, which is on the same board; a player could reasonably place them in the PBC group. (raised by Claude, 2026-10-08)"
+   ],
+   "clear": "decisions.json → boards → \"gi-starter-3\": \"cleared:3deee08a\""
   }
  ],
  "blockedBoards": [],

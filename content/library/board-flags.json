@@ -1,0 +1,12 @@
+{
+  "about": "Manual ambiguity flags for medical overlaps the automatic checks cannot see. Each flag is tied to the board signature it was raised on and lapses if the board changes.",
+  "boards": {
+    "gi-starter-3": [
+      {
+        "text": "\"Pruritus\" and \"Jaundice\" (obstructive cholestasis group) are also classic presenting clues of primary biliary cholangitis, which is on the same board; a player could reasonably place them in the PBC group.",
+        "by": "Claude, 2026-10-08",
+        "signature": "3deee08a"
+      }
+    ]
+  }
+}

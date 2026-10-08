@@ -104,6 +104,8 @@ Difficulty balance is a preference: mixed boards with a harder connection are ch
 | `review` | Passes structural checks, but has ambiguity flags. Clear it with `"boards": { "<id>": "cleared:<signature>" }` in `decisions.json`. The signature changes whenever a member's content changes, so a clearance lapses automatically after a revision. |
 | `blocked` | A previously formed board that no longer passes, for example after a revision. It keeps its id and its reservation, but cannot be activated or published until it is fixed or you set `"rebuild"`. |
 
+Manual ambiguity flags for medical overlaps the checks cannot see live in `board-flags.json`. Each flag names who raised it and is tied to the board's signature.
+
 Starter boards are never reshuffled by later uploads; they are revalidated on every import.
 
 A reviewer note asking for a connection to be reserved for other content ("reserve for embryology content") keeps it out of its system's starter boards. It stays in the shared Daily pool. To override, add `"starterAllow": { "<id>": true }` to `decisions.json`.

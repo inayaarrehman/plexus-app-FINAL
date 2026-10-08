@@ -42,6 +42,27 @@
       "evidence": "Notes: \"REVISED: original title (...linked to type 1 diabetes) made type 1 diabetes a tile in a category defined by itself (circular). Retitled to an autoimmune-cluster framing in which all four are members.\" The four tiles are unchanged from the source (pp. 63, 44); only the title and explanation were reframed to remove a circular category, with caveats stated (celiac is associated, not defining). Nothing left unresolved.",
       "contentHash": "3fe5edfd18c8aa7ff8fb108aceb1f12963a987aa08e80f77d69c15b25faefebf",
       "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "GI-011": {
+      "endorsedFinalRow": true,
+      "outstanding": "The review replaced the source tile \"GIP\" with \"Cholecystokinin\" (GIP inhibits acid only at supraphysiologic doses). Support for the new tile comes from outside references in Notes (Schubert & Rehfeld, Compr Physiol 2019; Chung et al, Gastroenterology 1994), not from the cited Bootcamp pages (pp. 36, 38-39). Confirm the new tile and add the supporting reference to Source, or record that this is accepted.",
+      "evidence": "Notes: \"REVISED: GIP replaced by cholecystokinin. GIP acid inhibition is a pharmacologic artifact ...\"",
+      "contentHash": "656f24a0743e94345f8bf73f383d565b85fa289e81766d0cf17fb8f70beb74ad",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "GI-012": {
+      "endorsedFinalRow": true,
+      "outstanding": "The review replaced the source tile \"GIP\" with \"Peptide YY\" (controlled human studies show GIP does not slow gastric emptying). Support for the new tile comes from outside references in Notes (Meier et al 2004; Goyal et al 2019), not from the cited Bootcamp page (p. 38). Confirm the new tile and add the supporting reference to Source, or record that this is accepted.",
+      "evidence": "Notes: \"REVISED: GIP replaced by peptide YY (PYY), a prototypical ileal-brake hormone.\"",
+      "contentHash": "9f90879bc6b28704f0ba50f958b7885209ba05a3dde11d3e71ceca95c089e099",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "GI-050": {
+      "endorsedFinalRow": true,
+      "outstanding": "The review replaced the source tile \"Whipple disease\" with \"Chronic pancreatitis\". The Source Section now also lists Pancreas / Chronic Pancreatitis p. 127, but the oxalate-stone link is supported by outside references in Notes (Coe et al, NEJM 1992; Ermer et al 2023). Notes also rate the SIBO tile as only \"moderately supported\". Confirm the new tile (and SIBO) and add the supporting reference to Source, or record that this is accepted.",
+      "evidence": "Notes: \"REVISED: Whipple disease replaced by chronic pancreatitis (a classic, well-documented cause). Crohn and celiac are strongly supported; SIBO is moderately supported ...\"",
+      "contentHash": "690344a66f5b7c39e8d937ce7c6c41659471481cb64bb64befa2d6f351877154",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
     }
   }
 }
