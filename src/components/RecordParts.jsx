@@ -50,20 +50,21 @@ export function LevelLine({ info, width = 260, height = 24, className = '' }) {
 // ---------------------------------------------------------------------
 // My Plexus: the player's own network, grown one level at a time.
 // ---------------------------------------------------------------------
-// Every node is real progress:
-//   - a large node per level (reached levels lit in a jewel tone, the current
-//     level largest with its number inside, the next levels open and faint)
-//   - small branch nodes off a level for the Kit rewards that level grants
-//     (lit once earned, open while ahead, so the next reward is visible)
-// Only a focused window is drawn: three levels behind, two ahead. Early on
-// the network is small; once earlier levels scroll out of the window a faint
-// trail on the left shows the network continues. XP to the next level fills
-// the link between the current node and the next one.
+// Every large node is a real level: reached levels lit in a jewel tone, the
+// current level largest with its number inside, the next levels open and
+// faint. Small branch nodes off a level are the Kit rewards that level grants
+// (lit once earned, open while ahead). The next level carries a label with
+// its reward, so the reward sits on the node it belongs to.
 //
-// Placement is fixed per level number (no randomness at render), slightly
-// irregular so it reads as a network and not a chart.
+// Only a focused window is drawn (3 behind and 2 ahead on phones, 5 and 3 on
+// wide screens). Early on the network is small; once earlier levels leave the
+// window a faint trail shows it continues. XP to the next level fills the link
+// between the current node and the next one.
+//
+// The path is a gentle wave fixed per level number, so the same level always
+// sits in the same place relative to its neighbours and nothing moves at
+// random. The drawing is framed from its real extent, so it never clips.
 
-const GW = 400
 const JEWELS = ['peacock', 'cobalt', 'plum', 'terracotta']
 export const levelJewel = (L) => JEWELS[(L - 1) % JEWELS.length]
 
@@ -73,99 +74,116 @@ function jit(L, salt) {
   return x - Math.floor(x)
 }
 
-export function growthLayout(info, rewardsFor) {
+export const GROWTH_WINDOWS = { compact: { behind: 3, ahead: 2, step: 62 }, wide: { behind: 5, ahead: 3, step: 88 } }
+const MARGIN = 34
+const LABEL_H = 34 // room for the two-line reward label, in drawing units
+
+export function growthLayout(info, rewardsFor, size = 'compact') {
+  const { behind, ahead, step } = GROWTH_WINDOWS[size] || GROWTH_WINDOWS.compact
   const L = info.level
-  const from = Math.max(1, L - 3)
-  const to = L + 2
+  const from = Math.max(1, L - behind)
+  const to = L + ahead
+  const W = (behind + ahead) * step + MARGIN * 2
   const levels = []
   for (let v = from; v <= to; v++) levels.push(v)
   const n = levels.length
-  const step = 68
-  const span = (n - 1) * step
-  const x0 = (GW - span) / 2
-  const cy = 0
+  const x0 = (W - (n - 1) * step) / 2
   const nodes = levels.map((v, i) => {
-    const up = v % 2 === 0
-    const amp = 14 + jit(v, 1) * 16
-    const x = x0 + i * step + (jit(v, 2) - 0.5) * 14
-    const y = cy + (up ? -amp : amp)
+    // A slow wave plus a little per-level variation: rises and falls over a
+    // few levels instead of zigzagging every step.
+    const y = Math.sin(v * 1.2) * 24 + (jit(v, 1) - 0.5) * 10
+    const x = x0 + i * step + (jit(v, 2) - 0.5) * 10
     const state = v < L ? 'done' : v === L ? 'current' : v === L + 1 ? 'next' : 'future'
-    // Rewards branch away from the middle line, the number sits on the other side.
-    const dir = up ? -1 : 1
+    // Rewards branch to one side, the number sits on the other. Alternating
+    // sides keeps neighbouring clusters apart.
+    const dir = v % 2 === 0 ? -1 : 1
     const items = v >= 2 ? rewardsFor(v) : []
-    const r = state === 'current' ? 16 : state === 'done' ? 7.5 : 6.5
-    const base = 90 * dir // degrees: up = -90, down = 90 (SVG y grows down)
-    const spread = items.length > 1 ? Math.min(40, 150 / (items.length - 1)) : 0
-    const tilt = (jit(v, 3) - 0.5) * 34
-    const sats = items.map((item, k) => {
-      const ang = ((base + tilt + (k - (items.length - 1) / 2) * spread) * Math.PI) / 180
-      const d = r + 17 + jit(v, 4 + k) * 6 + (items.length > 3 && k % 2 ? 9 : 0)
-      return { item, x: x + Math.cos(ang) * d, y: y + Math.sin(ang) * d }
+    const r = state === 'current' ? 17 : state === 'done' ? 8 : 7
+    const k = items.length
+    const spread = k > 1 ? Math.min(34, 132 / (k - 1)) : 0
+    const tilt = (jit(v, 3) - 0.5) * 24
+    const reach = r + 17
+    const sats = items.map((item, j) => {
+      const ang = ((90 * dir + tilt + (j - (k - 1) / 2) * spread) * Math.PI) / 180
+      return { item, x: x + Math.cos(ang) * reach, y: y + Math.sin(ang) * reach }
     })
-    return { level: v, x, y, r, state, dir, jewel: levelJewel(v), sats }
+    return { level: v, x, y, r, state, dir, jewel: levelJewel(v), sats, reach: k ? reach + 4 : r }
   })
   const cur = nodes.find((nd) => nd.state === 'current')
   const next = nodes.find((nd) => nd.state === 'next')
-  // Frame the drawing tightly: every node, branch and number, plus a margin.
+  // Where the next level's reward label sits: past its branch tips.
+  const label = { x: next.x, y: next.y + next.dir * (next.reach + 7), dir: next.dir }
+  // Frame from the real extent of everything drawn.
   let minY = Infinity
   let maxY = -Infinity
+  const take = (y) => {
+    minY = Math.min(minY, y)
+    maxY = Math.max(maxY, y)
+  }
   nodes.forEach((nd) => {
-    const ys = [nd.y - nd.r - 6, nd.y + nd.r + 6, nd.y - nd.dir * (nd.r + 13) - 8, nd.y - nd.dir * (nd.r + 13) + 8, ...nd.sats.map((s) => s.y - 6), ...nd.sats.map((s) => s.y + 6)]
-    ys.forEach((y) => {
-      minY = Math.min(minY, y)
-      maxY = Math.max(maxY, y)
+    take(nd.y - nd.r - 6)
+    take(nd.y + nd.r + 6)
+    take(nd.y - nd.dir * (nd.r + 21))
+    nd.sats.forEach((s) => {
+      take(s.y - 6)
+      take(s.y + 6)
     })
   })
-  const top = Math.floor(minY - 6)
-  return { nodes, cur, next, trail: from > 1, width: GW, top, height: Math.ceil(maxY + 6 - top) }
+  take(label.y + label.dir * LABEL_H)
+  const top = Math.floor(minY - 4)
+  return { nodes, cur, next, label, trail: from > 1, width: W, top, height: Math.ceil(maxY + 4 - top) }
 }
 
-function frac(info) {
+function fracOf(info) {
   return info.cost > 0 ? Math.min(1, Math.max(0, info.intoLevel / info.cost)) : 0
 }
 
-export function PlexusGrowth({ info, rewardsFor, className = '' }) {
+// `info` is { level, intoLevel, cost, toNext }. `moving` styles the head as a
+// travelling pulse while XP is being added. `activating` lights the next node
+// as the level is reached, and `label` overrides the reward label (used to
+// show the reward just earned).
+export function PlexusGrowth({ info, rewardsFor, rewardText, size = 'compact', moving = false, activating = false, label, className = '' }) {
   const gid = React.useId().replace(/:/g, '')
-  const lay = growthLayout(info, rewardsFor)
+  const lay = growthLayout(info, rewardsFor, size)
   const { nodes, cur, next } = lay
-  const f = frac(info)
+  const f = fracOf(info)
   const first = nodes[0]
   const last = nodes[nodes.length - 1]
-  // Point on the current to next link where the XP fill ends (stopping at the node edges).
+  // The XP fill runs between the two node edges.
   const ux = next.x - cur.x
   const uy = next.y - cur.y
   const len = Math.hypot(ux, uy)
-  const sx = cur.x + (ux / len) * cur.r
-  const sy = cur.y + (uy / len) * cur.r
+  const sx = cur.x + (ux / len) * (cur.r + 1)
+  const sy = cur.y + (uy / len) * (cur.r + 1)
   const ex = next.x - (ux / len) * next.r
   const ey = next.y - (uy / len) * next.r
   const hx = sx + (ex - sx) * f
   const hy = sy + (ey - sy) * f
+  const lb = label || { kicker: 'Next reward', text: rewardText }
+  const lx = (lay.label.x / lay.width) * 100
+  const ly = ((lay.label.y - lay.top) / lay.height) * 100
   return (
-    <div className={`growth ${className}`}>
+    <div className={`growth growth-${size} ${className}`}>
       <svg
         viewBox={`0 ${lay.top} ${lay.width} ${lay.height}`}
         className="growth-svg"
         role="img"
         aria-label={`Your Plexus: level ${info.level}, ${info.toNext} XP to level ${info.level + 1}.`}
-        style={{ '--growth-frac': f }}
       >
         <defs>
           <linearGradient id={`${gid}-tl`} x1="1" x2="0" y1="0" y2="0">
-            <stop offset="0" stopColor="currentColor" stopOpacity="0.5" />
+            <stop offset="0" stopColor="currentColor" stopOpacity="0.45" />
             <stop offset="1" stopColor="currentColor" stopOpacity="0" />
           </linearGradient>
           <linearGradient id={`${gid}-tr`} x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0" stopColor="currentColor" stopOpacity="0.22" />
+            <stop offset="0" stopColor="currentColor" stopOpacity="0.2" />
             <stop offset="1" stopColor="currentColor" stopOpacity="0" />
           </linearGradient>
         </defs>
 
         {/* The network continues beyond the window on both sides. */}
-        {lay.trail && (
-          <line className="g-trail" x1={first.x} y1={first.y} x2={first.x - 34} y2={first.y + 10 * first.dir} stroke={`url(#${gid}-tl)`} />
-        )}
-        <line className="g-trail" x1={last.x} y1={last.y} x2={last.x + 30} y2={last.y - 8 * last.dir} stroke={`url(#${gid}-tr)`} />
+        {lay.trail && <line className="g-trail" x1={first.x} y1={first.y} x2={first.x - 36} y2={first.y + 6} stroke={`url(#${gid}-tl)`} />}
+        <line className="g-trail" x1={last.x} y1={last.y} x2={last.x + 34} y2={last.y - 6} stroke={`url(#${gid}-tr)`} />
 
         {/* Cross links between reached levels make it a network, not a line. */}
         {nodes.slice(0, -2).map((a, i) => {
@@ -182,39 +200,52 @@ export function PlexusGrowth({ info, rewardsFor, className = '' }) {
         })}
 
         {/* XP toward the next level. */}
-        {f > 0 && (
-          <line className={`g-progress jewel-${cur.jewel}`} x1={sx} y1={sy} x2={hx} y2={hy} pathLength="1" />
-        )}
+        {f > 0 && <line className={`g-progress jewel-${cur.jewel}`} x1={sx} y1={sy} x2={hx} y2={hy} />}
 
         {/* Reward branches. */}
         {nodes.map((nd) =>
-          nd.sats.map((s, k) => (
-            <g key={`s${nd.level}-${k}`} className={`g-sat is-${nd.state} jewel-${nd.jewel}`} data-item={s.item}>
-              <line className="g-branch" x1={nd.x} y1={nd.y} x2={s.x} y2={s.y} />
-              <circle className="g-sat-node" cx={s.x} cy={s.y} r={nd.state === 'done' || nd.state === 'current' ? 4 : 3.6} />
-            </g>
-          ))
+          nd.sats.map((s, k) => {
+            const lit = nd.state === 'done' || nd.state === 'current' || (activating && nd.state === 'next')
+            return (
+              <g key={`s${nd.level}-${k}`} className={`g-sat is-${nd.state} ${lit ? 'is-lit' : ''} jewel-${nd.jewel}`} data-item={s.item}>
+                <line className="g-branch" x1={nd.x} y1={nd.y} x2={s.x} y2={s.y} />
+                <circle className="g-sat-node" cx={s.x} cy={s.y} r={lit ? 4 : 3.6} />
+              </g>
+            )
+          })
         )}
 
         {/* Level nodes. */}
-        {nodes.map((nd) => (
-          <g key={nd.level} className={`g-level is-${nd.state} jewel-${nd.jewel}`} data-level={nd.level}>
-            {nd.state === 'current' && <circle className="g-ring" cx={nd.x} cy={nd.y} r={nd.r + 5} />}
-            <circle className="g-node" cx={nd.x} cy={nd.y} r={nd.r} />
-            {nd.state === 'current' ? (
-              <text className="g-num g-num-in" x={nd.x} y={nd.y} textAnchor="middle" dominantBaseline="central">
-                {nd.level}
-              </text>
-            ) : (
-              <text className="g-num" x={nd.x} y={nd.y - nd.dir * (nd.r + 13)} textAnchor="middle" dominantBaseline="central">
-                {nd.level}
-              </text>
-            )}
-          </g>
-        ))}
+        {nodes.map((nd) => {
+          const act = activating && nd.state === 'next'
+          return (
+            <g key={nd.level} className={`g-level is-${nd.state} ${act ? 'is-activating' : ''} jewel-${nd.jewel}`} data-level={nd.level}>
+              {nd.state === 'current' && <circle className="g-ring" cx={nd.x} cy={nd.y} r={nd.r + 5} />}
+              <circle className="g-node" cx={nd.x} cy={nd.y} r={act ? 11 : nd.r} />
+              {nd.state === 'current' ? (
+                <text className="g-num g-num-in" x={nd.x} y={nd.y} textAnchor="middle" dominantBaseline="central">
+                  {nd.level}
+                </text>
+              ) : (
+                <text className="g-num" x={nd.x} y={nd.y - nd.dir * (nd.r + 12)} textAnchor="middle" dominantBaseline="central">
+                  {nd.level}
+                </text>
+              )}
+            </g>
+          )
+        })}
 
-        {f > 0 && <circle className="g-head" cx={hx} cy={hy} r="3" />}
+        {f > 0 && <circle className={`g-head jewel-${cur.jewel} ${moving ? 'is-moving' : ''}`} cx={hx} cy={hy} r={moving ? 4.2 : 3} />}
       </svg>
+      {lb.text && (
+        <p
+          className={`growth-label ${lay.label.dir < 0 ? 'is-above' : 'is-below'} ${label ? 'is-earned' : ''} jewel-${next.jewel}`}
+          style={{ left: `clamp(124px, ${lx}%, calc(100% - 34px))`, top: `${ly}%` }}
+        >
+          <span className="growth-label-kicker">{lb.kicker}</span>
+          <span className="growth-label-text">{lb.text}</span>
+        </p>
+      )}
     </div>
   )
 }

@@ -154,7 +154,18 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
-  const [view, setView] = useState('home') // 'home' | 'game' | 'archive' | 'systems' | 'challenge' | 'race'
+  // #myplexus-preview[?from=XP&to=XP] replays the My Plexus XP and level-up
+  // sequence for checking it. Display only: nothing is read from or written
+  // to saved progress, and no XP or reward is awarded.
+  const [myPlexusPreview, setMyPlexusPreview] = useState(() => {
+    const m = window.location.hash.match(/^#myplexus-preview(?:\?(.*))?$/)
+    if (!m) return null
+    const q = new URLSearchParams(m[1] || '')
+    const from = Number(q.get('from') ?? 100)
+    const to = Number(q.get('to') ?? 420)
+    return Number.isFinite(from) && Number.isFinite(to) && to >= from && from >= 0 ? { from, to } : { from: 100, to: 420 }
+  })
+  const [view, setView] = useState(() => (myPlexusPreview ? 'record' : 'home')) // 'home' | 'game' | 'archive' | 'systems' | 'challenge' | 'race'
   const [gameCtx, setGameCtx] = useState(null)
   const [challengePhase, setChallengePhase] = useState('intro')
   // A race join code carried in the URL hash (#race=CODE) drops a tapped
@@ -598,6 +609,10 @@ export default function App() {
           dailyPerfectStreak={gameCtx.isToday ? stats.currentPerfectStreak : 0}
           challengeDayNumber={gameCtx.mode === 'system' ? null : gameCtx.challengeDayNumber}
           onExit={goHome}
+          onOpenRecord={() => {
+            setGameCtx(null)
+            setView('record')
+          }}
           onFinish={handleFinish}
           onKnowledgeSignal={recordKnowledgeSignal}
           recallEnabled={gameCtx.mode === 'daily' && !!gameCtx.isToday}
@@ -609,7 +624,19 @@ export default function App() {
   if (view === 'record') {
     return (
       <div className="app-shell app-shell-wide">
-        <Record history={getDailyHistory()} todayKey={todayKey} stats={stats} onBack={goHome} />
+        <Record
+          history={getDailyHistory()}
+          todayKey={todayKey}
+          stats={stats}
+          preview={myPlexusPreview}
+          onBack={() => {
+            if (myPlexusPreview) {
+              window.location.hash = ''
+              setMyPlexusPreview(null)
+            }
+            goHome()
+          }}
+        />
       </div>
     )
   }
@@ -657,7 +684,7 @@ export default function App() {
   }
 
   return (
-    <div className="app-shell">
+    <div className="app-shell app-shell-home">
       <AppNav active="home" onNavigate={navigate} locked={!modesUnlocked} onLocked={showLocked} />
       <Home
         dailyNumber={todayDayNumber}

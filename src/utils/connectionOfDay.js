@@ -12,3 +12,21 @@ export function pickConnectionOfDay(puzzle) {
   if (!chosen) return null
   return { title: chosen.title, explanation: chosen.explanation, remember: chosen.remember || '' }
 }
+
+// The preview on Home: the explanation's first sentence, exactly as written,
+// and the rest. Splits only at a sentence end followed by a capital, never
+// after common abbreviations or initials, so first + ' ' + rest is always the
+// original text.
+export function firstSentence(text) {
+  const t = String(text || '').trim()
+  const re = /[.!?](?=\s+[A-Z(])/g
+  let m
+  while ((m = re.exec(t))) {
+    const upto = t.slice(0, m.index + 1)
+    // Not after common abbreviations or single initials.
+    if (/\b(e\.g|i\.e|vs|approx|cf|etc|Dr|St|Fig|No|ca)\.$/i.test(upto) || /\b[A-Z]\.$/.test(upto)) continue
+    return { first: upto, rest: t.slice(m.index + 1).trim() }
+  }
+  return { first: t, rest: '' }
+}
+

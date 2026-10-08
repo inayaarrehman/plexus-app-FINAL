@@ -1,25 +1,72 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { recordSnapshot } from '../progression/store.js'
 import { KIT, KIT_ORDER, levelRewards, XP, ROUNDS_ITEM_ROTATION } from '../progression/config.js'
-import { itemOpen } from '../progression/engine.js'
-import { PlexusGrowth, WeekGoals, KitIcon, levelJewel, fmt } from './RecordParts.jsx'
+import { itemOpen, levelInfo } from '../progression/engine.js'
+import { PlexusGrowth, WeekGoals, KitIcon, fmt } from './RecordParts.jsx'
+import { useGrowthAnimation, readSeenXp, writeSeenXp } from './useGrowthAnimation.js'
 
 // My Plexus (internally "Record"): the player's own Plexus, growing as they
-// level up. The level leads, then the network, the next reward, quiet stats
-// and This Week. Your Kit is the second tab. Never locked.
-// On wide screens the network and level sit on the left, stats and This Week
-// on the right.
-export default function Record({ history, todayKey, stats, onBack, initialTab = 'record' }) {
+// level up. The level leads with one line of XP under it, then the network
+// (the next reward sits on the next level's node), compact stats and This
+// Week. Your Kit is the second tab. Never locked.
+//
+// XP earned since the last visit plays into the network when the page opens
+// (see useGrowthAnimation). `preview` ({ from, to }) replays that sequence for
+// any XP range without reading or writing the saved marker, for checking the
+// level-up moment during development; nothing is ever awarded here.
+
+const rewardLabel = (items) => items.map((it) => `${KIT[it].name} +1`).join(' · ')
+
+function useWide(ref, min = 620) {
+  const [wide, setWide] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return undefined
+    const check = () => setWide(el.getBoundingClientRect().width >= min)
+    check()
+    if (typeof ResizeObserver === 'undefined') return undefined
+    const ro = new ResizeObserver(check)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [ref, min])
+  return wide
+}
+
+export default function Record({ history, todayKey, stats, onBack, initialTab = 'record', preview = null }) {
   const [tab, setTab] = useState(initialTab)
   const snap = useMemo(() => recordSnapshot({ history, todayKey }), [history, todayKey])
-  const { info, xp, counts, streak, systemsComplete, connections, rounds } = snap
-  const nextRewards = levelRewards(info.level + 1)
+  const { counts, streak, systemsComplete, connections, rounds } = snap
   const perfectDailies = useMemo(
     () => Object.entries(history || {}).filter(([, e]) => e?.completed && e.won && e.mistakes === 0).length,
     [history]
   )
   const roundsItem = rounds.week.index % 2 === 0 ? ROUNDS_ITEM_ROTATION[(rounds.week.index / 2) % ROUNDS_ITEM_ROTATION.length] : null
   const unit = (n) => (n === 1 ? 'day' : 'days')
+
+  // Where the XP animation starts and ends. Read the marker once per mount,
+  // then move it to the current total so a reload never replays the same XP.
+  const target = preview ? preview.to : snap.xp
+  const [from] = useState(() => {
+    if (preview) return preview.from
+    const seen = readSeenXp()
+    // First visit on this device: a gentle fill within the current level.
+    if (seen == null || !(seen <= snap.xp)) return levelInfo(snap.xp).levelStart
+    return seen
+  })
+  useEffect(() => {
+    if (!preview) writeSeenXp(snap.xp)
+  }, [preview, snap.xp])
+  const [runKey, setRunKey] = useState(0)
+  const anim = useGrowthAnimation({ from, to: target, runKey, rewardsFor: levelRewards })
+  const heroLevel = anim.activating && anim.earned ? anim.earned.level : anim.level
+  const shown = { level: anim.level, intoLevel: anim.intoLevel, cost: anim.cost, toNext: anim.toNext }
+  const toNextLevel = heroLevel + 1
+  const toNextXp = anim.activating ? levelInfo(anim.xp).toNext : anim.toNext
+  // Your Kit always reads the real saved level, never a preview.
+  const info = snap.info
+
+  const netRef = useRef(null)
+  const wide = useWide(netRef)
 
   return (
     <div className={`record is-${tab}`}>
@@ -45,39 +92,66 @@ export default function Record({ history, todayKey, stats, onBack, initialTab = 
       {tab === 'record' ? (
         <div className="record-main">
           <section className="record-hero" aria-label="Level">
-            <h1 className="record-level">Level {info.level}</h1>
-            <p className="record-xp">{fmt(xp)} XP</p>
-            <p className="record-tonext">{fmt(info.toNext)} XP to Level {info.level + 1}</p>
-
-            <PlexusGrowth info={info} rewardsFor={levelRewards} />
-
-            {nextRewards.length > 0 && (
-              <p className={`record-reward jewel-${levelJewel(info.level + 1)}`}>
-                <span className="record-reward-node" aria-hidden="true" />
-                Next reward · {nextRewards.map((it) => `${KIT[it].name} +1`).join(' · ')}
+            <h1 className="record-level" key={heroLevel}>Level {heroLevel}</h1>
+            <p className="record-xpline">
+              <span className="record-xp">{fmt(anim.xp)} XP</span>
+              <span className="record-dot" aria-hidden="true"> · </span>
+              <span className="record-tonext">{fmt(toNextXp)} XP to Level {toNextLevel}</span>
+            </p>
+            {anim.earned && !anim.activating && (
+              <p className="record-earned" role="status">
+                Level {anim.earned.level} · {rewardLabel(anim.earned.items)}
+              </p>
+            )}
+            {anim.earned && anim.activating && (
+              <p className="sr-only" role="status">
+                Level {anim.earned.level}. {rewardLabel(anim.earned.items)} added to Your Kit.
+              </p>
+            )}
+            {preview && (
+              <p className="record-preview">
+                Preview · nothing is saved{' '}
+                <button type="button" className="record-preview-replay" onClick={() => setRunKey((k) => k + 1)}>
+                  Replay
+                </button>
               </p>
             )}
           </section>
 
+          <div className="record-net" ref={netRef}>
+            <PlexusGrowth
+              key={anim.level}
+              info={shown}
+              rewardsFor={levelRewards}
+              rewardText={rewardLabel(levelRewards(anim.level + 1))}
+              size={wide ? 'wide' : 'compact'}
+              moving={anim.moving}
+              activating={anim.activating}
+              label={anim.activating && anim.earned ? { kicker: `Level ${anim.earned.level}`, text: rewardLabel(anim.earned.items) } : null}
+            />
+          </div>
+
           <div className="record-side">
-            <dl className="record-stats">
-              <div><dd>{fmt(streak.current)}<span className="record-unit"> {unit(streak.current)}</span></dd><dt>Current streak</dt></div>
-              <div><dd>{fmt(streak.longest)}<span className="record-unit"> {unit(streak.longest)}</span></dd><dt>Best</dt></div>
-              <div><dd>{fmt(stats?.gamesWon || 0)}</dd><dt>Puzzles</dt></div>
-              <div><dd>{fmt(connections)}</dd><dt>Connections</dt></div>
-              <div><dd>{fmt(perfectDailies)}</dd><dt>Perfect</dt></div>
-              <div><dd>{systemsComplete}<span className="record-unit"> / 16</span></dd><dt>Systems</dt></div>
-            </dl>
+            <div className="record-stats">
+              <dl className="record-streaks">
+                <div><dd>{fmt(streak.current)}<span className="record-unit"> {unit(streak.current)}</span></dd><dt>Current streak</dt></div>
+                <div><dd>{fmt(streak.longest)}<span className="record-unit"> {unit(streak.longest)}</span></dd><dt>Best streak</dt></div>
+              </dl>
+              <dl className="record-totals">
+                <div><dd>{fmt(stats?.gamesWon || 0)}</dd><dt>Puzzles</dt></div>
+                <div><dd>{fmt(connections)}</dd><dt>Connections</dt></div>
+                <div><dd>{fmt(perfectDailies)}</dd><dt>Perfect</dt></div>
+                <div><dd>{systemsComplete}<span className="record-unit">/16</span></dd><dt>Systems</dt></div>
+              </dl>
+            </div>
 
             <section className="record-week" aria-labelledby="this-week">
-              <div className="record-week-head">
-                <h2 className="record-section" id="this-week">This Week</h2>
-                <span className="rounds-foot">Resets Monday</span>
-              </div>
+              <h2 className="record-section" id="this-week">This Week</h2>
               <WeekGoals goals={rounds.goals} complete={rounds.complete} />
               <p className="rounds-reward">
                 {rounds.complete ? 'Earned' : 'Reward'} · +{XP.rounds} XP{roundsItem ? ` · ${KIT[roundsItem].name} +1` : ''}
               </p>
+              <p className="rounds-foot">Resets Monday</p>
             </section>
           </div>
         </div>

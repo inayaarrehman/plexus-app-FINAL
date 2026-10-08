@@ -36,6 +36,7 @@ export default function Game({
   dailyPerfectStreak = 0,
   challengeDayNumber = null,
   onExit,
+  onOpenRecord,
   onFinish,
   onKnowledgeSignal,
   recallEnabled = false,
@@ -718,7 +719,7 @@ export default function Game({
           </div>
 
           {/* XP, level and Kit rewards: secondary, compact, after the actions. */}
-          {xpResult && <XpResult result={xpResult} />}
+          {xpResult && <XpResult result={xpResult} onOpenRecord={onOpenRecord} />}
 
 
         </div>
