@@ -11,8 +11,8 @@
   "verified": 206,
   "needsReview": 6,
   "other": 0,
-  "sameRelationshipPairs": 5,
-  "possibleDuplicatePairs": 7,
+  "sameRelationshipPairs": 4,
+  "possibleDuplicatePairs": 8,
   "auditSamePairs": 9,
   "auditDistinctOverlapPairs": 2,
   "auditPairsMissedByMatcher": 0
@@ -101,7 +101,7 @@
   {
    "a": "bank-expert-04",
    "b": "bank-migrated-sys-mixed-0001-L1",
-   "kind": "same",
+   "kind": "uncertain",
    "audit": null,
    "shared": 2,
    "titleSim": 0.5
@@ -573,7 +573,7 @@
    "primarySystem": "Mixed / Step Review",
    "flags": [
     {
-     "flag": "same_relationship_as",
+     "flag": "possible_duplicate_of",
      "other": "bank-expert-04"
     }
    ]

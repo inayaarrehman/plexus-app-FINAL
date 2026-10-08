@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T06:54:52.240Z",
+ "generatedAt": "2026-10-08T07:00:01.015Z",
  "active": false,
  "medicalHolds": [
   {
@@ -131,7 +131,7 @@
   },
   {
    "key": "CARD-001 | bank-ext-050",
-   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "kind": "possible repeat of a timed entry",
    "sharedRelationship": "\"defect tetralogy fallot\" vs \"findings / associations of tetralogy fallot\"; 2 of 4 tiles identical; tile wording 82% the same",
    "a": {
     "id": "CARD-001",
@@ -159,7 +159,7 @@
     ],
     "status": "verified"
    },
-   "decide": "no decision needed unless you disagree"
+   "decide": "decisions.json → pairs → \"CARD-001 | bank-ext-050\": \"same\" (exclude timed entry at activation) or \"distinct\""
   },
   {
    "key": "CARD-002 | bank-medium-16",
@@ -384,6 +384,38 @@
     "status": "verified"
    },
    "decide": "decisions.json → pairs → \"DERM-029 | bank-ext-110\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "ENDO-029 | bank-ext-082",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"findings / associations of hereditary syndrome pheochromocytoma\" vs \"causes of + findings / associations of pheochromocytoma\"; 3 of 4 tiles identical; tile wording 80% the same",
+   "a": {
+    "id": "ENDO-029",
+    "library": "new",
+    "system": "Endocrine",
+    "title": "Hereditary syndromes associated with pheochromocytoma",
+    "tiles": [
+     "Neurofibromatosis type 1",
+     "Von Hippel-Lindau syndrome",
+     "MEN2A",
+     "MEN2B"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-082",
+    "library": "timed",
+    "system": "Endocrine",
+    "title": "Conditions associated with pheochromocytoma",
+    "tiles": [
+     "MEN2A",
+     "MEN2B",
+     "Von Hippel-Lindau disease",
+     "Neurofibromatosis type 1"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"ENDO-029 | bank-ext-082\": \"same\" (exclude timed entry at activation) or \"distinct\""
   }
  ],
  "boardReviews": [

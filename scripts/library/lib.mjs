@@ -246,10 +246,24 @@ export function compare(a, b) {
   const wordSim = jaccard(tileWords(a), tileWords(b))
   const subjSim = jaccard(sa.split(' '), sb.split(' '))
   let kind = null
-  if ((shared === 4 && titleSim >= 0.5) || ((sameTitle || sameSubject) && shared >= 3) || (wordSim >= 0.75 && subjSim >= 0.5)) kind = 'same'
+  // Only near-identical tiles with a matching title count as the same
+  // relationship automatically. Similar wording alone ("17-alpha" vs
+  // "11-beta-hydroxylase deficiency" patterns) is never merged: it is held
+  // for a person to decide.
+  if ((shared === 4 && titleSim >= 0.5) || ((sameTitle || sameSubject) && shared >= 3)) kind = 'same'
   else if (shared === 4 || shared === 3 || ((sameTitle || sameSubject) && shared <= 2) || (titleSim >= 0.8 && shared >= 2) || (wordSim >= 0.6 && subjSim >= 0.5)) kind = 'uncertain'
   else if (shared >= 2) kind = 'overlap'
-  return { kind, shared, titleSim: Math.round(titleSim * 100) / 100, sameSubject, wordSim: Math.round(wordSim * 100) / 100 }
+  // When the reviewer's notes on either row name the other row's id, the
+  // reviewer saw both and kept them as separate connections. That is
+  // recorded as a shared-concept overlap (allowed, and kept off one board by
+  // the board checks), not a duplicate.
+  const crossNoted = (a.id && b.notes && String(b.notes).includes(a.id)) || (b.id && a.notes && String(a.notes).includes(b.id))
+  let reviewerDistinct = false
+  if (crossNoted && (kind === 'same' || kind === 'uncertain')) {
+    kind = 'overlap'
+    reviewerDistinct = true
+  }
+  return { kind, shared, titleSim: Math.round(titleSim * 100) / 100, sameSubject, wordSim: Math.round(wordSim * 100) / 100, reviewerDistinct }
 }
 export const pairKey = (a, b) => [a, b].sort().join(' | ')
 

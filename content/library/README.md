@@ -49,7 +49,8 @@ Every connection is compared:
 Tiles and titles are compared after normalising case, punctuation, plurals and word order.
 
 - **Titles** are also reduced to a subject: filler such as "classic" or "source-listed" is dropped, and the kind of relationship is kept. So "Conditions that can produce X" matches "Causes of X", but "Causes of X" never matches "Findings of X".
-- **Reworded tiles** ("Overriding aorta" / "Aorta overriding the septum") are caught by comparing the words used across all four tiles, when the subjects also agree. Different wording, ids, tile order or file format do not make a connection new.
+- **Reworded tiles** ("Overriding aorta" / "Aorta overriding the septum") are caught by comparing the words used across all four tiles, when the subjects also agree. These are always held for a decision, never merged automatically.
+- **Reviewer-separated pairs.** When a row's notes name the other row's id (for example "shares 3 tiles with ENDO-034 - do not co-place"), the reviewer saw both and kept them as separate connections. They are recorded as distinct and kept off the same board. Different wording, ids, tile order or file format do not make a connection new.
 
 | Result | Rule | What happens |
 |---|---|---|
@@ -163,6 +164,6 @@ The capacity check is recomputed each time and saves nothing.
 ## Checks
 
 ```
-node scripts/library/test.mjs          # importer checks on placeholder rows (54 checks)
+node scripts/library/test.mjs          # importer checks on placeholder rows (57 checks)
 node scripts/library/timed-snapshot.mjs  # refresh the timed-library manifest
 ```

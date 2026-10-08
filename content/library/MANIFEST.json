@@ -1,39 +1,42 @@
 {
  "about": "Checksums of the staged new library. Staging only: active is false and nothing in src/ reads these files.",
  "active": false,
- "savedAt": "2026-10-08T06:55:13.120Z",
+ "savedAt": "2026-10-08T07:00:24.113Z",
  "systems": [
   "Biochemistry/Genetics",
   "Cardiology",
-  "Dermatology"
+  "Dermatology",
+  "Endocrine"
  ],
  "counts": {
-  "rows": 169,
-  "passedReview": 167,
+  "rows": 210,
+  "passedReview": 208,
   "passedReviewHuman": 0,
-  "passedReviewAi": 167,
+  "passedReviewAi": 208,
   "heldMedical": 2,
   "rejected": 0,
   "needsFix": 0,
   "heldDuplicate": 1,
   "setAsideDuplicate": 0,
-  "usable": 166,
-  "starter": 60,
-  "daily": 106
+  "usable": 207,
+  "starter": 80,
+  "daily": 127
  },
  "files": {
-  "README.md": "63d83beff1f5f261a503fcbd8dfb28fbaa6c767cfe07e849331224ae58cc3eea",
+  "README.md": "1eff5ce61b3dc289983c75636640ca8ebd0b6431ad2e69916b0ccccbb885c142",
   "decisions.json": "db2eb213a83c37bf8cf2f08913b4c63f38aed77d77dda89825421cdbd6161830",
-  "library.json": "fe8a6b9023130b583805da5e01c3c272cb2c01ef67f296e501362f4b24162f93",
+  "library.json": "a206ce06d20dd9543faac179908816885dc10da3614532445671e84d38beaf88",
   "reports/2026-10-08-biochemistry-genetics-f7b14325d1d2.md": "2c8dea6901183429f9712d4a275c1bb62499fb750a0c80208be620caa2270fd5",
   "reports/2026-10-08-cardiology-7a468f05556e.md": "7e850965368f52b2724aed103fc52487f30d4d30af17b8fe7916dbfbd7855fa7",
   "reports/2026-10-08-dermatology-95b7b2723152.md": "71e9f9d12767ed623919b66e7fc387fc0d8baa8b14240bfda06e486960c4fc5c",
-  "review-queue.json": "befdf0b6d95a5366410c08f49039f42df220c45a87d22a09b99a3298f4c329c8",
-  "review-queue.md": "a550f35fbbfa5dcfe6d4d80b87dddf667f036dd12a100a15f27736e9c9a8b81b",
-  "revision-reviews.json": "125787596a26ab2cd060c647ed256aa74479e9682f41b270ee4e633580515fe8",
+  "reports/2026-10-08-endocrine-1136eb78b402.md": "d9398475922017549482d0a34b4c55e281f359f7c046132aba9787cb7b25fafa",
+  "review-queue.json": "ebad00d23606aca2b6f87b5728ee6fac666b51f99dddcd0d76c0b8e5416f1651",
+  "review-queue.md": "43d6e3a8507ace1883656b7dab79ca51afe0b2e8dd1eef8f9cbb93373f7ef100",
+  "revision-reviews.json": "f7cf61554f418f2967816be79f4c1b9b82a55fa9403c3e143763aa6990e497c6",
   "status-map.json": "092ccf52026b7425f9b1254a8476548c9174f02153f9a5303587819e88e5846a",
   "uploads/Plexus_Biochemistry_Reviewed_Connections.csv": "f7b14325d1d206f30fa05da14bc4c0a6c391843af530459e51cd7522e8b08c9e",
   "uploads/Plexus_Cardio_Reviewed_Connections.csv": "7a468f05556e283745697da126b8e7c97248e35a07becd6f24829631ca91a304",
-  "uploads/Plexus_Dermatology_reviewed_connections_1.csv": "95b7b272315214716533dadb758944fbf499c4d72cdc212cc455a0462c34050e"
+  "uploads/Plexus_Dermatology_reviewed_connections_1.csv": "95b7b272315214716533dadb758944fbf499c4d72cdc212cc455a0462c34050e",
+  "uploads/Plexus_Endocrinology_reviewed_connections_1.csv": "1136eb78b402184ef122d1b7dcc8d9ffebb44b518edc6409001d7d60bc763304"
  }
 }

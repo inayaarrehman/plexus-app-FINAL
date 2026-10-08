@@ -1,12 +1,12 @@
 # Plexus new library: pending review queue
 
-Generated 2026-10-08T06:54:52.240Z. Staging only; the library is not active and the live app is unchanged.
+Generated 2026-10-08T07:00:01.015Z. Staging only; the library is not active and the live app is unchanged.
 
 | Category | Open |
 |---|---|
 | Medical / source holds | 2 |
 | Duplicate decisions (new library) | 1 |
-| Timed-library overlaps | 7 to decide, 3 recorded |
+| Timed-library overlaps | 9 to decide, 2 recorded |
 | Board ambiguity reviews | 1 |
 | Blocked boards | 0 |
 | Difficulty calibration warnings | 1 |
@@ -68,7 +68,7 @@ possible repeat of a timed entry. Shared relationship: "storage disease enzyme r
 Decide: decisions.json → pairs → "PLX-BCH-079 | bank-ext-086": "same" (exclude timed entry at activation) or "distinct"
 
 ### The four defects in tetralogy of Fallot  /  Findings in tetralogy of Fallot
-same relationship as a timed entry (timed entry to be excluded at activation). Shared relationship: "defect tetralogy fallot" vs "findings / associations of tetralogy fallot"; 2 of 4 tiles identical; tile wording 82% the same.
+possible repeat of a timed entry. Shared relationship: "defect tetralogy fallot" vs "findings / associations of tetralogy fallot"; 2 of 4 tiles identical; tile wording 82% the same.
 
 | | CARD-001 (new, Cardiology) | bank-ext-050 (timed, Cardiology) |
 |---|---|---|
@@ -79,7 +79,7 @@ same relationship as a timed entry (timed entry to be excluded at activation). S
 | Tile 4 | Right ventricular hypertrophy | Ventricular septal defect |
 | Status | AI_REVIEWED_PASS | verified |
 
-Decide: no decision needed unless you disagree
+Decide: decisions.json → pairs → "CARD-001 | bank-ext-050": "same" (exclude timed entry at activation) or "distinct"
 
 ### Classic causes of high-output heart failure  /  Causes of high-output heart failure
 possible repeat of a timed entry. Shared relationship: both are "causes of high output heart failure"; 2 of 4 tiles identical; tile wording 67% the same.
@@ -178,6 +178,20 @@ possible repeat of a timed entry. Shared relationship: both are "findings / asso
 | Status | AI_REVIEWED_PASS | verified |
 
 Decide: decisions.json → pairs → "DERM-029 | bank-ext-110": "same" (exclude timed entry at activation) or "distinct"
+
+### Hereditary syndromes associated with pheochromocytoma  /  Conditions associated with pheochromocytoma
+possible repeat of a timed entry. Shared relationship: "findings / associations of hereditary syndrome pheochromocytoma" vs "causes of + findings / associations of pheochromocytoma"; 3 of 4 tiles identical; tile wording 80% the same.
+
+| | ENDO-029 (new, Endocrine) | bank-ext-082 (timed, Endocrine) |
+|---|---|---|
+| Title | Hereditary syndromes associated with pheochromocytoma | Conditions associated with pheochromocytoma |
+| Tile 1 | Neurofibromatosis type 1 | MEN2A |
+| Tile 2 | Von Hippel-Lindau syndrome | MEN2B |
+| Tile 3 | MEN2A | Von Hippel-Lindau disease |
+| Tile 4 | MEN2B | Neurofibromatosis type 1 |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "ENDO-029 | bank-ext-082": "same" (exclude timed entry at activation) or "distinct"
 
 ## 4. Board ambiguity reviews
 ### biochemistry-genetics-starter-5 (Biochemistry/Genetics)

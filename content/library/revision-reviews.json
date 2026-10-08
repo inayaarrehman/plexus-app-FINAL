@@ -35,6 +35,13 @@
       "evidence": "Notes: \"REVISED: original tiles 3 and 4 (Glomus body origin; Thermoregulatory smooth muscle) are two statements of the same concept ... Replaced Thermoregulatory smooth muscle with Cold hypersensitivity (classic clinical triad feature) ... explanation updated accordingly.\"",
       "contentHash": "0b0fdef17c8d429eccd6165c6a9f8b9148b89779fc736459f39a3746309097d9",
       "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "ENDO-037": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"REVISED: original title (...linked to type 1 diabetes) made type 1 diabetes a tile in a category defined by itself (circular). Retitled to an autoimmune-cluster framing in which all four are members.\" The four tiles are unchanged from the source (pp. 63, 44); only the title and explanation were reframed to remove a circular category, with caveats stated (celiac is associated, not defining). Nothing left unresolved.",
+      "contentHash": "3fe5edfd18c8aa7ff8fb108aceb1f12963a987aa08e80f77d69c15b25faefebf",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
     }
   }
 }
