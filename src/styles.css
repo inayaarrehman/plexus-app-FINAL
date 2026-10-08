@@ -3560,7 +3560,6 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   justify-content: center;
 }
 
-
 /* ---------- Challenge-a-friend recipient invite ---------- */
 .challenge-invite {
   display: flex;
@@ -5192,7 +5191,6 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 /* Results stack: the difficulty icon leads each mini-Plexus row. */
 .result-motifs li.result-motif-row { display: flex; align-items: center; gap: 10px; line-height: 0; }
 
-
 /* View Connections: the level label is the difficulty tag. */
 .difficulty-tag.accordion-level { text-transform: none; letter-spacing: 0; font-size: var(--type-caption); min-width: 74px; }
 
@@ -5526,48 +5524,11 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 .kit-hint { font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
 .tile.tile-curbside { box-shadow: 0 0 0 2.5px var(--node-peacock), 0 2px 0 rgba(10, 6, 20, 0.28); }
 
-
 /* ==================================================================
    NAME THE CONNECTION (today's Daily)
    Sits inside the solved strand: the title waits behind a short prompt,
    one compact row to answer or skip. Ink on the cream strand, no modal.
    ================================================================== */
-.strand-title-recall { font-family: var(--font-ui); font-size: var(--type-secondary); font-weight: 700; letter-spacing: 0; color: color-mix(in srgb, var(--ink) 78%, transparent); }
-.recall-form { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 11px; }
-.recall-input {
-  flex: 1 1 160px;
-  min-width: 0;
-  height: 40px;
-  padding: 0 12px;
-  border: 1.5px solid color-mix(in srgb, var(--ink) 30%, transparent);
-  border-radius: 10px;
-  background: color-mix(in srgb, #fff 70%, var(--tile-cream));
-  color: var(--ink);
-  font-family: var(--font-ui);
-  font-size: 16px; /* 16px keeps iOS from zooming the page on focus */
-}
-.recall-input::placeholder { color: color-mix(in srgb, var(--ink) 48%, transparent); }
-.recall-input:focus { outline: none; border-color: var(--strand-color); box-shadow: 0 0 0 2px color-mix(in srgb, var(--strand-color) 35%, transparent); }
-.recall-submit,
-.recall-skip {
-  height: 40px;
-  padding: 0 14px;
-  border-radius: 999px;
-  font-family: var(--font-ui);
-  font-size: var(--type-caption);
-  font-weight: 700;
-  cursor: pointer;
-}
-.recall-submit { border: none; background: var(--ink); color: var(--tile-cream); }
-.recall-submit:disabled { opacity: 0.4; cursor: default; }
-.recall-skip { border: 1.5px solid color-mix(in srgb, var(--ink) 35%, transparent); background: none; color: var(--ink); }
-.recall-skip:disabled { opacity: 0.4; }
-.recall-note { flex-basis: 100%; margin: 8px 0 0; font-size: var(--type-caption); font-weight: 700; color: color-mix(in srgb, var(--ink) 75%, transparent); }
-.recall-form .recall-note { margin-top: 0; }
-.recall-correct { color: var(--ink); }
-@media (prefers-reduced-motion: no-preference) {
-  .recall-note { animation: xp-level 300ms ease-out both; }
-}
 
 /* ==================================================================
    LEGAL: footer, Terms / Privacy / Disclaimer pages, Account data
@@ -5632,9 +5593,6 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 .challenge-review-misses .challenge-miss-tag { font-size: 0.9rem; letter-spacing: 0; }
 .challenge-miss-text span { font-weight: 600; }
-
-.recall-safe { display: block; margin-top: 3px; font-weight: 600; color: color-mix(in srgb, var(--ink) 62%, transparent); }
-.recall-title b { font-weight: 800; color: var(--ink); }
 
 /* ==================================================================
    TILE TEXT: long terms stay inside the tile at every width and zoom
@@ -5757,7 +5715,7 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
   overflow-wrap: break-word;
 }
 .strand-title b { font-weight: 800; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: var(--strand-color); }
-.strand-title-recall { font-family: var(--font-ui); font-size: var(--type-secondary); font-weight: 700; letter-spacing: 0; color: color-mix(in srgb, var(--ink) 72%, transparent); }
+
 .strand-meta {
   flex: none;
   margin-left: auto;
@@ -5805,34 +5763,6 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 @keyframes title-in { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
 
 /* Naming step: one open at a time; any other unnamed group is compact. */
-.strand.is-compact { padding-top: 10px; padding-bottom: 10px; }
-.strand.is-compact .strand-head { margin-bottom: 6px; }
-.recall-compact { display: flex; gap: 8px; margin-top: 10px; }
-.recall-open {
-  min-height: 36px;
-  padding: 0 14px;
-  border: none;
-  border-radius: 999px;
-  background: var(--ink);
-  color: var(--tile-cream);
-  font-family: var(--font-ui);
-  font-size: var(--type-caption);
-  font-weight: 700;
-  cursor: pointer;
-}
-.recall-skip-small { height: 36px; }
-.recall-submit, .recall-skip { min-width: 72px; }
-.recall-flash {
-  margin: -3px 0 8px;
-  font-size: var(--type-caption);
-  font-weight: 700;
-  color: color-mix(in srgb, var(--ink) 70%, transparent);
-}
-.recall-flash.is-correct { color: var(--ink); }
-@media (prefers-reduced-motion: no-preference) {
-  .recall-flash { animation: flash-life 2600ms ease both; }
-}
-@keyframes flash-life { 0% { opacity: 0; } 8% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; } }
 
 /* ==================================================================
    RESULTS: 4 connections leading into 1 Plexus
@@ -5896,19 +5826,6 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 
 /* Naming step on phones: the field gets its own row, Submit and Skip share
    the next one. Unnamed groups that are not open shrink to one line. */
-.recall-form { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.recall-form .recall-input { grid-column: 1 / -1; width: 100%; }
-.recall-form .recall-note { grid-column: 1 / -1; }
-@media (min-width: 521px) {
-  .recall-form { grid-template-columns: minmax(0, 1fr) auto auto; }
-  .recall-form .recall-input { grid-column: auto; }
-}
-.strand.is-compact .strand-nodes { display: flex; flex-wrap: wrap; gap: 2px 12px; }
-.strand.is-compact .strand-node + .strand-node::before { display: none; }
-.strand.is-compact .strand-term { font-size: 0.78rem; }
-.strand.is-compact .strand-dot { width: 5px; height: 5px; }
-.strand.is-compact .recall-compact { margin-top: 8px; }
-.strand.is-compact .recall-open, .strand.is-compact .recall-skip-small { min-height: 36px; height: 36px; padding: 0 14px; }
 
 /* ==================================================================
    CONNECTIONS FORMING (solved state v3)
@@ -5956,7 +5873,7 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 @media (max-width: 520px) {
   .strand-nodes { gap: 5px 14px; }
   /* Keep each row linked on phones: a short link into the second column. */
-  .strand:not(.is-compact) .strand-node:nth-child(2n)::before {
+  .strand .strand-node:nth-child(2n)::before {
     display: block;
     content: '';
     width: 10px;
@@ -6024,9 +5941,6 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 @keyframes tile-connect { 0% { transform: none; } 35% { transform: scale(1.025); } 100% { transform: scale(0.98); } }
 
 /* While a solved group waits to be named, the board rests. */
-.tile-grid.is-paused .tile { opacity: 0.45; cursor: default; }
-.tile-grid.is-paused .tile:hover { transform: none; }
-.board-paused-hint { color: var(--text-dim); font-weight: 600; }
 
 /* Difficulty is plain, quiet text now (no icons). */
 .strand-meta { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.01em; color: color-mix(in srgb, var(--ink) 50%, transparent); }
@@ -6402,125 +6316,14 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
    The active panel is the cream card with the group's colour along its
    top; completed groups are slimmer cream rows with the group's node motif.
    ================================================================== */
-.strand-stack.has-naming { gap: 6px; }
-.strand-stack.has-naming.strand-stack-complete::before { display: none; }
-.np { background: var(--tile-cream); color: var(--ink); border-radius: 12px; box-shadow: 0 2px 0 rgba(10, 6, 20, 0.22); }
 
 /* Active panel */
-.np-active { border-top: 3px solid var(--strand-color); box-shadow: 0 3px 0 rgba(10, 6, 20, 0.24), 0 10px 26px rgba(10, 6, 20, 0.22); }
-.np-panel { padding: 12px 14px 12px; display: flex; flex-direction: column; gap: 10px; }
-.np-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-.np-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
-.np-xp { flex: none; font-size: 0.82rem; font-weight: 700; color: var(--strand-color); font-variant-numeric: tabular-nums; }
-.np-concepts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; }
-.np-concept { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
-.np-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--strand-color); transform: translateY(-1px); }
-.np-term { min-width: 0; font-size: 0.92rem; font-weight: 600; line-height: 1.3; color: var(--ink); overflow-wrap: anywhere; hyphens: manual; -webkit-hyphens: manual; }
-.np-input {
-  width: 100%;
-  min-height: 44px;
-  padding: 0 12px;
-  border-radius: 10px;
-  border: 1.5px solid color-mix(in srgb, var(--ink) 24%, transparent);
-  background: #fffdf8;
-  color: var(--ink);
-  font-family: var(--font-ui);
-  font-size: 1rem;
-}
-.np-input::placeholder { color: color-mix(in srgb, var(--ink) 45%, transparent); }
-.np-input:focus { outline: none; border-color: var(--strand-color); box-shadow: 0 0 0 3px color-mix(in srgb, var(--strand-color) 22%, transparent); }
-.np-note { margin: -4px 0 0; font-size: 0.84rem; font-weight: 700; color: var(--ink); }
-.np-note .recall-safe { font-weight: 600; color: color-mix(in srgb, var(--ink) 65%, transparent); }
-.np-actions { display: flex; justify-content: flex-end; align-items: center; gap: 6px; }
-.np .np-skip {
-  min-height: 40px;
-  padding: 0 14px;
-  border: none;
-  border-radius: 10px;
-  background: none;
-  color: color-mix(in srgb, var(--ink) 70%, transparent);
-  font-family: var(--font-ui);
-  font-size: 0.92rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-.np .np-submit {
-  min-height: 40px;
-  padding: 0 18px;
-  border: none;
-  border-radius: 10px;
-  background: var(--ink);
-  color: var(--tile-cream);
-  font-family: var(--font-ui);
-  font-size: 0.92rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: opacity 120ms ease, transform 80ms ease;
-}
-.np .np-submit:disabled { opacity: 0.4; cursor: default; }
-.np .np-submit:not(:disabled):active, .np .np-skip:active { transform: scale(0.97); }
-.np .np-skip:active { background: color-mix(in srgb, var(--ink) 8%, transparent); }
-.np-skip:focus-visible, .np-submit:focus-visible, .np-row:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-@media (hover: hover) {
-  .np .np-skip:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); color: var(--ink); }
-}
 
 /* Completed row */
-.np-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  min-height: 52px;
-  padding: 9px 12px 9px 14px;
-  border: none;
-  border-radius: 12px;
-  background: none;
-  color: var(--ink);
-  text-align: left;
-  cursor: pointer;
-  font-family: var(--font-ui);
-}
-.np-done { border-left: 3px solid var(--strand-color); }
-.np-row .group-motif { flex: none; }
-.np-row-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1 1 auto; }
-.np-row-title { font-family: var(--font-display); font-size: 0.98rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.22; color: var(--ink); overflow-wrap: break-word; }
-.np-row-title b { text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--strand-color) 70%, transparent); text-underline-offset: 3px; }
-.np-row-meta { font-size: 0.78rem; font-weight: 600; color: color-mix(in srgb, var(--ink) 62%, transparent); }
-.np-row-xp { color: var(--strand-color); font-weight: 700; }
-.np-chevron { flex: none; width: 8px; height: 8px; margin: 0 4px 3px 2px; border-right: 1.8px solid color-mix(in srgb, var(--ink) 45%, transparent); border-bottom: 1.8px solid color-mix(in srgb, var(--ink) 45%, transparent); transform: rotate(45deg); transition: transform 200ms ease; }
-.np.is-expanded .np-chevron { transform: translateY(3px) rotate(-135deg); }
-.np-row:active { background: color-mix(in srgb, var(--ink) 5%, transparent); }
-@media (hover: hover) { .np-row:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); } }
-.np-row-queued { cursor: default; opacity: 0.72; }
-.np-queued { border-left: 3px dashed color-mix(in srgb, var(--strand-color) 60%, transparent); }
-.np-flash { margin: -4px 0 0; padding: 0 14px 10px 48px; font-size: 0.82rem; }
-.np-detail { padding: 0 14px 12px 48px; }
-.np-concepts.is-compact { gap: 4px 12px; }
-.np-concepts.is-compact .np-term { font-size: 0.86rem; }
-.np-explain { margin: 8px 0 0; font-size: 0.86rem; line-height: 1.45; color: color-mix(in srgb, var(--ink) 78%, transparent); }
 
 /* Motion: the panel enters after the tiles connect; resolving reveals the
    category and lights the group's nodes as the panel folds into its row. */
-@media (prefers-reduced-motion: no-preference) {
-  .np-active { animation: np-enter 320ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms both; }
-  .np-active .np-dot { animation: np-dot 260ms ease-out both; animation-delay: 220ms; }
-  .np-active .np-concept:nth-child(2) .np-dot { animation-delay: 270ms; }
-  .np-active .np-concept:nth-child(3) .np-dot { animation-delay: 320ms; }
-  .np-active .np-concept:nth-child(4) .np-dot { animation-delay: 370ms; }
-  .np-done.is-resolving .np-row-title { animation: title-in 260ms ease-out 60ms both; }
-  .np-done.is-resolving .np-row-meta { animation: title-in 260ms ease-out 140ms both; }
-  .np-done.is-resolving .group-motif .motif-node { animation: np-light 380ms ease-out calc(var(--i) * 40ms) both; transform-box: fill-box; transform-origin: center; }
-  .np-detail { animation: title-in 220ms ease-out both; }
-}
-@keyframes np-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-@keyframes np-dot { from { transform: translateY(-1px) scale(0.2); opacity: 0; } to { transform: translateY(-1px) scale(1); opacity: 1; } }
-@keyframes np-light { 0% { transform: scale(0.5); opacity: 0.3; } 60% { transform: scale(1.25); opacity: 1; } 100% { transform: scale(1); } }
 
-@media (max-width: 340px) {
-  .np-concepts:not(.is-compact) { grid-template-columns: minmax(0, 1fr); }
-  .np-detail, .np-flash { padding-left: 14px; }
-}
 /* Board connect step, timed to CONNECT_MS (520ms): tiles pulse, nodes light,
    lines draw into the shared point, the point lands. The naming panel then
    enters (about 320ms). */
@@ -6530,4 +6333,114 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
   .connect-line { animation: line-draw 320ms cubic-bezier(0.3, 0, 0.2, 1) 150ms forwards; }
   .connect-hub { animation: node-in 160ms ease-out 400ms forwards; }
 }
-.np .np-input { flex: none; height: 44px; min-height: 44px; max-height: 44px; margin: 0; }
+
+
+/* ==================================================================
+   SOLVED GROUP EXPLANATION, REPORTS, HELP & SUPPORT, RESET NOTE
+   ================================================================== */
+/* Explanation on a solved group (cream card). */
+.strand-why-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 8px 0 0;
+  padding: 6px 0;
+  min-height: 36px;
+  background: none;
+  border: none;
+  color: color-mix(in srgb, var(--ink) 70%, transparent);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.strand-why-chevron { width: 7px; height: 7px; border-right: 1.7px solid currentColor; border-bottom: 1.7px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform 200ms ease; }
+.strand.is-expanded .strand-why-chevron { transform: translateY(1px) rotate(-135deg); }
+.strand-why-toggle:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 6px; }
+@media (hover: hover) { .strand-why-toggle:hover { color: var(--ink); } }
+.strand-why { padding: 2px 0 2px; }
+.strand-why-text { margin: 0 0 4px; font-size: 0.88rem; line-height: 1.45; color: color-mix(in srgb, var(--ink) 82%, transparent); }
+.strand.is-missed-group { opacity: 0.88; }
+@media (prefers-reduced-motion: no-preference) {
+  .strand-why { animation: title-in 220ms ease-out both; }
+}
+
+/* Report this connection: a quiet text link wherever explanations are. */
+.report-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  margin: 2px 0 0;
+  padding: 4px 0;
+  background: none;
+  border: none;
+  color: inherit;
+  opacity: 0.78;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.report-link:hover { opacity: 1; }
+.report-link:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; border-radius: 4px; }
+.strand .report-link { color: var(--ink); }
+.home-cotd-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0 18px; }
+.accordion-body .report-link { margin-top: 8px; }
+
+/* Report and support form (in a dialog or on Help & Support). */
+.report-modal { max-width: 480px; }
+.report-form { display: flex; flex-direction: column; gap: 6px; }
+.report-context { margin: 0 0 8px; padding: 10px 12px; border-radius: 10px; background: color-mix(in srgb, var(--text) 7%, transparent); }
+.report-context-title { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--text); }
+.report-context-tiles { margin: 3px 0 0; font-size: 0.86rem; color: var(--text-dim); line-height: 1.4; }
+.report-context-note { margin: 6px 0 0; font-size: 0.76rem; color: var(--text-dim); }
+.report-label { display: block; margin: 8px 0 2px; font-size: var(--type-caption); font-weight: 700; color: var(--text); }
+.report-optional { font-weight: 600; color: var(--text-dim); }
+.report-reasons { border: none; margin: 0; padding: 0; min-width: 0; }
+.report-reasons legend { padding: 0; }
+.report-reason-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.report-reason { position: relative; display: inline-flex; align-items: center; min-height: 38px; padding: 0 13px; border-radius: 999px; border: 1.5px solid color-mix(in srgb, var(--text) 28%, transparent); color: var(--text); font-size: 0.86rem; font-weight: 600; cursor: pointer; }
+.report-reason input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.report-reason.is-selected { background: var(--text); color: var(--bg-elevated, var(--ink)); border-color: var(--text); }
+.report-reason:focus-within { outline: 2px solid var(--text); outline-offset: 2px; }
+.report-text, .report-input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1.5px solid color-mix(in srgb, var(--text) 28%, transparent);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  padding: 10px 12px;
+}
+.report-input { min-height: 44px; }
+.report-text { resize: vertical; min-height: 96px; line-height: 1.4; }
+.report-text:focus, .report-input:focus { outline: none; border-color: var(--text); box-shadow: 0 0 0 3px color-mix(in srgb, var(--text) 20%, transparent); }
+.report-count { margin: 0; min-height: 1em; font-size: 0.74rem; color: var(--text-dim); text-align: right; }
+.report-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.report-error { margin: 6px 0 0; padding: 8px 10px; border-radius: 8px; background: color-mix(in srgb, var(--node-terracotta) 22%, transparent); color: var(--text); font-size: var(--type-caption); font-weight: 600; }
+.report-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
+.report-primary, .report-secondary { min-height: 44px; padding: 0 18px; border-radius: 10px; font-family: var(--font-ui); font-size: 0.95rem; font-weight: 700; cursor: pointer; }
+.report-primary { border: none; background: var(--text); color: var(--bg-elevated, var(--ink)); }
+.report-primary:disabled { opacity: 0.6; cursor: default; }
+.report-secondary { border: 1.5px solid color-mix(in srgb, var(--text) 30%, transparent); background: none; color: var(--text); }
+.report-primary:focus-visible, .report-secondary:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.report-sent { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.report-sent-title { margin: 0; font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--text); }
+.report-sent-text { margin: 0 0 8px; color: var(--text-dim); font-size: var(--type-secondary); line-height: 1.45; }
+
+/* Help & Support page. */
+.support-page .legal-body h2 { margin-top: 22px; }
+.support-form { margin-top: 10px; padding: 14px; border-radius: 12px; background: color-mix(in srgb, var(--text) 6%, transparent); }
+.support-inline-link { padding: 0; background: none; border: none; color: var(--text); font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+/* Home: Help & Support in the nav (short label on narrow phones), reset note. */
+.nav-label-short { display: none; }
+@media (max-width: 419px) {
+  .home-nav-support .nav-label-long { display: none; }
+  .home-nav-support .nav-label-short { display: inline; }
+}
+.home-reset-note { margin: 10px 0 0; font-size: 0.78rem; font-weight: 600; color: var(--home-text-dim); }

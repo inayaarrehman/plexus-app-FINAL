@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { getDailyPuzzleForDate, isFutureDateKey } from '../utils/dailyPuzzle.js'
 import { dateKey, dayNumber } from '../utils/game.js'
+import { parseKey, daysBetween, weekdayOf } from '../utils/calendar.js'
 import { getSavedConnections, toggleSavedConnection } from '../utils/storage.js'
 import PuzzleSignature from './PuzzleSignature.jsx'
 
@@ -37,9 +38,11 @@ const monthIndex = (y, m) => y * 12 + m
 // (completion) and the existing stats streak, nothing new is tracked here.
 // Past days that were not played stay playable, as before.
 export default function Archive({ dailyHistory, onOpenDay, onBack, currentStreak = 0 }) {
-  const today = new Date()
-  const todayKey = dateKey(today)
-  const nowIndex = monthIndex(today.getFullYear(), today.getMonth())
+  // The player's own calendar date (utils/calendar.js); the grid is built
+  // from date keys, never from Date objects, so no time zone can shift a day.
+  const todayKey = dateKey(Date.now())
+  const nowParts = parseKey(todayKey)
+  const nowIndex = monthIndex(nowParts.y, nowParts.m - 1)
 
   // Months reachable with the arrows: back to the earliest month that holds a
   // completed Daily, never past the current month.
@@ -69,18 +72,20 @@ export default function Archive({ dailyHistory, onOpenDay, onBack, currentStreak
   const canNext = viewIndex < nowIndex
 
   const { cells, completedCount, availableCount } = useMemo(() => {
-    const count = new Date(year, month + 1, 0).getDate()
-    const lead = new Date(year, month, 1).getDay()
+    const pad = (n) => String(n).padStart(2, '0')
+    const first = `${year}-${pad(month + 1)}-01`
+    const nextFirst = month === 11 ? `${year + 1}-01-01` : `${year}-${pad(month + 2)}-01`
+    const count = daysBetween(first, nextFirst)
+    const lead = (weekdayOf(first) + 1) % 7 // grid starts on Sunday
     const list = []
     for (let i = 0; i < lead; i++) list.push({ blank: true, id: `b${i}` })
     let completed = 0
     let available = 0
     for (let d = 1; d <= count; d++) {
-      const date = new Date(year, month, d)
-      const key = dateKey(date)
+      const key = `${year}-${pad(month + 1)}-${pad(d)}`
       const isFuture = isFutureDateKey(key)
-      const exists = dayNumber(date) >= 0
-      const puzzle = !isFuture && exists ? getDailyPuzzleForDate(date) : null
+      const exists = dayNumber(key) >= 0
+      const puzzle = !isFuture && exists ? getDailyPuzzleForDate(key) : null
       const done = !!dailyHistory?.[key]?.completed
       if (puzzle) available += 1
       if (done) completed += 1
@@ -102,7 +107,7 @@ export default function Archive({ dailyHistory, onOpenDay, onBack, currentStreak
   }
 
   const monthName = MONTH_NAMES[month]
-  const showYear = year !== today.getFullYear()
+  const showYear = year !== nowParts.y
 
   return (
     <div className="archive">

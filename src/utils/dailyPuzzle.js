@@ -35,7 +35,7 @@ export function getDailyPuzzleForDate(date, bank = connectionBank) {
       return c ? { ...c, difficulty: TIERS[i] } : null
     })
     if (cats.every(Boolean) && categoriesCompatible(cats)) {
-      const puzzle = assemblePuzzleFromCategories(cats, { id: `daily-${key}`, number: dayNumber(date), title: 'Daily Plexus' })
+      const puzzle = assemblePuzzleFromCategories(cats, { id: `daily-${key}`, number: dayNumber(key), title: 'Daily Plexus' })
       puzzle.type = 'daily'
       puzzle.date = key
       puzzle.seed = dailySeedString(key)
@@ -44,17 +44,17 @@ export function getDailyPuzzleForDate(date, bank = connectionBank) {
   }
 
   const generated = buildDailyFromSeed(bank, dailySeedString(key), {
-    number: dayNumber(date),
+    number: dayNumber(key),
     date: key,
   })
   if (generated) return generated
 
   if (published.length === 0) return null
-  const n = dayNumber(date)
+  const n = dayNumber(key)
   const idx = ((n % published.length) + published.length) % published.length
   return published[idx]
 }
 
 export function isFutureDateKey(dateStr) {
-  return dateStr > dateKey(new Date())
+  return dateStr > dateKey(Date.now())
 }

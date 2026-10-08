@@ -1,7 +1,7 @@
 import React from 'react'
 import { COPYRIGHT } from '../legal/config.js'
 
-// Quiet footer: Terms · Privacy · Disclaimer and the copyright line.
+// Quiet footer: Help & Support · Terms · Privacy · Disclaimer and the copyright line.
 export default function LegalFooter({ onNavigate, current = null, className = '' }) {
   const link = (page, label) => (
     <a
@@ -19,7 +19,9 @@ export default function LegalFooter({ onNavigate, current = null, className = ''
   )
   return (
     <footer className={`legal-footer ${className}`}>
-      <nav className="legal-links" aria-label="Legal">
+      <nav className="legal-links" aria-label="Help and legal">
+        {link('support', 'Help & Support')}
+        <span aria-hidden="true">·</span>
         {link('terms', 'Terms')}
         <span aria-hidden="true">·</span>
         {link('privacy', 'Privacy')}

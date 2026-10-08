@@ -6,6 +6,18 @@
 // pages then point to the in-app options only.
 
 export const CONTACT_EMAIL = ''
+
+// Support email shown on Help & Support. Set it here, or as the Vercel
+// environment variable VITE_SUPPORT_EMAIL (then redeploy). When neither is set,
+// Help & Support offers only the in-app form, which saves to Supabase.
+const envSupport = (() => {
+  try {
+    return import.meta.env?.VITE_SUPPORT_EMAIL || ''
+  } catch {
+    return ''
+  }
+})()
+export const SUPPORT_EMAIL = (envSupport || CONTACT_EMAIL || '').trim()
 export const LEGAL_UPDATED = 'October 7, 2026'
 export const COPYRIGHT = '© 2026 Plexus. All rights reserved.'
 

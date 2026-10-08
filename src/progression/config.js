@@ -22,7 +22,6 @@ export const XP = {
   raceSolo: 10,
   raceDailyLimit: 5,
   rounds: 250,
-  categoryBonus: 10, // Daily only: naming a solved group's connection, once per group
 }
 
 // Practice (Systems, 3-Minute, Race) halves after this much in one local day,

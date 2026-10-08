@@ -11,6 +11,8 @@ import AppNav from './components/AppNav.jsx'
 import InstallPrompt from './components/InstallPrompt.jsx'
 import AuthModal from './components/AuthModal.jsx'
 import Legal, { LEGAL_PAGES } from './components/Legal.jsx'
+import SupportPage from './components/SupportPage.jsx'
+import ReportModal from './components/ReportModal.jsx'
 import HowToModal from './components/HowToModal.jsx'
 import { isSupabaseConfigured } from './lib/supabaseClient.js'
 import { onAuthChange } from './lib/auth.js'
@@ -20,7 +22,8 @@ import { loadExtraConnections, mergeBank } from './lib/contentSource.js'
 import StatsModal from './components/StatsModal.jsx'
 import DevViewer from './components/DevViewer.jsx'
 import BrandMark from './components/BrandMark.jsx'
-import { dateKey, dayNumber, dateFromDayNumber } from './utils/game.js'
+import { dayNumber, dateKeyFromDayNumber } from './utils/game.js'
+import { finishStamp, useToday } from './utils/calendarHooks.js'
 import { getDailyPuzzleForDate } from './utils/dailyPuzzle.js'
 import { getDailyGate, isGatedView, GATED_VIEWS, LOCK_COPY, hasSeenUnlock, markUnlockSeen } from './utils/dailyGate.js'
 import LockGlyph from './components/LockGlyph.jsx'
@@ -131,7 +134,7 @@ export default function App() {
   // be shared, and open over whatever screen is current. Never locked.
   const parseLegalHash = () => {
     const h = window.location.hash.replace(/^#/, '')
-    return LEGAL_PAGES.includes(h) ? h : null
+    return LEGAL_PAGES.includes(h) || h === 'support' ? h : null
   }
   const [legalPage, setLegalPage] = useState(() => parseLegalHash())
   const openLegal = (page) => {
@@ -140,7 +143,7 @@ export default function App() {
   }
   const closeLegal = () => {
     setLegalPage(null)
-    if (LEGAL_PAGES.includes(window.location.hash.replace(/^#/, ''))) {
+    if ([...LEGAL_PAGES, 'support'].includes(window.location.hash.replace(/^#/, ''))) {
       history.replaceState(null, '', window.location.pathname + window.location.search)
     }
   }
@@ -166,6 +169,9 @@ export default function App() {
     return Number.isFinite(from) && Number.isFinite(to) && to >= from && from >= 0 ? { from, to } : { from: 100, to: 420 }
   })
   const [recordSection, setRecordSection] = useState(null)
+  // Report this connection: the connection being reported (null when closed).
+  const [reportCtx, setReportCtx] = useState(null)
+  const reportModal = reportCtx ? <ReportModal context={reportCtx} onClose={() => setReportCtx(null)} /> : null
   const [view, setView] = useState(() => (myPlexusPreview ? 'record' : 'home')) // 'home' | 'game' | 'archive' | 'systems' | 'challenge' | 'race'
   const [gameCtx, setGameCtx] = useState(null)
   const [challengePhase, setChallengePhase] = useState('intro')
@@ -234,9 +240,12 @@ export default function App() {
     }
   }, [])
 
-  const today = new Date()
-  const todayKey = dateKey(today)
-  const todayDayNumber = dayNumber(today)
+  // The player's local date and time zone (utils/calendar.js), kept current
+  // across midnight, returning to the tab and time-zone changes.
+  const clock = useToday()
+  const todayKey = clock.key
+  const timeZone = clock.tz
+  const todayDayNumber = dayNumber(todayKey)
 
   // Today's Daily is "done" once it has been completed — the source of truth
   // is the per-date daily history, not one progress key, so replaying never
@@ -250,7 +259,7 @@ export default function App() {
   // Daily has been finished. Derived from the same Daily history as
   // dailyDone (cloud-merged for signed-in players), so it survives refreshes
   // and relocks by itself when a new Daily becomes current.
-  const gate = useMemo(() => getDailyGate(today), [todayKey, refreshTick]) // eslint-disable-line react-hooks/exhaustive-deps
+  const gate = useMemo(() => getDailyGate(todayKey), [todayKey, refreshTick]) // eslint-disable-line react-hooks/exhaustive-deps
   const modesUnlocked = gate.unlocked
 
   // Restrained locked-mode feedback: one short status line, plus a single
@@ -396,8 +405,7 @@ export default function App() {
       showLocked()
       return
     }
-    const [yy, mm, dd] = dateStr.split('-').map(Number)
-    const challengeDayNumber = dayNumber(new Date(yy, mm - 1, dd))
+    const challengeDayNumber = dayNumber(dateStr)
     setGameCtx({
       puzzle,
       mode: isToday ? 'daily' : 'archive',
@@ -416,20 +424,19 @@ export default function App() {
   // Recipient of a "Challenge a friend" link: resolve the day number back to
   // its Daily and open it. No sender data is present (or shown).
   const openChallenge = (n) => {
-    const date = dateFromDayNumber(n)
-    const puzzle = getDailyPuzzleForDate(date)
+    const key = dateKeyFromDayNumber(n)
+    const puzzle = getDailyPuzzleForDate(key)
     window.location.hash = ''
     setChallengeInvite(null)
     if (!puzzle) {
       setView('home')
       return
     }
-    const key = dateKey(date)
     openArchiveDay(key, puzzle, !!getDailyHistory()[key]?.completed)
   }
 
   const openDailyToday = () => {
-    const puzzle = getDailyPuzzleForDate(today)
+    const puzzle = getDailyPuzzleForDate(todayKey)
     if (!puzzle) return
     openArchiveDay(todayKey, puzzle, dailyDone)
   }
@@ -503,7 +510,10 @@ export default function App() {
           completed: true,
           won,
           mistakes,
-          completedAt: new Date().toISOString(),
+          // The instant it was finished, kept apart from the puzzle's date,
+          // plus the local date, UTC offset and time zone at that moment, so
+          // later travel never changes whether it was on time.
+          ...finishStamp(),
         })
         const updated = recordResult({ won, mistakes, isDaily: true, dailyKey: dateForHistory, countsTowardStreak: isToday })
         setStats(updated)
@@ -589,7 +599,11 @@ export default function App() {
   if (legalPage && !isDevRoute) {
     return (
       <div className="app-shell">
-        <Legal page={legalPage} onBack={closeLegal} onNavigate={openLegal} />
+        {legalPage === 'support' ? (
+          <SupportPage onBack={closeLegal} onNavigate={openLegal} />
+        ) : (
+          <Legal page={legalPage} onBack={closeLegal} onNavigate={openLegal} />
+        )}
       </div>
     )
   }
@@ -615,10 +629,13 @@ export default function App() {
             setRecordSection(null)
             setView('record')
           }}
+          onReport={setReportCtx}
+          reportMode={gameCtx.mode}
+          puzzleDate={gameCtx.mode === 'system' ? null : gameCtx.dateForHistory}
           onFinish={handleFinish}
           onKnowledgeSignal={recordKnowledgeSignal}
-          recallEnabled={gameCtx.mode === 'daily' && !!gameCtx.isToday}
         />
+        {reportModal}
       </div>
     )
   }
@@ -690,6 +707,11 @@ export default function App() {
     <div className="app-shell app-shell-home">
       <AppNav active="home" onNavigate={navigate} locked={!modesUnlocked} onLocked={showLocked} />
       <Home
+        key={todayKey}
+        todayKey={todayKey}
+        timeZone={timeZone}
+        onReport={setReportCtx}
+        onOpenSupport={() => openLegal('support')}
         dailyNumber={todayDayNumber}
         dailyDone={dailyDone}
         currentStreak={streak.current}
@@ -732,6 +754,7 @@ export default function App() {
         </p>
       )}
       {showHowTo && <HowToModal onClose={() => setShowHowTo(false)} />}
+      {reportModal}
       {showStats && <StatsModal stats={stats} onClose={() => setShowStats(false)} />}
       {showAccount && <AuthModal onClose={() => setShowAccount(false)} onAuthChanged={resyncProgress} onOpenLegal={openLegal} />}
       <InstallPrompt />

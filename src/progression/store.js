@@ -24,8 +24,9 @@ import {
   kitCounts,
   roundsProgress,
   localDayKey,
+  entryDay,
 } from './engine.js'
-import { currentStreak, longestStreak, needsShield, isStreakDay } from './streak.js'
+import { currentStreak, longestStreak, needsShield, isStreakDay, finishedOnDate } from './streak.js'
 
 const KEY = 'plexus.progression.v1'
 
@@ -76,7 +77,7 @@ function followUps(state, ctx) {
   }
   // This Week: complete when all three goals are done; reward once per week.
   const rp = roundsProgress(state, now)
-  if (rp.complete && !state.ledger[`rounds:${rp.week.key}`]) {
+  if (rp.complete && !rp.paid) {
     ctx.gained += award(state, { id: `rounds:${rp.week.key}`, xp: XP.rounds, kind: 'rounds', at: now })
     ctx.lines.push(['This Week', XP.rounds])
     if (rp.week.index % 2 === 0) {
@@ -113,21 +114,6 @@ function run(fn) {
   }
 }
 
-// ---- Name the connection (today's Daily only) ----
-// One bonus per group, ever: the id ties it to the puzzle and the group, so a
-// replay, a refresh or a second phrasing pays nothing more.
-export function categoryBonusId(puzzleId, groupId) {
-  return `category-bonus:${puzzleId}:${groupId}`
-}
-export function recordCategoryBonus({ puzzleId, groupId }) {
-  if (!puzzleId || groupId == null) return null
-  return run((state, ctx) => {
-    const xp = award(state, { id: categoryBonusId(puzzleId, groupId), xp: XP.categoryBonus, kind: 'recall', at: ctx.at, m: { puzzleId, groupId } })
-    ctx.gained += xp
-    if (xp > 0) ctx.lines.push(['Category bonus', xp])
-  })
-}
-
 // ---- Daily (today or Archive) ----
 // Call only for a FIRST finish of that date (App.handleFinish already knows).
 export function recordDailyFinish({ dateKey, isToday, puzzle, won, mistakes, guessLog, toolsUsed = 0, history }) {
@@ -149,14 +135,6 @@ export function recordDailyFinish({ dateKey, isToday, puzzle, won, mistakes, gue
     })
     ctx.gained += conn
     ctx.lines.push(['Connections', conn])
-    // Name the connection: bonuses were paid as each group was named. Show
-    // them on the results line (they are already in the ledger).
-    const named = Object.values(state.ledger).filter((e) => e.kind === 'recall' && e.m?.puzzleId === puzzle.id)
-    const namedXp = named.reduce((a, e) => a + (e.xp || 0), 0)
-    if (namedXp > 0) {
-      ctx.gained += namedXp
-      ctx.lines.push(['Category bonus', namedXp])
-    }
     if (isToday && won && mistakes === 0 && toolsUsed === 0) {
       const p = award(state, { id: `perfect:${dateKey}`, xp: XP.perfect, kind: 'perfect', at })
       ctx.gained += p
@@ -242,7 +220,7 @@ export function recordRaceFinish({ raceId, solo = false }) {
   return run((state, ctx) => {
     const at = ctx.at
     const today = localDayKey(at)
-    const racesToday = Object.entries(state.ledger).filter(([id, e]) => e.kind === 'race' && !id.endsWith(':win') && localDayKey(e.at) === today).length
+    const racesToday = Object.entries(state.ledger).filter(([id, e]) => e.kind === 'race' && !id.endsWith(':win') && entryDay(e) === today).length
     if (racesToday >= XP.raceDailyLimit) return
     const g = award(state, { id: `race:${raceId}`, xp: solo ? XP.raceSolo : XP.raceFinish, kind: 'race', at })
     ctx.gained += g
@@ -281,7 +259,7 @@ export function backfillIfNeeded({ history = {}, mastery = {}, bankById = {}, sy
   const lvl = { easy: 1, medium: 2, hard: 3, expert: 4 }
   for (const [key, e] of Object.entries(history)) {
     if (!e?.completed) continue
-    const onTime = !e.completedAt || localDayKey(new Date(e.completedAt).getTime()) === key
+    const onTime = finishedOnDate(e, key)
     award(state, { id: onTime ? `daily:${key}` : `archive:${key}`, xp: onTime ? XP.daily : XP.archive, kind: 'bf-daily', at })
     if (e.won) {
       // A won Daily means all four groups were solved: 5 + 10 + 15 + 20.

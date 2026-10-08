@@ -38,13 +38,9 @@
 //   notes           optional — why something is needs_review/rejected,
 //                   or a caveat worth knowing before publishing
 //
-// Optional, for "Name the connection" (see src/recall/). None of these is
-// required: without them the title is the answer and the matcher handles
-// wording, plurals, abbreviations, word order and small typos.
-//   canonical       the answer, if it should differ from `title`
-//   aliases         a few common other ways to say it
-//   keyTerms        words that carry the concept (weighted more heavily)
-//   doNotAccept     phrases that are too broad and must not pass
+// Some entries still carry canonical / aliases / keyTerms / doNotAccept from
+// the removed "Name the connection" feature. Nothing reads them; they are
+// left in place so the content itself is unchanged.
 //
 // Only 'verified' categories are ever eligible for auto-assembled
 // puzzles (see puzzleAssembler.js) or the Daily Puzzle. 'needs_review'

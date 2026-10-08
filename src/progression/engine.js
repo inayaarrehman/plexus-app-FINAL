@@ -19,6 +19,7 @@
 // can never pay twice. Level, totals and weekly goal progress are derived
 // from the ledger, never stored, so they cannot drift.
 
+import { dayKey, weekOfKey } from '../utils/calendar.js'
 import {
   XP,
   PRACTICE_TAPER_AFTER,
@@ -48,23 +49,25 @@ export function normalize(state) {
   }
 }
 
-// ---- dates (local time) ----
+// ---- dates ----
+// All day and week logic comes from utils/calendar.js (the player's time zone,
+// DST-safe). Every ledger entry records the local date it was earned on (`d`),
+// so later travel never moves it to another day or week.
 export function localDayKey(ts) {
-  const d = new Date(ts)
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+  return dayKey(ts)
 }
-// Monday-based local week: returns { key: 'YYYY-Www', index, start, end }.
+// The local date an entry belongs to: the date stored with it, or (for
+// entries saved before dates were stored) its instant in the current zone.
+export function entryDay(e) {
+  return e && typeof e.d === 'string' ? e.d : dayKey(e?.at ?? 0)
+}
+// Monday-based local week: { key: 'YYYY-Www', index, startKey, endKey, start, end }.
 export function weekOf(ts) {
-  const d = new Date(ts)
-  const day = (d.getDay() + 6) % 7 // Monday = 0
-  const start = new Date(d.getFullYear(), d.getMonth(), d.getDate() - day)
-  const end = new Date(start.getFullYear(), start.getMonth(), start.getDate() + 7)
-  // ISO-style week number from the Thursday of this week.
-  const thu = new Date(start.getFullYear(), start.getMonth(), start.getDate() + 3)
-  const jan1 = new Date(thu.getFullYear(), 0, 1)
-  const week = Math.floor((thu - jan1) / 86400000 / 7) + 1
-  const index = Math.round(start.getTime() / (7 * 86400000)) // stable running index
-  return { key: `${thu.getFullYear()}-W${String(week).padStart(2, '0')}`, index, start: start.getTime(), end: end.getTime() }
+  return weekOfKey(dayKey(ts))
+}
+export function inWeek(e, wk) {
+  const d = entryDay(e)
+  return d >= wk.startKey && d < wk.endKey
 }
 
 // ---- XP ----
@@ -74,10 +77,10 @@ export function totalXp(state) {
   return t
 }
 
-function practiceEarnedOn(state, dayKey) {
+function practiceEarnedOn(state, day) {
   let t = 0
   for (const e of Object.values(state.ledger)) {
-    if (PRACTICE_KINDS.has(e.kind) && localDayKey(e.at) === dayKey) t += e.xp || 0
+    if (PRACTICE_KINDS.has(e.kind) && entryDay(e) === day) t += e.xp || 0
   }
   return t
 }
@@ -88,11 +91,11 @@ export function award(state, { id, xp, kind, at = Date.now(), m }) {
   if (!id || state.ledger[id] || !(xp > 0)) return 0
   let paid = xp
   if (PRACTICE_KINDS.has(kind)) {
-    const before = practiceEarnedOn(state, localDayKey(at))
+    const before = practiceEarnedOn(state, dayKey(at))
     const full = Math.max(0, Math.min(xp, PRACTICE_TAPER_AFTER - before))
     paid = full + Math.floor((xp - full) * PRACTICE_TAPER_RATE)
   }
-  state.ledger[id] = { xp: paid, base: xp, kind, at, ...(m ? { m } : {}) }
+  state.ledger[id] = { xp: paid, base: xp, kind, at, d: dayKey(at), ...(m ? { m } : {}) }
   return paid
 }
 
@@ -151,14 +154,21 @@ export function roundsGoals(weekIndex) {
 }
 export function roundsProgress(state, now = Date.now()) {
   const wk = weekOf(now)
-  const entries = Object.values(state.ledger).filter((e) => e.at >= wk.start && e.at < wk.end && !String(e.kind).startsWith('bf'))
+  const entries = Object.values(state.ledger).filter((e) => inWeek(e, wk) && !String(e.kind).startsWith('bf'))
   const goals = roundsGoals(wk.index).map((g) => {
     let rel = entries.filter((e) => g.kinds.includes(e.kind) && (!g.level || e.m?.level === g.level))
     let count = g.distinct ? new Set(rel.map((e) => e.m?.[g.distinct]).filter(Boolean)).size : rel.length
     count = Math.min(count, g.target)
     return { ...g, count, done: count >= g.target }
   })
-  return { week: wk, goals, done: goals.filter((g) => g.done).length, complete: goals.every((g) => g.done) }
+  return { week: wk, goals, done: goals.filter((g) => g.done).length, complete: goals.every((g) => g.done), paid: weekRewardPaid(state, wk) }
+}
+// Has this week's reward been paid? By its id, or by any weekly reward earned
+// inside this week's dates (ids from before the week label was corrected, or
+// from another time zone), so it is never paid twice.
+export function weekRewardPaid(state, wk) {
+  if (state.ledger[`rounds:${wk.key}`]) return true
+  return Object.values(state.ledger).some((e) => e.kind === 'rounds' && inWeek(e, wk))
 }
 
 // ---- merge (two devices, or device + cloud) ----

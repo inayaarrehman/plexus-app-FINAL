@@ -8,6 +8,8 @@ import DailyPlexus from './DailyPlexus.jsx'
 import LockGlyph from './LockGlyph.jsx'
 import { loadProgress, getDailyHistory } from '../utils/storage.js'
 import { dateKey } from '../utils/game.js'
+import { formatDayKey, timeZoneLabel } from '../utils/calendar.js'
+import { reportContext } from '../utils/reportContext.js'
 import { LevelLine } from './RecordParts.jsx'
 import LegalFooter from './LegalFooter.jsx'
 
@@ -146,7 +148,7 @@ function ModeTile({ locked, justUnlocked, order, onOpen, onLocked, visual, title
 // a preview, and the full explanation (plus the takeaway) behind "Read
 // explanation". The text is shown exactly as written, never rewritten; the
 // preview only ever ends at a sentence boundary.
-function ConnectionOfDay({ cotd }) {
+function ConnectionOfDay({ cotd, onReport }) {
   const [open, setOpen] = useState(false)
   const { first, rest } = firstSentence(cotd.explanation || cotd.remember)
   const more = Boolean(rest) || (cotd.explanation && cotd.remember)
@@ -159,11 +161,18 @@ function ConnectionOfDay({ cotd }) {
         {open && rest ? ` ${rest}` : ''}
       </p>
       {open && cotd.explanation && cotd.remember && <p className="home-cotd-remember">{cotd.remember}</p>}
-      {more && (
-        <button type="button" className="home-cotd-toggle" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
-          {open ? 'Hide explanation' : 'Read explanation'}
-        </button>
-      )}
+      <div className="home-cotd-actions">
+        {more && (
+          <button type="button" className="home-cotd-toggle" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+            {open ? 'Hide explanation' : 'Read explanation'}
+          </button>
+        )}
+        {onReport && (open || !more) && (
+          <button type="button" className="report-link" onClick={onReport}>
+            Report this connection
+          </button>
+        )}
+      </div>
     </div>
   )
 }
@@ -190,8 +199,8 @@ function writeJSON(key, v) {
 // The player's real progress on today's Daily: which groups they found and
 // whether the board is over. From the saved game; if the Daily was finished
 // on another device (history only), a win means all four were found.
-function todayProgress(puzzle, dailyDone, history) {
-  const saved = loadProgress(`daily-${dateKey(new Date())}`)
+function todayProgress(puzzle, dailyDone, history, key) {
+  const saved = loadProgress(`daily-${key}`)
   const n = puzzle?.categories?.length || 4
   if (saved && (!saved.puzzleId || saved.puzzleId === puzzle?.id)) {
     const solved = [...new Set((saved.guessLog || []).filter((g) => g.correct).map((g) => g.catIndexes?.[0]))].filter((i) => Number.isInteger(i))
@@ -205,6 +214,10 @@ function todayProgress(puzzle, dailyDone, history) {
 }
 
 export default function Home({
+  todayKey,
+  timeZone,
+  onOpenSupport,
+  onReport,
   dailyNumber,
   dailyDone,
   currentStreak,
@@ -228,15 +241,14 @@ export default function Home({
   onLocked,
   nudge = 0,
 }) {
-  const todayLabel = new Date().toLocaleDateString(undefined, {
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric',
-  })
+  // The player's own calendar date (utils/calendar.js), passed down from App
+  // so it changes at local midnight even while Home stays open.
+  const today = todayKey || dateKey(Date.now())
+  const todayLabel = formatDayKey(today)
+  const resetNote = `Resets at midnight · ${timeZoneLabel(timeZone)}`
 
-  const todayPuzzle = useMemo(() => getDailyPuzzleForDate(new Date()), [])
-  const today = dateKey(new Date())
-  const progress = useMemo(() => todayProgress(todayPuzzle, dailyDone, getDailyHistory()[today]), [todayPuzzle, dailyDone, today])
+  const todayPuzzle = useMemo(() => getDailyPuzzleForDate(today), [today])
+  const progress = useMemo(() => todayProgress(todayPuzzle, dailyDone, getDailyHistory()[today], today), [todayPuzzle, dailyDone, today])
   const total = todayPuzzle?.categories?.length || 4
   const status = progress.finished ? 'finished' : progress.solved.length ? 'partial' : 'waiting'
 
@@ -269,7 +281,13 @@ export default function Home({
 
   // Connection of the day: a verified takeaway from today's completed Daily.
   // Same pick as the results screen (utils/connectionOfDay.js).
-  const connectionOfDay = useMemo(() => (dailyDone ? pickConnectionOfDay(todayPuzzle) : null), [dailyDone, todayPuzzle])
+  const connectionOfDay = useMemo(() => {
+    if (!dailyDone) return null
+    const cotd = pickConnectionOfDay(todayPuzzle)
+    if (!cotd) return null
+    const cat = (todayPuzzle?.categories || []).find((c) => c.title === cotd.title)
+    return { ...cotd, report: reportContext(todayPuzzle, cat, { mode: 'daily', date: today }) }
+  }, [dailyDone, todayPuzzle, today])
 
   const found = progress.solved.length
   const plexusLabel =
@@ -297,6 +315,12 @@ export default function Home({
             <button className="home-nav-link" onClick={onOpenStats}>Stats</button>
           )}
           <button className="home-nav-link" onClick={onOpenHowTo}>How to play</button>
+          {onOpenSupport && (
+            <button className="home-nav-link home-nav-support" onClick={onOpenSupport} aria-label="Help & Support">
+              <span className="nav-label-long">Help &amp; Support</span>
+              <span className="nav-label-short" aria-hidden="true">Help</span>
+            </button>
+          )}
           {onOpenAccount && (
             <button className="home-nav-link" onClick={onOpenAccount}>Account</button>
           )}
@@ -352,7 +376,9 @@ export default function Home({
             )}
           </div>
 
-          {connectionOfDay && <ConnectionOfDay cotd={connectionOfDay} />}
+          <p className="home-reset-note">{resetNote}</p>
+
+          {connectionOfDay && <ConnectionOfDay cotd={connectionOfDay} onReport={onReport ? () => onReport(connectionOfDay.report) : undefined} />}
         </div>
       </section>
 

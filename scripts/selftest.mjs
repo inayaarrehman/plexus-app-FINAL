@@ -1233,169 +1233,18 @@ console.log('\n[38] Progression engine: XP, levels, streaks, This Week, Kit, mer
   globalThis.localStorage = _prevLS
 }
 
-console.log('\n[39] Name the connection: matcher, bonus XP, no penalties')
+console.log('\n[39] Name the connection is removed; earned XP is kept')
 {
-  const _store = {}
-  const _prevLS = globalThis.localStorage
-  globalThis.localStorage = { getItem: (k) => _store[k] ?? null, setItem: (k, v) => { _store[k] = v }, removeItem: (k) => { delete _store[k] } }
-  const M = await import('../src/recall/matcher.js')
-  const N = await import('../src/recall/normalize.js')
-  const banks = await Promise.all(['connectionBank','connectionBankExtra','connectionBankExtra2','migratedBankCategories'].map((f) => import('../src/data/' + f + '.js')))
-  const cats = banks.flatMap((m) => m.default)
-  M.buildVocabulary(cats)
-  const CASES = [
- ['Organisms causing infective endocarditis', {}, 'bacteria causing infective endocarditis','high'],
- ['Organisms causing infective endocarditis', {}, 'infective endocarditis organisms','high'],
- ['Organisms causing infective endocarditis', {}, 'organisms that cause endocarditis','high'],
- ['Organisms causing infective endocarditis', {}, 'endocarditis pathogens','high'],
- ['Organisms causing infective endocarditis', {}, 'causes of bacterial endocarditis','notlow'],
- ['Organisms causing infective endocarditis', {}, 'IE organisms','high'],
- ['Organisms causing infective endocarditis', {}, 'bacteria associated with infective endocarditis','high'],
- ['Organisms causing infective endocarditis', {}, 'bacteria that cause endocarditis','high'],
- ['Organisms causing infective endocarditis', {}, 'endocardits bugs','high'],
- ['Organisms causing infective endocarditis', {}, 'bacteria','low'],
- ['Organisms causing infective endocarditis', {}, 'infection','low'],
- ['Organisms causing infective endocarditis', {}, 'heart infection','low'],
- ['Organisms causing infective endocarditis', {}, 'infective endocarditis','medium'],
- ['Drugs that prolong the QT interval', {}, 'QT prolonging medications','high'],
- ['Drugs that prolong the QT interval', {}, 'meds that cause QT prolongation','high'],
- ['Drugs that prolong the QT interval', {}, 'drugs associated with prolonged QT','high'],
- ['Drugs that prolong the QT interval', {}, 'long qt drugs','high'],
- ['Drugs that prolong the QT interval', {}, 'arrhythmia drugs','low'],
- ['Drugs that prolong the QT interval', {}, 'cardiac medications','low'],
- ['QT-prolonging drug classes', {}, 'drugs that prolong qt','high'],
- ['QT-prolonging drug classes', {}, 'qt','medium'],
- ['Causes of nephrotic syndrome', {}, 'diseases that cause nephrotic syndrome','high'],
- ['Causes of nephrotic syndrome', {}, 'causes of nephrotic syndrome','high'],
- ['Causes of nephrotic syndrome', {}, 'nephrotic syndrome etiologies','high'],
- ['Causes of nephrotic syndrome', {}, 'nephrotic syndrome','medium'],
- ['Causes of nephrotic syndrome', {}, 'causes of nephritic syndrome','low'],
- ['Causes of nephrotic syndrome', {}, 'kidney diseases','low'],
- ['Causes of nephrotic syndrome', {}, 'proteinuria','low'],
- ['Causes of nephrotic syndrome', {}, 'nephrology','low'],
- ['ACE inhibitor adverse effects', {}, 'side effects of ACE inhibitors','high'],
- ['ACE inhibitor adverse effects', {}, 'ACE inhibitor complications','high'],
- ['ACE inhibitor adverse effects', {}, 'acei side effects','high'],
- ['ACE inhibitor adverse effects', {}, 'ace inhibitors','medium'],
- ['ACE inhibitor adverse effects', {}, 'antihypertensives','low'],
- ['ACE inhibitor adverse effects', {}, 'drugs for blood pressure','low'],
- ['Causes of hypercalcemia', {}, 'hypercalcemia causes','high'],
- ['Causes of hypercalcemia', {}, 'causes of high calcium','high'],
- ['Drugs causing pulmonary fibrosis', {}, 'Drugs causing lung toxicity','medium'],
- ['Drugs causing pulmonary fibrosis', {}, 'drugs that cause lung fibrosis','high'],
- ['Drugs causing pulmonary fibrosis', {}, 'pulmonary fibrosis drugs','high'],
- ['Drugs causing pulmonary fibrosis', {}, 'drugs causing kidney damage','low'],
- ['Drugs causing pulmonary fibrosis', {}, 'chemotherapy drugs','nothigh'],
- ['Causes of hypercalcemia', {}, 'causes of low calcium','low'],
- ['Causes of hypercalcemia', {}, 'causes of hypercalcaemia','high'],
- ['Causes of hypokalemia', {}, 'reasons for low potassium','high'],
- ['Causes of hypokalemia', {}, 'causes of hyperkalemia','low'],
- ['Causes of microcytic anemia', {}, 'microcytic anaemia causes','high'],
- ['Severe cutaneous drug reactions', {}, 'severe skin drug reactions','high'],
- ['Severe cutaneous drug reactions', {}, 'skin rashes','nothigh'],
- ['Drugs causing pulmonary fibrosis', {}, 'lung toxicity drugs','medium'],
- ['Drugs causing pulmonary fibrosis', {}, 'drugs with pulmonary fibrosis as a side effect','high'],
- ['ACE inhibitor adverse effects', {}, 'what ace inhibitors cause','notlow'],
- ['Signs of hypocalcemia', {}, 'causes of hypocalcemia','low'],
-
- ['Causes of hypercalcemia', {}, 'causes of hypocalcemia','low'],
- ['Causes of hypercalcemia', {}, 'things that cause hypercalcaemia','high'],
- ['Causes of hypercalcemia', {}, 'causes of hypercalcmia','high'],
- ['Causes of metabolic alkalosis', {}, 'causes of metabolic acidosis','low'],
- ['Causes of metabolic alkalosis', {}, 'metabolic alkalosis causes','high'],
- ['Causes of elevated JVP', {}, 'raised jvp causes','high'],
- ['Causes of elevated JVP', {}, 'causes of jvd','high'],
- ['Causes of elevated JVP', {}, 'causes of low jvp','low'],
- ['Causes of elevated JVP', {}, 'elevated jvp','medium'],
- ['Gq-coupled receptors', {}, 'gq receptors','high'],
- ['Gq-coupled receptors', {}, 'gs receptors','low'],
- ['Gq-coupled receptors', {}, 'g protein coupled receptors','nothigh'],
- ['___ body', {}, 'body','high'],
- ['___ body', {}, 'bodies','high'],
- ['___ body', {}, 'words ending in body','high'],
- ['___ body', {}, 'sign','low'],
- ['Portal ___', {}, 'portal','high'],
- ['Portal ___', {}, 'portal something','high'],
- ['Neural crest derivatives', {}, 'derived from neural crest','notlow'],
- ['Neural crest derivatives', {}, 'neural crest','high'],
- ['Neural crest derivatives', {}, 'mesoderm derivatives','low'],
- ['Systolic murmurs', {}, 'systolic murmur','high'],
- ['Systolic murmurs', {}, 'diastolic murmurs','low'],
- ['Systolic murmurs', {}, 'murmurs','medium'],
- ['Acid-fast organisms', {}, 'acid fast bacteria','high'],
- ['Acid-fast organisms', {}, 'afb','nothigh'],
- ['Dimorphic fungi', {}, 'dimorphic fungus','high'],
- ['Dimorphic fungi', {}, 'fungi','nothigh'],
- ['Causes of digital clubbing', {}, 'clubbing causes','high'],
- ['Causes of digital clubbing', {}, 'causes of clubbing','high'],
- ['Restrictive lung diseases', {}, 'restrictive lung disease','high'],
- ['Restrictive lung diseases', {}, 'obstructive lung diseases','low'],
- ['Restrictive lung diseases', {}, 'lung diseases','nothigh'],
- ['HLA-B27-associated spondyloarthropathies', {}, 'hla b27 diseases','high'],
- ['HLA-B27-associated spondyloarthropathies', {}, 'seronegative spondyloarthropathies','any'],
- ['HLA-associated diseases', {}, 'hla associations','high'],
- ['Structures traversing the cavernous sinus', {}, 'cavernous sinus contents','high'],
- ['Structures traversing the cavernous sinus', {}, 'things in the cavernous sinus','high'],
- ['Diseases named after places', {}, 'diseases named after locations','high'],
- ['Diseases named after places', {}, 'eponyms','low'],
- ['Cyanotic congenital heart disease', {}, 'cyanotic heart defects','notlow'],
- ['Cyanotic congenital heart disease', {}, 'congenital heart disease','medium'],
- ['Organisms causing infective endocarditis', {doNotAccept:['endocarditis']}, 'endocarditis','low'],
-]
-  for (const [canon, extra, ans, exp] of CASES) {
-    const r = M.matchAnswer(ans, { canonical: canon, ...extra })
-    const good = exp === 'any' ? true : exp === 'notlow' ? r.band !== 'low' : exp === 'nothigh' ? r.band !== 'high' : r.band === exp
-    assert(good, '"' + ans + '" for "' + canon + '": want ' + exp + ', got ' + r.band)
-  }
-  // every bank title names itself; no title passes for an unrelated one
-  // (near-duplicates in the bank, one word apart, are allowed to match)
-  let selfMiss = 0
-  const falseHigh = []
-  const toks = (t) => N.bagKey(t).split(' ')
-  const near = (a, b) => { const A = toks(a), B = toks(b); return A.filter((t) => B.includes(t)).length >= Math.max(A.length, B.length) - 1 }
-  for (const a of cats) {
-    if (M.matchAnswer(a.title, M.recallTarget(a)).band !== 'high') selfMiss++
-    for (const b of cats) {
-      if (a === b || a.title.toLowerCase() === b.title.toLowerCase()) continue
-      if (M.matchAnswer(a.title, M.recallTarget(b)).band === 'high' && !near(a.title, b.title)) falseHigh.push(a.title + ' => ' + b.title)
-    }
-  }
-  assert(selfMiss === 0, 'every category name matches itself (' + selfMiss + ' misses)')
-  assert(falseHigh.length === 0, 'no category name is accepted for a different connection: ' + falseHigh.slice(0, 4).join('; '))
-  // aliases authored in the bank are accepted, doNotAccept is refused
-  for (const c of cats.filter((c) => c.aliases)) {
-    for (const a of c.aliases) assert(M.matchAnswer(a, M.recallTarget(c)).band === 'high', 'alias accepted: ' + a)
-    for (const d of c.doNotAccept || []) assert(M.matchAnswer(d, M.recallTarget(c)).band === 'low', 'too broad refused: ' + d)
-  }
-  // bonus XP: configured, once per group, its own kind
-  const C = await import('../src/progression/config.js')
-  const S = await import('../src/progression/store.js')
-  const E = await import('../src/progression/engine.js')
-  assert(C.XP.categoryBonus === 10, 'category bonus comes from config')
-  const r1 = S.recordCategoryBonus({ puzzleId: 'daily-2026-10-07', groupId: 'bank-ext-031' })
-  const r2 = S.recordCategoryBonus({ puzzleId: 'daily-2026-10-07', groupId: 'bank-ext-031' })
-  assert(r1.gained === 10 && r2.gained === 0, 'same group twice pays once')
-  assert(S.loadProgression().ledger['category-bonus:daily-2026-10-07:bank-ext-031']?.kind === 'recall', 'stable id category-bonus:{puzzleId}:{groupId}')
-  // the results line shows it, between Connections and Perfect
-  const today = E.localDayKey(Date.now())
-  const puzzle = { id: 'daily-2026-10-07', categories: [{ level: 1 }, { level: 2 }, { level: 3 }, { level: 4 }] }
-  const gl = [0, 1, 2, 3].map((i) => ({ correct: true, catIndexes: [i, i, i, i] }))
-  const fin = S.recordDailyFinish({ dateKey: today, isToday: true, puzzle, won: true, mistakes: 0, guessLog: gl, history: { [today]: { completed: true, won: true, mistakes: 0, completedAt: new Date().toISOString() } } })
-  assert(fin.lines.map((l) => l[0]).join() === 'Daily,Connections,Category bonus,Perfect', 'results order: ' + fin.lines.map((l) => l[0]).join())
-  assert(fin.gained === 185, 'results total includes the bonus: ' + fin.gained)
-  // outside the practice taper and weekly goals
-  assert(!E.PRACTICE_KINDS.has('recall') && !C.ROUNDS_POOL.some((g) => g.kinds.includes('recall')), 'bonus is outside the taper and weekly goals')
-  // the key stays on the server
   const fs = await import('node:fs')
-  const api = fs.readFileSync('api/recall-judge.js', 'utf8')
-  assert(api.includes('process.env.ANTHROPIC_API_KEY') && !/sk-ant-/.test(api), 'server function reads its key from the environment only')
-  const client = ['src/recall/judge.js', 'src/recall/matcher.js', 'src/recall/normalize.js', 'src/components/Game.jsx'].map((f) => fs.readFileSync(f, 'utf8')).join('\n')
-  assert(!/ANTHROPIC|sk-ant-|x-api-key/i.test(client), 'no model key or provider call in browser code')
-  const game = fs.readFileSync('src/components/Game.jsx', 'utf8') + fs.readFileSync('src/components/SolvedGroup.jsx', 'utf8')
-  for (const t of ['Name the connection · +', 'Close. Be a little more specific.', 'No mistake counted', 'Correct · +', 'Not quite.', 'Skip']) assert(game.includes(t), 'copy present: ' + t)
-  const newText = ['src/recall/judge.js', 'src/recall/matcher.js', 'src/recall/normalize.js', 'api/recall-judge.js', 'src/utils/events.js'].map((f) => fs.readFileSync(f, 'utf8')).join('') + fs.readFileSync('src/components/SolvedGroup.jsx', 'utf8')
-  assert(!newText.includes('—'), 'no em dashes in the new copy')
-  globalThis.localStorage = _prevLS
+  const C = await import('../src/progression/config.js')
+  const E = await import('../src/progression/engine.js')
+  assert(!('categoryBonus' in C.XP), 'no naming bonus in the XP config')
+  assert(!fs.existsSync('src/recall') && !fs.existsSync('api/recall-judge.js'), 'matcher and server check removed')
+  const ui = ['src/components/Game.jsx', 'src/components/SolvedGroup.jsx', 'src/components/HowToModal.jsx', 'src/components/Legal.jsx', 'src/App.jsx'].map((f) => fs.readFileSync(f, 'utf8')).join('\n')
+  assert(!/Name the connection|recall-input|judgeAnswer|recordCategoryBonus|Category bonus/.test(ui), 'no naming UI, matching or bonus left in the app')
+  // A save that already holds naming bonuses keeps that XP.
+  const st = E.normalize({ ledger: { 'daily:2026-10-01': { xp: 100, kind: 'daily', at: 1 }, 'category-bonus:daily-2026-10-01:g1': { xp: 10, kind: 'recall', at: 2 } } })
+  assert(E.totalXp(st) === 110, 'previously earned naming XP still counts toward the total')
 }
 
 console.log('\n[40] Legal: footer, disclaimers, privacy matches the code, account deletion')
@@ -1447,7 +1296,7 @@ console.log('\n[41] Home and My Plexus: economy unchanged, previews faithful, co
   const C = await import('../src/progression/config.js')
   const E = await import('../src/progression/engine.js')
   // XP values and level thresholds are exactly what they were.
-  assert(JSON.stringify(C.XP) === JSON.stringify({ daily: 100, perfect: 25, archive: 50, connection: { 1: 5, 2: 10, 3: 15, 4: 20 }, systemPuzzle: 50, systemComplete: 300, challengePerCorrect: 3, challengeMax: 60, challengeNewBest: 15, raceFinish: 20, raceWin: 10, raceSolo: 10, raceDailyLimit: 5, rounds: 250, categoryBonus: 10 }), 'XP values unchanged')
+  assert(JSON.stringify(C.XP) === JSON.stringify({ daily: 100, perfect: 25, archive: 50, connection: { 1: 5, 2: 10, 3: 15, 4: 20 }, systemPuzzle: 50, systemComplete: 300, challengePerCorrect: 3, challengeMax: 60, challengeNewBest: 15, raceFinish: 20, raceWin: 10, raceSolo: 10, raceDailyLimit: 5, rounds: 250 }), 'XP values unchanged (naming bonus removed)')
   const costs = Array.from({ length: 12 }, (_, i) => C.levelCost(i + 1)).join(',')
   assert(costs === '150,220,290,380,490,600,730,860,1010,1180,1350,1540', 'level thresholds unchanged (' + costs + ')')
   assert(E.levelInfo(149).level === 1 && E.levelInfo(150).level === 2 && E.levelInfo(370).level === 3, 'level boundaries land where they did')

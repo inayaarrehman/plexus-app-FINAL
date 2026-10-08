@@ -1,32 +1,36 @@
-// Deterministic day key + daily puzzle index, so everyone playing "today"
-// gets the same puzzle, and it changes at local midnight.
-export function dateKey(d = new Date()) {
-  const y = d.getFullYear()
-  const m = String(d.getMonth() + 1).padStart(2, '0')
-  const day = String(d.getDate()).padStart(2, '0')
-  return `${y}-${m}-${day}`
+import { dayKey, dayIndex, isDayKey, keyFromIndex } from './calendar.js'
+
+// Day keys and Daily numbers. All date logic lives in utils/calendar.js: a
+// Daily's identity is its calendar date in the player's time zone, so it
+// changes at local midnight and everyone shares the same puzzle per date.
+// These accept a date key ('YYYY-MM-DD'), a Date or a timestamp.
+export function dateKey(d = Date.now()) {
+  if (isDayKey(d)) return d
+  return dayKey(d instanceof Date ? d.getTime() : d)
 }
 
 // Whole days since a fixed epoch (Jan 1, 2024), used to rotate through the
-// puzzle bank and to number the Daily. Computed in UTC so it is exact and
-// DST-proof — local-midnight subtraction drifts by ±1 across daylight-saving
-// transitions, which broke the challenge-link day-number round-trip.
-const EPOCH_UTC = Date.UTC(2024, 0, 1)
-export function dayNumber(d = new Date()) {
-  const utc = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())
-  return Math.round((utc - EPOCH_UTC) / 86400000)
+// puzzle bank and to number the Daily. Pure calendar arithmetic on the date
+// key, so daylight-saving changes cannot shift it.
+const EPOCH_INDEX = dayIndex('2024-01-01')
+export function dayNumber(d = Date.now()) {
+  return dayIndex(dateKey(d)) - EPOCH_INDEX
 }
 
-export function getDailyPuzzleIndex(puzzleCount, d = new Date()) {
+export function getDailyPuzzleIndex(puzzleCount, d = Date.now()) {
   const n = dayNumber(d)
   return ((n % puzzleCount) + puzzleCount) % puzzleCount
 }
 
-// Inverse of dayNumber: the local Date for a given day number. Used to
-// resolve a "Challenge a friend" link (which carries only the day number)
-// back to the exact same deterministic Daily — no answers in the link.
+// Inverse of dayNumber: the date key for a given day number. Used to resolve a
+// "Challenge a friend" link (which carries only the day number) back to the
+// exact same deterministic Daily. No answers in the link.
+export function dateKeyFromDayNumber(n) {
+  return keyFromIndex(EPOCH_INDEX + Number(n))
+}
+// Older name kept for callers: now returns the date key.
 export function dateFromDayNumber(n) {
-  return new Date(2024, 0, 1 + Number(n))
+  return dateKeyFromDayNumber(n)
 }
 
 export function shuffle(array) {

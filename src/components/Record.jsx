@@ -75,7 +75,7 @@ export default function Record({ history, todayKey, stats, onBack, initialTab = 
   )
   const roundsItem = rounds.week.index % 2 === 0 ? ROUNDS_ITEM_ROTATION[(rounds.week.index / 2) % ROUNDS_ITEM_ROTATION.length] : null
   const unit = (n) => (n === 1 ? 'day' : 'days')
-  const weekState = !rounds.complete ? 'pending' : snap.state.ledger[`rounds:${rounds.week.key}`] ? 'earned' : 'due'
+  const weekState = !rounds.complete ? 'pending' : rounds.paid ? 'earned' : 'due'
 
   // Opened from Home's This Week line: bring This Week into view.
   useEffect(() => {

@@ -9,10 +9,7 @@ import { pickConnectionOfDay } from '../utils/connectionOfDay.js'
 import BrandMark from './BrandMark.jsx'
 import Confetti from './Confetti.jsx'
 import XpResult from './XpResult.jsx'
-import { loadProgression, spendCurbside, recordCategoryBonus } from '../progression/store.js'
-import { XP } from '../progression/config.js'
-import { judgeAnswer } from '../recall/judge.js'
-import { logEvent } from '../utils/events.js'
+import { loadProgression, spendCurbside } from '../progression/store.js'
 import { kitCounts } from '../progression/engine.js'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import { groupColor } from './GroupMotif.jsx'
@@ -20,6 +17,7 @@ import { DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
 import ReviewConnections from './ReviewConnections.jsx'
 import TileText from './TileText.jsx'
 import SolvedGroup from './SolvedGroup.jsx'
+import { reportContext } from '../utils/reportContext.js'
 import { haptics } from '../utils/haptics.js'
 
 const levelColor = (level) => groupColor(level)
@@ -39,7 +37,9 @@ export default function Game({
   onOpenRecord,
   onFinish,
   onKnowledgeSignal,
-  recallEnabled = false,
+  onReport, // opens Report this connection with the group's details
+  reportMode = 'daily', // daily | archive | system, attached to reports
+  puzzleDate = null, // the Daily's calendar date, attached to reports
 }) {
   const initial = useMemo(() => {
     const saved = loadProgress(progressKey)
@@ -54,7 +54,6 @@ export default function Game({
       won: false,
       toolsUsed: 0,
       curbside: [],
-      recall: {},
     }
   }, [progressKey, puzzle])
 
@@ -76,19 +75,8 @@ export default function Game({
   const [curbside, setCurbside] = useState(initial.curbside || [])
   const [curbsideLeft, setCurbsideLeft] = useState(() => kitCounts(loadProgression()).curbside || 0)
   const [xpResult, setXpResult] = useState(null)
-  // Name the connection (today's Daily): per solved group, keyed by catIndex.
-  // status: open | clarify | checking | correct | missed | skipped
-  const [recall, setRecall] = useState(initial.recall || {})
-  const [recallDrafts, setRecallDrafts] = useState({})
-  // Only one group is open for naming at a time (the most recently solved).
-  const [activeRecall, setActiveRecall] = useState(null)
-  // Brief confirmation after naming, and the group whose title is revealing.
-  const [recallFlash, setRecallFlash] = useState(null) // { catIndex, text, kind }
-  const [revealCat, setRevealCat] = useState(null)
-  // One completed row open at a time, so rows never take over the screen.
+  // One solved group's explanation open at a time.
   const [expandedCat, setExpandedCat] = useState(null)
-  const flashTimer = useRef(null)
-  const revealTimer = useRef(null)
 
   const [selected, setSelected] = useState([])
   // A correct guess first connects on the board (tiles pulse, light up as
@@ -123,10 +111,8 @@ export default function Game({
       won,
       toolsUsed,
       curbside,
-      // A check in flight is saved as open, so a refresh simply asks again.
-      recall: Object.fromEntries(Object.entries(recall).map(([k, v]) => [k, v.status === 'checking' ? { ...v, status: v.clarified ? 'clarify' : 'open' } : v])),
     })
-  }, [progressKey, puzzle.id, tiles, solvedCats, mistakes, guessLog, gameOver, won, toolsUsed, curbside, recall])
+  }, [progressKey, puzzle.id, tiles, solvedCats, mistakes, guessLog, gameOver, won, toolsUsed, curbside])
 
   useEffect(() => {
     if (gameOver && !finishReported.current && !alreadyOverAtLoad.current) {
@@ -143,7 +129,7 @@ export default function Game({
   // tap uses it straight away (no repeated confirmations).
   const [curbsideIntro, setCurbsideIntro] = useState(false)
   const onCurbsideTap = () => {
-    if (gameOver || curbsideTiles.length > 0 || namingGate) return
+    if (gameOver || curbsideTiles.length > 0) return
     if (!kitIntroSeen('curbside')) {
       setCurbsideIntro(true)
       return
@@ -184,7 +170,7 @@ export default function Game({
   const remainingTiles = tiles.filter((t) => !solvedCats.includes(t.catIndex))
 
   const toggleTile = (tile) => {
-    if (gameOver || connecting || namingGate) return
+    if (gameOver || connecting) return
     const already = selected.find((t) => t.text === tile.text && t.catIndex === tile.catIndex)
     if (!already && selected.length < 4) haptics.select() // proposing a connection
     setSelected((prev) => {
@@ -206,7 +192,7 @@ export default function Game({
   const handleDeselect = () => setSelected([])
 
   const handleSubmit = () => {
-    if (selected.length !== 4 || gameOver || connecting || namingGate) return
+    if (selected.length !== 4 || gameOver || connecting) return
     // Duplicate detection is keyed on the four tiles' STABLE identities
     // (order-independent, exact), not on which categories they came from —
     // see isDuplicateAttempt/attemptKey. This is the fix for false
@@ -250,21 +236,14 @@ export default function Game({
       ])
       setPopCatIndex(catIndex)
       setExpandedCat(null)
-      if (recallEnabled) {
-        setRecall((prev) => (prev[catIndex] ? prev : { ...prev, [catIndex]: { status: 'open' } }))
-        setActiveRecall(catIndex)
-        logEvent('recall_prompt_shown')
-      }
       setTimeout(() => setPopCatIndex(null), 700)
       setSelected([])
 
       const isFinalGroup = solvedCats.length + 1 === 4
       if (isFinalGroup) {
         // The whole-puzzle payoff (mark + confetti + "Connected.") takes
-        // over, with no individual microcopy on the final group. On today's
-        // Daily it waits until the last group's naming step is resolved
-        // (see the effect below), so results never show an unnamed group.
-        if (!recallEnabled) finishWon(500)
+        // over, with no individual microcopy on the final group.
+        finishWon(500)
       } else {
         // Individual connection: a brief rotating positive line near the
         // board. NOT "Connected." — that's reserved for full completion.
@@ -314,81 +293,6 @@ export default function Game({
 
   const mistakesLeft = MAX_MISTAKES - mistakes
 
-  // ---- Name the connection ----
-  // Optional and separate from solving: a wrong or skipped answer never costs
-  // a mistake, Perfect, streak or a tool. One clarification at most.
-  const groupIdOf = (catIndex) => {
-    const c = puzzle.categories[catIndex]
-    return c?.bankCategoryId || c?.id || `group-${catIndex}`
-  }
-  const setRecallStatus = (catIndex, patch) => setRecall((prev) => ({ ...prev, [catIndex]: { ...prev[catIndex], ...patch } }))
-  // Close the naming step: the official title reveals (lines draw in) and the
-  // card settles into its solved state. An optional short confirmation shows
-  // for a moment, then the card is just the connection.
-  const revealGroup = (catIndex, flash = null) => {
-    setActiveRecall((cur) => (cur === catIndex ? null : cur))
-    setRevealCat(catIndex)
-    clearTimeout(revealTimer.current)
-    revealTimer.current = setTimeout(() => setRevealCat(null), 450)
-    clearTimeout(flashTimer.current)
-    setRecallFlash(flash ? { catIndex, ...flash } : null)
-    if (flash) flashTimer.current = setTimeout(() => setRecallFlash(null), 2600)
-  }
-  useEffect(() => () => {
-    clearTimeout(flashTimer.current)
-    clearTimeout(revealTimer.current)
-  }, [])
-
-  const submitRecall = async (catIndex) => {
-    const entry = recall[catIndex]
-    const text = (recallDrafts[catIndex] || '').trim()
-    if (!entry || !text || entry.status === 'checking') return
-    setRecallStatus(catIndex, { status: 'checking' })
-    logEvent('recall_submitted')
-    let band = 'low'
-    let missing = []
-    try {
-      const verdict = await judgeAnswer(text, puzzle.categories[catIndex])
-      band = verdict.band
-      missing = verdict.missing || []
-    } catch {
-      band = 'low'
-    }
-    if (band === 'high') {
-      setRecallStatus(catIndex, { status: 'correct', answer: text })
-      revealGroup(catIndex, { text: `Correct · +${XP.categoryBonus} XP`, kind: 'correct' })
-      logEvent('recall_accepted')
-      haptics.correct()
-      const r = recordCategoryBonus({ puzzleId: puzzle.id, groupId: groupIdOf(catIndex) })
-      // Named after the puzzle finished: add it to the results already shown.
-      if (r && r.gained > 0) setXpResult((x) => (x ? mergeBonus(x, r) : x))
-    } else if (band === 'medium' && !entry.clarified) {
-      // One more try, with a hint about what is missing.
-      setRecallStatus(catIndex, { status: 'clarify', clarified: true, broader: missing.length > 0 })
-      logEvent('recall_clarify')
-    } else if (band === 'medium') {
-      // Still related but not specific enough: show the connection, with the
-      // words their answer did not cover in bold.
-      setRecallStatus(catIndex, { status: 'close', answer: text, missing })
-      revealGroup(catIndex, { text: 'Close. The connection is more specific. No mistake counted.', kind: 'close' })
-      logEvent('recall_rejected')
-    } else {
-      setRecallStatus(catIndex, { status: 'missed', answer: text })
-      revealGroup(catIndex, { text: 'Not quite. No mistake counted.', kind: 'missed' })
-      logEvent('recall_rejected')
-    }
-  }
-  const skipRecall = (catIndex) => {
-    setRecallStatus(catIndex, { status: 'skipped' })
-    revealGroup(catIndex)
-    logEvent('recall_skipped')
-  }
-  const recallPending = (catIndex) => ['open', 'clarify', 'checking'].includes(recall[catIndex]?.status)
-  // A solved group waiting to be named (or skipped). While one is waiting the
-  // board is paused: name it or skip it to keep solving.
-  const pendingRecall = recallEnabled ? solvedCats.find((ci) => recallPending(ci)) : undefined
-  const namingGate = pendingRecall !== undefined
-
   const finishTimer = useRef(null)
   const finishWon = (delay) => {
     clearTimeout(finishTimer.current)
@@ -398,18 +302,14 @@ export default function Game({
       setGameOver(true)
     }, delay)
   }
-  // All four groups solved and named (or skipped): the Plexus completes.
+  // A board saved with all four groups solved but not finished (for example
+  // from before naming was removed) completes when it is opened again.
   useEffect(() => {
-    if (!recallEnabled || gameOver || solvedCats.length !== 4 || namingGate) return
+    if (gameOver || solvedCats.length !== 4) return
     if (!guessLog.some((g) => g.correct)) return
     finishWon(650)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [recallEnabled, gameOver, solvedCats.length, namingGate])
-  // The waiting group is always the open one (also after a reload).
-  useEffect(() => {
-    if (pendingRecall !== undefined && activeRecall !== pendingRecall) setActiveRecall(pendingRecall)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pendingRecall])
+  }, [])
   useEffect(() => () => clearTimeout(finishTimer.current), [])
 
   const isMilestone = isDaily && won && STREAK_MILESTONES.includes(dailyStreak)
@@ -474,11 +374,8 @@ export default function Game({
     }
   }
 
-  // Connection of the day names a group; wait while that group's name is
-  // still being asked for.
-  const connectionOfDayPending = connectionOfDay
-    ? puzzle.categories.some((c, i) => c.title === connectionOfDay.title && recallPending(i))
-    : false
+  // What a report about one of this board's connections carries.
+  const reportFor = (c) => reportContext(puzzle, puzzle.categories[c.catIndex] || c, { mode: reportMode, date: puzzleDate })
 
   const foundSet = new Set(guessLog.filter((g) => g.correct).map((g) => g.catIndexes[0]))
   const orderedSolvedCats = puzzle.categories
@@ -525,27 +422,18 @@ export default function Game({
           one connecting path, in the category's colour. Once the whole
           board is solved the stack draws together (strand-stack-complete)
           and leads into the completion mark on the result card below. */}
-      <div className={`strand-stack ${gameOver ? 'strand-stack-complete' : ''} ${recallEnabled ? 'has-naming' : ''}`}>
+      <div className={`strand-stack ${gameOver ? 'strand-stack-complete' : ''}`}>
         {orderedSolvedCats.map((c) => (
           <SolvedGroup
             key={c.catIndex}
             category={c}
             color={levelColor(c.level)}
-            naming={recallEnabled}
             found={foundSet.has(c.catIndex)}
+            forming={popCatIndex === c.catIndex}
+            revealing={popCatIndex === c.catIndex}
             expanded={expandedCat === c.catIndex}
             onToggle={() => setExpandedCat((cur) => (cur === c.catIndex ? null : c.catIndex))}
-            forming={popCatIndex === c.catIndex}
-            revealing={revealCat === c.catIndex || (popCatIndex === c.catIndex && !recallPending(c.catIndex))}
-            pending={recallPending(c.catIndex)}
-            open={activeRecall === c.catIndex}
-            entry={recall[c.catIndex]}
-            draft={recallDrafts[c.catIndex] || ''}
-            flash={recallFlash?.catIndex === c.catIndex ? recallFlash : null}
-            bonusXp={XP.categoryBonus}
-            onDraft={(v) => setRecallDrafts((d) => ({ ...d, [c.catIndex]: v }))}
-            onSubmit={() => submitRecall(c.catIndex)}
-            onSkip={() => skipRecall(c.catIndex)}
+            onReport={onReport ? () => onReport(reportFor(c)) : undefined}
           />
         ))}
       </div>
@@ -555,12 +443,7 @@ export default function Game({
           {solvedCats.length === 0 && selected.length === 0 && (
             <p className="board-hint">Find the four concepts that belong together.</p>
           )}
-          {namingGate && !connecting && (
-            <p className="board-hint board-paused-hint" role="status">
-              Name the connection or skip to keep solving.
-            </p>
-          )}
-          <div className={`tile-grid ${connecting ? 'is-connecting' : ''} ${namingGate && !connecting ? 'is-paused' : ''}`} ref={gridRef} aria-disabled={namingGate || undefined}>
+          <div className={`tile-grid ${connecting ? 'is-connecting' : ''}`} ref={gridRef}>
             {remainingTiles.map((tile) => {
               const isSelected = selected.some((t) => t.text === tile.text && t.catIndex === tile.catIndex)
               const isShaking = shakeIds.includes(tile.text)
@@ -603,13 +486,13 @@ export default function Game({
           </div>
 
           <div className="game-controls">
-            <button className="secondary-btn" onClick={handleShuffle} disabled={namingGate || !!connecting}>
+            <button className="secondary-btn" onClick={handleShuffle} disabled={!!connecting}>
               Shuffle
             </button>
-            <button className="secondary-btn" onClick={handleDeselect} disabled={selected.length === 0 || namingGate || !!connecting}>
+            <button className="secondary-btn" onClick={handleDeselect} disabled={selected.length === 0 || !!connecting}>
               Deselect
             </button>
-            <button className="primary-btn" onClick={handleSubmit} disabled={selected.length !== 4 || namingGate || !!connecting}>
+            <button className="primary-btn" onClick={handleSubmit} disabled={selected.length !== 4 || !!connecting}>
               Submit
             </button>
           </div>
@@ -641,9 +524,7 @@ export default function Game({
         </>
       )}
 
-      {/* Results wait until every naming decision is made (a save from before
-          the one-at-a-time rule can hold several; they are asked in turn). */}
-      {gameOver && !namingGate && (
+      {gameOver && (
         <div className={`result-card ${won ? 'result-card-won' : ''} ${isPerfect ? 'result-card-perfect' : ''}`}>
           {/* The completion payoff: the Plexus constellation assembles (four
               jewel-toned nodes wiring themselves together) as the centrepiece,
@@ -699,7 +580,7 @@ export default function Game({
 
           {/* One takeaway right away (the same Connection of the day Home
               shows), with the full review one tap away. */}
-          {connectionOfDay && !connectionOfDayPending && (
+          {connectionOfDay && (
             <div className="connection-of-day result-takeaway">
               <h3 className="connection-of-day-heading">Connection of the day</h3>
               <p className="connection-of-day-title">{connectionOfDay.title}</p>
@@ -710,7 +591,7 @@ export default function Game({
             {showReview ? 'Hide connections' : 'Show connections'}
             <span aria-hidden="true">{showReview ? ' ▴' : ' ▾'}</span>
           </button>
-          {showReview && <ReviewConnections puzzle={puzzle} onKnowledgeSignal={onKnowledgeSignal} />}
+          {showReview && <ReviewConnections puzzle={puzzle} onKnowledgeSignal={onKnowledgeSignal} onReport={onReport} reportMode={reportMode} puzzleDate={puzzleDate} />}
 
 
           <div className="result-actions">
@@ -735,26 +616,6 @@ export default function Game({
       )}
     </div>
   )
-}
-
-// Fold a bonus earned after the finish into the results already on screen.
-function mergeBonus(x, r) {
-  const lines = x.lines.map((l) => [...l])
-  const i = lines.findIndex((l) => l[0] === 'Category bonus')
-  if (i >= 0) lines[i][1] += r.gained
-  else {
-    const p = lines.findIndex((l) => l[0] === 'Perfect')
-    lines.splice(p >= 0 ? p : lines.length, 0, ['Category bonus', r.gained])
-  }
-  return {
-    ...x,
-    gained: x.gained + r.gained,
-    lines,
-    after: r.after,
-    levelUp: x.levelUp || r.levelUp,
-    grants: [...(x.grants || []), ...(r.grants || [])],
-    rounds: r.rounds || x.rounds,
-  }
 }
 
 // Which Kit tools the player has already had explained (per device).

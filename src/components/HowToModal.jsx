@@ -2,14 +2,12 @@ import React from 'react'
 import Modal from './Modal.jsx'
 import BrandMark from './BrandMark.jsx'
 import { MAX_MISTAKES } from '../utils/game.js'
-import { XP } from '../progression/config.js'
 
 // How to play: three steps that match the game as built.
 //   1. Sixteen concepts, four groups of four; select four and submit.
 //      MAX_MISTAKES wrong guesses end the puzzle (the last one ends it).
-//   2. Naming is on today's Daily only: after a group is found, name it for
-//      XP.categoryBonus or skip to see the category. A wrong name never costs
-//      a mistake. The board waits until the group is named or skipped.
+//   2. A solved group shows its connection; Explanation opens why the four
+//      belong together, with a way to report a problem.
 //   3. Finishing today's Daily, won or lost, opens the other modes. Every
 //      finished puzzle earns XP toward My Plexus.
 // Numbers and values come from the game's own constants, so the text cannot
@@ -26,10 +24,10 @@ const STEPS = [
     ],
   },
   {
-    title: 'Name it for bonus XP',
+    title: 'See why they connect',
     body: [
-      `On today’s Daily, after you find a group, name the connection for +${XP.categoryBonus} XP. A wrong name never costs a mistake.`,
-      'Or skip to reveal the category. Name it or skip it to keep solving.',
+      'A solved group shows its connection. Tap Explanation to see why the four belong together.',
+      'If something looks wrong, you can report the connection from there.',
     ],
   },
   {

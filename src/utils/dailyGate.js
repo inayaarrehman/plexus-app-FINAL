@@ -12,8 +12,8 @@
 // a finished Daily cannot be replayed for credit, so a loss must not lock the
 // rest of the game for the whole day.
 //
-// Clock guard: the Daily itself follows the device date (that is how the app
-// numbers Dailies), so the gate also remembers the latest Daily this device
+// Clock guard: the Daily itself follows the player's local date
+// (utils/calendar.js), so the gate also remembers the latest Daily this device
 // has seen. Turning the clock back to a day that was already completed does
 // not unlock anything while that newer Daily is still unfinished. A jump of
 // more than a day backwards is treated as a clock correction, so a phone
@@ -49,7 +49,7 @@ function writeLatest(entry) {
   }
 }
 
-export function currentDaily(now = new Date()) {
+export function currentDaily(now = Date.now()) {
   const key = dateKey(now)
   const puzzle = getDailyPuzzleForDate(now)
   return { key, day: dayNumber(now), puzzleId: puzzle ? puzzle.id : `daily-${key}` }
@@ -71,12 +71,17 @@ export function evaluateGate({ history, current, latest }) {
   if (latest && latest.day > current.day && latest.day - current.day <= MAX_TRUSTED_ROLLBACK_DAYS) {
     required = latest
   }
-  const unlocked = required === current ? doneCurrent : doneCurrent && isDailyFinished(history, required.key, required.puzzleId)
+  // Today's Daily finished, or the newer Daily this device already reached
+  // (one date ahead at most) finished. The second case is travel west: the
+  // player finished tomorrow's date in another time zone and is now back on
+  // today's date. Nothing is unlocked by turning the clock back to a finished
+  // date while the newer Daily is unfinished.
+  const unlocked = required === current ? doneCurrent : isDailyFinished(history, required.key, required.puzzleId)
   return { unlocked, requiredKey: required.key }
 }
 
 // Reads storage, advances the latest-seen marker, and returns the decision.
-export function getDailyGate(now = new Date()) {
+export function getDailyGate(now = Date.now()) {
   const current = currentDaily(now)
   let latest = readLatest()
   if (!latest || current.day > latest.day || latest.day - current.day > MAX_TRUSTED_ROLLBACK_DAYS) {

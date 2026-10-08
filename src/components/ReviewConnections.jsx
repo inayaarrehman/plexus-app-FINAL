@@ -4,6 +4,7 @@ import { isConnectionSaved, toggleSavedConnection } from '../utils/storage.js'
 import ThreadModal from './ThreadModal.jsx'
 import { groupColor } from './GroupMotif.jsx'
 import { DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
+import { reportContext } from '../utils/reportContext.js'
 
 const levelColor = (level) => groupColor(level)
 
@@ -11,7 +12,8 @@ const levelColor = (level) => groupColor(level)
 // That" feature: a lightweight, entirely optional signal the player can
 // leave on any category during review. Never asked automatically, never
 // scored — just another input for a future Weak Spots view.
-export default function ReviewConnections({ puzzle, onKnowledgeSignal }) {
+// onReport(context): opens Report this connection for a category.
+export default function ReviewConnections({ puzzle, onKnowledgeSignal, onReport, reportMode = 'daily', puzzleDate = null }) {
   const [openIndex, setOpenIndex] = useState(null)
   const [signaled, setSignaled] = useState({})
   const [activeThread, setActiveThread] = useState(null)
@@ -103,6 +105,11 @@ export default function ReviewConnections({ puzzle, onKnowledgeSignal }) {
                       Review later
                     </button>
                   </div>
+                )}
+                {onReport && (
+                  <button type="button" className="report-link" onClick={() => onReport(reportContext(puzzle, puzzle.categories[cat.catIndex], { mode: reportMode, date: puzzleDate }))}>
+                    Report this connection
+                  </button>
                 )}
               </div>
             )}
