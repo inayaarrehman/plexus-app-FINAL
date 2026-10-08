@@ -7,6 +7,13 @@
         "by": "Claude, 2026-10-08",
         "signature": "3deee08a"
       }
+    ],
+    "psychiatry-starter-3": [
+      {
+        "text": "\"Meperidine\" and \"Tramadol\" (serotonin-syndrome group) are themselves opioids with mu-agonist activity, and \"Full mu-opioid agonist analgesics\" is on the same board; a player could reasonably place meperidine in the opioid group.",
+        "by": "Claude, 2026-10-08",
+        "signature": "4e574bc8"
+      }
     ]
   }
 }

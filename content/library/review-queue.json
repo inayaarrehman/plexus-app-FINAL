@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T21:00:34.262Z",
+ "generatedAt": "2026-10-08T21:10:21.944Z",
  "active": false,
  "medicalHolds": [
   {
@@ -2410,6 +2410,198 @@
     "status": "verified"
    },
    "decide": "decisions.json → pairs → \"PHARM-009 | bank-migrated-sys-pharm-0002-L3\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "PSY-006 | bank-ext-098",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "both are \"positive symptom schizophrenia\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "PSY-006",
+    "library": "new",
+    "system": "Psychiatry",
+    "title": "Positive symptoms of schizophrenia",
+    "tiles": [
+     "Delusions",
+     "Hallucinations",
+     "Disorganized speech",
+     "Disorganized behavior"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-098",
+    "library": "timed",
+    "system": "Psychiatry",
+    "title": "Positive symptoms of schizophrenia",
+    "tiles": [
+     "Hallucinations",
+     "Delusions",
+     "Disorganized speech",
+     "Disorganized behavior"
+    ],
+    "status": "verified"
+   },
+   "decide": "no decision needed unless you disagree"
+  },
+  {
+   "key": "PSY-012 | bank-ext-097",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"ssris inhibiting serotonin reuptake\" vs \"selective serotonin reuptake inhibitor ssris\"; 3 of 4 tiles identical; tile wording 60% the same",
+   "a": {
+    "id": "PSY-012",
+    "library": "new",
+    "system": "Psychiatry",
+    "title": "SSRIs inhibiting serotonin reuptake",
+    "tiles": [
+     "Citalopram",
+     "Escitalopram",
+     "Sertraline",
+     "Fluoxetine"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-097",
+    "library": "timed",
+    "system": "Psychiatry",
+    "title": "Selective serotonin reuptake inhibitors (SSRIs)",
+    "tiles": [
+     "Fluoxetine",
+     "Sertraline",
+     "Citalopram",
+     "Paroxetine"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"PSY-012 | bank-ext-097\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "PSY-015 | bank-ext-099",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"benzodiazepine oxidative phase i metabolism\" vs \"benzodiazepine\"; 3 of 4 tiles identical; tile wording 60% the same",
+   "a": {
+    "id": "PSY-015",
+    "library": "new",
+    "system": "Psychiatry",
+    "title": "Benzodiazepines with oxidative phase I metabolism",
+    "tiles": [
+     "Alprazolam",
+     "Midazolam",
+     "Diazepam",
+     "Chlordiazepoxide"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-099",
+    "library": "timed",
+    "system": "Psychiatry",
+    "title": "Benzodiazepines",
+    "tiles": [
+     "Diazepam",
+     "Lorazepam",
+     "Alprazolam",
+     "Midazolam"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"PSY-015 | bank-ext-099\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "PSY-019 | bank-ext-100",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"findings / associations of antipsychotic extrapyramidal movement disorder\" vs \"extrapyramidal symptom antipsychotic\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "PSY-019",
+    "library": "new",
+    "system": "Psychiatry",
+    "title": "Antipsychotic-associated extrapyramidal movement disorders",
+    "tiles": [
+     "Acute dystonia",
+     "Drug-induced parkinsonism",
+     "Akathisia",
+     "Tardive dyskinesia"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-100",
+    "library": "timed",
+    "system": "Psychiatry",
+    "title": "Extrapyramidal symptoms of antipsychotics",
+    "tiles": [
+     "Acute dystonia",
+     "Akathisia",
+     "Drug-induced parkinsonism",
+     "Tardive dyskinesia"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"PSY-019 | bank-ext-100\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "PSY-021 | bank-ext-063",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "both are \"findings / associations of lithium adverse effect\"; 3 of 4 tiles identical; tile wording 88% the same",
+   "a": {
+    "id": "PSY-021",
+    "library": "new",
+    "system": "Psychiatry",
+    "title": "Lithium-associated adverse effects",
+    "tiles": [
+     "Nephrogenic diabetes insipidus",
+     "Hypothyroidism",
+     "Tremor",
+     "Ebstein anomaly"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-063",
+    "library": "timed",
+    "system": "Psychiatry",
+    "title": "Adverse effects of lithium",
+    "tiles": [
+     "Nephrogenic diabetes insipidus",
+     "Hypothyroidism",
+     "Fine tremor",
+     "Ebstein anomaly"
+    ],
+    "status": "verified"
+   },
+   "decide": "no decision needed unless you disagree"
+  },
+  {
+   "key": "PSY-023 | bank-ext-030",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "both are \"findings / associations of neuroleptic malignant syndrome\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "PSY-023",
+    "library": "new",
+    "system": "Psychiatry",
+    "title": "Classic neuroleptic malignant syndrome findings",
+    "tiles": [
+     "Fever",
+     "Lead-pipe rigidity",
+     "Altered mental status",
+     "Autonomic instability"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-030",
+    "library": "timed",
+    "system": "Psychiatry",
+    "title": "Features of neuroleptic malignant syndrome",
+    "tiles": [
+     "Hyperthermia",
+     "Lead-pipe rigidity",
+     "Autonomic instability",
+     "Elevated creatine kinase"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"PSY-023 | bank-ext-030\": \"same\" (exclude timed entry at activation) or \"distinct\""
   }
  ],
  "boardReviews": [
@@ -2747,6 +2939,119 @@
     "PHARM-013 board instruction to check against the other groups: \"BOARD OVERLAP: sotalol also fits class III antiarrhythmics; its added K-channel activity does not negate its beta-blockade.\""
    ],
    "clear": "decisions.json → boards → \"pharmacology-starter-3\": \"cleared:13fca67e\""
+  },
+  {
+   "board": "psychiatry-starter-3",
+   "system": "Psychiatry",
+   "signature": "4e574bc8",
+   "connections": [
+    {
+     "id": "PSY-017",
+     "title": "Full mu-opioid agonist analgesics",
+     "difficulty": "easy",
+     "tiles": [
+      "Morphine",
+      "Fentanyl",
+      "Hydromorphone",
+      "Methadone"
+     ]
+    },
+    {
+     "id": "PSY-007",
+     "title": "Classic narcolepsy symptom tetrad",
+     "difficulty": "easy",
+     "tiles": [
+      "Excessive daytime sleepiness",
+      "Cataplexy",
+      "Sleep paralysis",
+      "Sleep-related hallucinations"
+     ]
+    },
+    {
+     "id": "PSY-025",
+     "title": "Non-drug delirium reorientation and sleep measures",
+     "difficulty": "easy",
+     "tiles": [
+      "Visible clocks",
+      "Visible calendars",
+      "Protected sleep time",
+      "Familiar visitors"
+     ]
+    },
+    {
+     "id": "PSY-022",
+     "title": "Serotonin syndrome-associated non-antidepressant drugs",
+     "difficulty": "medium",
+     "tiles": [
+      "Linezolid",
+      "Tramadol",
+      "Meperidine",
+      "MDMA"
+     ]
+    }
+   ],
+   "flags": [
+    "\"Meperidine\" and \"Tramadol\" (serotonin-syndrome group) are themselves opioids with mu-agonist activity, and \"Full mu-opioid agonist analgesics\" is on the same board; a player could reasonably place meperidine in the opioid group. (raised by Claude, 2026-10-08)"
+   ],
+   "clear": "decisions.json → boards → \"psychiatry-starter-3\": \"cleared:4e574bc8\""
+  },
+  {
+   "board": "psychiatry-starter-5",
+   "system": "Psychiatry",
+   "signature": "8478ca7e",
+   "connections": [
+    {
+     "id": "PSY-006",
+     "title": "Positive symptoms of schizophrenia",
+     "difficulty": "easy",
+     "tiles": [
+      "Delusions",
+      "Hallucinations",
+      "Disorganized speech",
+      "Disorganized behavior"
+     ]
+    },
+    {
+     "id": "PSY-012",
+     "title": "SSRIs inhibiting serotonin reuptake",
+     "difficulty": "easy",
+     "tiles": [
+      "Citalopram",
+      "Escitalopram",
+      "Sertraline",
+      "Fluoxetine"
+     ]
+    },
+    {
+     "id": "PSY-001",
+     "title": "Mature defense mechanisms",
+     "difficulty": "easy",
+     "tiles": [
+      "Suppression",
+      "Altruism",
+      "Sublimation",
+      "Humor"
+     ]
+    },
+    {
+     "id": "PSY-023",
+     "title": "Classic neuroleptic malignant syndrome findings",
+     "difficulty": "medium",
+     "tiles": [
+      "Fever",
+      "Lead-pipe rigidity",
+      "Altered mental status",
+      "Autonomic instability"
+     ]
+    }
+   ],
+   "flags": [
+    "PSY-006 board instruction to check against the other groups: \"Board overlap: schizoaffective, brief psychotic, schizophreniform, and substance-induced psychosis share these; do not present as diagnostic of schizophrenia.\"",
+    "PSY-012 board instruction to check against the other groups: \"Board caution: escitalopram is the S-enantiomer of citalopram, so the pair are near-duplicates and could be contested as distinct tiles; keep them on separate boards if possible.\"",
+    "PSY-001 board instruction to check against the other groups: \"Board caution: anticipation, affiliation, self-assertion are also mature defenses and make strong decoys.\"",
+    "PSY-023 board instruction to check against the other groups: \"Board overlap: fever, altered mental status, and autonomic instability also occur in serotonin syndrome—lead-pipe rigidity (vs clonus/hyperreflexia) is the differentiating tile.\""
+   ],
+   "clear": "decisions.json → boards → \"psychiatry-starter-5\": \"cleared:8478ca7e\""
   }
  ],
  "blockedBoards": [],

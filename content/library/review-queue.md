@@ -1,13 +1,13 @@
 # Plexus new library: pending review queue
 
-Generated 2026-10-08T21:00:34.262Z. Staging only; the library is not active and the live app is unchanged.
+Generated 2026-10-08T21:10:21.944Z. Staging only; the library is not active and the live app is unchanged.
 
 | Category | Open |
 |---|---|
 | Medical / source holds | 13 |
 | Duplicate decisions (new library) | 28 |
-| Timed-library overlaps | 32 to decide, 9 recorded |
-| Board ambiguity reviews | 6 |
+| Timed-library overlaps | 36 to decide, 11 recorded |
+| Board ambiguity reviews | 8 |
 | Blocked boards | 0 |
 | Difficulty calibration warnings | 1 |
 
@@ -1065,6 +1065,90 @@ possible repeat of a timed entry. Shared relationship: "findings / associations 
 
 Decide: decisions.json → pairs → "PHARM-009 | bank-migrated-sys-pharm-0002-L3": "same" (exclude timed entry at activation) or "distinct"
 
+### Positive symptoms of schizophrenia  /  Positive symptoms of schizophrenia
+same relationship as a timed entry (timed entry to be excluded at activation). Shared relationship: both are "positive symptom schizophrenia"; 4 of 4 tiles identical; tile wording 100% the same.
+
+| | PSY-006 (new, Psychiatry) | bank-ext-098 (timed, Psychiatry) |
+|---|---|---|
+| Title | Positive symptoms of schizophrenia | Positive symptoms of schizophrenia |
+| Tile 1 | Delusions | Hallucinations |
+| Tile 2 | Hallucinations | Delusions |
+| Tile 3 | Disorganized speech | Disorganized speech |
+| Tile 4 | Disorganized behavior | Disorganized behavior |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: no decision needed unless you disagree
+
+### SSRIs inhibiting serotonin reuptake  /  Selective serotonin reuptake inhibitors (SSRIs)
+possible repeat of a timed entry. Shared relationship: "ssris inhibiting serotonin reuptake" vs "selective serotonin reuptake inhibitor ssris"; 3 of 4 tiles identical; tile wording 60% the same.
+
+| | PSY-012 (new, Psychiatry) | bank-ext-097 (timed, Psychiatry) |
+|---|---|---|
+| Title | SSRIs inhibiting serotonin reuptake | Selective serotonin reuptake inhibitors (SSRIs) |
+| Tile 1 | Citalopram | Fluoxetine |
+| Tile 2 | Escitalopram | Sertraline |
+| Tile 3 | Sertraline | Citalopram |
+| Tile 4 | Fluoxetine | Paroxetine |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "PSY-012 | bank-ext-097": "same" (exclude timed entry at activation) or "distinct"
+
+### Benzodiazepines with oxidative phase I metabolism  /  Benzodiazepines
+possible repeat of a timed entry. Shared relationship: "benzodiazepine oxidative phase i metabolism" vs "benzodiazepine"; 3 of 4 tiles identical; tile wording 60% the same.
+
+| | PSY-015 (new, Psychiatry) | bank-ext-099 (timed, Psychiatry) |
+|---|---|---|
+| Title | Benzodiazepines with oxidative phase I metabolism | Benzodiazepines |
+| Tile 1 | Alprazolam | Diazepam |
+| Tile 2 | Midazolam | Lorazepam |
+| Tile 3 | Diazepam | Alprazolam |
+| Tile 4 | Chlordiazepoxide | Midazolam |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "PSY-015 | bank-ext-099": "same" (exclude timed entry at activation) or "distinct"
+
+### Antipsychotic-associated extrapyramidal movement disorders  /  Extrapyramidal symptoms of antipsychotics
+possible repeat of a timed entry. Shared relationship: "findings / associations of antipsychotic extrapyramidal movement disorder" vs "extrapyramidal symptom antipsychotic"; 4 of 4 tiles identical; tile wording 100% the same.
+
+| | PSY-019 (new, Psychiatry) | bank-ext-100 (timed, Psychiatry) |
+|---|---|---|
+| Title | Antipsychotic-associated extrapyramidal movement disorders | Extrapyramidal symptoms of antipsychotics |
+| Tile 1 | Acute dystonia | Acute dystonia |
+| Tile 2 | Drug-induced parkinsonism | Akathisia |
+| Tile 3 | Akathisia | Drug-induced parkinsonism |
+| Tile 4 | Tardive dyskinesia | Tardive dyskinesia |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "PSY-019 | bank-ext-100": "same" (exclude timed entry at activation) or "distinct"
+
+### Lithium-associated adverse effects  /  Adverse effects of lithium
+same relationship as a timed entry (timed entry to be excluded at activation). Shared relationship: both are "findings / associations of lithium adverse effect"; 3 of 4 tiles identical; tile wording 88% the same.
+
+| | PSY-021 (new, Psychiatry) | bank-ext-063 (timed, Psychiatry) |
+|---|---|---|
+| Title | Lithium-associated adverse effects | Adverse effects of lithium |
+| Tile 1 | Nephrogenic diabetes insipidus | Nephrogenic diabetes insipidus |
+| Tile 2 | Hypothyroidism | Hypothyroidism |
+| Tile 3 | Tremor | Fine tremor |
+| Tile 4 | Ebstein anomaly | Ebstein anomaly |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: no decision needed unless you disagree
+
+### Classic neuroleptic malignant syndrome findings  /  Features of neuroleptic malignant syndrome
+possible repeat of a timed entry. Shared relationship: both are "findings / associations of neuroleptic malignant syndrome"; 2 of 4 tiles identical.
+
+| | PSY-023 (new, Psychiatry) | bank-ext-030 (timed, Psychiatry) |
+|---|---|---|
+| Title | Classic neuroleptic malignant syndrome findings | Features of neuroleptic malignant syndrome |
+| Tile 1 | Fever | Hyperthermia |
+| Tile 2 | Lead-pipe rigidity | Lead-pipe rigidity |
+| Tile 3 | Altered mental status | Autonomic instability |
+| Tile 4 | Autonomic instability | Elevated creatine kinase |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "PSY-023 | bank-ext-030": "same" (exclude timed entry at activation) or "distinct"
+
 ## 4. Board ambiguity reviews
 ### biochemistry-genetics-starter-5 (Biochemistry/Genetics)
 - PLX-BCH-050 Classic alkaptonuria associations [easy]: Ochronosis · Black urine after standing · Elevated homogentisate · Arthritis
@@ -1118,6 +1202,25 @@ Decide: decisions.json → pairs → "PHARM-009 | bank-migrated-sys-pharm-0002-L
 - Flag: PHARM-005 board instruction to check against the other groups: "BOARD OVERLAP: beta-1/beta-2 also fit an adrenergic-receptor category."
 - Flag: PHARM-013 board instruction to check against the other groups: "BOARD OVERLAP: sotalol also fits class III antiarrhythmics; its added K-channel activity does not negate its beta-blockade."
 - Clear: decisions.json → boards → "pharmacology-starter-3": "cleared:13fca67e"
+
+### psychiatry-starter-3 (Psychiatry)
+- PSY-017 Full mu-opioid agonist analgesics [easy]: Morphine · Fentanyl · Hydromorphone · Methadone
+- PSY-007 Classic narcolepsy symptom tetrad [easy]: Excessive daytime sleepiness · Cataplexy · Sleep paralysis · Sleep-related hallucinations
+- PSY-025 Non-drug delirium reorientation and sleep measures [easy]: Visible clocks · Visible calendars · Protected sleep time · Familiar visitors
+- PSY-022 Serotonin syndrome-associated non-antidepressant drugs [medium]: Linezolid · Tramadol · Meperidine · MDMA
+- Flag: "Meperidine" and "Tramadol" (serotonin-syndrome group) are themselves opioids with mu-agonist activity, and "Full mu-opioid agonist analgesics" is on the same board; a player could reasonably place meperidine in the opioid group. (raised by Claude, 2026-10-08)
+- Clear: decisions.json → boards → "psychiatry-starter-3": "cleared:4e574bc8"
+
+### psychiatry-starter-5 (Psychiatry)
+- PSY-006 Positive symptoms of schizophrenia [easy]: Delusions · Hallucinations · Disorganized speech · Disorganized behavior
+- PSY-012 SSRIs inhibiting serotonin reuptake [easy]: Citalopram · Escitalopram · Sertraline · Fluoxetine
+- PSY-001 Mature defense mechanisms [easy]: Suppression · Altruism · Sublimation · Humor
+- PSY-023 Classic neuroleptic malignant syndrome findings [medium]: Fever · Lead-pipe rigidity · Altered mental status · Autonomic instability
+- Flag: PSY-006 board instruction to check against the other groups: "Board overlap: schizoaffective, brief psychotic, schizophreniform, and substance-induced psychosis share these; do not present as diagnostic of schizophrenia."
+- Flag: PSY-012 board instruction to check against the other groups: "Board caution: escitalopram is the S-enantiomer of citalopram, so the pair are near-duplicates and could be contested as distinct tiles; keep them on separate boards if possible."
+- Flag: PSY-001 board instruction to check against the other groups: "Board caution: anticipation, affiliation, self-assertion are also mature defenses and make strong decoys."
+- Flag: PSY-023 board instruction to check against the other groups: "Board overlap: fever, altered mental status, and autonomic instability also occur in serotonin syndrome—lead-pipe rigidity (vs clonus/hyperreflexia) is the differentiating tile."
+- Clear: decisions.json → boards → "psychiatry-starter-5": "cleared:8478ca7e"
 
 ## 5. Blocked boards
 None.

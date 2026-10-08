@@ -46126,6 +46126,1736 @@
    "pool": "systemsStarter",
    "starterBoard": "pharmacology-starter-1",
    "placementNote": null
+  },
+  "PSY-001": {
+   "id": "PSY-001",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-001",
+     "Connection Title": "Mature defense mechanisms",
+     "Tile 1": "Suppression",
+     "Tile 2": "Altruism",
+     "Tile 3": "Sublimation",
+     "Tile 4": "Humor",
+     "Connection Type": "Psychological classification",
+     "Explanation": "These mature (high-adaptive) ego defenses manage uncomfortable impulses or emotions adaptively; suppression is deliberate postponement and sublimation channels impulses into constructive activity.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Behavioral Science",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Adaptive ego defenses; High-adaptive defenses; Mature defenses",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychology / Mature Ego Defenses; PDF p. 9",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are canonical high-adaptive defenses (Vaillant, Am Psychol 2000, PMID 11392869; Metzger, J Clin Psychol 2014). Board caution: anticipation, affiliation, self-assertion are also mature defenses and make strong decoys."
+    },
+    "title": "Mature defense mechanisms",
+    "connectionType": "Psychological classification",
+    "explanation": "These mature (high-adaptive) ego defenses manage uncomfortable impulses or emotions adaptively; suppression is deliberate postponement and sublimation channels impulses into constructive activity.",
+    "organSystems": "Psychiatry",
+    "discipline": "Behavioral Science",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Adaptive ego defenses",
+     "High-adaptive defenses",
+     "Mature defenses"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychology / Mature Ego Defenses; PDF p. 9",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are canonical high-adaptive defenses (Vaillant, Am Psychol 2000, PMID 11392869; Metzger, J Clin Psychol 2014). Board caution: anticipation, affiliation, self-assertion are also mature defenses and make strong decoys.",
+    "tiles": [
+     "Suppression",
+     "Altruism",
+     "Sublimation",
+     "Humor"
+    ]
+   },
+   "contentHash": "0b9549be5346de77d5d89db68c038f48a5c72e35fec058aeca62e2192aefd038",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 2,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-5",
+   "placementNote": null
+  },
+  "PSY-002": {
+   "id": "PSY-002",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-002",
+     "Connection Title": "Operant conditioning consequences",
+     "Tile 1": "Positive reinforcement",
+     "Tile 2": "Negative reinforcement",
+     "Tile 3": "Positive punishment",
+     "Tile 4": "Negative punishment",
+     "Connection Type": "Learning framework",
+     "Explanation": "Reinforcement increases behavior and punishment decreases it; positive means adding a stimulus and negative means removing one, forming the 2x2 operant contingency grid.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Behavioral Science",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Four operant conditioning contingencies; Operant contingency grid",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychology / Operant Conditioning; PDF p. 4",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Standard Skinnerian learning theory; these four are mutually exclusive and exhaustive. No primary trial reference needed or retrieved; foundational behavioral-science content."
+    },
+    "title": "Operant conditioning consequences",
+    "connectionType": "Learning framework",
+    "explanation": "Reinforcement increases behavior and punishment decreases it; positive means adding a stimulus and negative means removing one, forming the 2x2 operant contingency grid.",
+    "organSystems": "Psychiatry",
+    "discipline": "Behavioral Science",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Four operant conditioning contingencies",
+     "Operant contingency grid"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychology / Operant Conditioning; PDF p. 4",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Standard Skinnerian learning theory; these four are mutually exclusive and exhaustive. No primary trial reference needed or retrieved; foundational behavioral-science content.",
+    "tiles": [
+     "Positive reinforcement",
+     "Negative reinforcement",
+     "Positive punishment",
+     "Negative punishment"
+    ]
+   },
+   "contentHash": "f16452037edb905b02dbfa9bf8a0e85e2ac89ba99c7a86ffc1055bcd57f78920",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 3,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-1",
+   "placementNote": null
+  },
+  "PSY-003": {
+   "id": "PSY-003",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-003",
+     "Connection Title": "Cluster B personality disorders",
+     "Tile 1": "Antisocial personality disorder",
+     "Tile 2": "Borderline personality disorder",
+     "Tile 3": "Histrionic personality disorder",
+     "Tile 4": "Narcissistic personality disorder",
+     "Connection Type": "Diagnostic classification",
+     "Explanation": "These four diagnoses constitute DSM-5-TR Cluster B, grouped by dramatic, emotional, or erratic traits.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Psychiatry",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Dramatic-emotional personality cluster; DSM Cluster B",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Personality Disorders / Cluster B; PDF p. 33",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Exact DSM-5-TR Cluster B membership (American Psychiatric Association, DSM-5-TR, 2022). Clear and complete; no competing category."
+    },
+    "title": "Cluster B personality disorders",
+    "connectionType": "Diagnostic classification",
+    "explanation": "These four diagnoses constitute DSM-5-TR Cluster B, grouped by dramatic, emotional, or erratic traits.",
+    "organSystems": "Psychiatry",
+    "discipline": "Psychiatry",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Dramatic-emotional personality cluster",
+     "DSM Cluster B"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Personality Disorders / Cluster B; PDF p. 33",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Exact DSM-5-TR Cluster B membership (American Psychiatric Association, DSM-5-TR, 2022). Clear and complete; no competing category.",
+    "tiles": [
+     "Antisocial personality disorder",
+     "Borderline personality disorder",
+     "Histrionic personality disorder",
+     "Narcissistic personality disorder"
+    ]
+   },
+   "contentHash": "42d05635ec8d5c5ee75b8ba97beea2b16227f04a96c7d654b0c968c729acddd4",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 4,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-2",
+   "placementNote": null
+  },
+  "PSY-004": {
+   "id": "PSY-004",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-004",
+     "Connection Title": "Core PTSD symptom domains",
+     "Tile 1": "Intrusive re-experiencing",
+     "Tile 2": "Trauma-cue avoidance",
+     "Tile 3": "Negative mood and cognition",
+     "Tile 4": "Hyperarousal",
+     "Connection Type": "Diagnostic symptom domains",
+     "Explanation": "DSM-5 PTSD comprises four symptom clusters after qualifying trauma: intrusion/re-experiencing, avoidance, negative alterations in cognition and mood, and altered arousal/reactivity.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Psychiatry",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "PTSD symptom clusters; DSM-5 PTSD criteria B-E",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Anxiety, Trauma, and Stress Disorders / Trauma Disorders; PDF p. 28",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Four-cluster model confirmed (Ressler et al., Nat Rev Neurol 2022; Williams et al., Cochrane 2026; Brewin et al., World Psychiatry 2025). Board overlap: acute stress disorder shares symptoms but is <1 month; ICD-11 uses a 3-cluster model."
+    },
+    "title": "Core PTSD symptom domains",
+    "connectionType": "Diagnostic symptom domains",
+    "explanation": "DSM-5 PTSD comprises four symptom clusters after qualifying trauma: intrusion/re-experiencing, avoidance, negative alterations in cognition and mood, and altered arousal/reactivity.",
+    "organSystems": "Psychiatry",
+    "discipline": "Psychiatry",
+    "difficulty": "easy",
+    "alternateNames": [
+     "PTSD symptom clusters",
+     "DSM-5 PTSD criteria B-E"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Anxiety, Trauma, and Stress Disorders / Trauma Disorders; PDF p. 28",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Four-cluster model confirmed (Ressler et al., Nat Rev Neurol 2022; Williams et al., Cochrane 2026; Brewin et al., World Psychiatry 2025). Board overlap: acute stress disorder shares symptoms but is <1 month; ICD-11 uses a 3-cluster model.",
+    "tiles": [
+     "Intrusive re-experiencing",
+     "Trauma-cue avoidance",
+     "Negative mood and cognition",
+     "Hyperarousal"
+    ]
+   },
+   "contentHash": "e5ba717516abe2bbc85bc7038369968ff6426d1725904dfe849639db7028a22c",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 5,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PSY-005": {
+   "id": "PSY-005",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-005",
+     "Connection Title": "Features of depression with atypical features",
+     "Tile 1": "Mood reactivity",
+     "Tile 2": "Increased appetite",
+     "Tile 3": "Hypersomnia",
+     "Tile 4": "Leaden paralysis",
+     "Connection Type": "Classic disease findings",
+     "Explanation": "Atypical-features specifier requires mood reactivity plus two or more of increased appetite/weight, hypersomnia, leaden paralysis, or rejection sensitivity; these four need not all be present.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Psychiatry",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Atypical depressive features; Reversed vegetative symptoms",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychotic and Mood Disorders / Depression Subtypes; PDF p. 38",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Confirmed (APA DSM-5-TR 2022; Zahra et al., Clin Psychol Psychother 2025; Otte et al., Nat Rev Dis Primers 2016). Mood reactivity is the required gateway feature; interpersonal rejection sensitivity is a fifth feature and strong decoy. Not a complete diagnostic checklist."
+    },
+    "title": "Features of depression with atypical features",
+    "connectionType": "Classic disease findings",
+    "explanation": "Atypical-features specifier requires mood reactivity plus two or more of increased appetite/weight, hypersomnia, leaden paralysis, or rejection sensitivity; these four need not all be present.",
+    "organSystems": "Psychiatry",
+    "discipline": "Psychiatry",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Atypical depressive features",
+     "Reversed vegetative symptoms"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychotic and Mood Disorders / Depression Subtypes; PDF p. 38",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Confirmed (APA DSM-5-TR 2022; Zahra et al., Clin Psychol Psychother 2025; Otte et al., Nat Rev Dis Primers 2016). Mood reactivity is the required gateway feature; interpersonal rejection sensitivity is a fifth feature and strong decoy. Not a complete diagnostic checklist.",
+    "tiles": [
+     "Mood reactivity",
+     "Increased appetite",
+     "Hypersomnia",
+     "Leaden paralysis"
+    ]
+   },
+   "contentHash": "96b95522cd05a1a44079285370ad76058ed86a07ead4fc6532e9625e921dd09e",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 6,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-4",
+   "placementNote": null
+  },
+  "PSY-006": {
+   "id": "PSY-006",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-006",
+     "Connection Title": "Positive symptoms of schizophrenia",
+     "Tile 1": "Delusions",
+     "Tile 2": "Hallucinations",
+     "Tile 3": "Disorganized speech",
+     "Tile 4": "Disorganized behavior",
+     "Connection Type": "Classic disease findings",
+     "Explanation": "These positive symptoms reflect added disturbances of belief, perception, speech, or behavior and are not specific to schizophrenia.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Psychiatry",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Positive psychotic symptoms",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychotic and Mood Disorders / Schizophrenia; PDF p. 41",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "DSM-5 positive symptoms (Marder & Cannon, NEJM 2019). Board overlap: schizoaffective, brief psychotic, schizophreniform, and substance-induced psychosis share these; do not present as diagnostic of schizophrenia."
+    },
+    "title": "Positive symptoms of schizophrenia",
+    "connectionType": "Classic disease findings",
+    "explanation": "These positive symptoms reflect added disturbances of belief, perception, speech, or behavior and are not specific to schizophrenia.",
+    "organSystems": "Psychiatry",
+    "discipline": "Psychiatry",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Positive psychotic symptoms"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychotic and Mood Disorders / Schizophrenia; PDF p. 41",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "DSM-5 positive symptoms (Marder & Cannon, NEJM 2019). Board overlap: schizoaffective, brief psychotic, schizophreniform, and substance-induced psychosis share these; do not present as diagnostic of schizophrenia.",
+    "tiles": [
+     "Delusions",
+     "Hallucinations",
+     "Disorganized speech",
+     "Disorganized behavior"
+    ]
+   },
+   "contentHash": "9bc70f146c7932922a2125d09475683728041c33a003dfab392e532aaaa64605",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 7,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [
+    {
+     "id": "bank-ext-098",
+     "title": "Positive symptoms of schizophrenia",
+     "shared": 4
+    }
+   ],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-5",
+   "placementNote": null
+  },
+  "PSY-007": {
+   "id": "PSY-007",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-007",
+     "Connection Title": "Classic narcolepsy symptom tetrad",
+     "Tile 1": "Excessive daytime sleepiness",
+     "Tile 2": "Cataplexy",
+     "Tile 3": "Sleep paralysis",
+     "Tile 4": "Sleep-related hallucinations",
+     "Connection Type": "Classic disease findings",
+     "Explanation": "Narcolepsy can combine excessive daytime sleepiness with REM-intrusion phenomena: cataplexy, sleep paralysis, and hypnagogic/hypnopompic hallucinations.",
+     "Organ System": "Psychiatry; Neurology",
+     "Discipline": "Psychiatry",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Narcolepsy tetrad; REM-intrusion phenomena",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Sleep and Psychosomatic Conditions / Sleep Disorders; PDF p. 50",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Tetrad confirmed (Maski & Scammell, JAMA 2026; Sum-Ping & Mignot, JAMA 2023; Dauvilliers et al., Nat Rev Neurol 2014). Qualifier: cataplexy defines narcolepsy type 1 and is absent in type 2; the complete tetrad occurs in a minority."
+    },
+    "title": "Classic narcolepsy symptom tetrad",
+    "connectionType": "Classic disease findings",
+    "explanation": "Narcolepsy can combine excessive daytime sleepiness with REM-intrusion phenomena: cataplexy, sleep paralysis, and hypnagogic/hypnopompic hallucinations.",
+    "organSystems": "Psychiatry; Neurology",
+    "discipline": "Psychiatry",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Narcolepsy tetrad",
+     "REM-intrusion phenomena"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Sleep and Psychosomatic Conditions / Sleep Disorders; PDF p. 50",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Tetrad confirmed (Maski & Scammell, JAMA 2026; Sum-Ping & Mignot, JAMA 2023; Dauvilliers et al., Nat Rev Neurol 2014). Qualifier: cataplexy defines narcolepsy type 1 and is absent in type 2; the complete tetrad occurs in a minority.",
+    "tiles": [
+     "Excessive daytime sleepiness",
+     "Cataplexy",
+     "Sleep paralysis",
+     "Sleep-related hallucinations"
+    ]
+   },
+   "contentHash": "729b9976c516157b697acb5192a9fbc00f0630065b4d02f73cdbb9bd48651b10",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 8,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-3",
+   "placementNote": null
+  },
+  "PSY-008": {
+   "id": "PSY-008",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-008",
+     "Connection Title": "Effects of recurrent self-induced vomiting",
+     "Tile 1": "Dental enamel erosion",
+     "Tile 2": "Parotid enlargement",
+     "Tile 3": "Dorsal hand calluses (Russell sign)",
+     "Tile 4": "Hypokalemic metabolic alkalosis",
+     "Connection Type": "Behavior-related complications",
+     "Explanation": "Recurrent self-induced vomiting can erode dental enamel, enlarge salivary (parotid) glands, produce knuckle calluses (Russell sign), and cause potassium loss with metabolic alkalosis.",
+     "Organ System": "Psychiatry; Gastrointestinal; Renal",
+     "Discipline": "Psychiatry",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Vomiting-associated bulimia findings; Purging-vomiting complications",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Anxiety, Trauma, and Stress Disorders / Eating Disorders; PDF p. 29",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Confirmed (Attia & Walsh, JAMA 2025; APA DSM-5-TR 2022; Hornberger & Lane, AAP 2021). Findings reflect vomiting specifically (not all purging) and can also occur with vomiting in anorexia binge-purge subtype; calluses are not universal."
+    },
+    "title": "Effects of recurrent self-induced vomiting",
+    "connectionType": "Behavior-related complications",
+    "explanation": "Recurrent self-induced vomiting can erode dental enamel, enlarge salivary (parotid) glands, produce knuckle calluses (Russell sign), and cause potassium loss with metabolic alkalosis.",
+    "organSystems": "Psychiatry; Gastrointestinal; Renal",
+    "discipline": "Psychiatry",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Vomiting-associated bulimia findings",
+     "Purging-vomiting complications"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Anxiety, Trauma, and Stress Disorders / Eating Disorders; PDF p. 29",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Confirmed (Attia & Walsh, JAMA 2025; APA DSM-5-TR 2022; Hornberger & Lane, AAP 2021). Findings reflect vomiting specifically (not all purging) and can also occur with vomiting in anorexia binge-purge subtype; calluses are not universal.",
+    "tiles": [
+     "Dental enamel erosion",
+     "Parotid enlargement",
+     "Dorsal hand calluses (Russell sign)",
+     "Hypokalemic metabolic alkalosis"
+    ]
+   },
+   "contentHash": "b174dcd87c7caac80c235158bc79ed2d60ea9ca7420befdea9d4f983a579e3f7",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 9,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-4",
+   "placementNote": null
+  },
+  "PSY-009": {
+   "id": "PSY-009",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-009",
+     "Connection Title": "Clinical clues to anorexia-related undernutrition",
+     "Tile 1": "Lanugo",
+     "Tile 2": "Amenorrhea",
+     "Tile 3": "Osteoporosis",
+     "Tile 4": "Nutritional deficiencies",
+     "Connection Type": "Classic disease complications",
+     "Explanation": "Prolonged undernutrition in anorexia can produce fine lanugo hair, reproductive suppression (amenorrhea), reduced bone density, and nutrient deficits; these are complications, not mandatory criteria.",
+     "Organ System": "Psychiatry; Endocrine; Musculoskeletal",
+     "Discipline": "Psychiatry",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Undernutrition complications in anorexia",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Anxiety, Trauma, and Stress Disorders / Eating Disorders; PDF p. 29",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Lanugo, amenorrhea, osteoporosis confirmed (Hornberger & Lane, AAP 2021). Board caution: 'Nutritional deficiencies' is a broad category rather than a discrete sign and overlaps other causes of severe undernutrition. Amenorrhea is no longer a required DSM-5 criterion."
+    },
+    "title": "Clinical clues to anorexia-related undernutrition",
+    "connectionType": "Classic disease complications",
+    "explanation": "Prolonged undernutrition in anorexia can produce fine lanugo hair, reproductive suppression (amenorrhea), reduced bone density, and nutrient deficits; these are complications, not mandatory criteria.",
+    "organSystems": "Psychiatry; Endocrine; Musculoskeletal",
+    "discipline": "Psychiatry",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Undernutrition complications in anorexia"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Anxiety, Trauma, and Stress Disorders / Eating Disorders; PDF p. 29",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Lanugo, amenorrhea, osteoporosis confirmed (Hornberger & Lane, AAP 2021). Board caution: 'Nutritional deficiencies' is a broad category rather than a discrete sign and overlaps other causes of severe undernutrition. Amenorrhea is no longer a required DSM-5 criterion.",
+    "tiles": [
+     "Lanugo",
+     "Amenorrhea",
+     "Osteoporosis",
+     "Nutritional deficiencies"
+    ]
+   },
+   "contentHash": "befbed69595159117249c94494fb38b4c1af309e58755a7d13a83186496878af",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 10,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PSY-010": {
+   "id": "PSY-010",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-010",
+     "Connection Title": "Classic opioid withdrawal findings",
+     "Tile 1": "Yawning",
+     "Tile 2": "Lacrimation",
+     "Tile 3": "Rhinorrhea",
+     "Tile 4": "Diarrhea",
+     "Connection Type": "Withdrawal syndrome",
+     "Explanation": "Opioid withdrawal commonly produces yawning and increased lacrimal, nasal, and gastrointestinal activity; the combination favors withdrawal over intoxication.",
+     "Organ System": "Psychiatry; Neurology",
+     "Discipline": "Psychiatry",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Opioid abstinence findings",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Substance Misuse / Opioids; PDF p. 59",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "DSM-5 opioid withdrawal signs (APA DSM-5-TR 2022; Volkow & Blanco, Mol Psychiatry 2021; Gowing et al., Cochrane 2017). Selected set; each sign alone is nonspecific and not the complete syndrome."
+    },
+    "title": "Classic opioid withdrawal findings",
+    "connectionType": "Withdrawal syndrome",
+    "explanation": "Opioid withdrawal commonly produces yawning and increased lacrimal, nasal, and gastrointestinal activity; the combination favors withdrawal over intoxication.",
+    "organSystems": "Psychiatry; Neurology",
+    "discipline": "Psychiatry",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Opioid abstinence findings"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Substance Misuse / Opioids; PDF p. 59",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "DSM-5 opioid withdrawal signs (APA DSM-5-TR 2022; Volkow & Blanco, Mol Psychiatry 2021; Gowing et al., Cochrane 2017). Selected set; each sign alone is nonspecific and not the complete syndrome.",
+    "tiles": [
+     "Yawning",
+     "Lacrimation",
+     "Rhinorrhea",
+     "Diarrhea"
+    ]
+   },
+   "contentHash": "cb081f3ed54ed403400efb5c1c937a36c83fb498515c55da7da6610a699ad78b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 11,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-4",
+   "placementNote": null
+  },
+  "PSY-012": {
+   "id": "PSY-012",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-012",
+     "Connection Title": "SSRIs inhibiting serotonin reuptake",
+     "Tile 1": "Citalopram",
+     "Tile 2": "Escitalopram",
+     "Tile 3": "Sertraline",
+     "Tile 4": "Fluoxetine",
+     "Connection Type": "Shared drug mechanism",
+     "Explanation": "These selective serotonin reuptake inhibitors raise synaptic serotonin by inhibiting the serotonin transporter.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Selective serotonin reuptake inhibitors",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychiatric Pharmacology / SSRIs; PDF p. 74",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Class confirmed (AAP serotonin-syndrome table, Chun et al. 2016, lists citalopram/fluoxetine/sertraline as SSRIs). Board caution: escitalopram is the S-enantiomer of citalopram, so the pair are near-duplicates and could be contested as distinct tiles; keep them on separate boards if possible. Not an exhaustive class (paroxetine, fluvoxamine omitted)."
+    },
+    "title": "SSRIs inhibiting serotonin reuptake",
+    "connectionType": "Shared drug mechanism",
+    "explanation": "These selective serotonin reuptake inhibitors raise synaptic serotonin by inhibiting the serotonin transporter.",
+    "organSystems": "Psychiatry",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Selective serotonin reuptake inhibitors"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychiatric Pharmacology / SSRIs; PDF p. 74",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Class confirmed (AAP serotonin-syndrome table, Chun et al. 2016, lists citalopram/fluoxetine/sertraline as SSRIs). Board caution: escitalopram is the S-enantiomer of citalopram, so the pair are near-duplicates and could be contested as distinct tiles; keep them on separate boards if possible. Not an exhaustive class (paroxetine, fluvoxamine omitted).",
+    "tiles": [
+     "Citalopram",
+     "Escitalopram",
+     "Sertraline",
+     "Fluoxetine"
+    ]
+   },
+   "contentHash": "37d0bc32ee63c7257d78e786c4cd2dbc0a30e89e4a602448da38fd48aba31602",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 12,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-097",
+     "title": "Selective serotonin reuptake inhibitors (SSRIs)",
+     "shared": 3,
+     "titleSim": 0.5
+    }
+   ],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-5",
+   "placementNote": null
+  },
+  "PSY-013": {
+   "id": "PSY-013",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-013",
+     "Connection Title": "SNRIs inhibiting serotonin and norepinephrine reuptake",
+     "Tile 1": "Venlafaxine",
+     "Tile 2": "Desvenlafaxine",
+     "Tile 3": "Duloxetine",
+     "Tile 4": "Levomilnacipran",
+     "Connection Type": "Shared drug mechanism",
+     "Explanation": "These serotonin-norepinephrine reuptake inhibitors block both serotonin and norepinephrine transporters, with differing relative potencies across drugs and doses.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Serotonin-norepinephrine reuptake inhibitors",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychiatric Pharmacology / SNRIs; PDF p. 75",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are SNRIs; levomilnacipran (Fetzima) is the most noradrenergic. Source PDF heading mislabels SNRI as 'selective norepinephrine reuptake inhibitor'; the correct expansion is serotonin-norepinephrine reuptake inhibitor (connection content is correct as written). Milnacipran omitted from the class list."
+    },
+    "title": "SNRIs inhibiting serotonin and norepinephrine reuptake",
+    "connectionType": "Shared drug mechanism",
+    "explanation": "These serotonin-norepinephrine reuptake inhibitors block both serotonin and norepinephrine transporters, with differing relative potencies across drugs and doses.",
+    "organSystems": "Psychiatry",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Serotonin-norepinephrine reuptake inhibitors"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychiatric Pharmacology / SNRIs; PDF p. 75",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are SNRIs; levomilnacipran (Fetzima) is the most noradrenergic. Source PDF heading mislabels SNRI as 'selective norepinephrine reuptake inhibitor'; the correct expansion is serotonin-norepinephrine reuptake inhibitor (connection content is correct as written). Milnacipran omitted from the class list.",
+    "tiles": [
+     "Venlafaxine",
+     "Desvenlafaxine",
+     "Duloxetine",
+     "Levomilnacipran"
+    ]
+   },
+   "contentHash": "6b81c4d4dfa127b57ab65e22304e6faf01a33fbdf76f3056b67e9ae738528f43",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 13,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-2",
+   "placementNote": null
+  },
+  "PSY-014": {
+   "id": "PSY-014",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-014",
+     "Connection Title": "Tricyclic antidepressants",
+     "Tile 1": "Amitriptyline",
+     "Tile 2": "Nortriptyline",
+     "Tile 3": "Imipramine",
+     "Tile 4": "Clomipramine",
+     "Connection Type": "Drug classification",
+     "Explanation": "These TCAs act via monoamine reuptake inhibition and have clinically important receptor-blocking (anticholinergic, antihistaminic, alpha-adrenergic) effects; relative serotonin vs norepinephrine effects differ.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "TCAs; Tricyclic antidepressants",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychiatric Pharmacology / Tricyclic Antidepressants; PDF p. 76",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Class membership confirmed (AAP serotonin table lists amitriptyline, clomipramine, nortriptyline as TCAs; imipramine is prototypical). Do not convert source arrhythmia/sodium-bicarbonate wording into a dosing/treatment rule without independent review."
+    },
+    "title": "Tricyclic antidepressants",
+    "connectionType": "Drug classification",
+    "explanation": "These TCAs act via monoamine reuptake inhibition and have clinically important receptor-blocking (anticholinergic, antihistaminic, alpha-adrenergic) effects; relative serotonin vs norepinephrine effects differ.",
+    "organSystems": "Psychiatry",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "TCAs",
+     "Tricyclic antidepressants"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychiatric Pharmacology / Tricyclic Antidepressants; PDF p. 76",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Class membership confirmed (AAP serotonin table lists amitriptyline, clomipramine, nortriptyline as TCAs; imipramine is prototypical). Do not convert source arrhythmia/sodium-bicarbonate wording into a dosing/treatment rule without independent review.",
+    "tiles": [
+     "Amitriptyline",
+     "Nortriptyline",
+     "Imipramine",
+     "Clomipramine"
+    ]
+   },
+   "contentHash": "82c04a0694ba1ef89bd880951b282b5c029575c4f682fd06e82e4a54b1600b47",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 14,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-4",
+   "placementNote": null
+  },
+  "PSY-015": {
+   "id": "PSY-015",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-015",
+     "Connection Title": "Benzodiazepines with oxidative phase I metabolism",
+     "Tile 1": "Alprazolam",
+     "Tile 2": "Midazolam",
+     "Tile 3": "Diazepam",
+     "Tile 4": "Chlordiazepoxide",
+     "Connection Type": "Shared drug metabolism",
+     "Explanation": "These benzodiazepines undergo oxidative (CYP450 phase I) metabolism before conjugation, distinguishing them from the lorazepam-oxazepam-temazepam group that is cleared by glucuronidation alone.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Oxidatively metabolized benzodiazepines",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Substance Misuse / Benzodiazepines; PDF p. 61",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Confirmed: alprazolam/midazolam/diazepam/chlordiazepoxide are CYP3A4/2C19 substrates while lorazepam/oxazepam/temazepam use UGT glucuronidation only (Smolders et al., Clin Pharmacokinet 2016; Gronich, Drugs Aging 2024; Prince et al., Drugs 2023). Do not imply identical half-lives or metabolite profiles."
+    },
+    "title": "Benzodiazepines with oxidative phase I metabolism",
+    "connectionType": "Shared drug metabolism",
+    "explanation": "These benzodiazepines undergo oxidative (CYP450 phase I) metabolism before conjugation, distinguishing them from the lorazepam-oxazepam-temazepam group that is cleared by glucuronidation alone.",
+    "organSystems": "Psychiatry",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Oxidatively metabolized benzodiazepines"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Substance Misuse / Benzodiazepines; PDF p. 61",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Confirmed: alprazolam/midazolam/diazepam/chlordiazepoxide are CYP3A4/2C19 substrates while lorazepam/oxazepam/temazepam use UGT glucuronidation only (Smolders et al., Clin Pharmacokinet 2016; Gronich, Drugs Aging 2024; Prince et al., Drugs 2023). Do not imply identical half-lives or metabolite profiles.",
+    "tiles": [
+     "Alprazolam",
+     "Midazolam",
+     "Diazepam",
+     "Chlordiazepoxide"
+    ]
+   },
+   "contentHash": "03eb4ab0f29018ee092132d397326456ec671026895896d7438366c24fc68d41",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 15,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-099",
+     "title": "Benzodiazepines",
+     "shared": 3,
+     "titleSim": 0.2
+    }
+   ],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-2",
+   "placementNote": null
+  },
+  "PSY-016": {
+   "id": "PSY-016",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-016",
+     "Connection Title": "Barbiturates prolonging GABA-A channel opening",
+     "Tile 1": "Phenobarbital",
+     "Tile 2": "Thiopental",
+     "Tile 3": "Pentobarbital",
+     "Tile 4": "Secobarbital",
+     "Connection Type": "Shared drug mechanism",
+     "Explanation": "These barbiturates enhance GABA-A-mediated inhibition, classically by increasing the duration of chloride-channel opening (contrast with benzodiazepines, which increase opening frequency).",
+     "Organ System": "Psychiatry",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Barbiturate GABA-A modulators",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Substance Misuse / Barbiturates; PDF p. 62",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are barbiturates; duration-vs-frequency mechanism is standard pharmacology (no primary trial reference retrieved). Clinical uses differ (phenobarbital anticonvulsant, thiopental/pentobarbital anesthetic-sedative); do not imply interchangeable indications. Selected four of a larger class."
+    },
+    "title": "Barbiturates prolonging GABA-A channel opening",
+    "connectionType": "Shared drug mechanism",
+    "explanation": "These barbiturates enhance GABA-A-mediated inhibition, classically by increasing the duration of chloride-channel opening (contrast with benzodiazepines, which increase opening frequency).",
+    "organSystems": "Psychiatry",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Barbiturate GABA-A modulators"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Substance Misuse / Barbiturates; PDF p. 62",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are barbiturates; duration-vs-frequency mechanism is standard pharmacology (no primary trial reference retrieved). Clinical uses differ (phenobarbital anticonvulsant, thiopental/pentobarbital anesthetic-sedative); do not imply interchangeable indications. Selected four of a larger class.",
+    "tiles": [
+     "Phenobarbital",
+     "Thiopental",
+     "Pentobarbital",
+     "Secobarbital"
+    ]
+   },
+   "contentHash": "46ad44459290cfc02540f0ceb64a26e379d52a57ff9cf0f0160a8d0a086e7862",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 16,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-1",
+   "placementNote": null
+  },
+  "PSY-017": {
+   "id": "PSY-017",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-017",
+     "Connection Title": "Full mu-opioid agonist analgesics",
+     "Tile 1": "Morphine",
+     "Tile 2": "Fentanyl",
+     "Tile 3": "Hydromorphone",
+     "Tile 4": "Methadone",
+     "Connection Type": "Shared drug mechanism",
+     "Explanation": "These analgesics exert clinically important full agonist activity at the mu-opioid receptor.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Full mu-receptor agonists",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Substance Misuse / Opioid Classification; PDF p. 60",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Confirmed as full mu agonists (Roberts et al., Nat Rev Dis Primers 2026 toxidrome table; Harris et al., JAMA 2026). Do not imply identical kinetics/safety; methadone adds NMDA antagonism and QT prolongation. Distinguish from partial agonist (buprenorphine) and antagonists."
+    },
+    "title": "Full mu-opioid agonist analgesics",
+    "connectionType": "Shared drug mechanism",
+    "explanation": "These analgesics exert clinically important full agonist activity at the mu-opioid receptor.",
+    "organSystems": "Psychiatry",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Full mu-receptor agonists"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Substance Misuse / Opioid Classification; PDF p. 60",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Confirmed as full mu agonists (Roberts et al., Nat Rev Dis Primers 2026 toxidrome table; Harris et al., JAMA 2026). Do not imply identical kinetics/safety; methadone adds NMDA antagonism and QT prolongation. Distinguish from partial agonist (buprenorphine) and antagonists.",
+    "tiles": [
+     "Morphine",
+     "Fentanyl",
+     "Hydromorphone",
+     "Methadone"
+    ]
+   },
+   "contentHash": "529ca79ff52edaaa9cd6d13e2c65ee1e4c9bf4f0ce8401ca926a028d6f7270b2",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 17,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-3",
+   "placementNote": null
+  },
+  "PSY-018": {
+   "id": "PSY-018",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-018",
+     "Connection Title": "High-potency first-generation antipsychotics",
+     "Tile 1": "Haloperidol",
+     "Tile 2": "Fluphenazine",
+     "Tile 3": "Trifluoperazine",
+     "Tile 4": "Pimozide",
+     "Connection Type": "Drug subclass",
+     "Explanation": "These are high-potency first-generation (typical) antipsychotics with strong D2 blockade and correspondingly high extrapyramidal-symptom risk.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "High-potency typical antipsychotics",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychiatric Pharmacology / Typical Antipsychotics; PDF p. 86",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Membership and high EPS risk are standard. Reject the source claim that D2 blockade 'augments dopamine signaling' or that 'dopamine antagonizes prolactin receptors'—D2 blockade reduces dopamine signaling and raises prolactin by disinhibition. Shared high EPS risk is a board-overlap consideration."
+    },
+    "title": "High-potency first-generation antipsychotics",
+    "connectionType": "Drug subclass",
+    "explanation": "These are high-potency first-generation (typical) antipsychotics with strong D2 blockade and correspondingly high extrapyramidal-symptom risk.",
+    "organSystems": "Psychiatry",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "High-potency typical antipsychotics"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychiatric Pharmacology / Typical Antipsychotics; PDF p. 86",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Membership and high EPS risk are standard. Reject the source claim that D2 blockade 'augments dopamine signaling' or that 'dopamine antagonizes prolactin receptors'—D2 blockade reduces dopamine signaling and raises prolactin by disinhibition. Shared high EPS risk is a board-overlap consideration.",
+    "tiles": [
+     "Haloperidol",
+     "Fluphenazine",
+     "Trifluoperazine",
+     "Pimozide"
+    ]
+   },
+   "contentHash": "d0535dc4f95b2fc49d8198d0095cbba19b9f46ae4742789d15b39c233af02379",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 18,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PSY-019": {
+   "id": "PSY-019",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-019",
+     "Connection Title": "Antipsychotic-associated extrapyramidal movement disorders",
+     "Tile 1": "Acute dystonia",
+     "Tile 2": "Drug-induced parkinsonism",
+     "Tile 3": "Akathisia",
+     "Tile 4": "Tardive dyskinesia",
+     "Connection Type": "Shared medication adverse effect",
+     "Explanation": "These four movement disorders occur with dopamine-receptor-blocking antipsychotics and differ in manifestations and usual onset.",
+     "Organ System": "Psychiatry; Neurology",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Antipsychotic EPS syndromes; Extrapyramidal side effects",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychiatric Pharmacology / Extrapyramidal Effects; PDF p. 88",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Four classic EPS confirmed (Chun et al., AAP 2016; Pereira & Albert, Cochrane 2017; Marder & Cannon, NEJM 2019). NMS is correctly excluded (it is a systemic hyperthermic emergency, not a discrete movement disorder). Do not use the '3-hour/3-day/3-week/3-year' mnemonic as diagnostic cutoffs."
+    },
+    "title": "Antipsychotic-associated extrapyramidal movement disorders",
+    "connectionType": "Shared medication adverse effect",
+    "explanation": "These four movement disorders occur with dopamine-receptor-blocking antipsychotics and differ in manifestations and usual onset.",
+    "organSystems": "Psychiatry; Neurology",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Antipsychotic EPS syndromes",
+     "Extrapyramidal side effects"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychiatric Pharmacology / Extrapyramidal Effects; PDF p. 88",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Four classic EPS confirmed (Chun et al., AAP 2016; Pereira & Albert, Cochrane 2017; Marder & Cannon, NEJM 2019). NMS is correctly excluded (it is a systemic hyperthermic emergency, not a discrete movement disorder). Do not use the '3-hour/3-day/3-week/3-year' mnemonic as diagnostic cutoffs.",
+    "tiles": [
+     "Acute dystonia",
+     "Drug-induced parkinsonism",
+     "Akathisia",
+     "Tardive dyskinesia"
+    ]
+   },
+   "contentHash": "d60f67b0bbec8f075242499c97e00d5a55a2278ef4d03936892c8f1b5a7b3a75",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 19,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-100",
+     "title": "Extrapyramidal symptoms of antipsychotics",
+     "shared": 4,
+     "titleSim": 0.33
+    }
+   ],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-2",
+   "placementNote": null
+  },
+  "PSY-020": {
+   "id": "PSY-020",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-020",
+     "Connection Title": "Acute dystonia manifestations",
+     "Tile 1": "Torticollis",
+     "Tile 2": "Facial grimacing",
+     "Tile 3": "Oculogyric crisis",
+     "Tile 4": "Laryngeal spasm",
+     "Connection Type": "Classic medication reaction findings",
+     "Explanation": "An acute dystonic reaction can cause sustained abnormal contraction of neck, facial, ocular (oculogyric crisis), or laryngeal muscles after dopamine-blocking drug exposure.",
+     "Organ System": "Psychiatry; Neurology",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Acute drug-induced dystonic reactions",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychiatric Pharmacology / Extrapyramidal Effects; PDF p. 88",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Oculogyric crisis, laryngeal dystonia, and neck/facial involvement confirmed (Chun et al., AAP 2016). These are possible, not obligatory, manifestations; laryngeal spasm is the life-threatening form (airway emergency)."
+    },
+    "title": "Acute dystonia manifestations",
+    "connectionType": "Classic medication reaction findings",
+    "explanation": "An acute dystonic reaction can cause sustained abnormal contraction of neck, facial, ocular (oculogyric crisis), or laryngeal muscles after dopamine-blocking drug exposure.",
+    "organSystems": "Psychiatry; Neurology",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Acute drug-induced dystonic reactions"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychiatric Pharmacology / Extrapyramidal Effects; PDF p. 88",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Oculogyric crisis, laryngeal dystonia, and neck/facial involvement confirmed (Chun et al., AAP 2016). These are possible, not obligatory, manifestations; laryngeal spasm is the life-threatening form (airway emergency).",
+    "tiles": [
+     "Torticollis",
+     "Facial grimacing",
+     "Oculogyric crisis",
+     "Laryngeal spasm"
+    ]
+   },
+   "contentHash": "9f18c853b30c8736d6a481ca234c8b7f3e580a1f1aa0f26e31dbfa325f5678a2",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 20,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-1",
+   "placementNote": null
+  },
+  "PSY-021": {
+   "id": "PSY-021",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-021",
+     "Connection Title": "Lithium-associated adverse effects",
+     "Tile 1": "Nephrogenic diabetes insipidus",
+     "Tile 2": "Hypothyroidism",
+     "Tile 3": "Tremor",
+     "Tile 4": "Ebstein anomaly",
+     "Connection Type": "Shared drug adverse effect",
+     "Explanation": "Lithium impairs renal concentrating ability (nephrogenic DI), can cause hypothyroidism and fine tremor as patient adverse effects; prenatal exposure carries a classic association with Ebstein anomaly.",
+     "Organ System": "Psychiatry; Renal; Endocrine; Cardiovascular",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Lithium toxicities and prenatal risk",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychiatric Pharmacology / Lithium; PDF p. 85",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Nephrogenic DI, hypothyroidism, tremor confirmed as patient adverse effects (McKnight et al., Cochrane 2019; Price & Heninger, NEJM 1994; FDA lithium label). Ebstein anomaly is a teratogenic/prenatal-exposure association (~1:1000)—a different exposure context; the mixed category is a fairness caveat. Do not imply an inevitable fetal outcome."
+    },
+    "title": "Lithium-associated adverse effects",
+    "connectionType": "Shared drug adverse effect",
+    "explanation": "Lithium impairs renal concentrating ability (nephrogenic DI), can cause hypothyroidism and fine tremor as patient adverse effects; prenatal exposure carries a classic association with Ebstein anomaly.",
+    "organSystems": "Psychiatry; Renal; Endocrine; Cardiovascular",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Lithium toxicities and prenatal risk"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychiatric Pharmacology / Lithium; PDF p. 85",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Nephrogenic DI, hypothyroidism, tremor confirmed as patient adverse effects (McKnight et al., Cochrane 2019; Price & Heninger, NEJM 1994; FDA lithium label). Ebstein anomaly is a teratogenic/prenatal-exposure association (~1:1000)—a different exposure context; the mixed category is a fairness caveat. Do not imply an inevitable fetal outcome.",
+    "tiles": [
+     "Nephrogenic diabetes insipidus",
+     "Hypothyroidism",
+     "Tremor",
+     "Ebstein anomaly"
+    ]
+   },
+   "contentHash": "a3737cb5796daa64c44a9fb4178e597394d50deeed323e47007e637e05187758",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 21,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [
+    {
+     "id": "bank-ext-063",
+     "title": "Adverse effects of lithium",
+     "shared": 3
+    }
+   ],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-1",
+   "placementNote": null
+  },
+  "PSY-022": {
+   "id": "PSY-022",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-022",
+     "Connection Title": "Serotonin syndrome-associated non-antidepressant drugs",
+     "Tile 1": "Linezolid",
+     "Tile 2": "Tramadol",
+     "Tile 3": "Meperidine",
+     "Tile 4": "MDMA",
+     "Connection Type": "Shared drug adverse effect",
+     "Explanation": "These non-antidepressant agents can contribute to serotonin toxicity via distinct mechanisms (linezolid MAO inhibition; tramadol and meperidine serotonin reuptake inhibition; MDMA serotonin release), especially with other serotonergic exposures.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Non-antidepressant serotonergic toxicity exposures",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychiatric Pharmacology / Serotonin Syndrome; PDF p. 89",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Confirmed (Werneke et al., BMC Neurol 2016; Roberts et al., Nat Rev Dis Primers 2026; Chun et al., AAP 2016; tramadol FDA label). Association does not mean toxicity occurs with every exposure—risk is highest with combinations/overdose. Do not copy the simplified MDMA receptor mechanism from the source."
+    },
+    "title": "Serotonin syndrome-associated non-antidepressant drugs",
+    "connectionType": "Shared drug adverse effect",
+    "explanation": "These non-antidepressant agents can contribute to serotonin toxicity via distinct mechanisms (linezolid MAO inhibition; tramadol and meperidine serotonin reuptake inhibition; MDMA serotonin release), especially with other serotonergic exposures.",
+    "organSystems": "Psychiatry",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Non-antidepressant serotonergic toxicity exposures"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychiatric Pharmacology / Serotonin Syndrome; PDF p. 89",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Confirmed (Werneke et al., BMC Neurol 2016; Roberts et al., Nat Rev Dis Primers 2026; Chun et al., AAP 2016; tramadol FDA label). Association does not mean toxicity occurs with every exposure—risk is highest with combinations/overdose. Do not copy the simplified MDMA receptor mechanism from the source.",
+    "tiles": [
+     "Linezolid",
+     "Tramadol",
+     "Meperidine",
+     "MDMA"
+    ]
+   },
+   "contentHash": "4e00490198d4dd3fd881cb19e9210bc8f6e1c3cc5004ac574887edc0b7538f60",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 22,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-3",
+   "placementNote": null
+  },
+  "PSY-023": {
+   "id": "PSY-023",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-023",
+     "Connection Title": "Classic neuroleptic malignant syndrome findings",
+     "Tile 1": "Fever",
+     "Tile 2": "Lead-pipe rigidity",
+     "Tile 3": "Altered mental status",
+     "Tile 4": "Autonomic instability",
+     "Connection Type": "Classic medication reaction findings",
+     "Explanation": "NMS classically combines hyperthermia, marked (lead-pipe) rigidity, altered mental status, and autonomic instability after dopamine blockade.",
+     "Organ System": "Psychiatry; Neurology",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "NMS clinical tetrad",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Psychiatric Pharmacology / Neuroleptic Malignant Syndrome; PDF pp. 88-89",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Tetrad confirmed (Suekane et al., Acta Psychiatr Scand 2026; APA Resource Document on Catatonia 2025). Board overlap: fever, altered mental status, and autonomic instability also occur in serotonin syndrome—lead-pipe rigidity (vs clonus/hyperreflexia) is the differentiating tile. Not sufficient alone for diagnosis."
+    },
+    "title": "Classic neuroleptic malignant syndrome findings",
+    "connectionType": "Classic medication reaction findings",
+    "explanation": "NMS classically combines hyperthermia, marked (lead-pipe) rigidity, altered mental status, and autonomic instability after dopamine blockade.",
+    "organSystems": "Psychiatry; Neurology",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "NMS clinical tetrad"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Psychiatric Pharmacology / Neuroleptic Malignant Syndrome; PDF pp. 88-89",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Tetrad confirmed (Suekane et al., Acta Psychiatr Scand 2026; APA Resource Document on Catatonia 2025). Board overlap: fever, altered mental status, and autonomic instability also occur in serotonin syndrome—lead-pipe rigidity (vs clonus/hyperreflexia) is the differentiating tile. Not sufficient alone for diagnosis.",
+    "tiles": [
+     "Fever",
+     "Lead-pipe rigidity",
+     "Altered mental status",
+     "Autonomic instability"
+    ]
+   },
+   "contentHash": "ba3517ef57c88d69cf97bfc3008807bb939d2601580ede7d736aebf79ca822e7",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 23,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-030",
+     "title": "Features of neuroleptic malignant syndrome",
+     "shared": 2,
+     "titleSim": 0.5
+    }
+   ],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-5",
+   "placementNote": null
+  },
+  "PSY-025": {
+   "id": "PSY-025",
+   "library": "new",
+   "system": "Psychiatry",
+   "content": {
+    "raw": {
+     "Connection ID": "PSY-025",
+     "Connection Title": "Non-drug delirium reorientation and sleep measures",
+     "Tile 1": "Visible clocks",
+     "Tile 2": "Visible calendars",
+     "Tile 3": "Protected sleep time",
+     "Tile 4": "Familiar visitors",
+     "Connection Type": "Shared supportive management role",
+     "Explanation": "Orientation cues (clocks, calendars), reduced nighttime disruption, and contact with familiar people are supportive non-pharmacologic measures for delirium.",
+     "Organ System": "Psychiatry",
+     "Discipline": "Psychiatry",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Delirium orientation and sleep support; Non-pharmacologic delirium measures",
+     "Source": "Bootcamp.com Psychiatry.pdf",
+     "Source Section": "Memory, Dissociation, and Orientation / Delirium; PDF p. 23",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Standard non-pharmacologic delirium reorientation/sleep-hygiene bundle; supportive only and does not replace identifying/treating the underlying cause. Limited direct primary reference retrieved; consistent with general delirium guidance. Clocks and calendars are intentionally separate source-listed cues (distinct tiles)."
+    },
+    "title": "Non-drug delirium reorientation and sleep measures",
+    "connectionType": "Shared supportive management role",
+    "explanation": "Orientation cues (clocks, calendars), reduced nighttime disruption, and contact with familiar people are supportive non-pharmacologic measures for delirium.",
+    "organSystems": "Psychiatry",
+    "discipline": "Psychiatry",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Delirium orientation and sleep support",
+     "Non-pharmacologic delirium measures"
+    ],
+    "sources": "Bootcamp.com Psychiatry.pdf",
+    "sourceSection": "Memory, Dissociation, and Orientation / Delirium; PDF p. 23",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Standard non-pharmacologic delirium reorientation/sleep-hygiene bundle; supportive only and does not replace identifying/treating the underlying cause. Limited direct primary reference retrieved; consistent with general delirium guidance. Clocks and calendars are intentionally separate source-listed cues (distinct tiles).",
+    "tiles": [
+     "Visible clocks",
+     "Visible calendars",
+     "Protected sleep time",
+     "Familiar visitors"
+    ]
+   },
+   "contentHash": "55f18f25bec6d54fca556ed15a4f15a676a439e26ef54704517ba679c1567e02",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+    "fileSha": "f979e3fc386d",
+    "row": 24,
+    "importedAt": "2026-10-08T21:09:43.696Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "psychiatry-starter-3",
+   "placementNote": null
   }
  },
  "starterBoards": {
@@ -47370,6 +49100,110 @@
     ],
     "ambiguityReview": "needed"
    }
+  ],
+  "Psychiatry": [
+   {
+    "n": 1,
+    "id": "psychiatry-starter-1",
+    "formedAt": "2026-10-08T21:09:43.696Z",
+    "ids": [
+     "PSY-002",
+     "PSY-016",
+     "PSY-021",
+     "PSY-020"
+    ],
+    "difficultyWarnings": [],
+    "signature": "dc84daf0",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 2,
+    "id": "psychiatry-starter-2",
+    "formedAt": "2026-10-08T21:09:43.696Z",
+    "ids": [
+     "PSY-003",
+     "PSY-019",
+     "PSY-013",
+     "PSY-015"
+    ],
+    "difficultyWarnings": [],
+    "signature": "7b78a310",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 3,
+    "id": "psychiatry-starter-3",
+    "formedAt": "2026-10-08T21:09:43.696Z",
+    "ids": [
+     "PSY-017",
+     "PSY-007",
+     "PSY-025",
+     "PSY-022"
+    ],
+    "difficultyWarnings": [],
+    "signature": "4e574bc8",
+    "status": "review",
+    "publishable": false,
+    "structural": "pass",
+    "block": [],
+    "flags": [
+     "\"Meperidine\" and \"Tramadol\" (serotonin-syndrome group) are themselves opioids with mu-agonist activity, and \"Full mu-opioid agonist analgesics\" is on the same board; a player could reasonably place meperidine in the opioid group. (raised by Claude, 2026-10-08)"
+    ],
+    "ambiguityReview": "needed"
+   },
+   {
+    "n": 4,
+    "id": "psychiatry-starter-4",
+    "formedAt": "2026-10-08T21:09:43.696Z",
+    "ids": [
+     "PSY-008",
+     "PSY-005",
+     "PSY-014",
+     "PSY-010"
+    ],
+    "difficultyWarnings": [],
+    "signature": "c830e2fe",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 5,
+    "id": "psychiatry-starter-5",
+    "formedAt": "2026-10-08T21:09:43.696Z",
+    "ids": [
+     "PSY-006",
+     "PSY-012",
+     "PSY-001",
+     "PSY-023"
+    ],
+    "difficultyWarnings": [],
+    "signature": "8478ca7e",
+    "status": "review",
+    "publishable": false,
+    "structural": "pass",
+    "block": [],
+    "flags": [
+     "PSY-006 board instruction to check against the other groups: \"Board overlap: schizoaffective, brief psychotic, schizophreniform, and substance-induced psychosis share these; do not present as diagnostic of schizophrenia.\"",
+     "PSY-012 board instruction to check against the other groups: \"Board caution: escitalopram is the S-enantiomer of citalopram, so the pair are near-duplicates and could be contested as distinct tiles; keep them on separate boards if possible.\"",
+     "PSY-001 board instruction to check against the other groups: \"Board caution: anticipation, affiliation, self-assertion are also mature defenses and make strong decoys.\"",
+     "PSY-023 board instruction to check against the other groups: \"Board overlap: fever, altered mental status, and autonomic instability also occur in serotonin syndrome—lead-pipe rigidity (vs clonus/hyperreflexia) is the differentiating tile.\""
+    ],
+    "ambiguityReview": "needed"
+   }
   ]
  },
  "imports": [
@@ -47502,6 +49336,16 @@
    "added": 16,
    "revised": 0,
    "unchanged": 0
+  },
+  {
+   "file": "Plexus_Psychiatry_reviewed_connections_1.csv",
+   "fileSha": "f979e3fc386d",
+   "system": "Psychiatry",
+   "importedAt": "2026-10-08T21:09:43.696Z",
+   "rows": 23,
+   "added": 23,
+   "revised": 0,
+   "unchanged": 0
   }
  ],
  "timedExclusionsAtActivation": [
@@ -47544,9 +49388,19 @@
    "timedId": "bank-medium-02",
    "timedTitle": "Gq-coupled receptors",
    "replacedBy": "PHARM-004"
+  },
+  {
+   "timedId": "bank-ext-098",
+   "timedTitle": "Positive symptoms of schizophrenia",
+   "replacedBy": "PSY-006"
+  },
+  {
+   "timedId": "bank-ext-063",
+   "timedTitle": "Adverse effects of lithium",
+   "replacedBy": "PSY-021"
   }
  ],
- "updatedAt": "2026-10-08T21:01:18.621Z",
+ "updatedAt": "2026-10-08T21:11:09.148Z",
  "active": false,
  "pairs": [
   {
@@ -47846,6 +49700,18 @@
    "titleSim": 0,
    "sameSubject": false,
    "wordSim": 0.5,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
+   "a": "ENDO-006",
+   "b": "PSY-018",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0,
+   "sameSubject": false,
+   "wordSim": 0.33,
    "reviewerDistinct": false,
    "sameSystem": false
   },
@@ -48160,22 +50026,46 @@
    "wordSim": 0.6,
    "reviewerDistinct": false,
    "sameSystem": false
+  },
+  {
+   "a": "NEU-058",
+   "b": "PSY-010",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0,
+   "sameSubject": false,
+   "wordSim": 0.22,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
+   "a": "PHARM-008",
+   "b": "PSY-010",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0.11,
+   "sameSubject": false,
+   "wordSim": 0.33,
+   "reviewerDistinct": false,
+   "sameSystem": false
   }
  ],
  "counts": {
   "all": {
-   "rows": 623,
-   "passedReview": 610,
+   "rows": 646,
+   "passedReview": 633,
    "passedReviewHuman": 0,
-   "passedReviewAi": 610,
+   "passedReviewAi": 633,
    "heldMedical": 13,
    "rejected": 0,
    "needsFix": 0,
    "heldDuplicate": 20,
    "setAsideDuplicate": 8,
-   "usable": 582,
-   "starter": 252,
-   "daily": 330
+   "usable": 605,
+   "starter": 272,
+   "daily": 333
   },
   "bySystem": {
    "Biochemistry/Genetics": {
@@ -48345,6 +50235,20 @@
     "usable": 14,
     "starter": 12,
     "daily": 2
+   },
+   "Psychiatry": {
+    "rows": 23,
+    "passedReview": 23,
+    "passedReviewHuman": 0,
+    "passedReviewAi": 23,
+    "heldMedical": 0,
+    "rejected": 0,
+    "needsFix": 0,
+    "heldDuplicate": 0,
+    "setAsideDuplicate": 0,
+    "usable": 23,
+    "starter": 20,
+    "daily": 3
    },
    "Renal": {
     "rows": 30,
