@@ -63,6 +63,20 @@
       "evidence": "Notes: \"REVISED: Whipple disease replaced by chronic pancreatitis (a classic, well-documented cause). Crohn and celiac are strongly supported; SIBO is moderately supported ...\"",
       "contentHash": "690344a66f5b7c39e8d937ce7c6c41659471481cb64bb64befa2d6f351877154",
       "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "PLEXUS-GEN-008": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"Correction: Tile 4 Corneal ulcers revised to Corneal scarring/opacity ... Original source supports photosensitivity, premalignant lesions, skin cancer, and corneal involvement.\" The change makes an existing source tile (corneal involvement) more precise rather than introducing new content; nothing left unresolved.",
+      "contentHash": "10fe78f476b738d04da3defd7964eda61b4288b8434b24276ad3d7bbafb38624",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "PLEXUS-GEN-012": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"Correction: Red skin rash revised to the specific photosensitive facial butterfly telangiectatic erythema (hallmark of Bloom), and the cancer tile broadened to multiple early-onset cancers ... Precise rash wording resolves the prior HOLD.\" Both changes make the source's existing tiles (rash, cancer risk) more precise; the review states its hold is resolved, and the remaining note is a board-placement caution.",
+      "contentHash": "02a306bc58069a476da34ae61aa25c92bf79128c3954709a694592279b648a16",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
     }
   }
 }

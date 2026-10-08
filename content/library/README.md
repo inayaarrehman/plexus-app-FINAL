@@ -92,6 +92,7 @@ Each record has an explicit `pool`:
 - a note mentions the other connection's id or tiles without such an instruction
 - a tile of one connection is named in another's title or explanation
 - two connections share two concept tags
+- two connections are about the same condition ("Down syndrome physical findings" and "Down syndrome congenital associations")
 - a general board instruction, or any other note about the board or puzzle, names no specific id or tile ("avoid additional homocysteine-elevating tiles"), so a person has to judge whether the other groups qualify
 
 Difficulty balance is a preference: mixed boards with a harder connection are chosen first, but a board where all four are the same difficulty is allowed. Boards without flags are preferred.
@@ -139,6 +140,10 @@ The capacity check is recomputed each time and saves nothing.
    A mode with too little content in its own library reports a shortage. It never falls back to the other library.
 7. Player progress (history, XP ledger, streaks, Systems mastery) is keyed by puzzle and category ids. It is kept as is.
 
+## Subjects and app systems
+
+Each upload is staged under its own subject. "Genetics" is not one of the app's system names: the app combines it with Biochemistry as "Biochemistry/Genetics". It is staged separately with its own five starter boards. At activation, either add a Genetics system to the app or merge it into Biochemistry/Genetics, which would then have ten starter boards.
+
 ## Review queue, status counts and saving
 
 - **`review-queue.md` / `review-queue.json`** are rebuilt on every import. They keep six categories apart:
@@ -166,6 +171,6 @@ The capacity check is recomputed each time and saves nothing.
 ## Checks
 
 ```
-node scripts/library/test.mjs          # importer checks on placeholder rows (57 checks)
+node scripts/library/test.mjs          # importer checks on placeholder rows (60 checks)
 node scripts/library/timed-snapshot.mjs  # refresh the timed-library manifest
 ```

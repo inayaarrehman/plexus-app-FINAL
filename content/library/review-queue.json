@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T07:03:57.335Z",
+ "generatedAt": "2026-10-08T07:07:52.154Z",
  "active": false,
  "medicalHolds": [
   {
@@ -101,6 +101,39 @@
     "status": "AI_REVIEWED_PASS"
    },
    "decide": "decisions.json → pairs → \"GI-043 | PLX-BCH-008\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "PLEXUS-GEN-003 | PLX-BCH-010",
+   "kind": "possible duplicate (held)",
+   "held": "PLEXUS-GEN-003",
+   "sharedRelationship": "\"drug disrupt microtubule function\" vs \"drug disrupting microtubule dynamic\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "PLX-BCH-010",
+    "library": "new",
+    "system": "Biochemistry/Genetics",
+    "title": "Drugs that disrupt microtubule function",
+    "tiles": [
+     "Mebendazole",
+     "Griseofulvin",
+     "Colchicine",
+     "Vincristine"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "PLEXUS-GEN-003",
+    "library": "new",
+    "system": "Genetics",
+    "title": "Drugs disrupting microtubule dynamics",
+    "tiles": [
+     "Colchicine",
+     "Vincristine",
+     "Vinblastine",
+     "Paclitaxel"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"PLEXUS-GEN-003 | PLX-BCH-010\": \"same\" or \"distinct\""
   },
   {
    "key": "CARD-017 | PLX-BCH-031",
@@ -394,6 +427,38 @@
    "decide": "decisions.json → pairs → \"CARD-034 | bank-migrated-sys-mixed-0002-L4\": \"same\" (exclude timed entry at activation) or \"distinct\""
   },
   {
+   "key": "CARD-044 | bank-easy-14",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"causes of endocrine secondary hypertension\" vs \"causes of secondary hypertension\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "CARD-044",
+    "library": "new",
+    "system": "Cardiology",
+    "title": "Endocrine causes of secondary hypertension",
+    "tiles": [
+     "Cushing syndrome",
+     "Hyperaldosteronism",
+     "Pheochromocytoma",
+     "Hyperthyroidism"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-easy-14",
+    "library": "timed",
+    "system": "Endocrine",
+    "title": "Causes of secondary hypertension",
+    "tiles": [
+     "Renal artery stenosis",
+     "Pheochromocytoma",
+     "Cushing syndrome",
+     "Primary hyperaldosteronism"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"CARD-044 | bank-easy-14\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
    "key": "DERM-018 | bank-easy-04",
    "kind": "possible repeat of a timed entry",
    "sharedRelationship": "\"findings / associations of infectious erythema nodosum\" vs \"granulomatous infection necrotizing caseating granuloma\"; 3 of 4 tiles identical",
@@ -616,6 +681,38 @@
     "status": "verified"
    },
    "decide": "decisions.json → pairs → \"GI-062 | bank-ext-115\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "PLEXUS-GEN-004 | bank-migrated-sys-biochem-0001-L4",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"trinucleotide repeat expansion disorder\" vs \"trinucleotide repeat disorder\"; 2 of 4 tiles identical; tile wording 67% the same",
+   "a": {
+    "id": "PLEXUS-GEN-004",
+    "library": "new",
+    "system": "Genetics",
+    "title": "Trinucleotide repeat expansion disorders",
+    "tiles": [
+     "Fragile X syndrome",
+     "Friedreich ataxia",
+     "Huntington disease",
+     "Myotonic dystrophy type 1"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-migrated-sys-biochem-0001-L4",
+    "library": "timed",
+    "system": "Biochemistry/Genetics",
+    "title": "Trinucleotide repeat disorders",
+    "tiles": [
+     "Fragile X syndrome",
+     "Myotonic dystrophy",
+     "Friedreich ataxia",
+     "Kennedy disease"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"PLEXUS-GEN-004 | bank-migrated-sys-biochem-0001-L4\": \"same\" (exclude timed entry at activation) or \"distinct\""
   }
  ],
  "boardReviews": [

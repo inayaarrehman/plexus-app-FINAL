@@ -9007,7 +9007,14 @@
    "duplicateOf": null,
    "heldFor": [],
    "timedSame": [],
-   "timedUncertain": [],
+   "timedUncertain": [
+    {
+     "id": "bank-easy-14",
+     "title": "Causes of secondary hypertension",
+     "shared": 2,
+     "titleSim": 0.75
+    }
+   ],
    "pool": "daily",
    "starterBoard": null,
    "placementNote": null,
@@ -20393,6 +20400,2217 @@
    "pool": "daily",
    "starterBoard": null,
    "placementNote": null
+  },
+  "PLEXUS-GEN-001": {
+   "id": "PLEXUS-GEN-001",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-001",
+     "Connection Title": "Core histone proteins",
+     "Tile 1": "H2A",
+     "Tile 2": "H2B",
+     "Tile 3": "H3",
+     "Tile 4": "H4",
+     "Connection Type": "Shared structural role",
+     "Explanation": "These four histone types form the nucleosome core; two copies of each assemble the histone octamer. H1 is a linker histone and is not part of the core.",
+     "Organ System": "Molecular biology",
+     "Discipline": "Biochemistry",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Nucleosome core histones; Histone octamer components",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 8 | DNA Structure > DNA Tertiary Structure > Histones",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified standard molecular biology: H2A/H2B/H3/H4 are core histones (octamer); H1 is the linker. No outlier."
+    },
+    "title": "Core histone proteins",
+    "connectionType": "Shared structural role",
+    "explanation": "These four histone types form the nucleosome core; two copies of each assemble the histone octamer. H1 is a linker histone and is not part of the core.",
+    "organSystems": "Molecular biology",
+    "discipline": "Biochemistry",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Nucleosome core histones",
+     "Histone octamer components"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 8 | DNA Structure > DNA Tertiary Structure > Histones",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified standard molecular biology: H2A/H2B/H3/H4 are core histones (octamer); H1 is the linker. No outlier.",
+    "tiles": [
+     "H2A",
+     "H2B",
+     "H3",
+     "H4"
+    ]
+   },
+   "contentHash": "4b3a999f6a6f362a6676b8d318bc38b52d876503e1250000d4f7b2a822eca283",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 2,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-4",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-002": {
+   "id": "PLEXUS-GEN-002",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-002",
+     "Connection Title": "Anticancer drugs targeting topoisomerases",
+     "Tile 1": "Irinotecan",
+     "Tile 2": "Topotecan",
+     "Tile 3": "Etoposide",
+     "Tile 4": "Teniposide",
+     "Connection Type": "Shared drug target family",
+     "Explanation": "Irinotecan and topotecan (camptothecin derivatives) inhibit topoisomerase I; etoposide and teniposide (epipodophyllotoxins) inhibit topoisomerase II. The unifying category is the topoisomerase enzyme family, spanning both isoforms.",
+     "Organ System": "Oncology",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Topoisomerase-targeting chemotherapy; Topoisomerase poisons",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 10 | DNA Replication > Enzymes",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Isoform split verified: TOP1 = irinotecan/topotecan; TOP2 = etoposide/teniposide (Yakkala et al., Pharmaceuticals 2023, PMID 37895927; Thomas & Pommier, Clin Cancer Res 2019, PMID 31227499). Board caution: do not label all four as a single isoform; avoid mixing anthracyclines (also TOP2) as distractors that break family-level logic."
+    },
+    "title": "Anticancer drugs targeting topoisomerases",
+    "connectionType": "Shared drug target family",
+    "explanation": "Irinotecan and topotecan (camptothecin derivatives) inhibit topoisomerase I; etoposide and teniposide (epipodophyllotoxins) inhibit topoisomerase II. The unifying category is the topoisomerase enzyme family, spanning both isoforms.",
+    "organSystems": "Oncology",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Topoisomerase-targeting chemotherapy",
+     "Topoisomerase poisons"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 10 | DNA Replication > Enzymes",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Isoform split verified: TOP1 = irinotecan/topotecan; TOP2 = etoposide/teniposide (Yakkala et al., Pharmaceuticals 2023, PMID 37895927; Thomas & Pommier, Clin Cancer Res 2019, PMID 31227499). Board caution: do not label all four as a single isoform; avoid mixing anthracyclines (also TOP2) as distractors that break family-level logic.",
+    "tiles": [
+     "Irinotecan",
+     "Topotecan",
+     "Etoposide",
+     "Teniposide"
+    ]
+   },
+   "contentHash": "b27d45a5303455617112839c5bdf921fe0e888799dfd05e7029885b639a41117",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 3,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PLEXUS-GEN-003": {
+   "id": "PLEXUS-GEN-003",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-003",
+     "Connection Title": "Drugs disrupting microtubule dynamics",
+     "Tile 1": "Colchicine",
+     "Tile 2": "Vincristine",
+     "Tile 3": "Vinblastine",
+     "Tile 4": "Paclitaxel",
+     "Connection Type": "Shared cellular target",
+     "Explanation": "Colchicine and the vinca alkaloids (vincristine, vinblastine) inhibit tubulin polymerization; paclitaxel stabilizes microtubules and blocks depolymerization. All four perturb microtubule dynamics, in opposite directions.",
+     "Organ System": "Multisystem",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Microtubule-targeting drugs; Tubulin-binding agents",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 23 | Mitosis > Pharmacology",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: paclitaxel = stabilizer; vinca alkaloids and colchicine = destabilizers/polymerization inhibitors (Rowinsky & Donehower, NEJM 1995; Huang et al., Oxid Med Cell Longev 2021). Keep umbrella 'dynamics' wording; do NOT title as 'polymerization inhibitors' (excludes paclitaxel). Colchicine is not used as cancer chemotherapy."
+    },
+    "title": "Drugs disrupting microtubule dynamics",
+    "connectionType": "Shared cellular target",
+    "explanation": "Colchicine and the vinca alkaloids (vincristine, vinblastine) inhibit tubulin polymerization; paclitaxel stabilizes microtubules and blocks depolymerization. All four perturb microtubule dynamics, in opposite directions.",
+    "organSystems": "Multisystem",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Microtubule-targeting drugs",
+     "Tubulin-binding agents"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 23 | Mitosis > Pharmacology",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: paclitaxel = stabilizer; vinca alkaloids and colchicine = destabilizers/polymerization inhibitors (Rowinsky & Donehower, NEJM 1995; Huang et al., Oxid Med Cell Longev 2021). Keep umbrella 'dynamics' wording; do NOT title as 'polymerization inhibitors' (excludes paclitaxel). Colchicine is not used as cancer chemotherapy.",
+    "tiles": [
+     "Colchicine",
+     "Vincristine",
+     "Vinblastine",
+     "Paclitaxel"
+    ]
+   },
+   "contentHash": "6b7eed0600f4eff5adb455f2142ac70b1cfef73558cfffce78624ca6f548eb78",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 4,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [
+    "PLX-BCH-010"
+   ],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "held",
+   "starterBoard": null
+  },
+  "PLEXUS-GEN-004": {
+   "id": "PLEXUS-GEN-004",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-004",
+     "Connection Title": "Trinucleotide repeat expansion disorders",
+     "Tile 1": "Fragile X syndrome",
+     "Tile 2": "Friedreich ataxia",
+     "Tile 3": "Huntington disease",
+     "Tile 4": "Myotonic dystrophy type 1",
+     "Connection Type": "Shared mutation mechanism",
+     "Explanation": "Each disorder is caused by an unstable triplet repeat: CGG (FMR1, Fragile X), GAA (FXN, Friedreich), CAG (HTT, Huntington), CTG (DMPK, myotonic dystrophy type 1).",
+     "Organ System": "Multisystem",
+     "Discipline": "Genetics",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Repeat expansion diseases; Triplet-repeat disorders",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF pp. 42-43 | Trinucleotide Repeat Expansion Diseases",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Repeat assignments verified (Zhou et al., Nat Rev Neurol 2022; Fourier & Quadrio, J Neural Transm 2022; Annear et al., BMC Genomics 2026, PMID 41709137). Keep 'type 1' for myotonic dystrophy (CTG/DMPK; DM2 is CCTG). Do not add a universal-anticipation claim."
+    },
+    "title": "Trinucleotide repeat expansion disorders",
+    "connectionType": "Shared mutation mechanism",
+    "explanation": "Each disorder is caused by an unstable triplet repeat: CGG (FMR1, Fragile X), GAA (FXN, Friedreich), CAG (HTT, Huntington), CTG (DMPK, myotonic dystrophy type 1).",
+    "organSystems": "Multisystem",
+    "discipline": "Genetics",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Repeat expansion diseases",
+     "Triplet-repeat disorders"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF pp. 42-43 | Trinucleotide Repeat Expansion Diseases",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Repeat assignments verified (Zhou et al., Nat Rev Neurol 2022; Fourier & Quadrio, J Neural Transm 2022; Annear et al., BMC Genomics 2026, PMID 41709137). Keep 'type 1' for myotonic dystrophy (CTG/DMPK; DM2 is CCTG). Do not add a universal-anticipation claim.",
+    "tiles": [
+     "Fragile X syndrome",
+     "Friedreich ataxia",
+     "Huntington disease",
+     "Myotonic dystrophy type 1"
+    ]
+   },
+   "contentHash": "99535e6dd49cabd50d9c7ccad0a3833c2dae1f3a95f6b61d8b70e284cd1aa380",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 5,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-migrated-sys-biochem-0001-L4",
+     "title": "Trinucleotide repeat disorders",
+     "shared": 2,
+     "titleSim": 0.75
+    }
+   ],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PLEXUS-GEN-007": {
+   "id": "PLEXUS-GEN-007",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-007",
+     "Connection Title": "Orotic aciduria from UMP synthase deficiency",
+     "Tile 1": "Elevated urinary orotic acid",
+     "Tile 2": "Megaloblastic anemia",
+     "Tile 3": "Failure to thrive",
+     "Tile 4": "Normal ammonia",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Hereditary orotic aciduria (UMP synthase deficiency) causes orotic acid accumulation, megaloblastic anemia unresponsive to B12/folate, and failure to thrive. Ammonia is normal, which distinguishes it from OTC deficiency, where orotic aciduria is accompanied by hyperammonemia.",
+     "Organ System": "Metabolism",
+     "Discipline": "Biochemistry; Genetics",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Hereditary orotic aciduria; UMP synthase deficiency findings",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 7 | Clinical Applications of the Pyrimidine Pathway > Pathology",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Normal ammonia verified as the key discriminator from OTC deficiency (elevated orotate WITH hyperammonemia) (Brosnan & Brosnan, J Nutr 2007, PMID 17513443; Ah Mew & Lichter-Konecki, Pediatr Drugs 2025; GeneReviews OTC Deficiency 2022). Normal ammonia is a lab discriminator, not a symptom."
+    },
+    "title": "Orotic aciduria from UMP synthase deficiency",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Hereditary orotic aciduria (UMP synthase deficiency) causes orotic acid accumulation, megaloblastic anemia unresponsive to B12/folate, and failure to thrive. Ammonia is normal, which distinguishes it from OTC deficiency, where orotic aciduria is accompanied by hyperammonemia.",
+    "organSystems": "Metabolism",
+    "discipline": "Biochemistry; Genetics",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Hereditary orotic aciduria",
+     "UMP synthase deficiency findings"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 7 | Clinical Applications of the Pyrimidine Pathway > Pathology",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Normal ammonia verified as the key discriminator from OTC deficiency (elevated orotate WITH hyperammonemia) (Brosnan & Brosnan, J Nutr 2007, PMID 17513443; Ah Mew & Lichter-Konecki, Pediatr Drugs 2025; GeneReviews OTC Deficiency 2022). Normal ammonia is a lab discriminator, not a symptom.",
+    "tiles": [
+     "Elevated urinary orotic acid",
+     "Megaloblastic anemia",
+     "Failure to thrive",
+     "Normal ammonia"
+    ]
+   },
+   "contentHash": "c67bc7bd8694c7fb92bbc71bdb3867e71d52f1176c7d3a0e9f5650b6b4c9b7f6",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 6,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-1",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-008": {
+   "id": "PLEXUS-GEN-008",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-008",
+     "Connection Title": "Xeroderma pigmentosum associations",
+     "Tile 1": "Marked sunlight intolerance",
+     "Tile 2": "Actinic keratoses",
+     "Tile 3": "Skin cancers",
+     "Tile 4": "Corneal scarring/opacity",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Defective nucleotide excision repair in xeroderma pigmentosum causes extreme photosensitivity, premalignant actinic keratoses, early cutaneous malignancies, and ocular-surface disease. Corneal involvement most often manifests as scarring, opacity, and neovascularization rather than isolated ulceration.",
+     "Organ System": "Dermatology; Ophthalmology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Clinical features of xeroderma pigmentosum",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF pp. 18-20 | Single Stranded Repair > Nucleotide Excision Repair",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "Correction: Tile 4 'Corneal ulcers' revised to 'Corneal scarring/opacity' to match best-documented ocular findings (corneal scarring, neovascularization, limbal stem cell deficiency, dry eye) (Brooks et al., Ophthalmology 2013, PMID 23601806; Nandyala et al., Cornea 2021, PMID 33259350; Lim et al., Ophthalmology 2017, PMID 28554534). Findings are characteristic, not universal, and subtype-dependent. Original source supports photosensitivity, premalignant lesions, skin cancer, and corneal involvement."
+    },
+    "title": "Xeroderma pigmentosum associations",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Defective nucleotide excision repair in xeroderma pigmentosum causes extreme photosensitivity, premalignant actinic keratoses, early cutaneous malignancies, and ocular-surface disease. Corneal involvement most often manifests as scarring, opacity, and neovascularization rather than isolated ulceration.",
+    "organSystems": "Dermatology; Ophthalmology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Clinical features of xeroderma pigmentosum"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF pp. 18-20 | Single Stranded Repair > Nucleotide Excision Repair",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "Correction: Tile 4 'Corneal ulcers' revised to 'Corneal scarring/opacity' to match best-documented ocular findings (corneal scarring, neovascularization, limbal stem cell deficiency, dry eye) (Brooks et al., Ophthalmology 2013, PMID 23601806; Nandyala et al., Cornea 2021, PMID 33259350; Lim et al., Ophthalmology 2017, PMID 28554534). Findings are characteristic, not universal, and subtype-dependent. Original source supports photosensitivity, premalignant lesions, skin cancer, and corneal involvement.",
+    "tiles": [
+     "Marked sunlight intolerance",
+     "Actinic keratoses",
+     "Skin cancers",
+     "Corneal scarring/opacity"
+    ]
+   },
+   "contentHash": "10fe78f476b738d04da3defd7964eda61b4288b8434b24276ad3d7bbafb38624",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 7,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": "ai-review-revised",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-5",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-009": {
+   "id": "PLEXUS-GEN-009",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-009",
+     "Connection Title": "Base excision repair participants",
+     "Tile 1": "DNA glycosylase",
+     "Tile 2": "AP endonuclease",
+     "Tile 3": "DNA polymerase beta",
+     "Tile 4": "DNA ligase",
+     "Connection Type": "Shared DNA repair pathway",
+     "Explanation": "In base excision repair a DNA glycosylase removes the damaged base, AP endonuclease incises the resulting abasic site, DNA polymerase beta fills the gap, and DNA ligase seals the nick (short-patch BER).",
+     "Organ System": "Molecular biology",
+     "Discipline": "Biochemistry; Genetics",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "BER machinery; Base excision repair enzymes",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF pp. 18-20 | Single Stranded Repair > Base Excision Repair",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Step/enzyme assignments verified (Merlin et al., Cancer Med 2025; Kim et al., Sci Rep 2023; Golato et al., Sci Rep 2017). DNA ligase and glycosylases also participate in other pathways; keep pathway-level title. Board caution: avoid co-placing NER/MMR enzymes as distractors."
+    },
+    "title": "Base excision repair participants",
+    "connectionType": "Shared DNA repair pathway",
+    "explanation": "In base excision repair a DNA glycosylase removes the damaged base, AP endonuclease incises the resulting abasic site, DNA polymerase beta fills the gap, and DNA ligase seals the nick (short-patch BER).",
+    "organSystems": "Molecular biology",
+    "discipline": "Biochemistry; Genetics",
+    "difficulty": "medium",
+    "alternateNames": [
+     "BER machinery",
+     "Base excision repair enzymes"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF pp. 18-20 | Single Stranded Repair > Base Excision Repair",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Step/enzyme assignments verified (Merlin et al., Cancer Med 2025; Kim et al., Sci Rep 2023; Golato et al., Sci Rep 2017). DNA ligase and glycosylases also participate in other pathways; keep pathway-level title. Board caution: avoid co-placing NER/MMR enzymes as distractors.",
+    "tiles": [
+     "DNA glycosylase",
+     "AP endonuclease",
+     "DNA polymerase beta",
+     "DNA ligase"
+    ]
+   },
+   "contentHash": "4faa2f37375d0fab07c6549fda2f44ce7dffa70f8ebd4817f5f14cfe3d701a0d",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 8,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PLEXUS-GEN-010": {
+   "id": "PLEXUS-GEN-010",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-010",
+     "Connection Title": "Ataxia-telangiectasia clinical and laboratory clues",
+     "Tile 1": "Ataxia",
+     "Tile 2": "Telangiectasias",
+     "Tile 3": "Recurrent sinopulmonary infections",
+     "Tile 4": "Elevated AFP",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "ATM-related ataxia-telangiectasia presents with progressive cerebellar ataxia, oculocutaneous telangiectasias, immunodeficiency with recurrent sinopulmonary infections, and elevated serum alpha-fetoprotein.",
+     "Organ System": "Neurology; Immunology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Classic ataxia-telangiectasia findings; A-T clues",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 21 | Double Stranded Repair > Ataxia Telangiectasia",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four verified, including elevated AFP as the hallmark biomarker (Nakano et al., Clin Cancer Res 2024; GeneReviews Ataxia-Telangiectasia 2025; Coarelli et al., J Neurol 2023; MedlinePlus). Telangiectasias may appear years after ataxia onset; AFP is unreliable under age 2."
+    },
+    "title": "Ataxia-telangiectasia clinical and laboratory clues",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "ATM-related ataxia-telangiectasia presents with progressive cerebellar ataxia, oculocutaneous telangiectasias, immunodeficiency with recurrent sinopulmonary infections, and elevated serum alpha-fetoprotein.",
+    "organSystems": "Neurology; Immunology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Classic ataxia-telangiectasia findings",
+     "A-T clues"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 21 | Double Stranded Repair > Ataxia Telangiectasia",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four verified, including elevated AFP as the hallmark biomarker (Nakano et al., Clin Cancer Res 2024; GeneReviews Ataxia-Telangiectasia 2025; Coarelli et al., J Neurol 2023; MedlinePlus). Telangiectasias may appear years after ataxia onset; AFP is unreliable under age 2.",
+    "tiles": [
+     "Ataxia",
+     "Telangiectasias",
+     "Recurrent sinopulmonary infections",
+     "Elevated AFP"
+    ]
+   },
+   "contentHash": "b61a587a7b77fdf04936f49a9b5367906b19e060dfaf6a26fcbde72418555ce9",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 9,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-5",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-011": {
+   "id": "PLEXUS-GEN-011",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-011",
+     "Connection Title": "Fanconi anemia associations",
+     "Tile 1": "Bone marrow failure",
+     "Tile 2": "Skeletal abnormalities",
+     "Tile 3": "Cafe-au-lait macules",
+     "Tile 4": "Acute myeloid leukemia risk",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Fanconi anemia (defective interstrand-crosslink repair) is associated with progressive bone marrow failure, congenital skeletal anomalies (e.g., radial/thumb), cafe-au-lait macules, and increased risk of AML/MDS. These are associations with variable penetrance, not mandatory findings.",
+     "Organ System": "Hematology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Fanconi anemia features",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 21 | Double Stranded Repair > Fanconi Anemia",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Features are characteristic associations consistent with MedlinePlus Genetics and GeneReviews (Fanconi Anemia). Marrow failure and AML risk overlap with other inherited bone-marrow-failure syndromes; pigmentary and skeletal findings are variable. Board-level overlap check advised."
+    },
+    "title": "Fanconi anemia associations",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Fanconi anemia (defective interstrand-crosslink repair) is associated with progressive bone marrow failure, congenital skeletal anomalies (e.g., radial/thumb), cafe-au-lait macules, and increased risk of AML/MDS. These are associations with variable penetrance, not mandatory findings.",
+    "organSystems": "Hematology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Fanconi anemia features"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 21 | Double Stranded Repair > Fanconi Anemia",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Features are characteristic associations consistent with MedlinePlus Genetics and GeneReviews (Fanconi Anemia). Marrow failure and AML risk overlap with other inherited bone-marrow-failure syndromes; pigmentary and skeletal findings are variable. Board-level overlap check advised.",
+    "tiles": [
+     "Bone marrow failure",
+     "Skeletal abnormalities",
+     "Cafe-au-lait macules",
+     "Acute myeloid leukemia risk"
+    ]
+   },
+   "contentHash": "dcbe3b8b9dd7cd2633c21d7bd2ca40ee27ca9e6eb77d03902e188892ae301afd",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 10,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PLEXUS-GEN-012": {
+   "id": "PLEXUS-GEN-012",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-012",
+     "Connection Title": "Bloom syndrome associations",
+     "Tile 1": "Short stature",
+     "Tile 2": "Long narrow face",
+     "Tile 3": "Photosensitive facial (butterfly) telangiectatic erythema",
+     "Tile 4": "Markedly increased cancer risk",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Bloom syndrome (BLM helicase deficiency) features pre/postnatal growth deficiency with short stature, a long narrow face, a sun-sensitive facial butterfly telangiectatic erythema appearing in infancy/early childhood, and a markedly increased risk of a wide range of early-onset cancers.",
+     "Organ System": "Dermatology; Oncology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "BLM-related syndrome features; Congenital telangiectatic erythema features",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 21 | Double Stranded Repair > Bloom Syndrome",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "Correction: 'Red skin rash' revised to the specific photosensitive facial butterfly telangiectatic erythema (hallmark of Bloom), and the cancer tile broadened to multiple early-onset cancers (MedlinePlus Bloom syndrome; Schnabel et al., Clin Genet 2021; Cunniff et al., Am J Med Genet A 2018; Nakano et al., Clin Cancer Res 2024). Precise rash wording resolves the prior HOLD. Board overlap: photosensitivity + cancer risk shared with xeroderma pigmentosum and other chromosomal-instability disorders - avoid co-placing them on one board. Elevated sister-chromatid exchange is the cytogenetic diagnostic hallmark."
+    },
+    "title": "Bloom syndrome associations",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Bloom syndrome (BLM helicase deficiency) features pre/postnatal growth deficiency with short stature, a long narrow face, a sun-sensitive facial butterfly telangiectatic erythema appearing in infancy/early childhood, and a markedly increased risk of a wide range of early-onset cancers.",
+    "organSystems": "Dermatology; Oncology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "BLM-related syndrome features",
+     "Congenital telangiectatic erythema features"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 21 | Double Stranded Repair > Bloom Syndrome",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "Correction: 'Red skin rash' revised to the specific photosensitive facial butterfly telangiectatic erythema (hallmark of Bloom), and the cancer tile broadened to multiple early-onset cancers (MedlinePlus Bloom syndrome; Schnabel et al., Clin Genet 2021; Cunniff et al., Am J Med Genet A 2018; Nakano et al., Clin Cancer Res 2024). Precise rash wording resolves the prior HOLD. Board overlap: photosensitivity + cancer risk shared with xeroderma pigmentosum and other chromosomal-instability disorders - avoid co-placing them on one board. Elevated sister-chromatid exchange is the cytogenetic diagnostic hallmark.",
+    "tiles": [
+     "Short stature",
+     "Long narrow face",
+     "Photosensitive facial (butterfly) telangiectatic erythema",
+     "Markedly increased cancer risk"
+    ]
+   },
+   "contentHash": "02a306bc58069a476da34ae61aa25c92bf79128c3954709a694592279b648a16",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 11,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": "ai-review-revised",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PLEXUS-GEN-013": {
+   "id": "PLEXUS-GEN-013",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-013",
+     "Connection Title": "PCR reaction components",
+     "Tile 1": "DNA template",
+     "Tile 2": "Two flanking primers",
+     "Tile 3": "Taq polymerase",
+     "Tile 4": "Deoxynucleotide triphosphates",
+     "Connection Type": "Shared laboratory process",
+     "Explanation": "PCR amplification requires a DNA template, a pair of primers flanking the target, a thermostable DNA polymerase (Taq), and dNTP substrates (plus buffer and Mg2+). These are the core reagents.",
+     "Organ System": "Laboratory medicine",
+     "Discipline": "Molecular biology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Core PCR inputs; PCR amplification components",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 28 | Polymerase Chain Reaction > Process",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Core components verified (standard molecular biology). Buffer and Mg2+ are additional reagents not listed as tiles; no outlier."
+    },
+    "title": "PCR reaction components",
+    "connectionType": "Shared laboratory process",
+    "explanation": "PCR amplification requires a DNA template, a pair of primers flanking the target, a thermostable DNA polymerase (Taq), and dNTP substrates (plus buffer and Mg2+). These are the core reagents.",
+    "organSystems": "Laboratory medicine",
+    "discipline": "Molecular biology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Core PCR inputs",
+     "PCR amplification components"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 28 | Polymerase Chain Reaction > Process",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Core components verified (standard molecular biology). Buffer and Mg2+ are additional reagents not listed as tiles; no outlier.",
+    "tiles": [
+     "DNA template",
+     "Two flanking primers",
+     "Taq polymerase",
+     "Deoxynucleotide triphosphates"
+    ]
+   },
+   "contentHash": "d38d766e1ebdff1a82b43c72a82acf908f6b5a02e026f7e731f17fcb7efa4391",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 12,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-3",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-014": {
+   "id": "PLEXUS-GEN-014",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-014",
+     "Connection Title": "Blot techniques and their targets",
+     "Tile 1": "Southern blot - DNA",
+     "Tile 2": "Northern blot - RNA",
+     "Tile 3": "Western blot - protein",
+     "Tile 4": "Southwestern blot - DNA-binding proteins",
+     "Connection Type": "Matched laboratory associations",
+     "Explanation": "Each blot detects a specific macromolecule: Southern (DNA), Northern (RNA), Western (protein), Southwestern (DNA-binding proteins). Southwestern is distinct from Southern.",
+     "Organ System": "Laboratory medicine",
+     "Discipline": "Molecular biology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Blotting method-target pairs",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 30 | Southern, Western, Northern Blot",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Method-target pairs verified (standard laboratory medicine). Caution: the paired-tile format reveals part of the association and may suit a learning mode over a competitive board."
+    },
+    "title": "Blot techniques and their targets",
+    "connectionType": "Matched laboratory associations",
+    "explanation": "Each blot detects a specific macromolecule: Southern (DNA), Northern (RNA), Western (protein), Southwestern (DNA-binding proteins). Southwestern is distinct from Southern.",
+    "organSystems": "Laboratory medicine",
+    "discipline": "Molecular biology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Blotting method-target pairs"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 30 | Southern, Western, Northern Blot",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Method-target pairs verified (standard laboratory medicine). Caution: the paired-tile format reveals part of the association and may suit a learning mode over a competitive board.",
+    "tiles": [
+     "Southern blot - DNA",
+     "Northern blot - RNA",
+     "Western blot - protein",
+     "Southwestern blot - DNA-binding proteins"
+    ]
+   },
+   "contentHash": "740b215e7ef2cee7f6b3b2c31dc32f8e0d530504bcb0d72ba3f0c206cf12b741",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 13,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PLEXUS-GEN-015": {
+   "id": "PLEXUS-GEN-015",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-015",
+     "Connection Title": "Neurofibromatosis type 1 manifestations",
+     "Tile 1": "Cafe-au-lait macules",
+     "Tile 2": "Lisch nodules",
+     "Tile 3": "Neurofibromas",
+     "Tile 4": "Pheochromocytoma",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "NF1 shows cafe-au-lait macules, iris Lisch nodules, cutaneous/plexiform neurofibromas, and an increased risk of pheochromocytoma (an associated complication, not present in all patients).",
+     "Organ System": "Neurology; Dermatology; Endocrinology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "NF1 findings; NF1 pleiotropy",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 38 | Genetics Concepts > Pleiotropy",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Consistent with NF1 diagnostic criteria (NIH/standard references; MedlinePlus Genetics). Keep the type 1 qualifier; pheochromocytoma is an associated complication, not universal."
+    },
+    "title": "Neurofibromatosis type 1 manifestations",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "NF1 shows cafe-au-lait macules, iris Lisch nodules, cutaneous/plexiform neurofibromas, and an increased risk of pheochromocytoma (an associated complication, not present in all patients).",
+    "organSystems": "Neurology; Dermatology; Endocrinology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "NF1 findings",
+     "NF1 pleiotropy"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 38 | Genetics Concepts > Pleiotropy",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Consistent with NF1 diagnostic criteria (NIH/standard references; MedlinePlus Genetics). Keep the type 1 qualifier; pheochromocytoma is an associated complication, not universal.",
+    "tiles": [
+     "Cafe-au-lait macules",
+     "Lisch nodules",
+     "Neurofibromas",
+     "Pheochromocytoma"
+    ]
+   },
+   "contentHash": "8eabd79bba0c95c3a46d1e52350b809225939e8639ee55b027a98f3c4fc15810",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 14,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-1",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-016": {
+   "id": "PLEXUS-GEN-016",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-016",
+     "Connection Title": "Prader-Willi syndrome associations",
+     "Tile 1": "Hyperphagia",
+     "Tile 2": "Obesity",
+     "Tile 3": "Hypogonadism",
+     "Tile 4": "Hypotonia",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Prader-Willi syndrome (loss of paternally expressed 15q11-q13) classically presents with neonatal hypotonia and poor feeding, followed in early childhood by hyperphagia, obesity, and hypogonadism. Features are age-dependent, not concurrent at birth.",
+     "Organ System": "Endocrinology; Neurology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Prader-Willi clinical features",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 40 | Disorders of Imprinting > Prader-Willi Syndrome",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Consistent with GeneReviews (Prader-Willi Syndrome) and MedlinePlus. Preserve age-dependent course: hypotonia is neonatal; hyperphagia/obesity emerge later."
+    },
+    "title": "Prader-Willi syndrome associations",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Prader-Willi syndrome (loss of paternally expressed 15q11-q13) classically presents with neonatal hypotonia and poor feeding, followed in early childhood by hyperphagia, obesity, and hypogonadism. Features are age-dependent, not concurrent at birth.",
+    "organSystems": "Endocrinology; Neurology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Prader-Willi clinical features"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 40 | Disorders of Imprinting > Prader-Willi Syndrome",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Consistent with GeneReviews (Prader-Willi Syndrome) and MedlinePlus. Preserve age-dependent course: hypotonia is neonatal; hyperphagia/obesity emerge later.",
+    "tiles": [
+     "Hyperphagia",
+     "Obesity",
+     "Hypogonadism",
+     "Hypotonia"
+    ]
+   },
+   "contentHash": "021327ac72759c77df87086b0f6a1b220d27589e22c8a344a12ca69e94650409",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 15,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-4",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-017": {
+   "id": "PLEXUS-GEN-017",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-017",
+     "Connection Title": "Angelman syndrome associations",
+     "Tile 1": "Frequent inappropriate laughter",
+     "Tile 2": "Seizures",
+     "Tile 3": "Ataxia",
+     "Tile 4": "Intellectual disability",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Angelman syndrome (loss of maternally expressed UBE3A) features a happy demeanor with frequent laughter, seizures, ataxic gait, and intellectual disability with severe speech impairment.",
+     "Organ System": "Neurology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Angelman clinical features",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 40 | Disorders of Imprinting > Angelman Syndrome",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Consistent with GeneReviews (Angelman Syndrome) and MedlinePlus. UBE3A imprinting is tissue-specific (brain); laughter is a characteristic behavior, not a diagnostic requirement."
+    },
+    "title": "Angelman syndrome associations",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Angelman syndrome (loss of maternally expressed UBE3A) features a happy demeanor with frequent laughter, seizures, ataxic gait, and intellectual disability with severe speech impairment.",
+    "organSystems": "Neurology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Angelman clinical features"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 40 | Disorders of Imprinting > Angelman Syndrome",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Consistent with GeneReviews (Angelman Syndrome) and MedlinePlus. UBE3A imprinting is tissue-specific (brain); laughter is a characteristic behavior, not a diagnostic requirement.",
+    "tiles": [
+     "Frequent inappropriate laughter",
+     "Seizures",
+     "Ataxia",
+     "Intellectual disability"
+    ]
+   },
+   "contentHash": "e299786fc3dc178ceec78eca554a44fa309b0a29ff9db9d5cae46bbb68e3fba3",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 16,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-2",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-018": {
+   "id": "PLEXUS-GEN-018",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-018",
+     "Connection Title": "Digestive complications of cystic fibrosis",
+     "Tile 1": "Pancreatic insufficiency",
+     "Tile 2": "Fat-soluble vitamin deficiency",
+     "Tile 3": "Meconium ileus",
+     "Tile 4": "Biliary cirrhosis",
+     "Connection Type": "Shared disease complications",
+     "Explanation": "CF affects multiple digestive sites: pancreatic exocrine insufficiency (~80%) causing malabsorption and fat-soluble (A, D, E, K) vitamin deficiency, neonatal meconium ileus, and focal biliary cirrhosis/CF liver disease.",
+     "Organ System": "Gastroenterology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "GI and hepatobiliary manifestations of CF",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 41 | Key Mutations > Cystic Fibrosis",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Grasemann & Ratjen, NEJM 2023; CF Foundation hepatobiliary consensus, Sellers et al. 2024). Meconium ileus is neonatal; advanced/biliary cirrhosis affects only ~5-10%. Possible, not inevitable."
+    },
+    "title": "Digestive complications of cystic fibrosis",
+    "connectionType": "Shared disease complications",
+    "explanation": "CF affects multiple digestive sites: pancreatic exocrine insufficiency (~80%) causing malabsorption and fat-soluble (A, D, E, K) vitamin deficiency, neonatal meconium ileus, and focal biliary cirrhosis/CF liver disease.",
+    "organSystems": "Gastroenterology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "GI and hepatobiliary manifestations of CF"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 41 | Key Mutations > Cystic Fibrosis",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Grasemann & Ratjen, NEJM 2023; CF Foundation hepatobiliary consensus, Sellers et al. 2024). Meconium ileus is neonatal; advanced/biliary cirrhosis affects only ~5-10%. Possible, not inevitable.",
+    "tiles": [
+     "Pancreatic insufficiency",
+     "Fat-soluble vitamin deficiency",
+     "Meconium ileus",
+     "Biliary cirrhosis"
+    ]
+   },
+   "contentHash": "44b95ec36147ca1e6fe4e742732d8e75d7e5314227a9462b0ecbbf94a0fe81dc",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 17,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-4",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-019": {
+   "id": "PLEXUS-GEN-019",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-019",
+     "Connection Title": "Respiratory and related findings in cystic fibrosis",
+     "Tile 1": "Recurrent pulmonary infections",
+     "Tile 2": "Thick airway secretions",
+     "Tile 3": "Nasal polyps",
+     "Tile 4": "Digital clubbing",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Defective CFTR-mediated airway surface hydration produces thick secretions, recurrent/chronic pulmonary infections, nasal polyps, and digital clubbing from chronic lung disease.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Pulmonary and upper airway CF findings",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 41 | Key Mutations > Cystic Fibrosis",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Consistent with Grasemann & Ratjen, NEJM 2023. Clubbing and recurrent infections are nonspecific (shared with other chronic suppurative lung diseases); the four-tile combination with nasal polyps improves specificity. Board overlap check advised."
+    },
+    "title": "Respiratory and related findings in cystic fibrosis",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Defective CFTR-mediated airway surface hydration produces thick secretions, recurrent/chronic pulmonary infections, nasal polyps, and digital clubbing from chronic lung disease.",
+    "organSystems": "Pulmonology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Pulmonary and upper airway CF findings"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 41 | Key Mutations > Cystic Fibrosis",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Consistent with Grasemann & Ratjen, NEJM 2023. Clubbing and recurrent infections are nonspecific (shared with other chronic suppurative lung diseases); the four-tile combination with nasal polyps improves specificity. Board overlap check advised.",
+    "tiles": [
+     "Recurrent pulmonary infections",
+     "Thick airway secretions",
+     "Nasal polyps",
+     "Digital clubbing"
+    ]
+   },
+   "contentHash": "74f8097a86a3d8dfc60f8deb44a52d93b810e4849cfa84cc011c8a454285d47f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 18,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PLEXUS-GEN-020": {
+   "id": "PLEXUS-GEN-020",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-020",
+     "Connection Title": "Vaso-occlusive complications of sickle cell disease",
+     "Tile 1": "Dactylitis",
+     "Tile 2": "Acute chest syndrome",
+     "Tile 3": "Avascular necrosis",
+     "Tile 4": "Stroke",
+     "Connection Type": "Shared disease mechanism",
+     "Explanation": "Vaso-occlusion drives dactylitis, acute chest syndrome, avascular necrosis (osteonecrosis), and ischemic stroke in sickle cell disease. Acute chest syndrome is multifactorial (infection, fat embolism, infarction), so this is an association with vaso-occlusion rather than an exclusive cause.",
+     "Organ System": "Hematology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Sickle cell vaso-occlusive complications",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 41 | Key Mutations > Sickle Cell Anemia",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Ware et al., Lancet 2017; Piel et al., NEJM 2017). Acute chest syndrome and stroke are not single-mechanism; keep association wording."
+    },
+    "title": "Vaso-occlusive complications of sickle cell disease",
+    "connectionType": "Shared disease mechanism",
+    "explanation": "Vaso-occlusion drives dactylitis, acute chest syndrome, avascular necrosis (osteonecrosis), and ischemic stroke in sickle cell disease. Acute chest syndrome is multifactorial (infection, fat embolism, infarction), so this is an association with vaso-occlusion rather than an exclusive cause.",
+    "organSystems": "Hematology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Sickle cell vaso-occlusive complications"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 41 | Key Mutations > Sickle Cell Anemia",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Ware et al., Lancet 2017; Piel et al., NEJM 2017). Acute chest syndrome and stroke are not single-mechanism; keep association wording.",
+    "tiles": [
+     "Dactylitis",
+     "Acute chest syndrome",
+     "Avascular necrosis",
+     "Stroke"
+    ]
+   },
+   "contentHash": "b1690b1b676f61ad5881dfab1071a51ad0df831bd7981183b5792fc8170ed1ab",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 19,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-3",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-021": {
+   "id": "PLEXUS-GEN-021",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-021",
+     "Connection Title": "Additional classic sickle cell disease complications",
+     "Tile 1": "Parvovirus B19 aplastic crisis",
+     "Tile 2": "Functional autosplenectomy",
+     "Tile 3": "Salmonella osteomyelitis",
+     "Tile 4": "Renal papillary necrosis",
+     "Connection Type": "Shared disease complications",
+     "Explanation": "Sickle cell disease is associated with parvovirus B19-triggered transient aplastic crisis, functional autosplenectomy from repeated splenic infarction, Salmonella (and S. aureus) osteomyelitis, and renal papillary necrosis.",
+     "Organ System": "Hematology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Sickle cell complication clues",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 41 | Key Mutations > Sickle Cell Anemia",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: Salmonella is a characteristic (not exclusive) cause of osteomyelitis in SCD, with S. aureus also common (Kao et al., Pediatr Blood Cancer 2020; NEJM Case 37-2023). Papillary necrosis and autosplenectomy confirmed (Ware et al., Lancet 2017). Associations, not universal findings."
+    },
+    "title": "Additional classic sickle cell disease complications",
+    "connectionType": "Shared disease complications",
+    "explanation": "Sickle cell disease is associated with parvovirus B19-triggered transient aplastic crisis, functional autosplenectomy from repeated splenic infarction, Salmonella (and S. aureus) osteomyelitis, and renal papillary necrosis.",
+    "organSystems": "Hematology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Sickle cell complication clues"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 41 | Key Mutations > Sickle Cell Anemia",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: Salmonella is a characteristic (not exclusive) cause of osteomyelitis in SCD, with S. aureus also common (Kao et al., Pediatr Blood Cancer 2020; NEJM Case 37-2023). Papillary necrosis and autosplenectomy confirmed (Ware et al., Lancet 2017). Associations, not universal findings.",
+    "tiles": [
+     "Parvovirus B19 aplastic crisis",
+     "Functional autosplenectomy",
+     "Salmonella osteomyelitis",
+     "Renal papillary necrosis"
+    ]
+   },
+   "contentHash": "55d7e9b1516042e85d042b1833449269b2829bfdd05d4e27ef32dbe5cb2c9deb",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 20,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-2",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-022": {
+   "id": "PLEXUS-GEN-022",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-022",
+     "Connection Title": "Duchenne muscular dystrophy presentation",
+     "Tile 1": "Gowers sign",
+     "Tile 2": "Calf pseudohypertrophy",
+     "Tile 3": "Waddling gait",
+     "Tile 4": "Weakness beginning before age 5",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Duchenne muscular dystrophy (dystrophin deficiency, X-linked recessive) presents in early childhood (usually before age 5) with proximal weakness, Gowers sign, calf pseudohypertrophy, and a waddling gait. Early onset distinguishes it from later-onset Becker dystrophy.",
+     "Organ System": "Musculoskeletal; Neurology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Classic Duchenne findings; Childhood DMD presentation",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 42 | Muscular Dystrophies > Duchenne Muscular Dystrophy",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Consistent with GeneReviews (Dystrophinopathies) and MedlinePlus. First three features overlap with other myopathies; early onset (<5 y) improves specificity but onset varies. Keep the age qualifier."
+    },
+    "title": "Duchenne muscular dystrophy presentation",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Duchenne muscular dystrophy (dystrophin deficiency, X-linked recessive) presents in early childhood (usually before age 5) with proximal weakness, Gowers sign, calf pseudohypertrophy, and a waddling gait. Early onset distinguishes it from later-onset Becker dystrophy.",
+    "organSystems": "Musculoskeletal; Neurology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Classic Duchenne findings",
+     "Childhood DMD presentation"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 42 | Muscular Dystrophies > Duchenne Muscular Dystrophy",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Consistent with GeneReviews (Dystrophinopathies) and MedlinePlus. First three features overlap with other myopathies; early onset (<5 y) improves specificity but onset varies. Keep the age qualifier.",
+    "tiles": [
+     "Gowers sign",
+     "Calf pseudohypertrophy",
+     "Waddling gait",
+     "Weakness beginning before age 5"
+    ]
+   },
+   "contentHash": "887084191869c0b99f0386537c1b5a315af356a1c9d558acf02b88fce6279271",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 21,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-3",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-023": {
+   "id": "PLEXUS-GEN-023",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-023",
+     "Connection Title": "Myotonic dystrophy type 1 extra-muscular findings",
+     "Tile 1": "Cataracts",
+     "Tile 2": "Early (frontal) balding",
+     "Tile 3": "Testicular atrophy",
+     "Tile 4": "Cardiac arrhythmias",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Beyond myotonia, myotonic dystrophy type 1 (CTG/DMPK) has multisystem features: posterior subcapsular cataracts, frontal balding, testicular atrophy/hypogonadism, and cardiac conduction defects/arrhythmias.",
+     "Organ System": "Multisystem",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Systemic findings in DM1; Myotonic dystrophy type 1 clues",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF pp. 42-43 | Myotonic Dystrophy",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Consistent with GeneReviews (Myotonic Dystrophy Type 1). Keep DM1 qualifier; balding and testicular atrophy apply to the appropriate sex/clinical context. Cardiac conduction disease is a key cause of mortality."
+    },
+    "title": "Myotonic dystrophy type 1 extra-muscular findings",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Beyond myotonia, myotonic dystrophy type 1 (CTG/DMPK) has multisystem features: posterior subcapsular cataracts, frontal balding, testicular atrophy/hypogonadism, and cardiac conduction defects/arrhythmias.",
+    "organSystems": "Multisystem",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Systemic findings in DM1",
+     "Myotonic dystrophy type 1 clues"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF pp. 42-43 | Myotonic Dystrophy",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Consistent with GeneReviews (Myotonic Dystrophy Type 1). Keep DM1 qualifier; balding and testicular atrophy apply to the appropriate sex/clinical context. Cardiac conduction disease is a key cause of mortality.",
+    "tiles": [
+     "Cataracts",
+     "Early (frontal) balding",
+     "Testicular atrophy",
+     "Cardiac arrhythmias"
+    ]
+   },
+   "contentHash": "573083dfae73aee8402e36dd2f7415a816ff3ee1e29a149d33e30cbe5f4653d2",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 22,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-5",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-024": {
+   "id": "PLEXUS-GEN-024",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-024",
+     "Connection Title": "Fragile X syndrome physical findings",
+     "Tile 1": "Macroorchidism",
+     "Tile 2": "Long face",
+     "Tile 3": "Prominent jaw",
+     "Tile 4": "Large protruding ears",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Fragile X syndrome (FMR1 CGG expansion) features a long narrow face, prominent jaw/forehead, large protruding ears, and post-pubertal macroorchidism, alongside intellectual disability and autism-spectrum features.",
+     "Organ System": "Neurology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Fragile X physical phenotype",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 43 | Trinucleotide Repeat Expansion Diseases > Fragile X",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Consistent with GeneReviews (FMR1 Disorders) and MedlinePlus. Macroorchidism is typically post-pubertal in affected males; expression varies with age and sex. Keep age/sex qualifier."
+    },
+    "title": "Fragile X syndrome physical findings",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Fragile X syndrome (FMR1 CGG expansion) features a long narrow face, prominent jaw/forehead, large protruding ears, and post-pubertal macroorchidism, alongside intellectual disability and autism-spectrum features.",
+    "organSystems": "Neurology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Fragile X physical phenotype"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 43 | Trinucleotide Repeat Expansion Diseases > Fragile X",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Consistent with GeneReviews (FMR1 Disorders) and MedlinePlus. Macroorchidism is typically post-pubertal in affected males; expression varies with age and sex. Keep age/sex qualifier.",
+    "tiles": [
+     "Macroorchidism",
+     "Long face",
+     "Prominent jaw",
+     "Large protruding ears"
+    ]
+   },
+   "contentHash": "99cd55c3bf23902c471181989452a6e38b956b619d9a7591b01490d404a94a89",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 23,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-3",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-026": {
+   "id": "PLEXUS-GEN-026",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-026",
+     "Connection Title": "Structures affected in Friedreich ataxia",
+     "Tile 1": "Lateral corticospinal tracts",
+     "Tile 2": "Spinocerebellar tracts",
+     "Tile 3": "Dorsal columns",
+     "Tile 4": "Dorsal root ganglia",
+     "Connection Type": "Shared disease neuroanatomy",
+     "Explanation": "Frataxin deficiency causes degeneration/hypoplasia of the dorsal root ganglia and dorsal (posterior) columns, spinocerebellar tracts, and lateral corticospinal tracts (with dentate nucleus involvement). The category spans both sensory ganglia and spinal tracts.",
+     "Organ System": "Neurology",
+     "Discipline": "Genetics; Neuroanatomy",
+     "Difficulty": "Hard",
+     "Accepted Alternate Category Names": "Friedreich ataxia degeneration sites",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 43 | Friedreich Ataxia > Degeneration",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Sites verified (Indelicato et al., Nat Rev Neurol 2025; Harding et al., Ann Neurol 2021; Santos et al., Antioxid Redox Signal 2010; Scott et al., CNS Drugs 2024). Dorsal root ganglia are sensory ganglia, not a spinal cord tract - do not retitle as 'four spinal cord tracts.'"
+    },
+    "title": "Structures affected in Friedreich ataxia",
+    "connectionType": "Shared disease neuroanatomy",
+    "explanation": "Frataxin deficiency causes degeneration/hypoplasia of the dorsal root ganglia and dorsal (posterior) columns, spinocerebellar tracts, and lateral corticospinal tracts (with dentate nucleus involvement). The category spans both sensory ganglia and spinal tracts.",
+    "organSystems": "Neurology",
+    "discipline": "Genetics; Neuroanatomy",
+    "difficulty": "hard",
+    "alternateNames": [
+     "Friedreich ataxia degeneration sites"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 43 | Friedreich Ataxia > Degeneration",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Sites verified (Indelicato et al., Nat Rev Neurol 2025; Harding et al., Ann Neurol 2021; Santos et al., Antioxid Redox Signal 2010; Scott et al., CNS Drugs 2024). Dorsal root ganglia are sensory ganglia, not a spinal cord tract - do not retitle as 'four spinal cord tracts.'",
+    "tiles": [
+     "Lateral corticospinal tracts",
+     "Spinocerebellar tracts",
+     "Dorsal columns",
+     "Dorsal root ganglia"
+    ]
+   },
+   "contentHash": "6102627c8c7929f91899c747debb36d42e08ed4c4e65485e5cfcc4d3ae27b0aa",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 24,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-1",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-027": {
+   "id": "PLEXUS-GEN-027",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-027",
+     "Connection Title": "Huntington disease psychiatric and motor presentation",
+     "Tile 1": "Depression",
+     "Tile 2": "Aggressive behavior",
+     "Tile 3": "Early chorea",
+     "Tile 4": "Late hypokinesia",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Huntington disease (CAG/HTT) combines psychiatric features (depression, irritability/aggression), early hyperkinetic chorea, and later hypokinetic/rigid parkinsonism. Motor features are stage-dependent.",
+     "Organ System": "Neurology; Psychiatry",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Stage-dependent Huntington findings",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 43 | Trinucleotide Repeat Expansion Diseases > Huntington Disease",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Consistent with GeneReviews (Huntington Disease). Early chorea and late hypokinesia reflect different disease stages and need not coexist; psychiatric features vary. Keep stage qualifiers."
+    },
+    "title": "Huntington disease psychiatric and motor presentation",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Huntington disease (CAG/HTT) combines psychiatric features (depression, irritability/aggression), early hyperkinetic chorea, and later hypokinetic/rigid parkinsonism. Motor features are stage-dependent.",
+    "organSystems": "Neurology; Psychiatry",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Stage-dependent Huntington findings"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 43 | Trinucleotide Repeat Expansion Diseases > Huntington Disease",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Consistent with GeneReviews (Huntington Disease). Early chorea and late hypokinesia reflect different disease stages and need not coexist; psychiatric features vary. Keep stage qualifiers.",
+    "tiles": [
+     "Depression",
+     "Aggressive behavior",
+     "Early chorea",
+     "Late hypokinesia"
+    ]
+   },
+   "contentHash": "f12e5dd969c4810f2196bad8b508b8b49466f49c747172124dbe1e81738ba32f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 25,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-5",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-028": {
+   "id": "PLEXUS-GEN-028",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-028",
+     "Connection Title": "Patau syndrome congenital findings",
+     "Tile 1": "Holoprosencephaly",
+     "Tile 2": "Cleft lip or palate",
+     "Tile 3": "Polydactyly",
+     "Tile 4": "Scalp aplasia cutis",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Trisomy 13 (Patau) is associated with holoprosencephaly, cleft lip/palate, postaxial polydactyly, and cutis aplasia of the scalp, among other midline/CNS anomalies.",
+     "Organ System": "Multisystem",
+     "Discipline": "Genetics; Embryology; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Trisomy 13 congenital anomalies",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 44 | Autosomal Trisomies > Patau Syndrome",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Characteristic associations consistent with standard genetics references (MedlinePlus; GeneReviews). Not all four required in every patient. Board overlap with trisomy 18 (GEN-029) advised."
+    },
+    "title": "Patau syndrome congenital findings",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Trisomy 13 (Patau) is associated with holoprosencephaly, cleft lip/palate, postaxial polydactyly, and cutis aplasia of the scalp, among other midline/CNS anomalies.",
+    "organSystems": "Multisystem",
+    "discipline": "Genetics; Embryology; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Trisomy 13 congenital anomalies"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 44 | Autosomal Trisomies > Patau Syndrome",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Characteristic associations consistent with standard genetics references (MedlinePlus; GeneReviews). Not all four required in every patient. Board overlap with trisomy 18 (GEN-029) advised.",
+    "tiles": [
+     "Holoprosencephaly",
+     "Cleft lip or palate",
+     "Polydactyly",
+     "Scalp aplasia cutis"
+    ]
+   },
+   "contentHash": "92862e7238afb30fd2f113b17d3bccc3c6e1ce9dd3b948a02cfb812562b4bd44",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 26,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-1",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-029": {
+   "id": "PLEXUS-GEN-029",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-029",
+     "Connection Title": "Edwards syndrome physical findings",
+     "Tile 1": "Prominent occiput",
+     "Tile 2": "Clenched hands with overlapping fingers",
+     "Tile 3": "Rocker-bottom feet",
+     "Tile 4": "Low-set ears",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Trisomy 18 (Edwards) features a prominent occiput, micrognathia, clenched hands with overlapping fingers, rocker-bottom feet, and low-set ears. The combined pattern is characteristic.",
+     "Organ System": "Multisystem",
+     "Discipline": "Genetics",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Trisomy 18 physical phenotype",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 44 | Autosomal Trisomies > Edwards Syndrome",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Consistent with standard genetics references (MedlinePlus; GeneReviews). Rocker-bottom feet and low-set ears are individually nonspecific (overlap with trisomy 13); the combination points to trisomy 18. Board overlap with Patau advised."
+    },
+    "title": "Edwards syndrome physical findings",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Trisomy 18 (Edwards) features a prominent occiput, micrognathia, clenched hands with overlapping fingers, rocker-bottom feet, and low-set ears. The combined pattern is characteristic.",
+    "organSystems": "Multisystem",
+    "discipline": "Genetics",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Trisomy 18 physical phenotype"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 44 | Autosomal Trisomies > Edwards Syndrome",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Consistent with standard genetics references (MedlinePlus; GeneReviews). Rocker-bottom feet and low-set ears are individually nonspecific (overlap with trisomy 13); the combination points to trisomy 18. Board overlap with Patau advised.",
+    "tiles": [
+     "Prominent occiput",
+     "Clenched hands with overlapping fingers",
+     "Rocker-bottom feet",
+     "Low-set ears"
+    ]
+   },
+   "contentHash": "eb76c44e092ddfb2cf67227d4ffc4fbd6e5d4ca8ec8d905094a6e7b5b9970215",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 27,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PLEXUS-GEN-030": {
+   "id": "PLEXUS-GEN-030",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-030",
+     "Connection Title": "Down syndrome congenital associations",
+     "Tile 1": "Duodenal atresia",
+     "Tile 2": "Hirschsprung disease",
+     "Tile 3": "Atrioventricular septal defect",
+     "Tile 4": "Atlantoaxial instability",
+     "Connection Type": "Shared disease associations",
+     "Explanation": "Trisomy 21 is associated with duodenal atresia, Hirschsprung disease, atrioventricular septal defect (the characteristic cardiac lesion), and atlantoaxial instability. These are potential associated conditions, not universal.",
+     "Organ System": "Multisystem",
+     "Discipline": "Genetics",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Trisomy 21 associated conditions",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 44 | Autosomal Trisomies > Down Syndrome",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (AAP Health Supervision for Down Syndrome, Bull et al. 2022; Kriss, Clin Pediatr 1999, PMID 10456238). Symptomatic atlantoaxial instability occurs in only ~1-2%; not universal."
+    },
+    "title": "Down syndrome congenital associations",
+    "connectionType": "Shared disease associations",
+    "explanation": "Trisomy 21 is associated with duodenal atresia, Hirschsprung disease, atrioventricular septal defect (the characteristic cardiac lesion), and atlantoaxial instability. These are potential associated conditions, not universal.",
+    "organSystems": "Multisystem",
+    "discipline": "Genetics",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Trisomy 21 associated conditions"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 44 | Autosomal Trisomies > Down Syndrome",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (AAP Health Supervision for Down Syndrome, Bull et al. 2022; Kriss, Clin Pediatr 1999, PMID 10456238). Symptomatic atlantoaxial instability occurs in only ~1-2%; not universal.",
+    "tiles": [
+     "Duodenal atresia",
+     "Hirschsprung disease",
+     "Atrioventricular septal defect",
+     "Atlantoaxial instability"
+    ]
+   },
+   "contentHash": "3bcc09e243e590d3bd09cfe3d84c6ceb6c568c345b6ec980af5c194f902421b6",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 28,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-4",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-031": {
+   "id": "PLEXUS-GEN-031",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-031",
+     "Connection Title": "Down syndrome physical findings",
+     "Tile 1": "Flat facial profile",
+     "Tile 2": "Single transverse palmar crease",
+     "Tile 3": "Epicanthal folds",
+     "Tile 4": "Brushfield spots",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Trisomy 21 exam findings include a flat facial profile, single transverse palmar (simian) crease, epicanthal folds, and Brushfield spots of the iris, with variable expression.",
+     "Organ System": "Multisystem",
+     "Discipline": "Genetics",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Trisomy 21 examination findings",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 44 | Autosomal Trisomies > Down Syndrome",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Consistent with AAP Down syndrome guideline (Bull et al. 2022). Individual features occur in unaffected individuals (e.g., single palmar crease in a minority of the general population); the combination is suggestive, not diagnostic."
+    },
+    "title": "Down syndrome physical findings",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Trisomy 21 exam findings include a flat facial profile, single transverse palmar (simian) crease, epicanthal folds, and Brushfield spots of the iris, with variable expression.",
+    "organSystems": "Multisystem",
+    "discipline": "Genetics",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Trisomy 21 examination findings"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 44 | Autosomal Trisomies > Down Syndrome",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Consistent with AAP Down syndrome guideline (Bull et al. 2022). Individual features occur in unaffected individuals (e.g., single palmar crease in a minority of the general population); the combination is suggestive, not diagnostic.",
+    "tiles": [
+     "Flat facial profile",
+     "Single transverse palmar crease",
+     "Epicanthal folds",
+     "Brushfield spots"
+    ]
+   },
+   "contentHash": "bc7f82f07016ae0c0383c2c58d132bb4683456d930a251fab280211c3e0538c5",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 29,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-2",
+   "placementNote": null
+  },
+  "PLEXUS-GEN-032": {
+   "id": "PLEXUS-GEN-032",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-032",
+     "Connection Title": "Cri-du-chat syndrome clues",
+     "Tile 1": "High-pitched cat-like cry",
+     "Tile 2": "Microcephaly",
+     "Tile 3": "Low birth weight",
+     "Tile 4": "Ventricular septal defect",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Cri-du-chat (5p deletion) features a high-pitched cat-like cry in infancy, microcephaly, low birth weight/growth failure, intellectual disability, and congenital heart disease such as VSD.",
+     "Organ System": "Multisystem",
+     "Discipline": "Genetics",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Chromosome 5p deletion clinical clues",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 45 | Microdeletion Syndromes > Cri-du-chat",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Consistent with standard genetics references (MedlinePlus; GeneReviews, Cri-du-chat/5p deletion). VSD is an associated, not obligatory, finding; the characteristic cry changes/attenuates with age."
+    },
+    "title": "Cri-du-chat syndrome clues",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Cri-du-chat (5p deletion) features a high-pitched cat-like cry in infancy, microcephaly, low birth weight/growth failure, intellectual disability, and congenital heart disease such as VSD.",
+    "organSystems": "Multisystem",
+    "discipline": "Genetics",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Chromosome 5p deletion clinical clues"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 45 | Microdeletion Syndromes > Cri-du-chat",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Consistent with standard genetics references (MedlinePlus; GeneReviews, Cri-du-chat/5p deletion). VSD is an associated, not obligatory, finding; the characteristic cry changes/attenuates with age.",
+    "tiles": [
+     "High-pitched cat-like cry",
+     "Microcephaly",
+     "Low birth weight",
+     "Ventricular septal defect"
+    ]
+   },
+   "contentHash": "4a5bd4c902d5c6f9dbe729ab642fbfb3b2e6cd2a10884e07523573b9e3fe574c",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 30,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PLEXUS-GEN-033": {
+   "id": "PLEXUS-GEN-033",
+   "library": "new",
+   "system": "Genetics",
+   "content": {
+    "raw": {
+     "Connection ID": "PLEXUS-GEN-033",
+     "Connection Title": "Williams syndrome cardiovascular and metabolic associations",
+     "Tile 1": "Supravalvular aortic stenosis",
+     "Tile 2": "Renal artery stenosis",
+     "Tile 3": "Hypercalcemia",
+     "Tile 4": "Elastin (ELN) gene deletion",
+     "Connection Type": "Shared syndrome association",
+     "Explanation": "Williams syndrome (7q11.23 deletion including ELN) causes an elastin arteriopathy with supravalvular aortic stenosis and other arterial stenoses (e.g., renal artery), plus idiopathic hypercalcemia (~15-45%). The ELN deletion underlies the vascular phenotype; the other tiles are clinical associations.",
+     "Organ System": "Cardiology; Endocrinology",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Williams syndrome clues; Elastin-deletion syndrome associations",
+     "Source": "Bootcamp.com Genetics.pdf",
+     "Source Section": "PDF p. 45 | Microdeletion Syndromes > Williams Syndrome",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Morris & Braddock, AAP Williams syndrome guideline 2020; Kozel et al., Nat Rev Dis Primers 2021; MedlinePlus). ELN deletion explains the arteriopathy (SVAS, renal/other arterial stenoses); hypercalcemia mechanism is distinct and not universal. Mixing a genetic lesion with clinical findings is intentional and medically coherent."
+    },
+    "title": "Williams syndrome cardiovascular and metabolic associations",
+    "connectionType": "Shared syndrome association",
+    "explanation": "Williams syndrome (7q11.23 deletion including ELN) causes an elastin arteriopathy with supravalvular aortic stenosis and other arterial stenoses (e.g., renal artery), plus idiopathic hypercalcemia (~15-45%). The ELN deletion underlies the vascular phenotype; the other tiles are clinical associations.",
+    "organSystems": "Cardiology; Endocrinology",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Williams syndrome clues",
+     "Elastin-deletion syndrome associations"
+    ],
+    "sources": "Bootcamp.com Genetics.pdf",
+    "sourceSection": "PDF p. 45 | Microdeletion Syndromes > Williams Syndrome",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Morris & Braddock, AAP Williams syndrome guideline 2020; Kozel et al., Nat Rev Dis Primers 2021; MedlinePlus). ELN deletion explains the arteriopathy (SVAS, renal/other arterial stenoses); hypercalcemia mechanism is distinct and not universal. Mixing a genetic lesion with clinical findings is intentional and medically coherent.",
+    "tiles": [
+     "Supravalvular aortic stenosis",
+     "Renal artery stenosis",
+     "Hypercalcemia",
+     "Elastin (ELN) gene deletion"
+    ]
+   },
+   "contentHash": "97c95e7f58d9cce895afd1cf191e5761604cd832848eb7e1780e9861a71e7f2a",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Genetics_reviewed_connections_1.csv",
+    "fileSha": "43fa1bd10d70",
+    "row": 31,
+    "importedAt": "2026-10-08T07:07:09.474Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "genetics-starter-2",
+   "placementNote": null
   }
  },
  "starterBoards": {
@@ -20886,6 +23104,103 @@
     "flags": [],
     "ambiguityReview": "none"
    }
+  ],
+  "Genetics": [
+   {
+    "n": 1,
+    "id": "genetics-starter-1",
+    "formedAt": "2026-10-08T07:07:52.154Z",
+    "ids": [
+     "PLEXUS-GEN-028",
+     "PLEXUS-GEN-015",
+     "PLEXUS-GEN-007",
+     "PLEXUS-GEN-026"
+    ],
+    "difficultyWarnings": [],
+    "signature": "22792951",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 2,
+    "id": "genetics-starter-2",
+    "formedAt": "2026-10-08T07:07:52.154Z",
+    "ids": [
+     "PLEXUS-GEN-017",
+     "PLEXUS-GEN-031",
+     "PLEXUS-GEN-033",
+     "PLEXUS-GEN-021"
+    ],
+    "difficultyWarnings": [],
+    "signature": "4d8ed84b",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 3,
+    "id": "genetics-starter-3",
+    "formedAt": "2026-10-08T07:07:52.154Z",
+    "ids": [
+     "PLEXUS-GEN-022",
+     "PLEXUS-GEN-024",
+     "PLEXUS-GEN-013",
+     "PLEXUS-GEN-020"
+    ],
+    "difficultyWarnings": [],
+    "signature": "007125e1",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 4,
+    "id": "genetics-starter-4",
+    "formedAt": "2026-10-08T07:07:52.154Z",
+    "ids": [
+     "PLEXUS-GEN-030",
+     "PLEXUS-GEN-016",
+     "PLEXUS-GEN-001",
+     "PLEXUS-GEN-018"
+    ],
+    "difficultyWarnings": [],
+    "signature": "5a208a84",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 5,
+    "id": "genetics-starter-5",
+    "formedAt": "2026-10-08T07:07:52.154Z",
+    "ids": [
+     "PLEXUS-GEN-010",
+     "PLEXUS-GEN-023",
+     "PLEXUS-GEN-008",
+     "PLEXUS-GEN-027"
+    ],
+    "difficultyWarnings": [],
+    "signature": "a29771da",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   }
   ]
  },
  "imports": [
@@ -20938,6 +23253,16 @@
    "added": 65,
    "revised": 0,
    "unchanged": 0
+  },
+  {
+   "file": "Plexus_Genetics_reviewed_connections_1.csv",
+   "fileSha": "43fa1bd10d70",
+   "system": "Genetics",
+   "importedAt": "2026-10-08T07:07:09.474Z",
+   "rows": 30,
+   "added": 30,
+   "revised": 0,
+   "unchanged": 0
   }
  ],
  "timedExclusionsAtActivation": [
@@ -20952,7 +23277,7 @@
    "replacedBy": "CARD-007"
   }
  ],
- "updatedAt": "2026-10-08T07:04:17.707Z",
+ "updatedAt": "2026-10-08T07:08:40.287Z",
  "active": false,
  "pairs": [
   {
@@ -20980,6 +23305,18 @@
    "sameSystem": false
   },
   {
+   "a": "PLX-BCH-010",
+   "b": "PLEXUS-GEN-003",
+   "kind": "uncertain",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0.29,
+   "sameSubject": false,
+   "wordSim": 0.33,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
    "a": "PLX-BCH-015",
    "b": "PLX-BCH-040",
    "kind": "overlap",
@@ -20988,7 +23325,7 @@
    "titleSim": 0.67,
    "sameSubject": false,
    "wordSim": 0.38,
-   "reviewerDistinct": false,
+   "reviewerDistinct": true,
    "sameSystem": true
   },
   {
@@ -21078,18 +23415,18 @@
  ],
  "counts": {
   "all": {
-   "rows": 275,
-   "passedReview": 270,
+   "rows": 305,
+   "passedReview": 300,
    "passedReviewHuman": 0,
-   "passedReviewAi": 270,
+   "passedReviewAi": 300,
    "heldMedical": 5,
    "rejected": 0,
    "needsFix": 0,
-   "heldDuplicate": 1,
+   "heldDuplicate": 2,
    "setAsideDuplicate": 1,
-   "usable": 268,
-   "starter": 100,
-   "daily": 168
+   "usable": 297,
+   "starter": 120,
+   "daily": 177
   },
   "bySystem": {
    "Biochemistry/Genetics": {
@@ -21161,6 +23498,20 @@
     "usable": 61,
     "starter": 20,
     "daily": 41
+   },
+   "Genetics": {
+    "rows": 30,
+    "passedReview": 30,
+    "passedReviewHuman": 0,
+    "passedReviewAi": 30,
+    "heldMedical": 0,
+    "rejected": 0,
+    "needsFix": 0,
+    "heldDuplicate": 1,
+    "setAsideDuplicate": 0,
+    "usable": 29,
+    "starter": 20,
+    "daily": 9
    }
   }
  }

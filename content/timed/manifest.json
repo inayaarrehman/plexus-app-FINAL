@@ -12,7 +12,7 @@
   "needsReview": 6,
   "other": 0,
   "sameRelationshipPairs": 4,
-  "possibleDuplicatePairs": 8,
+  "possibleDuplicatePairs": 9,
   "auditSamePairs": 9,
   "auditDistinctOverlapPairs": 2,
   "auditPairsMissedByMatcher": 0
@@ -112,6 +112,14 @@
    "kind": "uncertain",
    "audit": "different relationships, heavy overlap",
    "shared": 3,
+   "titleSim": 0.25
+  },
+  {
+   "a": "bank-ext-008",
+   "b": "bank-ext-105",
+   "kind": "uncertain",
+   "audit": null,
+   "shared": 2,
    "titleSim": 0.25
   }
  ],
@@ -1811,7 +1819,12 @@
    "status": "verified",
    "difficulty": "hard",
    "primarySystem": "MSK",
-   "flags": []
+   "flags": [
+    {
+     "flag": "possible_duplicate_of",
+     "other": "bank-ext-008"
+    }
+   ]
   },
   {
    "id": "bank-ext-106",

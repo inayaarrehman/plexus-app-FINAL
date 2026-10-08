@@ -1,12 +1,12 @@
 # Plexus new library: pending review queue
 
-Generated 2026-10-08T07:03:57.335Z. Staging only; the library is not active and the live app is unchanged.
+Generated 2026-10-08T07:07:52.154Z. Staging only; the library is not active and the live app is unchanged.
 
 | Category | Open |
 |---|---|
 | Medical / source holds | 5 |
-| Duplicate decisions (new library) | 2 |
-| Timed-library overlaps | 12 to decide, 3 recorded |
+| Duplicate decisions (new library) | 3 |
+| Timed-library overlaps | 14 to decide, 3 recorded |
 | Board ambiguity reviews | 2 |
 | Blocked boards | 0 |
 | Difficulty calibration warnings | 1 |
@@ -51,6 +51,21 @@ treated as the same relationship (set aside); confirm. Shared relationship: "fat
 | Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
 
 Decide: decisions.json → pairs → "GI-043 | PLX-BCH-008": "same" or "distinct"
+
+### Drugs that disrupt microtubule function  /  Drugs disrupting microtubule dynamics
+possible duplicate (held). Shared relationship: "drug disrupt microtubule function" vs "drug disrupting microtubule dynamic"; 2 of 4 tiles identical.
+
+| | PLX-BCH-010 (new, Biochemistry/Genetics) | PLEXUS-GEN-003 (new, Genetics) |
+|---|---|---|
+| Title | Drugs that disrupt microtubule function | Drugs disrupting microtubule dynamics |
+| Tile 1 | Mebendazole | Colchicine |
+| Tile 2 | Griseofulvin | Vincristine |
+| Tile 3 | Colchicine | Vinblastine |
+| Tile 4 | Vincristine | Paclitaxel |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: PLEXUS-GEN-003.
+Decide: decisions.json → pairs → "PLEXUS-GEN-003 | PLX-BCH-010": "same" or "distinct"
 
 ### Classic Marfan syndrome associations  /  Marfan syndrome associations
 possible duplicate (held). Shared relationship: both are "findings / associations of marfan syndrome".
@@ -180,6 +195,20 @@ possible repeat of a timed entry. Shared relationship: both are "findings / asso
 
 Decide: decisions.json → pairs → "CARD-034 | bank-migrated-sys-mixed-0002-L4": "same" (exclude timed entry at activation) or "distinct"
 
+### Endocrine causes of secondary hypertension  /  Causes of secondary hypertension
+possible repeat of a timed entry. Shared relationship: "causes of endocrine secondary hypertension" vs "causes of secondary hypertension"; 2 of 4 tiles identical.
+
+| | CARD-044 (new, Cardiology) | bank-easy-14 (timed, Endocrine) |
+|---|---|---|
+| Title | Endocrine causes of secondary hypertension | Causes of secondary hypertension |
+| Tile 1 | Cushing syndrome | Renal artery stenosis |
+| Tile 2 | Hyperaldosteronism | Pheochromocytoma |
+| Tile 3 | Pheochromocytoma | Cushing syndrome |
+| Tile 4 | Hyperthyroidism | Primary hyperaldosteronism |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "CARD-044 | bank-easy-14": "same" (exclude timed entry at activation) or "distinct"
+
 ### Infectious associations of erythema nodosum  /  Granulomatous infections with necrotizing (caseating) granulomas
 possible repeat of a timed entry. Shared relationship: "findings / associations of infectious erythema nodosum" vs "granulomatous infection necrotizing caseating granuloma"; 3 of 4 tiles identical.
 
@@ -277,6 +306,20 @@ possible repeat of a timed entry. Shared relationship: "autosomal dominant hered
 | Status | AI_REVIEWED_PASS | verified |
 
 Decide: decisions.json → pairs → "GI-062 | bank-ext-115": "same" (exclude timed entry at activation) or "distinct"
+
+### Trinucleotide repeat expansion disorders  /  Trinucleotide repeat disorders
+possible repeat of a timed entry. Shared relationship: "trinucleotide repeat expansion disorder" vs "trinucleotide repeat disorder"; 2 of 4 tiles identical; tile wording 67% the same.
+
+| | PLEXUS-GEN-004 (new, Genetics) | bank-migrated-sys-biochem-0001-L4 (timed, Biochemistry/Genetics) |
+|---|---|---|
+| Title | Trinucleotide repeat expansion disorders | Trinucleotide repeat disorders |
+| Tile 1 | Fragile X syndrome | Fragile X syndrome |
+| Tile 2 | Friedreich ataxia | Myotonic dystrophy |
+| Tile 3 | Huntington disease | Friedreich ataxia |
+| Tile 4 | Myotonic dystrophy type 1 | Kennedy disease |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "PLEXUS-GEN-004 | bank-migrated-sys-biochem-0001-L4": "same" (exclude timed entry at activation) or "distinct"
 
 ## 4. Board ambiguity reviews
 ### biochemistry-genetics-starter-5 (Biochemistry/Genetics)

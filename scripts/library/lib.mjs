@@ -225,7 +225,9 @@ export const contentHash = (c) => sha(c)
 // and findings of the same disease stay different subjects.
 const FILLER = new Set(['classic', 'characteristic', 'typical', 'source', 'listed', 'described', 'key', 'common', 'important', 'recognized', 'major', 'clinical', 'diagnostic', 'can', 'that', 'which', 'may', 'be', 'is', 'are', 'four', 'main'])
 const RELATION = { cause: 'CAUSE', condition: 'CAUSE', produce: 'CAUSE', lead: 'CAUSE', etiology: 'CAUSE', finding: 'FIND', clue: 'FIND', association: 'FIND', associated: 'FIND', feature: 'FIND', sign: 'FIND', manifestation: 'FIND', presentation: 'FIND' }
-export const subjectKey = (title) => [...new Set(words(title).filter((w) => !FILLER.has(w)).map((w) => RELATION[w] || w))].sort().join(' ')
+// Light verb stemming for subjects only ("disrupting" / "disrupt").
+const stem = (w) => (w.length > 6 && w.endsWith('ing') ? w.slice(0, -3) : w.length > 5 && w.endsWith('ed') ? w.slice(0, -2) : w)
+export const subjectKey = (title) => [...new Set(words(title).filter((w) => !FILLER.has(w)).map((w) => RELATION[w] || stem(w)))].sort().join(' ')
 // The topic of a title in its original word order ("Kaposi sarcoma clues" →
 // "kaposi sarcoma"), used to notice when one connection's notes or
 // explanation talk about another connection's subject.
@@ -251,7 +253,7 @@ export function compare(a, b) {
   // "11-beta-hydroxylase deficiency" patterns) is never merged: it is held
   // for a person to decide.
   if ((shared === 4 && titleSim >= 0.5) || ((sameTitle || sameSubject) && shared >= 3)) kind = 'same'
-  else if (shared === 4 || shared === 3 || ((sameTitle || sameSubject) && shared <= 2) || (titleSim >= 0.8 && shared >= 2) || (wordSim >= 0.6 && subjSim >= 0.5)) kind = 'uncertain'
+  else if (shared === 4 || shared === 3 || ((sameTitle || sameSubject) && shared <= 2) || (titleSim >= 0.8 && shared >= 2) || (wordSim >= 0.6 && subjSim >= 0.5) || (subjSim >= 0.6 && shared >= 2)) kind = 'uncertain'
   else if (shared >= 2) kind = 'overlap'
   // When the reviewer's notes on either row name the other row's id, the
   // reviewer saw both and kept them as separate connections. That is
@@ -365,6 +367,14 @@ export function pairCheck(a, b) {
   if (f2 >= 0) flag.push(`tile "${a.tiles[f2]}" is named in "${b.title}"'s title or explanation`)
   const tagSet = new Set(A.tags)
   if (B.tags.filter((t) => tagSet.has(t)).length >= 2) flag.push('share two concept tags')
+  // Two connections about the same condition on one board ("Down syndrome
+  // physical findings" and "Down syndrome congenital associations"): tiles of
+  // one can read as belonging to the other.
+  const ta = topicKey(a.title).split(' ').filter(Boolean)
+  const tb = topicKey(b.title).split(' ').filter(Boolean)
+  const WEAK = new Set(['syndrome', 'disease', 'disorder', 'deficiency', 'drug', 'type', 'cell', 'acid', 'hormone', 'infection'])
+  const sharedStrong = ta.filter((w) => tb.includes(w) && !WEAK.has(w) && w.length >= 3)
+  if (sharedStrong.length && jaccard(ta, tb) >= 0.5) flag.push(`both are about ${sharedStrong.join(' ')}`)
   // One connection's notes or explanation name the other's subject
   // ("clinically mimics ... Kaposi sarcoma"): the two may compete for tiles.
   for (const [x, X, y] of [[a, A, b], [b, B, a]]) {
