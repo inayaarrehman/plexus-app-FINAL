@@ -191,6 +191,12 @@ export function mapRow(row) {
 
 // Structural problems that keep a row out of every pool. Content is never
 // rewritten to fix them; they are reported.
+// A reviewer note asking for the connection to be kept for other content
+// ("reserve for embryology content") keeps it out of this system's starter
+// boards; it stays in the shared Daily pool.
+export function placementNote(c) {
+  return noteSentences(c.notes).find((x) => /\breserve (it |this )?for\b/i.test(x)) || null
+}
 export function rowProblems(c) {
   const p = []
   if (!c.title) p.push('missing title')
@@ -212,18 +218,34 @@ export const contentHash = (c) => sha(c)
 //   'uncertain' could be the same relationship: needs a person to decide
 //   'overlap'   shares concepts but is a different relationship (allowed)
 //   null        unrelated
+// A connection title's subject: what it is about plus the kind of relationship,
+// with filler removed and word order ignored. "Classic Marfan syndrome
+// associations" = "Marfan syndrome findings"; "Conditions that can produce
+// restrictive cardiomyopathy" = "Causes of restrictive cardiomyopathy". Causes
+// and findings of the same disease stay different subjects.
+const FILLER = new Set(['classic', 'characteristic', 'typical', 'source', 'listed', 'described', 'key', 'common', 'important', 'recognized', 'major', 'clinical', 'diagnostic', 'can', 'that', 'which', 'may', 'be', 'is', 'are', 'four', 'main'])
+const RELATION = { cause: 'CAUSE', condition: 'CAUSE', produce: 'CAUSE', lead: 'CAUSE', etiology: 'CAUSE', finding: 'FIND', clue: 'FIND', association: 'FIND', associated: 'FIND', feature: 'FIND', sign: 'FIND', manifestation: 'FIND', presentation: 'FIND' }
+export const subjectKey = (title) => [...new Set(words(title).filter((w) => !FILLER.has(w)).map((w) => RELATION[w] || w))].sort().join(' ')
+const tileWords = (c) => [...new Set((c.tiles || []).flatMap((t) => words(t)))]
 export function compare(a, b) {
   const ak = new Set(a.tiles.map(tileKey))
   const shared = b.tiles.map(tileKey).filter((t) => ak.has(t)).length
   const ta = titleKey(a.title)
   const tb = titleKey(b.title)
   const titleSim = jaccard(ta.split(' '), tb.split(' '))
+  const sa = subjectKey(a.title)
+  const sb = subjectKey(b.title)
   const sameTitle = ta === tb
+  const sameSubject = !!sa && sa === sb && sa.replace(/CAUSE|FIND/g, '').trim() !== ''
+  // Reworded tiles ("Overriding aorta" / "Aorta overriding the septum") are
+  // caught by comparing the words used across all four tiles.
+  const wordSim = jaccard(tileWords(a), tileWords(b))
+  const subjSim = jaccard(sa.split(' '), sb.split(' '))
   let kind = null
-  if ((shared === 4 && titleSim >= 0.5) || (sameTitle && shared >= 3)) kind = 'same'
-  else if (shared === 4 || shared === 3 || (sameTitle && shared <= 2) || (titleSim >= 0.8 && shared >= 2)) kind = 'uncertain'
+  if ((shared === 4 && titleSim >= 0.5) || ((sameTitle || sameSubject) && shared >= 3) || (wordSim >= 0.75 && subjSim >= 0.5)) kind = 'same'
+  else if (shared === 4 || shared === 3 || ((sameTitle || sameSubject) && shared <= 2) || (titleSim >= 0.8 && shared >= 2) || (wordSim >= 0.6 && subjSim >= 0.5)) kind = 'uncertain'
   else if (shared >= 2) kind = 'overlap'
-  return { kind, shared, titleSim: Math.round(titleSim * 100) / 100 }
+  return { kind, shared, titleSim: Math.round(titleSim * 100) / 100, sameSubject, wordSim: Math.round(wordSim * 100) / 100 }
 }
 export const pairKey = (a, b) => [a, b].sort().join(' | ')
 
@@ -251,7 +273,7 @@ export const pairKey = (a, b) => [a, b].sort().join(' | ')
 //
 // Difficulty balance is a preference only; any mix is allowed.
 const phrase = (hay, needle) => needle.length >= 3 && ` ${hay} `.includes(` ${needle} `)
-const EXPLICIT = [/\bdo not (co-?place|combine|add|place|pair)\b/i, /\bkeep (\w+ )?(separate|apart)\b/i, /\boff (this|the same|one) (board|puzzle)\b/i, /\b(on|to) the same board\b/i, /\bon one board\b/i, /\bin one puzzle\b/i, /\bavoid\b.{0,80}\b(tile|tiles|board|category)\b/i, /\bexclude\b/i]
+const EXPLICIT = [/\bdo not (co-?place|combine|add|place|pair)\b/i, /\bkeep (\w+ )?(separate|apart)\b/i, /\boff (this|the same|one) (board|puzzle)\b/i, /\b(on|to) the same board\b/i, /\bon one board\b/i, /\bin one puzzle\b/i, /\bavoid\b.{0,80}\b(tile|tiles|board|category)\b/i, /\bexclude\b/i, /\bdo not (also )?(create|build)\b/i, /\bavoid (building|creating|placing)\b/i]
 export function noteSentences(notes) {
   return String(notes || '')
     .split(/(?<=[.;])\s+(?=[A-Z(])/)
@@ -337,9 +359,11 @@ function cautions(conns) {
   const out = []
   for (const c of conns)
     for (const s of profile(c).sentences) {
-      if (!s.explicit) continue
+      // Explicit instructions, and any other sentence about the board, that
+      // name no specific id or tile: a person must judge them.
+      if (!s.explicit && !/\b(board|puzzle)\b/i.test(s.text)) continue
       const specific = conns.some((o) => o !== c && ((o.id && s.text.includes(o.id)) || profile(o).variants.some((vs) => vs.some((v) => phrase(s.key, v)))))
-      const namesAnyId = /\b[A-Z]{2,}-[A-Z]{2,}-\d+\b/.test(s.text)
+      const namesAnyId = /\b[A-Z]{2,}-(?:[A-Z]{2,}-)?\d+\b/.test(s.text)
       if (!specific && !namesAnyId) out.push(`${c.id} board instruction to check against the other groups: "${s.text}"`)
     }
   return out
@@ -405,7 +429,7 @@ export function buildBoards(conns, want, { seed = 'plexus', restarts = 400 } = {
   const tierOf = conns.map((c) => c.difficulty)
   // Connections whose notes carry a general board instruction always need an
   // ambiguity review wherever they go, so they are picked last.
-  const generalCautions = conns.map((c) => profile(c).sentences.filter((x) => x.explicit && !/\b[A-Z]{2,}-[A-Z]{2,}-\d+\b/.test(x.text)).length)
+  const generalCautions = conns.map((c) => profile(c).sentences.filter((x) => (x.explicit || /\b(board|puzzle)\b/i.test(x.text)) && !/\b[A-Z]{2,}-(?:[A-Z]{2,}-)?\d+\b/.test(x.text)).length)
   let best = { boards: [], score: -Infinity }
   for (let r = 0; r < restarts; r++) {
     const rand = rng(`${seed}:${r}`)

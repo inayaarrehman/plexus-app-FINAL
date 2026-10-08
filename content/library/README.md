@@ -46,7 +46,10 @@ Every connection is compared:
 - with every other connection in the new library: the same system and all earlier uploads
 - with the timed library
 
-Tiles and titles are compared after normalising case, punctuation, plurals and word order. Different wording, ids, tile order or file format do not make a connection new.
+Tiles and titles are compared after normalising case, punctuation, plurals and word order.
+
+- **Titles** are also reduced to a subject: filler such as "classic" or "source-listed" is dropped, and the kind of relationship is kept. So "Conditions that can produce X" matches "Causes of X", but "Causes of X" never matches "Findings of X".
+- **Reworded tiles** ("Overriding aorta" / "Aorta overriding the septum") are caught by comparing the words used across all four tiles, when the subjects also agree. Different wording, ids, tile order or file format do not make a connection new.
 
 | Result | Rule | What happens |
 |---|---|---|
@@ -88,7 +91,7 @@ Each record has an explicit `pool`:
 - a note mentions the other connection's id or tiles without such an instruction
 - a tile of one connection is named in another's title or explanation
 - two connections share two concept tags
-- a general board instruction names no specific id or tile ("avoid additional homocysteine-elevating tiles"), so a person has to judge whether the other groups qualify
+- a general board instruction, or any other note about the board or puzzle, names no specific id or tile ("avoid additional homocysteine-elevating tiles"), so a person has to judge whether the other groups qualify
 
 Difficulty balance is a preference: mixed boards with a harder connection are chosen first, but a board where all four are the same difficulty is allowed. Boards without flags are preferred.
 
@@ -101,6 +104,8 @@ Difficulty balance is a preference: mixed boards with a harder connection are ch
 | `blocked` | A previously formed board that no longer passes, for example after a revision. It keeps its id and its reservation, but cannot be activated or published until it is fixed or you set `"rebuild"`. |
 
 Starter boards are never reshuffled by later uploads; they are revalidated on every import.
+
+A reviewer note asking for a connection to be reserved for other content ("reserve for embryology content") keeps it out of its system's starter boards. It stays in the shared Daily pool. To override, add `"starterAllow": { "<id>": true }` to `decisions.json`.
 
 **Shortages.** When a system cannot fill five boards, the report gives the shortfall and the approved count per difficulty. Nothing is invented or reused to fill the gap.
 
@@ -134,6 +139,6 @@ The capacity check is recomputed each time and saves nothing.
 ## Checks
 
 ```
-node scripts/library/test.mjs          # importer checks on placeholder rows (46 checks)
+node scripts/library/test.mjs          # importer checks on placeholder rows (52 checks)
 node scripts/library/timed-snapshot.mjs  # refresh the timed-library manifest
 ```

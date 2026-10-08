@@ -152,6 +152,15 @@ eb = state().starterBoards.Endocrine[0]
 ok(eb.status === 'review' && /again/.test(eb.ambiguityReview), 'a revision after clearance puts the board back into review')
 fs.writeFileSync(path.join(lib, 'decisions.json'), JSON.stringify({ pairs: {}, boards: {} }))
 
+// 4f. Matching reworded relationships.
+const mk = (title, tiles) => ({ title, tiles })
+ok(L.compare(mk('Classic Marfan syndrome associations', ['a1', 'a2', 'a3', 'a4']), mk('Marfan syndrome associations', ['b1', 'b2', 'b3', 'b4'])).kind === 'uncertain', 'same subject with different tiles is flagged')
+ok(L.compare(mk('Conditions that can produce restrictive cardiomyopathy', ['a1', 'a2', 'a3', 'a4']), mk('Causes of restrictive cardiomyopathy', ['b1', 'b2', 'b3', 'b4'])).kind === 'uncertain', '"conditions that can produce X" matches "causes of X"')
+ok(L.compare(mk('Causes of dilated cardiomyopathy', ['a1', 'a2', 'a3', 'a4']), mk('Dilated cardiomyopathy findings', ['b1', 'b2', 'b3', 'b4'])).kind === null, 'causes and findings of the same disease are different relationships')
+ok(L.compare(mk('The four defects in tetralogy of Fallot', ['Pulmonary outflow stenosis', 'Aorta overriding the septum', 'Ventricular septal defect', 'Right ventricular hypertrophy']), mk('Findings in tetralogy of Fallot', ['Pulmonary stenosis', 'Right ventricular hypertrophy', 'Overriding aorta', 'Ventricular septal defect'])).kind === 'same', 'reworded tiles of the same relationship are a duplicate')
+ok(L.compare(mk('Systolic murmurs', ['Aortic stenosis', 'Mitral regurgitation', 'Tricuspid regurgitation', 'Hypertrophic cardiomyopathy']), mk('Diastolic murmurs', ['Aortic regurgitation', 'Pulmonic regurgitation', 'Mitral stenosis', 'Tricuspid stenosis'])).kind === null, 'similar vocabulary in a different relationship is not a duplicate')
+ok(L.placementNote({ notes: 'Low relevance here - reserve for embryology content.' }) !== null, 'a "reserve for" note is detected')
+
 // 5. Rows without ids get stable ids; re-import matches them.
 const noId = TIERS.map((t) => {
   const r = row('gamma', t, 1)

@@ -233,6 +233,8 @@ const shortages = {}
 for (const sys of systemsInLib) {
   const mine = records.filter((r) => r.system === sys && eligible(r))
   const byId = new Map(mine.map((r) => [r.id, r]))
+  for (const r of mine) r.placementNote = (decisionFile.starterAllow || {})[r.id] ? null : L.placementNote(r.content)
+  const starterCandidates = mine.filter((r) => !r.placementNote)
   // Starter boards from earlier imports are kept, never reshuffled, and
   // revalidated on every import. A board whose members changed or no longer
   // pass keeps its id and its reservation but is BLOCKED from activation and
@@ -259,7 +261,7 @@ for (const sys of systemsInLib) {
   }
   const taken = new Set(kept.flatMap((b) => b.ids))
   const need = L.STARTER_BOARDS_PER_SYSTEM - kept.length
-  const found = need > 0 ? L.buildBoards(mine.filter((r) => !taken.has(r.id)).map(conn), need, { seed: sys }) : []
+  const found = need > 0 ? L.buildBoards(starterCandidates.filter((r) => !taken.has(r.id)).map(conn), need, { seed: sys }) : []
   const used = new Set(kept.map((b) => b.n))
   let n = 1
   const fresh = found.map((board) => {
@@ -368,6 +370,13 @@ if (importEntry) {
   const heldHere = mine.filter((r) => r.heldFor.length)
   say(`Possible duplicates held for your decision: ${heldHere.length}`)
   for (const r of heldHere) say(`  - ${r.id} "${r.content.title}" vs ${r.heldFor.map((id) => `${id} "${titleOf(id)}"`).join(', ')}`)
+  const cross = within.filter((w) => !w.sameSystem && [w.a, w.b].some((id) => state.records[id].system === sys))
+  say(`Cross-system matches with earlier uploads: ${cross.filter((w) => w.kind === 'same').length} same, ${cross.filter((w) => w.kind === 'uncertain').length} unclear (held), ${cross.filter((w) => w.kind === 'overlap').length} shared-concept overlaps (allowed)`)
+  for (const w of cross) say(`  - ${w.kind}: ${w.a} "${titleOf(w.a)}" / ${w.b} "${titleOf(w.b)}" (${w.shared}/4 tiles${w.sameSubject ? ', same subject' : ''})`)
+  const sameSys = within.filter((w) => w.sameSystem && state.records[w.a].system === sys && w.kind === 'overlap')
+  if (sameSys.length) say(`Shared-concept overlaps within ${sys} (allowed, never on one board): ${sameSys.map((w) => `${w.a}/${w.b}`).join(', ')}`)
+  const placed = mine.filter((r) => r.placementNote)
+  for (const r of placed) say(`Kept out of ${sys} starter boards by reviewer note (stays in Daily): ${r.id} "${r.content.title}": "${r.placementNote}"`)
   const ts = mine.filter((r) => r.timedSame.length)
   const tu = mine.filter((r) => r.timedUncertain.length)
   say(`Overlap with the timed library: ${ts.length} same relationship (timed entry to be excluded at activation), ${tu.length} unclear`)

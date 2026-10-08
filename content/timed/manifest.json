@@ -11,7 +11,7 @@
   "verified": 206,
   "needsReview": 6,
   "other": 0,
-  "sameRelationshipPairs": 4,
+  "sameRelationshipPairs": 5,
   "possibleDuplicatePairs": 7,
   "auditSamePairs": 9,
   "auditDistinctOverlapPairs": 2,
@@ -97,6 +97,14 @@
    "audit": "same relationship",
    "shared": 2,
    "titleSim": 1
+  },
+  {
+   "a": "bank-expert-04",
+   "b": "bank-migrated-sys-mixed-0001-L1",
+   "kind": "same",
+   "audit": null,
+   "shared": 2,
+   "titleSim": 0.5
   },
   {
    "a": "bank-migrated-sys-renal-0001-L3",
@@ -563,7 +571,12 @@
    "status": "verified",
    "difficulty": "easy",
    "primarySystem": "Mixed / Step Review",
-   "flags": []
+   "flags": [
+    {
+     "flag": "same_relationship_as",
+     "other": "bank-expert-04"
+    }
+   ]
   },
   {
    "id": "bank-migrated-sys-mixed-0001-L2",

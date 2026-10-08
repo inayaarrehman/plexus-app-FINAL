@@ -71,7 +71,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-002": {
    "id": "PLX-BCH-002",
@@ -143,7 +144,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-003": {
    "id": "PLX-BCH-003",
@@ -215,7 +217,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-004": {
    "id": "PLX-BCH-004",
@@ -287,7 +290,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-005": {
    "id": "PLX-BCH-005",
@@ -359,7 +363,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-2"
+   "starterBoard": "biochemistry-genetics-starter-2",
+   "placementNote": null
   },
   "PLX-BCH-006": {
    "id": "PLX-BCH-006",
@@ -431,7 +436,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-007": {
    "id": "PLX-BCH-007",
@@ -503,7 +509,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-008": {
    "id": "PLX-BCH-008",
@@ -581,7 +588,8 @@
    ],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-009": {
    "id": "PLX-BCH-009",
@@ -725,7 +733,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-011": {
    "id": "PLX-BCH-011",
@@ -797,7 +806,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-012": {
    "id": "PLX-BCH-012",
@@ -869,7 +879,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-013": {
    "id": "PLX-BCH-013",
@@ -941,7 +952,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-014": {
    "id": "PLX-BCH-014",
@@ -1013,7 +1025,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-015": {
    "id": "PLX-BCH-015",
@@ -1085,7 +1098,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-016": {
    "id": "PLX-BCH-016",
@@ -1157,7 +1171,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-017": {
    "id": "PLX-BCH-017",
@@ -1229,7 +1244,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-4"
+   "starterBoard": "biochemistry-genetics-starter-4",
+   "placementNote": null
   },
   "PLX-BCH-018": {
    "id": "PLX-BCH-018",
@@ -1301,7 +1317,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-019": {
    "id": "PLX-BCH-019",
@@ -1373,7 +1390,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-020": {
    "id": "PLX-BCH-020",
@@ -1445,7 +1463,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-021": {
    "id": "PLX-BCH-021",
@@ -1517,7 +1536,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-022": {
    "id": "PLX-BCH-022",
@@ -1589,7 +1609,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-023": {
    "id": "PLX-BCH-023",
@@ -1661,7 +1682,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-4"
+   "starterBoard": "biochemistry-genetics-starter-4",
+   "placementNote": null
   },
   "PLX-BCH-024": {
    "id": "PLX-BCH-024",
@@ -1733,7 +1755,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-025": {
    "id": "PLX-BCH-025",
@@ -1805,7 +1828,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-2"
+   "starterBoard": "biochemistry-genetics-starter-2",
+   "placementNote": null
   },
   "PLX-BCH-026": {
    "id": "PLX-BCH-026",
@@ -1877,7 +1901,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-027": {
    "id": "PLX-BCH-027",
@@ -1949,7 +1974,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-028": {
    "id": "PLX-BCH-028",
@@ -2021,7 +2047,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-1"
+   "starterBoard": "biochemistry-genetics-starter-1",
+   "placementNote": null
   },
   "PLX-BCH-029": {
    "id": "PLX-BCH-029",
@@ -2093,7 +2120,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-030": {
    "id": "PLX-BCH-030",
@@ -2165,7 +2193,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-3"
+   "starterBoard": "biochemistry-genetics-starter-3",
+   "placementNote": null
   },
   "PLX-BCH-031": {
    "id": "PLX-BCH-031",
@@ -2237,7 +2266,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-032": {
    "id": "PLX-BCH-032",
@@ -2309,7 +2339,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-033": {
    "id": "PLX-BCH-033",
@@ -2381,7 +2412,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-034": {
    "id": "PLX-BCH-034",
@@ -2453,7 +2485,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-3"
+   "starterBoard": "biochemistry-genetics-starter-3",
+   "placementNote": null
   },
   "PLX-BCH-035": {
    "id": "PLX-BCH-035",
@@ -2525,7 +2558,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-036": {
    "id": "PLX-BCH-036",
@@ -2597,7 +2631,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-037": {
    "id": "PLX-BCH-037",
@@ -2669,7 +2704,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-038": {
    "id": "PLX-BCH-038",
@@ -2741,7 +2777,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-039": {
    "id": "PLX-BCH-039",
@@ -2813,7 +2850,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-040": {
    "id": "PLX-BCH-040",
@@ -2885,7 +2923,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-3"
+   "starterBoard": "biochemistry-genetics-starter-3",
+   "placementNote": null
   },
   "PLX-BCH-041": {
    "id": "PLX-BCH-041",
@@ -2957,7 +2996,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-042": {
    "id": "PLX-BCH-042",
@@ -3029,7 +3069,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-043": {
    "id": "PLX-BCH-043",
@@ -3101,7 +3142,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-044": {
    "id": "PLX-BCH-044",
@@ -3173,7 +3215,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-5"
+   "starterBoard": "biochemistry-genetics-starter-5",
+   "placementNote": null
   },
   "PLX-BCH-045": {
    "id": "PLX-BCH-045",
@@ -3245,7 +3288,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-046": {
    "id": "PLX-BCH-046",
@@ -3317,7 +3361,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-2"
+   "starterBoard": "biochemistry-genetics-starter-2",
+   "placementNote": null
   },
   "PLX-BCH-047": {
    "id": "PLX-BCH-047",
@@ -3389,7 +3434,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-048": {
    "id": "PLX-BCH-048",
@@ -3461,7 +3507,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-4"
+   "starterBoard": "biochemistry-genetics-starter-4",
+   "placementNote": null
   },
   "PLX-BCH-049": {
    "id": "PLX-BCH-049",
@@ -3533,7 +3580,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-050": {
    "id": "PLX-BCH-050",
@@ -3605,7 +3653,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-5"
+   "starterBoard": "biochemistry-genetics-starter-5",
+   "placementNote": null
   },
   "PLX-BCH-051": {
    "id": "PLX-BCH-051",
@@ -3677,7 +3726,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-052": {
    "id": "PLX-BCH-052",
@@ -3749,7 +3799,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-053": {
    "id": "PLX-BCH-053",
@@ -3821,7 +3872,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-054": {
    "id": "PLX-BCH-054",
@@ -3893,7 +3945,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-055": {
    "id": "PLX-BCH-055",
@@ -3965,7 +4018,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-4"
+   "starterBoard": "biochemistry-genetics-starter-4",
+   "placementNote": null
   },
   "PLX-BCH-056": {
    "id": "PLX-BCH-056",
@@ -4037,7 +4091,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-057": {
    "id": "PLX-BCH-057",
@@ -4109,7 +4164,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-058": {
    "id": "PLX-BCH-058",
@@ -4181,7 +4237,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-1"
+   "starterBoard": "biochemistry-genetics-starter-1",
+   "placementNote": null
   },
   "PLX-BCH-059": {
    "id": "PLX-BCH-059",
@@ -4253,7 +4310,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-060": {
    "id": "PLX-BCH-060",
@@ -4325,7 +4383,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-061": {
    "id": "PLX-BCH-061",
@@ -4397,7 +4456,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-062": {
    "id": "PLX-BCH-062",
@@ -4469,7 +4529,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-063": {
    "id": "PLX-BCH-063",
@@ -4541,7 +4602,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-064": {
    "id": "PLX-BCH-064",
@@ -4613,7 +4675,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-2"
+   "starterBoard": "biochemistry-genetics-starter-2",
+   "placementNote": null
   },
   "PLX-BCH-065": {
    "id": "PLX-BCH-065",
@@ -4685,7 +4748,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-066": {
    "id": "PLX-BCH-066",
@@ -4757,7 +4821,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-067": {
    "id": "PLX-BCH-067",
@@ -4829,7 +4894,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-068": {
    "id": "PLX-BCH-068",
@@ -4901,7 +4967,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-069": {
    "id": "PLX-BCH-069",
@@ -4973,7 +5040,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-070": {
    "id": "PLX-BCH-070",
@@ -5045,7 +5113,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-5"
+   "starterBoard": "biochemistry-genetics-starter-5",
+   "placementNote": null
   },
   "PLX-BCH-071": {
    "id": "PLX-BCH-071",
@@ -5117,7 +5186,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-1"
+   "starterBoard": "biochemistry-genetics-starter-1",
+   "placementNote": null
   },
   "PLX-BCH-072": {
    "id": "PLX-BCH-072",
@@ -5189,7 +5259,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-073": {
    "id": "PLX-BCH-073",
@@ -5261,7 +5332,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-1"
+   "starterBoard": "biochemistry-genetics-starter-1",
+   "placementNote": null
   },
   "PLX-BCH-074": {
    "id": "PLX-BCH-074",
@@ -5333,7 +5405,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-075": {
    "id": "PLX-BCH-075",
@@ -5405,7 +5478,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-3"
+   "starterBoard": "biochemistry-genetics-starter-3",
+   "placementNote": null
   },
   "PLX-BCH-076": {
    "id": "PLX-BCH-076",
@@ -5477,7 +5551,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-077": {
    "id": "PLX-BCH-077",
@@ -5549,7 +5624,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "systemsStarter",
-   "starterBoard": "biochemistry-genetics-starter-5"
+   "starterBoard": "biochemistry-genetics-starter-5",
+   "placementNote": null
   },
   "PLX-BCH-078": {
    "id": "PLX-BCH-078",
@@ -5621,7 +5697,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "daily",
-   "starterBoard": null
+   "starterBoard": null,
+   "placementNote": null
   },
   "PLX-BCH-079": {
    "id": "PLX-BCH-079",
@@ -5700,7 +5777,3847 @@
     }
    ],
    "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-001": {
+   "id": "CARD-001",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-001",
+     "Connection Title": "The four defects in tetralogy of Fallot",
+     "Tile 1": "Pulmonary outflow stenosis",
+     "Tile 2": "Aorta overriding the septum",
+     "Tile 3": "Ventricular septal defect",
+     "Tile 4": "Right ventricular hypertrophy",
+     "Connection Type": "Disease components",
+     "Explanation": "These are the four defining abnormalities of tetralogy of Fallot. The degree of pulmonary outflow obstruction determines much of its shunt physiology.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Tetralogy of Fallot; TOF components",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Cyanotic Congenital Heart Defects / Tetralogy of Fallot, PDF p.166",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are the defining components of TOF (infundibular/pulmonary stenosis, overriding aorta, VSD, RVH). Clean defining-set; no equally strong competing category."
+    },
+    "title": "The four defects in tetralogy of Fallot",
+    "connectionType": "Disease components",
+    "explanation": "These are the four defining abnormalities of tetralogy of Fallot. The degree of pulmonary outflow obstruction determines much of its shunt physiology.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Tetralogy of Fallot",
+     "TOF components"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Cyanotic Congenital Heart Defects / Tetralogy of Fallot, PDF p.166",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are the defining components of TOF (infundibular/pulmonary stenosis, overriding aorta, VSD, RVH). Clean defining-set; no equally strong competing category.",
+    "tiles": [
+     "Pulmonary outflow stenosis",
+     "Aorta overriding the septum",
+     "Ventricular septal defect",
+     "Right ventricular hypertrophy"
+    ]
+   },
+   "contentHash": "070b67e20e879a1520218e10462f27766de14ce03bf853c1d6c4007439bca057",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 2,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [
+    {
+     "id": "bank-ext-050",
+     "title": "Findings in tetralogy of Fallot",
+     "shared": 2
+    }
+   ],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-2",
+   "placementNote": null
+  },
+  "CARD-002": {
+   "id": "CARD-002",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-002",
+     "Connection Title": "Classic causes of high-output heart failure",
+     "Tile 1": "Thiamine deficiency",
+     "Tile 2": "Severe anemia",
+     "Tile 3": "Hyperthyroidism",
+     "Tile 4": "Arteriovenous fistula",
+     "Connection Type": "Shared hemodynamic outcome",
+     "Explanation": "Each can create a high-output state that becomes heart failure when cardiac output cannot meet the increased demand or low-resistance circulation.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathophysiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "High-output HF causes; High-output cardiac failure",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Heart Failure / High and Low Output Heart Failure, PDF p.123",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four confirmed high-output HF causes (Bozkurt, Universal Definition of HF, J Card Fail 2021; Reddy, High-Output HF 15-Year Experience, JACC 2016). Qualify anemia as severe and fistula as hemodynamically significant; none invariably causes HF. 'High-output states' is a broader alias. Board overlap: AV fistula hemodynamics resemble CARD-052."
+    },
+    "title": "Classic causes of high-output heart failure",
+    "connectionType": "Shared hemodynamic outcome",
+    "explanation": "Each can create a high-output state that becomes heart failure when cardiac output cannot meet the increased demand or low-resistance circulation.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathophysiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "High-output HF causes",
+     "High-output cardiac failure"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Heart Failure / High and Low Output Heart Failure, PDF p.123",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four confirmed high-output HF causes (Bozkurt, Universal Definition of HF, J Card Fail 2021; Reddy, High-Output HF 15-Year Experience, JACC 2016). Qualify anemia as severe and fistula as hemodynamically significant; none invariably causes HF. 'High-output states' is a broader alias. Board overlap: AV fistula hemodynamics resemble CARD-052.",
+    "tiles": [
+     "Thiamine deficiency",
+     "Severe anemia",
+     "Hyperthyroidism",
+     "Arteriovenous fistula"
+    ]
+   },
+   "contentHash": "071618523afb74ea0ed5ccf547691db91f2e92a7193afae3426f30fcf35f22cb",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 3,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-medium-16",
+     "title": "Causes of high-output heart failure",
+     "shared": 2,
+     "titleSim": 0.83
+    },
+    {
+     "id": "bank-migrated-sys-cardio-0002-L4",
+     "title": "Causes of a widened pulse pressure",
+     "shared": 3,
+     "titleSim": 0.11
+    }
+   ],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-1",
+   "placementNote": null
+  },
+  "CARD-003": {
+   "id": "CARD-003",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-003",
+     "Connection Title": "Dihydropyridine calcium channel blockers",
+     "Tile 1": "Nifedipine",
+     "Tile 2": "Nicardipine",
+     "Tile 3": "Felodipine",
+     "Tile 4": "Amlodipine",
+     "Connection Type": "Shared drug class",
+     "Explanation": "All inhibit vascular L-type calcium channels and primarily reduce arterial resistance.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "DHP calcium channel blockers; Vascular calcium channel blockers",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Vasodilation and Vasoconstriction / Pharmacologic Targets, PDF p.57",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are dihydropyridines (Abernethy & Schwartz, Calcium-Antagonist Drugs, NEJM 1999). Clean, unambiguous class set."
+    },
+    "title": "Dihydropyridine calcium channel blockers",
+    "connectionType": "Shared drug class",
+    "explanation": "All inhibit vascular L-type calcium channels and primarily reduce arterial resistance.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "DHP calcium channel blockers",
+     "Vascular calcium channel blockers"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Vasodilation and Vasoconstriction / Pharmacologic Targets, PDF p.57",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are dihydropyridines (Abernethy & Schwartz, Calcium-Antagonist Drugs, NEJM 1999). Clean, unambiguous class set.",
+    "tiles": [
+     "Nifedipine",
+     "Nicardipine",
+     "Felodipine",
+     "Amlodipine"
+    ]
+   },
+   "contentHash": "cf436a5167a37f46131dacf389a63e5598ff537bb0d15a2e1fd1b50ee40698f1",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 4,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-004": {
+   "id": "CARD-004",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-004",
+     "Connection Title": "Beta-1 selective blockers",
+     "Tile 1": "Metoprolol",
+     "Tile 2": "Nebivolol",
+     "Tile 3": "Esmolol",
+     "Tile 4": "Atenolol",
+     "Connection Type": "Shared receptor target",
+     "Explanation": "These agents preferentially antagonize beta-1 receptors. The source links renal beta-1 blockade to reduced renin release.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Cardioselective beta blockers; Selective beta-1 antagonists",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "RAAS / Direct Pharmacologic Targets, PDF p.77",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are beta-1 selective (Joseph et al, JACC 2019; AlHabeeb, Cardiovasc Drugs Ther 2022). Selectivity is relative and lost at high dose; nebivolol is third-generation with additional NO-mediated vasodilation but retains the highest beta-1 selectivity. Renin reduction via renal beta-1 blockade is valid."
+    },
+    "title": "Beta-1 selective blockers",
+    "connectionType": "Shared receptor target",
+    "explanation": "These agents preferentially antagonize beta-1 receptors. The source links renal beta-1 blockade to reduced renin release.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Cardioselective beta blockers",
+     "Selective beta-1 antagonists"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "RAAS / Direct Pharmacologic Targets, PDF p.77",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are beta-1 selective (Joseph et al, JACC 2019; AlHabeeb, Cardiovasc Drugs Ther 2022). Selectivity is relative and lost at high dose; nebivolol is third-generation with additional NO-mediated vasodilation but retains the highest beta-1 selectivity. Renin reduction via renal beta-1 blockade is valid.",
+    "tiles": [
+     "Metoprolol",
+     "Nebivolol",
+     "Esmolol",
+     "Atenolol"
+    ]
+   },
+   "contentHash": "64fc83f4aff285cb514308155a0122d0232f22ee74d821ae801b9903e22303d5",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 5,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-005": {
+   "id": "CARD-005",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-005",
+     "Connection Title": "Non-antiarrhythmic drugs that can prolong QT",
+     "Tile 1": "Haloperidol",
+     "Tile 2": "Ziprasidone",
+     "Tile 3": "Ondansetron",
+     "Tile 4": "Methadone",
+     "Connection Type": "Shared adverse effect",
+     "Explanation": "The source lists all four as potential acquired QT-prolonging exposures, which can increase torsades risk.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "QT-prolonging noncardiac drugs; Drugs associated with acquired long QT",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Cardiac Conductive Physiology / QT Interval Prolongation, PDF p.88",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four prolong QT (Tisdale, Drug-Induced Arrhythmias, Circulation 2020; FDA ziprasidone label). Ziprasidone is classified 'conditional risk' of TdP vs 'known risk' for the other three - the weakest but still valid member. Risk is dose/route/interaction dependent. Board overlap with CARD-006 (QT theme)."
+    },
+    "title": "Non-antiarrhythmic drugs that can prolong QT",
+    "connectionType": "Shared adverse effect",
+    "explanation": "The source lists all four as potential acquired QT-prolonging exposures, which can increase torsades risk.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "QT-prolonging noncardiac drugs",
+     "Drugs associated with acquired long QT"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Cardiac Conductive Physiology / QT Interval Prolongation, PDF p.88",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four prolong QT (Tisdale, Drug-Induced Arrhythmias, Circulation 2020; FDA ziprasidone label). Ziprasidone is classified 'conditional risk' of TdP vs 'known risk' for the other three - the weakest but still valid member. Risk is dose/route/interaction dependent. Board overlap with CARD-006 (QT theme).",
+    "tiles": [
+     "Haloperidol",
+     "Ziprasidone",
+     "Ondansetron",
+     "Methadone"
+    ]
+   },
+   "contentHash": "2d78380bfe857cec408743c30b2c71e783bcec96402a680bf3254ea5b99e640f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 6,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-5",
+   "placementNote": null
+  },
+  "CARD-006": {
+   "id": "CARD-006",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-006",
+     "Connection Title": "Antiarrhythmics that can prolong QT",
+     "Tile 1": "Quinidine",
+     "Tile 2": "Procainamide",
+     "Tile 3": "Disopyramide",
+     "Tile 4": "Sotalol",
+     "Connection Type": "Shared adverse effect",
+     "Explanation": "The three class IA agents and sotalol are all listed as drugs that can prolong ventricular repolarization and QT.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "QT-prolonging antiarrhythmics; Antiarrhythmics associated with torsades",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Cardiac Conductive Physiology / QT Prolongation, PDF p.88; Antiarrhythmics, PDF pp.92,94",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four prolong QT/cause TdP (Tisdale, Circulation 2020; FDA sotalol label). Sotalol is class III (with class II beta-blocking properties), NOT class IA - title correctly avoids 'class IA.' Three members are class IA (deliberate 3+1 overlap): when assembling a 16-tile board, do not also create a separate 'class IA' group."
+    },
+    "title": "Antiarrhythmics that can prolong QT",
+    "connectionType": "Shared adverse effect",
+    "explanation": "The three class IA agents and sotalol are all listed as drugs that can prolong ventricular repolarization and QT.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "QT-prolonging antiarrhythmics",
+     "Antiarrhythmics associated with torsades"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Cardiac Conductive Physiology / QT Prolongation, PDF p.88; Antiarrhythmics, PDF pp.92,94",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four prolong QT/cause TdP (Tisdale, Circulation 2020; FDA sotalol label). Sotalol is class III (with class II beta-blocking properties), NOT class IA - title correctly avoids 'class IA.' Three members are class IA (deliberate 3+1 overlap): when assembling a 16-tile board, do not also create a separate 'class IA' group.",
+    "tiles": [
+     "Quinidine",
+     "Procainamide",
+     "Disopyramide",
+     "Sotalol"
+    ]
+   },
+   "contentHash": "53c54448744e15269392a2798aca54650dcab5117362b46463cc3509793abf1e",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 7,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-007": {
+   "id": "CARD-007",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-007",
+     "Connection Title": "Drugs that slow AV nodal conduction",
+     "Tile 1": "Verapamil",
+     "Tile 2": "Diltiazem",
+     "Tile 3": "Metoprolol",
+     "Tile 4": "Digoxin",
+     "Connection Type": "Shared electrophysiologic effect",
+     "Explanation": "Each can slow transmission through the AV node. They do so through different mechanisms and may contribute to AV block.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "AV nodal blockers; Drugs that slow AV conduction",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Antiarrhythmics, PDF pp.93,95; Conduction Blocks, PDF p.114; Heart Failure / Digoxin, PDF p.124",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four slow AV nodal conduction (Tisdale, Circulation 2020; 2023 ACC/AHA AF guideline, Joglar, JACC 2024). Digoxin acts via increased vagal tone (not Ca/beta blockade). Accept 'AF rate-control drugs' as a clinical alias, but do not imply use in pre-excited AF, and note verapamil/diltiazem are contraindicated in HFrEF."
+    },
+    "title": "Drugs that slow AV nodal conduction",
+    "connectionType": "Shared electrophysiologic effect",
+    "explanation": "Each can slow transmission through the AV node. They do so through different mechanisms and may contribute to AV block.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "AV nodal blockers",
+     "Drugs that slow AV conduction"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Antiarrhythmics, PDF pp.93,95; Conduction Blocks, PDF p.114; Heart Failure / Digoxin, PDF p.124",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four slow AV nodal conduction (Tisdale, Circulation 2020; 2023 ACC/AHA AF guideline, Joglar, JACC 2024). Digoxin acts via increased vagal tone (not Ca/beta blockade). Accept 'AF rate-control drugs' as a clinical alias, but do not imply use in pre-excited AF, and note verapamil/diltiazem are contraindicated in HFrEF.",
+    "tiles": [
+     "Verapamil",
+     "Diltiazem",
+     "Metoprolol",
+     "Digoxin"
+    ]
+   },
+   "contentHash": "97afcda087262ed3e3b0b6e0e367e4c7dd4767c0a5daadac994420f65f65dc74",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 8,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [
+    {
+     "id": "bank-ext-020",
+     "title": "Drugs that slow AV nodal conduction",
+     "shared": 3
+    }
+   ],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-1",
+   "placementNote": null
+  },
+  "CARD-008": {
+   "id": "CARD-008",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-008",
+     "Connection Title": "Recognized amiodarone toxicities",
+     "Tile 1": "Pulmonary fibrosis",
+     "Tile 2": "Thyroid dysfunction",
+     "Tile 3": "Liver injury",
+     "Tile 4": "Blue-gray skin discoloration",
+     "Connection Type": "Shared drug toxicity",
+     "Explanation": "The source associates amiodarone with pulmonary, thyroid, hepatic and pigment-related adverse effects.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Amiodarone adverse effects; Amiodarone toxicity",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Antiarrhythmics / Other Drug Properties and Adverse Effects, PDF p.97",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are classic amiodarone toxicities (Zimetbaum, NEJM 2007; FDA amiodarone label; 2023 ACC/AHA AF guideline). Corneal microdeposits and photosensitivity are also common but not required for this set."
+    },
+    "title": "Recognized amiodarone toxicities",
+    "connectionType": "Shared drug toxicity",
+    "explanation": "The source associates amiodarone with pulmonary, thyroid, hepatic and pigment-related adverse effects.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Amiodarone adverse effects",
+     "Amiodarone toxicity"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Antiarrhythmics / Other Drug Properties and Adverse Effects, PDF p.97",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are classic amiodarone toxicities (Zimetbaum, NEJM 2007; FDA amiodarone label; 2023 ACC/AHA AF guideline). Corneal microdeposits and photosensitivity are also common but not required for this set.",
+    "tiles": [
+     "Pulmonary fibrosis",
+     "Thyroid dysfunction",
+     "Liver injury",
+     "Blue-gray skin discoloration"
+    ]
+   },
+   "contentHash": "8c67ed6c1535fa239066d46cef94f5b59a32353dc39754f4c62f0e803f041708",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 9,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-3",
+   "placementNote": null
+  },
+  "CARD-009": {
+   "id": "CARD-009",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-009",
+     "Connection Title": "Important adverse effects of ACE inhibitors",
+     "Tile 1": "Dry cough",
+     "Tile 2": "Angioedema",
+     "Tile 3": "Hyperkalemia",
+     "Tile 4": "Fetal toxicity",
+     "Connection Type": "Shared drug toxicity",
+     "Explanation": "These are source-listed adverse effects or pregnancy-related hazards of ACE inhibition.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "ACE inhibitor adverse effects; ACE inhibitor safety concerns",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Hypertension / Antihypertensives, PDF p.203",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Cough, angioedema, and hyperkalemia are class adverse effects; fetal toxicity is a pregnancy-specific (2nd/3rd trimester) hazard rather than a routine adult symptom (2025 AHA/ACC HTN guideline, Jones, JACC 2025). The 'safety concerns' framing accommodates the mixed category."
+    },
+    "title": "Important adverse effects of ACE inhibitors",
+    "connectionType": "Shared drug toxicity",
+    "explanation": "These are source-listed adverse effects or pregnancy-related hazards of ACE inhibition.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "ACE inhibitor adverse effects",
+     "ACE inhibitor safety concerns"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Hypertension / Antihypertensives, PDF p.203",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Cough, angioedema, and hyperkalemia are class adverse effects; fetal toxicity is a pregnancy-specific (2nd/3rd trimester) hazard rather than a routine adult symptom (2025 AHA/ACC HTN guideline, Jones, JACC 2025). The 'safety concerns' framing accommodates the mixed category.",
+    "tiles": [
+     "Dry cough",
+     "Angioedema",
+     "Hyperkalemia",
+     "Fetal toxicity"
+    ]
+   },
+   "contentHash": "666e3db50dbf188cdddcd81d56262bf2bf81d3632456be07a5d7e3e9dbc5d0df",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 10,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-010": {
+   "id": "CARD-010",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-010",
+     "Connection Title": "Metabolic adverse effects of thiazides",
+     "Tile 1": "Low potassium",
+     "Tile 2": "Low sodium",
+     "Tile 3": "High uric acid",
+     "Tile 4": "High blood glucose",
+     "Connection Type": "Shared laboratory effect",
+     "Explanation": "The source lists hypokalemia, hyponatremia, hyperuricemia and hyperglycemia among thiazide-associated adverse effects.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Thiazide adverse effects; Thiazide-associated laboratory abnormalities",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Hypertension / Thiazide Diuretics, PDF p.203",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are recognized thiazide metabolic effects (2025 AHA/ACC HTN guideline, Jones, JACC 2025); hypercalcemia and dyslipidemia also occur. These are potential, not inevitable, changes."
+    },
+    "title": "Metabolic adverse effects of thiazides",
+    "connectionType": "Shared laboratory effect",
+    "explanation": "The source lists hypokalemia, hyponatremia, hyperuricemia and hyperglycemia among thiazide-associated adverse effects.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Thiazide adverse effects",
+     "Thiazide-associated laboratory abnormalities"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Hypertension / Thiazide Diuretics, PDF p.203",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are recognized thiazide metabolic effects (2025 AHA/ACC HTN guideline, Jones, JACC 2025); hypercalcemia and dyslipidemia also occur. These are potential, not inevitable, changes.",
+    "tiles": [
+     "Low potassium",
+     "Low sodium",
+     "High uric acid",
+     "High blood glucose"
+    ]
+   },
+   "contentHash": "ae21665829a8f431d303513da7ea4185fbfba94d9b3ed433bcc33aeb99481163",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 11,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-4",
+   "placementNote": null
+  },
+  "CARD-011": {
+   "id": "CARD-011",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-011",
+     "Connection Title": "Causes of dilated cardiomyopathy",
+     "Tile 1": "Chronic heavy alcohol use",
+     "Tile 2": "Doxorubicin exposure",
+     "Tile 3": "Chagas disease",
+     "Tile 4": "Selenium deficiency",
+     "Connection Type": "Shared cardiac phenotype",
+     "Explanation": "The source links these toxic, infectious and nutritional causes to ventricular dilation and systolic dysfunction.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "DCM causes; Causes of dilated systolic cardiomyopathy",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Cardiomyopathy / Dilated Cardiomyopathy, PDF p.128; Chagas Disease, PDF p.132",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are recognized DCM causes; selenium deficiency = Keshan disease (Sliwa, JACC Focus Seminar 2022; Bozkurt, Current Diagnostic/Treatment Strategies for Specific DCM, Circulation 2016). Exposure/deficiency does not always produce DCM. Board overlap: shares doxorubicin and alcohol with CARD-054 - do not place both on the same 16-tile board."
+    },
+    "title": "Causes of dilated cardiomyopathy",
+    "connectionType": "Shared cardiac phenotype",
+    "explanation": "The source links these toxic, infectious and nutritional causes to ventricular dilation and systolic dysfunction.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "DCM causes",
+     "Causes of dilated systolic cardiomyopathy"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Cardiomyopathy / Dilated Cardiomyopathy, PDF p.128; Chagas Disease, PDF p.132",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are recognized DCM causes; selenium deficiency = Keshan disease (Sliwa, JACC Focus Seminar 2022; Bozkurt, Current Diagnostic/Treatment Strategies for Specific DCM, Circulation 2016). Exposure/deficiency does not always produce DCM. Board overlap: shares doxorubicin and alcohol with CARD-054 - do not place both on the same 16-tile board.",
+    "tiles": [
+     "Chronic heavy alcohol use",
+     "Doxorubicin exposure",
+     "Chagas disease",
+     "Selenium deficiency"
+    ]
+   },
+   "contentHash": "cf8255eb59ea5dd4b1dcd31567289f4d6a09821c2792d0394e964e8642a95f9f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 12,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-012": {
+   "id": "CARD-012",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-012",
+     "Connection Title": "Conditions that can produce restrictive cardiomyopathy",
+     "Tile 1": "Cardiac amyloidosis",
+     "Tile 2": "Hemochromatosis",
+     "Tile 3": "Cardiac sarcoidosis",
+     "Tile 4": "Chest irradiation",
+     "Connection Type": "Shared cardiac phenotype",
+     "Explanation": "These are grouped in the source as infiltrative or radiation-related causes of impaired ventricular filling.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Restrictive cardiomyopathy causes; Causes of restrictive myocardial filling",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Cardiomyopathy / Restrictive Cardiomyopathy, PDF p.129",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are accepted restrictive cardiomyopathy causes (Pereira/Grogan/Dec, Spectrum of Restrictive and Infiltrative Cardiomyopathies, JACC 2018; Muchtar, Circ Res 2017). AMBIGUITY REVISED 2->1: the competing 'infiltrative cardiomyopathy' label fits only amyloid/hemochromatosis/sarcoidosis (NOT radiation), so it is not an equally strong category for the full four. Radiation is dual-pathology (restrictive CM + constrictive pericarditis) - board overlap with CARD-033; amyloid overlaps restrictive-physiology themes."
+    },
+    "title": "Conditions that can produce restrictive cardiomyopathy",
+    "connectionType": "Shared cardiac phenotype",
+    "explanation": "These are grouped in the source as infiltrative or radiation-related causes of impaired ventricular filling.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Restrictive cardiomyopathy causes",
+     "Causes of restrictive myocardial filling"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Cardiomyopathy / Restrictive Cardiomyopathy, PDF p.129",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are accepted restrictive cardiomyopathy causes (Pereira/Grogan/Dec, Spectrum of Restrictive and Infiltrative Cardiomyopathies, JACC 2018; Muchtar, Circ Res 2017). AMBIGUITY REVISED 2->1: the competing 'infiltrative cardiomyopathy' label fits only amyloid/hemochromatosis/sarcoidosis (NOT radiation), so it is not an equally strong category for the full four. Radiation is dual-pathology (restrictive CM + constrictive pericarditis) - board overlap with CARD-033; amyloid overlaps restrictive-physiology themes.",
+    "tiles": [
+     "Cardiac amyloidosis",
+     "Hemochromatosis",
+     "Cardiac sarcoidosis",
+     "Chest irradiation"
+    ]
+   },
+   "contentHash": "2c32ccb808163aa6ffaa93a285ba41d3c75689eb8b966a02addc94d9a9bcc6c0",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 13,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-051",
+     "title": "Causes of restrictive cardiomyopathy",
+     "shared": 1,
+     "titleSim": 0.29
+    }
+   ],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-2",
+   "placementNote": null
+  },
+  "CARD-013": {
+   "id": "CARD-013",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-013",
+     "Connection Title": "Classic features of hypertrophic obstructive cardiomyopathy",
+     "Tile 1": "Asymmetric septal thickening",
+     "Tile 2": "Dynamic LV outflow obstruction",
+     "Tile 3": "Myocyte disorganization",
+     "Tile 4": "Murmur louder with Valsalva strain",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "These describe the characteristic structure, histology, obstruction and preload-sensitive murmur of HOCM.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "HOCM findings; Obstructive hypertrophic cardiomyopathy",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Cardiomyopathy / Hypertrophic Obstructive Cardiomyopathy, PDF p.130",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: Valsalva (reduced preload) augments dynamic LVOT obstruction and murmur; asymmetric septal hypertrophy and myocyte/myofibrillar disarray are characteristic (Veselka, Lancet 2017; Braunwald, HCM, NEJM 2025). Specify the obstructive phenotype and the strain phase of Valsalva."
+    },
+    "title": "Classic features of hypertrophic obstructive cardiomyopathy",
+    "connectionType": "Disease-finding association",
+    "explanation": "These describe the characteristic structure, histology, obstruction and preload-sensitive murmur of HOCM.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "HOCM findings",
+     "Obstructive hypertrophic cardiomyopathy"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Cardiomyopathy / Hypertrophic Obstructive Cardiomyopathy, PDF p.130",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: Valsalva (reduced preload) augments dynamic LVOT obstruction and murmur; asymmetric septal hypertrophy and myocyte/myofibrillar disarray are characteristic (Veselka, Lancet 2017; Braunwald, HCM, NEJM 2025). Specify the obstructive phenotype and the strain phase of Valsalva.",
+    "tiles": [
+     "Asymmetric septal thickening",
+     "Dynamic LV outflow obstruction",
+     "Myocyte disorganization",
+     "Murmur louder with Valsalva strain"
+    ]
+   },
+   "contentHash": "ac8c3105e44e9c7f7300a3bfdbbe85250c522d882edeed12e9d154e3b1c4ecea",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 14,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-014": {
+   "id": "CARD-014",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-014",
+     "Connection Title": "Classic clues to Takotsubo cardiomyopathy",
+     "Tile 1": "Acute emotional stress",
+     "Tile 2": "Catecholamine surge",
+     "Tile 3": "Postmenopausal patient",
+     "Tile 4": "LV apical ballooning",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "The source describes a stress-associated syndrome with transient ventricular dysfunction and a classic ballooning pattern.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Stress cardiomyopathy; Broken-heart syndrome; Takotsubo clues",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Cardiomyopathy / Takotsubo Cardiomyopathy, PDF p.133",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are classic Takotsubo features (Bozkurt, Circulation 2016; 2023 ESC Cardiomyopathies guideline, Arbelo). Apical ballooning is the most common (not the only) variant; these are associations, not diagnostic requirements."
+    },
+    "title": "Classic clues to Takotsubo cardiomyopathy",
+    "connectionType": "Disease-finding association",
+    "explanation": "The source describes a stress-associated syndrome with transient ventricular dysfunction and a classic ballooning pattern.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Stress cardiomyopathy",
+     "Broken-heart syndrome",
+     "Takotsubo clues"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Cardiomyopathy / Takotsubo Cardiomyopathy, PDF p.133",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are classic Takotsubo features (Bozkurt, Circulation 2016; 2023 ESC Cardiomyopathies guideline, Arbelo). Apical ballooning is the most common (not the only) variant; these are associations, not diagnostic requirements.",
+    "tiles": [
+     "Acute emotional stress",
+     "Catecholamine surge",
+     "Postmenopausal patient",
+     "LV apical ballooning"
+    ]
+   },
+   "contentHash": "6c15e20f6d178774564ad80eab7ffa2ce243739580af4c306eb7678987c39799",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 15,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-016": {
+   "id": "CARD-016",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-016",
+     "Connection Title": "Classic associations of Chagas disease",
+     "Tile 1": "Trypanosoma cruzi",
+     "Tile 2": "Reduviid insect vector",
+     "Tile 3": "Megaesophagus",
+     "Tile 4": "Megacolon",
+     "Connection Type": "Pathogen-disease association",
+     "Explanation": "The source links this parasite and its insect vector to chronic cardiac and gastrointestinal disease, including esophageal and colonic dilation.",
+     "Organ System": "Cardiovascular / Gastrointestinal",
+     "Discipline": "Microbiology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Chagas associations; American trypanosomiasis",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Cardiomyopathy / Chagas Disease, PDF p.132",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "T. cruzi, the triatomine (reduviid) vector, and chronic GI mega-syndromes (megaesophagus, megacolon) are classic Chagas associations; cardiac/DCM link in Schultheiss, Dilated Cardiomyopathy, Nat Rev Dis Primers 2019. GI mega-syndromes are standard chronic-Chagas teaching (original source supports the association). Cross-system (CV/GI) retained."
+    },
+    "title": "Classic associations of Chagas disease",
+    "connectionType": "Pathogen-disease association",
+    "explanation": "The source links this parasite and its insect vector to chronic cardiac and gastrointestinal disease, including esophageal and colonic dilation.",
+    "organSystems": "Cardiovascular / Gastrointestinal",
+    "discipline": "Microbiology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Chagas associations",
+     "American trypanosomiasis"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Cardiomyopathy / Chagas Disease, PDF p.132",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "T. cruzi, the triatomine (reduviid) vector, and chronic GI mega-syndromes (megaesophagus, megacolon) are classic Chagas associations; cardiac/DCM link in Schultheiss, Dilated Cardiomyopathy, Nat Rev Dis Primers 2019. GI mega-syndromes are standard chronic-Chagas teaching (original source supports the association). Cross-system (CV/GI) retained.",
+    "tiles": [
+     "Trypanosoma cruzi",
+     "Reduviid insect vector",
+     "Megaesophagus",
+     "Megacolon"
+    ]
+   },
+   "contentHash": "b6534fc34cbe10f841b200024928ed07c9076bd50c7f5c900020dbf9b9aa0787",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 16,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-5",
+   "placementNote": null
+  },
+  "CARD-017": {
+   "id": "CARD-017",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-017",
+     "Connection Title": "Marfan syndrome associations",
+     "Tile 1": "Fibrillin-1 defect",
+     "Tile 2": "Upward lens displacement",
+     "Tile 3": "Aortic root enlargement",
+     "Tile 4": "Mitral valve prolapse",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "The source links defective fibrillin to these characteristic ocular and cardiovascular findings.",
+     "Organ System": "Multisystem",
+     "Discipline": "Genetics / Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Marfan findings; FBN1-related disease clues",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Aortic Disease / Marfan Syndrome, PDF p.143",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "FBN1 (fibrillin-1), ectopia lentis (classically superior/upward), aortic root dilation, and MVP are core Marfan features (Loeys et al, revised Ghent nosology for Marfan syndrome, J Med Genet 2010). Findings vary between patients; 'connective tissue disease' is too broad to be equally specific."
+    },
+    "title": "Marfan syndrome associations",
+    "connectionType": "Disease-finding association",
+    "explanation": "The source links defective fibrillin to these characteristic ocular and cardiovascular findings.",
+    "organSystems": "Multisystem",
+    "discipline": "Genetics / Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Marfan findings",
+     "FBN1-related disease clues"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Aortic Disease / Marfan Syndrome, PDF p.143",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "FBN1 (fibrillin-1), ectopia lentis (classically superior/upward), aortic root dilation, and MVP are core Marfan features (Loeys et al, revised Ghent nosology for Marfan syndrome, J Med Genet 2010). Findings vary between patients; 'connective tissue disease' is too broad to be equally specific.",
+    "tiles": [
+     "Fibrillin-1 defect",
+     "Upward lens displacement",
+     "Aortic root enlargement",
+     "Mitral valve prolapse"
+    ]
+   },
+   "contentHash": "41ca39b7bbf04e92be86fcbca827516d4745333f1a7098884af1dcad1c4c8a8f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 17,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [
+    "PLX-BCH-031"
+   ],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "held",
    "starterBoard": null
+  },
+  "CARD-018": {
+   "id": "CARD-018",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-018",
+     "Connection Title": "Classic clues to aortic coarctation",
+     "Tile 1": "Juxtaductal aortic narrowing",
+     "Tile 2": "Delayed femoral pulse",
+     "Tile 3": "Rib notching",
+     "Tile 4": "Leg claudication",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "These are source-listed anatomic and clinical clues to aortic coarctation, with collateral-related rib changes in established disease.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Coarctation findings; Aortic isthmus obstruction clues",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Aortic Disease / Aortic Coarctation, PDF p.144",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Juxtaductal narrowing, radio-femoral delay, rib notching (intercostal collaterals), and claudication are classic (Brickner & Hillis, Congenital Heart Disease in Adults, NEJM 2000; Chen & Wei, Aortic Coarctation, NEJM 2024). Rib notching and claudication reflect established disease, not neonatal presentation."
+    },
+    "title": "Classic clues to aortic coarctation",
+    "connectionType": "Disease-finding association",
+    "explanation": "These are source-listed anatomic and clinical clues to aortic coarctation, with collateral-related rib changes in established disease.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Coarctation findings",
+     "Aortic isthmus obstruction clues"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Aortic Disease / Aortic Coarctation, PDF p.144",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Juxtaductal narrowing, radio-femoral delay, rib notching (intercostal collaterals), and claudication are classic (Brickner & Hillis, Congenital Heart Disease in Adults, NEJM 2000; Chen & Wei, Aortic Coarctation, NEJM 2024). Rib notching and claudication reflect established disease, not neonatal presentation.",
+    "tiles": [
+     "Juxtaductal aortic narrowing",
+     "Delayed femoral pulse",
+     "Rib notching",
+     "Leg claudication"
+    ]
+   },
+   "contentHash": "22d465b766f9c39051a5dbbbe3877ab7f6af4f1474b68364257419356363c2f8",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 18,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-019": {
+   "id": "CARD-019",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-019",
+     "Connection Title": "Classic symptomatic aortic stenosis findings",
+     "Tile 1": "Exertional breathlessness",
+     "Tile 2": "Exertional chest pain",
+     "Tile 3": "Exertional syncope",
+     "Tile 4": "Small delayed arterial pulse",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "The three exertional symptoms form the classic symptomatic AS triad, and a small delayed pulse reflects impaired ventricular ejection.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Aortic stenosis clues; Symptomatic AS",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Valvular Disease / Aortic Stenosis, PDF p.148",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Exertional dyspnea, angina, and syncope (classic AS triad) plus pulsus parvus et tardus (Otto, Calcific AS, JAMA 2024; Manning, JAMA 2013). Parvus et tardus may be absent in elderly stiff arteries; HOCM overlaps the exertional symptoms but the small/delayed pulse favors fixed AS. Group mixes symptoms and a sign."
+    },
+    "title": "Classic symptomatic aortic stenosis findings",
+    "connectionType": "Disease-finding association",
+    "explanation": "The three exertional symptoms form the classic symptomatic AS triad, and a small delayed pulse reflects impaired ventricular ejection.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Aortic stenosis clues",
+     "Symptomatic AS"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Valvular Disease / Aortic Stenosis, PDF p.148",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Exertional dyspnea, angina, and syncope (classic AS triad) plus pulsus parvus et tardus (Otto, Calcific AS, JAMA 2024; Manning, JAMA 2013). Parvus et tardus may be absent in elderly stiff arteries; HOCM overlaps the exertional symptoms but the small/delayed pulse favors fixed AS. Group mixes symptoms and a sign.",
+    "tiles": [
+     "Exertional breathlessness",
+     "Exertional chest pain",
+     "Exertional syncope",
+     "Small delayed arterial pulse"
+    ]
+   },
+   "contentHash": "5f66c480fbfe499dad4a35ec91eba20afc4df1685a92f8211c9c10ee38b2d086",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 19,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-2",
+   "placementNote": null
+  },
+  "CARD-020": {
+   "id": "CARD-020",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-020",
+     "Connection Title": "Classic chronic aortic regurgitation findings",
+     "Tile 1": "Wide pulse pressure",
+     "Tile 2": "Rapidly collapsing pulse",
+     "Tile 3": "Head movement with each pulse",
+     "Tile 4": "Early diastolic decrescendo murmur",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "Chronic AR can produce a large systolic-diastolic pressure difference and peripheral pulsations alongside its characteristic diastolic murmur.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Chronic AR findings; Aortic insufficiency clues",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Valvular Disease / Aortic Regurgitation, PDF p.149",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Wide pulse pressure, water-hammer/Corrigan pulse, de Musset head-bobbing, and early diastolic decrescendo murmur characterize chronic significant AR (Choudhry & Etchells, Does This Patient Have Aortic Regurgitation?, JAMA 1999). Peripheral signs are typical of chronic (not acute) AR; the murmur is auscultatory rather than strictly 'peripheral.'"
+    },
+    "title": "Classic chronic aortic regurgitation findings",
+    "connectionType": "Disease-finding association",
+    "explanation": "Chronic AR can produce a large systolic-diastolic pressure difference and peripheral pulsations alongside its characteristic diastolic murmur.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Chronic AR findings",
+     "Aortic insufficiency clues"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Valvular Disease / Aortic Regurgitation, PDF p.149",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Wide pulse pressure, water-hammer/Corrigan pulse, de Musset head-bobbing, and early diastolic decrescendo murmur characterize chronic significant AR (Choudhry & Etchells, Does This Patient Have Aortic Regurgitation?, JAMA 1999). Peripheral signs are typical of chronic (not acute) AR; the murmur is auscultatory rather than strictly 'peripheral.'",
+    "tiles": [
+     "Wide pulse pressure",
+     "Rapidly collapsing pulse",
+     "Head movement with each pulse",
+     "Early diastolic decrescendo murmur"
+    ]
+   },
+   "contentHash": "e5ec31d8ae947001fe8420b2e97d3cb2397e19e52086e2af25b55b0f3b51d97c",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 20,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-021": {
+   "id": "CARD-021",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-021",
+     "Connection Title": "Classic mitral stenosis findings",
+     "Tile 1": "Opening snap",
+     "Tile 2": "Loud first heart sound",
+     "Tile 3": "Apical diastolic rumble",
+     "Tile 4": "Enlarged left atrium",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "The source links obstructed mitral inflow to these auscultatory findings and left atrial enlargement.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Mitral stenosis clues; Rheumatic mitral stenosis findings",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Valvular Disease / Mitral Stenosis, PDF p.150",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Opening snap, loud S1, apical diastolic rumble, and LA enlargement are classic MS findings (Chandrashekhar, Mitral Stenosis, Lancet 2009; Carabello & Crawford, NEJM 1997). Loud S1 and OS require a pliable valve and may be lost with heavy calcification; the Austin Flint murmur of AR can mimic the rumble."
+    },
+    "title": "Classic mitral stenosis findings",
+    "connectionType": "Disease-finding association",
+    "explanation": "The source links obstructed mitral inflow to these auscultatory findings and left atrial enlargement.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Mitral stenosis clues",
+     "Rheumatic mitral stenosis findings"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Valvular Disease / Mitral Stenosis, PDF p.150",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Opening snap, loud S1, apical diastolic rumble, and LA enlargement are classic MS findings (Chandrashekhar, Mitral Stenosis, Lancet 2009; Carabello & Crawford, NEJM 1997). Loud S1 and OS require a pliable valve and may be lost with heavy calcification; the Austin Flint murmur of AR can mimic the rumble.",
+    "tiles": [
+     "Opening snap",
+     "Loud first heart sound",
+     "Apical diastolic rumble",
+     "Enlarged left atrium"
+    ]
+   },
+   "contentHash": "8d99408907a9fd61f1e9bf9c159df10a1398a84ec84d457f756a871570e037ae",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 21,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-022": {
+   "id": "CARD-022",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-022",
+     "Connection Title": "Classic mitral regurgitation associations",
+     "Tile 1": "Apical holosystolic murmur",
+     "Tile 2": "Murmur radiating to axilla",
+     "Tile 3": "Papillary muscle rupture",
+     "Tile 4": "Prominent left atrial v wave",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "Mitral regurgitation is associated with this murmur pattern, an acute post-infarct mechanism and elevated atrial systolic filling waves.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Mitral regurgitation clues; Mitral insufficiency associations",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Valvular Disease / Mitral Regurgitation, PDF pp.151,154; Cardiac Cycle, PDF p.71",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Apical holosystolic murmur radiating to axilla, papillary muscle rupture (acute post-MI mechanism), and a prominent LA v wave characterize MR (Damluji, Mechanical Complications of AMI, Circulation 2021; Carabello & Crawford, NEJM 1997). The v wave is left atrial, not jugular; a loud murmur may be absent in acute severe MR."
+    },
+    "title": "Classic mitral regurgitation associations",
+    "connectionType": "Disease-finding association",
+    "explanation": "Mitral regurgitation is associated with this murmur pattern, an acute post-infarct mechanism and elevated atrial systolic filling waves.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Mitral regurgitation clues",
+     "Mitral insufficiency associations"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Valvular Disease / Mitral Regurgitation, PDF pp.151,154; Cardiac Cycle, PDF p.71",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Apical holosystolic murmur radiating to axilla, papillary muscle rupture (acute post-MI mechanism), and a prominent LA v wave characterize MR (Damluji, Mechanical Complications of AMI, Circulation 2021; Carabello & Crawford, NEJM 1997). The v wave is left atrial, not jugular; a loud murmur may be absent in acute severe MR.",
+    "tiles": [
+     "Apical holosystolic murmur",
+     "Murmur radiating to axilla",
+     "Papillary muscle rupture",
+     "Prominent left atrial v wave"
+    ]
+   },
+   "contentHash": "6088ec29cf93a8701df1ef1666fd6553770ebcc73f1934127d3c678d269088fd",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 22,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-023": {
+   "id": "CARD-023",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-023",
+     "Connection Title": "Classic tricuspid regurgitation associations",
+     "Tile 1": "Lower sternal holosystolic murmur",
+     "Tile 2": "Murmur louder on inspiration",
+     "Tile 3": "Raised jugular venous pressure",
+     "Tile 4": "Tricuspid infection in injection drug use",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "These findings and a classic infectious cause support tricuspid regurgitation and its right-sided venous congestion.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology / Microbiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Tricuspid regurgitation clues; Tricuspid insufficiency associations",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Valvular Disease / Tricuspid Regurgitation, PDF p.153",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "LLSB holosystolic murmur, inspiratory augmentation (Carvallo sign), elevated JVP, and IVDU-associated tricuspid endocarditis support TR (Carabello & Crawford, Valvular Heart Disease, NEJM 1997). IVDU is a risk context, not a universal cause; avoid building a separate tricuspid-endocarditis group on the same board."
+    },
+    "title": "Classic tricuspid regurgitation associations",
+    "connectionType": "Disease-finding association",
+    "explanation": "These findings and a classic infectious cause support tricuspid regurgitation and its right-sided venous congestion.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology / Microbiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Tricuspid regurgitation clues",
+     "Tricuspid insufficiency associations"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Valvular Disease / Tricuspid Regurgitation, PDF p.153",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "LLSB holosystolic murmur, inspiratory augmentation (Carvallo sign), elevated JVP, and IVDU-associated tricuspid endocarditis support TR (Carabello & Crawford, Valvular Heart Disease, NEJM 1997). IVDU is a risk context, not a universal cause; avoid building a separate tricuspid-endocarditis group on the same board.",
+    "tiles": [
+     "Lower sternal holosystolic murmur",
+     "Murmur louder on inspiration",
+     "Raised jugular venous pressure",
+     "Tricuspid infection in injection drug use"
+    ]
+   },
+   "contentHash": "638fcc413ee291f224fe8f0c8bc9b7da25c0d4ebdd505bf7c639ad739abbb8fa",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 23,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-024": {
+   "id": "CARD-024",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-024",
+     "Connection Title": "Settings in which an S3 may be heard",
+     "Tile 1": "Pregnancy",
+     "Tile 2": "Systolic heart failure",
+     "Tile 3": "Mitral regurgitation",
+     "Tile 4": "Aortic regurgitation",
+     "Connection Type": "Shared physical finding",
+     "Explanation": "The source lists a physiologic S3 in pregnancy and pathologic S3 associations in volume-loaded or systolically failing ventricles.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Physiology / Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "S3 associations; Third heart sound settings",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Cardiac Cycle / S3, PDF p.67",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Physiologic S3 in pregnancy/young patients; pathologic S3 in systolic HF and significant chronic MR/AR (volume overload) (Sato, Third and Fourth Heart Sounds, Circ J 2018). Do not label all four as heart failure; regurgitation should be significant and usually chronic."
+    },
+    "title": "Settings in which an S3 may be heard",
+    "connectionType": "Shared physical finding",
+    "explanation": "The source lists a physiologic S3 in pregnancy and pathologic S3 associations in volume-loaded or systolically failing ventricles.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Physiology / Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "S3 associations",
+     "Third heart sound settings"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Cardiac Cycle / S3, PDF p.67",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Physiologic S3 in pregnancy/young patients; pathologic S3 in systolic HF and significant chronic MR/AR (volume overload) (Sato, Third and Fourth Heart Sounds, Circ J 2018). Do not label all four as heart failure; regurgitation should be significant and usually chronic.",
+    "tiles": [
+     "Pregnancy",
+     "Systolic heart failure",
+     "Mitral regurgitation",
+     "Aortic regurgitation"
+    ]
+   },
+   "contentHash": "611a2882f5d89ae6fa4a3d05fcaae8d3e9bd893cbcd4d3ad383e496a3298f7a3",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 24,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-025": {
+   "id": "CARD-025",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-025",
+     "Connection Title": "Conditions associated with an S4",
+     "Tile 1": "Chronic hypertension",
+     "Tile 2": "Aortic stenosis",
+     "Tile 3": "Diastolic heart failure",
+     "Tile 4": "Hypertrophic obstructive cardiomyopathy",
+     "Connection Type": "Shared physical finding",
+     "Explanation": "Atrial contraction into a less compliant ventricle can produce S4 in these source-listed conditions.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Physiology / Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "S4 associations; Fourth heart sound settings; Stiff-ventricle conditions",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Cardiac Cycle / S4, PDF p.67; Cardiomyopathy / HOCM, PDF p.130",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "S4 arises from atrial contraction into a stiff, non-compliant ventricle: chronic HTN, AS, HFpEF (diastolic HF), and HOCM (Vidt & Prisant, Hypertensive Heart Disease, J Clin Hypertens 2008; Adegunsoye, Echocardiography 2011; Sato, Circ J 2018). Requires effective atrial contraction (absent in AF). 'Impaired ventricular compliance' is an acceptable mechanistic alias."
+    },
+    "title": "Conditions associated with an S4",
+    "connectionType": "Shared physical finding",
+    "explanation": "Atrial contraction into a less compliant ventricle can produce S4 in these source-listed conditions.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Physiology / Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "S4 associations",
+     "Fourth heart sound settings",
+     "Stiff-ventricle conditions"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Cardiac Cycle / S4, PDF p.67; Cardiomyopathy / HOCM, PDF p.130",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "S4 arises from atrial contraction into a stiff, non-compliant ventricle: chronic HTN, AS, HFpEF (diastolic HF), and HOCM (Vidt & Prisant, Hypertensive Heart Disease, J Clin Hypertens 2008; Adegunsoye, Echocardiography 2011; Sato, Circ J 2018). Requires effective atrial contraction (absent in AF). 'Impaired ventricular compliance' is an acceptable mechanistic alias.",
+    "tiles": [
+     "Chronic hypertension",
+     "Aortic stenosis",
+     "Diastolic heart failure",
+     "Hypertrophic obstructive cardiomyopathy"
+    ]
+   },
+   "contentHash": "bacddea769074b2775e5cc6505d459271cf8fc152f42a3a1e99c36aa408d9e36",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 25,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-4",
+   "placementNote": null
+  },
+  "CARD-027": {
+   "id": "CARD-027",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-027",
+     "Connection Title": "Classic patent ductus arteriosus clues",
+     "Tile 1": "Continuous infraclavicular murmur",
+     "Tile 2": "Wide pulse pressure",
+     "Tile 3": "Aorta-to-pulmonary artery flow",
+     "Tile 4": "Indomethacin-induced ductal closure",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "The source links persistent ductal patency to this murmur, runoff physiology and pharmacologic closure in selected premature infants.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology / Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "PDA clues; Persistent ductus arteriosus",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Acyanotic Congenital Heart Defects / PDA, PDF p.161",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Continuous (machinery) murmur, wide pulse pressure, aorta-to-PA shunt, and indomethacin-induced closure characterize PDA (May, The ductus arteriosus, Pediatr Radiol 2023). Left-to-right shunt describes the pre-Eisenmenger state; indomethacin applies to preterm infants, not all PDA."
+    },
+    "title": "Classic patent ductus arteriosus clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "The source links persistent ductal patency to this murmur, runoff physiology and pharmacologic closure in selected premature infants.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology / Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "PDA clues",
+     "Persistent ductus arteriosus"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Acyanotic Congenital Heart Defects / PDA, PDF p.161",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Continuous (machinery) murmur, wide pulse pressure, aorta-to-PA shunt, and indomethacin-induced closure characterize PDA (May, The ductus arteriosus, Pediatr Radiol 2023). Left-to-right shunt describes the pre-Eisenmenger state; indomethacin applies to preterm infants, not all PDA.",
+    "tiles": [
+     "Continuous infraclavicular murmur",
+     "Wide pulse pressure",
+     "Aorta-to-pulmonary artery flow",
+     "Indomethacin-induced ductal closure"
+    ]
+   },
+   "contentHash": "bcf35d7ba69cc8edccc9c44cd4202b794afc1b339ba43d4ad989bcc492aaa276",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 26,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-028": {
+   "id": "CARD-028",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-028",
+     "Connection Title": "Transposition of the great arteries clues",
+     "Tile 1": "Parallel circulations",
+     "Tile 2": "Right ventricle supplies aorta",
+     "Tile 3": "Left ventricle supplies pulmonary artery",
+     "Tile 4": "Egg-on-string radiograph",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "The source describes discordant ventricular-arterial connections creating parallel circuits, with this classic radiographic appearance.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology / Embryology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "TGA findings; D-transposition of the great arteries",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Cyanotic Congenital Heart Defects / Transposition, PDF p.167",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Parallel circulations, ventriculoarterial discordance (RV->aorta, LV->PA), and the egg-on-a-string radiograph define D-TGA (Canan, Multimodality Imaging of TGA, Radiographics 2021; Ferguson, Classic Imaging Signs, Radiographics 2007). The radiographic sign may be absent on early neonatal films."
+    },
+    "title": "Transposition of the great arteries clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "The source describes discordant ventricular-arterial connections creating parallel circuits, with this classic radiographic appearance.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology / Embryology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "TGA findings",
+     "D-transposition of the great arteries"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Cyanotic Congenital Heart Defects / Transposition, PDF p.167",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Parallel circulations, ventriculoarterial discordance (RV->aorta, LV->PA), and the egg-on-a-string radiograph define D-TGA (Canan, Multimodality Imaging of TGA, Radiographics 2021; Ferguson, Classic Imaging Signs, Radiographics 2007). The radiographic sign may be absent on early neonatal films.",
+    "tiles": [
+     "Parallel circulations",
+     "Right ventricle supplies aorta",
+     "Left ventricle supplies pulmonary artery",
+     "Egg-on-string radiograph"
+    ]
+   },
+   "contentHash": "49fc7f4a85e48bea52b6d2c21082a97d2ba964b0be2bf306b9fb37cdc15aec3e",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 27,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-029": {
+   "id": "CARD-029",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-029",
+     "Connection Title": "Atrial fibrillation clues",
+     "Tile 1": "Irregularly spaced R waves",
+     "Tile 2": "Absent discrete P waves",
+     "Tile 3": "Absent jugular a waves",
+     "Tile 4": "Pulmonary vein ostial triggers",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "Uncoordinated atrial activity explains absent organized atrial signals, irregular ventricular timing and the source-described pulmonary vein trigger sites.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Physiology / Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "AF findings; Atrial fibrillation associations",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Atrial Arrhythmias / Atrial Fibrillation, PDF pp.101-103; Anatomy / Ablation, PDF p.16",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Irregularly irregular R-R, absent discrete P waves, absent jugular a waves, and pulmonary-vein ostial triggers characterize AF (2023 ACC/AHA AF guideline, Joglar, JACC 2024; Ko, Atrial Fibrillation, JAMA 2025). ECG clues presume conducted AF (not a paced or complete-block rhythm)."
+    },
+    "title": "Atrial fibrillation clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "Uncoordinated atrial activity explains absent organized atrial signals, irregular ventricular timing and the source-described pulmonary vein trigger sites.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Physiology / Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "AF findings",
+     "Atrial fibrillation associations"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Atrial Arrhythmias / Atrial Fibrillation, PDF pp.101-103; Anatomy / Ablation, PDF p.16",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Irregularly irregular R-R, absent discrete P waves, absent jugular a waves, and pulmonary-vein ostial triggers characterize AF (2023 ACC/AHA AF guideline, Joglar, JACC 2024; Ko, Atrial Fibrillation, JAMA 2025). ECG clues presume conducted AF (not a paced or complete-block rhythm).",
+    "tiles": [
+     "Irregularly spaced R waves",
+     "Absent discrete P waves",
+     "Absent jugular a waves",
+     "Pulmonary vein ostial triggers"
+    ]
+   },
+   "contentHash": "c8035120151fba426a322b9b803055c8876a49d86f21c44d89769138224b9cf2",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 28,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-030": {
+   "id": "CARD-030",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-030",
+     "Connection Title": "Typical atrial flutter associations",
+     "Tile 1": "Sawtooth atrial activity",
+     "Tile 2": "Right atrial re-entry",
+     "Tile 3": "Common 2-to-1 AV conduction",
+     "Tile 4": "Cavotricuspid isthmus ablation",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "These source-described features link typical right atrial macro-reentrant flutter to its atrial waveform, common conduction ratio and ablation target.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Physiology / Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Typical flutter; Cavotricuspid isthmus-dependent atrial flutter",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Atrial Arrhythmias / Atrial Flutter, PDF p.104; Anatomy / Ablation, PDF p.16",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Sawtooth waves, right-atrial macro-reentry, common 2:1 AV conduction, and CTI ablation target define typical (CTI-dependent) atrial flutter (2015 ACC/AHA/HRS SVT guideline, Page; 2023 ACC/AHA AF guideline). Qualify as typical flutter; atypical flutter uses other circuits and conduction need not be 2:1."
+    },
+    "title": "Typical atrial flutter associations",
+    "connectionType": "Disease-finding association",
+    "explanation": "These source-described features link typical right atrial macro-reentrant flutter to its atrial waveform, common conduction ratio and ablation target.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Physiology / Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Typical flutter",
+     "Cavotricuspid isthmus-dependent atrial flutter"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Atrial Arrhythmias / Atrial Flutter, PDF p.104; Anatomy / Ablation, PDF p.16",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Sawtooth waves, right-atrial macro-reentry, common 2:1 AV conduction, and CTI ablation target define typical (CTI-dependent) atrial flutter (2015 ACC/AHA/HRS SVT guideline, Page; 2023 ACC/AHA AF guideline). Qualify as typical flutter; atypical flutter uses other circuits and conduction need not be 2:1.",
+    "tiles": [
+     "Sawtooth atrial activity",
+     "Right atrial re-entry",
+     "Common 2-to-1 AV conduction",
+     "Cavotricuspid isthmus ablation"
+    ]
+   },
+   "contentHash": "9a5fdf92095d6dd594903be28e5cc2cdaa1d98179a34ed54886d4f7fce6711ae",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 29,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-5",
+   "placementNote": null
+  },
+  "CARD-031": {
+   "id": "CARD-031",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-031",
+     "Connection Title": "Wolff-Parkinson-White pre-excitation clues",
+     "Tile 1": "Bundle of Kent",
+     "Tile 2": "Short PR interval",
+     "Tile 3": "Slurred initial QRS upstroke",
+     "Tile 4": "Broad QRS in sinus rhythm",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "An accessory atrioventricular pathway causes early ventricular activation and the source-listed sinus-rhythm pre-excitation pattern.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Physiology / Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "WPW pattern; Ventricular pre-excitation; Wolff-Parkinson-White findings",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Ventricular Arrhythmias / WPW, PDF p.109",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Bundle of Kent (accessory pathway), short PR, delta wave (slurred QRS upstroke), and wide QRS in sinus rhythm define the WPW pre-excitation pattern (Thakkar, JAMA Intern Med 2021; Brady, 2023). Applies to sinus-rhythm pre-excitation; orthodromic AVRT is narrow-complex."
+    },
+    "title": "Wolff-Parkinson-White pre-excitation clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "An accessory atrioventricular pathway causes early ventricular activation and the source-listed sinus-rhythm pre-excitation pattern.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Physiology / Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "WPW pattern",
+     "Ventricular pre-excitation",
+     "Wolff-Parkinson-White findings"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Ventricular Arrhythmias / WPW, PDF p.109",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Bundle of Kent (accessory pathway), short PR, delta wave (slurred QRS upstroke), and wide QRS in sinus rhythm define the WPW pre-excitation pattern (Thakkar, JAMA Intern Med 2021; Brady, 2023). Applies to sinus-rhythm pre-excitation; orthodromic AVRT is narrow-complex.",
+    "tiles": [
+     "Bundle of Kent",
+     "Short PR interval",
+     "Slurred initial QRS upstroke",
+     "Broad QRS in sinus rhythm"
+    ]
+   },
+   "contentHash": "f269b0b8fe7dbbf9fc829e26b2b5ac58c41f5a872ead5c927f7591145f5ae007",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 30,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-032": {
+   "id": "CARD-032",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-032",
+     "Connection Title": "Classic acute pericarditis findings",
+     "Tile 1": "Pain relieved by leaning forward",
+     "Tile 2": "Pericardial friction rub",
+     "Tile 3": "Diffuse ST elevation",
+     "Tile 4": "PR segment depression",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "Pericardial inflammation produces this characteristic positional pain, rub and ECG pattern.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Acute pericarditis clues; Pericardial inflammation findings",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Pericardial Disease / Acute Pericarditis, PDF p.206",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Positional (leaning-forward) relief, friction rub, diffuse ST elevation, and PR depression are classic acute pericarditis findings (Imazio, Evaluation and Treatment of Pericarditis, JAMA 2015; 2025 ACC pericarditis consensus, Wang). Not all are present in every case; early repolarization can mimic the ST changes."
+    },
+    "title": "Classic acute pericarditis findings",
+    "connectionType": "Disease-finding association",
+    "explanation": "Pericardial inflammation produces this characteristic positional pain, rub and ECG pattern.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Acute pericarditis clues",
+     "Pericardial inflammation findings"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Pericardial Disease / Acute Pericarditis, PDF p.206",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Positional (leaning-forward) relief, friction rub, diffuse ST elevation, and PR depression are classic acute pericarditis findings (Imazio, Evaluation and Treatment of Pericarditis, JAMA 2015; 2025 ACC pericarditis consensus, Wang). Not all are present in every case; early repolarization can mimic the ST changes.",
+    "tiles": [
+     "Pain relieved by leaning forward",
+     "Pericardial friction rub",
+     "Diffuse ST elevation",
+     "PR segment depression"
+    ]
+   },
+   "contentHash": "71ec26c943ff2a295bd143adf4f5c75b149044b5ee9153597d9cb77ecc824dda",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 31,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-033": {
+   "id": "CARD-033",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-033",
+     "Connection Title": "Constrictive pericarditis clues",
+     "Tile 1": "Pericardial knock",
+     "Tile 2": "Kussmaul sign",
+     "Tile 3": "Calcified pericardium",
+     "Tile 4": "Rapid jugular y descent",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "The source links impaired filling from a rigid pericardium to these findings, including accelerated early venous emptying before filling is abruptly limited.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology / Physiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Pericardial constriction findings; Constrictive physiology clues",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Pericardial Disease / Constrictive Pericarditis, PDF p.207; Cardiac Cycle / Jugular Waveform, PDF p.70",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Pericardial knock, Kussmaul sign, pericardial calcification, and rapid y descent indicate constrictive pericarditis (Geske, Differentiation of Constriction and Restriction, JACC 2016; 2025 ACC pericarditis consensus). Kussmaul sign and rapid y descent overlap with restrictive cardiomyopathy (board overlap with CARD-012) - calcification and knock favor constriction; calcification present in only ~20-40%. Contrast y descent with CARD-034 (blunted in tamponade)."
+    },
+    "title": "Constrictive pericarditis clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "The source links impaired filling from a rigid pericardium to these findings, including accelerated early venous emptying before filling is abruptly limited.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology / Physiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Pericardial constriction findings",
+     "Constrictive physiology clues"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Pericardial Disease / Constrictive Pericarditis, PDF p.207; Cardiac Cycle / Jugular Waveform, PDF p.70",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Pericardial knock, Kussmaul sign, pericardial calcification, and rapid y descent indicate constrictive pericarditis (Geske, Differentiation of Constriction and Restriction, JACC 2016; 2025 ACC pericarditis consensus). Kussmaul sign and rapid y descent overlap with restrictive cardiomyopathy (board overlap with CARD-012) - calcification and knock favor constriction; calcification present in only ~20-40%. Contrast y descent with CARD-034 (blunted in tamponade).",
+    "tiles": [
+     "Pericardial knock",
+     "Kussmaul sign",
+     "Calcified pericardium",
+     "Rapid jugular y descent"
+    ]
+   },
+   "contentHash": "3fa61e9dac4a23f16d320fae76f4b66472a1fd4ef89a769a547adab922ee72cf",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 32,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-3",
+   "placementNote": null
+  },
+  "CARD-034": {
+   "id": "CARD-034",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-034",
+     "Connection Title": "Classic cardiac tamponade findings",
+     "Tile 1": "Low blood pressure",
+     "Tile 2": "Distended neck veins",
+     "Tile 3": "Quiet heart sounds",
+     "Tile 4": "Pulsus paradoxus",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "The first three are Beck-triad findings; exaggerated inspiratory systolic pressure decline is another classic tamponade clue in the source.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology / Physiology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Tamponade clues; Beck triad plus pulsus paradoxus",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Pericardial Disease / Cardiac Tamponade, PDF p.209",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Hypotension, JVD, muffled heart sounds (Beck triad) plus pulsus paradoxus characterize tamponade (Adler, Cardiac Tamponade, Nat Rev Dis Primers 2023; Chiabrando, JACC 2020). The full Beck triad is insensitive in slowly accumulating medical effusions; neck veins may be less prominent with hypovolemia. The y descent is blunted (contrast CARD-033)."
+    },
+    "title": "Classic cardiac tamponade findings",
+    "connectionType": "Disease-finding association",
+    "explanation": "The first three are Beck-triad findings; exaggerated inspiratory systolic pressure decline is another classic tamponade clue in the source.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology / Physiology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Tamponade clues",
+     "Beck triad plus pulsus paradoxus"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Pericardial Disease / Cardiac Tamponade, PDF p.209",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Hypotension, JVD, muffled heart sounds (Beck triad) plus pulsus paradoxus characterize tamponade (Adler, Cardiac Tamponade, Nat Rev Dis Primers 2023; Chiabrando, JACC 2020). The full Beck triad is insensitive in slowly accumulating medical effusions; neck veins may be less prominent with hypovolemia. The y descent is blunted (contrast CARD-033).",
+    "tiles": [
+     "Low blood pressure",
+     "Distended neck veins",
+     "Quiet heart sounds",
+     "Pulsus paradoxus"
+    ]
+   },
+   "contentHash": "a0cfbd06e64d99f4ac46afeb2dd6a7c4dc73b98a8055e3859812a254d8317168",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 33,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-migrated-sys-mixed-0002-L4",
+     "title": "Findings in cardiac tamponade",
+     "shared": 1,
+     "titleSim": 0.75
+    }
+   ],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-4",
+   "placementNote": null
+  },
+  "CARD-035": {
+   "id": "CARD-035",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-035",
+     "Connection Title": "Events that can cause cardiac tamponade",
+     "Tile 1": "Aortic dissection",
+     "Tile 2": "LV free wall rupture",
+     "Tile 3": "Penetrating chest trauma",
+     "Tile 4": "Cardiac surgery",
+     "Connection Type": "Shared complication",
+     "Explanation": "The source lists dissection, myocardial rupture, trauma and postoperative complications as possible sources of a rapidly pressurized pericardial collection.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Tamponade causes; Causes of pericardial compression",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Pericardial Disease / Cardiac Tamponade, PDF p.209",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Aortic dissection (proximal), LV free-wall rupture, penetrating trauma, and cardiac surgery cause rapidly accumulating hemopericardium -> tamponade (2025 ACC pericarditis consensus, Wang; Damluji, Circulation 2021). Dissection must involve proximal anatomy. 'Hemopericardium causes' is an acceptable mechanistic alias."
+    },
+    "title": "Events that can cause cardiac tamponade",
+    "connectionType": "Shared complication",
+    "explanation": "The source lists dissection, myocardial rupture, trauma and postoperative complications as possible sources of a rapidly pressurized pericardial collection.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Tamponade causes",
+     "Causes of pericardial compression"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Pericardial Disease / Cardiac Tamponade, PDF p.209",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Aortic dissection (proximal), LV free-wall rupture, penetrating trauma, and cardiac surgery cause rapidly accumulating hemopericardium -> tamponade (2025 ACC pericarditis consensus, Wang; Damluji, Circulation 2021). Dissection must involve proximal anatomy. 'Hemopericardium causes' is an acceptable mechanistic alias.",
+    "tiles": [
+     "Aortic dissection",
+     "LV free wall rupture",
+     "Penetrating chest trauma",
+     "Cardiac surgery"
+    ]
+   },
+   "contentHash": "b21dec39ca2c5a713001d3d385ca43f882cf2790ec79a3c95b48b6f30c75c204",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 34,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-036": {
+   "id": "CARD-036",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-036",
+     "Connection Title": "Source-listed causes of pericarditis",
+     "Tile 1": "Coxsackie B infection",
+     "Tile 2": "Uremia",
+     "Tile 3": "Dressler syndrome",
+     "Tile 4": "Chest irradiation",
+     "Connection Type": "Shared inflammatory outcome",
+     "Explanation": "These infectious, metabolic, post-infarct immune and treatment-related processes can cause pericardial inflammation.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology / Microbiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Pericarditis etiologies; Causes of pericardial inflammation",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Pericardial Disease / Acute Pericarditis, PDF p.206",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Coxsackie B (viral), uremia (metabolic), Dressler syndrome (post-MI immune), and radiation are recognized pericarditis causes (Imazio, JAMA 2015; 2025 ACC pericarditis consensus etiology table, Wang). Irradiation causes several cardiac complications, pericarditis among them."
+    },
+    "title": "Source-listed causes of pericarditis",
+    "connectionType": "Shared inflammatory outcome",
+    "explanation": "These infectious, metabolic, post-infarct immune and treatment-related processes can cause pericardial inflammation.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology / Microbiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Pericarditis etiologies",
+     "Causes of pericardial inflammation"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Pericardial Disease / Acute Pericarditis, PDF p.206",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Coxsackie B (viral), uremia (metabolic), Dressler syndrome (post-MI immune), and radiation are recognized pericarditis causes (Imazio, JAMA 2015; 2025 ACC pericarditis consensus etiology table, Wang). Irradiation causes several cardiac complications, pericarditis among them.",
+    "tiles": [
+     "Coxsackie B infection",
+     "Uremia",
+     "Dressler syndrome",
+     "Chest irradiation"
+    ]
+   },
+   "contentHash": "48d93a362f309280e1ec810e5661f86fa25337fb7f22f80053cfdc76534ef615",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 35,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-037": {
+   "id": "CARD-037",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-037",
+     "Connection Title": "Complications of myocardial infarction",
+     "Tile 1": "Ventricular arrhythmia",
+     "Tile 2": "Papillary muscle rupture",
+     "Tile 3": "Interventricular septal rupture",
+     "Tile 4": "LV free wall rupture",
+     "Connection Type": "Shared antecedent disease",
+     "Explanation": "Ventricular arrhythmia and the three mechanical ruptures (papillary muscle, interventricular septum, LV free wall) are recognized post-MI complications that occur on distinct timelines: arrhythmias may be early, whereas mechanical ruptures typically present about 3-5 days after a transmural infarct. The grouping does not imply a shared day of onset.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Post-MI complications; Complications after myocardial infarction",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Myocardial Infarction / Post-MI Timeline, PDF p.186",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "All four are verified MI complications (Damluji, Mechanical Complications of AMI, Circulation 2021; Murphy & Goldberg, Am J Med 2022). REVISION: explanation reworded to state distinct timelines and remove any implication of a shared onset day. Competing 'mechanical rupture' fits only 3 (not arrhythmia), so is not an equally strong category for the full four."
+    },
+    "title": "Complications of myocardial infarction",
+    "connectionType": "Shared antecedent disease",
+    "explanation": "Ventricular arrhythmia and the three mechanical ruptures (papillary muscle, interventricular septum, LV free wall) are recognized post-MI complications that occur on distinct timelines: arrhythmias may be early, whereas mechanical ruptures typically present about 3-5 days after a transmural infarct. The grouping does not imply a shared day of onset.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Post-MI complications",
+     "Complications after myocardial infarction"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Myocardial Infarction / Post-MI Timeline, PDF p.186",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "All four are verified MI complications (Damluji, Mechanical Complications of AMI, Circulation 2021; Murphy & Goldberg, Am J Med 2022). REVISION: explanation reworded to state distinct timelines and remove any implication of a shared onset day. Competing 'mechanical rupture' fits only 3 (not arrhythmia), so is not an equally strong category for the full four.",
+    "tiles": [
+     "Ventricular arrhythmia",
+     "Papillary muscle rupture",
+     "Interventricular septal rupture",
+     "LV free wall rupture"
+    ]
+   },
+   "contentHash": "cd6c34e9c611324c6c97da4d26eaf6e8b2cb012caaafe75b2bdee4d21a6f862b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 36,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": "ai-review-revised",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-038": {
+   "id": "CARD-038",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-038",
+     "Connection Title": "ECG leads viewing the lateral wall",
+     "Tile 1": "Lead I",
+     "Tile 2": "Lead aVL",
+     "Tile 3": "Lead V5",
+     "Tile 4": "Lead V6",
+     "Connection Type": "Shared anatomic territory",
+     "Explanation": "These are grouped in the source as lateral-wall leads used in infarct localization.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Anatomy / Diagnostics",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Lateral ECG leads; Lateral infarct lead territory",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Myocardial Infarction / ECG Localization, PDF pp.187-188",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "I, aVL, V5, and V6 are the lateral leads for infarct localization (Thygesen, Fourth Universal Definition of Myocardial Infarction, JACC 2018). Clean, unambiguous territory set."
+    },
+    "title": "ECG leads viewing the lateral wall",
+    "connectionType": "Shared anatomic territory",
+    "explanation": "These are grouped in the source as lateral-wall leads used in infarct localization.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Anatomy / Diagnostics",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Lateral ECG leads",
+     "Lateral infarct lead territory"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Myocardial Infarction / ECG Localization, PDF pp.187-188",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "I, aVL, V5, and V6 are the lateral leads for infarct localization (Thygesen, Fourth Universal Definition of Myocardial Infarction, JACC 2018). Clean, unambiguous territory set.",
+    "tiles": [
+     "Lead I",
+     "Lead aVL",
+     "Lead V5",
+     "Lead V6"
+    ]
+   },
+   "contentHash": "62fa318f696fc06f1cc5f49ad8a22e4587131e32779e6ac9ee87ccd825084aa8",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 37,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-039": {
+   "id": "CARD-039",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-039",
+     "Connection Title": "Precordial leads spanning the anterior-septal territory",
+     "Tile 1": "Lead V1",
+     "Tile 2": "Lead V2",
+     "Tile 3": "Lead V3",
+     "Tile 4": "Lead V4",
+     "Connection Type": "Shared anatomic territory",
+     "Explanation": "The source groups V1-V4 under anterior infarct localization, with V1-V2 more septal and V3-V4 more anterior/apical.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Anatomy / Diagnostics",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Anterior-septal ECG leads; Anterior infarct lead territory",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Myocardial Infarction / ECG Localization, PDF pp.187-188",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "V1-V4 span the anteroseptal territory (V1-V2 septal, V3-V4 anterior/apical) (Thygesen, Fourth Universal Definition of MI, JACC 2018). Territory labels vary by convention; do not infer a single culprit artery from each individual lead."
+    },
+    "title": "Precordial leads spanning the anterior-septal territory",
+    "connectionType": "Shared anatomic territory",
+    "explanation": "The source groups V1-V4 under anterior infarct localization, with V1-V2 more septal and V3-V4 more anterior/apical.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Anatomy / Diagnostics",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Anterior-septal ECG leads",
+     "Anterior infarct lead territory"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Myocardial Infarction / ECG Localization, PDF pp.187-188",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "V1-V4 span the anteroseptal territory (V1-V2 septal, V3-V4 anterior/apical) (Thygesen, Fourth Universal Definition of MI, JACC 2018). Territory labels vary by convention; do not infer a single culprit artery from each individual lead.",
+    "tiles": [
+     "Lead V1",
+     "Lead V2",
+     "Lead V3",
+     "Lead V4"
+    ]
+   },
+   "contentHash": "cd9c87cad644b67b5f7b4cda4083e2c13644b8539ef66a95d39a91a19784b1f0",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 38,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-040": {
+   "id": "CARD-040",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-040",
+     "Connection Title": "Drug exposures associated with coronary vasospasm",
+     "Tile 1": "Cocaine",
+     "Tile 2": "Amphetamines",
+     "Tile 3": "Triptans",
+     "Tile 4": "Ergot alkaloids",
+     "Connection Type": "Shared vascular effect",
+     "Explanation": "The source lists these exposures as associations or precipitants of vasospastic angina.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Coronary vasospasm triggers; Drug-associated vasospastic angina",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Stable Angina and Atherosclerosis / Vasospastic Angina, PDF p.179",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Cocaine, amphetamines, triptans (5-HT1B agonists), and ergot alkaloids can precipitate coronary vasospasm (Waterbury, Non-atherosclerotic causes of ACS, Nat Rev Cardiol 2020; FDA sumatriptan label). Clinical incidence with triptans is low; an exposure alone is not diagnostic of vasospasm. 'Vasoconstrictive substances' is a broader alias."
+    },
+    "title": "Drug exposures associated with coronary vasospasm",
+    "connectionType": "Shared vascular effect",
+    "explanation": "The source lists these exposures as associations or precipitants of vasospastic angina.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Coronary vasospasm triggers",
+     "Drug-associated vasospastic angina"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Stable Angina and Atherosclerosis / Vasospastic Angina, PDF p.179",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Cocaine, amphetamines, triptans (5-HT1B agonists), and ergot alkaloids can precipitate coronary vasospasm (Waterbury, Non-atherosclerotic causes of ACS, Nat Rev Cardiol 2020; FDA sumatriptan label). Clinical incidence with triptans is low; an exposure alone is not diagnostic of vasospasm. 'Vasoconstrictive substances' is a broader alias.",
+    "tiles": [
+     "Cocaine",
+     "Amphetamines",
+     "Triptans",
+     "Ergot alkaloids"
+    ]
+   },
+   "contentHash": "e91011b3411732fd80007d69e1295136837cca75559c0296abf7430d9ac2836a",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 39,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-041": {
+   "id": "CARD-041",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-041",
+     "Connection Title": "Signals recruiting smooth muscle cells into atheroma",
+     "Tile 1": "PDGF",
+     "Tile 2": "FGF",
+     "Tile 3": "Endothelin-1",
+     "Tile 4": "Interleukin-1",
+     "Connection Type": "Shared pathogenetic role",
+     "Explanation": "The source lists these signals in recruitment of vascular smooth muscle cells to the intima during atherosclerotic plaque development.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Hard",
+     "Accepted Alternate Category Names": "Smooth muscle recruitment signals in atherosclerosis; Intimal smooth muscle recruitment mediators",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Stable Angina and Atherosclerosis / Pathogenesis, PDF p.175",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "PDGF and FGF are direct VSMC mitogens/chemoattractants; endothelin-1 potentiates PDGF-driven migration and IL-1-beta drives phenotypic switching and upregulates PDGF receptors (Delafontaine, Growth Factors and VSMC Growth, Eur Heart J 1998; He, Nat Commun 2015; Chen, PNAS 2006). ET-1 and IL-1 act more indirectly - use 'atherosclerotic signaling mediators' as a broader alias. Hard difficulty appropriate."
+    },
+    "title": "Signals recruiting smooth muscle cells into atheroma",
+    "connectionType": "Shared pathogenetic role",
+    "explanation": "The source lists these signals in recruitment of vascular smooth muscle cells to the intima during atherosclerotic plaque development.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "hard",
+    "alternateNames": [
+     "Smooth muscle recruitment signals in atherosclerosis",
+     "Intimal smooth muscle recruitment mediators"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Stable Angina and Atherosclerosis / Pathogenesis, PDF p.175",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "PDGF and FGF are direct VSMC mitogens/chemoattractants; endothelin-1 potentiates PDGF-driven migration and IL-1-beta drives phenotypic switching and upregulates PDGF receptors (Delafontaine, Growth Factors and VSMC Growth, Eur Heart J 1998; He, Nat Commun 2015; Chen, PNAS 2006). ET-1 and IL-1 act more indirectly - use 'atherosclerotic signaling mediators' as a broader alias. Hard difficulty appropriate.",
+    "tiles": [
+     "PDGF",
+     "FGF",
+     "Endothelin-1",
+     "Interleukin-1"
+    ]
+   },
+   "contentHash": "e90ce9173e8234136b7e1446e9526a3156df263973d6125d61d81e7ee2bf5716",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 40,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-1",
+   "placementNote": null
+  },
+  "CARD-042": {
+   "id": "CARD-042",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-042",
+     "Connection Title": "Chronic venous insufficiency findings",
+     "Tile 1": "Varicose superficial veins",
+     "Tile 2": "Brown medial ankle skin",
+     "Tile 3": "Venous reflux on ultrasound",
+     "Tile 4": "Leg swelling improved by elevation",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "Failed venous valves and elevated venous hydrostatic pressure connect these source-listed findings.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Venous insufficiency clues; Chronic venous hypertension findings",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Peripheral Venous and Arterial Disease / Chronic Venous Insufficiency, PDF p.193",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Varicose veins, hemosiderin (brown) ankle hyperpigmentation, duplex venous reflux, and elevation-responsive edema reflect chronic venous hypertension (Fukaya & Kolluri, Nonsurgical Management of CVI, NEJM 2024; Gloviczki, SVS/AVF guideline, J Vasc Surg 2011). Reflux on ultrasound is a diagnostic test rather than a bedside sign. 'Venous stasis disease' is an acceptable alias."
+    },
+    "title": "Chronic venous insufficiency findings",
+    "connectionType": "Disease-finding association",
+    "explanation": "Failed venous valves and elevated venous hydrostatic pressure connect these source-listed findings.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Venous insufficiency clues",
+     "Chronic venous hypertension findings"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Peripheral Venous and Arterial Disease / Chronic Venous Insufficiency, PDF p.193",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Varicose veins, hemosiderin (brown) ankle hyperpigmentation, duplex venous reflux, and elevation-responsive edema reflect chronic venous hypertension (Fukaya & Kolluri, Nonsurgical Management of CVI, NEJM 2024; Gloviczki, SVS/AVF guideline, J Vasc Surg 2011). Reflux on ultrasound is a diagnostic test rather than a bedside sign. 'Venous stasis disease' is an acceptable alias.",
+    "tiles": [
+     "Varicose superficial veins",
+     "Brown medial ankle skin",
+     "Venous reflux on ultrasound",
+     "Leg swelling improved by elevation"
+    ]
+   },
+   "contentHash": "be3ddd08388e249843ccc2470398c06ba323ca640422670689d39e78648cf0dd",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 41,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-043": {
+   "id": "CARD-043",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-043",
+     "Connection Title": "Peripheral arterial disease clues",
+     "Tile 1": "Exertional calf claudication",
+     "Tile 2": "Reduced distal foot pulses",
+     "Tile 3": "Loss of distal leg hair",
+     "Tile 4": "Ankle-brachial index below 0.9",
+     "Connection Type": "Disease-finding association",
+     "Explanation": "These source-described findings indicate impaired lower-limb arterial perfusion.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology / Diagnostics",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "PAD findings; Lower-limb arterial insufficiency",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Peripheral Venous and Arterial Disease / PAD and ABI, PDF p.194",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Claudication, diminished distal pulses, distal hair loss, and ABI <0.9 indicate PAD (2024 ACC/AHA PAD guideline, Gornik, JACC 2024; Criqui, AHA Scientific Statement, Circulation 2021). Threshold is technically ABI <=0.90; noncompressible (calcified) vessels can falsely elevate ABI. 'Limb ischemia' is an acceptable broader alias."
+    },
+    "title": "Peripheral arterial disease clues",
+    "connectionType": "Disease-finding association",
+    "explanation": "These source-described findings indicate impaired lower-limb arterial perfusion.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology / Diagnostics",
+    "difficulty": "easy",
+    "alternateNames": [
+     "PAD findings",
+     "Lower-limb arterial insufficiency"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Peripheral Venous and Arterial Disease / PAD and ABI, PDF p.194",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Claudication, diminished distal pulses, distal hair loss, and ABI <0.9 indicate PAD (2024 ACC/AHA PAD guideline, Gornik, JACC 2024; Criqui, AHA Scientific Statement, Circulation 2021). Threshold is technically ABI <=0.90; noncompressible (calcified) vessels can falsely elevate ABI. 'Limb ischemia' is an acceptable broader alias.",
+    "tiles": [
+     "Exertional calf claudication",
+     "Reduced distal foot pulses",
+     "Loss of distal leg hair",
+     "Ankle-brachial index below 0.9"
+    ]
+   },
+   "contentHash": "16e15493e9d91f6971ce3f70a66ba86121118955372237312f246bbc5a0aed90",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 42,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-1",
+   "placementNote": null
+  },
+  "CARD-044": {
+   "id": "CARD-044",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-044",
+     "Connection Title": "Endocrine causes of secondary hypertension",
+     "Tile 1": "Cushing syndrome",
+     "Tile 2": "Hyperaldosteronism",
+     "Tile 3": "Pheochromocytoma",
+     "Tile 4": "Hyperthyroidism",
+     "Connection Type": "Shared clinical effect",
+     "Explanation": "The source lists these endocrine disorders as underlying causes of secondary hypertension through different hormonal mechanisms.",
+     "Organ System": "Cardiovascular / Endocrine",
+     "Discipline": "Pathophysiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Hormonal causes of hypertension; Endocrine secondary hypertension",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Hypertension / Secondary Hypertension, PDF p.202",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Cushing syndrome, primary aldosteronism, pheochromocytoma, and hyperthyroidism are endocrine causes of secondary hypertension; hyperthyroidism is explicitly listed in the 2025 AHA/ACC HTN guideline table (prevalence <1%) (Jones, JACC 2025; de Silva, Endocrine Causes of Hypertension, Curr Hypertens Rep 2020; Rivas, Am J Med Sci 2021). Hyperthyroidism often produces predominantly systolic HTN. Cross-system (CV/endocrine) retained."
+    },
+    "title": "Endocrine causes of secondary hypertension",
+    "connectionType": "Shared clinical effect",
+    "explanation": "The source lists these endocrine disorders as underlying causes of secondary hypertension through different hormonal mechanisms.",
+    "organSystems": "Cardiovascular / Endocrine",
+    "discipline": "Pathophysiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Hormonal causes of hypertension",
+     "Endocrine secondary hypertension"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Hypertension / Secondary Hypertension, PDF p.202",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Cushing syndrome, primary aldosteronism, pheochromocytoma, and hyperthyroidism are endocrine causes of secondary hypertension; hyperthyroidism is explicitly listed in the 2025 AHA/ACC HTN guideline table (prevalence <1%) (Jones, JACC 2025; de Silva, Endocrine Causes of Hypertension, Curr Hypertens Rep 2020; Rivas, Am J Med Sci 2021). Hyperthyroidism often produces predominantly systolic HTN. Cross-system (CV/endocrine) retained.",
+    "tiles": [
+     "Cushing syndrome",
+     "Hyperaldosteronism",
+     "Pheochromocytoma",
+     "Hyperthyroidism"
+    ]
+   },
+   "contentHash": "81596c4d633399f336db218b5b0878305a0a4cd0b8e09d2355db0153fb3530dd",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 43,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-045": {
+   "id": "CARD-045",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-045",
+     "Connection Title": "Causes of hypovolemic shock",
+     "Tile 1": "Traumatic hemorrhage",
+     "Tile 2": "Upper gastrointestinal bleeding",
+     "Tile 3": "Severe diarrhea",
+     "Tile 4": "Major burn injury",
+     "Connection Type": "Shared hemodynamic outcome",
+     "Explanation": "These source-listed causes can reduce effective circulating volume through blood or fluid losses.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathophysiology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Hypovolemic shock causes; Severe circulating-volume loss",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Shock / Hypovolemic Shock, PDF p.213",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Traumatic hemorrhage, upper GI bleeding, severe diarrhea, and major burns reduce effective circulating volume -> hypovolemic shock (Vincent & De Backer, Circulatory Shock, NEJM 2013). Losses must be substantial; burns combine fluid shifts with losses. 'Hemorrhagic shock' fits only the two bleeding causes, so is not an equally strong category for the full four."
+    },
+    "title": "Causes of hypovolemic shock",
+    "connectionType": "Shared hemodynamic outcome",
+    "explanation": "These source-listed causes can reduce effective circulating volume through blood or fluid losses.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathophysiology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Hypovolemic shock causes",
+     "Severe circulating-volume loss"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Shock / Hypovolemic Shock, PDF p.213",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Traumatic hemorrhage, upper GI bleeding, severe diarrhea, and major burns reduce effective circulating volume -> hypovolemic shock (Vincent & De Backer, Circulatory Shock, NEJM 2013). Losses must be substantial; burns combine fluid shifts with losses. 'Hemorrhagic shock' fits only the two bleeding causes, so is not an equally strong category for the full four.",
+    "tiles": [
+     "Traumatic hemorrhage",
+     "Upper gastrointestinal bleeding",
+     "Severe diarrhea",
+     "Major burn injury"
+    ]
+   },
+   "contentHash": "b28822587bf7088750d69be0e54fd687d013e5dc3179714475ec2906a042e4f0",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 44,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-3",
+   "placementNote": null
+  },
+  "CARD-046": {
+   "id": "CARD-046",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-046",
+     "Connection Title": "Major components of the cardiac conduction pathway",
+     "Tile 1": "Sinoatrial node",
+     "Tile 2": "Atrioventricular node",
+     "Tile 3": "Bundle of His",
+     "Tile 4": "Purkinje network",
+     "Connection Type": "Shared anatomic system",
+     "Explanation": "These source-listed structures initiate, delay and distribute the impulse through the heart. Bundle branches are intermediate components as well.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Anatomy / Physiology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Cardiac conduction structures; Specialized cardiac conduction system",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Anatomy / Cardiac Conduction, PDF p.15; Cardiac Conductive Physiology, PDF p.85",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "SA node, AV node, bundle of His, and Purkinje network are the major components of the specialized conduction system (Anderson, The anatomy of the cardiac conduction system, Clin Anat). This is a selection of major structures (bundle branches omitted), not an exhaustive list; no equally strong competing system."
+    },
+    "title": "Major components of the cardiac conduction pathway",
+    "connectionType": "Shared anatomic system",
+    "explanation": "These source-listed structures initiate, delay and distribute the impulse through the heart. Bundle branches are intermediate components as well.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Anatomy / Physiology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Cardiac conduction structures",
+     "Specialized cardiac conduction system"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Anatomy / Cardiac Conduction, PDF p.15; Cardiac Conductive Physiology, PDF p.85",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "SA node, AV node, bundle of His, and Purkinje network are the major components of the specialized conduction system (Anderson, The anatomy of the cardiac conduction system, Clin Anat). This is a selection of major structures (bundle branches omitted), not an exhaustive list; no equally strong competing system.",
+    "tiles": [
+     "Sinoatrial node",
+     "Atrioventricular node",
+     "Bundle of His",
+     "Purkinje network"
+    ]
+   },
+   "contentHash": "a600282c35da5ba328f745bd7165d2794ac8b5796ce43d81da238dec522f8551",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 45,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-4",
+   "placementNote": null
+  },
+  "CARD-047": {
+   "id": "CARD-047",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-047",
+     "Connection Title": "The four phases of a ventricular pressure-volume loop",
+     "Tile 1": "Isovolumetric contraction",
+     "Tile 2": "Ventricular ejection",
+     "Tile 3": "Isovolumetric relaxation",
+     "Tile 4": "Ventricular filling",
+     "Connection Type": "Physiologic cycle components",
+     "Explanation": "These are the four source-listed phases of a ventricular pressure-volume loop under normal valve function.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Physiology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "PV loop phases; Four ventricular cycle phases",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Pressure Volume Loops / Basic Principles, PDF p.45",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Isovolumetric contraction, ejection, isovolumetric relaxation, and filling are the four PV-loop phases under normal valve function (Hall, Guyton and Hall Textbook of Medical Physiology). Clean defining set."
+    },
+    "title": "The four phases of a ventricular pressure-volume loop",
+    "connectionType": "Physiologic cycle components",
+    "explanation": "These are the four source-listed phases of a ventricular pressure-volume loop under normal valve function.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Physiology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "PV loop phases",
+     "Four ventricular cycle phases"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Pressure Volume Loops / Basic Principles, PDF p.45",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Isovolumetric contraction, ejection, isovolumetric relaxation, and filling are the four PV-loop phases under normal valve function (Hall, Guyton and Hall Textbook of Medical Physiology). Clean defining set.",
+    "tiles": [
+     "Isovolumetric contraction",
+     "Ventricular ejection",
+     "Isovolumetric relaxation",
+     "Ventricular filling"
+    ]
+   },
+   "contentHash": "a069e7f167a4ef97d621d66109d7eda6efa21418851d707349c5b06eb45d5dd9",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 46,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-5",
+   "placementNote": null
+  },
+  "CARD-048": {
+   "id": "CARD-048",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-048",
+     "Connection Title": "Physiologic actions of angiotensin II",
+     "Tile 1": "Arteriolar constriction",
+     "Tile 2": "Increased sodium reabsorption",
+     "Tile 3": "Aldosterone release",
+     "Tile 4": "Vasopressin release",
+     "Connection Type": "Shared hormonal action",
+     "Explanation": "The source connects angiotensin II to increased vascular resistance and volume retention through these direct and endocrine actions.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Physiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Angiotensin II effects; AT-II actions",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "RAAS / Actions of Angiotensin II, PDF p.75",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Arteriolar constriction, increased proximal-tubule Na reabsorption, aldosterone release, and vasopressin release are direct and endocrine actions of angiotensin II (Turcu, Primary Aldosteronism, Nat Rev Endocrinol 2022; Hall, Angiotensin in Critical Care, Crit Care 2018). Actions occur across different tissues; 'RAAS activation' is a broader acceptable alias."
+    },
+    "title": "Physiologic actions of angiotensin II",
+    "connectionType": "Shared hormonal action",
+    "explanation": "The source connects angiotensin II to increased vascular resistance and volume retention through these direct and endocrine actions.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Physiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Angiotensin II effects",
+     "AT-II actions"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "RAAS / Actions of Angiotensin II, PDF p.75",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Arteriolar constriction, increased proximal-tubule Na reabsorption, aldosterone release, and vasopressin release are direct and endocrine actions of angiotensin II (Turcu, Primary Aldosteronism, Nat Rev Endocrinol 2022; Hall, Angiotensin in Critical Care, Crit Care 2018). Actions occur across different tissues; 'RAAS activation' is a broader acceptable alias.",
+    "tiles": [
+     "Arteriolar constriction",
+     "Increased sodium reabsorption",
+     "Aldosterone release",
+     "Vasopressin release"
+    ]
+   },
+   "contentHash": "d63e33c780b9887c0a20f81b2e4778002c44d2a05e72ac5844f6c5c438bb88d6",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 47,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-049": {
+   "id": "CARD-049",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-049",
+     "Connection Title": "Components of Gq-mediated vascular signaling",
+     "Tile 1": "Phospholipase C",
+     "Tile 2": "Inositol trisphosphate",
+     "Tile 3": "Diacylglycerol",
+     "Tile 4": "Protein kinase C",
+     "Connection Type": "Shared signaling pathway",
+     "Explanation": "The source describes PLC generating IP3 and DAG, with DAG activating PKC in the vascular Gq pathway.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Physiology / Biochemistry",
+     "Difficulty": "Hard",
+     "Accepted Alternate Category Names": "Gq signaling cascade; PLC-IP3-DAG pathway",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Vasodilation and Vasoconstriction / Gq Pathway, PDF p.56",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "PLC generates IP3 and DAG; DAG activates PKC in the Gq vascular pathway (Webb, Smooth muscle contraction and relaxation, Adv Physiol Educ 2003). These are cascade components (not four receptors or four enzymes of one class); 'Gq-linked second-messenger signaling' is an equivalent alias. Hard difficulty appropriate."
+    },
+    "title": "Components of Gq-mediated vascular signaling",
+    "connectionType": "Shared signaling pathway",
+    "explanation": "The source describes PLC generating IP3 and DAG, with DAG activating PKC in the vascular Gq pathway.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Physiology / Biochemistry",
+    "difficulty": "hard",
+    "alternateNames": [
+     "Gq signaling cascade",
+     "PLC-IP3-DAG pathway"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Vasodilation and Vasoconstriction / Gq Pathway, PDF p.56",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "PLC generates IP3 and DAG; DAG activates PKC in the Gq vascular pathway (Webb, Smooth muscle contraction and relaxation, Adv Physiol Educ 2003). These are cascade components (not four receptors or four enzymes of one class); 'Gq-linked second-messenger signaling' is an equivalent alias. Hard difficulty appropriate.",
+    "tiles": [
+     "Phospholipase C",
+     "Inositol trisphosphate",
+     "Diacylglycerol",
+     "Protein kinase C"
+    ]
+   },
+   "contentHash": "5a5dbfc99fd9528607f1e9f39ed8bef77e6e73c5f94feb9b16d5da1f3c799922",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 48,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-2",
+   "placementNote": null
+  },
+  "CARD-050": {
+   "id": "CARD-050",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-050",
+     "Connection Title": "Second pharyngeal arch cartilage derivatives",
+     "Tile 1": "Stapes",
+     "Tile 2": "Styloid process",
+     "Tile 3": "Stylohyoid ligament",
+     "Tile 4": "Lesser horn of hyoid",
+     "Connection Type": "Shared embryologic origin",
+     "Explanation": "The source groups these under Reichert cartilage derivatives of the second pharyngeal arch.",
+     "Organ System": "Head and neck",
+     "Discipline": "Embryology / Anatomy",
+     "Difficulty": "Hard",
+     "Accepted Alternate Category Names": "Reichert cartilage derivatives; Second arch skeletal derivatives",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Embryology / Pharyngeal Arches table, PDF p.8",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Stapes, styloid process, stylohyoid ligament, and lesser horn of the hyoid are second pharyngeal arch (Reichert cartilage) derivatives (Rodriguez-Vazquez, Morphogenesis of Reichert's Cartilage, J Anat 2006; de Bakker, Sci Rep 2019). Cross-system head/neck embryology with low cardiology relevance - reserve for embryology content. The ligament is not bone, so 'hyoid-associated structures' does not fully capture the set."
+    },
+    "title": "Second pharyngeal arch cartilage derivatives",
+    "connectionType": "Shared embryologic origin",
+    "explanation": "The source groups these under Reichert cartilage derivatives of the second pharyngeal arch.",
+    "organSystems": "Head and neck",
+    "discipline": "Embryology / Anatomy",
+    "difficulty": "hard",
+    "alternateNames": [
+     "Reichert cartilage derivatives",
+     "Second arch skeletal derivatives"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Embryology / Pharyngeal Arches table, PDF p.8",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Stapes, styloid process, stylohyoid ligament, and lesser horn of the hyoid are second pharyngeal arch (Reichert cartilage) derivatives (Rodriguez-Vazquez, Morphogenesis of Reichert's Cartilage, J Anat 2006; de Bakker, Sci Rep 2019). Cross-system head/neck embryology with low cardiology relevance - reserve for embryology content. The ligament is not bone, so 'hyoid-associated structures' does not fully capture the set.",
+    "tiles": [
+     "Stapes",
+     "Styloid process",
+     "Stylohyoid ligament",
+     "Lesser horn of hyoid"
+    ]
+   },
+   "contentHash": "f4247d0023e0bf546570de347bcdbec3bd52aa9bd5510aed7081d1bac4a8b36b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 49,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": "Cross-system head/neck embryology with low cardiology relevance - reserve for embryology content."
+  },
+  "CARD-051": {
+   "id": "CARD-051",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-051",
+     "Connection Title": "Cardiovascular adaptations to endurance training",
+     "Tile 1": "Larger stroke volume",
+     "Tile 2": "Higher maximal oxygen uptake",
+     "Tile 3": "Expanded plasma volume",
+     "Tile 4": "Lower resting heart rate",
+     "Connection Type": "Shared physiologic adaptation",
+     "Explanation": "The source lists these as cardiovascular adaptations contributing to improved athletic oxygen delivery and exercise performance.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Physiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Endurance training adaptations; Athlete cardiovascular physiology",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Exercise Physiology / Athletic Cardiovascular Physiology, PDF p.82",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Increased stroke volume, higher VO2max, expanded plasma volume, and lower resting HR are endurance-training adaptations (Hellsten & Nyberg, Cardiovascular Adaptations to Exercise Training, Compr Physiol 2015). Responses vary with training type and individual; title is appropriately scoped to endurance training."
+    },
+    "title": "Cardiovascular adaptations to endurance training",
+    "connectionType": "Shared physiologic adaptation",
+    "explanation": "The source lists these as cardiovascular adaptations contributing to improved athletic oxygen delivery and exercise performance.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Physiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Endurance training adaptations",
+     "Athlete cardiovascular physiology"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Exercise Physiology / Athletic Cardiovascular Physiology, PDF p.82",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Increased stroke volume, higher VO2max, expanded plasma volume, and lower resting HR are endurance-training adaptations (Hellsten & Nyberg, Cardiovascular Adaptations to Exercise Training, Compr Physiol 2015). Responses vary with training type and individual; title is appropriately scoped to endurance training.",
+    "tiles": [
+     "Larger stroke volume",
+     "Higher maximal oxygen uptake",
+     "Expanded plasma volume",
+     "Lower resting heart rate"
+    ]
+   },
+   "contentHash": "49d3a75769279e80554df3d8358f209be4eed0776484b71522b730c9e7707e2b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 50,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-052": {
+   "id": "CARD-052",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-052",
+     "Connection Title": "Typical changes during dynamic exercise",
+     "Tile 1": "Increased heart rate",
+     "Tile 2": "Increased contractility",
+     "Tile 3": "Increased venous return",
+     "Tile 4": "Reduced systemic vascular resistance",
+     "Connection Type": "Shared physiologic response",
+     "Explanation": "The source describes sympathetic cardiac stimulation and enhanced venous return alongside vasodilation in active skeletal muscle.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Physiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Dynamic exercise hemodynamics; Aerobic exercise cardiovascular responses",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Exercise Physiology / Physiologic Changes, PDF p.80",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Increased HR, increased contractility, increased venous return, and reduced systemic vascular resistance occur in dynamic/aerobic exercise (Hellsten & Nyberg, Compr Physiol 2015). Does not generalize to sustained isometric exercise; an AV fistula can mimic part of this low-resistance pattern - board overlap caution with CARD-002."
+    },
+    "title": "Typical changes during dynamic exercise",
+    "connectionType": "Shared physiologic response",
+    "explanation": "The source describes sympathetic cardiac stimulation and enhanced venous return alongside vasodilation in active skeletal muscle.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Physiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Dynamic exercise hemodynamics",
+     "Aerobic exercise cardiovascular responses"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Exercise Physiology / Physiologic Changes, PDF p.80",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Increased HR, increased contractility, increased venous return, and reduced systemic vascular resistance occur in dynamic/aerobic exercise (Hellsten & Nyberg, Compr Physiol 2015). Does not generalize to sustained isometric exercise; an AV fistula can mimic part of this low-resistance pattern - board overlap caution with CARD-002.",
+    "tiles": [
+     "Increased heart rate",
+     "Increased contractility",
+     "Increased venous return",
+     "Reduced systemic vascular resistance"
+    ]
+   },
+   "contentHash": "539e7dc6da33c5fab712d425428ff838e0a031f5e14960c5c58f0b3e2a7df58d",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 51,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-053": {
+   "id": "CARD-053",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-053",
+     "Connection Title": "Aortic diseases that can lead to aortic regurgitation",
+     "Tile 1": "Aortic dissection",
+     "Tile 2": "Thoracic aortic aneurysm",
+     "Tile 3": "Marfan-related aortic dilation",
+     "Tile 4": "Tertiary syphilis",
+     "Connection Type": "Shared valve complication",
+     "Explanation": "The source links these conditions to aortic dilation or structural disruption that can impair aortic valve closure.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Aortic-root causes of AR; Aortic causes of aortic insufficiency",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Valvular Disease / Aortic Dilatation, PDF p.149; Aortic Disease / Marfan, PDF p.143",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Aortic dissection, thoracic aortic aneurysm, Marfan root dilation, and tertiary (syphilitic) aortitis can disrupt the root/valve apparatus -> AR (Choudhry & Etchells, JAMA 1999; Loeys, revised Ghent nosology, J Med Genet 2010). Location matters - distal disease may spare the valve. 'Thoracic aortic disease' is an acceptable related alias."
+    },
+    "title": "Aortic diseases that can lead to aortic regurgitation",
+    "connectionType": "Shared valve complication",
+    "explanation": "The source links these conditions to aortic dilation or structural disruption that can impair aortic valve closure.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Aortic-root causes of AR",
+     "Aortic causes of aortic insufficiency"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Valvular Disease / Aortic Dilatation, PDF p.149; Aortic Disease / Marfan, PDF p.143",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Aortic dissection, thoracic aortic aneurysm, Marfan root dilation, and tertiary (syphilitic) aortitis can disrupt the root/valve apparatus -> AR (Choudhry & Etchells, JAMA 1999; Loeys, revised Ghent nosology, J Med Genet 2010). Location matters - distal disease may spare the valve. 'Thoracic aortic disease' is an acceptable related alias.",
+    "tiles": [
+     "Aortic dissection",
+     "Thoracic aortic aneurysm",
+     "Marfan-related aortic dilation",
+     "Tertiary syphilis"
+    ]
+   },
+   "contentHash": "e546f1988b4c5cc1a147c22248d76dcbb410367bdece315317b1f0eb68d3dd6e",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 52,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "CARD-054": {
+   "id": "CARD-054",
+   "library": "new",
+   "system": "Cardiology",
+   "content": {
+    "raw": {
+     "Connection ID": "CARD-054",
+     "Connection Title": "Agents associated with cardiomyopathic LV dysfunction",
+     "Tile 1": "Doxorubicin",
+     "Tile 2": "Daunorubicin",
+     "Tile 3": "Trastuzumab",
+     "Tile 4": "Chronic heavy alcohol exposure",
+     "Connection Type": "Shared cardiac toxicity",
+     "Explanation": "The source identifies these anticancer agents and alcohol as exposures associated with cardiomyopathy or cardiotoxic ventricular dysfunction.",
+     "Organ System": "Cardiovascular",
+     "Discipline": "Pharmacology / Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Cardiotoxic exposures; Agents associated with systolic cardiac dysfunction",
+     "Source": "Bootcamp.com Cardiology.pdf",
+     "Source Section": "Cardiomyopathy / Additional Causes, PDF p.128; Other Causes, PDF p.136",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Doxorubicin and daunorubicin (anthracyclines), trastuzumab (HER2 inhibitor, usually reversible type II), and chronic alcohol cause cardiomyopathy/LV dysfunction (Bozkurt, Circulation 2016; Chang, Cardiovascular Complications of Cancer Therapy, JACC 2017). 'Agents/exposures' framing is needed (alcohol is not an anticancer drug). Board overlap: shares doxorubicin and alcohol with CARD-011, and doxorubicin+daunorubicin are both anthracyclines - avoid placing with CARD-011 on one board."
+    },
+    "title": "Agents associated with cardiomyopathic LV dysfunction",
+    "connectionType": "Shared cardiac toxicity",
+    "explanation": "The source identifies these anticancer agents and alcohol as exposures associated with cardiomyopathy or cardiotoxic ventricular dysfunction.",
+    "organSystems": "Cardiovascular",
+    "discipline": "Pharmacology / Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Cardiotoxic exposures",
+     "Agents associated with systolic cardiac dysfunction"
+    ],
+    "sources": "Bootcamp.com Cardiology.pdf",
+    "sourceSection": "Cardiomyopathy / Additional Causes, PDF p.128; Other Causes, PDF p.136",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Doxorubicin and daunorubicin (anthracyclines), trastuzumab (HER2 inhibitor, usually reversible type II), and chronic alcohol cause cardiomyopathy/LV dysfunction (Bozkurt, Circulation 2016; Chang, Cardiovascular Complications of Cancer Therapy, JACC 2017). 'Agents/exposures' framing is needed (alcohol is not an anticancer drug). Board overlap: shares doxorubicin and alcohol with CARD-011, and doxorubicin+daunorubicin are both anthracyclines - avoid placing with CARD-011 on one board.",
+    "tiles": [
+     "Doxorubicin",
+     "Daunorubicin",
+     "Trastuzumab",
+     "Chronic heavy alcohol exposure"
+    ]
+   },
+   "contentHash": "df3688cadd36ae53d26c879e9e71efcf270e8f835b20aac05a2048e2f232125a",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Cardio_Reviewed_Connections.csv",
+    "fileSha": "7a468f05556e",
+    "row": 53,
+    "importedAt": "2026-10-08T06:48:30.738Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "cardiology-starter-3",
+   "placementNote": null
   }
  },
  "starterBoards": {
@@ -5716,12 +9633,14 @@
      "PLX-BCH-073"
     ],
     "signature": "9079e1f6",
-    "status": "ready",
-    "publishable": true,
+    "status": "review",
+    "publishable": false,
     "structural": "pass",
     "block": [],
-    "flags": [],
-    "ambiguityReview": "none"
+    "flags": [
+     "PLX-BCH-071 board instruction to check against the other groups: \"Intentionally introductory category; may be too transparent for a Hard puzzle.\""
+    ],
+    "ambiguityReview": "needed"
    },
    {
     "n": 2,
@@ -5797,6 +9716,98 @@
     ],
     "ambiguityReview": "needed"
    }
+  ],
+  "Cardiology": [
+   {
+    "n": 1,
+    "id": "cardiology-starter-1",
+    "formedAt": "2026-10-08T06:48:30.738Z",
+    "ids": [
+     "CARD-043",
+     "CARD-007",
+     "CARD-002",
+     "CARD-041"
+    ],
+    "signature": "4adcefd8",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 2,
+    "id": "cardiology-starter-2",
+    "formedAt": "2026-10-08T06:48:30.738Z",
+    "ids": [
+     "CARD-001",
+     "CARD-019",
+     "CARD-012",
+     "CARD-049"
+    ],
+    "signature": "249f3747",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 3,
+    "id": "cardiology-starter-3",
+    "formedAt": "2026-10-08T06:48:30.738Z",
+    "ids": [
+     "CARD-045",
+     "CARD-008",
+     "CARD-054",
+     "CARD-033"
+    ],
+    "signature": "675fa761",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 4,
+    "id": "cardiology-starter-4",
+    "formedAt": "2026-10-08T06:48:30.738Z",
+    "ids": [
+     "CARD-046",
+     "CARD-034",
+     "CARD-025",
+     "CARD-010"
+    ],
+    "signature": "0e46c691",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 5,
+    "id": "cardiology-starter-5",
+    "formedAt": "2026-10-08T06:48:30.738Z",
+    "ids": [
+     "CARD-047",
+     "CARD-016",
+     "CARD-030",
+     "CARD-005"
+    ],
+    "signature": "30483e4b",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   }
   ]
  },
  "imports": [
@@ -5809,6 +9820,16 @@
    "added": 79,
    "revised": 0,
    "unchanged": 0
+  },
+  {
+   "file": "Plexus_Cardio_Reviewed_Connections.csv",
+   "fileSha": "7a468f05556e",
+   "system": "Cardiology",
+   "importedAt": "2026-10-08T06:48:30.738Z",
+   "rows": 52,
+   "added": 52,
+   "revised": 0,
+   "unchanged": 0
   }
  ],
  "timedExclusionsAtActivation": [
@@ -5816,8 +9837,18 @@
    "timedId": "bank-ext-001",
    "timedTitle": "Fat-soluble vitamins",
    "replacedBy": "PLX-BCH-008"
+  },
+  {
+   "timedId": "bank-ext-050",
+   "timedTitle": "Findings in tetralogy of Fallot",
+   "replacedBy": "CARD-001"
+  },
+  {
+   "timedId": "bank-ext-020",
+   "timedTitle": "Drugs that slow AV nodal conduction",
+   "replacedBy": "CARD-007"
   }
  ],
- "updatedAt": "2026-10-08T06:42:57.933Z",
+ "updatedAt": "2026-10-08T06:48:42.359Z",
  "active": false
 }

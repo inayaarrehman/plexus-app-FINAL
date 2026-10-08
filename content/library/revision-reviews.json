@@ -21,6 +21,13 @@
       "evidence": "Notes: \"REVISED: Tile 3 Normal urinalysis replaced with Normal/near-normal urinary glycosaminoglycans - the actual discriminator from MPS ... (Cusmano-Ozog et al., CAP/ACMG, Genet Med Open 2024).\" The explanation matches the corrected tile; the remaining note names a competing category (Hurler syndrome) for board review.",
       "contentHash": "0bbade0ae1b12803fcc2edf29e09a6a8f7e32fc7e79a1bdedcbd97fa2b94f99b",
       "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "CARD-037": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"All four are verified MI complications (Damluji, Mechanical Complications of AMI, Circulation 2021; Murphy & Goldberg, Am J Med 2022). REVISION: explanation reworded to state distinct timelines and remove any implication of a shared onset day.\" Tiles and title unchanged from the source; only the explanation was reworded, and the remaining note explains why a competing category is weaker.",
+      "contentHash": "cd6c34e9c611324c6c97da4d26eaf6e8b2cb012caaafe75b2bdee4d21a6f862b",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
     }
   }
 }
