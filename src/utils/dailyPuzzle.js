@@ -4,6 +4,7 @@ import { dateKey, dayNumber } from './game.js'
 import { dailySeedString, buildDailyFromSeed } from './dailySeed.js'
 import { PINNED_DAILIES, PINNED_THROUGH } from '../data/dailyLock.js'
 import { assemblePuzzleFromCategories, categoriesCompatible } from './puzzleAssembler.js'
+import { NEW_DAILY_START, getNewDailyPuzzle } from './newLibrary.js'
 
 // Resolves which Daily Puzzle a given date should show. Everyone who opens the
 // app on the same calendar date gets the SAME puzzle, and it changes at local
@@ -18,8 +19,15 @@ import { assemblePuzzleFromCategories, categoriesCompatible } from './puzzleAsse
 //      board change daily.
 //   3. Last-resort fallback: if the bank somehow can't form a full tier set,
 //      rotate the authored pool by day number so the app never breaks.
+//
+// From NEW_DAILY_START on, the Daily comes ONLY from the new library's fixed
+// schedule (utils/newLibrary.js). There is no fallback to the timed bank: if
+// the schedule had no board the result is null. Dates before the switch keep
+// resolving exactly as they always did, so the puzzle a player already has
+// for today does not change when this ships.
 export function getDailyPuzzleForDate(date, bank = connectionBank) {
   const key = dateKey(date)
+  if (key >= NEW_DAILY_START) return getNewDailyPuzzle(key)
   const published = dailyPuzzles.filter((p) => p.status === 'published')
 
   const explicit = published.find((p) => p.date === key)
@@ -53,6 +61,15 @@ export function getDailyPuzzleForDate(date, bank = connectionBank) {
   const n = dayNumber(key)
   const idx = ((n % published.length) + published.length) % published.length
   return published[idx]
+}
+
+// What the Archive and Challenge links may open. Dailies from before the new
+// library are retired from play (kept in the backup and in players' history);
+// only today's Daily, whichever library it comes from, stays playable.
+export function getPlayableDailyForDate(key, todayKey = dateKey(Date.now())) {
+  if (key > todayKey) return null
+  if (key < NEW_DAILY_START && key !== todayKey) return null
+  return getDailyPuzzleForDate(key)
 }
 
 export function isFutureDateKey(dateStr) {

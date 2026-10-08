@@ -257,8 +257,10 @@ const GLYPH_SCALE = {
 }
 
 // Returns { nodes: [{x,y}], links: [[i,j]], order: [i...], scale } for a system.
+// Genetics is its own subject in the new library and shares the strand glyph.
+const GLYPH_ALIAS = { Genetics: 'Biochemistry/Genetics' }
 export function getSystemGlyph(system) {
-  const g = G[system] || fallbackGlyph()
+  const g = G[system] || G[GLYPH_ALIAS[system]] || fallbackGlyph()
   return {
     nodes: g.nodes.map(([x, y]) => ({ x, y })),
     links: g.links,

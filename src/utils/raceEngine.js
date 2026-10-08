@@ -15,7 +15,7 @@
 // fabricates an opponent.
 // ---------------------------------------------------------------------
 
-import { composeNextRound } from './challengeEngine.js'
+import { composeNextRound, roundRelationships } from './challengeEngine.js'
 import { seededRng } from './puzzleAssembler.js'
 
 // Only single-screen round types are used in Race so both clients render the
@@ -53,18 +53,21 @@ export function isValidJoinCode(code) {
 // Deterministically build the race's ordered round set from a join code.
 // Same code + same bank → identical rounds in identical order on every device.
 // Uses composeNextRound so the set still varies format/system/concept across
-// rounds (no back-to-back repeats) while staying fully reproducible.
-export function buildRaceChallenge(bank, { code, length = RACE_LENGTH } = {}) {
+// rounds while staying fully reproducible, and never repeats a relationship
+// (by canonical id) within one race. `bank` must be the timed library.
+export function buildRaceChallenge(bank, { code, length = RACE_LENGTH, canonicalOf } = {}) {
   const seed = `race:${normalizeJoinCode(code)}`
   const rng = seededRng(seed)
   const rounds = []
+  const used = new Set()
   let recent = []
   let guard = 0
   while (rounds.length < length && guard < length * 8) {
     guard++
-    const round = composeNextRound(bank, { rng, roundTypes: RACE_ROUND_TYPES, recent })
+    const round = composeNextRound(bank, { rng, roundTypes: RACE_ROUND_TYPES, recent, used, canonicalOf })
     if (!round) break
     rounds.push(round)
+    roundRelationships(round, bank, canonicalOf).forEach((id) => used.add(id))
     recent = [{ type: round.type, systems: round.systems, conceptTags: round.conceptTags }, ...recent].slice(0, 3)
   }
   return rounds

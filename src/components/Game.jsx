@@ -13,7 +13,7 @@ import { loadProgression, spendCurbside } from '../progression/store.js'
 import { kitCounts } from '../progression/engine.js'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import { groupColor } from './GroupMotif.jsx'
-import { DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
+import { difficultyLabelOf } from './DifficultyIcon.jsx'
 import ReviewConnections from './ReviewConnections.jsx'
 import TileText from './TileText.jsx'
 import SolvedGroup from './SolvedGroup.jsx'
@@ -555,7 +555,7 @@ export default function Game({
                       {g.title}
                     </span>
                     <span className="rc-meta">
-                      {DIFFICULTY_LABEL[g.level]}
+                      {difficultyLabelOf(g)}
                       {!g.found && ' · not found'}
                     </span>
                   </span>

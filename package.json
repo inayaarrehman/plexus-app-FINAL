@@ -12,7 +12,9 @@
     "test": "npm run selftest && npm run test:render",
     "library:import": "node scripts/library/import.mjs",
     "library:status": "node scripts/library/import.mjs --status",
-    "library:test": "node scripts/library/test.mjs"
+    "library:test": "node scripts/library/test.mjs",
+    "library:activate": "node scripts/library/activate.mjs",
+    "library:verify-activation": "node scripts/library/activation-test.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",

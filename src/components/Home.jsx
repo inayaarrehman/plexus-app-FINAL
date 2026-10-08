@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { SYSTEMS } from '../puzzles.js'
+import { subjectLabel } from '../utils/newLibrary.js'
 import { getDailyPuzzleForDate } from '../utils/dailyPuzzle.js'
 import { pickConnectionOfDay, firstSentence } from '../utils/connectionOfDay.js'
 import { getSystemGlyph } from '../utils/systemGlyphs.js'
@@ -392,9 +393,9 @@ export default function Home({
                   <MiniGlyph system={continueSystem} size={64} progress={continueSystemSolved / continueSystemTotal} />
                 </span>
                 <span className="mode-body">
-                  <span className="mode-title">Continue {continueSystem}</span>
+                  <span className="mode-title">Continue {subjectLabel(continueSystem)}</span>
                   <span className="mode-sub">
-                    {continueSystemSolved} of {continueSystemTotal} connections solved
+                    {continueSystemSolved} of {continueSystemTotal} boards completed
                   </span>
                   <span className="mode-action">
                     Continue <span className="mode-arrow" aria-hidden="true">&rarr;</span>

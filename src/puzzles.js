@@ -55,7 +55,10 @@ export function validatePuzzle(p) {
     p.categories.forEach((c, i) => {
       if (!c.title) errors.push(`category ${i} missing title`)
       if (!c.explanation) errors.push(`category ${i} ("${c.title}") missing explanation`)
-      if (!c.remember) errors.push(`category ${i} ("${c.title}") missing remember line`)
+      // New-library rows carry no remember line or per-tile note; nothing is
+      // invented to fill them, so those two fields are optional there.
+      const isNew = p.library === 'new'
+      if (!c.remember && !isNew) errors.push(`category ${i} ("${c.title}") missing remember line`)
       if (!Array.isArray(c.items) || c.items.length !== 4) {
         errors.push(`category ${i} ("${c.title}") must have exactly 4 items`)
       } else {
@@ -65,7 +68,7 @@ export function validatePuzzle(p) {
           } else {
             allTerms.push(it.term)
           }
-          if (!it || typeof it.why !== 'string' || !it.why.trim()) {
+          if (!isNew && (!it || typeof it.why !== 'string' || !it.why.trim())) {
             errors.push(`category ${i} ("${c.title}") item "${it && it.term}" missing why`)
           }
         })

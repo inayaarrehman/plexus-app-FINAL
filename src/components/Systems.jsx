@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useCallback } from 'react'
-import { SYSTEMS } from '../puzzles.js'
 import { NODE_VARS } from '../data/constants.js'
-import { categoriesForSystem, systemMasteryCounts } from '../utils/mastery.js'
+import { categoriesForSystem } from '../utils/mastery.js'
+import { LIBRARY_SUBJECTS, subjectLabel, subjectProgress, CAUGHT_UP_COPY } from '../utils/newLibrary.js'
 import { getSystemGlyph, resolveGlyph } from '../utils/systemGlyphs.js'
 import { haptics } from '../utils/haptics.js'
 
@@ -11,7 +11,7 @@ import { haptics } from '../utils/haptics.js'
 // classification, so Cardiology and GI can share coral.
 const ACCENT_COLORS = NODE_VARS
 function systemAccent(system) {
-  const idx = SYSTEMS.indexOf(system)
+  const idx = LIBRARY_SUBJECTS.indexOf(system)
   return ACCENT_COLORS[idx % ACCENT_COLORS.length] || ACCENT_COLORS[0]
 }
 
@@ -115,9 +115,10 @@ function SystemNode({ system, total, solved, accent, onEnter }) {
   const complete = !empty && solved >= total
 
   const release = useCallback(() => setPressed(false), [])
+  const name = subjectLabel(system)
   const label = empty
-    ? `${system}. Coming soon.`
-    : `${system}. ${solved} of ${total} connections completed.`
+    ? `${name}. Coming soon.`
+    : `${name}. ${solved} of ${total} boards completed.`
 
   return (
     <button
@@ -140,7 +141,7 @@ function SystemNode({ system, total, solved, accent, onEnter }) {
         <Glyph system={system} fraction={fraction} empty={empty} tone="accent" />
       </span>
       <span className="system-node-label">
-        <span className="system-node-name">{nameWithBreaks(system)}</span>
+        <span className="system-node-name">{nameWithBreaks(name)}</span>
         {empty ? (
           <span className="system-node-soon">Coming soon</span>
         ) : (
@@ -153,17 +154,20 @@ function SystemNode({ system, total, solved, accent, onEnter }) {
   )
 }
 
-export default function Systems({ bank, mastery, onPlaySystem, onBack, playNotice, onDismissPlayNotice }) {
+export default function Systems({ todayKey, finishedBoards, onPlaySystem, onBack, playNotice, onDismissPlayNotice }) {
   const [selected, setSelected] = useState(null)
   const [entering, setEntering] = useState(false)
 
+  // Systems content is the new library only: each subject's fixed starter
+  // boards plus the boards released from past Dailies (utils/newLibrary.js).
+  // Progress is boards finished out of boards available today.
   const rows = useMemo(
     () =>
-      SYSTEMS.map((system) => {
-        const { total, solved } = systemMasteryCounts(bank, system, mastery)
-        return { system, total, solved }
+      LIBRARY_SUBJECTS.map((system) => {
+        const p = subjectProgress(system, todayKey, finishedBoards)
+        return { system, total: p.total, solved: p.completed }
       }),
-    [bank, mastery]
+    [todayKey, finishedBoards]
   )
 
   // Restrained system-entry transition (§16): the tapped node's accent
@@ -176,12 +180,11 @@ export default function Systems({ bank, mastery, onPlaySystem, onBack, playNotic
   }, [])
 
   if (selected) {
-    const { total, solved } = systemMasteryCounts(bank, selected, mastery)
+    const p = subjectProgress(selected, todayKey, finishedBoards)
+    const total = p.total
+    const solved = p.completed
     const accent = systemAccent(selected)
-    // §16/§1/§2: a deliberately clean system page — heading, exact progress,
-    // the Plexus progress line, and Play. Territories and the raw "Your
-    // {system} / Recent" metadata dump were removed; the whitespace is intended
-    // and is NOT backfilled with another analytics section (§19).
+    const name = subjectLabel(selected)
     return (
       <div
         className={`systems system-detail-view ${entering ? 'is-entering' : ''}`}
@@ -194,7 +197,7 @@ export default function Systems({ bank, mastery, onPlaySystem, onBack, playNotic
             &larr; Systems
           </button>
           <div className="game-header-title">
-            <span>{selected}</span>
+            <span>{name}</span>
           </div>
           <div />
         </div>
@@ -203,9 +206,9 @@ export default function Systems({ bank, mastery, onPlaySystem, onBack, playNotic
           <div className="system-detail-sig" aria-hidden="true">
             <Glyph system={selected} fraction={total > 0 ? solved / total : 0} empty={total === 0} tone="accent" />
           </div>
-          <h1 className="system-detail-title">{selected}</h1>
+          <h1 className="system-detail-title">{name}</h1>
           <p className="system-detail-count">
-            {solved} of {total} connections solved
+            {solved} of {total} boards completed
           </p>
           <ProgressBar value={solved} max={total} accent={accent} />
           {playNotice && (
@@ -216,13 +219,19 @@ export default function Systems({ bank, mastery, onPlaySystem, onBack, playNotic
               </button>
             </p>
           )}
-          <button
-            className="system-play-btn"
-            style={{ '--node-accent': accent }}
-            onClick={() => onPlaySystem(selected)}
-          >
-            Play <span className="system-play-arrow" aria-hidden="true">&rarr;</span>
-          </button>
+          {p.next ? (
+            <button
+              className="system-play-btn"
+              style={{ '--node-accent': accent }}
+              onClick={() => onPlaySystem(selected)}
+            >
+              Play <span className="system-play-arrow" aria-hidden="true">&rarr;</span>
+            </button>
+          ) : (
+            <p className="system-caught-up" role="status">
+              {CAUGHT_UP_COPY}
+            </p>
+          )}
         </div>
       </div>
     )

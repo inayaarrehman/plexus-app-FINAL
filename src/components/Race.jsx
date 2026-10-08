@@ -10,6 +10,7 @@ import {
 } from '../utils/raceEngine.js'
 import { openLiveRace, isSupabaseConfigured } from '../lib/liveRace.js'
 import { haptics } from '../utils/haptics.js'
+import { timedCanonicalId } from '../utils/timedLibrary.js'
 import { recordRaceFinish, recordRaceWin } from '../progression/store.js'
 
 // ---------------------------------------------------------------------
@@ -108,7 +109,7 @@ export default function Race({ bank, initialCode = '', onExit }) {
   // Build the deterministic set from the code and roll into the countdown.
   // Both players call this (host on tap, guest on the broadcast) → same set.
   const buildAndCountdown = () => {
-    const built = buildRaceChallenge(bank, { code, length: RACE_LENGTH })
+    const built = buildRaceChallenge(bank, { code, length: RACE_LENGTH, canonicalOf: timedCanonicalId })
     setRounds(built)
     setIdx(0)
     setSelected([])

@@ -53,6 +53,7 @@ export const SYSTEMS = [
   'Dermatology',
   'Pharmacology',
   'Biochemistry/Genetics',
+  'Genetics',
   'Mixed / Step Review',
 ]
 

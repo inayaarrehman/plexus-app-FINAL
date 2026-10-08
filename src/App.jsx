@@ -18,19 +18,19 @@ import { isSupabaseConfigured } from './lib/supabaseClient.js'
 import { onAuthChange } from './lib/auth.js'
 import { syncProgress, pushProgress } from './lib/progressRepo.js'
 import { snapshotLocal } from './utils/progressSync.js'
-import { loadExtraConnections, mergeBank } from './lib/contentSource.js'
+import { timedBank } from './utils/timedLibrary.js'
+import { subjectProgress, libraryConnectionMap, subjectLabel } from './utils/newLibrary.js'
 import StatsModal from './components/StatsModal.jsx'
 import DevViewer from './components/DevViewer.jsx'
 import BrandMark from './components/BrandMark.jsx'
 import { dayNumber, dateKeyFromDayNumber } from './utils/game.js'
 import { finishStamp, useToday } from './utils/calendarHooks.js'
-import { getDailyPuzzleForDate } from './utils/dailyPuzzle.js'
+import { getDailyPuzzleForDate, getPlayableDailyForDate } from './utils/dailyPuzzle.js'
 import { getDailyGate, isGatedView, GATED_VIEWS, LOCK_COPY, hasSeenUnlock, markUnlockSeen } from './utils/dailyGate.js'
 import LockGlyph from './components/LockGlyph.jsx'
 import Record from './components/Record.jsx'
 import { recordDailyFinish, recordSystemFinish, backfillIfNeeded, streakInfo, loadProgression, recordSnapshot } from './progression/store.js'
 import { SYSTEMS } from './data/constants.js'
-import { assembleSystemPuzzle } from './utils/puzzleAssembler.js'
 import { systemMasteryCounts } from './utils/mastery.js'
 import {
   loadStats,
@@ -46,9 +46,10 @@ import {
   getConceptMastery,
   recordConceptMastery,
   getChallengeStats,
-  getRecentCategories,
-  recordServedCategories,
+  getSystemsBoards,
+  recordSystemsBoardFinish,
 } from './utils/storage.js'
+import { systemsBoardPuzzle } from './utils/newLibrary.js'
 
 // Builds Weak Spot data points from one finished attempt: every category
 // touched by a wrong guess (the "concepts involved"), plus every category's
@@ -211,21 +212,11 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supaConfigured])
 
-  // Verified connections authored/generated in Supabase, merged on top of the
-  // bundled bank for Systems / 3-Minute / Race. The Daily stays on the bundled
-  // bank (below) so it is stable and identical for everyone.
-  const [extraConnections, setExtraConnections] = useState([])
-  useEffect(() => {
-    if (!supaConfigured) return
-    loadExtraConnections()
-      .then((rows) => {
-        if (rows && rows.length) setExtraConnections(rows)
-      })
-      .catch(() => {
-        /* offline / empty — the bundled bank is used */
-      })
-  }, [supaConfigured])
-  const bank = useMemo(() => mergeBank(connectionBank, extraConnections), [extraConnections])
+  // Two libraries, never mixed. 3 Minutes and Race read only the timed bank
+  // (the existing bank minus entries removed at activation). Daily and Systems
+  // read only the new library (utils/newLibrary.js). Nothing is merged in from
+  // Supabase at runtime any more, so every player gets the same content.
+  const bank = timedBank
   const [refreshTick, setRefreshTick] = useState(0)
   const [systemPlayNotice, setSystemPlayNotice] = useState(null)
 
@@ -295,16 +286,16 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todayKey, refreshTick])
 
-  const mastery = useMemo(() => getConceptMastery(), [refreshTick])
   const systemProgress = useMemo(() => getSystemProgress(), [refreshTick])
   const continueSystem = dailyDone ? systemProgress.lastPlayedSystem : null
-  const continueSystemCounts = useMemo(
-    () =>
-      continueSystem
-        ? systemMasteryCounts(bank, continueSystem, mastery)
-        : { total: 0, solved: 0, mastered: 0 },
-    [continueSystem, mastery]
-  )
+  // Systems boards finished on this device (merged with the cloud copy for
+  // signed-in players).
+  const finishedBoards = useMemo(() => getSystemsBoards(), [refreshTick]) // eslint-disable-line react-hooks/exhaustive-deps
+  const continueSystemCounts = useMemo(() => {
+    if (!continueSystem) return { total: 0, solved: 0 }
+    const p = subjectProgress(continueSystem, todayKey, finishedBoards)
+    return { total: p.total, solved: p.completed }
+  }, [continueSystem, todayKey, finishedBoards])
   const challengeBest = useMemo(() => getChallengeStats().personalBest, [refreshTick])
   // Total Dailies ever completed — feeds only the ambient homepage network
   // (Section 10). Derived from existing history; no new persistence.
@@ -322,9 +313,11 @@ export default function App() {
   useEffect(() => {
     try {
       const m = getConceptMastery()
-      const bankById = Object.fromEntries(bank.map((c) => [c.id, c]))
+      // Lookups only: earlier history refers to the old bank, newer to the
+      // new library.
+      const bankById = { ...Object.fromEntries(connectionBank.map((c) => [c.id, c])), ...libraryConnectionMap() }
       const systems = SYSTEMS.filter((sys) => {
-        const c = systemMasteryCounts(bank, sys, m)
+        const c = systemMasteryCounts(connectionBank, sys, m)
         return c.total > 0 && c.solved >= c.total
       })
       const sp = getSystemProgress()
@@ -425,7 +418,7 @@ export default function App() {
   // its Daily and open it. No sender data is present (or shown).
   const openChallenge = (n) => {
     const key = dateKeyFromDayNumber(n)
-    const puzzle = getDailyPuzzleForDate(key)
+    const puzzle = getPlayableDailyForDate(key, todayKey)
     window.location.hash = ''
     setChallengeInvite(null)
     if (!puzzle) {
@@ -442,36 +435,35 @@ export default function App() {
   }
 
 
-  // Assembles a fresh puzzle for a system on the spot (the Organ System
-  // Library's PLAY button) — no pre-generated file, no numbered puzzle to
-  // pick. Biased away from already-mastered concepts via `mastery`.
+  // Systems play the subject's fixed boards in order: the five starter
+  // boards, then boards released from past Dailies. The next board is the
+  // first one this player has not finished. When none is left the Systems
+  // page shows the caught-up message instead of Play.
   const playSystem = (system) => {
     if (!modesUnlocked) {
       showLocked()
       return
     }
-    const puzzle = assembleSystemPuzzle(bank, system, {
-      mastery,
-      recentIds: getRecentCategories(),
-    })
+    const p = subjectProgress(system, todayKey, getSystemsBoards())
+    if (!p.next) {
+      setSystemPlayNotice(null)
+      setView('systems')
+      return
+    }
+    const puzzle = systemsBoardPuzzle(p.next.board, p.next.index)
     if (!puzzle) {
-      // Organ-purity filtering (no fallback to unrelated categories) means
-      // a thin system can genuinely have no eligible combination for some
-      // tier right now — tell the player plainly instead of doing nothing.
-      setSystemPlayNotice(`Not enough verified ${system} content yet for a full puzzle. Check back as more categories are added.`)
+      setSystemPlayNotice(`This ${subjectLabel(system)} board could not be loaded.`)
       return
     }
     setSystemPlayNotice(null)
-    // Remember the categories just served so the next PLAY leans toward fresh
-    // material (bounded recent window — see storage.recordServedCategories).
-    recordServedCategories(puzzle.categories.map((c) => c.bankCategoryId).filter(Boolean))
     setGameCtx({
       puzzle,
       mode: 'system',
       progressKey: puzzle.id,
-      headerLabel: system,
+      headerLabel: `${subjectLabel(system)} · Board ${p.next.index + 1}`,
       resultTitle: 'Puzzle Results',
       system,
+      boardId: p.next.board.id,
       isDaily: false,
     })
     setView('game')
@@ -544,13 +536,14 @@ export default function App() {
       })
       const updated = recordResult({ won, mistakes, isDaily: false, countsTowardStreak: false })
       setStats(updated)
-      const counts = systemMasteryCounts(bank, system, getConceptMastery())
+      const finished = recordSystemsBoardFinish(gameCtx.boardId || puzzle.id, { won, mistakes, subject: system })
+      const counts = subjectProgress(system, todayKey, finished)
       progression = recordSystemFinish({
         puzzle,
         system,
         won,
         guessLog,
-        systemComplete: counts.total > 0 && counts.solved >= counts.total,
+        systemComplete: counts.total > 0 && counts.completed >= counts.total,
       })
     }
     setRefreshTick((t) => t + 1)
@@ -692,8 +685,8 @@ export default function App() {
       <div className="app-shell">
         <AppNav active="systems" onNavigate={navigate} />
         <Systems
-          bank={bank}
-          mastery={mastery}
+          todayKey={todayKey}
+          finishedBoards={finishedBoards}
           onPlaySystem={playSystem}
           onBack={goHome}
           playNotice={systemPlayNotice}

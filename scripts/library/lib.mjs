@@ -548,7 +548,11 @@ export function buildBoards(conns, want, { seed = 'plexus', restarts = 400 } = {
   }
   return best.boards
 }
-export const findDisjointBoards = (conns, want, opts) => buildBoards(conns, want, opts)
+// Number of general board instructions in a connection's notes (sentences
+// about the board that name no specific id). A board holding such a
+// connection always needs an ambiguity review.
+export const generalCautionCount = (c) => profile(c).sentences.filter((x) => !isDifficultyNote(x.text) && (x.explicit || /\b(board|puzzle)\b/i.test(x.text)) && !/\b[A-Z]{2,}-(?:[A-Z]{2,}-)?\d+\b/.test(x.text)).length
+export const findDisjointBoards =(conns, want, opts) => buildBoards(conns, want, opts)
 export const countDailyBoards = (conns, { seed = 'daily', restarts = 24 } = {}) => buildBoards(conns, Infinity, { seed, restarts }).map((b) => b.map((c) => c.id))
 
 // Red-herring candidates on a board, from uploaded nearMisses: a tile of one

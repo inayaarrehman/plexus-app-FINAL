@@ -218,7 +218,8 @@ ok(fs.readFileSync(path.join(lib, 'library.json'), 'utf8') === snap, 'dry run sa
 // 10. Nothing in src/ reads the staged library.
 const ROOT = path.resolve(HERE, '../..')
 const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]))
-ok(!walk(path.join(ROOT, 'src')).some((f) => /content\/library|library\.json|scripts\/library/.test(fs.readFileSync(f, 'utf8'))), 'the app does not read the staged library yet')
+// The app reads only the generated modules in src/data/library, never staging.
+ok(!walk(path.join(ROOT, 'src')).some((f) => /(from|import)\s*\(?\s*['"][^'"]*(content\/library|library\.json|scripts\/library)/.test(fs.readFileSync(f, 'utf8'))), 'the app never imports the staging files')
 
 fs.rmSync(tmp, { recursive: true, force: true })
 console.log(`\n${fails ? fails + ' LIBRARY CHECK(S) FAILED' : 'ALL ' + n + ' LIBRARY CHECKS PASSED'}`)

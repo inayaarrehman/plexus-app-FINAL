@@ -573,3 +573,41 @@ export function recordServedCategories(ids) {
   }
   return merged
 }
+
+// ---------------------------------------------------------------------
+// Systems boards finished (new library). Keyed by the fixed board id, so a
+// finished board stays finished across refreshes, devices (via progress
+// sync) and later content imports. A board counts as finished once its game
+// ends, won or not; the best result is kept.
+// ---------------------------------------------------------------------
+const SYSTEMS_BOARDS_KEY = 'medconnections.systemsBoards.v1'
+
+export function getSystemsBoards() {
+  try {
+    const raw = localStorage.getItem(SYSTEMS_BOARDS_KEY)
+    const parsed = raw ? JSON.parse(raw) : {}
+    return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {}
+  } catch {
+    return {}
+  }
+}
+
+export function setSystemsBoards(map) {
+  try {
+    localStorage.setItem(SYSTEMS_BOARDS_KEY, JSON.stringify(map || {}))
+  } catch {
+    // ignore
+  }
+}
+
+export function recordSystemsBoardFinish(boardId, { won, mistakes, subject } = {}) {
+  if (!boardId) return getSystemsBoards()
+  const all = getSystemsBoards()
+  const prev = all[boardId]
+  const entry = { finishedAt: prev?.finishedAt || new Date().toISOString(), won: !!(won || prev?.won), subject: subject || prev?.subject || null }
+  const m = typeof mistakes === 'number' ? mistakes : null
+  entry.bestMistakes = prev && typeof prev.bestMistakes === 'number' ? (m === null ? prev.bestMistakes : Math.min(prev.bestMistakes, m)) : m
+  all[boardId] = entry
+  setSystemsBoards(all)
+  return all
+}

@@ -122,25 +122,29 @@ A reviewer note asking for a connection to be reserved for other content ("reser
 
 The capacity check is recomputed each time and saves nothing.
 
-## At activation (not done yet; only when every upload is in)
+## Activation (done 2026-10-08, owner-authorized)
 
-1. Generate an app module from `library.json` with only the `systemsStarter` and `daily` pools.
-2. **Daily:**
-   - Every Daily already published stays exactly as it was: the pinned Dailies in `dailyLock.js`, plus every date up to the activation date. These are locked before the switch, so ids `daily-YYYY-MM-DD`, results and streaks are untouched.
-   - New dates draw only from the `daily` pool.
-3. **Systems:**
-   - Each system starts from its five starter boards.
-   - It grows only from Dailies that have already been released, so future Daily content is never spent early.
-4. **3 Minutes and Race:** draw only from the timed library, minus `timedExclusionsAtActivation`.
-5. **Difficulty colours:** new-library boards need not have one connection per tier (Biochemistry has no expert, for example). The board renderer must assign colour order from the board, not assume levels 1 to 4 are unique.
-6. **Every selection path follows the same split:**
-   - bundled content
-   - Supabase library additions (`mergeBank` needs a library column)
-   - generators: `buildDailyFromSeed`, `assembleSystemPuzzle`, `autoGeneratePuzzles`, `composeNextRound`, `buildRaceChallenge`
-   - fallbacks
+`node scripts/library/activate.mjs` turns staging into what the app serves. It never edits staging; it writes:
 
-   A mode with too little content in its own library reports a shortage. It never falls back to the other library.
-7. Player progress (history, XP ledger, streaks, Systems mastery) is keyed by puzzle and category ids. It is kept as is.
+- `src/data/library/newLibrary.js`: the served connections, starter boards, the Daily schedule and Systems expansion boards (generated, checked in)
+- `src/data/library/timedLibrary.js`: timed entries removed from 3 Minutes and Race, and canonical ids for timed entries that repeat each other
+- `content/library/activation/ledger.json`: every board, review decision, replacement, exclusion and queue; read back on every rerun so nothing published moves
+- `content/library/activation/report.md`: what is live and what is still held
+
+Board reviews made during activation live in `content/library/activation-review.json` (swaps, clearances with the exact flags reviewed, rejections). A clearance lapses if a member's content changes.
+
+What the app does now:
+
+1. **Daily** from `dailyStart` (2026-10-10, players' local date) plays the fixed schedule, one reviewed board per day, with no canonical relationship repeated until every board has been used. After that it replays the same boards in the same order. Earlier dates resolve exactly as before, so today's puzzle does not change; pre-switch Dailies are retired from the playable Archive (completion marks and history stay).
+2. **Systems** plays each subject's fixed boards in order: starter boards, then expansion boards built only from released Daily connections of that subject (released on the date of the Daily that completed them). Starter connections are never in Daily or the timed library. Finished boards are stored per board id and synced with progress.
+3. **3 Minutes and Race** use only the timed bank minus exclusions. A session or race never repeats a canonical relationship. Race sets are a pure function of the join code.
+4. No Supabase rows are merged into either library (`contentSource.js` removed).
+
+Checks: `node scripts/library/activation-test.mjs` and `node scripts/library/activate.mjs --check`.
+
+**If the Daily start date must move** (deploying after 3 a.m. PT on Oct 9 2026 means some players already reached Oct 10): run `node scripts/library/activate.mjs --daily-start YYYY-MM-DD` with a date nobody has reached yet; boards stay the same, only the dates shift. Once that date arrives anywhere, the start date is fixed.
+
+**Adding content later:** import as before, then decide how to extend; the ledger keeps every published board stable.
 
 ## Subjects and app systems
 

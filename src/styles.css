@@ -1185,6 +1185,13 @@ body.bg-home .secondary-btn:hover {
   margin: 0 0 10px;
 }
 
+.system-caught-up {
+  font-size: 1rem;
+  font-weight: 600;
+  max-width: 320px;
+  margin: 4px 0 0;
+}
+
 .link-btn {
   background: none;
   border: none;

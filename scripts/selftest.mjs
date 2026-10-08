@@ -112,7 +112,7 @@ allPuzzles.forEach((p, i) => {
   assert(errors.length === 0, `puzzle[${i}] "${p.title}" (${p.id}) is structurally valid`, errors.join('; '))
   assert(!seenIds.has(p.id), `puzzle[${i}] id "${p.id}" is unique`)
   seenIds.add(p.id)
-  assert(SYSTEMS.length === 16, 'SYSTEMS list has 16 named organ systems')
+  assert(SYSTEMS.length === 17, 'SYSTEMS list has 17 named organ systems (Genetics is its own subject)')
 })
 
 allPuzzles.forEach((p, i) => {
@@ -354,7 +354,7 @@ console.log('\n[10] Puzzle Assembler: compatibility, scoring, generation')
 
 console.log('\n[11] Organ System Library: live assembly is organ-pure, no unrelated-category fallback')
 {
-  assert(SYSTEMS.length === 16, 'organ system library lists 16 named systems')
+  assert(SYSTEMS.length === 17, 'organ system library lists 17 named systems')
 
   // Organ purity, by construction: for whichever systems currently have
   // full 4-tier coverage (primary or a defensible secondary tag in every
@@ -1056,45 +1056,27 @@ console.log('\n[33] Cloud progress merge is monotonic (never loses a streak)')
 }
 
 // ---------------------------------------------------------------
-console.log('\n[34] Every organ system can generate a puzzle (content coverage)')
+console.log('\n[34] Every new-library subject has fixed Systems starter boards that build valid puzzles')
 {
-  const { assembleSystemPuzzle } = await import('../src/utils/puzzleAssembler.js')
-  const { SYSTEMS } = await import('../src/puzzles.js')
-  for (const system of SYSTEMS) {
-    let built = null
-    for (let i = 0; i < 8 && !built; i++) built = assembleSystemPuzzle(connectionBank, system, {})
-    assert(!!built, `system "${system}" can assemble a puzzle (has verified content in every tier)`)
+  const NL = await import('../src/utils/newLibrary.js')
+  for (const subject of NL.LIBRARY_SUBJECTS) {
+    const boards = NL.systemsBoardsFor(subject, '2026-10-09')
+    assert(boards.length >= 3, `"${subject}" has starter boards (${boards.length})`)
+    for (const [i, b] of boards.entries()) {
+      const p = NL.systemsBoardPuzzle(b, i)
+      const errs = validatePuzzle(p)
+      if (errs.length) assert(false, `${b.id}: ${errs.join('; ')}`)
+    }
   }
+  assert(true, 'every starter board validates')
 }
 
-// ---------------------------------------------------------------
-console.log('\n[35] Supabase content maps to playable groups and merges onto the bundled bank')
+console.log('\n[35] No merged-bank path: the app never mixes Supabase rows into either library')
 {
-  const { mapRow, mergeBank } = await import('../src/lib/contentSource.js')
-  const row = {
-    id: 'abc', title: 'Test connection', organ_systems: ['Cardiology'], difficulty: 'medium',
-    connection_type: 'knowledge', explanation: 'Why these four belong together.', remember: 'A memory hook.',
-    tags: ['test'],
-    connection_concepts: [
-      { position: 0, tile_note: 'note a', concept: { canonical_name: 'Alpha' } },
-      { position: 1, tile_note: 'note b', concept: { canonical_name: 'Beta' } },
-      { position: 2, tile_note: 'note c', concept: { canonical_name: 'Gamma' } },
-      { position: 3, tile_note: 'note d', concept: { canonical_name: 'Delta' } },
-    ],
-  }
-  const g = mapRow(row)
-  assert(!!g, 'a complete row maps to a group')
-  assert(g.tiles.length === 4 && g.tiles[0] === 'Alpha', 'tiles come from linked concepts in position order')
-  assert(g.primarySystem === 'Cardiology' && Array.isArray(g.secondarySystems), 'systems map to primary/secondary')
-  // Incomplete rows are rejected (not playable).
-  assert(mapRow({ ...row, connection_concepts: row.connection_concepts.slice(0, 3) }) === null, 'a row with <4 tiles is skipped')
-  assert(mapRow({ ...row, difficulty: 'nonsense' }) === null, 'a row with an invalid difficulty is skipped')
-  assert(mapRow({ ...row, organ_systems: ['NotASystem'] }) === null, 'a row with no known system is skipped')
-  // Merge: dedupe by title, base wins, additions appended.
-  const base = [{ title: 'Existing', id: 'b1' }]
-  const merged = mergeBank(base, [{ title: 'Existing', id: 'x' }, { title: 'Brand New', id: 'x2' }])
-  assert(merged.length === 2, 'merge dedupes by title and appends only new titles')
-  assert(mergeBank(base, []) === base, 'merge with no extras returns the base unchanged')
+  const fs = await import('node:fs')
+  assert(!fs.existsSync(new URL('../src/lib/contentSource.js', import.meta.url)), 'the Supabase merge module (contentSource.js) is gone')
+  const app = fs.readFileSync(new URL('../src/App.jsx', import.meta.url), 'utf8')
+  assert(!/mergeBank|loadExtraConnections/.test(app), 'App.jsx does not merge extra connections into a bank')
 }
 
 console.log('\n[36] Daily gate: today\'s Daily unlocks the other modes')

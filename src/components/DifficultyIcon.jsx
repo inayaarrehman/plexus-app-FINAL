@@ -20,6 +20,10 @@ import { groupColor } from './GroupMotif.jsx'
 // symbol system: medical icon + difficulty word.
 
 export const DIFFICULTY_LABEL = { 1: 'Easy', 2: 'Medium', 3: 'Hard', 4: 'Expert' }
+// A group's own difficulty label. New-library boards may hold two groups of
+// the same difficulty, so the colour (level) and the label can differ; the
+// label always reports the group's real difficulty.
+export const difficultyLabelOf = (cat) => (cat && cat.difficultyLabel) || DIFFICULTY_LABEL[cat && cat.level] || ''
 
 const ICONS = {
   // Easy: a medical cross drawn as one outline.

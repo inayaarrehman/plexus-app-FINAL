@@ -7,10 +7,12 @@ import {
   speedBonus,
   computeActionPoints,
   composeNextRound,
+  roundRelationships,
   INSTRUCTIONS,
 } from '../utils/challengeEngine.js'
 import { getChallengeStats, recordChallengeResult, recordWeakSpots } from '../utils/storage.js'
 import { haptics } from '../utils/haptics.js'
+import { timedCanonicalId } from '../utils/timedLibrary.js'
 import TileText from './TileText.jsx'
 import { recordChallengeSession } from '../progression/store.js'
 
@@ -111,12 +113,15 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
   // from the last couple shown (format / system / concept), so a 3-minute
   // run feels intentionally varied rather than randomly generated.
   const recentRef = useRef([])
+  // Relationships already served this session (canonical ids): never repeated.
+  const usedRef = useRef(new Set())
   const nextRound = () => {
-    const r = composeNextRound(bank, { roundTypes: ROUND_TYPES, recent: recentRef.current })
+    const r = composeNextRound(bank, { roundTypes: ROUND_TYPES, recent: recentRef.current, used: usedRef.current, canonicalOf: timedCanonicalId })
     if (!r) {
       finishRef.current()
       return
     }
+    roundRelationships(r, bank, timedCanonicalId).forEach((id) => usedRef.current.add(id))
     recentRef.current = [{ type: r.type, systems: r.systems, conceptTags: r.conceptTags }, ...recentRef.current].slice(0, 3)
     setRound(r)
     setSelected([])
@@ -132,6 +137,8 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
   }
 
   const startChallenge = () => {
+    usedRef.current = new Set()
+    recentRef.current = []
     setScore(0)
     setComboStreak(0)
     setHighestMultiplier(1)

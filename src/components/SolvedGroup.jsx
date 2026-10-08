@@ -1,5 +1,5 @@
 import React from 'react'
-import { DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
+import { difficultyLabelOf } from './DifficultyIcon.jsx'
 import { softHyphenate } from './TileText.jsx'
 
 // ---------------------------------------------------------------------
@@ -29,8 +29,8 @@ export default function SolvedGroup({
     >
       <div className="strand-head">
         <span className="strand-title">{category.title}</span>
-        <span className="strand-meta" aria-label={`Difficulty: ${DIFFICULTY_LABEL[category.level]}`}>
-          {DIFFICULTY_LABEL[category.level]}
+        <span className="strand-meta" aria-label={`Difficulty: ${difficultyLabelOf(category)}`}>
+          {difficultyLabelOf(category)}
           {!found && ' · not found'}
         </span>
       </div>

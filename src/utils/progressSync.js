@@ -20,6 +20,8 @@ import {
   setDailyHistory,
   getChallengeStats,
   replaceChallengeStats,
+  getSystemsBoards,
+  setSystemsBoards,
 } from './storage.js'
 import { mergeStates as mergeProgression } from '../progression/engine.js'
 import { loadProgression, replaceProgression } from '../progression/store.js'
@@ -116,6 +118,24 @@ export function mergeChallenge(a = {}, b = {}) {
   }
 }
 
+// ---- Systems boards finished (new library) ----
+// Union by board id: the earliest finish time, and won if either side won.
+export function mergeSystemsBoards(a = {}, b = {}) {
+  const out = {}
+  for (const id of new Set([...Object.keys(a || {}), ...Object.keys(b || {})])) {
+    const x = a?.[id]
+    const y = b?.[id]
+    if (!x || !y) {
+      out[id] = x || y
+      continue
+    }
+    const times = [x.finishedAt, y.finishedAt].filter(Boolean).sort()
+    const bm = [x.bestMistakes, y.bestMistakes].filter((v) => typeof v === 'number')
+    out[id] = { finishedAt: times[0] || null, won: !!(x.won || y.won), subject: x.subject || y.subject || null, bestMistakes: bm.length ? Math.min(...bm) : null }
+  }
+  return out
+}
+
 // ---- whole snapshot ----
 export function mergeSnapshots(a = {}, b = {}) {
   return {
@@ -125,6 +145,7 @@ export function mergeSnapshots(a = {}, b = {}) {
     challenge: mergeChallenge(a.challenge, b.challenge),
     // Progression merges by event id, so the same award on two devices counts once.
     progression: mergeProgression(a.progression, b.progression),
+    systemsBoards: mergeSystemsBoards(a.systemsBoards, b.systemsBoards),
   }
 }
 
@@ -136,6 +157,7 @@ export function snapshotLocal() {
     dailyHistory: getDailyHistory(),
     challenge: getChallengeStats(),
     progression: loadProgression(),
+    systemsBoards: getSystemsBoards(),
   }
 }
 
@@ -145,4 +167,5 @@ export function applySnapshot(snap) {
   if (snap.dailyHistory) setDailyHistory(snap.dailyHistory)
   if (snap.challenge) replaceChallengeStats(snap.challenge)
   if (snap.progression) replaceProgression(snap.progression)
+  if (snap.systemsBoards) setSystemsBoards(snap.systemsBoards)
 }

@@ -3,7 +3,7 @@ import { getThreadForCategory } from '../utils/threads.js'
 import { isConnectionSaved, toggleSavedConnection } from '../utils/storage.js'
 import ThreadModal from './ThreadModal.jsx'
 import { groupColor } from './GroupMotif.jsx'
-import { DIFFICULTY_LABEL } from './DifficultyIcon.jsx'
+import { difficultyLabelOf } from './DifficultyIcon.jsx'
 import { reportContext } from '../utils/reportContext.js'
 
 const levelColor = (level) => groupColor(level)
@@ -51,7 +51,7 @@ export default function ReviewConnections({ puzzle, onKnowledgeSignal, onReport,
               aria-expanded={isOpen}
             >
               <span className="accordion-title">{cat.title}</span>
-              <span className="accordion-level">{DIFFICULTY_LABEL[cat.level]}</span>
+              <span className="accordion-level">{difficultyLabelOf(cat)}</span>
               <span className="accordion-caret">{isOpen ? 'Hide why' : 'Why?'}</span>
             </button>
             {isOpen && (
@@ -61,14 +61,16 @@ export default function ReviewConnections({ puzzle, onKnowledgeSignal, onReport,
                   {cat.items.map((item) => (
                     <li key={item.term}>
                       <strong>{item.term}</strong>
-                      <span>{item.why}</span>
+                      {item.why && <span>{item.why}</span>}
                     </li>
                   ))}
                 </ul>
-                <p className="remember-line">
-                  <span className="remember-label">Remember this</span>
-                  {cat.remember}
-                </p>
+                {cat.remember && (
+                  <p className="remember-line">
+                    <span className="remember-label">Remember this</span>
+                    {cat.remember}
+                  </p>
+                )}
                 <button
                   className={`save-connection-btn ${savedFor(cat) ? 'is-saved' : ''}`}
                   onClick={() => handleSave(cat)}

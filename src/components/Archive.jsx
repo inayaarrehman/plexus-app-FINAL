@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import { getDailyPuzzleForDate, isFutureDateKey } from '../utils/dailyPuzzle.js'
+import { getPlayableDailyForDate, isFutureDateKey } from '../utils/dailyPuzzle.js'
 import { dateKey, dayNumber } from '../utils/game.js'
 import { parseKey, daysBetween, weekdayOf } from '../utils/calendar.js'
 import { getSavedConnections, toggleSavedConnection } from '../utils/storage.js'
@@ -85,10 +85,12 @@ export default function Archive({ dailyHistory, onOpenDay, onBack, currentStreak
       const key = `${year}-${pad(month + 1)}-${pad(d)}`
       const isFuture = isFutureDateKey(key)
       const exists = dayNumber(key) >= 0
-      const puzzle = !isFuture && exists ? getDailyPuzzleForDate(key) : null
+      // Retired Dailies (before the new library) still show their completion
+      // mark but can no longer be opened.
+      const puzzle = !isFuture && exists ? getPlayableDailyForDate(key, todayKey) : null
       const done = !!dailyHistory?.[key]?.completed
       if (puzzle) available += 1
-      if (done) completed += 1
+      if (done && puzzle) completed += 1
       list.push({ id: key, key, day: d, puzzle, done, isFuture, isToday: key === todayKey })
     }
     return { cells: list, completedCount: completed, availableCount: available }

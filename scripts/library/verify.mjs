@@ -27,12 +27,12 @@ if (state.active !== false || m.active !== false) {
   bad++
 }
 const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]))
-const readers = walk(path.join(ROOT, 'src')).filter((f) => /content\/library|library\.json|scripts\/library/.test(fs.readFileSync(f, 'utf8')))
+const readers = walk(path.join(ROOT, 'src')).filter((f) => /(from|import)\s*\(?\s*['"][^'"]*(content\/library|library\.json|scripts\/library)/.test(fs.readFileSync(f, 'utf8')))
 if (readers.length) {
   console.log(`LIVE APP READS STAGING: ${readers.join(', ')}`)
   bad++
 }
 const recs = Object.values(state.records)
 console.log(`${Object.keys(m.files).length} files · ${recs.length} records · ${recs.reduce((n, r) => n + r.history.length, 0)} prior versions · systems ${m.systems.join(', ')} · saved ${m.savedAt}`)
-console.log(bad ? `${bad} PROBLEM(S)` : 'STAGING VERIFIED (inactive, live app unaffected)')
+console.log(bad ? `${bad} PROBLEM(S)` : 'STAGING VERIFIED (staging files intact; the app reads only the generated modules in src/data/library)')
 process.exit(bad ? 1 : 0)

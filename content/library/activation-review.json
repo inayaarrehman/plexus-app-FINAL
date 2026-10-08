@@ -1,0 +1,419 @@
+{
+  "about": "Board reviews made during activation. starterBoards: per starter board id, optional `replace` {outId: inId} with `reason`, and `clear` {by, rationale, flagsReviewed[]} covering every flag on the final board. dailyBoards: keyed by the member ids sorted and joined with '+', `clear` as above or `reject` {by, rationale}. A clearance applies only while the board's signature (member content) is unchanged and every current flag is in flagsReviewed. Reviewer: Claude (AI), at the owner's request; these are not human medical verification.",
+  "starterBoards": {
+    "gi-starter-3": {
+      "replace": {
+        "GI-035": "GI-061"
+      },
+      "reason": "Pruritus and jaundice (obstructive cholestasis) also fit primary biliary cholangitis on the same board. Replaced the cholestasis group with Hirschsprung disease clues, which share no plausible tiles with the liver groups."
+    },
+    "psychiatry-starter-3": {
+      "replace": {
+        "PSY-022": "PSY-018"
+      },
+      "reason": "Meperidine and tramadol (serotonin-syndrome group) are mu-opioid agonists and could be placed with the full mu-agonist group. Replaced with high-potency first-generation antipsychotics.",
+      "signature": "1c769e7f",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "The caution concerns shared EPS risk with another antipsychotic or EPS group. None is on the board. The delirium group is explicitly non-drug measures (clocks, calendars, sleep, visitors), so haloperidol does not read as a member.",
+        "flagsReviewed": [
+          "PSY-018 board instruction to check against the other groups: \"Shared high EPS risk is a board-overlap consideration.\""
+        ]
+      }
+    },
+    "pulmonary-starter-3": {
+      "replace": {
+        "PULM-021": "PULM-003"
+      },
+      "reason": "Two ARDS groups on one board; diffuse alveolar damage features could mix with ARDS triggers and hypoxemia mechanisms. Replaced the DAD group with neuroendocrine markers of small cell carcinoma.",
+      "signature": "89da781d",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "The caution concerns carcinoid or LCNEC groups. Neither is on the board; ARDS triggers, curve shifts and hypoxemia mechanisms share no plausible tile with neuroendocrine markers.",
+        "flagsReviewed": [
+          "PULM-003 board instruction to check against the other groups: \"Board overlap: these markers also stain carcinoid and LCNEC.\""
+        ]
+      }
+    },
+    "pulmonary-starter-4": {
+      "replace": {
+        "PULM-019": "PULM-013"
+      },
+      "reason": "Pleural effusion clues compete with the asbestos group's pleural tiles, the exact overlap PULM-017's reviewer warned about. Replaced with core obstructive lung diseases.",
+      "signature": "354612e3",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern an air-trapping group, a broader tissue-hypoxia group and a competing pleural group. None is on the board after replacing the pleural-effusion group. Mesothelioma belongs with asbestos exposure, not with small cell paraneoplastic syndromes.",
+        "flagsReviewed": [
+          "PULM-013 board instruction to check against the other groups: \"Board overlap: ''air trapping disorders.'' Added refs: Stanojevic et al., ERS/ATS 2022;\"",
+          "PULM-011 board instruction to check against the other groups: \"Board overlap: broader ''causes of tissue hypoxia.'' Added refs: Henretig et al., NEJM 2019;\"",
+          "PULM-017 board instruction to check against the other groups: \"BOARD-LEVEL OVERLAP WARNING: three tiles (plaques, benign effusion, mesothelioma) are pleural and could be grouped as ''asbestos pleural disease'' on a 16-tile board; pair with care and avoid a competing pleural category.\""
+        ]
+      }
+    },
+    "reproductive-starter-5": {
+      "replace": {
+        "REPRO-010": "REPRO-015"
+      },
+      "reason": "Multiple gestation (beta-hCG group) is also associated with polyhydramnios, and the twin-twin transfusion tile sits in the polyhydramnios group. Replaced with states of prolonged unopposed estrogen exposure.",
+      "signature": "336caea2",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern gestational trophoblastic disease, quad-screen and endometrial-cancer-risk groups. None is on the board. Turner structural findings and mesonephric derivatives do not share plausible tiles with the hCG or unopposed-estrogen groups.",
+        "flagsReviewed": [
+          "REPRO-007 board instruction to check against the other groups: \"Board overlap: mole/choriocarcinoma also fit gestational trophoblastic disease, and trisomy 21 fits quad-screen findings; avoid these competing groups on the same board.\"",
+          "REPRO-015 board instruction to check against the other groups: \"Board caution: do not place a separate endometrial-cancer-risk group on the same board.\""
+        ]
+      }
+    },
+    "biochemistry-genetics-starter-5": {
+      "signature": "4b155f2b",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "The caution asks to avoid a competing neurotransmitter-deficiency group. The other groups are alkaptonuria, ketone-oxidizing tissues and peroxisomal processes; none is a neurotransmitter-deficiency group and none of their tiles fits AADC deficiency.",
+        "flagsReviewed": [
+          "PLX-BCH-077 board instruction to check against the other groups: \"Avoid a competing neurotransmitter-deficiency category on the same board.\""
+        ]
+      }
+    },
+    "msk-starter-5": {
+      "signature": "a7cd3b6c",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "The caution concerns navicular and sesamoid tiles as distractors. Neither appears on the board, and no other group (dermatomyositis skin, osteopetrosis, sarcoidosis) names a fracture site.",
+        "flagsReviewed": [
+          "MSK-035 board instruction to check against the other groups: \"Board overlap: navicular and sesamoids are additional high-risk sites - avoid as distractors.\""
+        ]
+      }
+    },
+    "renal-starter-5": {
+      "signature": "e2e15784",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "The caution concerns a Valsalva-maneuver group. None is on the board; acetazolamide uses, oxalate stone exposures and Alport clues do not share a plausible tile with stress-incontinence triggers.",
+        "flagsReviewed": [
+          "NEPH-027 board instruction to check against the other groups: \"Board overlap: any Valsalva-maneuver category (ambiguity 1).\""
+        ]
+      }
+    },
+    "pharmacology-starter-2": {
+      "signature": "8392d452",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern a sympathomimetic-toxicity group, a fifth conjugation tile and carbachol. None is on the board. Muscarinic agonists are drugs while the antimuscarinic group lists findings, so the two do not compete for tiles; CYP inhibitors share no plausible tile with them.",
+        "flagsReviewed": [
+          "PHARM-009 board instruction to check against the other groups: \"BOARD OVERLAP: mydriasis and tachycardia also occur in sympathomimetic toxicity.\"",
+          "PHARM-001 board instruction to check against the other groups: \"Glutathione and amino-acid conjugation are other valid members; a 5th-member board tile could blur this category.\"",
+          "PHARM-006 board instruction to check against the other groups: \"Carbachol is another valid member (board note).\""
+        ]
+      }
+    },
+    "pharmacology-starter-3": {
+      "signature": "13fca67e",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern an antiseizure-drug group, other toxidromes, an adrenergic-receptor group and class III antiarrhythmics. None is on the board. The beta-blocker group lists drugs while the Gs group lists receptors, so tiles do not cross.",
+        "flagsReviewed": [
+          "PHARM-002 board instruction to check against the other groups: \"BOARD OVERLAP: carbamazepine, phenobarbital, phenytoin also fit an antiseizure-drug category; rifampin does not.\"",
+          "PHARM-008 board instruction to check against the other groups: \"BOARD OVERLAP: each sign individually appears in other toxidromes.\"",
+          "PHARM-005 board instruction to check against the other groups: \"BOARD OVERLAP: beta-1/beta-2 also fit an adrenergic-receptor category.\"",
+          "PHARM-013 board instruction to check against the other groups: \"BOARD OVERLAP: sotalol also fits class III antiarrhythmics; its added K-channel activity does not negate its beta-blockade.\""
+        ]
+      }
+    },
+    "psychiatry-starter-5": {
+      "signature": "8478ca7e",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "No other psychosis, decoy defense, or serotonin-syndrome group is on the board. PSY-012's citalopram/escitalopram note is about two tiles inside its own group and cannot be resolved by board composition; it is listed as an open content question for the owner.",
+        "flagsReviewed": [
+          "PSY-006 board instruction to check against the other groups: \"Board overlap: schizoaffective, brief psychotic, schizophreniform, and substance-induced psychosis share these; do not present as diagnostic of schizophrenia.\"",
+          "PSY-012 board instruction to check against the other groups: \"Board caution: escitalopram is the S-enantiomer of citalopram, so the pair are near-duplicates and could be contested as distinct tiles; keep them on separate boards if possible.\"",
+          "PSY-001 board instruction to check against the other groups: \"Board caution: anticipation, affiliation, self-assertion are also mature defenses and make strong decoys.\"",
+          "PSY-023 board instruction to check against the other groups: \"Board overlap: fever, altered mental status, and autonomic instability also occur in serotonin syndrome—lead-pipe rigidity (vs clonus/hyperreflexia) is the differentiating tile.\""
+        ]
+      }
+    }
+  },
+  "dailyBoards": {
+    "GI-052+MICRO-013+NEU-058+PLX-BCH-033": {
+      "signature": "b972640a",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern other glucogenic amino acids, a competing trigeminal autonomic cephalalgia group and a broad neurologic tile. None of those groups is on the board. Mydriasis (botulism) and miosis (cluster) point opposite ways; Neurologic dysfunction is a red herring for botulism, but the botulism group is complete without it.",
+        "flagsReviewed": [
+          "PLX-BCH-033 board instruction to check against the other groups: \"Keep other glucogenic amino acids off the same board unless disambiguated.\"",
+          "NEU-058 board instruction to check against the other groups: \"These autonomic features are shared by all trigeminal autonomic cephalalgias (paroxysmal hemicrania, SUNCT), so they are not cluster-specific; avoid a competing TAC category on the same board.\"",
+          "GI-052 board instruction to check against the other groups: \"Neurologic dysfunction is a broad tile; consider oculomasticatory myorhythmia/ophthalmoplegia if board-level overlap is excessive.\""
+        ]
+      }
+    },
+    "GI-048+MSK-003+PLEXUS-GEN-029+PLX-BCH-079": {
+      "signature": "7b390124",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern other GI malabsorption syndromes, Patau syndrome, Chlamydia and Hunter syndrome. None is on the board, and no tile fits two of these groups.",
+        "flagsReviewed": [
+          "GI-048 board instruction to check against the other groups: \"Board overlap: steatorrhea/weight loss overlap with other GI syndromes - keep the full triad distinct.\"",
+          "PLEXUS-GEN-029 board instruction to check against the other groups: \"Board overlap with Patau advised.\"",
+          "MSK-003 board instruction to check against the other groups: \"Keep 'enteric' qualifier in title to exclude Chlamydia.\"",
+          "PLX-BCH-079 board instruction to check against the other groups: \"Hunter syndrome (MPS II) is another ERT indication - keep off this board.\""
+        ]
+      }
+    },
+    "DERM-011+MSK-034+NEU-016+PLX-BCH-013": {
+      "signature": "a354471f",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern a botulism group, tinea versicolor, extra homocysteine causes and Ottawa-rule caveats. None is on the board; the four groups share no plausible tile.",
+        "flagsReviewed": [
+          "MSK-034 board instruction to check against the other groups: \"Board note: apply with the weight-bearing criterion and age/exclusion caveats; tiles are landmarks only.\"",
+          "NEU-016 board instruction to check against the other groups: \"Avoid competing oculobulbar categories (botulism) on the same board.\"",
+          "DERM-011 board instruction to check against the other groups: \"Do not add tinea versicolor (Malassezia, not a dermatophyte).\"",
+          "PLX-BCH-013 board instruction to check against the other groups: \"Avoid additional homocysteine-elevating tiles on the same board.\""
+        ]
+      }
+    },
+    "GI-004+MSK-022+NEU-049+PLEXUS-GEN-009": {
+      "signature": "c4aef988",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern separate Crohn/UC tiles, antipsychotic pathways, NER/MMR enzymes and other ANCA vasculitides. None is on the board; SLE (aphthous ulcers) does not fit the GPA clues.",
+        "flagsReviewed": [
+          "GI-004 board instruction to check against the other groups: \"IBD is used as an umbrella tile; do not also place a separate Crohn or UC tile on the same board.\"",
+          "NEU-049 board instruction to check against the other groups: \"Antipsychotic effects (nigrostriatal EPS, tuberoinfundibular hyperprolactinemia) are the board-relevant payoff.\"",
+          "PLEXUS-GEN-009 board instruction to check against the other groups: \"Board caution: avoid co-placing NER/MMR enzymes as distractors.\"",
+          "MSK-022 board instruction to check against the other groups: \"Board overlap with MPA and EGPA (ANCA-associated vasculitides); the sinus + cavitation combination distinguishes GPA.\""
+        ]
+      }
+    },
+    "CARD-023+GI-008+MSK-010+PLX-BCH-047": {
+      "signature": "0582492d",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern trypsinogen, bDMARDs/JAK inhibitors, a tricuspid-endocarditis group and manometry caveats. None is on the board; the groups share no plausible tile.",
+        "flagsReviewed": [
+          "GI-008 board instruction to check against the other groups: \"Findings are characteristic, not individually pathognomonic; confirm with high-resolution manometry (elevated IRP) and exclude pseudoachalasia.\"",
+          "PLX-BCH-047 board instruction to check against the other groups: \"Trypsinogen is itself activated by enteropeptidase (keep off this board); exclude pepsinogen.\"",
+          "MSK-010 board instruction to check against the other groups: \"Clean class; distinguish from bDMARDs (anti-TNF) and tsDMARDs (JAK inhibitors) on a board.\"",
+          "CARD-023 board instruction to check against the other groups: \"IVDU is a risk context, not a universal cause; avoid building a separate tricuspid-endocarditis group on the same board.\""
+        ]
+      }
+    },
+    "CARD-006+MSK-005+NEPH-003+PLX-BCH-068": {
+      "signature": "e3946711",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern RA radiographs, a class IA group, other pyruvate-source amino acids and an ototoxicity group. None is on the board.",
+        "flagsReviewed": [
+          "MSK-005 board instruction to check against the other groups: \"Contrast with RA's uniform joint-space loss and erosions for board separation.\"",
+          "CARD-006 board instruction to check against the other groups: \"Sotalol is class III (with class II beta-blocking properties), NOT class IA - title correctly avoids 'class IA.' Three members are class IA (deliberate 3+1 overlap): when assembling a 16-tile board, do not also create a separate 'class IA' group.\"",
+          "PLX-BCH-068 board instruction to check against the other groups: \"Tryptophan and threonine also route to pyruvate - avoid additional interchangeable pyruvate-source tiles.\"",
+          "NEPH-003 board instruction to check against the other groups: \"Avoid pairing with an ototoxicity category on one board.\""
+        ]
+      }
+    },
+    "GI-006+NEPH-010+PLEXUS-GEN-011+PLX-BCH-066": {
+      "signature": "ff494a4c",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern Down syndrome, cysteine, other glomerular lesions and a general overlap check. None of those is on the board and no tile fits two groups.",
+        "flagsReviewed": [
+          "PLEXUS-GEN-011 board instruction to check against the other groups: \"Board-level overlap check advised.\"",
+          "GI-006 board instruction to check against the other groups: \"Board overlap: Down syndrome also causes (relative) macroglossia.\"",
+          "PLX-BCH-066 board instruction to check against the other groups: \"Cysteine is classified as polar uncharged in some schemes (the source lists it among special cases) - avoid a competing cysteine tile.\"",
+          "NEPH-010 board instruction to check against the other groups: \"Board overlap: HBV and SLE also cause other glomerular lesions.\""
+        ]
+      }
+    },
+    "ENDO-020+MSK-026+NEPH-030+PHARM-014": {
+      "signature": "fa512208",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern other obturator-innervated muscles, a duplicate PDE-5 quartet, a hyperparathyroidism group and a hypocalcemia group. None is on the board; hypoparathyroidism raises phosphate and does not fit the hypercalcemia group.",
+        "flagsReviewed": [
+          "MSK-026 board instruction to check against the other groups: \"Board note: obturator externus and (variably) pectineus are also obturator-innervated - avoid using them as distractors on the same board.\"",
+          "PHARM-014 board instruction to check against the other groups: \"Erectile-dysfunction and nitrate-incompatible labels name the SAME four drugs (accepted alternates); avoid duplicating this quartet on a board.\"",
+          "ENDO-020 board instruction to check against the other groups: \"BOARD OVERLAP WARNING: do not co-place a separate hyperparathyroidism-symptom connection.\"",
+          "NEPH-030 board instruction to check against the other groups: \"Competing category: all four can also associate with hypocalcemia, an equally plausible grouping; avoid pairing with a hypocalcemia category on one board.\""
+        ]
+      }
+    },
+    "ENDO-040+MICRO-010+MSK-011+NEU-034": {
+      "signature": "33b96bbf",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern other drug-induced lupus culprits, non-diabetic ketoacidoses and other raw-dairy pathogens. None is on the board.",
+        "flagsReviewed": [
+          "MSK-011 board instruction to check against the other groups: \"Other culprits (minocycline, quinidine, anti-TNF agents) also qualify - potential board overlap.\"",
+          "NEU-034 board instruction to check against the other groups: \"Clean board-relevant set.\"",
+          "ENDO-040 board instruction to check against the other groups: \"Kussmaul respirations, fruity (acetone) breath, ketonemia, and high-anion-gap metabolic acidosis are classic DKA; other ketoacidoses can mimic, so include diabetes context if those appear on a board.\"",
+          "MICRO-010 board instruction to check against the other groups: \"EHEC, M. bovis, and Coxiella share the raw-dairy route; assess overlap at board assembly.\""
+        ]
+      }
+    },
+    "IMM-001+MICRO-058+PLEXUS-GEN-014+REPRO-010": {
+      "signature": "e84528e2",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern the TTTS donor twin, a nephrotoxic/ototoxic antibiotic group and a primary lymphoid group. None is on the board. The blot group pairs each technique with its target, which makes it easy rather than ambiguous.",
+        "flagsReviewed": [
+          "REPRO-010 board instruction to check against the other groups: \"Only the RECIPIENT twin in TTTS has polyhydramnios; the donor has oligohydramnios (board caution).\"",
+          "MICRO-058 board instruction to check against the other groups: \"Verified; competing adverse-effect category (nephrotoxic/ototoxic antibiotics) overlaps - treat as board-assembly overlap.\"",
+          "PLEXUS-GEN-014 board instruction to check against the other groups: \"Caution: the paired-tile format reveals part of the association and may suit a learning mode over a competitive board.\"",
+          "IMM-001 board instruction to check against the other groups: \"Board overlap: do not pair on the same board with a primary-lymphoid category (bone marrow/thymus).\""
+        ]
+      }
+    },
+    "MICRO-005+MSK-002+PLEXUS-GEN-002+PLX-BCH-036": {
+      "signature": "c98aeb7d",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern a clostridial toxin-disease group, anthracyclines, HLA-B27/enthesitis groups and RNA/protein methylation tiles. None is on the board.",
+        "flagsReviewed": [
+          "MICRO-005 board instruction to check against the other groups: \"Competing 'clostridial toxin-mediated disease' category overlaps all four; resolve at board assembly.\"",
+          "PLEXUS-GEN-002 board instruction to check against the other groups: \"Board caution: do not label all four as a single isoform; avoid mixing anthracyclines (also TOP2) as distractors that break family-level logic.\"",
+          "MSK-002 board instruction to check against the other groups: \"Board overlap: individual members may collide with HLA-B27 or enthesitis categories.\"",
+          "PLX-BCH-036 board instruction to check against the other groups: \"Other methylation reactions also qualify; do not add RNA or protein methylation tiles to the same board without resolving overlap.\""
+        ]
+      }
+    },
+    "PLX-BCH-011+PLX-HEM-035+PULM-001+REPRO-023": {
+      "signature": "4802785f",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern other antineoplastic groups, Mn-SOD, a TTP group and progestin-only methods. None is on the board.",
+        "flagsReviewed": [
+          "PULM-001 board instruction to check against the other groups: \"Board overlap: all except amiodarone are antineoplastic/immunosuppressive; amiodarone anchors the toxicity category.\"",
+          "PLX-BCH-011 board instruction to check against the other groups: \"Board warning: do not co-place a Mn-SOD tile.\"",
+          "PLX-HEM-035 board instruction to check against the other groups: \"Board overlap with TTP (034).\"",
+          "REPRO-023 board instruction to check against the other groups: \"Does NOT apply to progestin-only methods (board caution).\""
+        ]
+      }
+    },
+    "GI-001+MSK-004+PLX-HEM-037+REPRO-025": {
+      "signature": "3dd03751",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern protein S, an epididymo-orchitis group, midgut/hindgut derivatives and other urate-raising drugs. None is on the board.",
+        "flagsReviewed": [
+          "PLX-HEM-037 board instruction to check against the other groups: \"Not exhaustive - protein S deficiency equally qualifies (board overlap/alternate member).\"",
+          "REPRO-025 board instruction to check against the other groups: \"Board caution: avoid pairing with an epididymo-orchitis group.\"",
+          "GI-001 board instruction to check against the other groups: \"Board overlap: avoid a competing midgut/hindgut-derivative category on the same board.\"",
+          "MSK-004 board instruction to check against the other groups: \"Many other drugs also qualify (cyclosporine, pyrazinamide, ethambutol) - potential board overlap.\""
+        ]
+      }
+    },
+    "DERM-007+MSK-028+NEPH-028+NEU-003": {
+      "signature": "03c6c7fb",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern a zoster-complications group, adductor magnus, another RTA group and ALS. None is on the board; LMN signs do not fit the other groups.",
+        "flagsReviewed": [
+          "DERM-007 board instruction to check against the other groups: \"Intentional parent-subtype overlap (ophthalmicus and oticus/Ramsay Hunt are dermatomal subtypes of zoster) is fair but reduces elegance; board-overlap caution if a dedicated zoster-complications group is used.\"",
+          "MSK-028 board instruction to check against the other groups: \"Board note: the adductor (hamstring) part of adductor magnus is also a hip extensor - a plausible competing member; avoid on the same board.\"",
+          "NEPH-028 board instruction to check against the other groups: \"Board overlap: avoid combining with another RTA/NAGMA category (e.g., type 4) on one board (ambiguity 1).\"",
+          "NEU-003 board instruction to check against the other groups: \"Board overlap: fasciculations and atrophy also appear in ALS (mixed UMN/LMN) categories.\""
+        ]
+      }
+    },
+    "MICRO-002+MSK-024+NEU-002+PLEXUS-GEN-004": {
+      "signature": "817df09c",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern spasticity/hypertonia redundancy inside the UMN group, an ANA-positive grouping, the easy Shiga pair and anticipation claims. No competing group is on the board.",
+        "flagsReviewed": [
+          "NEU-002 board instruction to check against the other groups: \"Spasticity is a velocity-dependent subtype of hypertonia, so tiles 2 and 3 partially overlap; retain as distinct exam concepts but flag redundancy when building a 16-tile board.\"",
+          "MSK-024 board instruction to check against the other groups: \"Board overlap: these four also cluster under 'ANA-positive connective tissue diseases.'\"",
+          "MICRO-002 board instruction to check against the other groups: \"BOARD WARNING: near-identical Shiga pair can feel easy.\"",
+          "PLEXUS-GEN-004 board instruction to check against the other groups: \"Do not add a universal-anticipation claim.\""
+        ]
+      }
+    },
+    "NEPH-009+PLEXUS-GEN-019+PLX-HEM-004+PSY-009": {
+      "signature": "dca6b79d",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern a warm-AIHA group, broad undernutrition, a general CF check and a collapsing-glomerulopathy group. None is on the board. Infections appear in two groups (Mycoplasma and EBV vs HIV), but each fits only its own relationship.",
+        "flagsReviewed": [
+          "PLX-HEM-004 board instruction to check against the other groups: \"CLL more classically causes warm AIHA, so flag board overlap with a warm-AIHA group.\"",
+          "PSY-009 board instruction to check against the other groups: \"Board caution: 'Nutritional deficiencies' is a broad category rather than a discrete sign and overlaps other causes of severe undernutrition.\"",
+          "PLEXUS-GEN-019 board instruction to check against the other groups: \"Board overlap check advised.\"",
+          "NEPH-009 board instruction to check against the other groups: \"Board overlap: do not combine with a collapsing-glomerulopathy category (HIV and interferon would double-fit).\""
+        ]
+      }
+    },
+    "MSK-020+NEPH-024+PLX-BCH-069+PSY-004": {
+      "signature": "88a46cdb",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern glutamate, acute stress disorder, the small round blue cell differential and hypercalcemia/erythrocytosis groups. None is on the board.",
+        "flagsReviewed": [
+          "PLX-BCH-069 board instruction to check against the other groups: \"Glutamate is the shared intermediate - placing glutamate on the same board creates an interchangeable fifth tile.\"",
+          "PSY-004 board instruction to check against the other groups: \"Board overlap: acute stress disorder shares symptoms but is <1 month;\"",
+          "MSK-020 board instruction to check against the other groups: \"Board overlap: small round blue cell tumor differential.\"",
+          "NEPH-024 board instruction to check against the other groups: \"Board overlap: hypercalcemia and erythrocytosis categories.\""
+        ]
+      }
+    },
+    "GI-064+MSK-017+NEU-024+PLX-BCH-012": {
+      "signature": "c07b2787",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern other NADPH users, esophageal dysmotility, an unspecified overlap and an antacid group. None is on the board.",
+        "flagsReviewed": [
+          "PLX-BCH-012 board instruction to check against the other groups: \"Avoid additional interchangeable NADPH-user tiles on one board.\"",
+          "MSK-017 board instruction to check against the other groups: \"Board note: do not place esophageal dysmotility as a distractor on the same board.\"",
+          "NEU-024 board instruction to check against the other groups: \"Flag this overlap on a board.\"",
+          "GI-064 board instruction to check against the other groups: \"Board overlap: magnesium hydroxide also acts as an antacid - avoid a conflicting antacid category.\""
+        ]
+      }
+    },
+    "GI-024+MSK-021+PLEXUS-GEN-012+PLX-BCH-067": {
+      "signature": "6756b62d",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern secondary iron overload, threonine, polymyalgia rheumatica and other chromosomal-instability disorders. None is on the board.",
+        "flagsReviewed": [
+          "GI-024 board instruction to check against the other groups: \"Board overlap: this lab pattern is shared by secondary iron overload (accepted alternate framing); reduced TIBC is typical but not universal.\"",
+          "PLX-BCH-067 board instruction to check against the other groups: \"Threonine is also classified as mixed in some schemes, so these are four examples, not an exhaustive list - avoid threonine elsewhere on the board.\"",
+          "MSK-021 board instruction to check against the other groups: \"Strong link to polymyalgia rheumatica (board overlap).\"",
+          "PLEXUS-GEN-012 board instruction to check against the other groups: \"Board overlap: photosensitivity + cancer risk shared with xeroderma pigmentosum and other chromosomal-instability disorders - avoid co-placing them on one board.\""
+        ]
+      }
+    },
+    "DERM-003+ENDO-002+GI-059+NEU-050": {
+      "signature": "58133512",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern a Kawasaki/TSS group, other systemic-inflammatory groups, tau/tangle redundancy and a glycoprotein-hormone group. None is on the board.",
+        "flagsReviewed": [
+          "DERM-003 board instruction to check against the other groups: \"Board-overlap warning: strawberry tongue is shared with Kawasaki disease and toxic shock syndrome;\"",
+          "DERM-003 board instruction to check against the other groups: \"Do not place the strawberry-tongue tile on a board that also features a Kawasaki/TSS group.\"",
+          "GI-059 board instruction to check against the other groups: \"Board overlap: these findings also occur outside IBD (e.g., sarcoidosis, spondyloarthropathy) - avoid a competing systemic-inflammatory category on the same board.\"",
+          "NEU-050 board instruction to check against the other groups: \"PARTIAL REDUNDANCY: hyperphosphorylated tau is the constituent protein of neurofibrillary tangles, so tiles 2 and 3 are closely linked (structure vs molecule) - retain as distinct teaching points but flag redundancy on a board.\"",
+          "ENDO-002 board instruction to check against the other groups: \"ACTH is a peptide, so a 'glycoprotein hormones' label would wrongly exclude it.\"",
+          "ENDO-002 board instruction to check against the other groups: \"Board overlap: avoid pairing with a separate glycoprotein-hormone (TSH/FSH/LH/hCG) set.\""
+        ]
+      }
+    },
+    "CARD-053+GI-026+NEU-056+PLX-BCH-037": {
+      "signature": "f11a18fc",
+      "reject": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "\"Tertiary syphilis\" (aortic regurgitation group) also fits \"Potentially treatable contributors to cognitive impairment\", which holds neurosyphilis; a player could reasonably place it there. Board rebuilt."
+      }
+    },
+    "GI-026+NEU-056+PHARM-011+PLX-BCH-037": {
+      "signature": "a67ea95e",
+      "clear": {
+        "by": "Claude (AI review at the owner's request), 2026-10-08",
+        "rationale": "Cautions concern alfuzosin/silodosin and a BPH-treatment group. Neither is on the board. Intellectual disability (homocystinuria) is a developmental finding rather than a treatable contributor to acquired cognitive impairment, so it does not compete with the neurosyphilis/B12/thyroid/depression group. Rebuilt board after the nd-053 rejection.",
+        "flagsReviewed": [
+          "PHARM-011 board instruction to check against the other groups: \"Alfuzosin and silodosin are other members (board note).\"",
+          "PHARM-011 board instruction to check against the other groups: \"Avoid a shared BPH-treatment category because prazosin is not a standard contemporary BPH agent.\""
+        ]
+      }
+    }
+  }
+}

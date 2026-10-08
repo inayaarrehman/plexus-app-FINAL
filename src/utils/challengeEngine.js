@@ -420,16 +420,58 @@ export function generateRound(bank, { rng = Math.random, roundTypes = ROUND_TYPE
 // archetype/concept and dominant category. `recent` carries the last few
 // rounds' { type, systems, conceptTags }. Bounded work, so it stays cheap
 // enough to call between every round on mobile.
-export function composeNextRound(bank, { rng = Math.random, roundTypes = ROUND_TYPES, recent = [] } = {}) {
+// The relationships a round is about, as canonical ids: its anchor category,
+// both Mini Connections groups, every category whose title the round names
+// (conceptTags, Split labels), and curated chains by title. Distractor tiles
+// borrowed from other categories are not counted; they are wrong answers,
+// not the relationship being tested. Matching by id and by title means a
+// retitled or reordered copy of a relationship is still caught.
+const _titleIdx = new WeakMap()
+function titleIndex(bank) {
+  let m = _titleIdx.get(bank)
+  if (!m) {
+    m = new Map()
+    for (const c of bank) {
+      const k = String(c.title || '').trim().toLowerCase()
+      if (!m.has(k)) m.set(k, [])
+      m.get(k).push(c.id)
+    }
+    _titleIdx.set(bank, m)
+  }
+  return m
+}
+export function roundRelationships(round, bank, canonicalOf = (id) => id) {
+  const out = new Set()
+  if (!round) return out
+  const add = (id) => id && out.add(canonicalOf(id))
+  add(round.categoryId)
+  for (const g of Object.values(round.groups || {})) add(g && g.categoryId)
+  const idx = titleIndex(bank)
+  const named = [...(round.conceptTags || []), round.labelA, round.labelB, round.anchor, round.categoryTitle].filter(Boolean)
+  for (const t of named) {
+    const ids = idx.get(String(t).trim().toLowerCase())
+    if (ids) ids.forEach(add)
+    else if (round.type === 'chain' || round.type === 'completeTheChain') out.add(`chain:${String(t).trim().toLowerCase()}`)
+  }
+  return out
+}
+
+// `used` (a Set of canonical relationship ids already served this session)
+// is a hard rule: a round about any of them is never returned. When no fresh
+// valid round can be found the composer returns null and the caller ends or
+// shortens the session rather than repeat a relationship.
+export function composeNextRound(bank, { rng = Math.random, roundTypes = ROUND_TYPES, recent = [], used = null, canonicalOf } = {}) {
   const lastType = recent[0]?.type || null
   const lastTask = recent[0]?.type ? COGNITIVE_TASK[recent[0].type] : null
   const recentSystems = new Set(recent.slice(0, 2).flatMap((r) => r.systems || []))
   const recentConcepts = new Set(recent.slice(0, 2).flatMap((r) => (r.conceptTags || []).map((t) => String(t).toLowerCase())))
+  const fresh = (round) => !used || ![...roundRelationships(round, bank, canonicalOf)].some((id) => used.has(id))
 
   let best = null
-  for (let attempt = 0; attempt < 10; attempt++) {
+  const attempts = used && used.size ? 40 : 10
+  for (let attempt = 0; attempt < attempts; attempt++) {
     const round = generateRound(bank, { rng, roundTypes, avoidType: lastType })
-    if (!round) continue
+    if (!round || !fresh(round)) continue
     let penalty = 0
     if ((round.systems || []).some((s) => recentSystems.has(s))) penalty += 2
     if ((round.conceptTags || []).some((t) => recentConcepts.has(String(t).toLowerCase()))) penalty += 3
@@ -441,7 +483,9 @@ export function composeNextRound(bank, { rng = Math.random, roundTypes = ROUND_T
     if (penalty === 0) return round
     if (!best || penalty < best.penalty) best = { round, penalty }
   }
-  return best ? best.round : generateRound(bank, { rng, roundTypes, avoidType: lastType })
+  if (best) return best.round
+  const fallback = generateRound(bank, { rng, roundTypes, avoidType: lastType })
+  return fallback && fresh(fallback) ? fallback : null
 }
 
 // ---------------------------------------------------------------------
