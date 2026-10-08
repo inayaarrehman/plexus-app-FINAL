@@ -1,13 +1,13 @@
 # Plexus new library: pending review queue
 
-Generated 2026-10-08T17:26:46.655Z. Staging only; the library is not active and the live app is unchanged.
+Generated 2026-10-08T17:42:40.749Z. Staging only; the library is not active and the live app is unchanged.
 
 | Category | Open |
 |---|---|
-| Medical / source holds | 10 |
-| Duplicate decisions (new library) | 15 |
-| Timed-library overlaps | 20 to decide, 5 recorded |
-| Board ambiguity reviews | 2 |
+| Medical / source holds | 11 |
+| Duplicate decisions (new library) | 18 |
+| Timed-library overlaps | 24 to decide, 6 recorded |
+| Board ambiguity reviews | 3 |
 | Blocked boards | 0 |
 | Difficulty calibration warnings | 1 |
 
@@ -61,6 +61,11 @@ Issue: The review replaced the source tile "Cardiac implanted device" (overlappi
 Tiles: Ganciclovir · Maribavir · Foscarnet · Cidofovir
 
 Issue: The review replaced the source tile "Valganciclovir" (a prodrug of ganciclovir, so not a distinct tile) with "Maribavir". The new tile is supported by outside references in Notes (FDA Livtencity label 2025; Imlay & Kaul 2021), not by the cited Bootcamp pages (pp. 245, 308). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).
+
+### MSK-031 · Pediatric hip disorders that can present with referred knee pain (MSK, AI_REVIEWED_REVISED)
+Tiles: Slipped capital femoral epiphysis · Legg-Calve-Perthes disease · Transient synovitis of the hip · Hip dislocation
+
+Issue: The review replaced the source tile "Developmental hip dysplasia" with "Transient synovitis of the hip". The new tile is supported by outside references in Notes (de Borja et al 2022; AAP DDH report), not by the cited Bootcamp pages (pp. 157, 185-187). The review also notes that hip dislocation fits only the general referred-pain principle and is "less distinctive". Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).
 
 ## 2. Duplicate decisions (new library)
 ### Vitamin K-dependent clotting factors  /  Vitamin K-dependent procoagulant factors
@@ -135,6 +140,21 @@ possible duplicate (held). Shared relationship: both are "findings / association
 
 Held until decided: PLX-HEM-022.
 Decide: decisions.json → pairs → "PLX-BCH-054 | PLX-HEM-022": "same" or "distinct"
+
+### Classic skeletal findings of rickets  /  Skeletal findings of childhood rickets
+possible duplicate (held). Shared relationship: both are "findings / associations of skeletal ricket"; 2 of 4 tiles identical.
+
+| | PLX-BCH-059 (new, Biochemistry/Genetics) | MSK-008 (new, MSK) |
+|---|---|---|
+| Title | Classic skeletal findings of rickets | Skeletal findings of childhood rickets |
+| Tile 1 | Bowed long bones | Metaphyseal cupping |
+| Tile 2 | Rachitic rosary | Metaphyseal fraying |
+| Tile 3 | Craniotabes | Rachitic rosary |
+| Tile 4 | Delayed fontanelle closure | Craniotabes |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: MSK-008.
+Decide: decisions.json → pairs → "MSK-008 | PLX-BCH-059": "same" or "distinct"
 
 ### Vitamin B12 deficiency diagnostic associations  /  Vitamin B12-deficiency clues
 treated as the same relationship (set aside); confirm. Shared relationship: both are "findings / associations of vitamin b12 deficiency"; 3 of 4 tiles identical; tile wording 64% the same.
@@ -281,6 +301,36 @@ possible duplicate (held). Shared relationship: both are "findings / association
 
 Held until decided: IMM-017.
 Decide: decisions.json → pairs → "IMM-017 | PLX-HEM-009": "same" or "distinct"
+
+### Antiphospholipid-syndrome associations  /  Antiphospholipid syndrome clues
+possible duplicate (held). Shared relationship: both are "findings / associations of antiphospholipid syndrome".
+
+| | PLX-HEM-038 (new, Heme/Onc) | MSK-014 (new, MSK) |
+|---|---|---|
+| Title | Antiphospholipid-syndrome associations | Antiphospholipid syndrome clues |
+| Tile 1 | Lupus anticoagulant | Recurrent pregnancy loss |
+| Tile 2 | Anticardiolipin antibodies | Venous thrombosis |
+| Tile 3 | Anti-beta2-glycoprotein I antibodies | Arterial thrombosis |
+| Tile 4 | False-positive nontreponemal syphilis test | Livedo reticularis |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: MSK-014.
+Decide: decisions.json → pairs → "MSK-014 | PLX-HEM-038": "same" or "distinct"
+
+### Anti-TNF biologics  /  Antibody-based TNF-alpha inhibitors
+possible duplicate (held). Shared relationship: "anti tnf biologic" vs "antibody based tnf alpha inhibitor"; 3 of 4 tiles identical; tile wording 80% the same.
+
+| | IMM-040 (new, Immunology) | MSK-039 (new, MSK) |
+|---|---|---|
+| Title | Anti-TNF biologics | Antibody-based TNF-alpha inhibitors |
+| Tile 1 | Infliximab | Adalimumab |
+| Tile 2 | Adalimumab | Infliximab |
+| Tile 3 | Golimumab | Golimumab |
+| Tile 4 | Certolizumab | Certolizumab pegol |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: MSK-039.
+Decide: decisions.json → pairs → "IMM-040 | MSK-039": "same" or "distinct"
 
 ## 3. Timed-library overlaps
 ### Fat-soluble vitamins  /  Fat-soluble vitamins
@@ -633,6 +683,76 @@ possible repeat of a timed entry. Shared relationship: "pulmonary endemic dimorp
 
 Decide: decisions.json → pairs → "MICRO-018 | bank-migrated-sys-micro-0001-L2": "same" (exclude timed entry at activation) or "distinct"
 
+### Rotator cuff muscles  /  Rotator cuff muscles
+same relationship as a timed entry (timed entry to be excluded at activation). Shared relationship: both are "rotator cuff muscle"; 4 of 4 tiles identical; tile wording 100% the same.
+
+| | MSK-001 (new, MSK) | bank-ext-104 (timed, MSK) |
+|---|---|---|
+| Title | Rotator cuff muscles | Rotator cuff muscles |
+| Tile 1 | Supraspinatus | Supraspinatus |
+| Tile 2 | Infraspinatus | Infraspinatus |
+| Tile 3 | Teres minor | Teres minor |
+| Tile 4 | Subscapularis | Subscapularis |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: no decision needed unless you disagree
+
+### Seronegative spondyloarthritides  /  HLA-B27-associated spondyloarthropathies
+possible repeat of a timed entry. Shared relationship: "seronegative spondyloarthritide" vs "findings / associations of hla b27 spondyloarthropathie"; 3 of 4 tiles identical; tile wording 78% the same.
+
+| | MSK-002 (new, MSK) | bank-easy-05 (timed, MSK) |
+|---|---|---|
+| Title | Seronegative spondyloarthritides | HLA-B27-associated spondyloarthropathies |
+| Tile 1 | Ankylosing spondylitis | Ankylosing spondylitis |
+| Tile 2 | Psoriatic arthritis | Reactive arthritis |
+| Tile 3 | Reactive arthritis | Psoriatic arthritis |
+| Tile 4 | IBD-associated (enteropathic) spondyloarthritis | IBD-associated arthritis |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "MSK-002 | bank-easy-05": "same" (exclude timed entry at activation) or "distinct"
+
+### Seronegative spondyloarthritides  /  Seronegative spondyloarthropathies
+possible repeat of a timed entry. Shared relationship: "seronegative spondyloarthritide" vs "seronegative spondyloarthropathie"; 3 of 4 tiles identical; tile wording 67% the same.
+
+| | MSK-002 (new, MSK) | bank-ext-103 (timed, MSK) |
+|---|---|---|
+| Title | Seronegative spondyloarthritides | Seronegative spondyloarthropathies |
+| Tile 1 | Ankylosing spondylitis | Ankylosing spondylitis |
+| Tile 2 | Psoriatic arthritis | Psoriatic arthritis |
+| Tile 3 | Reactive arthritis | Reactive arthritis |
+| Tile 4 | IBD-associated (enteropathic) spondyloarthritis | Enteropathic arthritis |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "MSK-002 | bank-ext-103": "same" (exclude timed entry at activation) or "distinct"
+
+### Classic radiographic changes of osteoarthritis  /  Radiographic findings in osteoarthritis
+possible repeat of a timed entry. Shared relationship: both are "findings / associations of radiographic osteoarthritis"; 2 of 4 tiles identical.
+
+| | MSK-005 (new, MSK) | bank-ext-105 (timed, MSK) |
+|---|---|---|
+| Title | Classic radiographic changes of osteoarthritis | Radiographic findings in osteoarthritis |
+| Tile 1 | Nonuniform (asymmetric) joint-space loss | Joint space narrowing |
+| Tile 2 | Subchondral sclerosis | Osteophytes |
+| Tile 3 | Marginal osteophytes | Subchondral sclerosis |
+| Tile 4 | Subchondral cysts | Subchondral cysts |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "MSK-005 | bank-ext-105": "same" (exclude timed entry at activation) or "distinct"
+
+### Sarcoidosis diagnostic associations  /  Features of sarcoidosis
+possible repeat of a timed entry. Shared relationship: both are "findings / associations of sarcoidosis"; 2 of 4 tiles identical.
+
+| | MSK-018 (new, MSK) | bank-ext-066 (timed, Mixed / Step Review) |
+|---|---|---|
+| Title | Sarcoidosis diagnostic associations | Features of sarcoidosis |
+| Tile 1 | Bilateral hilar lymphadenopathy | Bilateral hilar lymphadenopathy |
+| Tile 2 | Noncaseating granulomas | Noncaseating granulomas |
+| Tile 3 | Elevated serum ACE | Hypercalcemia |
+| Tile 4 | Increased BAL CD4:CD8 ratio | Erythema nodosum |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "MSK-018 | bank-ext-066": "same" (exclude timed entry at activation) or "distinct"
+
 ## 4. Board ambiguity reviews
 ### biochemistry-genetics-starter-5 (Biochemistry/Genetics)
 - PLX-BCH-050 Classic alkaptonuria associations [easy]: Ochronosis · Black urine after standing · Elevated homogentisate · Arthritis
@@ -649,6 +769,14 @@ Decide: decisions.json → pairs → "MICRO-018 | bank-migrated-sys-micro-0001-L
 - GI-027 Markers of impaired synthetic/metabolic function in advanced cirrhosis [medium]: Prolonged PT/INR · Low albumin · Hypoglycemia · Hyperammonemia
 - Flag: "Pruritus" and "Jaundice" (obstructive cholestasis group) are also classic presenting clues of primary biliary cholangitis, which is on the same board; a player could reasonably place them in the PBC group. (raised by Claude, 2026-10-08)
 - Clear: decisions.json → boards → "gi-starter-3": "cleared:3deee08a"
+
+### msk-starter-5 (MSK)
+- MSK-015 Dermatomyositis skin findings [easy]: Heliotrope rash · Gottron papules · Shawl sign · V-sign rash
+- MSK-007 Clinical consequences of osteopetrosis [medium]: Recurrent fractures · Cranial nerve compression · Pancytopenia · Extramedullary hematopoiesis
+- MSK-018 Sarcoidosis diagnostic associations [medium]: Bilateral hilar lymphadenopathy · Noncaseating granulomas · Elevated serum ACE · Increased BAL CD4:CD8 ratio
+- MSK-035 High-risk stress fracture sites [hard]: Tension (superolateral) side of the femoral neck · Anterior tibial cortex · Talus · Proximal fifth metatarsal
+- Flag: MSK-035 board instruction to check against the other groups: "Board overlap: navicular and sesamoids are additional high-risk sites - avoid as distractors."
+- Clear: decisions.json → boards → "msk-starter-5": "cleared:a7cd3b6c"
 
 ## 5. Blocked boards
 None.

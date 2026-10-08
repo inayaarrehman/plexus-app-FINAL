@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T17:26:46.655Z",
+ "generatedAt": "2026-10-08T17:42:40.749Z",
  "active": false,
  "medicalHolds": [
   {
@@ -131,6 +131,19 @@
    ],
    "status": "AI_REVIEWED_REVISED",
    "issue": "The review replaced the source tile \"Valganciclovir\" (a prodrug of ganciclovir, so not a distinct tile) with \"Maribavir\". The new tile is supported by outside references in Notes (FDA Livtencity label 2025; Imlay & Kaul 2021), not by the cited Bootcamp pages (pp. 245, 308). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds)."
+  },
+  {
+   "id": "MSK-031",
+   "system": "MSK",
+   "title": "Pediatric hip disorders that can present with referred knee pain",
+   "tiles": [
+    "Slipped capital femoral epiphysis",
+    "Legg-Calve-Perthes disease",
+    "Transient synovitis of the hip",
+    "Hip dislocation"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The review replaced the source tile \"Developmental hip dysplasia\" with \"Transient synovitis of the hip\". The new tile is supported by outside references in Notes (de Borja et al 2022; AAP DDH report), not by the cited Bootcamp pages (pp. 157, 185-187). The review also notes that hip dislocation fits only the general referred-pain principle and is \"less distinctive\". Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds)."
   }
  ],
  "duplicateDecisions": [
@@ -298,6 +311,39 @@
     "status": "AI_REVIEWED_PASS"
    },
    "decide": "decisions.json → pairs → \"PLX-BCH-054 | PLX-HEM-022\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "MSK-008 | PLX-BCH-059",
+   "kind": "possible duplicate (held)",
+   "held": "MSK-008",
+   "sharedRelationship": "both are \"findings / associations of skeletal ricket\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "PLX-BCH-059",
+    "library": "new",
+    "system": "Biochemistry/Genetics",
+    "title": "Classic skeletal findings of rickets",
+    "tiles": [
+     "Bowed long bones",
+     "Rachitic rosary",
+     "Craniotabes",
+     "Delayed fontanelle closure"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "MSK-008",
+    "library": "new",
+    "system": "MSK",
+    "title": "Skeletal findings of childhood rickets",
+    "tiles": [
+     "Metaphyseal cupping",
+     "Metaphyseal fraying",
+     "Rachitic rosary",
+     "Craniotabes"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"MSK-008 | PLX-BCH-059\": \"same\" or \"distinct\""
   },
   {
    "key": "PLX-BCH-063 | PLX-HEM-026",
@@ -628,6 +674,72 @@
     "status": "AI_REVIEWED_PASS"
    },
    "decide": "decisions.json → pairs → \"IMM-017 | PLX-HEM-009\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "MSK-014 | PLX-HEM-038",
+   "kind": "possible duplicate (held)",
+   "held": "MSK-014",
+   "sharedRelationship": "both are \"findings / associations of antiphospholipid syndrome\"",
+   "a": {
+    "id": "PLX-HEM-038",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "Antiphospholipid-syndrome associations",
+    "tiles": [
+     "Lupus anticoagulant",
+     "Anticardiolipin antibodies",
+     "Anti-beta2-glycoprotein I antibodies",
+     "False-positive nontreponemal syphilis test"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "MSK-014",
+    "library": "new",
+    "system": "MSK",
+    "title": "Antiphospholipid syndrome clues",
+    "tiles": [
+     "Recurrent pregnancy loss",
+     "Venous thrombosis",
+     "Arterial thrombosis",
+     "Livedo reticularis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"MSK-014 | PLX-HEM-038\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "IMM-040 | MSK-039",
+   "kind": "possible duplicate (held)",
+   "held": "MSK-039",
+   "sharedRelationship": "\"anti tnf biologic\" vs \"antibody based tnf alpha inhibitor\"; 3 of 4 tiles identical; tile wording 80% the same",
+   "a": {
+    "id": "IMM-040",
+    "library": "new",
+    "system": "Immunology",
+    "title": "Anti-TNF biologics",
+    "tiles": [
+     "Infliximab",
+     "Adalimumab",
+     "Golimumab",
+     "Certolizumab"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "MSK-039",
+    "library": "new",
+    "system": "MSK",
+    "title": "Antibody-based TNF-alpha inhibitors",
+    "tiles": [
+     "Adalimumab",
+     "Infliximab",
+     "Golimumab",
+     "Certolizumab pegol"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"IMM-040 | MSK-039\": \"same\" or \"distinct\""
   }
  ],
  "timedOverlaps": [
@@ -1430,6 +1542,166 @@
     "status": "verified"
    },
    "decide": "decisions.json → pairs → \"MICRO-018 | bank-migrated-sys-micro-0001-L2\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "MSK-001 | bank-ext-104",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "both are \"rotator cuff muscle\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "MSK-001",
+    "library": "new",
+    "system": "MSK",
+    "title": "Rotator cuff muscles",
+    "tiles": [
+     "Supraspinatus",
+     "Infraspinatus",
+     "Teres minor",
+     "Subscapularis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-104",
+    "library": "timed",
+    "system": "MSK",
+    "title": "Rotator cuff muscles",
+    "tiles": [
+     "Supraspinatus",
+     "Infraspinatus",
+     "Teres minor",
+     "Subscapularis"
+    ],
+    "status": "verified"
+   },
+   "decide": "no decision needed unless you disagree"
+  },
+  {
+   "key": "MSK-002 | bank-easy-05",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"seronegative spondyloarthritide\" vs \"findings / associations of hla b27 spondyloarthropathie\"; 3 of 4 tiles identical; tile wording 78% the same",
+   "a": {
+    "id": "MSK-002",
+    "library": "new",
+    "system": "MSK",
+    "title": "Seronegative spondyloarthritides",
+    "tiles": [
+     "Ankylosing spondylitis",
+     "Psoriatic arthritis",
+     "Reactive arthritis",
+     "IBD-associated (enteropathic) spondyloarthritis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-easy-05",
+    "library": "timed",
+    "system": "MSK",
+    "title": "HLA-B27-associated spondyloarthropathies",
+    "tiles": [
+     "Ankylosing spondylitis",
+     "Reactive arthritis",
+     "Psoriatic arthritis",
+     "IBD-associated arthritis"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"MSK-002 | bank-easy-05\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "MSK-002 | bank-ext-103",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"seronegative spondyloarthritide\" vs \"seronegative spondyloarthropathie\"; 3 of 4 tiles identical; tile wording 67% the same",
+   "a": {
+    "id": "MSK-002",
+    "library": "new",
+    "system": "MSK",
+    "title": "Seronegative spondyloarthritides",
+    "tiles": [
+     "Ankylosing spondylitis",
+     "Psoriatic arthritis",
+     "Reactive arthritis",
+     "IBD-associated (enteropathic) spondyloarthritis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-103",
+    "library": "timed",
+    "system": "MSK",
+    "title": "Seronegative spondyloarthropathies",
+    "tiles": [
+     "Ankylosing spondylitis",
+     "Psoriatic arthritis",
+     "Reactive arthritis",
+     "Enteropathic arthritis"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"MSK-002 | bank-ext-103\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "MSK-005 | bank-ext-105",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "both are \"findings / associations of radiographic osteoarthritis\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "MSK-005",
+    "library": "new",
+    "system": "MSK",
+    "title": "Classic radiographic changes of osteoarthritis",
+    "tiles": [
+     "Nonuniform (asymmetric) joint-space loss",
+     "Subchondral sclerosis",
+     "Marginal osteophytes",
+     "Subchondral cysts"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-105",
+    "library": "timed",
+    "system": "MSK",
+    "title": "Radiographic findings in osteoarthritis",
+    "tiles": [
+     "Joint space narrowing",
+     "Osteophytes",
+     "Subchondral sclerosis",
+     "Subchondral cysts"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"MSK-005 | bank-ext-105\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "MSK-018 | bank-ext-066",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "both are \"findings / associations of sarcoidosis\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "MSK-018",
+    "library": "new",
+    "system": "MSK",
+    "title": "Sarcoidosis diagnostic associations",
+    "tiles": [
+     "Bilateral hilar lymphadenopathy",
+     "Noncaseating granulomas",
+     "Elevated serum ACE",
+     "Increased BAL CD4:CD8 ratio"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-066",
+    "library": "timed",
+    "system": "Mixed / Step Review",
+    "title": "Features of sarcoidosis",
+    "tiles": [
+     "Bilateral hilar lymphadenopathy",
+     "Noncaseating granulomas",
+     "Hypercalcemia",
+     "Erythema nodosum"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"MSK-018 | bank-ext-066\": \"same\" (exclude timed entry at activation) or \"distinct\""
   }
  ],
  "boardReviews": [
@@ -1542,6 +1814,61 @@
     "\"Pruritus\" and \"Jaundice\" (obstructive cholestasis group) are also classic presenting clues of primary biliary cholangitis, which is on the same board; a player could reasonably place them in the PBC group. (raised by Claude, 2026-10-08)"
    ],
    "clear": "decisions.json → boards → \"gi-starter-3\": \"cleared:3deee08a\""
+  },
+  {
+   "board": "msk-starter-5",
+   "system": "MSK",
+   "signature": "a7cd3b6c",
+   "connections": [
+    {
+     "id": "MSK-015",
+     "title": "Dermatomyositis skin findings",
+     "difficulty": "easy",
+     "tiles": [
+      "Heliotrope rash",
+      "Gottron papules",
+      "Shawl sign",
+      "V-sign rash"
+     ]
+    },
+    {
+     "id": "MSK-007",
+     "title": "Clinical consequences of osteopetrosis",
+     "difficulty": "medium",
+     "tiles": [
+      "Recurrent fractures",
+      "Cranial nerve compression",
+      "Pancytopenia",
+      "Extramedullary hematopoiesis"
+     ]
+    },
+    {
+     "id": "MSK-018",
+     "title": "Sarcoidosis diagnostic associations",
+     "difficulty": "medium",
+     "tiles": [
+      "Bilateral hilar lymphadenopathy",
+      "Noncaseating granulomas",
+      "Elevated serum ACE",
+      "Increased BAL CD4:CD8 ratio"
+     ]
+    },
+    {
+     "id": "MSK-035",
+     "title": "High-risk stress fracture sites",
+     "difficulty": "hard",
+     "tiles": [
+      "Tension (superolateral) side of the femoral neck",
+      "Anterior tibial cortex",
+      "Talus",
+      "Proximal fifth metatarsal"
+     ]
+    }
+   ],
+   "flags": [
+    "MSK-035 board instruction to check against the other groups: \"Board overlap: navicular and sesamoids are additional high-risk sites - avoid as distractors.\""
+   ],
+   "clear": "decisions.json → boards → \"msk-starter-5\": \"cleared:a7cd3b6c\""
   }
  ],
  "blockedBoards": [],

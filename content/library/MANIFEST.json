@@ -1,7 +1,7 @@
 {
  "about": "Checksums of the staged new library. Staging only: active is false and nothing in src/ reads these files.",
  "active": false,
- "savedAt": "2026-10-08T17:27:07.611Z",
+ "savedAt": "2026-10-08T17:43:03.967Z",
  "systems": [
   "Biochemistry/Genetics",
   "Cardiology",
@@ -11,27 +11,28 @@
   "Genetics",
   "Heme/Onc",
   "Immunology",
+  "MSK",
   "Microbiology"
  ],
  "counts": {
-  "rows": 478,
-  "passedReview": 468,
+  "rows": 517,
+  "passedReview": 506,
   "passedReviewHuman": 0,
-  "passedReviewAi": 468,
-  "heldMedical": 10,
+  "passedReviewAi": 506,
+  "heldMedical": 11,
   "rejected": 0,
   "needsFix": 0,
-  "heldDuplicate": 9,
+  "heldDuplicate": 12,
   "setAsideDuplicate": 6,
-  "usable": 453,
-  "starter": 180,
-  "daily": 273
+  "usable": 488,
+  "starter": 200,
+  "daily": 288
  },
  "files": {
   "README.md": "9ec3ce30c132b28ab13600a7f7038a72f8f1d16ca5b6884668f487ec7f7ef03f",
   "board-flags.json": "e614c1ddae1cb5007ec61adadbee5078e1814697a59459390822fbec79d14a1f",
   "decisions.json": "db2eb213a83c37bf8cf2f08913b4c63f38aed77d77dda89825421cdbd6161830",
-  "library.json": "bdf47cf829cb300d5a669150d305263a6f6b67ba884c2d440fd209145d91f2e2",
+  "library.json": "08fe174848acf647ab88ba3756d173ab2e4998f3667ee03229309121b567358e",
   "reports/2026-10-08-biochemistry-genetics-f7b14325d1d2.md": "2c8dea6901183429f9712d4a275c1bb62499fb750a0c80208be620caa2270fd5",
   "reports/2026-10-08-cardiology-7a468f05556e.md": "7e850965368f52b2724aed103fc52487f30d4d30af17b8fe7916dbfbd7855fa7",
   "reports/2026-10-08-dermatology-95b7b2723152.md": "71e9f9d12767ed623919b66e7fc387fc0d8baa8b14240bfda06e486960c4fc5c",
@@ -41,9 +42,10 @@
   "reports/2026-10-08-heme-onc-2ebb676d94e1.md": "55b2b2ada2381e5951e9dec19f5b936f668f18344833656f23bf87d2745bfdc4",
   "reports/2026-10-08-immunology-741c455344a1.md": "67a0368adef2c909d11ed7194991fe597965e2ae1e4839a616bb9f721c251ea7",
   "reports/2026-10-08-microbiology-c9b380ad455e.md": "7c2c2a5f9847c910f14edb9c846237139d43801d2d7d14eae9aba19726e55ccb",
-  "review-queue.json": "04788c3c34342f538e7e701284f66533da55ddf22efec27a1c89b1e6adaaec12",
-  "review-queue.md": "f6e1e8c9c933eb6657ae406fb78ccfa3b581876526f3d60a1fe0240cae11b985",
-  "revision-reviews.json": "8e70bbef977779f0a4f68853dd37f215e8765f5642fe4894af150e5ae82c10a7",
+  "reports/2026-10-08-msk-1656eaa7a197.md": "7198b09abec099ccf505bc70d1714bb31120b3fa827248b06d9a8d342eac6e50",
+  "review-queue.json": "9ac484fe47e4b71d25b7c0a7d49c782741b279658d81ecb21bf2821802c8eecb",
+  "review-queue.md": "20b9f657e42c38941db766ed0470480074cf19d6803988fa5b04bf8870623b09",
+  "revision-reviews.json": "2ec1c2d0788878e60c5f9d0352b9accd474363dd021cc1092a5ca209b1aad5e0",
   "status-map.json": "092ccf52026b7425f9b1254a8476548c9174f02153f9a5303587819e88e5846a",
   "uploads/Plexus_Biochemistry_Reviewed_Connections.csv": "f7b14325d1d206f30fa05da14bc4c0a6c391843af530459e51cd7522e8b08c9e",
   "uploads/Plexus_Cardio_Reviewed_Connections.csv": "7a468f05556e283745697da126b8e7c97248e35a07becd6f24829631ca91a304",
@@ -53,6 +55,7 @@
   "uploads/Plexus_Genetics_reviewed_connections_1.csv": "43fa1bd10d706489b847e54b45c3936bc5c46a3f13f8139b18bcae010320b6b4",
   "uploads/Plexus_Hematology_and_Oncology_reviewed_connections.csv": "2ebb676d94e115e6b69bceb3507129e4f16d50132e9cc987d3d56ffe195a6059",
   "uploads/Plexus_Immunology_reviewed_connections.csv": "741c455344a17fa45d7bb07faaf990299be297c1c94968a43639ec4a65feb397",
+  "uploads/Plexus_MSK_reviewed_connections.csv": "1656eaa7a19762f1116329273537cefe9609d2109ebde3845ba1676a0ec90d9d",
   "uploads/Plexus_Microbiology_reviewed_connections.csv": "c9b380ad455e6c578669042a6a9a6f8c33a00629910accde6cc60d49f39ac13c"
  }
 }

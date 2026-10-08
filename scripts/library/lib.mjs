@@ -240,7 +240,7 @@ export const contentHash = (c) => sha(c)
 // restrictive cardiomyopathy" = "Causes of restrictive cardiomyopathy". Causes
 // and findings of the same disease stay different subjects.
 const FILLER = new Set(['classic', 'characteristic', 'typical', 'source', 'listed', 'described', 'key', 'common', 'important', 'recognized', 'major', 'clinical', 'diagnostic', 'can', 'that', 'which', 'may', 'be', 'is', 'are', 'four', 'main'])
-const RELATION = { caus: 'CAUSE', complication: 'FIND', consequence: 'FIND', cause: 'CAUSE', condition: 'CAUSE', produce: 'CAUSE', lead: 'CAUSE', etiology: 'CAUSE', finding: 'FIND', clue: 'FIND', association: 'FIND', associated: 'FIND', feature: 'FIND', sign: 'FIND', manifestation: 'FIND', presentation: 'FIND' }
+const RELATION = { caus: 'CAUSE', change: 'FIND', complication: 'FIND', consequence: 'FIND', cause: 'CAUSE', condition: 'CAUSE', produce: 'CAUSE', lead: 'CAUSE', etiology: 'CAUSE', finding: 'FIND', clue: 'FIND', association: 'FIND', associated: 'FIND', feature: 'FIND', sign: 'FIND', manifestation: 'FIND', presentation: 'FIND' }
 // Light verb stemming for subjects only ("disrupting" / "disrupt").
 const stem = (w) => (w.length > 6 && w.endsWith('ing') ? w.slice(0, -3) : w.length > 5 && w.endsWith('ed') ? w.slice(0, -2) : w)
 export const subjectKey = (title) => [...new Set(words(title).filter((w) => !FILLER.has(w)).map((w) => RELATION[w] || RELATION[stem(w)] || stem(w)))].sort().join(' ')

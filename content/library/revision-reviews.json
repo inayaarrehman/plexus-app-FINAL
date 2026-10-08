@@ -168,6 +168,13 @@
       "evidence": "Notes: \"Tile 2 Valganciclovir replaced with Maribavir: valganciclovir is the valyl-ester prodrug of ganciclovir ...\"",
       "contentHash": "e69325095fa90b91481c2a3493d30e865076052e6fbc147ca08462c4fdc10a98",
       "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "MSK-031": {
+      "endorsedFinalRow": true,
+      "outstanding": "The review replaced the source tile \"Developmental hip dysplasia\" with \"Transient synovitis of the hip\". The new tile is supported by outside references in Notes (de Borja et al 2022; AAP DDH report), not by the cited Bootcamp pages (pp. 157, 185-187). The review also notes that hip dislocation fits only the general referred-pain principle and is \"less distinctive\". Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).",
+      "evidence": "Notes: \"REVISED: original tile Developmental hip dysplasia replaced with Transient synovitis of the hip ...\"",
+      "contentHash": "35f93d85617c1a3549b26657363a82a417b291d1ec04ca12a2d9b440e4b88d54",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
     }
   }
 }

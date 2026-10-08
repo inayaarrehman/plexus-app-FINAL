@@ -35371,6 +35371,2899 @@
    "pool": "daily",
    "starterBoard": null,
    "placementNote": null
+  },
+  "MSK-001": {
+   "id": "MSK-001",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-001",
+     "Connection Title": "Rotator cuff muscles",
+     "Tile 1": "Supraspinatus",
+     "Tile 2": "Infraspinatus",
+     "Tile 3": "Teres minor",
+     "Tile 4": "Subscapularis",
+     "Connection Type": "Anatomic membership",
+     "Explanation": "These four muscles (SITS) form the rotator cuff and stabilize the glenohumeral joint; teres major is not a cuff muscle and is correctly excluded.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Anatomy",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "SITS; Glenohumeral rotator cuff",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Shoulder & Elbow / Shoulder anatomy; PDF pp. 116",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified against standard anatomy (Moore, Clinically Oriented Anatomy). No competing 4-member category."
+    },
+    "title": "Rotator cuff muscles",
+    "connectionType": "Anatomic membership",
+    "explanation": "These four muscles (SITS) form the rotator cuff and stabilize the glenohumeral joint; teres major is not a cuff muscle and is correctly excluded.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Anatomy",
+    "difficulty": "easy",
+    "alternateNames": [
+     "SITS",
+     "Glenohumeral rotator cuff"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Shoulder & Elbow / Shoulder anatomy; PDF pp. 116",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified against standard anatomy (Moore, Clinically Oriented Anatomy). No competing 4-member category.",
+    "tiles": [
+     "Supraspinatus",
+     "Infraspinatus",
+     "Teres minor",
+     "Subscapularis"
+    ]
+   },
+   "contentHash": "b87e2bc447832637a6db72bfeca204a7ce58450229b238500a377b72b3bbfb16",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 2,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [
+    {
+     "id": "bank-ext-104",
+     "title": "Rotator cuff muscles",
+     "shared": 4
+    }
+   ],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-3",
+   "placementNote": null
+  },
+  "MSK-002": {
+   "id": "MSK-002",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-002",
+     "Connection Title": "Seronegative spondyloarthritides",
+     "Tile 1": "Ankylosing spondylitis",
+     "Tile 2": "Psoriatic arthritis",
+     "Tile 3": "Reactive arthritis",
+     "Tile 4": "IBD-associated (enteropathic) spondyloarthritis",
+     "Connection Type": "Disease family",
+     "Explanation": "The four principal spondyloarthritis entities; enthesitis and axial or peripheral inflammation are characteristic. HLA-B27 strength varies by disease and phenotype and is not universal.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Spondyloarthritis family; HLA-B27-associated arthritides",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Seronegative Spondyloarthritis / Overview; PDF pp. 45-49",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: not all patients are HLA-B27 positive. Board overlap: individual members may collide with HLA-B27 or enthesitis categories."
+    },
+    "title": "Seronegative spondyloarthritides",
+    "connectionType": "Disease family",
+    "explanation": "The four principal spondyloarthritis entities; enthesitis and axial or peripheral inflammation are characteristic. HLA-B27 strength varies by disease and phenotype and is not universal.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Spondyloarthritis family",
+     "HLA-B27-associated arthritides"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Seronegative Spondyloarthritis / Overview; PDF pp. 45-49",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: not all patients are HLA-B27 positive. Board overlap: individual members may collide with HLA-B27 or enthesitis categories.",
+    "tiles": [
+     "Ankylosing spondylitis",
+     "Psoriatic arthritis",
+     "Reactive arthritis",
+     "IBD-associated (enteropathic) spondyloarthritis"
+    ]
+   },
+   "contentHash": "a86fc8594580ba7a4755c4ab9f19f73dee6aa1e2ef1659150eae6bf26633ab55",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 3,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-easy-05",
+     "title": "HLA-B27-associated spondyloarthropathies",
+     "shared": 3,
+     "titleSim": 0
+    },
+    {
+     "id": "bank-ext-103",
+     "title": "Seronegative spondyloarthropathies",
+     "shared": 3,
+     "titleSim": 0.33
+    }
+   ],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-003": {
+   "id": "MSK-003",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-003",
+     "Connection Title": "Enteric triggers of reactive arthritis",
+     "Tile 1": "Campylobacter",
+     "Tile 2": "Salmonella",
+     "Tile 3": "Shigella",
+     "Tile 4": "Yersinia",
+     "Connection Type": "Postinfectious association",
+     "Explanation": "These enteric bacteria can precede sterile reactive arthritis; organisms do not infect the joint. Chlamydia (genitourinary) is the classic non-enteric trigger and is correctly excluded here.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Microbiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Enteric (GI) triggers of reactive arthritis",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Seronegative Spondyloarthritis / Reactive arthritis; PDF pp. 49",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Classic enteric four; not exhaustive (C. difficile also reported). Keep 'enteric' qualifier in title to exclude Chlamydia."
+    },
+    "title": "Enteric triggers of reactive arthritis",
+    "connectionType": "Postinfectious association",
+    "explanation": "These enteric bacteria can precede sterile reactive arthritis; organisms do not infect the joint. Chlamydia (genitourinary) is the classic non-enteric trigger and is correctly excluded here.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Microbiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Enteric (GI) triggers of reactive arthritis"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Seronegative Spondyloarthritis / Reactive arthritis; PDF pp. 49",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Classic enteric four; not exhaustive (C. difficile also reported). Keep 'enteric' qualifier in title to exclude Chlamydia.",
+    "tiles": [
+     "Campylobacter",
+     "Salmonella",
+     "Shigella",
+     "Yersinia"
+    ]
+   },
+   "contentHash": "ee1e032d9bb107a0a53da1eb0fb6a49319b9d0bd105efdf396472c41a9b6d11f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 4,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-004": {
+   "id": "MSK-004",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-004",
+     "Connection Title": "Medications that can promote hyperuricemia",
+     "Tile 1": "Thiazide diuretics",
+     "Tile 2": "Loop diuretics",
+     "Tile 3": "Low-dose aspirin",
+     "Tile 4": "Niacin",
+     "Connection Type": "Drug adverse effect",
+     "Explanation": "These agents can raise serum urate and contribute to gout risk. The aspirin effect is dose-dependent: low-dose (<=2 g/day) raises urate while high-dose (>3 g/day) is uricosuric, so the tile specifies low-dose aspirin.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Drug-associated hyperuricemia; Drug-associated gout risk",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Non-Rheumatologic Diseases / Gout; PDF pp. 11",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Low-dose qualifier is required and verified (Leung et al., Mayo Clin Proc 2022, PMID 35787862; Neogi, NEJM 2011, DOI 10.1056/NEJMcp1001124). Epidemiologic signal is inconsistent (NHANES, PMID 37282368) but mechanism is established. Many other drugs also qualify (cyclosporine, pyrazinamide, ethambutol) - potential board overlap."
+    },
+    "title": "Medications that can promote hyperuricemia",
+    "connectionType": "Drug adverse effect",
+    "explanation": "These agents can raise serum urate and contribute to gout risk. The aspirin effect is dose-dependent: low-dose (<=2 g/day) raises urate while high-dose (>3 g/day) is uricosuric, so the tile specifies low-dose aspirin.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Drug-associated hyperuricemia",
+     "Drug-associated gout risk"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Non-Rheumatologic Diseases / Gout; PDF pp. 11",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Low-dose qualifier is required and verified (Leung et al., Mayo Clin Proc 2022, PMID 35787862; Neogi, NEJM 2011, DOI 10.1056/NEJMcp1001124). Epidemiologic signal is inconsistent (NHANES, PMID 37282368) but mechanism is established. Many other drugs also qualify (cyclosporine, pyrazinamide, ethambutol) - potential board overlap.",
+    "tiles": [
+     "Thiazide diuretics",
+     "Loop diuretics",
+     "Low-dose aspirin",
+     "Niacin"
+    ]
+   },
+   "contentHash": "c52b3d78d94b7fef5e88ba1ab0be37b9927f3bfacda2b396488204782aa43763",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 5,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-005": {
+   "id": "MSK-005",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-005",
+     "Connection Title": "Classic radiographic changes of osteoarthritis",
+     "Tile 1": "Nonuniform (asymmetric) joint-space loss",
+     "Tile 2": "Subchondral sclerosis",
+     "Tile 3": "Marginal osteophytes",
+     "Tile 4": "Subchondral cysts",
+     "Connection Type": "Disease imaging findings",
+     "Explanation": "Cartilage degeneration with adjacent bone remodeling produces this characteristic radiographic cluster. Findings are supportive rather than individually specific.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Degenerative joint disease on X-ray",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Non-Rheumatologic Diseases / Osteoarthritis; PDF pp. 10",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Robbins & Cotran Pathologic Basis of Disease). Contrast with RA's uniform joint-space loss and erosions for board separation."
+    },
+    "title": "Classic radiographic changes of osteoarthritis",
+    "connectionType": "Disease imaging findings",
+    "explanation": "Cartilage degeneration with adjacent bone remodeling produces this characteristic radiographic cluster. Findings are supportive rather than individually specific.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Degenerative joint disease on X-ray"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Non-Rheumatologic Diseases / Osteoarthritis; PDF pp. 10",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Robbins & Cotran Pathologic Basis of Disease). Contrast with RA's uniform joint-space loss and erosions for board separation.",
+    "tiles": [
+     "Nonuniform (asymmetric) joint-space loss",
+     "Subchondral sclerosis",
+     "Marginal osteophytes",
+     "Subchondral cysts"
+    ]
+   },
+   "contentHash": "caedca7e3bda9a8c307d1be07c242d06a09d7395afc58ab646ef9217d535caa6",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 6,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-105",
+     "title": "Radiographic findings in osteoarthritis",
+     "shared": 2,
+     "titleSim": 0.4
+    }
+   ],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-006": {
+   "id": "MSK-006",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-006",
+     "Connection Title": "CPP crystal arthritis diagnostic clues",
+     "Tile 1": "Rhomboid crystals",
+     "Tile 2": "Weak positive birefringence",
+     "Tile 3": "Chondrocalcinosis",
+     "Tile 4": "Blue when aligned parallel to the compensator",
+     "Connection Type": "Disease diagnostic findings",
+     "Explanation": "CPP crystals are typically rhomboid and weakly positively birefringent; under a compensator they appear blue when aligned parallel to its slow axis. Cartilage calcification (chondrocalcinosis) supports CPPD but can be absent and is not specific.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Pseudogout diagnostic clues; CPPD clues",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Non-Rheumatologic Diseases / CPPD; PDF pp. 12",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "CAUTION/board overlap: 'weak positive birefringence' and 'blue parallel to compensator' are closely related optical descriptors (one is the property, one its microscopic manifestation). They are retained as distinct tiles but should not both appear on a 16-tile board as if independent. Color requires compensated polarized microscopy and correct orientation."
+    },
+    "title": "CPP crystal arthritis diagnostic clues",
+    "connectionType": "Disease diagnostic findings",
+    "explanation": "CPP crystals are typically rhomboid and weakly positively birefringent; under a compensator they appear blue when aligned parallel to its slow axis. Cartilage calcification (chondrocalcinosis) supports CPPD but can be absent and is not specific.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Pseudogout diagnostic clues",
+     "CPPD clues"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Non-Rheumatologic Diseases / CPPD; PDF pp. 12",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "CAUTION/board overlap: 'weak positive birefringence' and 'blue parallel to compensator' are closely related optical descriptors (one is the property, one its microscopic manifestation). They are retained as distinct tiles but should not both appear on a 16-tile board as if independent. Color requires compensated polarized microscopy and correct orientation.",
+    "tiles": [
+     "Rhomboid crystals",
+     "Weak positive birefringence",
+     "Chondrocalcinosis",
+     "Blue when aligned parallel to the compensator"
+    ]
+   },
+   "contentHash": "3d62680eb4c93bc0ca08b0840c9126d255b6b14f1a6399c5455c787526050133",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 7,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-007": {
+   "id": "MSK-007",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-007",
+     "Connection Title": "Clinical consequences of osteopetrosis",
+     "Tile 1": "Recurrent fractures",
+     "Tile 2": "Cranial nerve compression",
+     "Tile 3": "Pancytopenia",
+     "Tile 4": "Extramedullary hematopoiesis",
+     "Connection Type": "Disease consequences",
+     "Explanation": "Defective osteoclast resorption yields dense brittle bone (fractures), narrowed cranial foramina (cranial nerve compression), and loss of marrow space (pancytopenia with compensatory extramedullary hematopoiesis). Severity varies markedly by genetic form.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Consequences of osteopetrosis; Marble bone disease sequelae",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Non-Rheumatologic Diseases / Osteopetrosis; PDF pp. 16",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: possible, not universal findings; manifestations differ between infantile (malignant) and adult (benign) forms."
+    },
+    "title": "Clinical consequences of osteopetrosis",
+    "connectionType": "Disease consequences",
+    "explanation": "Defective osteoclast resorption yields dense brittle bone (fractures), narrowed cranial foramina (cranial nerve compression), and loss of marrow space (pancytopenia with compensatory extramedullary hematopoiesis). Severity varies markedly by genetic form.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Consequences of osteopetrosis",
+     "Marble bone disease sequelae"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Non-Rheumatologic Diseases / Osteopetrosis; PDF pp. 16",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: possible, not universal findings; manifestations differ between infantile (malignant) and adult (benign) forms.",
+    "tiles": [
+     "Recurrent fractures",
+     "Cranial nerve compression",
+     "Pancytopenia",
+     "Extramedullary hematopoiesis"
+    ]
+   },
+   "contentHash": "b047b658cdb75d91caca37940f82c60b57d29b34d457d12412e390f7d30786ca",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 8,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-5",
+   "placementNote": null
+  },
+  "MSK-008": {
+   "id": "MSK-008",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-008",
+     "Connection Title": "Skeletal findings of childhood rickets",
+     "Tile 1": "Metaphyseal cupping",
+     "Tile 2": "Metaphyseal fraying",
+     "Tile 3": "Rachitic rosary",
+     "Tile 4": "Craniotabes",
+     "Connection Type": "Disease findings",
+     "Explanation": "Poor mineralization of growing bone causes metaphyseal cupping/fraying, prominent costochondral junctions (rachitic rosary), and soft skull bones (craniotabes).",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Rickets skeletal signs",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Non-Rheumatologic Diseases / Osteomalacia-Rickets; PDF pp. 17",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Nelson Textbook of Pediatrics). Findings not individually diagnostic; craniotabes has other causes (e.g., osteogenesis imperfecta, normal newborns)."
+    },
+    "title": "Skeletal findings of childhood rickets",
+    "connectionType": "Disease findings",
+    "explanation": "Poor mineralization of growing bone causes metaphyseal cupping/fraying, prominent costochondral junctions (rachitic rosary), and soft skull bones (craniotabes).",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Rickets skeletal signs"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Non-Rheumatologic Diseases / Osteomalacia-Rickets; PDF pp. 17",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Nelson Textbook of Pediatrics). Findings not individually diagnostic; craniotabes has other causes (e.g., osteogenesis imperfecta, normal newborns).",
+    "tiles": [
+     "Metaphyseal cupping",
+     "Metaphyseal fraying",
+     "Rachitic rosary",
+     "Craniotabes"
+    ]
+   },
+   "contentHash": "a522dbd9a22b7663c5f84fa2e357f8dcebb294dda3e00a519eeae8e69e047269",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 9,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [
+    "PLX-BCH-059"
+   ],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "held",
+   "starterBoard": null
+  },
+  "MSK-009": {
+   "id": "MSK-009",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-009",
+     "Connection Title": "Classic Paget bone disease associations",
+     "Tile 1": "Increasing hat size",
+     "Tile 2": "Hearing impairment",
+     "Tile 3": "High-output heart failure",
+     "Tile 4": "Osteosarcoma",
+     "Connection Type": "Disease associations",
+     "Explanation": "Skull/bone enlargement increases hat size and can cause hearing loss; extensive hypervascular pagetic bone can contribute to high-output failure, and sarcomatous transformation (osteosarcoma) is a rare late complication.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Paget disease (osteitis deformans) manifestations and complications",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Non-Rheumatologic Diseases / Osteitis deformans; PDF pp. 18",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: high-output failure and osteosarcoma are uncommon; hearing loss is multifactorial (ossicular and nerve mechanisms)."
+    },
+    "title": "Classic Paget bone disease associations",
+    "connectionType": "Disease associations",
+    "explanation": "Skull/bone enlargement increases hat size and can cause hearing loss; extensive hypervascular pagetic bone can contribute to high-output failure, and sarcomatous transformation (osteosarcoma) is a rare late complication.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Paget disease (osteitis deformans) manifestations and complications"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Non-Rheumatologic Diseases / Osteitis deformans; PDF pp. 18",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: high-output failure and osteosarcoma are uncommon; hearing loss is multifactorial (ossicular and nerve mechanisms).",
+    "tiles": [
+     "Increasing hat size",
+     "Hearing impairment",
+     "High-output heart failure",
+     "Osteosarcoma"
+    ]
+   },
+   "contentHash": "0f67e112391a6788392b513e45a0eeb3ce2f94cc0a323a8fe15614394630dd31",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 10,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-1",
+   "placementNote": null
+  },
+  "MSK-010": {
+   "id": "MSK-010",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-010",
+     "Connection Title": "Conventional synthetic DMARDs used in RA",
+     "Tile 1": "Methotrexate",
+     "Tile 2": "Hydroxychloroquine",
+     "Tile 3": "Sulfasalazine",
+     "Tile 4": "Leflunomide",
+     "Connection Type": "Drug therapeutic class",
+     "Explanation": "These conventional synthetic disease-modifying antirheumatic drugs are used in rheumatoid arthritis and are distinct from symptomatic NSAIDs and from biologic/targeted-synthetic DMARDs.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Conventional RA DMARDs; csDMARDs",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Rheumatologic Diseases / Rheumatoid arthritis; PDF pp. 27",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (ACR RA treatment guideline). Clean class; distinguish from bDMARDs (anti-TNF) and tsDMARDs (JAK inhibitors) on a board."
+    },
+    "title": "Conventional synthetic DMARDs used in RA",
+    "connectionType": "Drug therapeutic class",
+    "explanation": "These conventional synthetic disease-modifying antirheumatic drugs are used in rheumatoid arthritis and are distinct from symptomatic NSAIDs and from biologic/targeted-synthetic DMARDs.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Conventional RA DMARDs",
+     "csDMARDs"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Rheumatologic Diseases / Rheumatoid arthritis; PDF pp. 27",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (ACR RA treatment guideline). Clean class; distinguish from bDMARDs (anti-TNF) and tsDMARDs (JAK inhibitors) on a board.",
+    "tiles": [
+     "Methotrexate",
+     "Hydroxychloroquine",
+     "Sulfasalazine",
+     "Leflunomide"
+    ]
+   },
+   "contentHash": "1cb6329d06dac3f219291cdaa1e9118957b4924a593284009c2647aabf0e1286",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 11,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-011": {
+   "id": "MSK-011",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-011",
+     "Connection Title": "Medications classically linked to drug-induced lupus",
+     "Tile 1": "Hydralazine",
+     "Tile 2": "Procainamide",
+     "Tile 3": "Isoniazid",
+     "Tile 4": "Methyldopa",
+     "Connection Type": "Drug adverse effect",
+     "Explanation": "These drugs can cause a lupus-like syndrome; risk is highest with procainamide and hydralazine. Anti-histone antibodies are typical but not uniquely diagnostic.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Drug-induced lupus culprits",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Rheumatologic Diseases / SLE, Drug-induced lupus; PDF pp. 28",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: risk differs substantially by drug. Other culprits (minocycline, quinidine, anti-TNF agents) also qualify - potential board overlap."
+    },
+    "title": "Medications classically linked to drug-induced lupus",
+    "connectionType": "Drug adverse effect",
+    "explanation": "These drugs can cause a lupus-like syndrome; risk is highest with procainamide and hydralazine. Anti-histone antibodies are typical but not uniquely diagnostic.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Drug-induced lupus culprits"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Rheumatologic Diseases / SLE, Drug-induced lupus; PDF pp. 28",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: risk differs substantially by drug. Other culprits (minocycline, quinidine, anti-TNF agents) also qualify - potential board overlap.",
+    "tiles": [
+     "Hydralazine",
+     "Procainamide",
+     "Isoniazid",
+     "Methyldopa"
+    ]
+   },
+   "contentHash": "0c8a4bbf2534f89ad631b793dded82557eef78609e1b051fd63fc677b182a186",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 12,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-012": {
+   "id": "MSK-012",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-012",
+     "Connection Title": "Neonatal lupus manifestations",
+     "Tile 1": "Congenital AV block",
+     "Tile 2": "Periorbital/annular rash",
+     "Tile 3": "Cytopenias",
+     "Tile 4": "Transaminitis",
+     "Connection Type": "Disease findings",
+     "Explanation": "Transplacental maternal anti-Ro/SSA (and sometimes anti-La/SSB) antibodies can produce neonatal cardiac (congenital heart block), cutaneous, hematologic, or hepatic involvement. Not every exposed infant is affected.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Effects of maternal anti-SSA/SSB antibodies",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Rheumatologic Diseases / SLE; PDF pp. 28",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: possible findings, not universal. Congenital AV block is the one typically permanent manifestation; others are usually transient."
+    },
+    "title": "Neonatal lupus manifestations",
+    "connectionType": "Disease findings",
+    "explanation": "Transplacental maternal anti-Ro/SSA (and sometimes anti-La/SSB) antibodies can produce neonatal cardiac (congenital heart block), cutaneous, hematologic, or hepatic involvement. Not every exposed infant is affected.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Effects of maternal anti-SSA/SSB antibodies"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Rheumatologic Diseases / SLE; PDF pp. 28",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: possible findings, not universal. Congenital AV block is the one typically permanent manifestation; others are usually transient.",
+    "tiles": [
+     "Congenital AV block",
+     "Periorbital/annular rash",
+     "Cytopenias",
+     "Transaminitis"
+    ]
+   },
+   "contentHash": "ab2d5da39b73fb006a8eac3c2b1d5d4cdd46e5aac3f084a82d5c393bb5b3010f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 13,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-3",
+   "placementNote": null
+  },
+  "MSK-013": {
+   "id": "MSK-013",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-013",
+     "Connection Title": "Sjogren diagnostic clues",
+     "Tile 1": "Keratoconjunctivitis sicca",
+     "Tile 2": "Xerostomia",
+     "Tile 3": "Reduced Schirmer tear production",
+     "Tile 4": "Salivary gland lymphocytic infiltration",
+     "Connection Type": "Disease diagnostic findings",
+     "Explanation": "Autoimmune exocrine-gland injury produces dry eyes and mouth, reduced tear production, and focal lymphocytic sialadenitis on minor salivary gland biopsy.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Sicca syndrome from Sjogren disease",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Rheumatologic Diseases / Sjogren syndrome; PDF pp. 29",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: symptoms and Schirmer alone are nonspecific; biopsy graded by focus score per ACR/EULAR 2016 criteria."
+    },
+    "title": "Sjogren diagnostic clues",
+    "connectionType": "Disease diagnostic findings",
+    "explanation": "Autoimmune exocrine-gland injury produces dry eyes and mouth, reduced tear production, and focal lymphocytic sialadenitis on minor salivary gland biopsy.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Sicca syndrome from Sjogren disease"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Rheumatologic Diseases / Sjogren syndrome; PDF pp. 29",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: symptoms and Schirmer alone are nonspecific; biopsy graded by focus score per ACR/EULAR 2016 criteria.",
+    "tiles": [
+     "Keratoconjunctivitis sicca",
+     "Xerostomia",
+     "Reduced Schirmer tear production",
+     "Salivary gland lymphocytic infiltration"
+    ]
+   },
+   "contentHash": "86657d169b417baee3ed0ec2fbd33276d7ba4eb80074dae6d7ff5183dc6bf94b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 14,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-2",
+   "placementNote": null
+  },
+  "MSK-014": {
+   "id": "MSK-014",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-014",
+     "Connection Title": "Antiphospholipid syndrome clues",
+     "Tile 1": "Recurrent pregnancy loss",
+     "Tile 2": "Venous thrombosis",
+     "Tile 3": "Arterial thrombosis",
+     "Tile 4": "Livedo reticularis",
+     "Connection Type": "Disease clinical associations",
+     "Explanation": "APS is characterized by venous and arterial thrombosis and pregnancy morbidity; livedo reticularis is a common associated cutaneous finding. Diagnosis requires persistent antiphospholipid antibodies plus clinical criteria.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Antiphospholipid syndrome clues",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Rheumatologic Diseases / Antiphospholipid syndrome; PDF pp. 30",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: no single clue is diagnostic; requires persistently positive lupus anticoagulant, anti-cardiolipin, or anti-beta2-glycoprotein I."
+    },
+    "title": "Antiphospholipid syndrome clues",
+    "connectionType": "Disease clinical associations",
+    "explanation": "APS is characterized by venous and arterial thrombosis and pregnancy morbidity; livedo reticularis is a common associated cutaneous finding. Diagnosis requires persistent antiphospholipid antibodies plus clinical criteria.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Antiphospholipid syndrome clues"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Rheumatologic Diseases / Antiphospholipid syndrome; PDF pp. 30",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: no single clue is diagnostic; requires persistently positive lupus anticoagulant, anti-cardiolipin, or anti-beta2-glycoprotein I.",
+    "tiles": [
+     "Recurrent pregnancy loss",
+     "Venous thrombosis",
+     "Arterial thrombosis",
+     "Livedo reticularis"
+    ]
+   },
+   "contentHash": "3558a3c14f8eee14853cd6cdd0b3080e91c3adb961580d8368c757e05bccd47d",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 15,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [
+    "PLX-HEM-038"
+   ],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "held",
+   "starterBoard": null
+  },
+  "MSK-015": {
+   "id": "MSK-015",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-015",
+     "Connection Title": "Dermatomyositis skin findings",
+     "Tile 1": "Heliotrope rash",
+     "Tile 2": "Gottron papules",
+     "Tile 3": "Shawl sign",
+     "Tile 4": "V-sign rash",
+     "Connection Type": "Disease skin findings",
+     "Explanation": "These are distinct cutaneous findings of dermatomyositis: heliotrope eyelid rash, Gottron papules over the knuckles, the shawl sign (posterior shoulders/upper back), and the V-sign (anterior neck/chest). Each is a different anatomic distribution.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Cutaneous dermatomyositis findings",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Rheumatologic Diseases / Polymyositis-Dermatomyositis; PDF pp. 33",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. Shawl and V signs are distinct distributions, not synonyms. Mechanic's hands intentionally omitted (more specific to antisynthetase syndrome)."
+    },
+    "title": "Dermatomyositis skin findings",
+    "connectionType": "Disease skin findings",
+    "explanation": "These are distinct cutaneous findings of dermatomyositis: heliotrope eyelid rash, Gottron papules over the knuckles, the shawl sign (posterior shoulders/upper back), and the V-sign (anterior neck/chest). Each is a different anatomic distribution.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Cutaneous dermatomyositis findings"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Rheumatologic Diseases / Polymyositis-Dermatomyositis; PDF pp. 33",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. Shawl and V signs are distinct distributions, not synonyms. Mechanic's hands intentionally omitted (more specific to antisynthetase syndrome).",
+    "tiles": [
+     "Heliotrope rash",
+     "Gottron papules",
+     "Shawl sign",
+     "V-sign rash"
+    ]
+   },
+   "contentHash": "b8ad0b5efc6cb7bdd589b47804aaeb8b49b2010db86d587a986238e5f62360e9",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 16,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-5",
+   "placementNote": null
+  },
+  "MSK-017": {
+   "id": "MSK-017",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-017",
+     "Connection Title": "Characteristic limited systemic sclerosis features",
+     "Tile 1": "Calcinosis cutis",
+     "Tile 2": "Raynaud phenomenon",
+     "Tile 3": "Sclerodactyly",
+     "Tile 4": "Telangiectasias",
+     "Connection Type": "Disease findings",
+     "Explanation": "Four components of the classic CREST phenotype of limited cutaneous systemic sclerosis. Esophageal dysmotility is the fifth (omitted) component; not all features need be present simultaneously.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "CREST features; Limited cutaneous systemic sclerosis",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Rheumatologic Diseases / Scleroderma; PDF pp. 37",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: this is 4 of 5 CREST components (E = esophageal dysmotility omitted). Associated with anti-centromere antibody. Board note: do not place esophageal dysmotility as a distractor on the same board."
+    },
+    "title": "Characteristic limited systemic sclerosis features",
+    "connectionType": "Disease findings",
+    "explanation": "Four components of the classic CREST phenotype of limited cutaneous systemic sclerosis. Esophageal dysmotility is the fifth (omitted) component; not all features need be present simultaneously.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "CREST features",
+     "Limited cutaneous systemic sclerosis"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Rheumatologic Diseases / Scleroderma; PDF pp. 37",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: this is 4 of 5 CREST components (E = esophageal dysmotility omitted). Associated with anti-centromere antibody. Board note: do not place esophageal dysmotility as a distractor on the same board.",
+    "tiles": [
+     "Calcinosis cutis",
+     "Raynaud phenomenon",
+     "Sclerodactyly",
+     "Telangiectasias"
+    ]
+   },
+   "contentHash": "53e91e707b5e36c3032218c63d1c69d4016ffde76d0c926a02ae9d6740ea82f0",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 17,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-018": {
+   "id": "MSK-018",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-018",
+     "Connection Title": "Sarcoidosis diagnostic associations",
+     "Tile 1": "Bilateral hilar lymphadenopathy",
+     "Tile 2": "Noncaseating granulomas",
+     "Tile 3": "Elevated serum ACE",
+     "Tile 4": "Increased BAL CD4:CD8 ratio",
+     "Connection Type": "Disease diagnostic findings",
+     "Explanation": "These findings support sarcoidosis after exclusion of other granulomatous disorders. Serum ACE and the elevated bronchoalveolar lavage CD4:CD8 ratio have limited sensitivity and specificity and are not required.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Sarcoidosis diagnostic associations",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Rheumatologic Diseases / Sarcoidosis; PDF pp. 38",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: noncaseating granulomas have many causes; sarcoidosis is a diagnosis of exclusion. Classified under Pathology though commonly multisystem/pulmonary."
+    },
+    "title": "Sarcoidosis diagnostic associations",
+    "connectionType": "Disease diagnostic findings",
+    "explanation": "These findings support sarcoidosis after exclusion of other granulomatous disorders. Serum ACE and the elevated bronchoalveolar lavage CD4:CD8 ratio have limited sensitivity and specificity and are not required.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Sarcoidosis diagnostic associations"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Rheumatologic Diseases / Sarcoidosis; PDF pp. 38",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: noncaseating granulomas have many causes; sarcoidosis is a diagnosis of exclusion. Classified under Pathology though commonly multisystem/pulmonary.",
+    "tiles": [
+     "Bilateral hilar lymphadenopathy",
+     "Noncaseating granulomas",
+     "Elevated serum ACE",
+     "Increased BAL CD4:CD8 ratio"
+    ]
+   },
+   "contentHash": "2077fc95ec17cc20cbd7ad87805bd9ce46a3c5a6dca99f8db8b2d728062b3acd",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 18,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-066",
+     "title": "Features of sarcoidosis",
+     "shared": 2,
+     "titleSim": 0.25
+    }
+   ],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-5",
+   "placementNote": null
+  },
+  "MSK-019": {
+   "id": "MSK-019",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-019",
+     "Connection Title": "Predispositions to osteosarcoma",
+     "Tile 1": "Paget disease of bone",
+     "Tile 2": "Prior bone irradiation",
+     "Tile 3": "Hereditary retinoblastoma",
+     "Tile 4": "Li-Fraumeni syndrome",
+     "Connection Type": "Malignancy risk association",
+     "Explanation": "Abnormal bone remodeling (Paget), prior radiation, and inherited tumor-suppressor defects (germline RB1 in hereditary retinoblastoma; TP53 in Li-Fraumeni) are established osteosarcoma risk contexts.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Osteosarcoma risk settings",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Primary Bone Tumors / Osteosarcoma; PDF pp. 57",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. 'Hereditary retinoblastoma' qualifier preserves the germline RB1 risk context (secondary osteosarcoma risk, radiation-independent)."
+    },
+    "title": "Predispositions to osteosarcoma",
+    "connectionType": "Malignancy risk association",
+    "explanation": "Abnormal bone remodeling (Paget), prior radiation, and inherited tumor-suppressor defects (germline RB1 in hereditary retinoblastoma; TP53 in Li-Fraumeni) are established osteosarcoma risk contexts.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Osteosarcoma risk settings"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Primary Bone Tumors / Osteosarcoma; PDF pp. 57",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. 'Hereditary retinoblastoma' qualifier preserves the germline RB1 risk context (secondary osteosarcoma risk, radiation-independent).",
+    "tiles": [
+     "Paget disease of bone",
+     "Prior bone irradiation",
+     "Hereditary retinoblastoma",
+     "Li-Fraumeni syndrome"
+    ]
+   },
+   "contentHash": "5e70c4dcfa14a80d8f2d589d79ce708293bc282b310ccd4c8aeaefc07673cd59",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 19,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-2",
+   "placementNote": null
+  },
+  "MSK-020": {
+   "id": "MSK-020",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-020",
+     "Connection Title": "Classic Ewing sarcoma clues",
+     "Tile 1": "Diaphyseal lesion",
+     "Tile 2": "Onion-skin periosteal reaction",
+     "Tile 3": "Small round blue cells",
+     "Tile 4": "EWSR1-FLI1 fusion",
+     "Connection Type": "Disease diagnostic findings",
+     "Explanation": "Ewing sarcoma often arises in the diaphysis of long bones and shows a lamellated 'onion-skin' periosteal reaction, small round blue cell histology, and the t(11;22) EWSR1-FLI1 fusion in most cases.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Ewing sarcoma associations",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Primary Bone Tumors / Ewing sarcoma; PDF pp. 59",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: other sites and fusion partners (e.g., EWSR1-ERG) occur; histology/periosteal appearance are not individually specific. Board overlap: small round blue cell tumor differential."
+    },
+    "title": "Classic Ewing sarcoma clues",
+    "connectionType": "Disease diagnostic findings",
+    "explanation": "Ewing sarcoma often arises in the diaphysis of long bones and shows a lamellated 'onion-skin' periosteal reaction, small round blue cell histology, and the t(11;22) EWSR1-FLI1 fusion in most cases.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Ewing sarcoma associations"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Primary Bone Tumors / Ewing sarcoma; PDF pp. 59",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: other sites and fusion partners (e.g., EWSR1-ERG) occur; histology/periosteal appearance are not individually specific. Board overlap: small round blue cell tumor differential.",
+    "tiles": [
+     "Diaphyseal lesion",
+     "Onion-skin periosteal reaction",
+     "Small round blue cells",
+     "EWSR1-FLI1 fusion"
+    ]
+   },
+   "contentHash": "2322db2c12f9ec8f21ef0bbc529bef123538ee1e84d87920f5645137d46e250d",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 20,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-021": {
+   "id": "MSK-021",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-021",
+     "Connection Title": "Giant cell arteritis cranial clues",
+     "Tile 1": "New temporal headache",
+     "Tile 2": "Jaw claudication",
+     "Tile 3": "Transient monocular vision loss",
+     "Tile 4": "Temporal artery giant-cell inflammation",
+     "Connection Type": "Disease clinical-pathologic association",
+     "Explanation": "In an older patient, cranial ischemic symptoms with compatible temporal artery histology support GCA; visual symptoms warrant urgent high-dose glucocorticoids. Biopsy can miss skip lesions.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Temporal arteritis clues",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Vasculitides / Giant cell arteritis; PDF pp. 69",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: biopsy skip lesions occur and giant cells are not required in every positive specimen. Strong link to polymyalgia rheumatica (board overlap)."
+    },
+    "title": "Giant cell arteritis cranial clues",
+    "connectionType": "Disease clinical-pathologic association",
+    "explanation": "In an older patient, cranial ischemic symptoms with compatible temporal artery histology support GCA; visual symptoms warrant urgent high-dose glucocorticoids. Biopsy can miss skip lesions.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Temporal arteritis clues"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Vasculitides / Giant cell arteritis; PDF pp. 69",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: biopsy skip lesions occur and giant cells are not required in every positive specimen. Strong link to polymyalgia rheumatica (board overlap).",
+    "tiles": [
+     "New temporal headache",
+     "Jaw claudication",
+     "Transient monocular vision loss",
+     "Temporal artery giant-cell inflammation"
+    ]
+   },
+   "contentHash": "a8a139259f464dabcadb4aa9ae99b3c1f5159631ae76227337a025d04c64c59f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 21,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-022": {
+   "id": "MSK-022",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-022",
+     "Connection Title": "Granulomatosis with polyangiitis clues",
+     "Tile 1": "PR3-ANCA (c-ANCA)",
+     "Tile 2": "Chronic sinusitis",
+     "Tile 3": "Cavitating pulmonary nodules",
+     "Tile 4": "Pauci-immune glomerulonephritis",
+     "Connection Type": "Disease diagnostic findings",
+     "Explanation": "The upper-airway, pulmonary, renal, and PR3-ANCA pattern is characteristic of GPA. PR3-ANCA is not universal and renal involvement or cavitation may be absent.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "GPA; Wegener granulomatosis associations",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Vasculitides / GPA; PDF pp. 77",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: ~10-20% PR3-ANCA negative. Board overlap with MPA and EGPA (ANCA-associated vasculitides); the sinus + cavitation combination distinguishes GPA."
+    },
+    "title": "Granulomatosis with polyangiitis clues",
+    "connectionType": "Disease diagnostic findings",
+    "explanation": "The upper-airway, pulmonary, renal, and PR3-ANCA pattern is characteristic of GPA. PR3-ANCA is not universal and renal involvement or cavitation may be absent.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "GPA",
+     "Wegener granulomatosis associations"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Vasculitides / GPA; PDF pp. 77",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: ~10-20% PR3-ANCA negative. Board overlap with MPA and EGPA (ANCA-associated vasculitides); the sinus + cavitation combination distinguishes GPA.",
+    "tiles": [
+     "PR3-ANCA (c-ANCA)",
+     "Chronic sinusitis",
+     "Cavitating pulmonary nodules",
+     "Pauci-immune glomerulonephritis"
+    ]
+   },
+   "contentHash": "dd8e9639f8916b9d3399db2d330dbc907aaf11ad753f0acbac24cff94abb8bbb",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 22,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-023": {
+   "id": "MSK-023",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-023",
+     "Connection Title": "IgA vasculitis organ manifestations",
+     "Tile 1": "Palpable purpura",
+     "Tile 2": "Arthralgia",
+     "Tile 3": "Colicky abdominal pain",
+     "Tile 4": "Hematuria",
+     "Connection Type": "Disease clinical findings",
+     "Explanation": "IgA-mediated small-vessel vasculitis affects skin, joints, gut, and kidney, classically in children after an upper respiratory infection. The tetrad need not occur simultaneously; renal involvement may appear later.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Henoch-Schonlein purpura tetrad",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Vasculitides / IgA vasculitis; PDF pp. 78",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. Mandatory feature is palpable purpura; renal manifestation (IgA nephropathy-type) may be delayed."
+    },
+    "title": "IgA vasculitis organ manifestations",
+    "connectionType": "Disease clinical findings",
+    "explanation": "IgA-mediated small-vessel vasculitis affects skin, joints, gut, and kidney, classically in children after an upper respiratory infection. The tetrad need not occur simultaneously; renal involvement may appear later.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Henoch-Schonlein purpura tetrad"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Vasculitides / IgA vasculitis; PDF pp. 78",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. Mandatory feature is palpable purpura; renal manifestation (IgA nephropathy-type) may be delayed.",
+    "tiles": [
+     "Palpable purpura",
+     "Arthralgia",
+     "Colicky abdominal pain",
+     "Hematuria"
+    ]
+   },
+   "contentHash": "2024661489c9d02f13a9708d4d6e67d3c4c69d6408313fb2f6bc5e0a089db53f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 23,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-2",
+   "placementNote": null
+  },
+  "MSK-024": {
+   "id": "MSK-024",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-024",
+     "Connection Title": "Autoimmune rheumatic diseases associated with Raynaud phenomenon",
+     "Tile 1": "Systemic sclerosis",
+     "Tile 2": "Systemic lupus erythematosus",
+     "Tile 3": "Mixed connective tissue disease",
+     "Tile 4": "Sjogren syndrome",
+     "Connection Type": "Shared clinical association",
+     "Explanation": "Each connective tissue disease is associated with secondary Raynaud phenomenon, though frequency and significance differ (near-universal in systemic sclerosis and MCTD, less so in SLE and Sjogren).",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Connective tissue diseases with secondary Raynaud",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Rheumatologic Diseases / Sjogren, Raynaud, Scleroderma-MCTD; PDF pp. 29,36-37",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: association strength varies widely. Board overlap: these four also cluster under 'ANA-positive connective tissue diseases.'"
+    },
+    "title": "Autoimmune rheumatic diseases associated with Raynaud phenomenon",
+    "connectionType": "Shared clinical association",
+    "explanation": "Each connective tissue disease is associated with secondary Raynaud phenomenon, though frequency and significance differ (near-universal in systemic sclerosis and MCTD, less so in SLE and Sjogren).",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Connective tissue diseases with secondary Raynaud"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Rheumatologic Diseases / Sjogren, Raynaud, Scleroderma-MCTD; PDF pp. 29,36-37",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: association strength varies widely. Board overlap: these four also cluster under 'ANA-positive connective tissue diseases.'",
+    "tiles": [
+     "Systemic sclerosis",
+     "Systemic lupus erythematosus",
+     "Mixed connective tissue disease",
+     "Sjogren syndrome"
+    ]
+   },
+   "contentHash": "c199247165a8780ef7530c45b309f6527695e59ef22351336ef58ff85d74e132",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 24,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-025": {
+   "id": "MSK-025",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-025",
+     "Connection Title": "Ulnar nerve injury settings",
+     "Tile 1": "Hook of hamate fracture",
+     "Tile 2": "Medial epicondyle fracture",
+     "Tile 3": "Guyon canal compression",
+     "Tile 4": "Cubital tunnel compression",
+     "Connection Type": "Nerve lesion association",
+     "Explanation": "These fracture and entrapment sites threaten the ulnar nerve at the wrist (hook of hamate, Guyon canal) or elbow (medial epicondyle, cubital tunnel). Deficits vary by level; dorsal hand sensation is usually spared in Guyon canal lesions.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Causes of ulnar neuropathy",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Brachial Plexus / Ulnar nerve; PDF pp. 103",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. Preserve level-dependent deficit nuance for teaching."
+    },
+    "title": "Ulnar nerve injury settings",
+    "connectionType": "Nerve lesion association",
+    "explanation": "These fracture and entrapment sites threaten the ulnar nerve at the wrist (hook of hamate, Guyon canal) or elbow (medial epicondyle, cubital tunnel). Deficits vary by level; dorsal hand sensation is usually spared in Guyon canal lesions.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Causes of ulnar neuropathy"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Brachial Plexus / Ulnar nerve; PDF pp. 103",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. Preserve level-dependent deficit nuance for teaching.",
+    "tiles": [
+     "Hook of hamate fracture",
+     "Medial epicondyle fracture",
+     "Guyon canal compression",
+     "Cubital tunnel compression"
+    ]
+   },
+   "contentHash": "f8787caddc4da452619b8e172a641cc7b6cc609f2f3bb287787751008c829c41",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 25,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-4",
+   "placementNote": null
+  },
+  "MSK-026": {
+   "id": "MSK-026",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-026",
+     "Connection Title": "Muscles supplied by the obturator nerve",
+     "Tile 1": "Adductor longus",
+     "Tile 2": "Adductor brevis",
+     "Tile 3": "Gracilis",
+     "Tile 4": "Adductor part of adductor magnus",
+     "Connection Type": "Shared innervation",
+     "Explanation": "The obturator nerve supplies these medial-thigh adductors. Adductor magnus is dually innervated; only its adductor part is obturator-supplied (the hamstring part is tibial-division sciatic), so that tile is qualified.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Anatomy",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Obturator-innervated thigh adductors",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Lower Extremity Nerves / Obturator nerve; PDF pp. 142",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Qualifier on adductor magnus verified (Moore, Clinically Oriented Anatomy). Board note: obturator externus and (variably) pectineus are also obturator-innervated - avoid using them as distractors on the same board."
+    },
+    "title": "Muscles supplied by the obturator nerve",
+    "connectionType": "Shared innervation",
+    "explanation": "The obturator nerve supplies these medial-thigh adductors. Adductor magnus is dually innervated; only its adductor part is obturator-supplied (the hamstring part is tibial-division sciatic), so that tile is qualified.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Anatomy",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Obturator-innervated thigh adductors"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Lower Extremity Nerves / Obturator nerve; PDF pp. 142",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Qualifier on adductor magnus verified (Moore, Clinically Oriented Anatomy). Board note: obturator externus and (variably) pectineus are also obturator-innervated - avoid using them as distractors on the same board.",
+    "tiles": [
+     "Adductor longus",
+     "Adductor brevis",
+     "Gracilis",
+     "Adductor part of adductor magnus"
+    ]
+   },
+   "contentHash": "169ed690f6f4eee99ba49d7ed10cd155c4deac0670be4a207491eed76fa9b82a",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 26,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-028": {
+   "id": "MSK-028",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-028",
+     "Connection Title": "Hip extensor muscles",
+     "Tile 1": "Gluteus maximus",
+     "Tile 2": "Long head of biceps femoris",
+     "Tile 3": "Semimembranosus",
+     "Tile 4": "Semitendinosus",
+     "Connection Type": "Shared action",
+     "Explanation": "Gluteus maximus and the three hamstrings shown extend the hip. The short head of biceps femoris does not cross the hip and is correctly excluded; the long-head qualifier prevents that objection.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Anatomy",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Muscles extending the hip",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Hip & Knee / Hip anatomy; Lower Extremity Nerves; PDF pp. 144,153",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Long-head qualifier verified. Board note: the adductor (hamstring) part of adductor magnus is also a hip extensor - a plausible competing member; avoid on the same board."
+    },
+    "title": "Hip extensor muscles",
+    "connectionType": "Shared action",
+    "explanation": "Gluteus maximus and the three hamstrings shown extend the hip. The short head of biceps femoris does not cross the hip and is correctly excluded; the long-head qualifier prevents that objection.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Anatomy",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Muscles extending the hip"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Hip & Knee / Hip anatomy; Lower Extremity Nerves; PDF pp. 144,153",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Long-head qualifier verified. Board note: the adductor (hamstring) part of adductor magnus is also a hip extensor - a plausible competing member; avoid on the same board.",
+    "tiles": [
+     "Gluteus maximus",
+     "Long head of biceps femoris",
+     "Semimembranosus",
+     "Semitendinosus"
+    ]
+   },
+   "contentHash": "ead070ec8b5812c47c73b1c55c1b814debebf3d66d2670ceda8d0d9984925ad7",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 27,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-029": {
+   "id": "MSK-029",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-029",
+     "Connection Title": "Quadriceps muscles that extend the knee",
+     "Tile 1": "Rectus femoris",
+     "Tile 2": "Vastus medialis",
+     "Tile 3": "Vastus lateralis",
+     "Tile 4": "Vastus intermedius",
+     "Connection Type": "Anatomic membership and action",
+     "Explanation": "These four femoral-nerve-innervated muscles form the quadriceps femoris and act through the extensor mechanism to extend the knee.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Anatomy",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Quadriceps femoris; Femoral-innervated knee extensors",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Hip & Knee / Knee anatomy; PDF pp. 160",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. Clean closed set; only rectus femoris also crosses the hip (a teaching nuance, not a competing member)."
+    },
+    "title": "Quadriceps muscles that extend the knee",
+    "connectionType": "Anatomic membership and action",
+    "explanation": "These four femoral-nerve-innervated muscles form the quadriceps femoris and act through the extensor mechanism to extend the knee.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Anatomy",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Quadriceps femoris",
+     "Femoral-innervated knee extensors"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Hip & Knee / Knee anatomy; PDF pp. 160",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. Clean closed set; only rectus femoris also crosses the hip (a teaching nuance, not a competing member).",
+    "tiles": [
+     "Rectus femoris",
+     "Vastus medialis",
+     "Vastus lateralis",
+     "Vastus intermedius"
+    ]
+   },
+   "contentHash": "1dd54cdb394cb663f006298534de916575ff4a44de6157fe70dfb84caa7220eb",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 28,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-3",
+   "placementNote": null
+  },
+  "MSK-030": {
+   "id": "MSK-030",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-030",
+     "Connection Title": "Principal stabilizing ligaments of the knee",
+     "Tile 1": "Anterior cruciate ligament",
+     "Tile 2": "Posterior cruciate ligament",
+     "Tile 3": "Medial collateral ligament",
+     "Tile 4": "Lateral collateral ligament",
+     "Connection Type": "Anatomic functional set",
+     "Explanation": "The cruciate ligaments resist anteroposterior tibial translation and the collateral ligaments resist valgus (MCL) and varus (LCL) stress.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Anatomy",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "ACL PCL MCL LCL; Cruciate and collateral knee ligaments",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Hip & Knee / Knee anatomy and ligament injuries; PDF pp. 160-162",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. Clean canonical four-ligament set."
+    },
+    "title": "Principal stabilizing ligaments of the knee",
+    "connectionType": "Anatomic functional set",
+    "explanation": "The cruciate ligaments resist anteroposterior tibial translation and the collateral ligaments resist valgus (MCL) and varus (LCL) stress.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Anatomy",
+    "difficulty": "easy",
+    "alternateNames": [
+     "ACL PCL MCL LCL",
+     "Cruciate and collateral knee ligaments"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Hip & Knee / Knee anatomy and ligament injuries; PDF pp. 160-162",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. Clean canonical four-ligament set.",
+    "tiles": [
+     "Anterior cruciate ligament",
+     "Posterior cruciate ligament",
+     "Medial collateral ligament",
+     "Lateral collateral ligament"
+    ]
+   },
+   "contentHash": "de024fe57e65e1d23d17574ea7317b42cef9fab3fc41227b691985a32e296c9f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 29,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-4",
+   "placementNote": null
+  },
+  "MSK-031": {
+   "id": "MSK-031",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-031",
+     "Connection Title": "Pediatric hip disorders that can present with referred knee pain",
+     "Tile 1": "Slipped capital femoral epiphysis",
+     "Tile 2": "Legg-Calve-Perthes disease",
+     "Tile 3": "Transient synovitis of the hip",
+     "Tile 4": "Hip dislocation",
+     "Connection Type": "Referred pain association",
+     "Explanation": "Hip pathology commonly refers pain to the thigh or knee via the obturator nerve, so knee symptoms warrant hip examination. SCFE presents with knee or distal-thigh pain in roughly a quarter of cases, and Legg-Calve-Perthes classically refers pain to the knee.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Clinical Medicine",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Hip pathology presenting as knee pain",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Childhood MSK / SCFE, Perthes; Hip & Knee / Dislocation; PDF pp. 157,185-187",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "REVISED: original tile 'Developmental hip dysplasia' replaced with 'Transient synovitis of the hip.' Infant DDH is clinically silent/painless and is detected by Ortolani/limited abduction, not knee pain (AAP DDH clinical report, Shaw & Segal, Pediatrics 2016; Singh et al., JAMA 2024 Rational Clinical Examination). Referred knee pain is best documented for SCFE (Webb et al., Am Fam Physician 2025; Karkenny et al., Pediatrics in Review 2018) and Perthes; transient synovitis is a common pediatric hip condition that presents with hip/limp and thigh-knee discomfort (de Borja et al., Curr Rev Musculoskelet Med 2022). Board note: referred knee pain is strongest for SCFE and Perthes; hip dislocation fits the general referred-pain principle but is less distinctive."
+    },
+    "title": "Pediatric hip disorders that can present with referred knee pain",
+    "connectionType": "Referred pain association",
+    "explanation": "Hip pathology commonly refers pain to the thigh or knee via the obturator nerve, so knee symptoms warrant hip examination. SCFE presents with knee or distal-thigh pain in roughly a quarter of cases, and Legg-Calve-Perthes classically refers pain to the knee.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Clinical Medicine",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Hip pathology presenting as knee pain"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Childhood MSK / SCFE, Perthes; Hip & Knee / Dislocation; PDF pp. 157,185-187",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "REVISED: original tile 'Developmental hip dysplasia' replaced with 'Transient synovitis of the hip.' Infant DDH is clinically silent/painless and is detected by Ortolani/limited abduction, not knee pain (AAP DDH clinical report, Shaw & Segal, Pediatrics 2016; Singh et al., JAMA 2024 Rational Clinical Examination). Referred knee pain is best documented for SCFE (Webb et al., Am Fam Physician 2025; Karkenny et al., Pediatrics in Review 2018) and Perthes; transient synovitis is a common pediatric hip condition that presents with hip/limp and thigh-knee discomfort (de Borja et al., Curr Rev Musculoskelet Med 2022). Board note: referred knee pain is strongest for SCFE and Perthes; hip dislocation fits the general referred-pain principle but is less distinctive.",
+    "tiles": [
+     "Slipped capital femoral epiphysis",
+     "Legg-Calve-Perthes disease",
+     "Transient synovitis of the hip",
+     "Hip dislocation"
+    ]
+   },
+   "contentHash": "35f93d85617c1a3549b26657363a82a417b291d1ec04ca12a2d9b440e4b88d54",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 30,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": null,
+    "reviewer": "OpenEvidence",
+    "outstanding": "The review replaced the source tile \"Developmental hip dysplasia\" with \"Transient synovitis of the hip\". The new tile is supported by outside references in Notes (de Borja et al 2022; AAP DDH report), not by the cited Bootcamp pages (pp. 157, 185-187). The review also notes that hip dislocation fits only the general referred-pain principle and is \"less distinctive\". Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).",
+    "approved": false,
+    "state": "held"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "review",
+   "starterBoard": null
+  },
+  "MSK-032": {
+   "id": "MSK-032",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-032",
+     "Connection Title": "Nontraumatic osteonecrosis risk settings",
+     "Tile 1": "Glucocorticoid exposure",
+     "Tile 2": "Heavy alcohol use",
+     "Tile 3": "Gaucher disease",
+     "Tile 4": "Decompression sickness",
+     "Connection Type": "Disease risk association",
+     "Explanation": "These settings compromise bone perfusion or marrow microcirculation and predispose to avascular (osteo)necrosis, classically of the femoral head. They do not invariably cause osteonecrosis.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Nontraumatic avascular necrosis associations",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Hip & Knee / Avascular necrosis; PDF pp. 159",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. 'Heavy' alcohol qualifier preserves the dose-related risk context."
+    },
+    "title": "Nontraumatic osteonecrosis risk settings",
+    "connectionType": "Disease risk association",
+    "explanation": "These settings compromise bone perfusion or marrow microcirculation and predispose to avascular (osteo)necrosis, classically of the femoral head. They do not invariably cause osteonecrosis.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Nontraumatic avascular necrosis associations"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Hip & Knee / Avascular necrosis; PDF pp. 159",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. 'Heavy' alcohol qualifier preserves the dose-related risk context.",
+    "tiles": [
+     "Glucocorticoid exposure",
+     "Heavy alcohol use",
+     "Gaucher disease",
+     "Decompression sickness"
+    ]
+   },
+   "contentHash": "78724b7f652201424888a1052f5102dea4491cded58aee30aaabe81e095463c0",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 31,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-1",
+   "placementNote": null
+  },
+  "MSK-033": {
+   "id": "MSK-033",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-033",
+     "Connection Title": "Causes of acute limb compartment syndrome",
+     "Tile 1": "Fracture",
+     "Tile 2": "Burn edema",
+     "Tile 3": "Reperfusion injury",
+     "Tile 4": "Envenomation",
+     "Connection Type": "Shared complication",
+     "Explanation": "These processes raise pressure within a closed fascial compartment, compromising perfusion and injuring nerve and muscle. Risk depends on severity; palpable pulses do not exclude the diagnosis.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Triggers of acute compartment syndrome",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Hip & Knee / Limb compartment syndrome; PDF pp. 164",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. Preserve nuance: normal pulses do not rule out compartment syndrome; fracture is the most common cause."
+    },
+    "title": "Causes of acute limb compartment syndrome",
+    "connectionType": "Shared complication",
+    "explanation": "These processes raise pressure within a closed fascial compartment, compromising perfusion and injuring nerve and muscle. Risk depends on severity; palpable pulses do not exclude the diagnosis.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Triggers of acute compartment syndrome"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Hip & Knee / Limb compartment syndrome; PDF pp. 164",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. Preserve nuance: normal pulses do not rule out compartment syndrome; fracture is the most common cause.",
+    "tiles": [
+     "Fracture",
+     "Burn edema",
+     "Reperfusion injury",
+     "Envenomation"
+    ]
+   },
+   "contentHash": "c445d807e3adb512597479eaec2fe91c0c7a9b655b5c1c08a0928365dbe63556",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 32,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-2",
+   "placementNote": null
+  },
+  "MSK-034": {
+   "id": "MSK-034",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-034",
+     "Connection Title": "Bony tenderness sites in the Ottawa ankle-foot rules",
+     "Tile 1": "Posterior edge or tip of lateral malleolus",
+     "Tile 2": "Posterior edge or tip of medial malleolus",
+     "Tile 3": "Base of the fifth metatarsal",
+     "Tile 4": "Navicular",
+     "Connection Type": "Clinical decision-rule landmarks",
+     "Explanation": "These are the bony tenderness landmarks of the Ottawa ankle (malleolar) and foot (midfoot) rules, applied together with inability to bear weight for four steps. They are landmarks, not the complete rule.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Clinical Medicine",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Ottawa ankle and foot rule landmarks",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Foot & Ankle / Ankle sprain; PDF pp. 173",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified against Ottawa Ankle Rules (Stiell et al.). Board note: apply with the weight-bearing criterion and age/exclusion caveats; tiles are landmarks only."
+    },
+    "title": "Bony tenderness sites in the Ottawa ankle-foot rules",
+    "connectionType": "Clinical decision-rule landmarks",
+    "explanation": "These are the bony tenderness landmarks of the Ottawa ankle (malleolar) and foot (midfoot) rules, applied together with inability to bear weight for four steps. They are landmarks, not the complete rule.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Clinical Medicine",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Ottawa ankle and foot rule landmarks"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Foot & Ankle / Ankle sprain; PDF pp. 173",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified against Ottawa Ankle Rules (Stiell et al.). Board note: apply with the weight-bearing criterion and age/exclusion caveats; tiles are landmarks only.",
+    "tiles": [
+     "Posterior edge or tip of lateral malleolus",
+     "Posterior edge or tip of medial malleolus",
+     "Base of the fifth metatarsal",
+     "Navicular"
+    ]
+   },
+   "contentHash": "9a2d25dedbbb1bdcdb9ad0dfb4518bfb3aa68fe29d4a11fb54160cc61a446c9d",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 33,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "MSK-035": {
+   "id": "MSK-035",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-035",
+     "Connection Title": "High-risk stress fracture sites",
+     "Tile 1": "Tension (superolateral) side of the femoral neck",
+     "Tile 2": "Anterior tibial cortex",
+     "Tile 3": "Talus",
+     "Tile 4": "Proximal fifth metatarsal",
+     "Connection Type": "Shared complication risk",
+     "Explanation": "Stress fractures at these sites carry high risk of displacement, nonunion, or avascular necrosis and need location-specific, often surgical, management. The tension-side femoral neck and the anterior tibial cortex ('dreaded black line') are classic high-risk tension-sided lesions.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Clinical Medicine",
+     "Difficulty": "Hard",
+     "Accepted Alternate Category Names": "High-risk locations for stress fractures",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Foot & Ankle / Stress fractures; PDF pp. 176",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Tension-side and anterior-cortex qualifiers verified (sports-medicine references, e.g., Boden & Osbahr). Board overlap: navicular and sesamoids are additional high-risk sites - avoid as distractors."
+    },
+    "title": "High-risk stress fracture sites",
+    "connectionType": "Shared complication risk",
+    "explanation": "Stress fractures at these sites carry high risk of displacement, nonunion, or avascular necrosis and need location-specific, often surgical, management. The tension-side femoral neck and the anterior tibial cortex ('dreaded black line') are classic high-risk tension-sided lesions.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Clinical Medicine",
+    "difficulty": "hard",
+    "alternateNames": [
+     "High-risk locations for stress fractures"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Foot & Ankle / Stress fractures; PDF pp. 176",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Tension-side and anterior-cortex qualifiers verified (sports-medicine references, e.g., Boden & Osbahr). Board overlap: navicular and sesamoids are additional high-risk sites - avoid as distractors.",
+    "tiles": [
+     "Tension (superolateral) side of the femoral neck",
+     "Anterior tibial cortex",
+     "Talus",
+     "Proximal fifth metatarsal"
+    ]
+   },
+   "contentHash": "ac1f89e0cd1c8eed5dca5d315f16f40b77eddee00e19a12f5c98e3ead32ba887",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 34,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-5",
+   "placementNote": null
+  },
+  "MSK-036": {
+   "id": "MSK-036",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-036",
+     "Connection Title": "Reversible COX-inhibiting NSAIDs",
+     "Tile 1": "Ibuprofen",
+     "Tile 2": "Naproxen",
+     "Tile 3": "Indomethacin",
+     "Tile 4": "Diclofenac",
+     "Connection Type": "Shared mechanism",
+     "Explanation": "These conventional NSAIDs reversibly inhibit cyclooxygenase and reduce prostaglandin synthesis; aspirin is the exception (irreversible COX acetylation) and is correctly excluded.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Conventional reversible NSAIDs",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Pharmacology / Nonsteroidal anti-inflammatories; PDF pp. 198",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Goodman & Gilman). Clean mechanism-based set with aspirin as the deliberate contrast."
+    },
+    "title": "Reversible COX-inhibiting NSAIDs",
+    "connectionType": "Shared mechanism",
+    "explanation": "These conventional NSAIDs reversibly inhibit cyclooxygenase and reduce prostaglandin synthesis; aspirin is the exception (irreversible COX acetylation) and is correctly excluded.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Conventional reversible NSAIDs"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Pharmacology / Nonsteroidal anti-inflammatories; PDF pp. 198",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Goodman & Gilman). Clean mechanism-based set with aspirin as the deliberate contrast.",
+    "tiles": [
+     "Ibuprofen",
+     "Naproxen",
+     "Indomethacin",
+     "Diclofenac"
+    ]
+   },
+   "contentHash": "38bfd793d3ea656ef69a8736ecfbd50074c4fe4163e435462ebc4938b91279f6",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 35,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-1",
+   "placementNote": null
+  },
+  "MSK-037": {
+   "id": "MSK-037",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-037",
+     "Connection Title": "Urate-lowering drugs for chronic gout",
+     "Tile 1": "Allopurinol",
+     "Tile 2": "Febuxostat",
+     "Tile 3": "Probenecid",
+     "Tile 4": "Pegloticase",
+     "Connection Type": "Shared therapeutic purpose",
+     "Explanation": "Allopurinol and febuxostat reduce urate production (xanthine oxidase inhibition), probenecid is uricosuric, and pegloticase is a recombinant uricase. They are urate-lowering, not acute flare-relief, agents; pegloticase is reserved for refractory disease.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Chronic gout urate-lowering therapy",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Pharmacology / Gout medications; PDF pp. 200",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (ACR 2020 gout guideline). Preserve distinction from anti-inflammatory flare therapy (colchicine, NSAIDs, glucocorticoids)."
+    },
+    "title": "Urate-lowering drugs for chronic gout",
+    "connectionType": "Shared therapeutic purpose",
+    "explanation": "Allopurinol and febuxostat reduce urate production (xanthine oxidase inhibition), probenecid is uricosuric, and pegloticase is a recombinant uricase. They are urate-lowering, not acute flare-relief, agents; pegloticase is reserved for refractory disease.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Chronic gout urate-lowering therapy"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Pharmacology / Gout medications; PDF pp. 200",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (ACR 2020 gout guideline). Preserve distinction from anti-inflammatory flare therapy (colchicine, NSAIDs, glucocorticoids).",
+    "tiles": [
+     "Allopurinol",
+     "Febuxostat",
+     "Probenecid",
+     "Pegloticase"
+    ]
+   },
+   "contentHash": "7079657833a50a1056c136f61ea26a2788f7cfe8f37105d311859211eb38a1c2",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 36,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-4",
+   "placementNote": null
+  },
+  "MSK-038": {
+   "id": "MSK-038",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-038",
+     "Connection Title": "Bisphosphonates that suppress bone resorption",
+     "Tile 1": "Alendronate",
+     "Tile 2": "Ibandronate",
+     "Tile 3": "Risedronate",
+     "Tile 4": "Zoledronic acid",
+     "Connection Type": "Drug class and mechanism",
+     "Explanation": "These nitrogen-containing bisphosphonates bind bone mineral and inhibit osteoclast-mediated resorption. Route and fracture-prevention evidence differ by agent.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Antiresorptive bisphosphonates",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Pharmacology / Bisphosphonates; PDF pp. 201",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. Preserve qualifier: do not imply identical dosing, route, or fracture-prevention evidence (e.g., zoledronic acid IV; ibandronate has weaker non-vertebral fracture data)."
+    },
+    "title": "Bisphosphonates that suppress bone resorption",
+    "connectionType": "Drug class and mechanism",
+    "explanation": "These nitrogen-containing bisphosphonates bind bone mineral and inhibit osteoclast-mediated resorption. Route and fracture-prevention evidence differ by agent.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Antiresorptive bisphosphonates"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Pharmacology / Bisphosphonates; PDF pp. 201",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. Preserve qualifier: do not imply identical dosing, route, or fracture-prevention evidence (e.g., zoledronic acid IV; ibandronate has weaker non-vertebral fracture data).",
+    "tiles": [
+     "Alendronate",
+     "Ibandronate",
+     "Risedronate",
+     "Zoledronic acid"
+    ]
+   },
+   "contentHash": "ec0a22df59f88ec24ad6d58d09518028ef422d09160d8b88bab721514ace643c",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 37,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-4",
+   "placementNote": null
+  },
+  "MSK-039": {
+   "id": "MSK-039",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-039",
+     "Connection Title": "Antibody-based TNF-alpha inhibitors",
+     "Tile 1": "Adalimumab",
+     "Tile 2": "Infliximab",
+     "Tile 3": "Golimumab",
+     "Tile 4": "Certolizumab pegol",
+     "Connection Type": "Shared molecular target",
+     "Explanation": "These four agents all bind TNF-alpha: adalimumab, infliximab, and golimumab are full-length monoclonal IgG antibodies and certolizumab pegol is a PEGylated Fab fragment. Etanercept (a TNFR2-Fc fusion protein) is correctly excluded.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Anti-TNF antibody therapies",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Pharmacology / TNF-alpha inhibitors; PDF pp. 203",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Corrected mechanism wording: these antibodies bind TNF-alpha (ligand), not the TNF receptor (Pedersen & Maksymowych, Drugs 2018; AAP biosimilar technical report 2026). Certolizumab is a Fab fragment, not a full-length antibody - keep that qualifier."
+    },
+    "title": "Antibody-based TNF-alpha inhibitors",
+    "connectionType": "Shared molecular target",
+    "explanation": "These four agents all bind TNF-alpha: adalimumab, infliximab, and golimumab are full-length monoclonal IgG antibodies and certolizumab pegol is a PEGylated Fab fragment. Etanercept (a TNFR2-Fc fusion protein) is correctly excluded.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Anti-TNF antibody therapies"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Pharmacology / TNF-alpha inhibitors; PDF pp. 203",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Corrected mechanism wording: these antibodies bind TNF-alpha (ligand), not the TNF receptor (Pedersen & Maksymowych, Drugs 2018; AAP biosimilar technical report 2026). Certolizumab is a Fab fragment, not a full-length antibody - keep that qualifier.",
+    "tiles": [
+     "Adalimumab",
+     "Infliximab",
+     "Golimumab",
+     "Certolizumab pegol"
+    ]
+   },
+   "contentHash": "b8a011fccad560841d07274e9e2b5378929ca390eaadcbe37b590b9c3ff7be1b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 38,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [
+    "IMM-040"
+   ],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "held",
+   "starterBoard": null
+  },
+  "MSK-040": {
+   "id": "MSK-040",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-040",
+     "Connection Title": "Cyclooxygenase-derived eicosanoids",
+     "Tile 1": "Prostaglandin E2 (PGE2)",
+     "Tile 2": "Prostaglandin F2-alpha (PGF2-alpha)",
+     "Tile 3": "Prostacyclin (PGI2)",
+     "Tile 4": "Thromboxane A2 (TXA2)",
+     "Connection Type": "Shared biosynthetic pathway",
+     "Explanation": "These prostanoids arise through the cyclooxygenase branch of arachidonic acid metabolism, in contrast to leukotrienes from the 5-lipoxygenase branch.",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Biochemistry",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "COX-pathway products; Prostanoids",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Pharmacology / Arachidonic acid pathway; PDF pp. 195",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Lippincott Biochemistry). Clean set; leukotrienes are the intended contrast."
+    },
+    "title": "Cyclooxygenase-derived eicosanoids",
+    "connectionType": "Shared biosynthetic pathway",
+    "explanation": "These prostanoids arise through the cyclooxygenase branch of arachidonic acid metabolism, in contrast to leukotrienes from the 5-lipoxygenase branch.",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Biochemistry",
+    "difficulty": "medium",
+    "alternateNames": [
+     "COX-pathway products",
+     "Prostanoids"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Pharmacology / Arachidonic acid pathway; PDF pp. 195",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Lippincott Biochemistry). Clean set; leukotrienes are the intended contrast.",
+    "tiles": [
+     "Prostaglandin E2 (PGE2)",
+     "Prostaglandin F2-alpha (PGF2-alpha)",
+     "Prostacyclin (PGI2)",
+     "Thromboxane A2 (TXA2)"
+    ]
+   },
+   "contentHash": "21f0c6f7dc1c87d563b4d3a8ea5a6d5b398d76b2a58b021e37b6e0e367de127b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 39,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-1",
+   "placementNote": null
+  },
+  "MSK-041": {
+   "id": "MSK-041",
+   "library": "new",
+   "system": "MSK",
+   "content": {
+    "raw": {
+     "Connection ID": "MSK-041",
+     "Connection Title": "Metabolic consequences of malignant hyperthermia",
+     "Tile 1": "Hypercapnia",
+     "Tile 2": "Lactic acidosis",
+     "Tile 3": "Hyperkalemia",
+     "Tile 4": "Rhabdomyolysis",
+     "Connection Type": "Disease physiologic consequences",
+     "Explanation": "Volatile anesthetic/succinylcholine-triggered RYR1-mediated skeletal-muscle calcium release causes hypermetabolism and muscle injury, raising CO2 (hypercapnia) and lactate (lactic acidosis) and releasing intracellular potassium (hyperkalemia) and myoglobin (rhabdomyolysis).",
+     "Organ System": "Musculoskeletal",
+     "Discipline": "Physiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Malignant hyperthermia metabolic findings",
+     "Source": "Bootcamp.com MSK.pdf",
+     "Source Section": "Skeletal Muscle / Malignant hyperthermia; PDF pp. 4",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Preserve qualifier: these abnormalities are not unique to MH; rising end-tidal CO2 is often the earliest sign, and hyperthermia may be a late feature."
+    },
+    "title": "Metabolic consequences of malignant hyperthermia",
+    "connectionType": "Disease physiologic consequences",
+    "explanation": "Volatile anesthetic/succinylcholine-triggered RYR1-mediated skeletal-muscle calcium release causes hypermetabolism and muscle injury, raising CO2 (hypercapnia) and lactate (lactic acidosis) and releasing intracellular potassium (hyperkalemia) and myoglobin (rhabdomyolysis).",
+    "organSystems": "Musculoskeletal",
+    "discipline": "Physiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Malignant hyperthermia metabolic findings"
+    ],
+    "sources": "Bootcamp.com MSK.pdf",
+    "sourceSection": "Skeletal Muscle / Malignant hyperthermia; PDF pp. 4",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Preserve qualifier: these abnormalities are not unique to MH; rising end-tidal CO2 is often the earliest sign, and hyperthermia may be a late feature.",
+    "tiles": [
+     "Hypercapnia",
+     "Lactic acidosis",
+     "Hyperkalemia",
+     "Rhabdomyolysis"
+    ]
+   },
+   "contentHash": "a2f8e2e04751e880869f46cfe8533683c810480a99998118ab4d83bc96a8a480",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_MSK_reviewed_connections.csv",
+    "fileSha": "1656eaa7a197",
+    "row": 40,
+    "importedAt": "2026-10-08T17:42:25.373Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "msk-starter-3",
+   "placementNote": null
   }
  },
  "starterBoards": {
@@ -36252,6 +39145,105 @@
     "flags": [],
     "ambiguityReview": "none"
    }
+  ],
+  "MSK": [
+   {
+    "n": 1,
+    "id": "msk-starter-1",
+    "formedAt": "2026-10-08T17:42:25.373Z",
+    "ids": [
+     "MSK-036",
+     "MSK-040",
+     "MSK-009",
+     "MSK-032"
+    ],
+    "difficultyWarnings": [],
+    "signature": "b95aa797",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 2,
+    "id": "msk-starter-2",
+    "formedAt": "2026-10-08T17:42:25.373Z",
+    "ids": [
+     "MSK-023",
+     "MSK-013",
+     "MSK-019",
+     "MSK-033"
+    ],
+    "difficultyWarnings": [],
+    "signature": "ddcdd6bf",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 3,
+    "id": "msk-starter-3",
+    "formedAt": "2026-10-08T17:42:25.373Z",
+    "ids": [
+     "MSK-029",
+     "MSK-001",
+     "MSK-012",
+     "MSK-041"
+    ],
+    "difficultyWarnings": [],
+    "signature": "64d45075",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 4,
+    "id": "msk-starter-4",
+    "formedAt": "2026-10-08T17:42:25.373Z",
+    "ids": [
+     "MSK-038",
+     "MSK-030",
+     "MSK-025",
+     "MSK-037"
+    ],
+    "difficultyWarnings": [],
+    "signature": "070e629d",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 5,
+    "id": "msk-starter-5",
+    "formedAt": "2026-10-08T17:42:25.373Z",
+    "ids": [
+     "MSK-015",
+     "MSK-007",
+     "MSK-018",
+     "MSK-035"
+    ],
+    "difficultyWarnings": [],
+    "signature": "a7cd3b6c",
+    "status": "review",
+    "publishable": false,
+    "structural": "pass",
+    "block": [],
+    "flags": [
+     "MSK-035 board instruction to check against the other groups: \"Board overlap: navicular and sesamoids are additional high-risk sites - avoid as distractors.\""
+    ],
+    "ambiguityReview": "needed"
+   }
   ]
  },
  "imports": [
@@ -36344,6 +39336,16 @@
    "added": 69,
    "revised": 0,
    "unchanged": 0
+  },
+  {
+   "file": "Plexus_MSK_reviewed_connections.csv",
+   "fileSha": "1656eaa7a197",
+   "system": "MSK",
+   "importedAt": "2026-10-08T17:42:25.373Z",
+   "rows": 39,
+   "added": 39,
+   "revised": 0,
+   "unchanged": 0
   }
  ],
  "timedExclusionsAtActivation": [
@@ -36366,9 +39368,14 @@
    "timedId": "bank-ext-114",
    "timedTitle": "Inherited hyperbilirubinemia syndromes",
    "replacedBy": "GI-033"
+  },
+  {
+   "timedId": "bank-ext-104",
+   "timedTitle": "Rotator cuff muscles",
+   "replacedBy": "MSK-001"
   }
  ],
- "updatedAt": "2026-10-08T17:27:07.611Z",
+ "updatedAt": "2026-10-08T17:43:03.967Z",
  "active": false,
  "pairs": [
   {
@@ -36488,6 +39495,18 @@
    "titleSim": 0.29,
    "sameSubject": true,
    "wordSim": 0.31,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
+   "a": "PLX-BCH-059",
+   "b": "MSK-008",
+   "kind": "uncertain",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0.6,
+   "sameSubject": true,
+   "wordSim": 0.25,
    "reviewerDistinct": false,
    "sameSystem": false
   },
@@ -36768,6 +39787,18 @@
    "sameSystem": true
   },
   {
+   "a": "PLX-HEM-038",
+   "b": "MSK-014",
+   "kind": "uncertain",
+   "decided": null,
+   "shared": 0,
+   "titleSim": 0.5,
+   "sameSubject": true,
+   "wordSim": 0,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
    "a": "IMM-019",
    "b": "IMM-020",
    "kind": "overlap",
@@ -36778,6 +39809,18 @@
    "wordSim": 0.36,
    "reviewerDistinct": false,
    "sameSystem": true
+  },
+  {
+   "a": "IMM-040",
+   "b": "MSK-039",
+   "kind": "uncertain",
+   "decided": null,
+   "shared": 3,
+   "titleSim": 0.14,
+   "sameSubject": false,
+   "wordSim": 0.8,
+   "reviewerDistinct": false,
+   "sameSystem": false
   },
   {
    "a": "MICRO-018",
@@ -36794,18 +39837,18 @@
  ],
  "counts": {
   "all": {
-   "rows": 478,
-   "passedReview": 468,
+   "rows": 517,
+   "passedReview": 506,
    "passedReviewHuman": 0,
-   "passedReviewAi": 468,
-   "heldMedical": 10,
+   "passedReviewAi": 506,
+   "heldMedical": 11,
    "rejected": 0,
    "needsFix": 0,
-   "heldDuplicate": 9,
+   "heldDuplicate": 12,
    "setAsideDuplicate": 6,
-   "usable": 453,
-   "starter": 180,
-   "daily": 273
+   "usable": 488,
+   "starter": 200,
+   "daily": 288
   },
   "bySystem": {
    "Biochemistry/Genetics": {
@@ -36919,6 +39962,20 @@
     "usable": 37,
     "starter": 20,
     "daily": 17
+   },
+   "MSK": {
+    "rows": 39,
+    "passedReview": 38,
+    "passedReviewHuman": 0,
+    "passedReviewAi": 38,
+    "heldMedical": 1,
+    "rejected": 0,
+    "needsFix": 0,
+    "heldDuplicate": 3,
+    "setAsideDuplicate": 0,
+    "usable": 35,
+    "starter": 20,
+    "daily": 15
    },
    "Microbiology": {
     "rows": 69,
