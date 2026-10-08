@@ -77,6 +77,41 @@
       "evidence": "Notes: \"Correction: Red skin rash revised to the specific photosensitive facial butterfly telangiectatic erythema (hallmark of Bloom), and the cancer tile broadened to multiple early-onset cancers ... Precise rash wording resolves the prior HOLD.\" Both changes make the source's existing tiles (rash, cancer risk) more precise; the review states its hold is resolved, and the remaining note is a board-placement caution.",
       "contentHash": "02a306bc58069a476da34ae61aa25c92bf79128c3954709a694592279b648a16",
       "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "PLX-HEM-015": {
+      "endorsedFinalRow": true,
+      "outstanding": "The review replaced the source tile \"High transferrin\" (a near-duplicate of \"High TIBC\") with \"Low transferrin saturation\". The new tile is supported by outside references in Notes (Auerbach & DeLoughery, JAMA 2025; Rohr et al 2023), not by the cited Bootcamp page (p. 18). Low risk (TSAT is serum iron / TIBC), but confirm the new tile and add the reference to Source, or record that this is accepted (same question as DERM-034).",
+      "evidence": "Notes: \"CORRECTION: original tiles paired High transferrin and High TIBC ... Replaced High transferrin with Low transferrin saturation ...\"",
+      "contentHash": "d811fdea1114b20073a82df6f4947ccc2f93bf19b66b52258a3f62a99d91f157",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "PLX-HEM-031": {
+      "endorsedFinalRow": true,
+      "outstanding": "The review replaced the source tile \"Histamine\" with \"ATP\", stating histamine is not a canonical platelet dense-granule constituent. This contradicts the cited Bootcamp page (p. 47) and is supported only by outside references in Notes (Holinstat 2017; Yao & Kahr 2025). Confirm the correction and add the reference to Source, or record that this is accepted (same question as PLX-BCH-009).",
+      "evidence": "Notes: \"CORRECTION: replaced Histamine with ATP. Authoritative sources list dense/delta-granule contents as ADP, ATP, serotonin (5-HT), calcium ...\"",
+      "contentHash": "87c6834cdf41ba8bec692627ac12281c027dad749c17d3d0c9290fecef8ac7d7",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "PLX-HEM-042": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Tiles unchanged from the source; the review clarified the title to caseating/necrotizing and lowered the ambiguity score after verification. Remaining notes are a host qualifier for cryptococcosis and a board caution (blastomycosis as an alternate member).",
+      "contentHash": "3bd2683bfd68a2142069e8eef9c472d98e847b08625f4a2a516e880fb9b18161",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "PLX-HEM-046": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Only the Discipline field changed (Pathology to Pharmacology); tiles, title and explanation are as in the source and verified.",
+      "contentHash": "020a4af3ee0ba17bba758eb76f040c60b11335566f86f80373b3dd49ab0d2f00",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "PLX-HEM-053": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Only the cytogenetic notation was corrected (t(15,17) to the standard t(15;17)); content unchanged and verified.",
+      "contentHash": "d7f50473e22bf939d32b496f5bfa6dbc9f23fe18d92f0ea8b88e89edc3a17035",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
     }
   }
 }

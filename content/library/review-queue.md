@@ -1,12 +1,12 @@
 # Plexus new library: pending review queue
 
-Generated 2026-10-08T07:07:52.154Z. Staging only; the library is not active and the live app is unchanged.
+Generated 2026-10-08T07:17:00.886Z. Staging only; the library is not active and the live app is unchanged.
 
 | Category | Open |
 |---|---|
-| Medical / source holds | 5 |
-| Duplicate decisions (new library) | 3 |
-| Timed-library overlaps | 14 to decide, 3 recorded |
+| Medical / source holds | 7 |
+| Duplicate decisions (new library) | 10 |
+| Timed-library overlaps | 15 to decide, 4 recorded |
 | Board ambiguity reviews | 2 |
 | Blocked boards | 0 |
 | Difficulty calibration warnings | 1 |
@@ -37,7 +37,31 @@ Tiles: Celiac disease · Chronic pancreatitis · Small intestinal bacterial over
 
 Issue: The review replaced the source tile "Whipple disease" with "Chronic pancreatitis". The Source Section now also lists Pancreas / Chronic Pancreatitis p. 127, but the oxalate-stone link is supported by outside references in Notes (Coe et al, NEJM 1992; Ermer et al 2023). Notes also rate the SIBO tile as only "moderately supported". Confirm the new tile (and SIBO) and add the supporting reference to Source, or record that this is accepted.
 
+### PLX-HEM-015 · Iron-deficiency iron-study pattern (Heme/Onc, AI_REVIEWED_REVISED)
+Tiles: Low serum iron · Low ferritin · High TIBC · Low transferrin saturation
+
+Issue: The review replaced the source tile "High transferrin" (a near-duplicate of "High TIBC") with "Low transferrin saturation". The new tile is supported by outside references in Notes (Auerbach & DeLoughery, JAMA 2025; Rohr et al 2023), not by the cited Bootcamp page (p. 18). Low risk (TSAT is serum iron / TIBC), but confirm the new tile and add the reference to Source, or record that this is accepted (same question as DERM-034).
+
+### PLX-HEM-031 · Platelet dense-granule contents (Heme/Onc, AI_REVIEWED_REVISED)
+Tiles: ADP · Calcium · Serotonin · ATP
+
+Issue: The review replaced the source tile "Histamine" with "ATP", stating histamine is not a canonical platelet dense-granule constituent. This contradicts the cited Bootcamp page (p. 47) and is supported only by outside references in Notes (Holinstat 2017; Yao & Kahr 2025). Confirm the correction and add the reference to Source, or record that this is accepted (same question as PLX-BCH-009).
+
 ## 2. Duplicate decisions (new library)
+### Vitamin K-dependent clotting factors  /  Vitamin K-dependent procoagulant factors
+treated as the same relationship (set aside); confirm. Shared relationship: "vitamin k dependent clotting factor" vs "vitamin k dependent procoagulant factor"; 4 of 4 tiles identical; tile wording 100% the same.
+
+| | PLX-BCH-002 (new, Biochemistry/Genetics) | PLX-HEM-002 (new, Heme/Onc) |
+|---|---|---|
+| Title | Vitamin K-dependent clotting factors | Vitamin K-dependent procoagulant factors |
+| Tile 1 | Factor II | Factor II |
+| Tile 2 | Factor VII | Factor VII |
+| Tile 3 | Factor IX | Factor IX |
+| Tile 4 | Factor X | Factor X |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Decide: decisions.json → pairs → "PLX-BCH-002 | PLX-HEM-002": "same" or "distinct"
+
 ### Fat-soluble vitamins  /  Fat-soluble vitamins at risk in pancreatic fat malabsorption
 treated as the same relationship (set aside); confirm. Shared relationship: "fat soluble vitamin" vs "fat soluble vitamin risk pancreatic fat malabsorption"; 4 of 4 tiles identical; tile wording 100% the same.
 
@@ -81,6 +105,94 @@ possible duplicate (held). Shared relationship: both are "findings / association
 
 Held until decided: CARD-017.
 Decide: decisions.json → pairs → "CARD-017 | PLX-BCH-031": "same" or "distinct"
+
+### Source-described sideroblastic anemia findings  /  Sideroblastic-anemia diagnostic clues
+possible duplicate (held). Shared relationship: both are "findings / associations of sideroblastic anemia"; 1 of 4 tiles identical.
+
+| | PLX-BCH-054 (new, Biochemistry/Genetics) | PLX-HEM-022 (new, Heme/Onc) |
+|---|---|---|
+| Title | Source-described sideroblastic anemia findings | Sideroblastic-anemia diagnostic clues |
+| Tile 1 | Ringed sideroblasts | Ring sideroblasts |
+| Tile 2 | Basophilic stippling | Increased serum iron |
+| Tile 3 | Microcytosis | Increased ferritin |
+| Tile 4 | Elevated serum iron | Normal or decreased TIBC |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: PLX-HEM-022.
+Decide: decisions.json → pairs → "PLX-BCH-054 | PLX-HEM-022": "same" or "distinct"
+
+### Vitamin B12 deficiency diagnostic associations  /  Vitamin B12-deficiency clues
+treated as the same relationship (set aside); confirm. Shared relationship: both are "findings / associations of vitamin b12 deficiency"; 3 of 4 tiles identical; tile wording 64% the same.
+
+| | PLX-BCH-063 (new, Biochemistry/Genetics) | PLX-HEM-026 (new, Heme/Onc) |
+|---|---|---|
+| Title | Vitamin B12 deficiency diagnostic associations | Vitamin B12-deficiency clues |
+| Tile 1 | Megaloblastic anemia | Increased methylmalonic acid |
+| Tile 2 | Elevated homocysteine | Increased homocysteine |
+| Tile 3 | Elevated methylmalonic acid | Hypersegmented neutrophils |
+| Tile 4 | Subacute combined degeneration | Subacute combined degeneration |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Decide: decisions.json → pairs → "PLX-BCH-063 | PLX-HEM-026": "same" or "distinct"
+
+### Infectious associations of erythema nodosum  /  Infections causing caseating/necrotizing granulomas
+possible duplicate (held). Shared relationship: "findings / associations of infectious erythema nodosum" vs "infection causing caseating necrotizing granuloma"; 3 of 4 tiles identical.
+
+| | DERM-018 (new, Dermatology) | PLX-HEM-042 (new, Heme/Onc) |
+|---|---|---|
+| Title | Infectious associations of erythema nodosum | Infections causing caseating/necrotizing granulomas |
+| Tile 1 | Coccidioidomycosis | Tuberculosis |
+| Tile 2 | Histoplasmosis | Histoplasmosis |
+| Tile 3 | Tuberculosis | Cryptococcosis |
+| Tile 4 | Streptococcal infection | Coccidioidomycosis |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_REVISED |
+
+Held until decided: PLX-HEM-042.
+Decide: decisions.json → pairs → "DERM-018 | PLX-HEM-042": "same" or "distinct"
+
+### Anticancer drugs targeting topoisomerases  /  Topoisomerase-targeting cytotoxic drugs
+treated as the same relationship (set aside); confirm. Shared relationship: "anticancer drug targeting topoisomerase" vs "topoisomerase targeting cytotoxic drug"; 4 of 4 tiles identical; tile wording 100% the same.
+
+| | PLEXUS-GEN-002 (new, Genetics) | PLX-HEM-046 (new, Heme/Onc) |
+|---|---|---|
+| Title | Anticancer drugs targeting topoisomerases | Topoisomerase-targeting cytotoxic drugs |
+| Tile 1 | Irinotecan | Irinotecan |
+| Tile 2 | Topotecan | Topotecan |
+| Tile 3 | Etoposide | Etoposide |
+| Tile 4 | Teniposide | Teniposide |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_REVISED |
+
+Decide: decisions.json → pairs → "PLEXUS-GEN-002 | PLX-HEM-046": "same" or "distinct"
+
+### Orotic aciduria from UMP synthase deficiency  /  Hereditary orotic-aciduria clues
+possible duplicate (held). Shared relationship: "orotic aciduria ump synthase deficiency" vs "findings / associations of hereditary orotic aciduria"; 3 of 4 tiles identical; tile wording 62% the same.
+
+| | PLEXUS-GEN-007 (new, Genetics) | PLX-HEM-029 (new, Heme/Onc) |
+|---|---|---|
+| Title | Orotic aciduria from UMP synthase deficiency | Hereditary orotic-aciduria clues |
+| Tile 1 | Elevated urinary orotic acid | UMP synthase deficiency |
+| Tile 2 | Megaloblastic anemia | Increased urinary orotic acid |
+| Tile 3 | Failure to thrive | Megaloblastic anemia |
+| Tile 4 | Normal ammonia | Normal ammonia |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: PLX-HEM-029.
+Decide: decisions.json → pairs → "PLEXUS-GEN-007 | PLX-HEM-029": "same" or "distinct"
+
+### Vaso-occlusive complications of sickle cell disease  /  Sickle-cell vaso-occlusive manifestations
+possible duplicate (held). Shared relationship: "findings / associations of vaso occlusive sickle cell disease" vs "findings / associations of sickle cell vaso occlusive"; 2 of 4 tiles identical.
+
+| | PLEXUS-GEN-020 (new, Genetics) | PLX-HEM-012 (new, Heme/Onc) |
+|---|---|---|
+| Title | Vaso-occlusive complications of sickle cell disease | Sickle-cell vaso-occlusive manifestations |
+| Tile 1 | Dactylitis | Dactylitis |
+| Tile 2 | Acute chest syndrome | Acute chest syndrome |
+| Tile 3 | Avascular necrosis | Ischemic stroke |
+| Tile 4 | Stroke | Priapism |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: PLX-HEM-012.
+Decide: decisions.json → pairs → "PLEXUS-GEN-020 | PLX-HEM-012": "same" or "distinct"
 
 ## 3. Timed-library overlaps
 ### Fat-soluble vitamins  /  Fat-soluble vitamins
@@ -252,7 +364,7 @@ possible repeat of a timed entry. Shared relationship: "findings / associations 
 Decide: decisions.json → pairs → "ENDO-029 | bank-ext-082": "same" (exclude timed entry at activation) or "distinct"
 
 ### Manifestations of portal hypertension  /  Consequences of portal hypertension
-possible repeat of a timed entry. Shared relationship: "findings / associations of portal hypertension" vs "consequence portal hypertension"; 3 of 4 tiles identical; tile wording 71% the same.
+same relationship as a timed entry (timed entry to be excluded at activation). Shared relationship: both are "findings / associations of portal hypertension"; 3 of 4 tiles identical; tile wording 71% the same.
 
 | | GI-029 (new, GI) | bank-ext-024 (timed, GI) |
 |---|---|---|
@@ -263,7 +375,7 @@ possible repeat of a timed entry. Shared relationship: "findings / associations 
 | Tile 4 | Splenomegaly | Ascites |
 | Status | AI_REVIEWED_PASS | verified |
 
-Decide: decisions.json → pairs → "GI-029 | bank-ext-024": "same" (exclude timed entry at activation) or "distinct"
+Decide: no decision needed unless you disagree
 
 ### Hereditary bilirubin-handling disorders  /  Inherited hyperbilirubinemia syndromes
 possible repeat of a timed entry. Shared relationship: "hereditary bilirubin handling disorder" vs "inherited hyperbilirubinemia syndrome"; 4 of 4 tiles identical; tile wording 100% the same.
@@ -320,6 +432,34 @@ possible repeat of a timed entry. Shared relationship: "trinucleotide repeat exp
 | Status | AI_REVIEWED_PASS | verified |
 
 Decide: decisions.json → pairs → "PLEXUS-GEN-004 | bank-migrated-sys-biochem-0001-L4": "same" (exclude timed entry at activation) or "distinct"
+
+### Schistocyte-producing red-cell destruction  /  Causes of microangiopathic hemolytic anemia
+possible repeat of a timed entry. Shared relationship: "schistocyte producing red cell destruction" vs "causes of microangiopathic hemolytic anemia"; 3 of 4 tiles identical; tile wording 60% the same.
+
+| | PLX-HEM-011 (new, Heme/Onc) | bank-ext-058 (timed, Heme/Onc) |
+|---|---|---|
+| Title | Schistocyte-producing red-cell destruction | Causes of microangiopathic hemolytic anemia |
+| Tile 1 | Thrombotic thrombocytopenic purpura | Thrombotic thrombocytopenic purpura |
+| Tile 2 | Hemolytic uremic syndrome | Hemolytic uremic syndrome |
+| Tile 3 | Disseminated intravascular coagulation | Disseminated intravascular coagulation |
+| Tile 4 | Mechanical prosthetic-valve hemolysis | Malignant hypertension |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "PLX-HEM-011 | bank-ext-058": "same" (exclude timed entry at activation) or "distinct"
+
+### Infections causing caseating/necrotizing granulomas  /  Granulomatous infections with necrotizing (caseating) granulomas
+possible repeat of a timed entry. Shared relationship: "infection causing caseating necrotizing granuloma" vs "granulomatous infection necrotizing caseating granuloma"; 3 of 4 tiles identical.
+
+| | PLX-HEM-042 (new, Heme/Onc) | bank-easy-04 (timed, Microbiology) |
+|---|---|---|
+| Title | Infections causing caseating/necrotizing granulomas | Granulomatous infections with necrotizing (caseating) granulomas |
+| Tile 1 | Tuberculosis | Tuberculosis |
+| Tile 2 | Histoplasmosis | Histoplasmosis |
+| Tile 3 | Cryptococcosis | Coccidioidomycosis |
+| Tile 4 | Coccidioidomycosis | Nontuberculous mycobacterial infection |
+| Status | AI_REVIEWED_REVISED | needs_review |
+
+Decide: decisions.json → pairs → "PLX-HEM-042 | bank-easy-04": "same" (exclude timed entry at activation) or "distinct"
 
 ## 4. Board ambiguity reviews
 ### biochemistry-genetics-starter-5 (Biochemistry/Genetics)

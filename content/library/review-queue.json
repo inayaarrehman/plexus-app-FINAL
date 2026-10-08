@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T07:07:52.154Z",
+ "generatedAt": "2026-10-08T07:17:00.886Z",
  "active": false,
  "medicalHolds": [
   {
@@ -66,9 +66,68 @@
    ],
    "status": "AI_REVIEWED_REVISED",
    "issue": "The review replaced the source tile \"Whipple disease\" with \"Chronic pancreatitis\". The Source Section now also lists Pancreas / Chronic Pancreatitis p. 127, but the oxalate-stone link is supported by outside references in Notes (Coe et al, NEJM 1992; Ermer et al 2023). Notes also rate the SIBO tile as only \"moderately supported\". Confirm the new tile (and SIBO) and add the supporting reference to Source, or record that this is accepted."
+  },
+  {
+   "id": "PLX-HEM-015",
+   "system": "Heme/Onc",
+   "title": "Iron-deficiency iron-study pattern",
+   "tiles": [
+    "Low serum iron",
+    "Low ferritin",
+    "High TIBC",
+    "Low transferrin saturation"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The review replaced the source tile \"High transferrin\" (a near-duplicate of \"High TIBC\") with \"Low transferrin saturation\". The new tile is supported by outside references in Notes (Auerbach & DeLoughery, JAMA 2025; Rohr et al 2023), not by the cited Bootcamp page (p. 18). Low risk (TSAT is serum iron / TIBC), but confirm the new tile and add the reference to Source, or record that this is accepted (same question as DERM-034)."
+  },
+  {
+   "id": "PLX-HEM-031",
+   "system": "Heme/Onc",
+   "title": "Platelet dense-granule contents",
+   "tiles": [
+    "ADP",
+    "Calcium",
+    "Serotonin",
+    "ATP"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The review replaced the source tile \"Histamine\" with \"ATP\", stating histamine is not a canonical platelet dense-granule constituent. This contradicts the cited Bootcamp page (p. 47) and is supported only by outside references in Notes (Holinstat 2017; Yao & Kahr 2025). Confirm the correction and add the reference to Source, or record that this is accepted (same question as PLX-BCH-009)."
   }
  ],
  "duplicateDecisions": [
+  {
+   "key": "PLX-BCH-002 | PLX-HEM-002",
+   "kind": "treated as the same relationship (set aside); confirm",
+   "held": null,
+   "sharedRelationship": "\"vitamin k dependent clotting factor\" vs \"vitamin k dependent procoagulant factor\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "PLX-BCH-002",
+    "library": "new",
+    "system": "Biochemistry/Genetics",
+    "title": "Vitamin K-dependent clotting factors",
+    "tiles": [
+     "Factor II",
+     "Factor VII",
+     "Factor IX",
+     "Factor X"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "PLX-HEM-002",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "Vitamin K-dependent procoagulant factors",
+    "tiles": [
+     "Factor II",
+     "Factor VII",
+     "Factor IX",
+     "Factor X"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"PLX-BCH-002 | PLX-HEM-002\": \"same\" or \"distinct\""
+  },
   {
    "key": "GI-043 | PLX-BCH-008",
    "kind": "treated as the same relationship (set aside); confirm",
@@ -167,6 +226,204 @@
     "status": "AI_REVIEWED_PASS"
    },
    "decide": "decisions.json → pairs → \"CARD-017 | PLX-BCH-031\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "PLX-BCH-054 | PLX-HEM-022",
+   "kind": "possible duplicate (held)",
+   "held": "PLX-HEM-022",
+   "sharedRelationship": "both are \"findings / associations of sideroblastic anemia\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "PLX-BCH-054",
+    "library": "new",
+    "system": "Biochemistry/Genetics",
+    "title": "Source-described sideroblastic anemia findings",
+    "tiles": [
+     "Ringed sideroblasts",
+     "Basophilic stippling",
+     "Microcytosis",
+     "Elevated serum iron"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "PLX-HEM-022",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "Sideroblastic-anemia diagnostic clues",
+    "tiles": [
+     "Ring sideroblasts",
+     "Increased serum iron",
+     "Increased ferritin",
+     "Normal or decreased TIBC"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"PLX-BCH-054 | PLX-HEM-022\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "PLX-BCH-063 | PLX-HEM-026",
+   "kind": "treated as the same relationship (set aside); confirm",
+   "held": null,
+   "sharedRelationship": "both are \"findings / associations of vitamin b12 deficiency\"; 3 of 4 tiles identical; tile wording 64% the same",
+   "a": {
+    "id": "PLX-BCH-063",
+    "library": "new",
+    "system": "Biochemistry/Genetics",
+    "title": "Vitamin B12 deficiency diagnostic associations",
+    "tiles": [
+     "Megaloblastic anemia",
+     "Elevated homocysteine",
+     "Elevated methylmalonic acid",
+     "Subacute combined degeneration"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "PLX-HEM-026",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "Vitamin B12-deficiency clues",
+    "tiles": [
+     "Increased methylmalonic acid",
+     "Increased homocysteine",
+     "Hypersegmented neutrophils",
+     "Subacute combined degeneration"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"PLX-BCH-063 | PLX-HEM-026\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "DERM-018 | PLX-HEM-042",
+   "kind": "possible duplicate (held)",
+   "held": "PLX-HEM-042",
+   "sharedRelationship": "\"findings / associations of infectious erythema nodosum\" vs \"infection causing caseating necrotizing granuloma\"; 3 of 4 tiles identical",
+   "a": {
+    "id": "DERM-018",
+    "library": "new",
+    "system": "Dermatology",
+    "title": "Infectious associations of erythema nodosum",
+    "tiles": [
+     "Coccidioidomycosis",
+     "Histoplasmosis",
+     "Tuberculosis",
+     "Streptococcal infection"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "PLX-HEM-042",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "Infections causing caseating/necrotizing granulomas",
+    "tiles": [
+     "Tuberculosis",
+     "Histoplasmosis",
+     "Cryptococcosis",
+     "Coccidioidomycosis"
+    ],
+    "status": "AI_REVIEWED_REVISED"
+   },
+   "decide": "decisions.json → pairs → \"DERM-018 | PLX-HEM-042\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "PLEXUS-GEN-002 | PLX-HEM-046",
+   "kind": "treated as the same relationship (set aside); confirm",
+   "held": null,
+   "sharedRelationship": "\"anticancer drug targeting topoisomerase\" vs \"topoisomerase targeting cytotoxic drug\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "PLEXUS-GEN-002",
+    "library": "new",
+    "system": "Genetics",
+    "title": "Anticancer drugs targeting topoisomerases",
+    "tiles": [
+     "Irinotecan",
+     "Topotecan",
+     "Etoposide",
+     "Teniposide"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "PLX-HEM-046",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "Topoisomerase-targeting cytotoxic drugs",
+    "tiles": [
+     "Irinotecan",
+     "Topotecan",
+     "Etoposide",
+     "Teniposide"
+    ],
+    "status": "AI_REVIEWED_REVISED"
+   },
+   "decide": "decisions.json → pairs → \"PLEXUS-GEN-002 | PLX-HEM-046\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "PLEXUS-GEN-007 | PLX-HEM-029",
+   "kind": "possible duplicate (held)",
+   "held": "PLX-HEM-029",
+   "sharedRelationship": "\"orotic aciduria ump synthase deficiency\" vs \"findings / associations of hereditary orotic aciduria\"; 3 of 4 tiles identical; tile wording 62% the same",
+   "a": {
+    "id": "PLEXUS-GEN-007",
+    "library": "new",
+    "system": "Genetics",
+    "title": "Orotic aciduria from UMP synthase deficiency",
+    "tiles": [
+     "Elevated urinary orotic acid",
+     "Megaloblastic anemia",
+     "Failure to thrive",
+     "Normal ammonia"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "PLX-HEM-029",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "Hereditary orotic-aciduria clues",
+    "tiles": [
+     "UMP synthase deficiency",
+     "Increased urinary orotic acid",
+     "Megaloblastic anemia",
+     "Normal ammonia"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"PLEXUS-GEN-007 | PLX-HEM-029\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "PLEXUS-GEN-020 | PLX-HEM-012",
+   "kind": "possible duplicate (held)",
+   "held": "PLX-HEM-012",
+   "sharedRelationship": "\"findings / associations of vaso occlusive sickle cell disease\" vs \"findings / associations of sickle cell vaso occlusive\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "PLEXUS-GEN-020",
+    "library": "new",
+    "system": "Genetics",
+    "title": "Vaso-occlusive complications of sickle cell disease",
+    "tiles": [
+     "Dactylitis",
+     "Acute chest syndrome",
+     "Avascular necrosis",
+     "Stroke"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "PLX-HEM-012",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "Sickle-cell vaso-occlusive manifestations",
+    "tiles": [
+     "Dactylitis",
+     "Acute chest syndrome",
+     "Ischemic stroke",
+     "Priapism"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"PLEXUS-GEN-020 | PLX-HEM-012\": \"same\" or \"distinct\""
   }
  ],
  "timedOverlaps": [
@@ -556,8 +813,8 @@
   },
   {
    "key": "GI-029 | bank-ext-024",
-   "kind": "possible repeat of a timed entry",
-   "sharedRelationship": "\"findings / associations of portal hypertension\" vs \"consequence portal hypertension\"; 3 of 4 tiles identical; tile wording 71% the same",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "both are \"findings / associations of portal hypertension\"; 3 of 4 tiles identical; tile wording 71% the same",
    "a": {
     "id": "GI-029",
     "library": "new",
@@ -584,7 +841,7 @@
     ],
     "status": "verified"
    },
-   "decide": "decisions.json → pairs → \"GI-029 | bank-ext-024\": \"same\" (exclude timed entry at activation) or \"distinct\""
+   "decide": "no decision needed unless you disagree"
   },
   {
    "key": "GI-033 | bank-ext-114",
@@ -713,6 +970,70 @@
     "status": "verified"
    },
    "decide": "decisions.json → pairs → \"PLEXUS-GEN-004 | bank-migrated-sys-biochem-0001-L4\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "PLX-HEM-011 | bank-ext-058",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"schistocyte producing red cell destruction\" vs \"causes of microangiopathic hemolytic anemia\"; 3 of 4 tiles identical; tile wording 60% the same",
+   "a": {
+    "id": "PLX-HEM-011",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "Schistocyte-producing red-cell destruction",
+    "tiles": [
+     "Thrombotic thrombocytopenic purpura",
+     "Hemolytic uremic syndrome",
+     "Disseminated intravascular coagulation",
+     "Mechanical prosthetic-valve hemolysis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-058",
+    "library": "timed",
+    "system": "Heme/Onc",
+    "title": "Causes of microangiopathic hemolytic anemia",
+    "tiles": [
+     "Thrombotic thrombocytopenic purpura",
+     "Hemolytic uremic syndrome",
+     "Disseminated intravascular coagulation",
+     "Malignant hypertension"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"PLX-HEM-011 | bank-ext-058\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "PLX-HEM-042 | bank-easy-04",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"infection causing caseating necrotizing granuloma\" vs \"granulomatous infection necrotizing caseating granuloma\"; 3 of 4 tiles identical",
+   "a": {
+    "id": "PLX-HEM-042",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "Infections causing caseating/necrotizing granulomas",
+    "tiles": [
+     "Tuberculosis",
+     "Histoplasmosis",
+     "Cryptococcosis",
+     "Coccidioidomycosis"
+    ],
+    "status": "AI_REVIEWED_REVISED"
+   },
+   "b": {
+    "id": "bank-easy-04",
+    "library": "timed",
+    "system": "Microbiology",
+    "title": "Granulomatous infections with necrotizing (caseating) granulomas",
+    "tiles": [
+     "Tuberculosis",
+     "Histoplasmosis",
+     "Coccidioidomycosis",
+     "Nontuberculous mycobacterial infection"
+    ],
+    "status": "needs_review"
+   },
+   "decide": "decisions.json → pairs → \"PLX-HEM-042 | bank-easy-04\": \"same\" (exclude timed entry at activation) or \"distinct\""
   }
  ],
  "boardReviews": [

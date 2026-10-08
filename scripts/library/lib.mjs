@@ -50,6 +50,9 @@ export function verificationOf(raw, map = DEFAULT_STATUS_MAP, { id = null, conte
 }
 
 // ---------------- normalisation ----------------
+// Interchangeable direction words in lab-style tiles: "Elevated urinary
+// orotic acid" = "Increased urinary orotic acid".
+const SYN = { elevated: 'high', increased: 'high', raised: 'high', higher: 'high', decreased: 'low', reduced: 'low', lowered: 'low', lower: 'low', diminished: 'low' }
 const STOP = new Set(['the', 'a', 'an', 'of', 'in', 'on', 'and', 'or', 'to', 'with', 'for', 'by', 'vs', 'as', 'at', 'from'])
 export function words(text) {
   // A capital "A" after a word ("Vitamin A", "Hepatitis A", "Procarboxypeptidase
@@ -64,7 +67,7 @@ export function words(text) {
     .replace(/[^a-z0-9+]+/g, ' ')
     .split(' ')
     .filter((w) => w && !STOP.has(w))
-    .map((w) => (w === 'qqletteraqq' ? 'a' : w))
+    .map((w) => (w === 'qqletteraqq' ? 'a' : SYN[w] || w))
     .map((w) => (w.length > 3 && w.endsWith('s') && !w.endsWith('ss') && !w.endsWith('us') && !w.endsWith('is') ? w.slice(0, -1) : w))
 }
 const KEYS = new Map()
@@ -224,7 +227,7 @@ export const contentHash = (c) => sha(c)
 // restrictive cardiomyopathy" = "Causes of restrictive cardiomyopathy". Causes
 // and findings of the same disease stay different subjects.
 const FILLER = new Set(['classic', 'characteristic', 'typical', 'source', 'listed', 'described', 'key', 'common', 'important', 'recognized', 'major', 'clinical', 'diagnostic', 'can', 'that', 'which', 'may', 'be', 'is', 'are', 'four', 'main'])
-const RELATION = { cause: 'CAUSE', condition: 'CAUSE', produce: 'CAUSE', lead: 'CAUSE', etiology: 'CAUSE', finding: 'FIND', clue: 'FIND', association: 'FIND', associated: 'FIND', feature: 'FIND', sign: 'FIND', manifestation: 'FIND', presentation: 'FIND' }
+const RELATION = { complication: 'FIND', consequence: 'FIND', cause: 'CAUSE', condition: 'CAUSE', produce: 'CAUSE', lead: 'CAUSE', etiology: 'CAUSE', finding: 'FIND', clue: 'FIND', association: 'FIND', associated: 'FIND', feature: 'FIND', sign: 'FIND', manifestation: 'FIND', presentation: 'FIND' }
 // Light verb stemming for subjects only ("disrupting" / "disrupt").
 const stem = (w) => (w.length > 6 && w.endsWith('ing') ? w.slice(0, -3) : w.length > 5 && w.endsWith('ed') ? w.slice(0, -2) : w)
 export const subjectKey = (title) => [...new Set(words(title).filter((w) => !FILLER.has(w)).map((w) => RELATION[w] || stem(w)))].sort().join(' ')
