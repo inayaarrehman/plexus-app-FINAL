@@ -329,7 +329,7 @@ export const pairKey = (a, b) => [a, b].sort().join(' | ')
 //
 // Difficulty balance is a preference only; any mix is allowed.
 const phrase = (hay, needle) => needle.length >= 3 && ` ${hay} `.includes(` ${needle} `)
-const EXPLICIT = [/\bdo not (co-?place|combine|add|place|pair)\b/i, /\bkeep (\w+ )?(separate|apart)\b/i, /\boff (this|the same|one) (board|puzzle)\b/i, /\b(on|to) the same board\b/i, /\bon one board\b/i, /\bin one puzzle\b/i, /\bavoid\b.{0,80}\b(tile|tiles|board|category)\b/i, /\bexclude\b/i, /\bdo not (also )?(create|build)\b/i, /\bavoid (building|creating|placing)\b/i]
+const EXPLICIT = [/\bdo not (co-?place|combine|add|place|pair)\b/i, /\bkeep (\w+ )?(separate|apart)\b/i, /\boff (this|the same|one) (board|puzzle)\b/i, /\b(on|to) the same board\b/i, /\bon one board\b/i, /\bin one puzzle\b/i, /\bavoid\b.{0,80}\b(tile|tiles|board|category)\b/i, /(?<!not )\bexclude\b/i, /\bdo not (also )?(create|build)\b/i, /\bavoid (building|creating|placing)\b/i]
 export function noteSentences(notes) {
   return String(notes || '')
     .split(/(?<=[.;])\s+(?=[A-Z(])/)

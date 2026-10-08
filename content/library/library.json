@@ -40355,7 +40355,9 @@
    "problems": [],
    "difficultyWarnings": [],
    "duplicateOf": null,
-   "heldFor": [],
+   "heldFor": [
+    "PULM-006"
+   ],
    "timedSame": [],
    "timedUncertain": [
     {
@@ -40365,7 +40367,7 @@
      "titleSim": 0.75
     }
    ],
-   "pool": "review",
+   "pool": "held",
    "starterBoard": null
   },
   "NEPH-030": {
@@ -47856,6 +47858,3440 @@
    "pool": "systemsStarter",
    "starterBoard": "psychiatry-starter-3",
    "placementNote": null
+  },
+  "REPRO-001": {
+   "id": "REPRO-001",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-001",
+     "Connection Title": "Mesonephric duct derivatives",
+     "Tile 1": "Epididymis",
+     "Tile 2": "Ductus deferens",
+     "Tile 3": "Seminal vesicle",
+     "Tile 4": "Ejaculatory duct",
+     "Connection Type": "Shared embryologic origin",
+     "Explanation": "The male internal reproductive ducts develop from the mesonephric (Wolffian) duct under testosterone stimulation.",
+     "Organ System": "Reproductive",
+     "Discipline": "Embryology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Wolffian duct derivatives",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Fetal Development > Sexual Differentiation, PDF p. 9",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four verified as Wolffian duct derivatives (Lorenzi et al., Nature 2026; Mawhinney & Mariotti, Periodontology 2000, 2013; Boscarelli & Bellini, Eur J Pediatr 2021). Clean category; no outlier."
+    },
+    "title": "Mesonephric duct derivatives",
+    "connectionType": "Shared embryologic origin",
+    "explanation": "The male internal reproductive ducts develop from the mesonephric (Wolffian) duct under testosterone stimulation.",
+    "organSystems": "Reproductive",
+    "discipline": "Embryology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Wolffian duct derivatives"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Fetal Development > Sexual Differentiation, PDF p. 9",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four verified as Wolffian duct derivatives (Lorenzi et al., Nature 2026; Mawhinney & Mariotti, Periodontology 2000, 2013; Boscarelli & Bellini, Eur J Pediatr 2021). Clean category; no outlier.",
+    "tiles": [
+     "Epididymis",
+     "Ductus deferens",
+     "Seminal vesicle",
+     "Ejaculatory duct"
+    ]
+   },
+   "contentHash": "be27003eda16de2339d9cb46746642d1fe0ff675636fddb6bba77fcf45d92ef6",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 2,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-5",
+   "placementNote": null
+  },
+  "REPRO-002": {
+   "id": "REPRO-002",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-002",
+     "Connection Title": "Neural crest derivatives",
+     "Tile 1": "Melanocytes",
+     "Tile 2": "Adrenal medullary chromaffin cells",
+     "Tile 3": "Peripheral neurons",
+     "Tile 4": "Leptomeninges",
+     "Connection Type": "Shared embryologic origin",
+     "Explanation": "Neural crest cells give rise to melanocytes, adrenal medullary chromaffin cells, peripheral (sensory/autonomic) neurons, and the forebrain leptomeninges (pia-arachnoid).",
+     "Organ System": "Reproductive",
+     "Discipline": "Embryology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Structures derived from neural crest",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Fetal Development > Germ Layers, PDF p. 5",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Qualifier added: forebrain leptomeninges (pia/arachnoid) are neural crest-derived, whereas midbrain/hindbrain and spinal leptomeninges are mesoderm-derived and meningeal endothelium is always mesoderm (Dasgupta & Jeong, genesis 2019; Frederick et al., Immunol Rev 2022). 'Ectoderm derivatives' is a parent category, not an equally strong competitor; specifying neural crest and peripheral (not CNS) neurons keeps it fair. Organ-system note: general embryology/multisystem, not reproductive-specific; recategorize if Plexus has an Embryology system."
+    },
+    "title": "Neural crest derivatives",
+    "connectionType": "Shared embryologic origin",
+    "explanation": "Neural crest cells give rise to melanocytes, adrenal medullary chromaffin cells, peripheral (sensory/autonomic) neurons, and the forebrain leptomeninges (pia-arachnoid).",
+    "organSystems": "Reproductive",
+    "discipline": "Embryology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Structures derived from neural crest"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Fetal Development > Germ Layers, PDF p. 5",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Qualifier added: forebrain leptomeninges (pia/arachnoid) are neural crest-derived, whereas midbrain/hindbrain and spinal leptomeninges are mesoderm-derived and meningeal endothelium is always mesoderm (Dasgupta & Jeong, genesis 2019; Frederick et al., Immunol Rev 2022). 'Ectoderm derivatives' is a parent category, not an equally strong competitor; specifying neural crest and peripheral (not CNS) neurons keeps it fair. Organ-system note: general embryology/multisystem, not reproductive-specific; recategorize if Plexus has an Embryology system.",
+    "tiles": [
+     "Melanocytes",
+     "Adrenal medullary chromaffin cells",
+     "Peripheral neurons",
+     "Leptomeninges"
+    ]
+   },
+   "contentHash": "9a230446f2048f1287edaaf1a5ce0c1f54d4797128e2c28bf8ae4586719253ef",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 3,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-medium-06",
+     "title": "Neural crest derivatives",
+     "shared": 1,
+     "titleSim": 1
+    }
+   ],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-3",
+   "placementNote": null
+  },
+  "REPRO-003": {
+   "id": "REPRO-003",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-003",
+     "Connection Title": "Second pharyngeal arch derivatives",
+     "Tile 1": "Stapedius muscle",
+     "Tile 2": "Stylohyoid muscle",
+     "Tile 3": "Stapes",
+     "Tile 4": "Lesser horn of hyoid",
+     "Connection Type": "Shared embryologic origin",
+     "Explanation": "The second (hyoid) pharyngeal arch gives rise to the stapedius and stylohyoid muscles (CN VII) and, from Reichert cartilage, the stapes and the lesser horn (and upper body) of the hyoid.",
+     "Organ System": "Reproductive",
+     "Discipline": "Embryology; Anatomy",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Hyoid arch derivatives",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Fetal Development > Pharyngeal Apparatus, PDF pp. 7-8",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four verified (Fiadjoe et al., Gregory's Pediatric Anesthesia 2020; Ahmed et al., Dysphagia 2019; Rodriguez-Vazquez, J Anat 2005, PMID 16050903). Organ-system note: head-and-neck embryology, not reproductive-specific."
+    },
+    "title": "Second pharyngeal arch derivatives",
+    "connectionType": "Shared embryologic origin",
+    "explanation": "The second (hyoid) pharyngeal arch gives rise to the stapedius and stylohyoid muscles (CN VII) and, from Reichert cartilage, the stapes and the lesser horn (and upper body) of the hyoid.",
+    "organSystems": "Reproductive",
+    "discipline": "Embryology; Anatomy",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Hyoid arch derivatives"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Fetal Development > Pharyngeal Apparatus, PDF pp. 7-8",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four verified (Fiadjoe et al., Gregory's Pediatric Anesthesia 2020; Ahmed et al., Dysphagia 2019; Rodriguez-Vazquez, J Anat 2005, PMID 16050903). Organ-system note: head-and-neck embryology, not reproductive-specific.",
+    "tiles": [
+     "Stapedius muscle",
+     "Stylohyoid muscle",
+     "Stapes",
+     "Lesser horn of hyoid"
+    ]
+   },
+   "contentHash": "139928d1811b5248d82e03aaf7d298598cc202aa8beeeacdefb6be7abb2b0562",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 4,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [
+    "CARD-050"
+   ],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-migrated-sys-mixed-0003-L2",
+     "title": "Pharyngeal arch derivatives",
+     "shared": 1,
+     "titleSim": 0.75
+    }
+   ],
+   "pool": "held",
+   "starterBoard": null
+  },
+  "REPRO-004": {
+   "id": "REPRO-004",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-004",
+     "Connection Title": "Structural abnormalities associated with Turner syndrome",
+     "Tile 1": "Bicuspid aortic valve",
+     "Tile 2": "Aortic coarctation",
+     "Tile 3": "Horseshoe kidney",
+     "Tile 4": "Cystic hygroma",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Turner syndrome (45,X) is associated with left-sided cardiac lesions (bicuspid aortic valve ~15-30%, coarctation ~7-18%), horseshoe kidney (~10%), and prenatal cystic hygroma from lymphatic dysplasia.",
+     "Organ System": "Reproductive",
+     "Discipline": "Genetics; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Congenital anomalies in Turner syndrome",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Fetal Development > Chromosomal Disorders, PDF p. 11",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Prevalences verified (Gravholt et al., Nat Rev Endocrinol 2019; Isselbacher et al., 2022 ACC/AHA Aortic Disease Guideline; Luo et al., BMC Pediatr 2025). Clean category."
+    },
+    "title": "Structural abnormalities associated with Turner syndrome",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Turner syndrome (45,X) is associated with left-sided cardiac lesions (bicuspid aortic valve ~15-30%, coarctation ~7-18%), horseshoe kidney (~10%), and prenatal cystic hygroma from lymphatic dysplasia.",
+    "organSystems": "Reproductive",
+    "discipline": "Genetics; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Congenital anomalies in Turner syndrome"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Fetal Development > Chromosomal Disorders, PDF p. 11",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Prevalences verified (Gravholt et al., Nat Rev Endocrinol 2019; Isselbacher et al., 2022 ACC/AHA Aortic Disease Guideline; Luo et al., BMC Pediatr 2025). Clean category.",
+    "tiles": [
+     "Bicuspid aortic valve",
+     "Aortic coarctation",
+     "Horseshoe kidney",
+     "Cystic hygroma"
+    ]
+   },
+   "contentHash": "5d547eaaee71dda7980cdcdc24c370f67212608c5e8594016052cd7587e2d5c0",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 5,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-5",
+   "placementNote": null
+  },
+  "REPRO-005": {
+   "id": "REPRO-005",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-005",
+     "Connection Title": "Clues to complete androgen insensitivity syndrome",
+     "Tile 1": "46,XY karyotype",
+     "Tile 2": "Absent uterus",
+     "Tile 3": "Scant pubic hair",
+     "Tile 4": "Developed breasts",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "In CAIS, testes secrete AMH (Mullerian regression, absent uterus) and androgens, but androgen-receptor dysfunction prevents androgen-dependent pubic/axillary hair; peripheral aromatization of testosterone to estrogen drives breast development in a 46,XY individual.",
+     "Organ System": "Reproductive",
+     "Discipline": "Endocrinology; Genetics",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Complete androgen insensitivity phenotype",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Fetal Development > Disorders of Sexual Development Part 1, PDF p. 12",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Wang & Tian, Front Endocrinol 2025, PMID 41163677; Ahmed et al., Clin Endocrinol 2021; Diaz & Lipman Diaz, Pediatr Rev 2021). Note: scant (not necessarily absent) pubic hair, and pubic hair presence does not exclude CAIS; individual findings overlap with MRKH/other DSD but the combination is specific."
+    },
+    "title": "Clues to complete androgen insensitivity syndrome",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "In CAIS, testes secrete AMH (Mullerian regression, absent uterus) and androgens, but androgen-receptor dysfunction prevents androgen-dependent pubic/axillary hair; peripheral aromatization of testosterone to estrogen drives breast development in a 46,XY individual.",
+    "organSystems": "Reproductive",
+    "discipline": "Endocrinology; Genetics",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Complete androgen insensitivity phenotype"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Fetal Development > Disorders of Sexual Development Part 1, PDF p. 12",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Wang & Tian, Front Endocrinol 2025, PMID 41163677; Ahmed et al., Clin Endocrinol 2021; Diaz & Lipman Diaz, Pediatr Rev 2021). Note: scant (not necessarily absent) pubic hair, and pubic hair presence does not exclude CAIS; individual findings overlap with MRKH/other DSD but the combination is specific.",
+    "tiles": [
+     "46,XY karyotype",
+     "Absent uterus",
+     "Scant pubic hair",
+     "Developed breasts"
+    ]
+   },
+   "contentHash": "115e126f7dc2af1a0cc518bfd057a33f448f5f45936d7487c80cc02e0a759cd2",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 6,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-3",
+   "placementNote": null
+  },
+  "REPRO-006": {
+   "id": "REPRO-006",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-006",
+     "Connection Title": "Kallmann syndrome clues",
+     "Tile 1": "Anosmia",
+     "Tile 2": "Low GnRH",
+     "Tile 3": "Low gonadotropins",
+     "Tile 4": "Delayed sexual maturation",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Defective embryonic migration of GnRH neurons along olfactory axons causes anosmia together with GnRH deficiency, low LH/FSH (hypogonadotropic hypogonadism), and absent/delayed puberty.",
+     "Organ System": "Reproductive",
+     "Discipline": "Endocrinology; Embryology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Olfactory-associated hypogonadotropic hypogonadism",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Fetal Development > Disorders of Sexual Development Part 2, PDF p. 13",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Boehm et al., Nat Rev Endocrinol 2015; Dwyer & Stamou, JCEM 2026; MedlinePlus: Kallmann syndrome). Qualifier: low GnRH is the underlying mechanism (not a routine clinical assay) and is causally linked to low gonadotropins; anosmia is the discriminating tile versus other causes of central hypogonadism."
+    },
+    "title": "Kallmann syndrome clues",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Defective embryonic migration of GnRH neurons along olfactory axons causes anosmia together with GnRH deficiency, low LH/FSH (hypogonadotropic hypogonadism), and absent/delayed puberty.",
+    "organSystems": "Reproductive",
+    "discipline": "Endocrinology; Embryology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Olfactory-associated hypogonadotropic hypogonadism"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Fetal Development > Disorders of Sexual Development Part 2, PDF p. 13",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Boehm et al., Nat Rev Endocrinol 2015; Dwyer & Stamou, JCEM 2026; MedlinePlus: Kallmann syndrome). Qualifier: low GnRH is the underlying mechanism (not a routine clinical assay) and is causally linked to low gonadotropins; anosmia is the discriminating tile versus other causes of central hypogonadism.",
+    "tiles": [
+     "Anosmia",
+     "Low GnRH",
+     "Low gonadotropins",
+     "Delayed sexual maturation"
+    ]
+   },
+   "contentHash": "806a9b1803fe216d3f9d525da4a622efea1563d45ac6d45b1f92b8c41b9131be",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 7,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [
+    "NEU-046"
+   ],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "held",
+   "starterBoard": null
+  },
+  "REPRO-007": {
+   "id": "REPRO-007",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-007",
+     "Connection Title": "States associated with elevated beta-hCG",
+     "Tile 1": "Multiple gestation",
+     "Tile 2": "Hydatidiform mole",
+     "Tile 3": "Choriocarcinoma",
+     "Tile 4": "Trisomy 21 pregnancy",
+     "Connection Type": "Shared laboratory association",
+     "Explanation": "All are associated with higher maternal serum beta-hCG, but magnitude and nature differ: multiple gestation (proportional to placental mass); complete mole (often >100,000 mIU/mL) and choriocarcinoma (can exceed 1,000,000 mIU/mL) from trophoblastic proliferation; and trisomy 21 as a modest (~2x MoM) population-level elevation on second-trimester screening (high hCG, high inhibin A, low AFP, low estriol).",
+     "Organ System": "Reproductive",
+     "Discipline": "Obstetrics; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Pregnancy states linked to high beta-hCG",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Pregnancy and Menstruation > Hormones of Pregnancy, PDF p. 18",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "Explanation revised to add magnitude/context qualifier. Trisomy 21 is a screening (population) association (an individual pregnancy may have normal hCG), whereas the other three nearly always elevate hCG (Driscoll & Gross, NEJM 2009; Berkowitz & Goldstein, NEJM 2009; Luo et al., Arch Gynecol Obstet 2025). Board overlap: mole/choriocarcinoma also fit gestational trophoblastic disease, and trisomy 21 fits quad-screen findings; avoid these competing groups on the same board."
+    },
+    "title": "States associated with elevated beta-hCG",
+    "connectionType": "Shared laboratory association",
+    "explanation": "All are associated with higher maternal serum beta-hCG, but magnitude and nature differ: multiple gestation (proportional to placental mass); complete mole (often >100,000 mIU/mL) and choriocarcinoma (can exceed 1,000,000 mIU/mL) from trophoblastic proliferation; and trisomy 21 as a modest (~2x MoM) population-level elevation on second-trimester screening (high hCG, high inhibin A, low AFP, low estriol).",
+    "organSystems": "Reproductive",
+    "discipline": "Obstetrics; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Pregnancy states linked to high beta-hCG"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Pregnancy and Menstruation > Hormones of Pregnancy, PDF p. 18",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "Explanation revised to add magnitude/context qualifier. Trisomy 21 is a screening (population) association (an individual pregnancy may have normal hCG), whereas the other three nearly always elevate hCG (Driscoll & Gross, NEJM 2009; Berkowitz & Goldstein, NEJM 2009; Luo et al., Arch Gynecol Obstet 2025). Board overlap: mole/choriocarcinoma also fit gestational trophoblastic disease, and trisomy 21 fits quad-screen findings; avoid these competing groups on the same board.",
+    "tiles": [
+     "Multiple gestation",
+     "Hydatidiform mole",
+     "Choriocarcinoma",
+     "Trisomy 21 pregnancy"
+    ]
+   },
+   "contentHash": "95b4814398bd84f4d5ed6074934033f9da6399ca52959a931e2c0149accc6627",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 8,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": "ai-review-revised",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-5",
+   "placementNote": null
+  },
+  "REPRO-008": {
+   "id": "REPRO-008",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-008",
+     "Connection Title": "Cardiovascular parameters that increase in normal pregnancy",
+     "Tile 1": "Cardiac output",
+     "Tile 2": "Heart rate",
+     "Tile 3": "Stroke volume",
+     "Tile 4": "Preload",
+     "Connection Type": "Shared physiologic direction",
+     "Explanation": "Normal pregnancy raises plasma volume (increased preload), heart rate (10-20 bpm), stroke volume, and cardiac output (30-50%), while systemic vascular resistance falls.",
+     "Organ System": "Reproductive",
+     "Discipline": "Physiology; Obstetrics",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Hemodynamic increases in pregnancy",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Pregnancy and Menstruation > Pregnancy Physiology, PDF p. 21",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (2025 ESC Guidelines on Cardiovascular Disease and Pregnancy; Yang et al., J Clin Invest 2026; Ramlakhan et al., Nat Rev Cardiol 2020). Category must specify normal pregnancy (also compatible with other high-output states)."
+    },
+    "title": "Cardiovascular parameters that increase in normal pregnancy",
+    "connectionType": "Shared physiologic direction",
+    "explanation": "Normal pregnancy raises plasma volume (increased preload), heart rate (10-20 bpm), stroke volume, and cardiac output (30-50%), while systemic vascular resistance falls.",
+    "organSystems": "Reproductive",
+    "discipline": "Physiology; Obstetrics",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Hemodynamic increases in pregnancy"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Pregnancy and Menstruation > Pregnancy Physiology, PDF p. 21",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (2025 ESC Guidelines on Cardiovascular Disease and Pregnancy; Yang et al., J Clin Invest 2026; Ramlakhan et al., Nat Rev Cardiol 2020). Category must specify normal pregnancy (also compatible with other high-output states).",
+    "tiles": [
+     "Cardiac output",
+     "Heart rate",
+     "Stroke volume",
+     "Preload"
+    ]
+   },
+   "contentHash": "15c5bf6dc02a859dd9782c2a9dfaa89780567163f67009c215eb0f516558ce33",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 9,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-3",
+   "placementNote": null
+  },
+  "REPRO-009": {
+   "id": "REPRO-009",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-009",
+     "Connection Title": "Causes of oligohydramnios through reduced fetal urine",
+     "Tile 1": "Renal agenesis",
+     "Tile 2": "Posterior urethral valves",
+     "Tile 3": "Autosomal recessive polycystic kidney disease",
+     "Tile 4": "Fetal ACE inhibitor exposure",
+     "Connection Type": "Shared pathophysiology",
+     "Explanation": "After ~16 weeks amniotic fluid is mainly fetal urine; absent renal tissue (renal agenesis), lower-tract obstruction (posterior urethral valves), cystic renal disease (ARPKD), or drug-induced fetal renal hypoperfusion (ACE inhibitors/ARBs) reduce urine output and cause oligohydramnios.",
+     "Organ System": "Reproductive",
+     "Discipline": "Embryology; Obstetrics; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Fetal renal causes of oligohydramnios",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Pathologies of Pregnancy > Polyhydramnios and Oligohydramnios, PDF p. 30",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (SMFM Consult Series #4 Genitourinary Anomalies, 2021; Crosland et al., J Perinatol 2025). Effect depends on severity and timing of exposure."
+    },
+    "title": "Causes of oligohydramnios through reduced fetal urine",
+    "connectionType": "Shared pathophysiology",
+    "explanation": "After ~16 weeks amniotic fluid is mainly fetal urine; absent renal tissue (renal agenesis), lower-tract obstruction (posterior urethral valves), cystic renal disease (ARPKD), or drug-induced fetal renal hypoperfusion (ACE inhibitors/ARBs) reduce urine output and cause oligohydramnios.",
+    "organSystems": "Reproductive",
+    "discipline": "Embryology; Obstetrics; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Fetal renal causes of oligohydramnios"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Pathologies of Pregnancy > Polyhydramnios and Oligohydramnios, PDF p. 30",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (SMFM Consult Series #4 Genitourinary Anomalies, 2021; Crosland et al., J Perinatol 2025). Effect depends on severity and timing of exposure.",
+    "tiles": [
+     "Renal agenesis",
+     "Posterior urethral valves",
+     "Autosomal recessive polycystic kidney disease",
+     "Fetal ACE inhibitor exposure"
+    ]
+   },
+   "contentHash": "042a179fe8648a4655c44e37e35d3352fe76a45a42923a3bed61809895cd72aa",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 10,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-1",
+   "placementNote": null
+  },
+  "REPRO-010": {
+   "id": "REPRO-010",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-010",
+     "Connection Title": "Conditions associated with polyhydramnios",
+     "Tile 1": "Anencephaly",
+     "Tile 2": "Intestinal atresia",
+     "Tile 3": "Maternal diabetes",
+     "Tile 4": "Twin-twin transfusion recipient",
+     "Connection Type": "Shared clinical consequence",
+     "Explanation": "Impaired fetal swallowing (anencephaly, intestinal/duodenal atresia) or increased fetal urine output (maternal diabetes via fetal osmotic diuresis; TTTS recipient hypervolemia) raises amniotic fluid volume.",
+     "Organ System": "Reproductive",
+     "Discipline": "Obstetrics; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Causes of excess amniotic fluid",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Pathologies of Pregnancy > Polyhydramnios and Oligohydramnios, PDF p. 30",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (SMFM Consult Series #46 Polyhydramnios, 2018; Beke & Simonyi, BMC Pregnancy Childbirth 2025). Only the RECIPIENT twin in TTTS has polyhydramnios; the donor has oligohydramnios (board caution)."
+    },
+    "title": "Conditions associated with polyhydramnios",
+    "connectionType": "Shared clinical consequence",
+    "explanation": "Impaired fetal swallowing (anencephaly, intestinal/duodenal atresia) or increased fetal urine output (maternal diabetes via fetal osmotic diuresis; TTTS recipient hypervolemia) raises amniotic fluid volume.",
+    "organSystems": "Reproductive",
+    "discipline": "Obstetrics; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Causes of excess amniotic fluid"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Pathologies of Pregnancy > Polyhydramnios and Oligohydramnios, PDF p. 30",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (SMFM Consult Series #46 Polyhydramnios, 2018; Beke & Simonyi, BMC Pregnancy Childbirth 2025). Only the RECIPIENT twin in TTTS has polyhydramnios; the donor has oligohydramnios (board caution).",
+    "tiles": [
+     "Anencephaly",
+     "Intestinal atresia",
+     "Maternal diabetes",
+     "Twin-twin transfusion recipient"
+    ]
+   },
+   "contentHash": "1367092ff7b4235e105c764e6e4969757aec8e6086e49d88ceaf6bb1502f3918",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 11,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-5",
+   "placementNote": null
+  },
+  "REPRO-011": {
+   "id": "REPRO-011",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-011",
+     "Connection Title": "The four etiologic groups of postpartum hemorrhage (4 Ts)",
+     "Tile 1": "Uterine atony",
+     "Tile 2": "Genital tract trauma",
+     "Tile 3": "Retained placental tissue",
+     "Tile 4": "Coagulation disorder",
+     "Connection Type": "Etiologic framework",
+     "Explanation": "The 4 Ts of PPH: Tone (uterine atony, ~70%), Trauma (lacerations/rupture, ~20%), Tissue (retained placenta, ~10%), and Thrombin (coagulopathy, <1%).",
+     "Organ System": "Reproductive",
+     "Discipline": "Obstetrics; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Four Ts of postpartum hemorrhage",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Pathologies of Pregnancy > Postpartum Hemorrhage, PDF p. 33",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Bienstock et al., NEJM 2021; ACOG Practice Bulletin, Postpartum Hemorrhage 2017; Evensen et al., AFP 2017, PMID 28409600)."
+    },
+    "title": "The four etiologic groups of postpartum hemorrhage (4 Ts)",
+    "connectionType": "Etiologic framework",
+    "explanation": "The 4 Ts of PPH: Tone (uterine atony, ~70%), Trauma (lacerations/rupture, ~20%), Tissue (retained placenta, ~10%), and Thrombin (coagulopathy, <1%).",
+    "organSystems": "Reproductive",
+    "discipline": "Obstetrics; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Four Ts of postpartum hemorrhage"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Pathologies of Pregnancy > Postpartum Hemorrhage, PDF p. 33",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Bienstock et al., NEJM 2021; ACOG Practice Bulletin, Postpartum Hemorrhage 2017; Evensen et al., AFP 2017, PMID 28409600).",
+    "tiles": [
+     "Uterine atony",
+     "Genital tract trauma",
+     "Retained placental tissue",
+     "Coagulation disorder"
+    ]
+   },
+   "contentHash": "55addb9c32cf50da18d1dfd441d7ff2b8293dacbd62852d367bb71268dc490aa",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 12,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-4",
+   "placementNote": null
+  },
+  "REPRO-012": {
+   "id": "REPRO-012",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-012",
+     "Connection Title": "Antihypertensives used during pregnancy",
+     "Tile 1": "Labetalol",
+     "Tile 2": "Nifedipine",
+     "Tile 3": "Methyldopa",
+     "Tile 4": "Hydralazine",
+     "Connection Type": "Shared therapeutic setting",
+     "Explanation": "All are used for hypertension in pregnancy: labetalol, nifedipine, and methyldopa for chronic/mild gestational hypertension, and IV labetalol, IV hydralazine, and oral immediate-release nifedipine for acute severe hypertension.",
+     "Organ System": "Reproductive",
+     "Discipline": "Pharmacology; Obstetrics",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Pregnancy-compatible antihypertensives",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Pathologies of Pregnancy > Hypertension in Pregnancy, PDF p. 28",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (AHA Scientific Statement, Hypertension in Pregnancy 2022; 2025 ESC Pregnancy Guidelines; Mehta et al., AHA 2020). Agents are not interchangeable across acute vs chronic settings; ACE inhibitors/ARBs are contraindicated (good distractors)."
+    },
+    "title": "Antihypertensives used during pregnancy",
+    "connectionType": "Shared therapeutic setting",
+    "explanation": "All are used for hypertension in pregnancy: labetalol, nifedipine, and methyldopa for chronic/mild gestational hypertension, and IV labetalol, IV hydralazine, and oral immediate-release nifedipine for acute severe hypertension.",
+    "organSystems": "Reproductive",
+    "discipline": "Pharmacology; Obstetrics",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Pregnancy-compatible antihypertensives"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Pathologies of Pregnancy > Hypertension in Pregnancy, PDF p. 28",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (AHA Scientific Statement, Hypertension in Pregnancy 2022; 2025 ESC Pregnancy Guidelines; Mehta et al., AHA 2020). Agents are not interchangeable across acute vs chronic settings; ACE inhibitors/ARBs are contraindicated (good distractors).",
+    "tiles": [
+     "Labetalol",
+     "Nifedipine",
+     "Methyldopa",
+     "Hydralazine"
+    ]
+   },
+   "contentHash": "26437ec7e160b29aa6d194b4b7c126e18740810c44d50e6408e1e6ed1957c79b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 13,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-2",
+   "placementNote": null
+  },
+  "REPRO-013": {
+   "id": "REPRO-013",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-013",
+     "Connection Title": "Risk factors for placental abruption",
+     "Tile 1": "Cocaine exposure",
+     "Tile 2": "Cigarette smoking",
+     "Tile 3": "Preeclampsia",
+     "Tile 4": "Uterine fibroids",
+     "Connection Type": "Shared risk association",
+     "Explanation": "Vasoconstriction/vascular injury (cocaine OR ~4; smoking OR ~1.8-1.9), hypertensive disease (preeclampsia AOR ~2), and uterine leiomyomas (especially large or retroplacental; adjusted RR ~1.9) increase the risk of premature placental separation.",
+     "Organ System": "Reproductive",
+     "Discipline": "Obstetrics; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Risk factors for abruptio placentae",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Pathologies of Pregnancy > Placental Pathology, PDF p. 32",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "Explanation revised to add effect sizes and the qualifier that fibroid risk is weaker/inconsistent (class IV evidence), driven mainly by large/retroplacental fibroids (Chen et al., BMC Pregnancy Childbirth 2025; Jenabi & Ebrahimzadeh Zagami, J Matern Fetal Neonatal Med 2017; Li et al., BMC Pregnancy Childbirth 2024; Ananth et al., Obstet Gynecol 1996/1999). All four remain defensible abruption risk factors; no equally strong competing category."
+    },
+    "title": "Risk factors for placental abruption",
+    "connectionType": "Shared risk association",
+    "explanation": "Vasoconstriction/vascular injury (cocaine OR ~4; smoking OR ~1.8-1.9), hypertensive disease (preeclampsia AOR ~2), and uterine leiomyomas (especially large or retroplacental; adjusted RR ~1.9) increase the risk of premature placental separation.",
+    "organSystems": "Reproductive",
+    "discipline": "Obstetrics; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Risk factors for abruptio placentae"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Pathologies of Pregnancy > Placental Pathology, PDF p. 32",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "Explanation revised to add effect sizes and the qualifier that fibroid risk is weaker/inconsistent (class IV evidence), driven mainly by large/retroplacental fibroids (Chen et al., BMC Pregnancy Childbirth 2025; Jenabi & Ebrahimzadeh Zagami, J Matern Fetal Neonatal Med 2017; Li et al., BMC Pregnancy Childbirth 2024; Ananth et al., Obstet Gynecol 1996/1999). All four remain defensible abruption risk factors; no equally strong competing category.",
+    "tiles": [
+     "Cocaine exposure",
+     "Cigarette smoking",
+     "Preeclampsia",
+     "Uterine fibroids"
+    ]
+   },
+   "contentHash": "3fb8edf6815244ee1ae962e5f74db876d1aae8076a5c457c4f5ac537db2d0e40",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 14,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": "ai-review-revised",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-4",
+   "placementNote": null
+  },
+  "REPRO-014": {
+   "id": "REPRO-014",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-014",
+     "Connection Title": "Complete hydatidiform mole pathology",
+     "Tile 1": "Absent p57 staining",
+     "Tile 2": "Paternal-only (androgenetic) nuclear genome",
+     "Tile 3": "Diffuse villous swelling",
+     "Tile 4": "Circumferential trophoblast proliferation",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "The common androgenetic complete mole has a diploid paternal-only genome; loss of the maternally expressed, paternally imprinted p57 produces negative p57 immunostaining in cytotrophoblast/villous stroma, with diffuse hydropic villi and circumferential trophoblastic hyperplasia.",
+     "Organ System": "Reproductive",
+     "Discipline": "Pathology; Genetics",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Features of an androgenetic complete mole",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Pathologies of Pregnancy > Molar Pregnancy, PDF p. 27",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Berkowitz & Goldstein, NEJM 2009; NCCN Gestational Trophoblastic Neoplasia 2025; EOTTD guidelines, Bartosch et al., Virchows Arch 2024; Xing et al., Mod Pathol 2021, PMID 33024305). p57 and paternal-genome tiles are mechanistically linked but are distinct observations; rare p57-positive androgenetic (retained maternal chr 11) moles exist, so the title/explanation describe the common form."
+    },
+    "title": "Complete hydatidiform mole pathology",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "The common androgenetic complete mole has a diploid paternal-only genome; loss of the maternally expressed, paternally imprinted p57 produces negative p57 immunostaining in cytotrophoblast/villous stroma, with diffuse hydropic villi and circumferential trophoblastic hyperplasia.",
+    "organSystems": "Reproductive",
+    "discipline": "Pathology; Genetics",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Features of an androgenetic complete mole"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Pathologies of Pregnancy > Molar Pregnancy, PDF p. 27",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Berkowitz & Goldstein, NEJM 2009; NCCN Gestational Trophoblastic Neoplasia 2025; EOTTD guidelines, Bartosch et al., Virchows Arch 2024; Xing et al., Mod Pathol 2021, PMID 33024305). p57 and paternal-genome tiles are mechanistically linked but are distinct observations; rare p57-positive androgenetic (retained maternal chr 11) moles exist, so the title/explanation describe the common form.",
+    "tiles": [
+     "Absent p57 staining",
+     "Paternal-only (androgenetic) nuclear genome",
+     "Diffuse villous swelling",
+     "Circumferential trophoblast proliferation"
+    ]
+   },
+   "contentHash": "75e37d3e9ee5bbc52ee2072462737f195de9816bcdc988f347e8e8f9dc438c58",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 15,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-1",
+   "placementNote": null
+  },
+  "REPRO-015": {
+   "id": "REPRO-015",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-015",
+     "Connection Title": "States of prolonged unopposed estrogen exposure",
+     "Tile 1": "Polycystic ovary syndrome",
+     "Tile 2": "Unopposed estrogen therapy",
+     "Tile 3": "Late menopause",
+     "Tile 4": "Estrogen-secreting ovarian tumor",
+     "Connection Type": "Shared hormonal mechanism",
+     "Explanation": "Each produces estrogen stimulation of the endometrium without adequate progesterone opposition (anovulation in PCOS, exogenous estrogen without a progestogen, prolonged endogenous exposure with late menopause, and estrogen-secreting tumors such as granulosa cell tumor), promoting endometrial proliferation, hyperplasia, and type I endometrial carcinoma.",
+     "Organ System": "Reproductive",
+     "Discipline": "Pathology; Endocrinology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Risk factors for endometrial hyperplasia; Risk factors for type I (endometrioid) endometrial carcinoma",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Female Pathology > Uterine Pathology, PDF p. 39",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "Retitled from 'Risk factors for endometrial hyperplasia' to the shared mechanism so that endometrial-hyperplasia risk and type I endometrial-carcinoma risk (an identical risk-factor list) become accepted alternate names rather than competing categories (Lu & Broaddus, NEJM 2020; Crosbie et al., Lancet 2022; Kim et al., Cochrane 2025; van Meurs et al., Int J Gynecol Cancer 2013). Difficulty raised Easy to Medium. Board caution: do not place a separate endometrial-cancer-risk group on the same board."
+    },
+    "title": "States of prolonged unopposed estrogen exposure",
+    "connectionType": "Shared hormonal mechanism",
+    "explanation": "Each produces estrogen stimulation of the endometrium without adequate progesterone opposition (anovulation in PCOS, exogenous estrogen without a progestogen, prolonged endogenous exposure with late menopause, and estrogen-secreting tumors such as granulosa cell tumor), promoting endometrial proliferation, hyperplasia, and type I endometrial carcinoma.",
+    "organSystems": "Reproductive",
+    "discipline": "Pathology; Endocrinology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Risk factors for endometrial hyperplasia",
+     "Risk factors for type I (endometrioid) endometrial carcinoma"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Female Pathology > Uterine Pathology, PDF p. 39",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "Retitled from 'Risk factors for endometrial hyperplasia' to the shared mechanism so that endometrial-hyperplasia risk and type I endometrial-carcinoma risk (an identical risk-factor list) become accepted alternate names rather than competing categories (Lu & Broaddus, NEJM 2020; Crosbie et al., Lancet 2022; Kim et al., Cochrane 2025; van Meurs et al., Int J Gynecol Cancer 2013). Difficulty raised Easy to Medium. Board caution: do not place a separate endometrial-cancer-risk group on the same board.",
+    "tiles": [
+     "Polycystic ovary syndrome",
+     "Unopposed estrogen therapy",
+     "Late menopause",
+     "Estrogen-secreting ovarian tumor"
+    ]
+   },
+   "contentHash": "800729394c00079ac9ac0ea3e3564c107fe63c6763abc6fbf0b17e597f745687",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 16,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": "ai-review-revised",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [
+    "Difficulty raised Easy to Medium."
+   ],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "REPRO-016": {
+   "id": "REPRO-016",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-016",
+     "Connection Title": "Classic symptomatic associations of endometriosis",
+     "Tile 1": "Cyclic pelvic pain",
+     "Tile 2": "Dyspareunia",
+     "Tile 3": "Dyschezia",
+     "Tile 4": "Infertility",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Ectopic endometrial-like tissue causes cyclic pelvic pain/dysmenorrhea, deep dyspareunia, dyschezia, and subfertility; about 90% report pelvic pain and about 26% infertility.",
+     "Organ System": "Reproductive",
+     "Discipline": "Pathology; Gynecology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Clinical clues to endometriosis",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Female Pathology > Uterine Pathology, PDF p. 40",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (As-Sanie et al., JAMA 2025; Taylor et al., Lancet 2021). Individual symptoms overlap with other pelvic disorders and none is universal (about 2% asymptomatic); the constellation is characteristic."
+    },
+    "title": "Classic symptomatic associations of endometriosis",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Ectopic endometrial-like tissue causes cyclic pelvic pain/dysmenorrhea, deep dyspareunia, dyschezia, and subfertility; about 90% report pelvic pain and about 26% infertility.",
+    "organSystems": "Reproductive",
+    "discipline": "Pathology; Gynecology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Clinical clues to endometriosis"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Female Pathology > Uterine Pathology, PDF p. 40",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (As-Sanie et al., JAMA 2025; Taylor et al., Lancet 2021). Individual symptoms overlap with other pelvic disorders and none is universal (about 2% asymptomatic); the constellation is characteristic.",
+    "tiles": [
+     "Cyclic pelvic pain",
+     "Dyspareunia",
+     "Dyschezia",
+     "Infertility"
+    ]
+   },
+   "contentHash": "87f0659c5dd930c21c12022fbe77f00c42271b2228a4f33179d44d3e69a39604",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 17,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-4",
+   "placementNote": null
+  },
+  "REPRO-017": {
+   "id": "REPRO-017",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-017",
+     "Connection Title": "Ovarian germ cell tumors",
+     "Tile 1": "Mature cystic teratoma",
+     "Tile 2": "Immature teratoma",
+     "Tile 3": "Dysgerminoma",
+     "Tile 4": "Yolk sac tumor",
+     "Connection Type": "Shared tumor lineage",
+     "Explanation": "All arise from primordial germ cells: mature (benign) and immature (malignant) teratomas, dysgerminoma (undifferentiated), and yolk sac tumor (extraembryonic differentiation).",
+     "Organ System": "Reproductive",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Germ cell neoplasms of the ovary",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Female Pathology > Germ Cell Tumors, PDF p. 46",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified against WHO classification (NCCN Ovarian Cancer 2026; Zuckerman et al., NEJM Case 26-2023). Clean lineage category."
+    },
+    "title": "Ovarian germ cell tumors",
+    "connectionType": "Shared tumor lineage",
+    "explanation": "All arise from primordial germ cells: mature (benign) and immature (malignant) teratomas, dysgerminoma (undifferentiated), and yolk sac tumor (extraembryonic differentiation).",
+    "organSystems": "Reproductive",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Germ cell neoplasms of the ovary"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Female Pathology > Germ Cell Tumors, PDF p. 46",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified against WHO classification (NCCN Ovarian Cancer 2026; Zuckerman et al., NEJM Case 26-2023). Clean lineage category.",
+    "tiles": [
+     "Mature cystic teratoma",
+     "Immature teratoma",
+     "Dysgerminoma",
+     "Yolk sac tumor"
+    ]
+   },
+   "contentHash": "b11f6d68ba5aaff40788a962fab4d950fbd7f5434ff24bfc04becc2a7595cf50",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 18,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-094",
+     "title": "Ovarian germ cell tumors",
+     "shared": 2,
+     "titleSim": 1
+    }
+   ],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-4",
+   "placementNote": null
+  },
+  "REPRO-018": {
+   "id": "REPRO-018",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-018",
+     "Connection Title": "Ovarian sex cord-stromal tumors",
+     "Tile 1": "Ovarian fibroma",
+     "Tile 2": "Thecoma",
+     "Tile 3": "Granulosa cell tumor",
+     "Tile 4": "Sertoli-Leydig cell tumor",
+     "Connection Type": "Shared tumor lineage",
+     "Explanation": "All derive from sex cord/stromal cells (granulosa, theca, fibroblasts, Sertoli-Leydig) rather than epithelial or germ cell lineages; many are hormonally active.",
+     "Organ System": "Reproductive",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Sex cord-stromal neoplasms of the ovary",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Female Pathology > Sex Cord Stromal Tumors, PDF p. 47",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified against WHO classification (NCCN Ovarian Cancer 2026; Jung et al., Sci Rep 2025)."
+    },
+    "title": "Ovarian sex cord-stromal tumors",
+    "connectionType": "Shared tumor lineage",
+    "explanation": "All derive from sex cord/stromal cells (granulosa, theca, fibroblasts, Sertoli-Leydig) rather than epithelial or germ cell lineages; many are hormonally active.",
+    "organSystems": "Reproductive",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Sex cord-stromal neoplasms of the ovary"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Female Pathology > Sex Cord Stromal Tumors, PDF p. 47",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified against WHO classification (NCCN Ovarian Cancer 2026; Jung et al., Sci Rep 2025).",
+    "tiles": [
+     "Ovarian fibroma",
+     "Thecoma",
+     "Granulosa cell tumor",
+     "Sertoli-Leydig cell tumor"
+    ]
+   },
+   "contentHash": "dd2cab9cd51b1f52f3e48fdf4156b53cb46ac148cd0af1887bb0126c50e39ddd",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 19,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-2",
+   "placementNote": null
+  },
+  "REPRO-019": {
+   "id": "REPRO-019",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-019",
+     "Connection Title": "Protective associations for ovarian cancer",
+     "Tile 1": "Multiparity",
+     "Tile 2": "Breastfeeding",
+     "Tile 3": "Oral contraceptive use",
+     "Tile 4": "Tubal ligation",
+     "Connection Type": "Shared protective association",
+     "Explanation": "Each is associated with reduced epithelial ovarian cancer risk: multiparity (OR ~0.81 per birth), breastfeeding (OR ~0.72), oral contraceptives (OR ~0.66; ~45% lower after 10+ years), and tubal ligation (~30% reduction).",
+     "Organ System": "Reproductive",
+     "Discipline": "Pathology; Epidemiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Factors associated with lower ovarian cancer risk",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Female Pathology > Ovarian Cancer, PDF p. 44",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Caruso et al., JAMA 2025; Troisi et al., J Intern Med 2018; Cannistra, NEJM 2004; Zheng et al., JNCI 2024, PMID 38964345). Magnitude varies by histotype; tubal ligation is NOT an ovulation-suppression mechanism, so avoid an ovulation-suppression alternate title."
+    },
+    "title": "Protective associations for ovarian cancer",
+    "connectionType": "Shared protective association",
+    "explanation": "Each is associated with reduced epithelial ovarian cancer risk: multiparity (OR ~0.81 per birth), breastfeeding (OR ~0.72), oral contraceptives (OR ~0.66; ~45% lower after 10+ years), and tubal ligation (~30% reduction).",
+    "organSystems": "Reproductive",
+    "discipline": "Pathology; Epidemiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Factors associated with lower ovarian cancer risk"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Female Pathology > Ovarian Cancer, PDF p. 44",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Caruso et al., JAMA 2025; Troisi et al., J Intern Med 2018; Cannistra, NEJM 2004; Zheng et al., JNCI 2024, PMID 38964345). Magnitude varies by histotype; tubal ligation is NOT an ovulation-suppression mechanism, so avoid an ovulation-suppression alternate title.",
+    "tiles": [
+     "Multiparity",
+     "Breastfeeding",
+     "Oral contraceptive use",
+     "Tubal ligation"
+    ]
+   },
+   "contentHash": "50660c29249a347d2bdded145a1678a75c14722977c3be60f8509d7a353045c9",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 20,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-2",
+   "placementNote": null
+  },
+  "REPRO-020": {
+   "id": "REPRO-020",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-020",
+     "Connection Title": "Drugs associated with gynecomastia",
+     "Tile 1": "Spironolactone",
+     "Tile 2": "Finasteride",
+     "Tile 3": "Ketoconazole",
+     "Tile 4": "Cimetidine",
+     "Connection Type": "Shared adverse effect",
+     "Explanation": "Each disturbs the androgen-estrogen balance (androgen-receptor blockade with spironolactone and cimetidine; inhibition of testosterone/DHT synthesis with ketoconazole and, as a 5-alpha-reductase inhibitor, finasteride) and is associated with gynecomastia.",
+     "Organ System": "Reproductive",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Medication causes of gynecomastia",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Female Pathology > Benign Breast Pathology, PDF p. 49",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Spironolactone, cimetidine, and ketoconazole have definite evidence; finasteride (5-ARI) is well recognized (Deepinder & Braunstein, Expert Opin Drug Saf 2012, PMID 22862307; Narula & Carlson, Nat Rev Endocrinol 2014; Braunstein, NEJM 2007). Cimetidine is clinically an H2 blocker; gynecomastia is the shared adverse effect, not drug class."
+    },
+    "title": "Drugs associated with gynecomastia",
+    "connectionType": "Shared adverse effect",
+    "explanation": "Each disturbs the androgen-estrogen balance (androgen-receptor blockade with spironolactone and cimetidine; inhibition of testosterone/DHT synthesis with ketoconazole and, as a 5-alpha-reductase inhibitor, finasteride) and is associated with gynecomastia.",
+    "organSystems": "Reproductive",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Medication causes of gynecomastia"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Female Pathology > Benign Breast Pathology, PDF p. 49",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Spironolactone, cimetidine, and ketoconazole have definite evidence; finasteride (5-ARI) is well recognized (Deepinder & Braunstein, Expert Opin Drug Saf 2012, PMID 22862307; Narula & Carlson, Nat Rev Endocrinol 2014; Braunstein, NEJM 2007). Cimetidine is clinically an H2 blocker; gynecomastia is the shared adverse effect, not drug class.",
+    "tiles": [
+     "Spironolactone",
+     "Finasteride",
+     "Ketoconazole",
+     "Cimetidine"
+    ]
+   },
+   "contentHash": "cbb8c1b61c57336d119fbc2f0d278a1d17a232bd2879719f91b2241528d3dc28",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 21,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-1",
+   "placementNote": null
+  },
+  "REPRO-021": {
+   "id": "REPRO-021",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-021",
+     "Connection Title": "GnRH receptor agonists",
+     "Tile 1": "Leuprolide",
+     "Tile 2": "Goserelin",
+     "Tile 3": "Nafarelin",
+     "Tile 4": "Histrelin",
+     "Connection Type": "Shared drug mechanism",
+     "Explanation": "All are GnRH agonist analogues that initially stimulate pituitary gonadotropin release (flare) then suppress LH/FSH via receptor downregulation with continuous administration.",
+     "Organ System": "Reproductive",
+     "Discipline": "Pharmacology; Endocrinology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "GnRH agonist medications; LHRH agonists",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Pharmacology > GnRH Modulators, PDF p. 64",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Chen et al., PLoS One 2024; Vannuccini et al., Rev Endocr Metab Disord 2022; ASRM endometriosis guideline, Fertil Steril 2006). Distinct from GnRH antagonists (no flare)."
+    },
+    "title": "GnRH receptor agonists",
+    "connectionType": "Shared drug mechanism",
+    "explanation": "All are GnRH agonist analogues that initially stimulate pituitary gonadotropin release (flare) then suppress LH/FSH via receptor downregulation with continuous administration.",
+    "organSystems": "Reproductive",
+    "discipline": "Pharmacology; Endocrinology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "GnRH agonist medications",
+     "LHRH agonists"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Pharmacology > GnRH Modulators, PDF p. 64",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Chen et al., PLoS One 2024; Vannuccini et al., Rev Endocr Metab Disord 2022; ASRM endometriosis guideline, Fertil Steril 2006). Distinct from GnRH antagonists (no flare).",
+    "tiles": [
+     "Leuprolide",
+     "Goserelin",
+     "Nafarelin",
+     "Histrelin"
+    ]
+   },
+   "contentHash": "a5ffd6f5151698a2b19537e2b7e65061818781bec2d3fb66bfed70dfa4f61731",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 22,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-1",
+   "placementNote": null
+  },
+  "REPRO-022": {
+   "id": "REPRO-022",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-022",
+     "Connection Title": "Progestins used for contraception",
+     "Tile 1": "Levonorgestrel",
+     "Tile 2": "Medroxyprogesterone",
+     "Tile 3": "Etonogestrel",
+     "Tile 4": "Norethindrone",
+     "Connection Type": "Shared drug class and use",
+     "Explanation": "All are synthetic progestogens used in contraceptives: levonorgestrel (pills/IUD/emergency contraception), depot medroxyprogesterone acetate (injection), etonogestrel (implant/vaginal ring), and norethindrone (progestin-only and combined pills).",
+     "Organ System": "Reproductive",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Contraceptive progestogens",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Pharmacology > Hormone Replacement Therapy, PDF p. 69",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Klein et al., AFP 2025; CDC US MEC 2024; FDA labels). Category must specify contraceptive use (not every progestin formulation is contraceptive)."
+    },
+    "title": "Progestins used for contraception",
+    "connectionType": "Shared drug class and use",
+    "explanation": "All are synthetic progestogens used in contraceptives: levonorgestrel (pills/IUD/emergency contraception), depot medroxyprogesterone acetate (injection), etonogestrel (implant/vaginal ring), and norethindrone (progestin-only and combined pills).",
+    "organSystems": "Reproductive",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Contraceptive progestogens"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Pharmacology > Hormone Replacement Therapy, PDF p. 69",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Klein et al., AFP 2025; CDC US MEC 2024; FDA labels). Category must specify contraceptive use (not every progestin formulation is contraceptive).",
+    "tiles": [
+     "Levonorgestrel",
+     "Medroxyprogesterone",
+     "Etonogestrel",
+     "Norethindrone"
+    ]
+   },
+   "contentHash": "6f1912b682b68cc19076be84fe5661c36f6db79e1c4788f821d39a393818d968",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 23,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-3",
+   "placementNote": null
+  },
+  "REPRO-023": {
+   "id": "REPRO-023",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-023",
+     "Connection Title": "Category 4 contraindications to combined (estrogen-containing) hormonal contraception",
+     "Tile 1": "Migraine with aura",
+     "Tile 2": "Prior deep venous thrombosis",
+     "Tile 3": "Prior stroke",
+     "Tile 4": "Coronary artery disease",
+     "Connection Type": "Shared contraindication setting",
+     "Explanation": "Per the US CDC Medical Eligibility Criteria (2024), migraine with aura, prior VTE, prior stroke, and ischemic heart disease are Category 4 (unacceptable risk) for estrogen-containing combined contraception because of additive arterial/venous thrombotic risk.",
+     "Organ System": "Reproductive",
+     "Discipline": "Pharmacology; Gynecology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "US MEC Category 4 conditions for combined hormonal contraception; Absolute contraindications to estrogen-containing contraception",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Pharmacology > Contraception, PDF p. 70",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "Revised to anchor to US MEC 2024 (Nguyen et al., MMWR Recomm Rep 2024; Klein et al., AFP 2025). Qualifier: history of DVT/PE is Category 4 when acute or with 1+ recurrence risk factor (Category 3 if low recurrence risk); IHD and stroke are listed Category 4. Does NOT apply to progestin-only methods (board caution)."
+    },
+    "title": "Category 4 contraindications to combined (estrogen-containing) hormonal contraception",
+    "connectionType": "Shared contraindication setting",
+    "explanation": "Per the US CDC Medical Eligibility Criteria (2024), migraine with aura, prior VTE, prior stroke, and ischemic heart disease are Category 4 (unacceptable risk) for estrogen-containing combined contraception because of additive arterial/venous thrombotic risk.",
+    "organSystems": "Reproductive",
+    "discipline": "Pharmacology; Gynecology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "US MEC Category 4 conditions for combined hormonal contraception",
+     "Absolute contraindications to estrogen-containing contraception"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Pharmacology > Contraception, PDF p. 70",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "Revised to anchor to US MEC 2024 (Nguyen et al., MMWR Recomm Rep 2024; Klein et al., AFP 2025). Qualifier: history of DVT/PE is Category 4 when acute or with 1+ recurrence risk factor (Category 3 if low recurrence risk); IHD and stroke are listed Category 4. Does NOT apply to progestin-only methods (board caution).",
+    "tiles": [
+     "Migraine with aura",
+     "Prior deep venous thrombosis",
+     "Prior stroke",
+     "Coronary artery disease"
+    ]
+   },
+   "contentHash": "e0b45d8885e6a56f971c6b414c9646ada0b0f0ff0f0a102fc8492b8f3609b4e7",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 24,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": "ai-review-revised",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "REPRO-024": {
+   "id": "REPRO-024",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-024",
+     "Connection Title": "Classic clues to testicular torsion",
+     "Tile 1": "Sudden severe testicular pain",
+     "Tile 2": "High-riding testis",
+     "Tile 3": "Absent cremasteric reflex",
+     "Tile 4": "Reduced or absent Doppler blood flow",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Spermatic cord twisting (often a bell-clapper deformity) produces sudden severe pain, a high-riding/transverse testis, an absent cremasteric reflex, and reduced or absent intratesticular flow on color Doppler (sensitivity ~90-100%).",
+     "Organ System": "Reproductive",
+     "Discipline": "Pathology; Urology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Findings suggesting spermatic cord torsion",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Male Pathology > Cryptorchidism and Testicular Torsion, PDF p. 54",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (ACR Appropriateness Criteria, Acute Scrotal Pain 2024; Waldron et al., Abdom Radiol 2026; Guo & Wu, Medicine 2023, PMID 37144991). Findings are not universal; preserved/partial flow does not exclude torsion (partial/intermittent torsion, spontaneous detorsion), and surgical suspicion should not be delayed for imaging."
+    },
+    "title": "Classic clues to testicular torsion",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Spermatic cord twisting (often a bell-clapper deformity) produces sudden severe pain, a high-riding/transverse testis, an absent cremasteric reflex, and reduced or absent intratesticular flow on color Doppler (sensitivity ~90-100%).",
+    "organSystems": "Reproductive",
+    "discipline": "Pathology; Urology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Findings suggesting spermatic cord torsion"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Male Pathology > Cryptorchidism and Testicular Torsion, PDF p. 54",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (ACR Appropriateness Criteria, Acute Scrotal Pain 2024; Waldron et al., Abdom Radiol 2026; Guo & Wu, Medicine 2023, PMID 37144991). Findings are not universal; preserved/partial flow does not exclude torsion (partial/intermittent torsion, spontaneous detorsion), and surgical suspicion should not be delayed for imaging.",
+    "tiles": [
+     "Sudden severe testicular pain",
+     "High-riding testis",
+     "Absent cremasteric reflex",
+     "Reduced or absent Doppler blood flow"
+    ]
+   },
+   "contentHash": "e55d44875920240d345d23ddb3de346908f5dcbe39fdc69348a3add3a2bb09ee",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 25,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "reproductive-starter-2",
+   "placementNote": null
+  },
+  "REPRO-025": {
+   "id": "REPRO-025",
+   "library": "new",
+   "system": "Reproductive",
+   "content": {
+    "raw": {
+     "Connection ID": "REPRO-025",
+     "Connection Title": "Bacterial pathogens of infectious epididymitis",
+     "Tile 1": "Chlamydia trachomatis",
+     "Tile 2": "Neisseria gonorrhoeae",
+     "Tile 3": "Escherichia coli",
+     "Tile 4": "Pseudomonas aeruginosa",
+     "Connection Type": "Shared infectious syndrome",
+     "Explanation": "Acute bacterial epididymitis is caused by sexually transmitted organisms in younger men (C. trachomatis, N. gonorrhoeae) and enteric/urinary gram-negatives in older men or after instrumentation/catheterization (E. coli most common; Pseudomonas aeruginosa in catheter-associated/instrumented or immunocompromised cases).",
+     "Organ System": "Reproductive",
+     "Discipline": "Microbiology; Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Organisms causing epididymitis",
+     "Source": "Bootcamp.com Reproduction.pdf",
+     "Source Section": "Male Pathology > Inflammatory Pathology, PDF p. 60",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "Revised to add age/exposure stratification and context for Pseudomonas, which the 2024 IDSA/ASM guide lists among epididymitis pathogens and which was the 3rd most common isolate in a prospective series (Pilatz et al., Eur Urol 2015; Workowski et al., CDC STI Treatment Guidelines 2021; Harnisch et al., Lancet 1977). The candidate's competing orchitis category is NOT equally strong: isolated orchitis is predominantly viral (mumps, coxsackievirus B), and bacterial testicular involvement occurs as epididymo-orchitis by extension (Pilatz et al., J Med Virol 2023). Board caution: avoid pairing with an epididymo-orchitis group."
+    },
+    "title": "Bacterial pathogens of infectious epididymitis",
+    "connectionType": "Shared infectious syndrome",
+    "explanation": "Acute bacterial epididymitis is caused by sexually transmitted organisms in younger men (C. trachomatis, N. gonorrhoeae) and enteric/urinary gram-negatives in older men or after instrumentation/catheterization (E. coli most common; Pseudomonas aeruginosa in catheter-associated/instrumented or immunocompromised cases).",
+    "organSystems": "Reproductive",
+    "discipline": "Microbiology; Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Organisms causing epididymitis"
+    ],
+    "sources": "Bootcamp.com Reproduction.pdf",
+    "sourceSection": "Male Pathology > Inflammatory Pathology, PDF p. 60",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "Revised to add age/exposure stratification and context for Pseudomonas, which the 2024 IDSA/ASM guide lists among epididymitis pathogens and which was the 3rd most common isolate in a prospective series (Pilatz et al., Eur Urol 2015; Workowski et al., CDC STI Treatment Guidelines 2021; Harnisch et al., Lancet 1977). The candidate's competing orchitis category is NOT equally strong: isolated orchitis is predominantly viral (mumps, coxsackievirus B), and bacterial testicular involvement occurs as epididymo-orchitis by extension (Pilatz et al., J Med Virol 2023). Board caution: avoid pairing with an epididymo-orchitis group.",
+    "tiles": [
+     "Chlamydia trachomatis",
+     "Neisseria gonorrhoeae",
+     "Escherichia coli",
+     "Pseudomonas aeruginosa"
+    ]
+   },
+   "contentHash": "ba710040a3e8871e3c2d5379cbe1b12d376eacc96521fb27959bea1bc3ea142c",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Reproductive_reviewed_connections.csv",
+    "fileSha": "a64e69795508",
+    "row": 26,
+    "importedAt": "2026-10-08T21:34:33.536Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": "ai-review-revised",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PULM-001": {
+   "id": "PULM-001",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-001",
+     "Connection Title": "Drugs associated with pulmonary fibrosis",
+     "Tile 1": "Bleomycin",
+     "Tile 2": "Amiodarone",
+     "Tile 3": "Methotrexate",
+     "Tile 4": "Busulfan",
+     "Connection Type": "Shared adverse effect",
+     "Explanation": "These agents can cause drug-induced pulmonary injury that may progress to fibrosis; frequency, mechanism, and predominant pattern differ by drug.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Medications causing lung fibrosis; Fibrogenic drug toxicity; Pneumotoxic drugs",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Restrictive Lung Disease > Pulmonary Fibrosis; PDF p. 58",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are established pneumotoxic agents (FDA labels: bleomycin and amiodarone carry boxed warnings for pulmonary toxicity/fibrosis; busulfan label describes pulmonary fibrosis; methotrexate label warns of interstitial pneumonitis). QUALIFIER: methotrexate injury is predominantly acute/subacute hypersensitivity pneumonitis; chronic progressive fibrosis is less certain, so do not imply equal fibrotic risk. Board overlap: all except amiodarone are antineoplastic/immunosuppressive; amiodarone anchors the toxicity category. Added refs: FDA labels; Weiss & Muggia, Am J Med 1980."
+    },
+    "title": "Drugs associated with pulmonary fibrosis",
+    "connectionType": "Shared adverse effect",
+    "explanation": "These agents can cause drug-induced pulmonary injury that may progress to fibrosis; frequency, mechanism, and predominant pattern differ by drug.",
+    "organSystems": "Pulmonology",
+    "discipline": "Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Medications causing lung fibrosis",
+     "Fibrogenic drug toxicity",
+     "Pneumotoxic drugs"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Restrictive Lung Disease > Pulmonary Fibrosis; PDF p. 58",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are established pneumotoxic agents (FDA labels: bleomycin and amiodarone carry boxed warnings for pulmonary toxicity/fibrosis; busulfan label describes pulmonary fibrosis; methotrexate label warns of interstitial pneumonitis). QUALIFIER: methotrexate injury is predominantly acute/subacute hypersensitivity pneumonitis; chronic progressive fibrosis is less certain, so do not imply equal fibrotic risk. Board overlap: all except amiodarone are antineoplastic/immunosuppressive; amiodarone anchors the toxicity category. Added refs: FDA labels; Weiss & Muggia, Am J Med 1980.",
+    "tiles": [
+     "Bleomycin",
+     "Amiodarone",
+     "Methotrexate",
+     "Busulfan"
+    ]
+   },
+   "contentHash": "df5c34f24daa90d6eac54c72ad520ebefe4cea91d3e34757f949c23a00e0d65f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 2,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [
+    {
+     "id": "bank-ext-062",
+     "title": "Drugs causing pulmonary fibrosis",
+     "shared": 4
+    }
+   ],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PULM-002": {
+   "id": "PULM-002",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-002",
+     "Connection Title": "Paraneoplastic syndromes of small cell lung carcinoma",
+     "Tile 1": "SIADH",
+     "Tile 2": "Ectopic ACTH syndrome",
+     "Tile 3": "Lambert-Eaton syndrome",
+     "Tile 4": "Subacute cerebellar degeneration",
+     "Connection Type": "Disease-associated syndromes",
+     "Explanation": "Small cell carcinoma may cause ectopic hormone secretion or antibody-mediated attack on neural targets, producing these four syndromes.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Small cell paraneoplastic effects; Small cell lung cancer syndromes",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Lung Cancer > Small Cell Carcinoma; PDF p. 63",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are recognized SCLC paraneoplastic syndromes (NCCN SCLC 2026; Kim et al., JAMA 2025). SIADH is the most common endocrine syndrome; ectopic ACTH 2-6%; LEMS ~2-3% (anti-P/Q-type VGCC); paraneoplastic cerebellar degeneration <1% (often anti-Hu, may coexist with LEMS). Associations are ''can occur,'' not universal. Ectopic ACTH correctly specifies the tumor-related form of Cushing syndrome."
+    },
+    "title": "Paraneoplastic syndromes of small cell lung carcinoma",
+    "connectionType": "Disease-associated syndromes",
+    "explanation": "Small cell carcinoma may cause ectopic hormone secretion or antibody-mediated attack on neural targets, producing these four syndromes.",
+    "organSystems": "Pulmonology",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Small cell paraneoplastic effects",
+     "Small cell lung cancer syndromes"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Lung Cancer > Small Cell Carcinoma; PDF p. 63",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are recognized SCLC paraneoplastic syndromes (NCCN SCLC 2026; Kim et al., JAMA 2025). SIADH is the most common endocrine syndrome; ectopic ACTH 2-6%; LEMS ~2-3% (anti-P/Q-type VGCC); paraneoplastic cerebellar degeneration <1% (often anti-Hu, may coexist with LEMS). Associations are ''can occur,'' not universal. Ectopic ACTH correctly specifies the tumor-related form of Cushing syndrome.",
+    "tiles": [
+     "SIADH",
+     "Ectopic ACTH syndrome",
+     "Lambert-Eaton syndrome",
+     "Subacute cerebellar degeneration"
+    ]
+   },
+   "contentHash": "b1843c650031f4e78b5ad6ffea33d59f5fc0406464e7b2284dd0d5b0abde7f0b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 3,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-4",
+   "placementNote": null
+  },
+  "PULM-003": {
+   "id": "PULM-003",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-003",
+     "Connection Title": "Markers of neuroendocrine differentiation in small cell carcinoma",
+     "Tile 1": "Chromogranin",
+     "Tile 2": "Synaptophysin",
+     "Tile 3": "Neuron-specific enolase",
+     "Tile 4": "CD56",
+     "Connection Type": "Shared tumor phenotype",
+     "Explanation": "These four can support neuroendocrine differentiation in small cell carcinoma; they are supportive rather than specific or uniformly positive.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Small cell neuroendocrine markers; Neuroendocrine tumor markers",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Lung Cancer > Small Cell Carcinoma; PDF p. 63",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Chromogranin A, synaptophysin, and CD56 are the standard IHC neuroendocrine panel. QUALIFIER: NSE is chiefly a serum marker with poor IHC specificity and is NOT part of recommended IHC diagnostic panels (NCCN excludes NSE from NE IHC diagnosis; INSM1 is the emerging preferred marker). CD56 also labels NK cells. Board overlap: these markers also stain carcinoid and LCNEC. Added refs: NCCN SCLC 2026; Rudin et al., Nat Rev Dis Primers 2021; Loy et al., Am J Surg Pathol 1995."
+    },
+    "title": "Markers of neuroendocrine differentiation in small cell carcinoma",
+    "connectionType": "Shared tumor phenotype",
+    "explanation": "These four can support neuroendocrine differentiation in small cell carcinoma; they are supportive rather than specific or uniformly positive.",
+    "organSystems": "Pulmonology",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Small cell neuroendocrine markers",
+     "Neuroendocrine tumor markers"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Lung Cancer > Small Cell Carcinoma; PDF p. 63",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Chromogranin A, synaptophysin, and CD56 are the standard IHC neuroendocrine panel. QUALIFIER: NSE is chiefly a serum marker with poor IHC specificity and is NOT part of recommended IHC diagnostic panels (NCCN excludes NSE from NE IHC diagnosis; INSM1 is the emerging preferred marker). CD56 also labels NK cells. Board overlap: these markers also stain carcinoid and LCNEC. Added refs: NCCN SCLC 2026; Rudin et al., Nat Rev Dis Primers 2021; Loy et al., Am J Surg Pathol 1995.",
+    "tiles": [
+     "Chromogranin",
+     "Synaptophysin",
+     "Neuron-specific enolase",
+     "CD56"
+    ]
+   },
+   "contentHash": "c8312a33564a079c88fcf11a95a9dbc541f81957640a248305ac45584dc5cc60",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 4,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PULM-004": {
+   "id": "PULM-004",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-004",
+     "Connection Title": "Stages of classic lobar pneumonia",
+     "Tile 1": "Congestion",
+     "Tile 2": "Red hepatization",
+     "Tile 3": "Gray hepatization",
+     "Tile 4": "Resolution",
+     "Connection Type": "Stages of one disease process",
+     "Explanation": "These phases describe the classic progression from vascular congestion through cellular alveolar exudates to clearance.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Lobar pneumonia phases; Classic pneumococcal pneumonia stages",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Lung Pathology Fundamentals > Introduction to Respiratory Infections; PDF p. 41",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Classic four-stage sequence verified (Torres et al., Nat Rev Dis Primers 2021; Tuomanen et al., NEJM 1995). QUALIFIER: this is the classic pathological sequence, not a required time course in treated patients, and stages may coexist regionally within the same lobe (Zinserling et al., Infection 2022)."
+    },
+    "title": "Stages of classic lobar pneumonia",
+    "connectionType": "Stages of one disease process",
+    "explanation": "These phases describe the classic progression from vascular congestion through cellular alveolar exudates to clearance.",
+    "organSystems": "Pulmonology",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Lobar pneumonia phases",
+     "Classic pneumococcal pneumonia stages"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Lung Pathology Fundamentals > Introduction to Respiratory Infections; PDF p. 41",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Classic four-stage sequence verified (Torres et al., Nat Rev Dis Primers 2021; Tuomanen et al., NEJM 1995). QUALIFIER: this is the classic pathological sequence, not a required time course in treated patients, and stages may coexist regionally within the same lobe (Zinserling et al., Infection 2022).",
+    "tiles": [
+     "Congestion",
+     "Red hepatization",
+     "Gray hepatization",
+     "Resolution"
+    ]
+   },
+   "contentHash": "5305be848b9e04b23dc1f017dbe36ddf36d758298b231f5cdae46dea90c8d710",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 5,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-2",
+   "placementNote": null
+  },
+  "PULM-005": {
+   "id": "PULM-005",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-005",
+     "Connection Title": "Occupational dust-related lung diseases",
+     "Tile 1": "Coal workers pneumoconiosis",
+     "Tile 2": "Silicosis",
+     "Tile 3": "Berylliosis",
+     "Tile 4": "Asbestosis",
+     "Connection Type": "Shared exposure mechanism",
+     "Explanation": "Each is linked to an inhaled occupational inorganic dust or fiber; tissue responses vary.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Pneumoconioses; Inorganic occupational lung diseases",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Restrictive Lung Disease > Pneumoconiosis; PDF p. 59",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are inorganic occupational exposures. QUALIFIER: tissue responses differ (coal macules; silicotic nodules; asbestos interstitial fibrosis), and berylliosis (chronic beryllium disease) is a cell-mediated granulomatous hypersensitivity rather than a simple fibrotic pneumoconiosis, so do not claim identical fibrosis/granuloma patterns. Added refs: Solbes & Harper, J Investig Med 2018."
+    },
+    "title": "Occupational dust-related lung diseases",
+    "connectionType": "Shared exposure mechanism",
+    "explanation": "Each is linked to an inhaled occupational inorganic dust or fiber; tissue responses vary.",
+    "organSystems": "Pulmonology",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Pneumoconioses",
+     "Inorganic occupational lung diseases"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Restrictive Lung Disease > Pneumoconiosis; PDF p. 59",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are inorganic occupational exposures. QUALIFIER: tissue responses differ (coal macules; silicotic nodules; asbestos interstitial fibrosis), and berylliosis (chronic beryllium disease) is a cell-mediated granulomatous hypersensitivity rather than a simple fibrotic pneumoconiosis, so do not claim identical fibrosis/granuloma patterns. Added refs: Solbes & Harper, J Investig Med 2018.",
+    "tiles": [
+     "Coal workers pneumoconiosis",
+     "Silicosis",
+     "Berylliosis",
+     "Asbestosis"
+    ]
+   },
+   "contentHash": "ff1da2b9afb64ca494861ea7b83defb342ff99925d001d9891c338241c6b5303",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 6,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-1",
+   "placementNote": null
+  },
+  "PULM-006": {
+   "id": "PULM-006",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-006",
+     "Connection Title": "Neuromuscular causes of extrapulmonary restriction",
+     "Tile 1": "Poliomyelitis",
+     "Tile 2": "Amyotrophic lateral sclerosis",
+     "Tile 3": "Myasthenia gravis",
+     "Tile 4": "Guillain-Barre syndrome",
+     "Connection Type": "Shared physiological consequence",
+     "Explanation": "Respiratory muscle dysfunction limits lung expansion without primary injury to the alveolar-capillary membrane.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Physiology; Neurology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Neuromuscular restrictive physiology; Respiratory muscle weakness disorders",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Restrictive Lung Disease > Restrictive Lung Disease Basics; PDF p. 57",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four cause extrapulmonary (neuromuscular) restriction: reduced TLC/VC with normal or elevated RV/TLC and preserved/normal FEV1/FVC. ''Neuromuscular causes of ventilatory failure'' is a synonymous framing, not a competing category. DLCO is typically preserved in extrapulmonary restriction but depends on measurement. Added refs: Stanojevic et al., ERS/ATS 2022; Wijdicks, Ann Neurol 2017."
+    },
+    "title": "Neuromuscular causes of extrapulmonary restriction",
+    "connectionType": "Shared physiological consequence",
+    "explanation": "Respiratory muscle dysfunction limits lung expansion without primary injury to the alveolar-capillary membrane.",
+    "organSystems": "Pulmonology",
+    "discipline": "Physiology; Neurology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Neuromuscular restrictive physiology",
+     "Respiratory muscle weakness disorders"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Restrictive Lung Disease > Restrictive Lung Disease Basics; PDF p. 57",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four cause extrapulmonary (neuromuscular) restriction: reduced TLC/VC with normal or elevated RV/TLC and preserved/normal FEV1/FVC. ''Neuromuscular causes of ventilatory failure'' is a synonymous framing, not a competing category. DLCO is typically preserved in extrapulmonary restriction but depends on measurement. Added refs: Stanojevic et al., ERS/ATS 2022; Wijdicks, Ann Neurol 2017.",
+    "tiles": [
+     "Poliomyelitis",
+     "Amyotrophic lateral sclerosis",
+     "Myasthenia gravis",
+     "Guillain-Barre syndrome"
+    ]
+   },
+   "contentHash": "9dba92508b710d06f9f2dd85c60ac202ecdc5b06924d1525bd1a23e488490273",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 7,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-1",
+   "placementNote": null
+  },
+  "PULM-007": {
+   "id": "PULM-007",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-007",
+     "Connection Title": "Conditions that lower lung compliance",
+     "Tile 1": "Pulmonary fibrosis",
+     "Tile 2": "ARDS",
+     "Tile 3": "Neonatal respiratory distress syndrome",
+     "Tile 4": "Pulmonary edema",
+     "Connection Type": "Shared physiological consequence",
+     "Explanation": "Fibrosis stiffens tissue; alveolar injury, surfactant dysfunction, and alveolar/interstitial fluid increase the difficulty of inflation.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Physiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Stiff lung conditions; Reduced pulmonary compliance",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Respiratory Physiology Part One - Air > Compliance; PDF p. 18",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All reduce compliance (Bos & Ware, Lancet 2022). QUALIFIER: early COVID-19 ARDS can show relatively preserved compliance despite severe hypoxemia; pulmonary edema reduces compliance by several mechanisms, not surfactant dilution alone. Board overlap: all also fit ''restrictive physiology'' and overlap with ARDS/NRDS pathology (PULM-021)."
+    },
+    "title": "Conditions that lower lung compliance",
+    "connectionType": "Shared physiological consequence",
+    "explanation": "Fibrosis stiffens tissue; alveolar injury, surfactant dysfunction, and alveolar/interstitial fluid increase the difficulty of inflation.",
+    "organSystems": "Pulmonology",
+    "discipline": "Physiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Stiff lung conditions",
+     "Reduced pulmonary compliance"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Respiratory Physiology Part One - Air > Compliance; PDF p. 18",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All reduce compliance (Bos & Ware, Lancet 2022). QUALIFIER: early COVID-19 ARDS can show relatively preserved compliance despite severe hypoxemia; pulmonary edema reduces compliance by several mechanisms, not surfactant dilution alone. Board overlap: all also fit ''restrictive physiology'' and overlap with ARDS/NRDS pathology (PULM-021).",
+    "tiles": [
+     "Pulmonary fibrosis",
+     "ARDS",
+     "Neonatal respiratory distress syndrome",
+     "Pulmonary edema"
+    ]
+   },
+   "contentHash": "5ff91fc88b932adfe7c135c7b967a4715388e422738ac0f97ec93a6e49d09b69",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 8,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-2",
+   "placementNote": null
+  },
+  "PULM-008": {
+   "id": "PULM-008",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-008",
+     "Connection Title": "Factors shifting the oxygen dissociation curve right",
+     "Tile 1": "Acidemia",
+     "Tile 2": "Increased temperature",
+     "Tile 3": "Increased carbon dioxide",
+     "Tile 4": "Increased 2,3-BPG",
+     "Connection Type": "Shared molecular effect",
+     "Explanation": "Each reduces hemoglobin oxygen affinity and promotes oxygen unloading at a given oxygen tension.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Physiology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Reduced hemoglobin oxygen affinity; Rightward oxyhemoglobin shift",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Respiratory Physiology Part Two - Blood > Hemoglobin; PDF p. 28",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Bohr-effect right shift (lower affinity, higher P50) confirmed (Hsia, NEJM 1998). Directional tiles are required; bare ''pH'' or ''temperature'' would not identify the effect. BOARD OVERLAP: this is the mirror image of PULM-009 (left shift) and the two should not appear on the same 16-tile board."
+    },
+    "title": "Factors shifting the oxygen dissociation curve right",
+    "connectionType": "Shared molecular effect",
+    "explanation": "Each reduces hemoglobin oxygen affinity and promotes oxygen unloading at a given oxygen tension.",
+    "organSystems": "Pulmonology",
+    "discipline": "Physiology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Reduced hemoglobin oxygen affinity",
+     "Rightward oxyhemoglobin shift"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Respiratory Physiology Part Two - Blood > Hemoglobin; PDF p. 28",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Bohr-effect right shift (lower affinity, higher P50) confirmed (Hsia, NEJM 1998). Directional tiles are required; bare ''pH'' or ''temperature'' would not identify the effect. BOARD OVERLAP: this is the mirror image of PULM-009 (left shift) and the two should not appear on the same 16-tile board.",
+    "tiles": [
+     "Acidemia",
+     "Increased temperature",
+     "Increased carbon dioxide",
+     "Increased 2,3-BPG"
+    ]
+   },
+   "contentHash": "0842f32bb25a2ab16da40ec9a91ebc4d50fb56fcd79d5eba7c1b6dffb8a9dc44",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 9,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-3",
+   "placementNote": null
+  },
+  "PULM-009": {
+   "id": "PULM-009",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-009",
+     "Connection Title": "Factors shifting the oxygen dissociation curve left",
+     "Tile 1": "Alkalemia",
+     "Tile 2": "Decreased temperature",
+     "Tile 3": "Decreased carbon dioxide",
+     "Tile 4": "Decreased 2,3-BPG",
+     "Connection Type": "Shared molecular effect",
+     "Explanation": "These directional changes increase hemoglobin oxygen affinity and reduce unloading at a given oxygen tension.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Physiology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Increased hemoglobin oxygen affinity; Leftward oxyhemoglobin shift",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Respiratory Physiology Part Two - Blood > Hemoglobin; PDF p. 28",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Left shift (higher affinity, reduced unloading) confirmed (Hsia, NEJM 1998). Carbon monoxide and fetal hemoglobin also left-shift the curve (not listed). BOARD OVERLAP: mirror image of PULM-008; do not place both on one board."
+    },
+    "title": "Factors shifting the oxygen dissociation curve left",
+    "connectionType": "Shared molecular effect",
+    "explanation": "These directional changes increase hemoglobin oxygen affinity and reduce unloading at a given oxygen tension.",
+    "organSystems": "Pulmonology",
+    "discipline": "Physiology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Increased hemoglobin oxygen affinity",
+     "Leftward oxyhemoglobin shift"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Respiratory Physiology Part Two - Blood > Hemoglobin; PDF p. 28",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Left shift (higher affinity, reduced unloading) confirmed (Hsia, NEJM 1998). Carbon monoxide and fetal hemoglobin also left-shift the curve (not listed). BOARD OVERLAP: mirror image of PULM-008; do not place both on one board.",
+    "tiles": [
+     "Alkalemia",
+     "Decreased temperature",
+     "Decreased carbon dioxide",
+     "Decreased 2,3-BPG"
+    ]
+   },
+   "contentHash": "1617075667c3f931770e81673655ce8edb0e528704b63933b5ecc2dfdc5bab29",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 10,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-1",
+   "placementNote": null
+  },
+  "PULM-010": {
+   "id": "PULM-010",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-010",
+     "Connection Title": "Hypoxemia mechanisms responsive to supplemental oxygen",
+     "Tile 1": "Low inspired oxygen",
+     "Tile 2": "Alveolar hypoventilation",
+     "Tile 3": "Diffusion impairment",
+     "Tile 4": "Ventilation-perfusion mismatch",
+     "Connection Type": "Shared treatment response",
+     "Explanation": "Supplemental oxygen can improve hypoxemia from each of these mechanisms, unlike a substantial pure right-to-left shunt.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Physiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Oxygen-responsive hypoxemia; Non-shunt mechanisms of hypoxemia",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Respiratory Physiology Part Two - Blood > A-a Gradient; PDF p. 36",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "These four respond to supplemental O2 whereas true right-to-left shunt (V/Q = 0) does not (Wemple, Swenson & Swenson, NEJM Evid 2023). QUALIFIER: these are mechanisms, not guarantees of full correction; mixed shunt physiology blunts the response. ''Non-shunt hypoxemia'' is a synonymous framing, not a competing category."
+    },
+    "title": "Hypoxemia mechanisms responsive to supplemental oxygen",
+    "connectionType": "Shared treatment response",
+    "explanation": "Supplemental oxygen can improve hypoxemia from each of these mechanisms, unlike a substantial pure right-to-left shunt.",
+    "organSystems": "Pulmonology",
+    "discipline": "Physiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Oxygen-responsive hypoxemia",
+     "Non-shunt mechanisms of hypoxemia"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Respiratory Physiology Part Two - Blood > A-a Gradient; PDF p. 36",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "These four respond to supplemental O2 whereas true right-to-left shunt (V/Q = 0) does not (Wemple, Swenson & Swenson, NEJM Evid 2023). QUALIFIER: these are mechanisms, not guarantees of full correction; mixed shunt physiology blunts the response. ''Non-shunt hypoxemia'' is a synonymous framing, not a competing category.",
+    "tiles": [
+     "Low inspired oxygen",
+     "Alveolar hypoventilation",
+     "Diffusion impairment",
+     "Ventilation-perfusion mismatch"
+    ]
+   },
+   "contentHash": "36d960193a35355f6fa1c00eaea336eb1fbdaee1668f6cd274e2e0983d8afd4a",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 11,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-3",
+   "placementNote": null
+  },
+  "PULM-011": {
+   "id": "PULM-011",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-011",
+     "Connection Title": "Reduced oxygen delivery or use despite normal arterial oxygen tension",
+     "Tile 1": "Anemia",
+     "Tile 2": "Carbon monoxide poisoning",
+     "Tile 3": "Methemoglobinemia",
+     "Tile 4": "Cyanide poisoning",
+     "Connection Type": "Shared laboratory-clinical dissociation",
+     "Explanation": "A normal PaO2 can coexist with poor tissue oxygen delivery or utilization because dissolved oxygen does not reflect functional hemoglobin carriage or cellular oxygen use.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Physiology; Toxicology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Tissue hypoxia with normal PaO2; Normal oxygen tension does not exclude hypoxia",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Respiratory Physiology Part Two - Blood > Abnormal Oxygen Levels; PDF p. 33",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four can present with a normal PaO2. QUALIFIER: anemia, CO, and methemoglobinemia impair oxygen carriage; cyanide (and partly CO) impairs mitochondrial oxygen utilization (histotoxic) and need not reduce arterial oxygen content. Board overlap: broader ''causes of tissue hypoxia.'' Added refs: Henretig et al., NEJM 2019; Twine & Rees, Br J Haematol 2026."
+    },
+    "title": "Reduced oxygen delivery or use despite normal arterial oxygen tension",
+    "connectionType": "Shared laboratory-clinical dissociation",
+    "explanation": "A normal PaO2 can coexist with poor tissue oxygen delivery or utilization because dissolved oxygen does not reflect functional hemoglobin carriage or cellular oxygen use.",
+    "organSystems": "Pulmonology",
+    "discipline": "Physiology; Toxicology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Tissue hypoxia with normal PaO2",
+     "Normal oxygen tension does not exclude hypoxia"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Respiratory Physiology Part Two - Blood > Abnormal Oxygen Levels; PDF p. 33",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four can present with a normal PaO2. QUALIFIER: anemia, CO, and methemoglobinemia impair oxygen carriage; cyanide (and partly CO) impairs mitochondrial oxygen utilization (histotoxic) and need not reduce arterial oxygen content. Board overlap: broader ''causes of tissue hypoxia.'' Added refs: Henretig et al., NEJM 2019; Twine & Rees, Br J Haematol 2026.",
+    "tiles": [
+     "Anemia",
+     "Carbon monoxide poisoning",
+     "Methemoglobinemia",
+     "Cyanide poisoning"
+    ]
+   },
+   "contentHash": "c28471cc5ce0471b5f308b1925c856e2fd0938595ed5487dfbef71af96749677",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 12,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-4",
+   "placementNote": null
+  },
+  "PULM-012": {
+   "id": "PULM-012",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-012",
+     "Connection Title": "Alveolar injury triggers of ARDS",
+     "Tile 1": "Sepsis",
+     "Tile 2": "Acute pancreatitis",
+     "Tile 3": "Pneumonia",
+     "Tile 4": "Gastric acid aspiration",
+     "Connection Type": "Shared syndrome trigger",
+     "Explanation": "Sepsis and pancreatitis injure lung through systemic inflammation; pneumonia and acid aspiration act directly on lung tissue.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "ARDS precipitants; Diffuse alveolar damage triggers",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Lung Pathology Special Topics > ARDS and NRDS; PDF p. 74",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Classic precipitants confirmed (Meyer et al., Lancet 2021; Matthay et al., Nat Rev Dis Primers 2019). These are selected classic triggers, not exhaustive (trauma, transfusion/TRALI, shock, overdose also qualify). ''Aspiration'' here means chemical acid injury; distinguish from aspiration pneumonia."
+    },
+    "title": "Alveolar injury triggers of ARDS",
+    "connectionType": "Shared syndrome trigger",
+    "explanation": "Sepsis and pancreatitis injure lung through systemic inflammation; pneumonia and acid aspiration act directly on lung tissue.",
+    "organSystems": "Pulmonology",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "ARDS precipitants",
+     "Diffuse alveolar damage triggers"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Lung Pathology Special Topics > ARDS and NRDS; PDF p. 74",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Classic precipitants confirmed (Meyer et al., Lancet 2021; Matthay et al., Nat Rev Dis Primers 2019). These are selected classic triggers, not exhaustive (trauma, transfusion/TRALI, shock, overdose also qualify). ''Aspiration'' here means chemical acid injury; distinguish from aspiration pneumonia.",
+    "tiles": [
+     "Sepsis",
+     "Acute pancreatitis",
+     "Pneumonia",
+     "Gastric acid aspiration"
+    ]
+   },
+   "contentHash": "af95703ddbf0d8a9861180fb69ca738d3603505751282810b148a8f6c350b54a",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 13,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-3",
+   "placementNote": null
+  },
+  "PULM-013": {
+   "id": "PULM-013",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-013",
+     "Connection Title": "Core obstructive lung diseases in the source",
+     "Tile 1": "Emphysema",
+     "Tile 2": "Chronic bronchitis",
+     "Tile 3": "Asthma",
+     "Tile 4": "Cystic fibrosis",
+     "Connection Type": "Shared physiological pattern",
+     "Explanation": "These diseases can produce airflow limitation with a reduced FEV1/FVC through loss of recoil, mucus obstruction, or bronchoconstriction.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Physiology; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Obstructive pulmonary disorders; Diseases with obstructive spirometry",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Obstructive Lung Disease > Obstructive Lung Disease Basics; PDF p. 43",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All produce obstructive spirometry. QUALIFIERS: asthma is characteristically reversible while emphysema/chronic bronchitis are largely irreversible; CF is obstructive but GOLD 2026 excludes it from the COPD definition; spirometry may normalize between asthma attacks (not always obstructed). Board overlap: ''air trapping disorders.'' Added refs: Stanojevic et al., ERS/ATS 2022; GOLD 2026; Postma & Rabe, NEJM 2015."
+    },
+    "title": "Core obstructive lung diseases in the source",
+    "connectionType": "Shared physiological pattern",
+    "explanation": "These diseases can produce airflow limitation with a reduced FEV1/FVC through loss of recoil, mucus obstruction, or bronchoconstriction.",
+    "organSystems": "Pulmonology",
+    "discipline": "Physiology; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Obstructive pulmonary disorders",
+     "Diseases with obstructive spirometry"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Obstructive Lung Disease > Obstructive Lung Disease Basics; PDF p. 43",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All produce obstructive spirometry. QUALIFIERS: asthma is characteristically reversible while emphysema/chronic bronchitis are largely irreversible; CF is obstructive but GOLD 2026 excludes it from the COPD definition; spirometry may normalize between asthma attacks (not always obstructed). Board overlap: ''air trapping disorders.'' Added refs: Stanojevic et al., ERS/ATS 2022; GOLD 2026; Postma & Rabe, NEJM 2015.",
+    "tiles": [
+     "Emphysema",
+     "Chronic bronchitis",
+     "Asthma",
+     "Cystic fibrosis"
+    ]
+   },
+   "contentHash": "745dc5cb35a21441173eac419f71e29d4dfd95e7234711b08fe152599c03185c",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 14,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-easy-12",
+     "title": "Obstructive lung diseases",
+     "shared": 2,
+     "titleSim": 0.6
+    },
+    {
+     "id": "bank-migrated-sys-pulm-0001-L1",
+     "title": "Obstructive lung diseases",
+     "shared": 2,
+     "titleSim": 0.6
+    }
+   ],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "PULM-014": {
+   "id": "PULM-014",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-014",
+     "Connection Title": "Cross-organ clues to cystic fibrosis",
+     "Tile 1": "Meconium ileus",
+     "Tile 2": "Pancreatic exocrine insufficiency",
+     "Tile 3": "Elevated sweat chloride",
+     "Tile 4": "Congenital absence of the vas deferens",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "CFTR dysfunction produces obstructed meconium, impaired pancreatic secretion, high sweat chloride, and a characteristic cause of male infertility.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Pathology; Genetics",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Cystic fibrosis clues; Multisystem CFTR manifestations",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Obstructive Lung Disease > Cystic Fibrosis; PDF p. 54, 55",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "All four are classic multisystem CF clues (sweat chloride >60 mmol/L is the diagnostic gold standard; CBAVD causes obstructive azoospermia). QUALIFIER: characteristic but not universal (milder genotypes may be pancreatic-sufficient; meconium ileus in ~12%). Added refs: Farrell et al. (CF Foundation), J Pediatr 2017; Mall et al., Nat Rev Dis Primers 2024."
+    },
+    "title": "Cross-organ clues to cystic fibrosis",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "CFTR dysfunction produces obstructed meconium, impaired pancreatic secretion, high sweat chloride, and a characteristic cause of male infertility.",
+    "organSystems": "Pulmonology",
+    "discipline": "Pathology; Genetics",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Cystic fibrosis clues",
+     "Multisystem CFTR manifestations"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Obstructive Lung Disease > Cystic Fibrosis; PDF p. 54, 55",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "All four are classic multisystem CF clues (sweat chloride >60 mmol/L is the diagnostic gold standard; CBAVD causes obstructive azoospermia). QUALIFIER: characteristic but not universal (milder genotypes may be pancreatic-sufficient; meconium ileus in ~12%). Added refs: Farrell et al. (CF Foundation), J Pediatr 2017; Mall et al., Nat Rev Dis Primers 2024.",
+    "tiles": [
+     "Meconium ileus",
+     "Pancreatic exocrine insufficiency",
+     "Elevated sweat chloride",
+     "Congenital absence of the vas deferens"
+    ]
+   },
+   "contentHash": "fa8e9bb2711ed45cfd76abbc7a3d71d2dda8dcc5a2ba9869a05742808033e895",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 15,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [
+    "PLEXUS-GEN-018"
+   ],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "held",
+   "starterBoard": null
+  },
+  "PULM-015": {
+   "id": "PULM-015",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-015",
+     "Connection Title": "Clues to alpha-1 antitrypsin deficiency",
+     "Tile 1": "Panacinar emphysema",
+     "Tile 2": "Decreased serum alpha-1 antitrypsin level",
+     "Tile 3": "PAS-positive hepatocyte globules",
+     "Tile 4": "Liver cirrhosis",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Loss of antiprotease protection drives early panacinar emphysema and a low serum AAT level, while retained polymerized Z-protein injures hepatocytes, producing PAS-positive diastase-resistant globules and cirrhosis.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Pathology; Genetics",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Alpha-1 antitrypsin disease; Pulmonary and hepatic AAT deficiency findings",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Obstructive Lung Disease > COPD > Emphysema; PDF p. 53",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "CORRECTION: original tiles ''panacinar emphysema'' and ''lower-lobe emphysema'' describe the same classic phenotype along two axes (lobular morphology vs anatomic distribution; basal predominance in only ~64% of Pi*ZZ), so they are near-redundant. Replaced ''lower-lobe emphysema'' with ''Decreased serum alpha-1 antitrypsin level'' (serum <11 microM; standard initial diagnostic test) as a distinct, independently supported clue. QUALIFIERS: classically emphysema in a young/nonsmoking patient; PAS-positive diastase-resistant globules are the hepatic histologic hallmark; necrotizing panniculitis is an alternative distinct clue. Replacement refs: Strnad et al., NEJM 2020; ATS/ERS Statement, Am J Respir Crit Care Med 2003 (PMID 14522813). Original source supports only the emphysema/globule/cirrhosis claims, not the serum-level tile."
+    },
+    "title": "Clues to alpha-1 antitrypsin deficiency",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Loss of antiprotease protection drives early panacinar emphysema and a low serum AAT level, while retained polymerized Z-protein injures hepatocytes, producing PAS-positive diastase-resistant globules and cirrhosis.",
+    "organSystems": "Pulmonology",
+    "discipline": "Pathology; Genetics",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Alpha-1 antitrypsin disease",
+     "Pulmonary and hepatic AAT deficiency findings"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Obstructive Lung Disease > COPD > Emphysema; PDF p. 53",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "CORRECTION: original tiles ''panacinar emphysema'' and ''lower-lobe emphysema'' describe the same classic phenotype along two axes (lobular morphology vs anatomic distribution; basal predominance in only ~64% of Pi*ZZ), so they are near-redundant. Replaced ''lower-lobe emphysema'' with ''Decreased serum alpha-1 antitrypsin level'' (serum <11 microM; standard initial diagnostic test) as a distinct, independently supported clue. QUALIFIERS: classically emphysema in a young/nonsmoking patient; PAS-positive diastase-resistant globules are the hepatic histologic hallmark; necrotizing panniculitis is an alternative distinct clue. Replacement refs: Strnad et al., NEJM 2020; ATS/ERS Statement, Am J Respir Crit Care Med 2003 (PMID 14522813). Original source supports only the emphysema/globule/cirrhosis claims, not the serum-level tile.",
+    "tiles": [
+     "Panacinar emphysema",
+     "Decreased serum alpha-1 antitrypsin level",
+     "PAS-positive hepatocyte globules",
+     "Liver cirrhosis"
+    ]
+   },
+   "contentHash": "9a29e5f2894c3b0ea34f6485a5614d1b0aa0c4b372b496e1e1e26c3e16b80bd1",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 16,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": null,
+    "reviewer": "OpenEvidence",
+    "outstanding": "The review replaced the source tile \"Lower-lobe emphysema\" (near-redundant with panacinar emphysema) with \"Decreased serum alpha-1 antitrypsin level\". Notes state the original source supports only the emphysema, globule and cirrhosis claims, not the serum-level tile, which rests on outside references (Strnad et al, NEJM 2020; ATS/ERS 2003). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).",
+    "approved": false,
+    "state": "held"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "review",
+   "starterBoard": null
+  },
+  "PULM-016": {
+   "id": "PULM-016",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-016",
+     "Connection Title": "Findings supporting pulmonary squamous cell carcinoma",
+     "Tile 1": "Keratin pearls",
+     "Tile 2": "Intercellular bridges",
+     "Tile 3": "Central lung mass",
+     "Tile 4": "PTHrP-associated hypercalcemia",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Squamous differentiation produces keratin and desmosomal intercellular bridges; a central tumor and PTHrP-mediated humoral hypercalcemia are classic supporting clues.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Squamous lung carcinoma clues; Keratinizing lung carcinoma associations",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Lung Cancer > Non-Small Cell Carcinoma; PDF p. 64",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Keratinization (keratin pearls) and intercellular bridges are WHO essential histologic criteria for squamous cell carcinoma; central location and PTHrP hypercalcemia are classic associations, not required findings. QUALIFIER: intercellular bridges may be absent in poorly differentiated tumors; peripheral SCC is increasingly common; hypercalcemia occurs in advanced disease. Added refs: Berezowska et al., Histopathology 2024; Guise & Wysolmerski, NEJM 2022."
+    },
+    "title": "Findings supporting pulmonary squamous cell carcinoma",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Squamous differentiation produces keratin and desmosomal intercellular bridges; a central tumor and PTHrP-mediated humoral hypercalcemia are classic supporting clues.",
+    "organSystems": "Pulmonology",
+    "discipline": "Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Squamous lung carcinoma clues",
+     "Keratinizing lung carcinoma associations"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Lung Cancer > Non-Small Cell Carcinoma; PDF p. 64",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Keratinization (keratin pearls) and intercellular bridges are WHO essential histologic criteria for squamous cell carcinoma; central location and PTHrP hypercalcemia are classic associations, not required findings. QUALIFIER: intercellular bridges may be absent in poorly differentiated tumors; peripheral SCC is increasingly common; hypercalcemia occurs in advanced disease. Added refs: Berezowska et al., Histopathology 2024; Guise & Wysolmerski, NEJM 2022.",
+    "tiles": [
+     "Keratin pearls",
+     "Intercellular bridges",
+     "Central lung mass",
+     "PTHrP-associated hypercalcemia"
+    ]
+   },
+   "contentHash": "03407e0d3e777824969a49057745641742d1758db447c2f1179f71474e4c5f24",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 17,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-2",
+   "placementNote": null
+  },
+  "PULM-017": {
+   "id": "PULM-017",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-017",
+     "Connection Title": "Intrathoracic manifestations of asbestos exposure",
+     "Tile 1": "Calcified pleural plaques",
+     "Tile 2": "Benign asbestos pleural effusion",
+     "Tile 3": "Pleural mesothelioma",
+     "Tile 4": "Asbestosis",
+     "Connection Type": "Shared exposure association",
+     "Explanation": "Asbestos can cause benign pleural disease (calcified plaques, benign effusion), malignant pleural mesothelioma, and parenchymal interstitial fibrosis (asbestosis).",
+     "Organ System": "Pulmonology",
+     "Discipline": "Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Asbestos-related thoracic disease; Thoracic consequences of asbestos exposure",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Restrictive Lung Disease > Pneumoconiosis; PDF p. 59",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "REVISED to resolve the original ambiguity-2 HOLD: title changed from ''Thoracic findings'' to ''Intrathoracic manifestations of asbestos exposure'' to explicitly span pleural and parenchymal disease; generic ''Pleural effusion'' specified as ''Benign asbestos pleural effusion'' (effusions have many causes). All four are established asbestos consequences; competing category ''pleural disease'' captures only 3 of 4 (asbestosis is parenchymal), so it is not an equally strong category for the full set. BOARD-LEVEL OVERLAP WARNING: three tiles (plaques, benign effusion, mesothelioma) are pleural and could be grouped as ''asbestos pleural disease'' on a 16-tile board; pair with care and avoid a competing pleural category. Added refs: Solbes & Harper, J Investig Med 2018; Roach et al., Radiographics 2002; Gevenois et al., Eur Respir J 1998."
+    },
+    "title": "Intrathoracic manifestations of asbestos exposure",
+    "connectionType": "Shared exposure association",
+    "explanation": "Asbestos can cause benign pleural disease (calcified plaques, benign effusion), malignant pleural mesothelioma, and parenchymal interstitial fibrosis (asbestosis).",
+    "organSystems": "Pulmonology",
+    "discipline": "Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Asbestos-related thoracic disease",
+     "Thoracic consequences of asbestos exposure"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Restrictive Lung Disease > Pneumoconiosis; PDF p. 59",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "REVISED to resolve the original ambiguity-2 HOLD: title changed from ''Thoracic findings'' to ''Intrathoracic manifestations of asbestos exposure'' to explicitly span pleural and parenchymal disease; generic ''Pleural effusion'' specified as ''Benign asbestos pleural effusion'' (effusions have many causes). All four are established asbestos consequences; competing category ''pleural disease'' captures only 3 of 4 (asbestosis is parenchymal), so it is not an equally strong category for the full set. BOARD-LEVEL OVERLAP WARNING: three tiles (plaques, benign effusion, mesothelioma) are pleural and could be grouped as ''asbestos pleural disease'' on a 16-tile board; pair with care and avoid a competing pleural category. Added refs: Solbes & Harper, J Investig Med 2018; Roach et al., Radiographics 2002; Gevenois et al., Eur Respir J 1998.",
+    "tiles": [
+     "Calcified pleural plaques",
+     "Benign asbestos pleural effusion",
+     "Pleural mesothelioma",
+     "Asbestosis"
+    ]
+   },
+   "contentHash": "52817ce273bb215cacce77205a712691084dc6df225255111ff613b37b5384df",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 18,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": "ai-review-revised",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-4",
+   "placementNote": null
+  },
+  "PULM-018": {
+   "id": "PULM-018",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-018",
+     "Connection Title": "Findings of pneumonic consolidation",
+     "Tile 1": "Increased tactile fremitus",
+     "Tile 2": "Dull percussion",
+     "Tile 3": "Bronchial breath sounds over peripheral lung",
+     "Tile 4": "Crackles",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Consolidated lung transmits voice and bronchial sounds differently and can cause dullness and crackles.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Clinical examination",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Pneumonia examination findings; Physical signs of consolidation",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Lung Pathology Fundamentals > Lung Physical Exam; PDF p. 38",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Classic consolidation signs confirmed (Wipf et al., Arch Intern Med 1999; Bohadana et al., NEJM 2014). QUALIFIER: crackles and dullness are nonspecific; if airways are obstructed by secretions, breath sounds are decreased rather than bronchial; a coexisting pleural effusion alters expected fremitus. Board overlap: ''pneumonia'' as a clinical syndrome and shared dullness/fremitus with effusion (PULM-019)."
+    },
+    "title": "Findings of pneumonic consolidation",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Consolidated lung transmits voice and bronchial sounds differently and can cause dullness and crackles.",
+    "organSystems": "Pulmonology",
+    "discipline": "Clinical examination",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Pneumonia examination findings",
+     "Physical signs of consolidation"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Lung Pathology Fundamentals > Lung Physical Exam; PDF p. 38",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Classic consolidation signs confirmed (Wipf et al., Arch Intern Med 1999; Bohadana et al., NEJM 2014). QUALIFIER: crackles and dullness are nonspecific; if airways are obstructed by secretions, breath sounds are decreased rather than bronchial; a coexisting pleural effusion alters expected fremitus. Board overlap: ''pneumonia'' as a clinical syndrome and shared dullness/fremitus with effusion (PULM-019).",
+    "tiles": [
+     "Increased tactile fremitus",
+     "Dull percussion",
+     "Bronchial breath sounds over peripheral lung",
+     "Crackles"
+    ]
+   },
+   "contentHash": "f151b9e80f58f3418d0abb42e60c9824ab1ed1829cba0064ed56230bf5e5a68b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 19,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-2",
+   "placementNote": null
+  },
+  "PULM-019": {
+   "id": "PULM-019",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-019",
+     "Connection Title": "Bedside clues to pleural effusion",
+     "Tile 1": "Dull percussion",
+     "Tile 2": "Reduced breath sounds",
+     "Tile 3": "Reduced tactile fremitus",
+     "Tile 4": "Contralateral tracheal shift with a large effusion",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Pleural fluid dampens percussion and sound transmission; a sufficiently large collection may displace the mediastinum away from the effusion.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Clinical examination",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Pleural fluid examination findings; Large pleural effusion signs",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Lung Pathology Special Topics > Pleural Effusion; PDF p. 72",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: dullness (summary +LR ~8.7), reduced breath sounds, reduced tactile fremitus (best rule-out, -LR ~0.21), and contralateral shift with a large effusion (Wong et al., JAMA 2009; Light, NEJM 2002). PRESERVE the large-effusion qualifier: shift is not obligatory and small effusions cause none. Distinguishing overlap: atelectasis shifts the trachea ipsilaterally (opposite direction)."
+    },
+    "title": "Bedside clues to pleural effusion",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Pleural fluid dampens percussion and sound transmission; a sufficiently large collection may displace the mediastinum away from the effusion.",
+    "organSystems": "Pulmonology",
+    "discipline": "Clinical examination",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Pleural fluid examination findings",
+     "Large pleural effusion signs"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Lung Pathology Special Topics > Pleural Effusion; PDF p. 72",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: dullness (summary +LR ~8.7), reduced breath sounds, reduced tactile fremitus (best rule-out, -LR ~0.21), and contralateral shift with a large effusion (Wong et al., JAMA 2009; Light, NEJM 2002). PRESERVE the large-effusion qualifier: shift is not obligatory and small effusions cause none. Distinguishing overlap: atelectasis shifts the trachea ipsilaterally (opposite direction).",
+    "tiles": [
+     "Dull percussion",
+     "Reduced breath sounds",
+     "Reduced tactile fremitus",
+     "Contralateral tracheal shift with a large effusion"
+    ]
+   },
+   "contentHash": "ff55fdb538be976138e0a5fd0212650911ceed0652935485272e20185e55252e",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 20,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-4",
+   "placementNote": null
+  },
+  "PULM-020": {
+   "id": "PULM-020",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-020",
+     "Connection Title": "Clues to tension pneumothorax",
+     "Tile 1": "Unilateral hyperresonance",
+     "Tile 2": "Markedly reduced ipsilateral breath sounds",
+     "Tile 3": "Contralateral tracheal shift",
+     "Tile 4": "Hypotension with elevated JVP",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Pressurized pleural air impairs ipsilateral ventilation and venous return, producing an obstructive-shock pattern with possible mediastinal displacement.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Clinical examination; Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Tension pneumothorax examination; Pleural pressure causing obstructive shock",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Lung Pathology Special Topics > Pneumothorax; PDF p. 69",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (Roberts et al., Ann Surg 2015, systematic review). QUALIFIERS: tracheal deviation is relatively uncommon (~15-30%) and may be late or absent; hypotension is a late sign in spontaneously breathing patients but early in ventilated patients; tension pneumothorax is a clinical diagnosis not requiring all signs. ''Obstructive shock'' fits the hemodynamic tile but is not an equally strong category for all four."
+    },
+    "title": "Clues to tension pneumothorax",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Pressurized pleural air impairs ipsilateral ventilation and venous return, producing an obstructive-shock pattern with possible mediastinal displacement.",
+    "organSystems": "Pulmonology",
+    "discipline": "Clinical examination; Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Tension pneumothorax examination",
+     "Pleural pressure causing obstructive shock"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Lung Pathology Special Topics > Pneumothorax; PDF p. 69",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (Roberts et al., Ann Surg 2015, systematic review). QUALIFIERS: tracheal deviation is relatively uncommon (~15-30%) and may be late or absent; hypotension is a late sign in spontaneously breathing patients but early in ventilated patients; tension pneumothorax is a clinical diagnosis not requiring all signs. ''Obstructive shock'' fits the hemodynamic tile but is not an equally strong category for all four.",
+    "tiles": [
+     "Unilateral hyperresonance",
+     "Markedly reduced ipsilateral breath sounds",
+     "Contralateral tracheal shift",
+     "Hypotension with elevated JVP"
+    ]
+   },
+   "contentHash": "bb93a00d0e0c4d5740be636b57d7dbfd3211c07ab7c490950531e68173d70601",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 21,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-053",
+     "title": "Findings in tension pneumothorax",
+     "shared": 0,
+     "titleSim": 0.5
+    }
+   ],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-1",
+   "placementNote": null
+  },
+  "PULM-021": {
+   "id": "PULM-021",
+   "library": "new",
+   "system": "Pulmonary",
+   "content": {
+    "raw": {
+     "Connection ID": "PULM-021",
+     "Connection Title": "Features of diffuse alveolar damage in ARDS",
+     "Tile 1": "Protein-rich alveolar fluid",
+     "Tile 2": "Hyaline membranes",
+     "Tile 3": "Reduced surfactant activity",
+     "Tile 4": "Reduced lung compliance",
+     "Connection Type": "Classic disease-finding association",
+     "Explanation": "Alveolar-capillary injury permits protein leakage and hyaline membrane formation, while surfactant dysfunction contributes to stiff, collapse-prone lungs.",
+     "Organ System": "Pulmonology",
+     "Discipline": "Pathology; Physiology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "ARDS alveolar pathology; Diffuse alveolar injury findings",
+     "Source": "Bootcamp.com Pulmonology.pdf",
+     "Source Section": "Lung Pathology Special Topics > ARDS and NRDS; PDF p. 74",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified features of diffuse alveolar damage (Matthay et al., Nat Rev Dis Primers 2019; Bos & Ware, Lancet 2022). QUALIFIER: hyaline membranes are a histologic (biopsy/autopsy) feature, not a bedside criterion, and DAD is found in only ~45-56% of Berlin-defined ARDS. BOARD OVERLAP: neonatal RDS shares hyaline membranes, surfactant dysfunction, and reduced compliance; overlaps with PULM-007 (reduced compliance). Separate carefully."
+    },
+    "title": "Features of diffuse alveolar damage in ARDS",
+    "connectionType": "Classic disease-finding association",
+    "explanation": "Alveolar-capillary injury permits protein leakage and hyaline membrane formation, while surfactant dysfunction contributes to stiff, collapse-prone lungs.",
+    "organSystems": "Pulmonology",
+    "discipline": "Pathology; Physiology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "ARDS alveolar pathology",
+     "Diffuse alveolar injury findings"
+    ],
+    "sources": "Bootcamp.com Pulmonology.pdf",
+    "sourceSection": "Lung Pathology Special Topics > ARDS and NRDS; PDF p. 74",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified features of diffuse alveolar damage (Matthay et al., Nat Rev Dis Primers 2019; Bos & Ware, Lancet 2022). QUALIFIER: hyaline membranes are a histologic (biopsy/autopsy) feature, not a bedside criterion, and DAD is found in only ~45-56% of Berlin-defined ARDS. BOARD OVERLAP: neonatal RDS shares hyaline membranes, surfactant dysfunction, and reduced compliance; overlaps with PULM-007 (reduced compliance). Separate carefully.",
+    "tiles": [
+     "Protein-rich alveolar fluid",
+     "Hyaline membranes",
+     "Reduced surfactant activity",
+     "Reduced lung compliance"
+    ]
+   },
+   "contentHash": "bc745959990897a82f8ca777cfc701447a6594c72f4209422aec4a3e55167519",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+    "fileSha": "6b0c88b0d1d4",
+    "row": 22,
+    "importedAt": "2026-10-08T21:35:12.244Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "pulmonary-starter-3",
+   "placementNote": null
   }
  },
  "starterBoards": {
@@ -49204,6 +52640,190 @@
     ],
     "ambiguityReview": "needed"
    }
+  ],
+  "Pulmonary": [
+   {
+    "n": 1,
+    "id": "pulmonary-starter-1",
+    "formedAt": "2026-10-08T21:36:39.789Z",
+    "ids": [
+     "PULM-009",
+     "PULM-020",
+     "PULM-005",
+     "PULM-006"
+    ],
+    "difficultyWarnings": [],
+    "signature": "a5d27a2e",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 2,
+    "id": "pulmonary-starter-2",
+    "formedAt": "2026-10-08T21:36:39.789Z",
+    "ids": [
+     "PULM-016",
+     "PULM-004",
+     "PULM-018",
+     "PULM-007"
+    ],
+    "difficultyWarnings": [],
+    "signature": "a0136a07",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 3,
+    "id": "pulmonary-starter-3",
+    "formedAt": "2026-10-08T21:36:39.789Z",
+    "ids": [
+     "PULM-012",
+     "PULM-008",
+     "PULM-021",
+     "PULM-010"
+    ],
+    "difficultyWarnings": [],
+    "signature": "1ceae549",
+    "status": "review",
+    "publishable": false,
+    "structural": "pass",
+    "block": [],
+    "flags": [
+     "Two ARDS groups on one board (\"Alveolar injury triggers of ARDS\" and \"Features of diffuse alveolar damage in ARDS\"). \"Pneumonia\" and \"Sepsis\" read as ARDS context next to the DAD features, and \"Ventilation-perfusion mismatch\" and \"Diffusion impairment\" (hypoxemia group) are also mechanisms of hypoxemia in ARDS; a player could reasonably mix these groups. (raised by Claude, 2026-10-08)"
+    ],
+    "ambiguityReview": "needed"
+   },
+   {
+    "n": 4,
+    "id": "pulmonary-starter-4",
+    "formedAt": "2026-10-08T21:36:39.789Z",
+    "ids": [
+     "PULM-002",
+     "PULM-019",
+     "PULM-011",
+     "PULM-017"
+    ],
+    "difficultyWarnings": [],
+    "signature": "3185dfcc",
+    "status": "review",
+    "publishable": false,
+    "structural": "pass",
+    "block": [],
+    "flags": [
+     "PULM-011 board instruction to check against the other groups: \"Board overlap: broader ''causes of tissue hypoxia.'' Added refs: Henretig et al., NEJM 2019;\"",
+     "PULM-017 board instruction to check against the other groups: \"BOARD-LEVEL OVERLAP WARNING: three tiles (plaques, benign effusion, mesothelioma) are pleural and could be grouped as ''asbestos pleural disease'' on a 16-tile board; pair with care and avoid a competing pleural category.\"",
+     "\"Bedside clues to pleural effusion\" sits next to the asbestos group, which includes \"Benign asbestos pleural effusion\"; this is the competing pleural category PULM-017 warns against. (raised by Claude, 2026-10-08)"
+    ],
+    "ambiguityReview": "needed"
+   }
+  ],
+  "Reproductive": [
+   {
+    "n": 1,
+    "id": "reproductive-starter-1",
+    "formedAt": "2026-10-08T21:36:39.789Z",
+    "ids": [
+     "REPRO-020",
+     "REPRO-021",
+     "REPRO-014",
+     "REPRO-009"
+    ],
+    "difficultyWarnings": [],
+    "signature": "d2515eac",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 2,
+    "id": "reproductive-starter-2",
+    "formedAt": "2026-10-08T21:36:39.789Z",
+    "ids": [
+     "REPRO-012",
+     "REPRO-024",
+     "REPRO-018",
+     "REPRO-019"
+    ],
+    "difficultyWarnings": [],
+    "signature": "6d6f57c4",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 3,
+    "id": "reproductive-starter-3",
+    "formedAt": "2026-10-08T21:36:39.789Z",
+    "ids": [
+     "REPRO-022",
+     "REPRO-008",
+     "REPRO-002",
+     "REPRO-005"
+    ],
+    "difficultyWarnings": [],
+    "signature": "9ba8ee5a",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 4,
+    "id": "reproductive-starter-4",
+    "formedAt": "2026-10-08T21:36:39.789Z",
+    "ids": [
+     "REPRO-016",
+     "REPRO-017",
+     "REPRO-011",
+     "REPRO-013"
+    ],
+    "difficultyWarnings": [],
+    "signature": "06c0cb21",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 5,
+    "id": "reproductive-starter-5",
+    "formedAt": "2026-10-08T21:36:39.789Z",
+    "ids": [
+     "REPRO-004",
+     "REPRO-001",
+     "REPRO-007",
+     "REPRO-010"
+    ],
+    "difficultyWarnings": [],
+    "signature": "1bf13c51",
+    "status": "review",
+    "publishable": false,
+    "structural": "pass",
+    "block": [],
+    "flags": [
+     "REPRO-007 board instruction to check against the other groups: \"Board overlap: mole/choriocarcinoma also fit gestational trophoblastic disease, and trisomy 21 fits quad-screen findings; avoid these competing groups on the same board.\"",
+     "REPRO-010 board instruction to check against the other groups: \"Only the RECIPIENT twin in TTTS has polyhydramnios; the donor has oligohydramnios (board caution).\""
+    ],
+    "ambiguityReview": "needed"
+   }
   ]
  },
  "imports": [
@@ -49346,6 +52966,26 @@
    "added": 23,
    "revised": 0,
    "unchanged": 0
+  },
+  {
+   "file": "Plexus_Reproductive_reviewed_connections.csv",
+   "fileSha": "a64e69795508",
+   "system": "Reproductive",
+   "importedAt": "2026-10-08T21:34:33.536Z",
+   "rows": 25,
+   "added": 25,
+   "revised": 0,
+   "unchanged": 0
+  },
+  {
+   "file": "Plexus_Pulmonology_reviewed_connections_1.csv",
+   "fileSha": "6b0c88b0d1d4",
+   "system": "Pulmonary",
+   "importedAt": "2026-10-08T21:35:12.244Z",
+   "rows": 21,
+   "added": 21,
+   "revised": 0,
+   "unchanged": 0
   }
  ],
  "timedExclusionsAtActivation": [
@@ -49398,9 +53038,14 @@
    "timedId": "bank-ext-063",
    "timedTitle": "Adverse effects of lithium",
    "replacedBy": "PSY-021"
+  },
+  {
+   "timedId": "bank-ext-062",
+   "timedTitle": "Drugs causing pulmonary fibrosis",
+   "replacedBy": "PULM-001"
   }
  ],
- "updatedAt": "2026-10-08T21:11:09.148Z",
+ "updatedAt": "2026-10-08T21:41:09.556Z",
  "active": false,
  "pairs": [
   {
@@ -49656,6 +53301,18 @@
    "sameSystem": false
   },
   {
+   "a": "CARD-050",
+   "b": "REPRO-003",
+   "kind": "uncertain",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0.8,
+   "sameSubject": false,
+   "wordSim": 0.5,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
    "a": "DERM-008",
    "b": "MICRO-043",
    "kind": "same",
@@ -49848,6 +53505,18 @@
    "sameSystem": false
   },
   {
+   "a": "PLEXUS-GEN-018",
+   "b": "PULM-014",
+   "kind": "uncertain",
+   "decided": null,
+   "shared": 1,
+   "titleSim": 0.29,
+   "sameSubject": false,
+   "wordSim": 0.22,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
    "a": "PLEXUS-GEN-020",
    "b": "PLX-HEM-012",
    "kind": "uncertain",
@@ -49980,6 +53649,30 @@
    "sameSystem": true
   },
   {
+   "a": "MSK-011",
+   "b": "REPRO-012",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0,
+   "sameSubject": false,
+   "wordSim": 0.33,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
+   "a": "NEPH-029",
+   "b": "PULM-006",
+   "kind": "uncertain",
+   "decided": null,
+   "shared": 3,
+   "titleSim": 0.33,
+   "sameSubject": false,
+   "wordSim": 0.8,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
    "a": "NEU-005",
    "b": "NEU-019",
    "kind": "uncertain",
@@ -50016,6 +53709,18 @@
    "sameSystem": true
   },
   {
+   "a": "NEU-046",
+   "b": "REPRO-006",
+   "kind": "uncertain",
+   "decided": null,
+   "shared": 1,
+   "titleSim": 0.5,
+   "sameSubject": true,
+   "wordSim": 0.36,
+   "reviewerDistinct": false,
+   "sameSystem": false
+  },
+  {
    "a": "NEU-051",
    "b": "PHARM-007",
    "kind": "uncertain",
@@ -50050,22 +53755,34 @@
    "wordSim": 0.33,
    "reviewerDistinct": false,
    "sameSystem": false
+  },
+  {
+   "a": "PULM-008",
+   "b": "PULM-009",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 0,
+   "titleSim": 0.71,
+   "sameSubject": false,
+   "wordSim": 0.6,
+   "reviewerDistinct": true,
+   "sameSystem": true
   }
  ],
  "counts": {
   "all": {
-   "rows": 646,
-   "passedReview": 633,
+   "rows": 692,
+   "passedReview": 678,
    "passedReviewHuman": 0,
-   "passedReviewAi": 633,
-   "heldMedical": 13,
+   "passedReviewAi": 678,
+   "heldMedical": 14,
    "rejected": 0,
    "needsFix": 0,
-   "heldDuplicate": 20,
+   "heldDuplicate": 23,
    "setAsideDuplicate": 8,
-   "usable": 605,
-   "starter": 272,
-   "daily": 333
+   "usable": 647,
+   "starter": 308,
+   "daily": 339
   },
   "bySystem": {
    "Biochemistry/Genetics": {
@@ -50250,6 +53967,20 @@
     "starter": 20,
     "daily": 3
    },
+   "Pulmonary": {
+    "rows": 21,
+    "passedReview": 20,
+    "passedReviewHuman": 0,
+    "passedReviewAi": 20,
+    "heldMedical": 1,
+    "rejected": 0,
+    "needsFix": 0,
+    "heldDuplicate": 1,
+    "setAsideDuplicate": 0,
+    "usable": 19,
+    "starter": 16,
+    "daily": 3
+   },
    "Renal": {
     "rows": 30,
     "passedReview": 28,
@@ -50263,6 +53994,20 @@
     "usable": 26,
     "starter": 20,
     "daily": 6
+   },
+   "Reproductive": {
+    "rows": 25,
+    "passedReview": 25,
+    "passedReviewHuman": 0,
+    "passedReviewAi": 25,
+    "heldMedical": 0,
+    "rejected": 0,
+    "needsFix": 0,
+    "heldDuplicate": 2,
+    "setAsideDuplicate": 0,
+    "usable": 23,
+    "starter": 20,
+    "daily": 3
    }
   }
  }

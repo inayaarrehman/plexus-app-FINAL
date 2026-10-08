@@ -14,6 +14,20 @@
         "by": "Claude, 2026-10-08",
         "signature": "4e574bc8"
       }
+    ],
+    "pulmonary-starter-3": [
+      {
+        "text": "Two ARDS groups on one board (\"Alveolar injury triggers of ARDS\" and \"Features of diffuse alveolar damage in ARDS\"). \"Pneumonia\" and \"Sepsis\" read as ARDS context next to the DAD features, and \"Ventilation-perfusion mismatch\" and \"Diffusion impairment\" (hypoxemia group) are also mechanisms of hypoxemia in ARDS; a player could reasonably mix these groups.",
+        "by": "Claude, 2026-10-08",
+        "signature": "1ceae549"
+      }
+    ],
+    "pulmonary-starter-4": [
+      {
+        "text": "\"Bedside clues to pleural effusion\" sits next to the asbestos group, which includes \"Benign asbestos pleural effusion\"; this is the competing pleural category PULM-017 warns against.",
+        "by": "Claude, 2026-10-08",
+        "signature": "3185dfcc"
+      }
     ]
   }
 }

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T21:10:21.944Z",
+ "generatedAt": "2026-10-08T21:39:51.197Z",
  "active": false,
  "medicalHolds": [
   {
@@ -170,6 +170,19 @@
    ],
    "status": "AI_REVIEWED_REVISED",
    "issue": "The review replaced the source tile \"Multiple sclerosis\" with \"Botulism\" and refined the title. The new tile is supported by outside references in Notes (Wijdicks, Ann Neurol 2017; Mehta 2006), not by the cited Bootcamp pages (pp. 44, 46). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds)."
+  },
+  {
+   "id": "PULM-015",
+   "system": "Pulmonary",
+   "title": "Clues to alpha-1 antitrypsin deficiency",
+   "tiles": [
+    "Panacinar emphysema",
+    "Decreased serum alpha-1 antitrypsin level",
+    "PAS-positive hepatocyte globules",
+    "Liver cirrhosis"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The review replaced the source tile \"Lower-lobe emphysema\" (near-redundant with panacinar emphysema) with \"Decreased serum alpha-1 antitrypsin level\". Notes state the original source supports only the emphysema, globule and cirrhosis claims, not the serum-level tile, which rests on outside references (Strnad et al, NEJM 2020; ATS/ERS 2003). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds)."
   }
  ],
  "duplicateDecisions": [
@@ -570,6 +583,39 @@
    "decide": "decisions.json → pairs → \"CARD-016 | MICRO-029\": \"same\" or \"distinct\""
   },
   {
+   "key": "CARD-050 | REPRO-003",
+   "kind": "possible duplicate (held)",
+   "held": "REPRO-003",
+   "sharedRelationship": "\"second pharyngeal arch cartilage derivative\" vs \"second pharyngeal arch derivative\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "CARD-050",
+    "library": "new",
+    "system": "Cardiology",
+    "title": "Second pharyngeal arch cartilage derivatives",
+    "tiles": [
+     "Stapes",
+     "Styloid process",
+     "Stylohyoid ligament",
+     "Lesser horn of hyoid"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "REPRO-003",
+    "library": "new",
+    "system": "Reproductive",
+    "title": "Second pharyngeal arch derivatives",
+    "tiles": [
+     "Stapedius muscle",
+     "Stylohyoid muscle",
+     "Stapes",
+     "Lesser horn of hyoid"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"CARD-050 | REPRO-003\": \"same\" or \"distinct\""
+  },
+  {
    "key": "DERM-008 | MICRO-043",
    "kind": "treated as the same relationship (set aside); confirm",
    "held": null,
@@ -834,6 +880,39 @@
    "decide": "decisions.json → pairs → \"NEU-042 | PLEXUS-GEN-010\": \"same\" or \"distinct\""
   },
   {
+   "key": "PLEXUS-GEN-018 | PULM-014",
+   "kind": "possible duplicate (held)",
+   "held": "PULM-014",
+   "sharedRelationship": "\"findings / associations of digestive cystic fibrosis\" vs \"findings / associations of cross organ cystic fibrosis\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "PLEXUS-GEN-018",
+    "library": "new",
+    "system": "Genetics",
+    "title": "Digestive complications of cystic fibrosis",
+    "tiles": [
+     "Pancreatic insufficiency",
+     "Fat-soluble vitamin deficiency",
+     "Meconium ileus",
+     "Biliary cirrhosis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "PULM-014",
+    "library": "new",
+    "system": "Pulmonary",
+    "title": "Cross-organ clues to cystic fibrosis",
+    "tiles": [
+     "Meconium ileus",
+     "Pancreatic exocrine insufficiency",
+     "Elevated sweat chloride",
+     "Congenital absence of the vas deferens"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"PLEXUS-GEN-018 | PULM-014\": \"same\" or \"distinct\""
+  },
+  {
    "key": "PLEXUS-GEN-020 | PLX-HEM-012",
    "kind": "possible duplicate (held)",
    "held": "PLX-HEM-012",
@@ -1032,6 +1111,39 @@
    "decide": "decisions.json → pairs → \"MICRO-012 | NEU-010\": \"same\" or \"distinct\""
   },
   {
+   "key": "NEPH-029 | PULM-006",
+   "kind": "possible duplicate (held)",
+   "held": "NEPH-029",
+   "sharedRelationship": "\"causes of neuromuscular respiratory acidosis\" vs \"causes of neuromuscular extrapulmonary restriction\"; 3 of 4 tiles identical; tile wording 80% the same",
+   "a": {
+    "id": "NEPH-029",
+    "library": "new",
+    "system": "Renal",
+    "title": "Neuromuscular causes of respiratory acidosis",
+    "tiles": [
+     "Myasthenia gravis",
+     "Amyotrophic lateral sclerosis",
+     "Guillain-Barre syndrome",
+     "Botulism"
+    ],
+    "status": "AI_REVIEWED_REVISED"
+   },
+   "b": {
+    "id": "PULM-006",
+    "library": "new",
+    "system": "Pulmonary",
+    "title": "Neuromuscular causes of extrapulmonary restriction",
+    "tiles": [
+     "Poliomyelitis",
+     "Amyotrophic lateral sclerosis",
+     "Myasthenia gravis",
+     "Guillain-Barre syndrome"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"NEPH-029 | PULM-006\": \"same\" or \"distinct\""
+  },
+  {
    "key": "NEU-005 | NEU-019",
    "kind": "possible duplicate (held)",
    "held": "NEU-019",
@@ -1063,6 +1175,39 @@
     "status": "AI_REVIEWED_PASS"
    },
    "decide": "decisions.json → pairs → \"NEU-005 | NEU-019\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "NEU-046 | REPRO-006",
+   "kind": "possible duplicate (held)",
+   "held": "REPRO-006",
+   "sharedRelationship": "both are \"findings / associations of kallmann syndrome\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "NEU-046",
+    "library": "new",
+    "system": "Neurology",
+    "title": "Kallmann syndrome associations",
+    "tiles": [
+     "Anosmia",
+     "Impaired GnRH neuron migration",
+     "Low gonadotropins (LH/FSH)",
+     "Delayed or absent puberty"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "REPRO-006",
+    "library": "new",
+    "system": "Reproductive",
+    "title": "Kallmann syndrome clues",
+    "tiles": [
+     "Anosmia",
+     "Low GnRH",
+     "Low gonadotropins",
+     "Delayed sexual maturation"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"NEU-046 | REPRO-006\": \"same\" or \"distinct\""
   },
   {
    "key": "NEU-051 | PHARM-007",
@@ -2602,6 +2747,230 @@
     "status": "verified"
    },
    "decide": "decisions.json → pairs → \"PSY-023 | bank-ext-030\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "REPRO-002 | bank-medium-06",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "both are \"neural crest derivative\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "REPRO-002",
+    "library": "new",
+    "system": "Reproductive",
+    "title": "Neural crest derivatives",
+    "tiles": [
+     "Melanocytes",
+     "Adrenal medullary chromaffin cells",
+     "Peripheral neurons",
+     "Leptomeninges"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-medium-06",
+    "library": "timed",
+    "system": "Biochemistry/Genetics",
+    "title": "Neural crest derivatives",
+    "tiles": [
+     "Melanocytes",
+     "Schwann cells",
+     "Adrenal medulla",
+     "Peripheral autonomic ganglia"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"REPRO-002 | bank-medium-06\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "REPRO-003 | bank-migrated-sys-mixed-0003-L2",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"second pharyngeal arch derivative\" vs \"pharyngeal arch derivative\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "REPRO-003",
+    "library": "new",
+    "system": "Reproductive",
+    "title": "Second pharyngeal arch derivatives",
+    "tiles": [
+     "Stapedius muscle",
+     "Stylohyoid muscle",
+     "Stapes",
+     "Lesser horn of hyoid"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-migrated-sys-mixed-0003-L2",
+    "library": "timed",
+    "system": "Mixed / Step Review",
+    "title": "Pharyngeal arch derivatives",
+    "tiles": [
+     "Mandible",
+     "Stapes",
+     "Greater horn of hyoid",
+     "Thyroid cartilage"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"REPRO-003 | bank-migrated-sys-mixed-0003-L2\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "REPRO-017 | bank-ext-094",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "both are \"ovarian germ cell tumor\"; 2 of 4 tiles identical; tile wording 67% the same",
+   "a": {
+    "id": "REPRO-017",
+    "library": "new",
+    "system": "Reproductive",
+    "title": "Ovarian germ cell tumors",
+    "tiles": [
+     "Mature cystic teratoma",
+     "Immature teratoma",
+     "Dysgerminoma",
+     "Yolk sac tumor"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-094",
+    "library": "timed",
+    "system": "Reproductive",
+    "title": "Ovarian germ cell tumors",
+    "tiles": [
+     "Dysgerminoma",
+     "Yolk sac tumor",
+     "Choriocarcinoma",
+     "Mature teratoma"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"REPRO-017 | bank-ext-094\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "PULM-001 | bank-ext-062",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "\"findings / associations of drug pulmonary fibrosis\" vs \"causes of drug causing pulmonary fibrosis\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "PULM-001",
+    "library": "new",
+    "system": "Pulmonary",
+    "title": "Drugs associated with pulmonary fibrosis",
+    "tiles": [
+     "Bleomycin",
+     "Amiodarone",
+     "Methotrexate",
+     "Busulfan"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-062",
+    "library": "timed",
+    "system": "Pharmacology",
+    "title": "Drugs causing pulmonary fibrosis",
+    "tiles": [
+     "Bleomycin",
+     "Amiodarone",
+     "Methotrexate",
+     "Busulfan"
+    ],
+    "status": "verified"
+   },
+   "decide": "no decision needed unless you disagree"
+  },
+  {
+   "key": "PULM-013 | bank-easy-12",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"core obstructive lung disease\" vs \"obstructive lung disease\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "PULM-013",
+    "library": "new",
+    "system": "Pulmonary",
+    "title": "Core obstructive lung diseases in the source",
+    "tiles": [
+     "Emphysema",
+     "Chronic bronchitis",
+     "Asthma",
+     "Cystic fibrosis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-easy-12",
+    "library": "timed",
+    "system": "Pulmonary",
+    "title": "Obstructive lung diseases",
+    "tiles": [
+     "Asthma",
+     "COPD",
+     "Bronchiectasis",
+     "Cystic fibrosis"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"PULM-013 | bank-easy-12\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "PULM-013 | bank-migrated-sys-pulm-0001-L1",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"core obstructive lung disease\" vs \"obstructive lung disease\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "PULM-013",
+    "library": "new",
+    "system": "Pulmonary",
+    "title": "Core obstructive lung diseases in the source",
+    "tiles": [
+     "Emphysema",
+     "Chronic bronchitis",
+     "Asthma",
+     "Cystic fibrosis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-migrated-sys-pulm-0001-L1",
+    "library": "timed",
+    "system": "Pulmonary",
+    "title": "Obstructive lung diseases",
+    "tiles": [
+     "COPD",
+     "Asthma",
+     "Bronchiectasis",
+     "Cystic fibrosis"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"PULM-013 | bank-migrated-sys-pulm-0001-L1\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "PULM-020 | bank-ext-053",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "both are \"findings / associations of tension pneumothorax\"",
+   "a": {
+    "id": "PULM-020",
+    "library": "new",
+    "system": "Pulmonary",
+    "title": "Clues to tension pneumothorax",
+    "tiles": [
+     "Unilateral hyperresonance",
+     "Markedly reduced ipsilateral breath sounds",
+     "Contralateral tracheal shift",
+     "Hypotension with elevated JVP"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-053",
+    "library": "timed",
+    "system": "Pulmonary",
+    "title": "Findings in tension pneumothorax",
+    "tiles": [
+     "Tracheal deviation away from the side",
+     "Absent breath sounds",
+     "Hyperresonance to percussion",
+     "Hypotension"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"PULM-020 | bank-ext-053\": \"same\" (exclude timed entry at activation) or \"distinct\""
   }
  ],
  "boardReviews": [
@@ -3052,6 +3421,174 @@
     "PSY-023 board instruction to check against the other groups: \"Board overlap: fever, altered mental status, and autonomic instability also occur in serotonin syndrome—lead-pipe rigidity (vs clonus/hyperreflexia) is the differentiating tile.\""
    ],
    "clear": "decisions.json → boards → \"psychiatry-starter-5\": \"cleared:8478ca7e\""
+  },
+  {
+   "board": "pulmonary-starter-3",
+   "system": "Pulmonary",
+   "signature": "1ceae549",
+   "connections": [
+    {
+     "id": "PULM-012",
+     "title": "Alveolar injury triggers of ARDS",
+     "difficulty": "easy",
+     "tiles": [
+      "Sepsis",
+      "Acute pancreatitis",
+      "Pneumonia",
+      "Gastric acid aspiration"
+     ]
+    },
+    {
+     "id": "PULM-008",
+     "title": "Factors shifting the oxygen dissociation curve right",
+     "difficulty": "easy",
+     "tiles": [
+      "Acidemia",
+      "Increased temperature",
+      "Increased carbon dioxide",
+      "Increased 2,3-BPG"
+     ]
+    },
+    {
+     "id": "PULM-021",
+     "title": "Features of diffuse alveolar damage in ARDS",
+     "difficulty": "medium",
+     "tiles": [
+      "Protein-rich alveolar fluid",
+      "Hyaline membranes",
+      "Reduced surfactant activity",
+      "Reduced lung compliance"
+     ]
+    },
+    {
+     "id": "PULM-010",
+     "title": "Hypoxemia mechanisms responsive to supplemental oxygen",
+     "difficulty": "medium",
+     "tiles": [
+      "Low inspired oxygen",
+      "Alveolar hypoventilation",
+      "Diffusion impairment",
+      "Ventilation-perfusion mismatch"
+     ]
+    }
+   ],
+   "flags": [
+    "Two ARDS groups on one board (\"Alveolar injury triggers of ARDS\" and \"Features of diffuse alveolar damage in ARDS\"). \"Pneumonia\" and \"Sepsis\" read as ARDS context next to the DAD features, and \"Ventilation-perfusion mismatch\" and \"Diffusion impairment\" (hypoxemia group) are also mechanisms of hypoxemia in ARDS; a player could reasonably mix these groups. (raised by Claude, 2026-10-08)"
+   ],
+   "clear": "decisions.json → boards → \"pulmonary-starter-3\": \"cleared:1ceae549\""
+  },
+  {
+   "board": "pulmonary-starter-4",
+   "system": "Pulmonary",
+   "signature": "3185dfcc",
+   "connections": [
+    {
+     "id": "PULM-002",
+     "title": "Paraneoplastic syndromes of small cell lung carcinoma",
+     "difficulty": "easy",
+     "tiles": [
+      "SIADH",
+      "Ectopic ACTH syndrome",
+      "Lambert-Eaton syndrome",
+      "Subacute cerebellar degeneration"
+     ]
+    },
+    {
+     "id": "PULM-019",
+     "title": "Bedside clues to pleural effusion",
+     "difficulty": "easy",
+     "tiles": [
+      "Dull percussion",
+      "Reduced breath sounds",
+      "Reduced tactile fremitus",
+      "Contralateral tracheal shift with a large effusion"
+     ]
+    },
+    {
+     "id": "PULM-011",
+     "title": "Reduced oxygen delivery or use despite normal arterial oxygen tension",
+     "difficulty": "medium",
+     "tiles": [
+      "Anemia",
+      "Carbon monoxide poisoning",
+      "Methemoglobinemia",
+      "Cyanide poisoning"
+     ]
+    },
+    {
+     "id": "PULM-017",
+     "title": "Intrathoracic manifestations of asbestos exposure",
+     "difficulty": "medium",
+     "tiles": [
+      "Calcified pleural plaques",
+      "Benign asbestos pleural effusion",
+      "Pleural mesothelioma",
+      "Asbestosis"
+     ]
+    }
+   ],
+   "flags": [
+    "PULM-011 board instruction to check against the other groups: \"Board overlap: broader ''causes of tissue hypoxia.'' Added refs: Henretig et al., NEJM 2019;\"",
+    "PULM-017 board instruction to check against the other groups: \"BOARD-LEVEL OVERLAP WARNING: three tiles (plaques, benign effusion, mesothelioma) are pleural and could be grouped as ''asbestos pleural disease'' on a 16-tile board; pair with care and avoid a competing pleural category.\"",
+    "\"Bedside clues to pleural effusion\" sits next to the asbestos group, which includes \"Benign asbestos pleural effusion\"; this is the competing pleural category PULM-017 warns against. (raised by Claude, 2026-10-08)"
+   ],
+   "clear": "decisions.json → boards → \"pulmonary-starter-4\": \"cleared:3185dfcc\""
+  },
+  {
+   "board": "reproductive-starter-5",
+   "system": "Reproductive",
+   "signature": "1bf13c51",
+   "connections": [
+    {
+     "id": "REPRO-004",
+     "title": "Structural abnormalities associated with Turner syndrome",
+     "difficulty": "easy",
+     "tiles": [
+      "Bicuspid aortic valve",
+      "Aortic coarctation",
+      "Horseshoe kidney",
+      "Cystic hygroma"
+     ]
+    },
+    {
+     "id": "REPRO-001",
+     "title": "Mesonephric duct derivatives",
+     "difficulty": "easy",
+     "tiles": [
+      "Epididymis",
+      "Ductus deferens",
+      "Seminal vesicle",
+      "Ejaculatory duct"
+     ]
+    },
+    {
+     "id": "REPRO-007",
+     "title": "States associated with elevated beta-hCG",
+     "difficulty": "medium",
+     "tiles": [
+      "Multiple gestation",
+      "Hydatidiform mole",
+      "Choriocarcinoma",
+      "Trisomy 21 pregnancy"
+     ]
+    },
+    {
+     "id": "REPRO-010",
+     "title": "Conditions associated with polyhydramnios",
+     "difficulty": "medium",
+     "tiles": [
+      "Anencephaly",
+      "Intestinal atresia",
+      "Maternal diabetes",
+      "Twin-twin transfusion recipient"
+     ]
+    }
+   ],
+   "flags": [
+    "REPRO-007 board instruction to check against the other groups: \"Board overlap: mole/choriocarcinoma also fit gestational trophoblastic disease, and trisomy 21 fits quad-screen findings; avoid these competing groups on the same board.\"",
+    "REPRO-010 board instruction to check against the other groups: \"Only the RECIPIENT twin in TTTS has polyhydramnios; the donor has oligohydramnios (board caution).\""
+   ],
+   "clear": "decisions.json → boards → \"reproductive-starter-5\": \"cleared:1bf13c51\""
   }
  ],
  "blockedBoards": [],
@@ -3062,6 +3599,13 @@
    "difficulty": "easy",
    "board": "biochemistry-genetics-starter-1",
    "note": "Intentionally introductory category; may be too transparent for a Hard puzzle."
+  },
+  {
+   "id": "REPRO-015",
+   "title": "States of prolonged unopposed estrogen exposure",
+   "difficulty": "medium",
+   "board": null,
+   "note": "Difficulty raised Easy to Medium."
   }
  ]
 }

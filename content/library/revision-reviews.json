@@ -196,6 +196,55 @@
       "evidence": "Notes: \"Title corrected: Encapsulated or specialized was inaccurate because Merkel discs are UNENCAPSULATED ...\" Tiles are as in the source (p. 15); only the title was made accurate. Nothing left unresolved.",
       "contentHash": "b274e6a8d67a264175041bb8fb8d458d40d7c7e1d7c824b958b1002ec506ac79",
       "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "REPRO-007": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"Explanation revised to add magnitude/context qualifier.\" Tiles unchanged from the source (p. 18); only qualifiers were added. Board cautions (trophoblastic disease, quad-screen groups) are placement notes.",
+      "contentHash": "95b4814398bd84f4d5ed6074934033f9da6399ca52959a931e2c0149accc6627",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "REPRO-013": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"Explanation revised to add effect sizes and the qualifier that fibroid risk is weaker ... All four remain defensible abruption risk factors.\" Tiles unchanged; nothing unresolved.",
+      "contentHash": "3fb8edf6815244ee1ae962e5f74db876d1aae8076a5c457c4f5ac537db2d0e40",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "REPRO-015": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"Retitled from Risk factors for endometrial hyperplasia to the shared mechanism ...\" Tiles unchanged from the source (p. 39); the retitle removes a competing category. The difficulty change (Easy to Medium) is a calibration note, not a medical issue.",
+      "contentHash": "800729394c00079ac9ac0ea3e3564c107fe63c6763abc6fbf0b17e597f745687",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "REPRO-023": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"Revised to anchor to US MEC 2024 ...\" The four conditions are the same; the title and explanation were tied to the current guideline with qualifiers stated. Nothing unresolved.",
+      "contentHash": "e0b45d8885e6a56f971c6b414c9646ada0b0f0ff0f0a102fc8492b8f3609b4e7",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "REPRO-025": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"Revised to add age/exposure stratification and context for Pseudomonas ...\" Tiles unchanged from the source (p. 60); explanation qualified. Board caution (epididymo-orchitis group) is a placement note.",
+      "contentHash": "ba710040a3e8871e3c2d5379cbe1b12d376eacc96521fb27959bea1bc3ea142c",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "PULM-015": {
+      "endorsedFinalRow": true,
+      "outstanding": "The review replaced the source tile \"Lower-lobe emphysema\" (near-redundant with panacinar emphysema) with \"Decreased serum alpha-1 antitrypsin level\". Notes state the original source supports only the emphysema, globule and cirrhosis claims, not the serum-level tile, which rests on outside references (Strnad et al, NEJM 2020; ATS/ERS 2003). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).",
+      "evidence": "Notes: \"CORRECTION: original tiles panacinar emphysema and lower-lobe emphysema ... Original source supports only the emphysema/globule/cirrhosis claims, not the serum-level tile.\"",
+      "contentHash": "9a29e5f2894c3b0ea34f6485a5614d1b0aa0c4b372b496e1e1e26c3e16b80bd1",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "PULM-017": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"REVISED to resolve the original ambiguity-2 HOLD: title changed ... generic Pleural effusion specified as Benign asbestos pleural effusion\". The tile was made specific rather than replaced; all four are asbestos consequences in the cited source (p. 59). The pleural-overlap note is a board caution.",
+      "contentHash": "52817ce273bb215cacce77205a712691084dc6df225255111ff613b37b5384df",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
     }
   }
 }

@@ -1,15 +1,15 @@
 # Plexus new library: pending review queue
 
-Generated 2026-10-08T21:10:21.944Z. Staging only; the library is not active and the live app is unchanged.
+Generated 2026-10-08T21:39:51.197Z. Staging only; the library is not active and the live app is unchanged.
 
 | Category | Open |
 |---|---|
-| Medical / source holds | 13 |
-| Duplicate decisions (new library) | 28 |
-| Timed-library overlaps | 36 to decide, 11 recorded |
-| Board ambiguity reviews | 8 |
+| Medical / source holds | 14 |
+| Duplicate decisions (new library) | 32 |
+| Timed-library overlaps | 42 to decide, 12 recorded |
+| Board ambiguity reviews | 11 |
 | Blocked boards | 0 |
-| Difficulty calibration warnings | 1 |
+| Difficulty calibration warnings | 2 |
 
 ## 1. Medical / source holds
 ### PLX-BCH-009 · Agents using retrograde axonal transport (Biochemistry/Genetics, AI_REVIEWED_REVISED)
@@ -76,6 +76,11 @@ Issue: The review replaced the source tile "Asterixis" (a sign of encephalopathy
 Tiles: Myasthenia gravis · Amyotrophic lateral sclerosis · Guillain-Barre syndrome · Botulism
 
 Issue: The review replaced the source tile "Multiple sclerosis" with "Botulism" and refined the title. The new tile is supported by outside references in Notes (Wijdicks, Ann Neurol 2017; Mehta 2006), not by the cited Bootcamp pages (pp. 44, 46). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).
+
+### PULM-015 · Clues to alpha-1 antitrypsin deficiency (Pulmonary, AI_REVIEWED_REVISED)
+Tiles: Panacinar emphysema · Decreased serum alpha-1 antitrypsin level · PAS-positive hepatocyte globules · Liver cirrhosis
+
+Issue: The review replaced the source tile "Lower-lobe emphysema" (near-redundant with panacinar emphysema) with "Decreased serum alpha-1 antitrypsin level". Notes state the original source supports only the emphysema, globule and cirrhosis claims, not the serum-level tile, which rests on outside references (Strnad et al, NEJM 2020; ATS/ERS 2003). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).
 
 ## 2. Duplicate decisions (new library)
 ### Vitamin K-dependent clotting factors  /  Vitamin K-dependent procoagulant factors
@@ -253,6 +258,21 @@ possible duplicate (held). Shared relationship: "findings / associations of chag
 Held until decided: MICRO-029.
 Decide: decisions.json → pairs → "CARD-016 | MICRO-029": "same" or "distinct"
 
+### Second pharyngeal arch cartilage derivatives  /  Second pharyngeal arch derivatives
+possible duplicate (held). Shared relationship: "second pharyngeal arch cartilage derivative" vs "second pharyngeal arch derivative"; 2 of 4 tiles identical.
+
+| | CARD-050 (new, Cardiology) | REPRO-003 (new, Reproductive) |
+|---|---|---|
+| Title | Second pharyngeal arch cartilage derivatives | Second pharyngeal arch derivatives |
+| Tile 1 | Stapes | Stapedius muscle |
+| Tile 2 | Styloid process | Stylohyoid muscle |
+| Tile 3 | Stylohyoid ligament | Stapes |
+| Tile 4 | Lesser horn of hyoid | Lesser horn of hyoid |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: REPRO-003.
+Decide: decisions.json → pairs → "CARD-050 | REPRO-003": "same" or "distinct"
+
 ### High-risk oncogenic HPV types  /  High-risk oncogenic HPV types
 treated as the same relationship (set aside); confirm. Shared relationship: both are "high risk oncogenic hpv type"; 4 of 4 tiles identical; tile wording 100% the same.
 
@@ -370,6 +390,21 @@ possible duplicate (held). Shared relationship: both are "findings / association
 Held until decided: NEU-042.
 Decide: decisions.json → pairs → "NEU-042 | PLEXUS-GEN-010": "same" or "distinct"
 
+### Digestive complications of cystic fibrosis  /  Cross-organ clues to cystic fibrosis
+possible duplicate (held). Shared relationship: "findings / associations of digestive cystic fibrosis" vs "findings / associations of cross organ cystic fibrosis"; 1 of 4 tiles identical.
+
+| | PLEXUS-GEN-018 (new, Genetics) | PULM-014 (new, Pulmonary) |
+|---|---|---|
+| Title | Digestive complications of cystic fibrosis | Cross-organ clues to cystic fibrosis |
+| Tile 1 | Pancreatic insufficiency | Meconium ileus |
+| Tile 2 | Fat-soluble vitamin deficiency | Pancreatic exocrine insufficiency |
+| Tile 3 | Meconium ileus | Elevated sweat chloride |
+| Tile 4 | Biliary cirrhosis | Congenital absence of the vas deferens |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: PULM-014.
+Decide: decisions.json → pairs → "PLEXUS-GEN-018 | PULM-014": "same" or "distinct"
+
 ### Vaso-occlusive complications of sickle cell disease  /  Sickle-cell vaso-occlusive manifestations
 possible duplicate (held). Shared relationship: both are "findings / associations of vaso occlusive sickle cell disease"; 2 of 4 tiles identical.
 
@@ -460,6 +495,21 @@ possible duplicate (held). Shared relationship: "findings / associations of musc
 Held until decided: NEU-010.
 Decide: decisions.json → pairs → "MICRO-012 | NEU-010": "same" or "distinct"
 
+### Neuromuscular causes of respiratory acidosis  /  Neuromuscular causes of extrapulmonary restriction
+possible duplicate (held). Shared relationship: "causes of neuromuscular respiratory acidosis" vs "causes of neuromuscular extrapulmonary restriction"; 3 of 4 tiles identical; tile wording 80% the same.
+
+| | NEPH-029 (new, Renal) | PULM-006 (new, Pulmonary) |
+|---|---|---|
+| Title | Neuromuscular causes of respiratory acidosis | Neuromuscular causes of extrapulmonary restriction |
+| Tile 1 | Myasthenia gravis | Poliomyelitis |
+| Tile 2 | Amyotrophic lateral sclerosis | Amyotrophic lateral sclerosis |
+| Tile 3 | Guillain-Barre syndrome | Myasthenia gravis |
+| Tile 4 | Botulism | Guillain-Barre syndrome |
+| Status | AI_REVIEWED_REVISED | AI_REVIEWED_PASS |
+
+Held until decided: NEPH-029.
+Decide: decisions.json → pairs → "NEPH-029 | PULM-006": "same" or "distinct"
+
 ### Cranial nerves with medially located somatic motor nuclei  /  Structures passing through the superior orbital fissure
 possible duplicate (held). Shared relationship: "cranial nerve medially located somatic motor nuclei" vs "structure passing through superior orbital fissure"; 3 of 4 tiles identical.
 
@@ -474,6 +524,21 @@ possible duplicate (held). Shared relationship: "cranial nerve medially located 
 
 Held until decided: NEU-019.
 Decide: decisions.json → pairs → "NEU-005 | NEU-019": "same" or "distinct"
+
+### Kallmann syndrome associations  /  Kallmann syndrome clues
+possible duplicate (held). Shared relationship: both are "findings / associations of kallmann syndrome"; 1 of 4 tiles identical.
+
+| | NEU-046 (new, Neurology) | REPRO-006 (new, Reproductive) |
+|---|---|---|
+| Title | Kallmann syndrome associations | Kallmann syndrome clues |
+| Tile 1 | Anosmia | Anosmia |
+| Tile 2 | Impaired GnRH neuron migration | Low GnRH |
+| Tile 3 | Low gonadotropins (LH/FSH) | Low gonadotropins |
+| Tile 4 | Delayed or absent puberty | Delayed sexual maturation |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: REPRO-006.
+Decide: decisions.json → pairs → "NEU-046 | REPRO-006": "same" or "distinct"
 
 ### Symptomatic Alzheimer disease pharmacotherapy  /  Acetylcholinesterase inhibitors with CNS penetration
 possible duplicate (held). Shared relationship: "symptomatic alzheimer disease pharmacotherapy" vs "acetylcholinesterase inhibitor cns penetration"; 3 of 4 tiles identical; tile wording 60% the same.
@@ -1149,6 +1214,104 @@ possible repeat of a timed entry. Shared relationship: both are "findings / asso
 
 Decide: decisions.json → pairs → "PSY-023 | bank-ext-030": "same" (exclude timed entry at activation) or "distinct"
 
+### Neural crest derivatives  /  Neural crest derivatives
+possible repeat of a timed entry. Shared relationship: both are "neural crest derivative"; 1 of 4 tiles identical.
+
+| | REPRO-002 (new, Reproductive) | bank-medium-06 (timed, Biochemistry/Genetics) |
+|---|---|---|
+| Title | Neural crest derivatives | Neural crest derivatives |
+| Tile 1 | Melanocytes | Melanocytes |
+| Tile 2 | Adrenal medullary chromaffin cells | Schwann cells |
+| Tile 3 | Peripheral neurons | Adrenal medulla |
+| Tile 4 | Leptomeninges | Peripheral autonomic ganglia |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "REPRO-002 | bank-medium-06": "same" (exclude timed entry at activation) or "distinct"
+
+### Second pharyngeal arch derivatives  /  Pharyngeal arch derivatives
+possible repeat of a timed entry. Shared relationship: "second pharyngeal arch derivative" vs "pharyngeal arch derivative"; 1 of 4 tiles identical.
+
+| | REPRO-003 (new, Reproductive) | bank-migrated-sys-mixed-0003-L2 (timed, Mixed / Step Review) |
+|---|---|---|
+| Title | Second pharyngeal arch derivatives | Pharyngeal arch derivatives |
+| Tile 1 | Stapedius muscle | Mandible |
+| Tile 2 | Stylohyoid muscle | Stapes |
+| Tile 3 | Stapes | Greater horn of hyoid |
+| Tile 4 | Lesser horn of hyoid | Thyroid cartilage |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "REPRO-003 | bank-migrated-sys-mixed-0003-L2": "same" (exclude timed entry at activation) or "distinct"
+
+### Ovarian germ cell tumors  /  Ovarian germ cell tumors
+possible repeat of a timed entry. Shared relationship: both are "ovarian germ cell tumor"; 2 of 4 tiles identical; tile wording 67% the same.
+
+| | REPRO-017 (new, Reproductive) | bank-ext-094 (timed, Reproductive) |
+|---|---|---|
+| Title | Ovarian germ cell tumors | Ovarian germ cell tumors |
+| Tile 1 | Mature cystic teratoma | Dysgerminoma |
+| Tile 2 | Immature teratoma | Yolk sac tumor |
+| Tile 3 | Dysgerminoma | Choriocarcinoma |
+| Tile 4 | Yolk sac tumor | Mature teratoma |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "REPRO-017 | bank-ext-094": "same" (exclude timed entry at activation) or "distinct"
+
+### Drugs associated with pulmonary fibrosis  /  Drugs causing pulmonary fibrosis
+same relationship as a timed entry (timed entry to be excluded at activation). Shared relationship: "findings / associations of drug pulmonary fibrosis" vs "causes of drug causing pulmonary fibrosis"; 4 of 4 tiles identical; tile wording 100% the same.
+
+| | PULM-001 (new, Pulmonary) | bank-ext-062 (timed, Pharmacology) |
+|---|---|---|
+| Title | Drugs associated with pulmonary fibrosis | Drugs causing pulmonary fibrosis |
+| Tile 1 | Bleomycin | Bleomycin |
+| Tile 2 | Amiodarone | Amiodarone |
+| Tile 3 | Methotrexate | Methotrexate |
+| Tile 4 | Busulfan | Busulfan |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: no decision needed unless you disagree
+
+### Core obstructive lung diseases in the source  /  Obstructive lung diseases
+possible repeat of a timed entry. Shared relationship: "core obstructive lung disease" vs "obstructive lung disease"; 2 of 4 tiles identical.
+
+| | PULM-013 (new, Pulmonary) | bank-easy-12 (timed, Pulmonary) |
+|---|---|---|
+| Title | Core obstructive lung diseases in the source | Obstructive lung diseases |
+| Tile 1 | Emphysema | Asthma |
+| Tile 2 | Chronic bronchitis | COPD |
+| Tile 3 | Asthma | Bronchiectasis |
+| Tile 4 | Cystic fibrosis | Cystic fibrosis |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "PULM-013 | bank-easy-12": "same" (exclude timed entry at activation) or "distinct"
+
+### Core obstructive lung diseases in the source  /  Obstructive lung diseases
+possible repeat of a timed entry. Shared relationship: "core obstructive lung disease" vs "obstructive lung disease"; 2 of 4 tiles identical.
+
+| | PULM-013 (new, Pulmonary) | bank-migrated-sys-pulm-0001-L1 (timed, Pulmonary) |
+|---|---|---|
+| Title | Core obstructive lung diseases in the source | Obstructive lung diseases |
+| Tile 1 | Emphysema | COPD |
+| Tile 2 | Chronic bronchitis | Asthma |
+| Tile 3 | Asthma | Bronchiectasis |
+| Tile 4 | Cystic fibrosis | Cystic fibrosis |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "PULM-013 | bank-migrated-sys-pulm-0001-L1": "same" (exclude timed entry at activation) or "distinct"
+
+### Clues to tension pneumothorax  /  Findings in tension pneumothorax
+possible repeat of a timed entry. Shared relationship: both are "findings / associations of tension pneumothorax".
+
+| | PULM-020 (new, Pulmonary) | bank-ext-053 (timed, Pulmonary) |
+|---|---|---|
+| Title | Clues to tension pneumothorax | Findings in tension pneumothorax |
+| Tile 1 | Unilateral hyperresonance | Tracheal deviation away from the side |
+| Tile 2 | Markedly reduced ipsilateral breath sounds | Absent breath sounds |
+| Tile 3 | Contralateral tracheal shift | Hyperresonance to percussion |
+| Tile 4 | Hypotension with elevated JVP | Hypotension |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "PULM-020 | bank-ext-053": "same" (exclude timed entry at activation) or "distinct"
+
 ## 4. Board ambiguity reviews
 ### biochemistry-genetics-starter-5 (Biochemistry/Genetics)
 - PLX-BCH-050 Classic alkaptonuria associations [easy]: Ochronosis · Black urine after standing · Elevated homogentisate · Arthritis
@@ -1222,9 +1385,37 @@ Decide: decisions.json → pairs → "PSY-023 | bank-ext-030": "same" (exclude t
 - Flag: PSY-023 board instruction to check against the other groups: "Board overlap: fever, altered mental status, and autonomic instability also occur in serotonin syndrome—lead-pipe rigidity (vs clonus/hyperreflexia) is the differentiating tile."
 - Clear: decisions.json → boards → "psychiatry-starter-5": "cleared:8478ca7e"
 
+### pulmonary-starter-3 (Pulmonary)
+- PULM-012 Alveolar injury triggers of ARDS [easy]: Sepsis · Acute pancreatitis · Pneumonia · Gastric acid aspiration
+- PULM-008 Factors shifting the oxygen dissociation curve right [easy]: Acidemia · Increased temperature · Increased carbon dioxide · Increased 2,3-BPG
+- PULM-021 Features of diffuse alveolar damage in ARDS [medium]: Protein-rich alveolar fluid · Hyaline membranes · Reduced surfactant activity · Reduced lung compliance
+- PULM-010 Hypoxemia mechanisms responsive to supplemental oxygen [medium]: Low inspired oxygen · Alveolar hypoventilation · Diffusion impairment · Ventilation-perfusion mismatch
+- Flag: Two ARDS groups on one board ("Alveolar injury triggers of ARDS" and "Features of diffuse alveolar damage in ARDS"). "Pneumonia" and "Sepsis" read as ARDS context next to the DAD features, and "Ventilation-perfusion mismatch" and "Diffusion impairment" (hypoxemia group) are also mechanisms of hypoxemia in ARDS; a player could reasonably mix these groups. (raised by Claude, 2026-10-08)
+- Clear: decisions.json → boards → "pulmonary-starter-3": "cleared:1ceae549"
+
+### pulmonary-starter-4 (Pulmonary)
+- PULM-002 Paraneoplastic syndromes of small cell lung carcinoma [easy]: SIADH · Ectopic ACTH syndrome · Lambert-Eaton syndrome · Subacute cerebellar degeneration
+- PULM-019 Bedside clues to pleural effusion [easy]: Dull percussion · Reduced breath sounds · Reduced tactile fremitus · Contralateral tracheal shift with a large effusion
+- PULM-011 Reduced oxygen delivery or use despite normal arterial oxygen tension [medium]: Anemia · Carbon monoxide poisoning · Methemoglobinemia · Cyanide poisoning
+- PULM-017 Intrathoracic manifestations of asbestos exposure [medium]: Calcified pleural plaques · Benign asbestos pleural effusion · Pleural mesothelioma · Asbestosis
+- Flag: PULM-011 board instruction to check against the other groups: "Board overlap: broader ''causes of tissue hypoxia.'' Added refs: Henretig et al., NEJM 2019;"
+- Flag: PULM-017 board instruction to check against the other groups: "BOARD-LEVEL OVERLAP WARNING: three tiles (plaques, benign effusion, mesothelioma) are pleural and could be grouped as ''asbestos pleural disease'' on a 16-tile board; pair with care and avoid a competing pleural category."
+- Flag: "Bedside clues to pleural effusion" sits next to the asbestos group, which includes "Benign asbestos pleural effusion"; this is the competing pleural category PULM-017 warns against. (raised by Claude, 2026-10-08)
+- Clear: decisions.json → boards → "pulmonary-starter-4": "cleared:3185dfcc"
+
+### reproductive-starter-5 (Reproductive)
+- REPRO-004 Structural abnormalities associated with Turner syndrome [easy]: Bicuspid aortic valve · Aortic coarctation · Horseshoe kidney · Cystic hygroma
+- REPRO-001 Mesonephric duct derivatives [easy]: Epididymis · Ductus deferens · Seminal vesicle · Ejaculatory duct
+- REPRO-007 States associated with elevated beta-hCG [medium]: Multiple gestation · Hydatidiform mole · Choriocarcinoma · Trisomy 21 pregnancy
+- REPRO-010 Conditions associated with polyhydramnios [medium]: Anencephaly · Intestinal atresia · Maternal diabetes · Twin-twin transfusion recipient
+- Flag: REPRO-007 board instruction to check against the other groups: "Board overlap: mole/choriocarcinoma also fit gestational trophoblastic disease, and trisomy 21 fits quad-screen findings; avoid these competing groups on the same board."
+- Flag: REPRO-010 board instruction to check against the other groups: "Only the RECIPIENT twin in TTTS has polyhydramnios; the donor has oligohydramnios (board caution)."
+- Clear: decisions.json → boards → "reproductive-starter-5": "cleared:1bf13c51"
+
 ## 5. Blocked boards
 None.
 ## 6. Difficulty calibration warnings
 Separate from medical and ambiguity issues. These do not block a board.
 
 - PLX-BCH-071 Levels of protein structure [easy] on biochemistry-genetics-starter-1: "Intentionally introductory category; may be too transparent for a Hard puzzle."
+- REPRO-015 States of prolonged unopposed estrogen exposure [medium] (Daily pool): "Difficulty raised Easy to Medium."
