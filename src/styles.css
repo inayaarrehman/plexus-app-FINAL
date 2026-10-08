@@ -6396,3 +6396,138 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 @media (max-width: 439px) {
   .home-progress .home-progress-meta { display: none; }
 }
+
+/* ==================================================================
+   NAMING (today's Daily): one focused panel, then compact rows
+   The active panel is the cream card with the group's colour along its
+   top; completed groups are slimmer cream rows with the group's node motif.
+   ================================================================== */
+.strand-stack.has-naming { gap: 6px; }
+.strand-stack.has-naming.strand-stack-complete::before { display: none; }
+.np { background: var(--tile-cream); color: var(--ink); border-radius: 12px; box-shadow: 0 2px 0 rgba(10, 6, 20, 0.22); }
+
+/* Active panel */
+.np-active { border-top: 3px solid var(--strand-color); box-shadow: 0 3px 0 rgba(10, 6, 20, 0.24), 0 10px 26px rgba(10, 6, 20, 0.22); }
+.np-panel { padding: 12px 14px 12px; display: flex; flex-direction: column; gap: 10px; }
+.np-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.np-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
+.np-xp { flex: none; font-size: 0.82rem; font-weight: 700; color: var(--strand-color); font-variant-numeric: tabular-nums; }
+.np-concepts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; }
+.np-concept { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.np-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--strand-color); transform: translateY(-1px); }
+.np-term { min-width: 0; font-size: 0.92rem; font-weight: 600; line-height: 1.3; color: var(--ink); overflow-wrap: anywhere; hyphens: manual; -webkit-hyphens: manual; }
+.np-input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1.5px solid color-mix(in srgb, var(--ink) 24%, transparent);
+  background: #fffdf8;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+}
+.np-input::placeholder { color: color-mix(in srgb, var(--ink) 45%, transparent); }
+.np-input:focus { outline: none; border-color: var(--strand-color); box-shadow: 0 0 0 3px color-mix(in srgb, var(--strand-color) 22%, transparent); }
+.np-note { margin: -4px 0 0; font-size: 0.84rem; font-weight: 700; color: var(--ink); }
+.np-note .recall-safe { font-weight: 600; color: color-mix(in srgb, var(--ink) 65%, transparent); }
+.np-actions { display: flex; justify-content: flex-end; align-items: center; gap: 6px; }
+.np .np-skip {
+  min-height: 40px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 10px;
+  background: none;
+  color: color-mix(in srgb, var(--ink) 70%, transparent);
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.np .np-submit {
+  min-height: 40px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--tile-cream);
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 120ms ease, transform 80ms ease;
+}
+.np .np-submit:disabled { opacity: 0.4; cursor: default; }
+.np .np-submit:not(:disabled):active, .np .np-skip:active { transform: scale(0.97); }
+.np .np-skip:active { background: color-mix(in srgb, var(--ink) 8%, transparent); }
+.np-skip:focus-visible, .np-submit:focus-visible, .np-row:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (hover: hover) {
+  .np .np-skip:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); color: var(--ink); }
+}
+
+/* Completed row */
+.np-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 52px;
+  padding: 9px 12px 9px 14px;
+  border: none;
+  border-radius: 12px;
+  background: none;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-ui);
+}
+.np-done { border-left: 3px solid var(--strand-color); }
+.np-row .group-motif { flex: none; }
+.np-row-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1 1 auto; }
+.np-row-title { font-family: var(--font-display); font-size: 0.98rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.22; color: var(--ink); overflow-wrap: break-word; }
+.np-row-title b { text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--strand-color) 70%, transparent); text-underline-offset: 3px; }
+.np-row-meta { font-size: 0.78rem; font-weight: 600; color: color-mix(in srgb, var(--ink) 62%, transparent); }
+.np-row-xp { color: var(--strand-color); font-weight: 700; }
+.np-chevron { flex: none; width: 8px; height: 8px; margin: 0 4px 3px 2px; border-right: 1.8px solid color-mix(in srgb, var(--ink) 45%, transparent); border-bottom: 1.8px solid color-mix(in srgb, var(--ink) 45%, transparent); transform: rotate(45deg); transition: transform 200ms ease; }
+.np.is-expanded .np-chevron { transform: translateY(3px) rotate(-135deg); }
+.np-row:active { background: color-mix(in srgb, var(--ink) 5%, transparent); }
+@media (hover: hover) { .np-row:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); } }
+.np-row-queued { cursor: default; opacity: 0.72; }
+.np-queued { border-left: 3px dashed color-mix(in srgb, var(--strand-color) 60%, transparent); }
+.np-flash { margin: -4px 0 0; padding: 0 14px 10px 48px; font-size: 0.82rem; }
+.np-detail { padding: 0 14px 12px 48px; }
+.np-concepts.is-compact { gap: 4px 12px; }
+.np-concepts.is-compact .np-term { font-size: 0.86rem; }
+.np-explain { margin: 8px 0 0; font-size: 0.86rem; line-height: 1.45; color: color-mix(in srgb, var(--ink) 78%, transparent); }
+
+/* Motion: the panel enters after the tiles connect; resolving reveals the
+   category and lights the group's nodes as the panel folds into its row. */
+@media (prefers-reduced-motion: no-preference) {
+  .np-active { animation: np-enter 320ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms both; }
+  .np-active .np-dot { animation: np-dot 260ms ease-out both; animation-delay: 220ms; }
+  .np-active .np-concept:nth-child(2) .np-dot { animation-delay: 270ms; }
+  .np-active .np-concept:nth-child(3) .np-dot { animation-delay: 320ms; }
+  .np-active .np-concept:nth-child(4) .np-dot { animation-delay: 370ms; }
+  .np-done.is-resolving .np-row-title { animation: title-in 260ms ease-out 60ms both; }
+  .np-done.is-resolving .np-row-meta { animation: title-in 260ms ease-out 140ms both; }
+  .np-done.is-resolving .group-motif .motif-node { animation: np-light 380ms ease-out calc(var(--i) * 40ms) both; transform-box: fill-box; transform-origin: center; }
+  .np-detail { animation: title-in 220ms ease-out both; }
+}
+@keyframes np-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes np-dot { from { transform: translateY(-1px) scale(0.2); opacity: 0; } to { transform: translateY(-1px) scale(1); opacity: 1; } }
+@keyframes np-light { 0% { transform: scale(0.5); opacity: 0.3; } 60% { transform: scale(1.25); opacity: 1; } 100% { transform: scale(1); } }
+
+@media (max-width: 340px) {
+  .np-concepts:not(.is-compact) { grid-template-columns: minmax(0, 1fr); }
+  .np-detail, .np-flash { padding-left: 14px; }
+}
+/* Board connect step, timed to CONNECT_MS (520ms): tiles pulse, nodes light,
+   lines draw into the shared point, the point lands. The naming panel then
+   enters (about 320ms). */
+@media (prefers-reduced-motion: no-preference) {
+  .tile.tile-connecting { animation: tile-connect 520ms cubic-bezier(0.3, 0, 0.2, 1) both; }
+  .connect-node { animation: node-in 200ms ease-out both; }
+  .connect-line { animation: line-draw 320ms cubic-bezier(0.3, 0, 0.2, 1) 150ms forwards; }
+  .connect-hub { animation: node-in 160ms ease-out 400ms forwards; }
+}
+.np .np-input { flex: none; height: 44px; min-height: 44px; max-height: 44px; margin: 0; }

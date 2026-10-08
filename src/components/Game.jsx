@@ -85,6 +85,8 @@ export default function Game({
   // Brief confirmation after naming, and the group whose title is revealing.
   const [recallFlash, setRecallFlash] = useState(null) // { catIndex, text, kind }
   const [revealCat, setRevealCat] = useState(null)
+  // One completed row open at a time, so rows never take over the screen.
+  const [expandedCat, setExpandedCat] = useState(null)
   const flashTimer = useRef(null)
   const revealTimer = useRef(null)
 
@@ -247,6 +249,7 @@ export default function Game({
         { levels: [selected[0].level, selected[0].level, selected[0].level, selected[0].level], catIndexes, correct: true, durationMs, attemptKey: key },
       ])
       setPopCatIndex(catIndex)
+      setExpandedCat(null)
       if (recallEnabled) {
         setRecall((prev) => (prev[catIndex] ? prev : { ...prev, [catIndex]: { status: 'open' } }))
         setActiveRecall(catIndex)
@@ -477,6 +480,7 @@ export default function Game({
     ? puzzle.categories.some((c, i) => c.title === connectionOfDay.title && recallPending(i))
     : false
 
+  const foundSet = new Set(guessLog.filter((g) => g.correct).map((g) => g.catIndexes[0]))
   const orderedSolvedCats = puzzle.categories
     .map((c, i) => ({ ...c, catIndex: i }))
     .filter((c) => solvedCats.includes(c.catIndex))
@@ -521,12 +525,16 @@ export default function Game({
           one connecting path, in the category's colour. Once the whole
           board is solved the stack draws together (strand-stack-complete)
           and leads into the completion mark on the result card below. */}
-      <div className={`strand-stack ${gameOver ? 'strand-stack-complete' : ''}`}>
+      <div className={`strand-stack ${gameOver ? 'strand-stack-complete' : ''} ${recallEnabled ? 'has-naming' : ''}`}>
         {orderedSolvedCats.map((c) => (
           <SolvedGroup
             key={c.catIndex}
             category={c}
             color={levelColor(c.level)}
+            naming={recallEnabled}
+            found={foundSet.has(c.catIndex)}
+            expanded={expandedCat === c.catIndex}
+            onToggle={() => setExpandedCat((cur) => (cur === c.catIndex ? null : c.catIndex))}
             forming={popCatIndex === c.catIndex}
             revealing={revealCat === c.catIndex || (popCatIndex === c.catIndex && !recallPending(c.catIndex))}
             pending={recallPending(c.catIndex)}
@@ -535,7 +543,6 @@ export default function Game({
             draft={recallDrafts[c.catIndex] || ''}
             flash={recallFlash?.catIndex === c.catIndex ? recallFlash : null}
             bonusXp={XP.categoryBonus}
-            onOpen={() => setActiveRecall(c.catIndex)}
             onDraft={(v) => setRecallDrafts((d) => ({ ...d, [c.catIndex]: v }))}
             onSubmit={() => submitRecall(c.catIndex)}
             onSkip={() => skipRecall(c.catIndex)}
@@ -634,7 +641,9 @@ export default function Game({
         </>
       )}
 
-      {gameOver && (
+      {/* Results wait until every naming decision is made (a save from before
+          the one-at-a-time rule can hold several; they are asked in turn). */}
+      {gameOver && !namingGate && (
         <div className={`result-card ${won ? 'result-card-won' : ''} ${isPerfect ? 'result-card-perfect' : ''}`}>
           {/* The completion payoff: the Plexus constellation assembles (four
               jewel-toned nodes wiring themselves together) as the centrepiece,
@@ -770,7 +779,7 @@ function markKitIntroSeen(item) {
 // ---- Solve animation helpers ----
 // How long the four tiles spend connecting on the board before they become a
 // solved group (the card then forms in about 300ms: about 650ms in all).
-const CONNECT_MS = 380
+const CONNECT_MS = 520
 
 function prefersReducedMotion() {
   try {
