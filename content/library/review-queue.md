@@ -1,13 +1,13 @@
 # Plexus new library: pending review queue
 
-Generated 2026-10-08T17:42:40.749Z. Staging only; the library is not active and the live app is unchanged.
+Generated 2026-10-08T21:00:34.262Z. Staging only; the library is not active and the live app is unchanged.
 
 | Category | Open |
 |---|---|
-| Medical / source holds | 11 |
-| Duplicate decisions (new library) | 18 |
-| Timed-library overlaps | 24 to decide, 6 recorded |
-| Board ambiguity reviews | 3 |
+| Medical / source holds | 13 |
+| Duplicate decisions (new library) | 28 |
+| Timed-library overlaps | 32 to decide, 9 recorded |
+| Board ambiguity reviews | 6 |
 | Blocked boards | 0 |
 | Difficulty calibration warnings | 1 |
 
@@ -67,6 +67,16 @@ Tiles: Slipped capital femoral epiphysis · Legg-Calve-Perthes disease · Transi
 
 Issue: The review replaced the source tile "Developmental hip dysplasia" with "Transient synovitis of the hip". The new tile is supported by outside references in Notes (de Borja et al 2022; AAP DDH report), not by the cited Bootcamp pages (pp. 157, 185-187). The review also notes that hip dislocation fits only the general referred-pain principle and is "less distinctive". Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).
 
+### NEPH-022 · Uremic complications (Renal, AI_REVIEWED_REVISED)
+Tiles: Pericarditis · Encephalopathy · Peripheral neuropathy · Platelet dysfunction
+
+Issue: The review replaced the source tile "Asterixis" (a sign of encephalopathy, so overlapping that tile) with "Peripheral neuropathy". The new tile is supported by outside references in Notes (Vanholder et al 2016; Rehman et al 2017), not by the cited Bootcamp pages (pp. 54, 87, 96). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).
+
+### NEPH-029 · Neuromuscular causes of respiratory acidosis (Renal, AI_REVIEWED_REVISED)
+Tiles: Myasthenia gravis · Amyotrophic lateral sclerosis · Guillain-Barre syndrome · Botulism
+
+Issue: The review replaced the source tile "Multiple sclerosis" with "Botulism" and refined the title. The new tile is supported by outside references in Notes (Wijdicks, Ann Neurol 2017; Mehta 2006), not by the cited Bootcamp pages (pp. 44, 46). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).
+
 ## 2. Duplicate decisions (new library)
 ### Vitamin K-dependent clotting factors  /  Vitamin K-dependent procoagulant factors
 treated as the same relationship (set aside); confirm. Shared relationship: both are "vitamin k dependent clotting factor"; 4 of 4 tiles identical; tile wording 100% the same.
@@ -81,6 +91,20 @@ treated as the same relationship (set aside); confirm. Shared relationship: both
 | Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
 
 Decide: decisions.json → pairs → "PLX-BCH-002 | PLX-HEM-002": "same" or "distinct"
+
+### Amino acids lost in cystinuria  /  Amino acids lost in cystinuria
+treated as the same relationship (set aside); confirm. Shared relationship: both are "amino acid lost cystinuria"; 4 of 4 tiles identical; tile wording 100% the same.
+
+| | PLX-BCH-003 (new, Biochemistry/Genetics) | NEPH-006 (new, Renal) |
+|---|---|---|
+| Title | Amino acids lost in cystinuria | Amino acids lost in cystinuria |
+| Tile 1 | Cystine | Cystine |
+| Tile 2 | Ornithine | Ornithine |
+| Tile 3 | Lysine | Lysine |
+| Tile 4 | Arginine | Arginine |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Decide: decisions.json → pairs → "NEPH-006 | PLX-BCH-003": "same" or "distinct"
 
 ### Fat-soluble vitamins  /  Fat-soluble vitamins at risk in pancreatic fat malabsorption
 treated as the same relationship (set aside); confirm. Shared relationship: "fat soluble vitamin" vs "fat soluble vitamin risk pancreatic fat malabsorption"; 4 of 4 tiles identical; tile wording 100% the same.
@@ -126,6 +150,36 @@ possible duplicate (held). Shared relationship: both are "findings / association
 Held until decided: CARD-017.
 Decide: decisions.json → pairs → "CARD-017 | PLX-BCH-031": "same" or "distinct"
 
+### Diagnostic clues for cystinuria  /  Cystine stone clues
+possible duplicate (held). Shared relationship: "findings / associations of cystinuria" vs "findings / associations of cystine stone"; 1 of 4 tiles identical.
+
+| | PLX-BCH-052 (new, Biochemistry/Genetics) | NEPH-015 (new, Renal) |
+|---|---|---|
+| Title | Diagnostic clues for cystinuria | Cystine stone clues |
+| Tile 1 | Hexagonal urinary crystals | Hexagonal crystals |
+| Tile 2 | Recurrent nephrolithiasis | Positive cyanide-nitroprusside test |
+| Tile 3 | Increased urinary cystine | COLA transport defect |
+| Tile 4 | Positive cyanide-nitroprusside test | Weak radiopacity on plain radiograph |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: NEPH-015.
+Decide: decisions.json → pairs → "NEPH-015 | PLX-BCH-052": "same" or "distinct"
+
+### Causes associated with sideroblastic anemia  /  Acquired sideroblastic-anemia exposures
+possible duplicate (held). Shared relationship: "causes of + findings / associations of sideroblastic anemia" vs "acquired sideroblastic anemia exposure"; 2 of 4 tiles identical.
+
+| | PLX-BCH-053 (new, Biochemistry/Genetics) | PLX-HEM-021 (new, Heme/Onc) |
+|---|---|---|
+| Title | Causes associated with sideroblastic anemia | Acquired sideroblastic-anemia exposures |
+| Tile 1 | Vitamin B6 deficiency | Alcohol |
+| Tile 2 | Lead poisoning | Isoniazid |
+| Tile 3 | Alcohol exposure | Chloramphenicol |
+| Tile 4 | Isoniazid | Linezolid |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: PLX-BCH-053.
+Decide: decisions.json → pairs → "PLX-BCH-053 | PLX-HEM-021": "same" or "distinct"
+
 ### Source-described sideroblastic anemia findings  /  Sideroblastic-anemia diagnostic clues
 possible duplicate (held). Shared relationship: both are "findings / associations of sideroblastic anemia"; 1 of 4 tiles identical.
 
@@ -169,6 +223,20 @@ treated as the same relationship (set aside); confirm. Shared relationship: both
 | Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
 
 Decide: decisions.json → pairs → "PLX-BCH-063 | PLX-HEM-026": "same" or "distinct"
+
+### Beta-1 selective blockers  /  Beta-1-selective (cardioselective) antagonists
+treated as the same relationship (set aside); confirm. Shared relationship: both are "beta 1 selective blocker"; 3 of 4 tiles identical; tile wording 60% the same.
+
+| | CARD-004 (new, Cardiology) | PHARM-012 (new, Pharmacology) |
+|---|---|---|
+| Title | Beta-1 selective blockers | Beta-1-selective (cardioselective) antagonists |
+| Tile 1 | Metoprolol | Metoprolol |
+| Tile 2 | Nebivolol | Bisoprolol |
+| Tile 3 | Esmolol | Esmolol |
+| Tile 4 | Atenolol | Atenolol |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Decide: decisions.json → pairs → "CARD-004 | PHARM-012": "same" or "distinct"
 
 ### Classic associations of Chagas disease  /  Chronic Chagas disease manifestations
 possible duplicate (held). Shared relationship: "findings / associations of chaga disease" vs "findings / associations of chronic chaga disease"; 2 of 4 tiles identical.
@@ -244,6 +312,21 @@ possible duplicate (held). Shared relationship: "findings / associations of infe
 Held until decided: PLX-HEM-042.
 Decide: decisions.json → pairs → "DERM-018 | PLX-HEM-042": "same" or "distinct"
 
+### Wilson disease diagnostic associations  /  Wilson disease neurologic and systemic clues
+possible duplicate (held). Shared relationship: both are "findings / associations of wilson disease"; 1 of 4 tiles identical.
+
+| | GI-022 (new, GI) | NEU-048 (new, Neurology) |
+|---|---|---|
+| Title | Wilson disease diagnostic associations | Wilson disease neurologic and systemic clues |
+| Tile 1 | ATP7B mutation | Kayser-Fleischer rings |
+| Tile 2 | Low ceruloplasmin | Wing-beating tremor |
+| Tile 3 | Increased urinary copper | Hepatic dysfunction |
+| Tile 4 | Kayser-Fleischer rings | Neuropsychiatric changes |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: NEU-048.
+Decide: decisions.json → pairs → "GI-022 | NEU-048": "same" or "distinct"
+
 ### Anticancer drugs targeting topoisomerases  /  Topoisomerase-targeting cytotoxic drugs
 treated as the same relationship (set aside); confirm. Shared relationship: "anticancer drug targeting topoisomerase" vs "topoisomerase targeting cytotoxic drug"; 4 of 4 tiles identical; tile wording 100% the same.
 
@@ -271,6 +354,21 @@ treated as the same relationship (set aside); confirm. Shared relationship: both
 | Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
 
 Decide: decisions.json → pairs → "PLEXUS-GEN-007 | PLX-HEM-029": "same" or "distinct"
+
+### Ataxia-telangiectasia clinical and laboratory clues  /  Ataxia-telangiectasia associations
+possible duplicate (held). Shared relationship: both are "findings / associations of ataxia telangiectasia laboratory".
+
+| | PLEXUS-GEN-010 (new, Genetics) | NEU-042 (new, Neurology) |
+|---|---|---|
+| Title | Ataxia-telangiectasia clinical and laboratory clues | Ataxia-telangiectasia associations |
+| Tile 1 | Ataxia | ATM gene mutation |
+| Tile 2 | Telangiectasias | Cerebellar ataxia |
+| Tile 3 | Recurrent sinopulmonary infections | Oculocutaneous telangiectasias |
+| Tile 4 | Elevated AFP | IgA deficiency |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: NEU-042.
+Decide: decisions.json → pairs → "NEU-042 | PLEXUS-GEN-010": "same" or "distinct"
 
 ### Vaso-occlusive complications of sickle cell disease  /  Sickle-cell vaso-occlusive manifestations
 possible duplicate (held). Shared relationship: both are "findings / associations of vaso occlusive sickle cell disease"; 2 of 4 tiles identical.
@@ -302,6 +400,21 @@ possible duplicate (held). Shared relationship: both are "findings / association
 Held until decided: IMM-017.
 Decide: decisions.json → pairs → "IMM-017 | PLX-HEM-009": "same" or "distinct"
 
+### Typical laboratory pattern of hemolysis  /  Laboratory evidence of immune-mediated hemolysis
+possible duplicate (held). Shared relationship: "laboratory pattern hemolysis" vs "laboratory evidence immune mediated hemolysis"; 2 of 4 tiles identical.
+
+| | PLX-HEM-010 (new, Heme/Onc) | IMM-033 (new, Immunology) |
+|---|---|---|
+| Title | Typical laboratory pattern of hemolysis | Laboratory evidence of immune-mediated hemolysis |
+| Tile 1 | Increased LDH | Positive direct antiglobulin test |
+| Tile 2 | Increased indirect bilirubin | Increased LDH |
+| Tile 3 | Decreased haptoglobin | Increased bilirubin |
+| Tile 4 | Reticulocytosis | Decreased haptoglobin |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_REVISED |
+
+Held until decided: IMM-033.
+Decide: decisions.json → pairs → "IMM-033 | PLX-HEM-010": "same" or "distinct"
+
 ### Antiphospholipid-syndrome associations  /  Antiphospholipid syndrome clues
 possible duplicate (held). Shared relationship: both are "findings / associations of antiphospholipid syndrome".
 
@@ -331,6 +444,51 @@ possible duplicate (held). Shared relationship: "anti tnf biologic" vs "antibody
 
 Held until decided: MSK-039.
 Decide: decisions.json → pairs → "IMM-040 | MSK-039": "same" or "distinct"
+
+### Characteristic muscular findings of tetanus  /  Classic tetanus manifestations
+possible duplicate (held). Shared relationship: "findings / associations of muscular tetanus" vs "findings / associations of tetanus"; 2 of 4 tiles identical.
+
+| | MICRO-012 (new, Microbiology) | NEU-010 (new, Neurology) |
+|---|---|---|
+| Title | Characteristic muscular findings of tetanus | Classic tetanus manifestations |
+| Tile 1 | Trismus | Trismus |
+| Tile 2 | Risus sardonicus | Risus sardonicus |
+| Tile 3 | Opisthotonos | Opisthotonus |
+| Tile 4 | Painful muscle spasms | Generalized spastic muscle spasms |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: NEU-010.
+Decide: decisions.json → pairs → "MICRO-012 | NEU-010": "same" or "distinct"
+
+### Cranial nerves with medially located somatic motor nuclei  /  Structures passing through the superior orbital fissure
+possible duplicate (held). Shared relationship: "cranial nerve medially located somatic motor nuclei" vs "structure passing through superior orbital fissure"; 3 of 4 tiles identical.
+
+| | NEU-005 (new, Neurology) | NEU-019 (new, Neurology) |
+|---|---|---|
+| Title | Cranial nerves with medially located somatic motor nuclei | Structures passing through the superior orbital fissure |
+| Tile 1 | Oculomotor nerve | Oculomotor nerve |
+| Tile 2 | Trochlear nerve | Trochlear nerve |
+| Tile 3 | Abducens nerve | Abducens nerve |
+| Tile 4 | Hypoglossal nerve | Ophthalmic division of trigeminal nerve (V1) |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: NEU-019.
+Decide: decisions.json → pairs → "NEU-005 | NEU-019": "same" or "distinct"
+
+### Symptomatic Alzheimer disease pharmacotherapy  /  Acetylcholinesterase inhibitors with CNS penetration
+possible duplicate (held). Shared relationship: "symptomatic alzheimer disease pharmacotherapy" vs "acetylcholinesterase inhibitor cns penetration"; 3 of 4 tiles identical; tile wording 60% the same.
+
+| | NEU-051 (new, Neurology) | PHARM-007 (new, Pharmacology) |
+|---|---|---|
+| Title | Symptomatic Alzheimer disease pharmacotherapy | Acetylcholinesterase inhibitors with CNS penetration |
+| Tile 1 | Donepezil | Donepezil |
+| Tile 2 | Rivastigmine | Rivastigmine |
+| Tile 3 | Galantamine | Galantamine |
+| Tile 4 | Memantine | Physostigmine |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: PHARM-007.
+Decide: decisions.json → pairs → "NEU-051 | PHARM-007": "same" or "distinct"
 
 ## 3. Timed-library overlaps
 ### Fat-soluble vitamins  /  Fat-soluble vitamins
@@ -753,6 +911,160 @@ possible repeat of a timed entry. Shared relationship: both are "findings / asso
 
 Decide: decisions.json → pairs → "MSK-018 | bank-ext-066": "same" (exclude timed entry at activation) or "distinct"
 
+### Classic nephrotic syndrome findings  /  Nephrotic syndrome findings
+same relationship as a timed entry (timed entry to be excluded at activation). Shared relationship: both are "findings / associations of nephrotic syndrome"; 3 of 4 tiles identical; tile wording 67% the same.
+
+| | NEPH-007 (new, Renal) | bank-migrated-sys-renal-0002-L1 (timed, Renal) |
+|---|---|---|
+| Title | Classic nephrotic syndrome findings | Nephrotic syndrome findings |
+| Tile 1 | Heavy proteinuria | Massive proteinuria |
+| Tile 2 | Hypoalbuminemia | Hypoalbuminemia |
+| Tile 3 | Edema | Edema |
+| Tile 4 | Hyperlipidemia | Hyperlipidemia |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: no decision needed unless you disagree
+
+### Renal papillary necrosis associations  /  Causes of renal papillary necrosis
+possible repeat of a timed entry. Shared relationship: "findings / associations of renal papillary necrosis" vs "causes of renal papillary necrosis"; 3 of 4 tiles identical.
+
+| | NEPH-018 (new, Renal) | bank-ext-081 (timed, Renal) |
+|---|---|---|
+| Title | Renal papillary necrosis associations | Causes of renal papillary necrosis |
+| Tile 1 | Sickle cell disease | Sickle cell disease |
+| Tile 2 | Acute pyelonephritis | Analgesic nephropathy |
+| Tile 3 | Chronic NSAID exposure | Diabetes mellitus |
+| Tile 4 | Diabetes mellitus | Acute pyelonephritis |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "NEPH-018 | bank-ext-081": "same" (exclude timed entry at activation) or "distinct"
+
+### Medications that can cause acute interstitial nephritis  /  Drugs causing acute interstitial nephritis
+possible repeat of a timed entry. Shared relationship: "causes of medication acute interstitial nephritis" vs "causes of drug causing acute interstitial nephritis"; 3 of 4 tiles identical; tile wording 71% the same.
+
+| | NEPH-019 (new, Renal) | bank-ext-054 (timed, Renal) |
+|---|---|---|
+| Title | Medications that can cause acute interstitial nephritis | Drugs causing acute interstitial nephritis |
+| Tile 1 | NSAIDs | NSAIDs |
+| Tile 2 | Penicillins | Penicillins |
+| Tile 3 | Proton pump inhibitors | Sulfonamides |
+| Tile 4 | Rifampin | Proton pump inhibitors |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "NEPH-019 | bank-ext-054": "same" (exclude timed entry at activation) or "distinct"
+
+### Normal-anion-gap metabolic acidosis associations  /  Causes of non-anion gap metabolic acidosis
+possible repeat of a timed entry. Shared relationship: "findings / associations of normal anion gap metabolic acidosis" vs "causes of non anion gap metabolic acidosis"; 2 of 4 tiles identical.
+
+| | NEPH-028 (new, Renal) | bank-migrated-sys-renal-0001-L2 (timed, Renal) |
+|---|---|---|
+| Title | Normal-anion-gap metabolic acidosis associations | Causes of non-anion gap metabolic acidosis |
+| Tile 1 | Diarrhea | Diarrhea |
+| Tile 2 | Acetazolamide | Renal tubular acidosis |
+| Tile 3 | Distal renal tubular acidosis | Acetazolamide |
+| Tile 4 | Proximal renal tubular acidosis | Early renal failure |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "NEPH-028 | bank-migrated-sys-renal-0001-L2": "same" (exclude timed entry at activation) or "distinct"
+
+### Neuromuscular causes of respiratory acidosis  /  Causes of respiratory acidosis
+possible repeat of a timed entry. Shared relationship: "causes of neuromuscular respiratory acidosis" vs "causes of respiratory acidosis"; 1 of 4 tiles identical.
+
+| | NEPH-029 (new, Renal) | bank-migrated-sys-renal-0001-L4 (timed, Renal) |
+|---|---|---|
+| Title | Neuromuscular causes of respiratory acidosis | Causes of respiratory acidosis |
+| Tile 1 | Myasthenia gravis | Opioid overdose |
+| Tile 2 | Amyotrophic lateral sclerosis | COPD exacerbation |
+| Tile 3 | Guillain-Barre syndrome | Guillain-Barré syndrome |
+| Tile 4 | Botulism | Obesity hypoventilation syndrome |
+| Status | AI_REVIEWED_REVISED | verified |
+
+Decide: decisions.json → pairs → "NEPH-029 | bank-migrated-sys-renal-0001-L4": "same" (exclude timed entry at activation) or "distinct"
+
+### Upper motor neuron examination signs  /  Upper motor neuron signs
+possible repeat of a timed entry. Shared relationship: "findings / associations of upper motor neuron examination" vs "findings / associations of upper motor neuron"; 2 of 4 tiles identical.
+
+| | NEU-002 (new, Neurology) | bank-ext-034 (timed, Neurology) |
+|---|---|---|
+| Title | Upper motor neuron examination signs | Upper motor neuron signs |
+| Tile 1 | Hyperreflexia | Hyperreflexia |
+| Tile 2 | Spasticity | Spasticity |
+| Tile 3 | Hypertonia | Babinski sign |
+| Tile 4 | Extensor plantar response | Clonus |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "NEU-002 | bank-ext-034": "same" (exclude timed entry at activation) or "distinct"
+
+### Lower motor neuron examination signs  /  Lower motor neuron signs
+possible repeat of a timed entry. Shared relationship: "findings / associations of low motor neuron examination" vs "findings / associations of low motor neuron"; 3 of 4 tiles identical.
+
+| | NEU-003 (new, Neurology) | bank-ext-035 (timed, Neurology) |
+|---|---|---|
+| Title | Lower motor neuron examination signs | Lower motor neuron signs |
+| Tile 1 | Fasciculations | Fasciculations |
+| Tile 2 | Muscle atrophy | Hyporeflexia |
+| Tile 3 | Hyporeflexia | Muscle atrophy |
+| Tile 4 | Hypotonia | Flaccid paralysis |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "NEU-003 | bank-ext-035": "same" (exclude timed entry at activation) or "distinct"
+
+### Classic Parkinson disease motor findings  /  Features of Parkinson disease
+same relationship as a timed entry (timed entry to be excluded at activation). Shared relationship: "findings / associations of parkinson disease motor" vs "findings / associations of parkinson disease"; 4 of 4 tiles identical; tile wording 100% the same.
+
+| | NEU-052 (new, Neurology) | bank-migrated-sys-neuro-0002-L1 (timed, Neurology) |
+|---|---|---|
+| Title | Classic Parkinson disease motor findings | Features of Parkinson disease |
+| Tile 1 | Bradykinesia | Resting tremor |
+| Tile 2 | Resting tremor | Bradykinesia |
+| Tile 3 | Cogwheel rigidity | Cogwheel rigidity |
+| Tile 4 | Postural instability | Postural instability |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: no decision needed unless you disagree
+
+### Gq-coupled receptors  /  Gq-coupled receptors
+same relationship as a timed entry (timed entry to be excluded at activation). Shared relationship: both are "gq coupled receptor"; 3 of 4 tiles identical; tile wording 71% the same.
+
+| | PHARM-004 (new, Pharmacology) | bank-medium-02 (timed, Pharmacology) |
+|---|---|---|
+| Title | Gq-coupled receptors | Gq-coupled receptors |
+| Tile 1 | M1 receptor | α1 receptor |
+| Tile 2 | M3 receptor | H1 receptor |
+| Tile 3 | Alpha-1 receptor | V1 receptor |
+| Tile 4 | H1 receptor | M1 receptor |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: no decision needed unless you disagree
+
+### Gs-coupled receptors  /  Gs-coupled receptors (increased cAMP)
+possible repeat of a timed entry. Shared relationship: "gs coupled receptor" vs "gs coupled receptor high camp"; 3 of 4 tiles identical; tile wording 71% the same.
+
+| | PHARM-005 (new, Pharmacology) | bank-medium-01 (timed, Pharmacology) |
+|---|---|---|
+| Title | Gs-coupled receptors | Gs-coupled receptors (increased cAMP) |
+| Tile 1 | Beta-1 receptor | β1 receptor |
+| Tile 2 | Beta-2 receptor | β2 receptor |
+| Tile 3 | D1 receptor | D1 receptor |
+| Tile 4 | V2 receptor | H2 receptor |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "PHARM-005 | bank-medium-01": "same" (exclude timed entry at activation) or "distinct"
+
+### Peripheral findings of antimuscarinic (anticholinergic) toxicity  /  Muscarinic antagonist effect
+possible repeat of a timed entry. Shared relationship: "findings / associations of peripheral antimuscarinic anticholinergic toxicity" vs "muscarinic antagonist effect"; 3 of 4 tiles identical; tile wording 71% the same.
+
+| | PHARM-009 (new, Pharmacology) | bank-migrated-sys-pharm-0002-L3 (timed, Pharmacology) |
+|---|---|---|
+| Title | Peripheral findings of antimuscarinic (anticholinergic) toxicity | Muscarinic antagonist effect |
+| Tile 1 | Mydriasis | Mydriasis |
+| Tile 2 | Dry skin | Dry mouth |
+| Tile 3 | Urinary retention | Urinary retention |
+| Tile 4 | Tachycardia | Tachycardia |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "PHARM-009 | bank-migrated-sys-pharm-0002-L3": "same" (exclude timed entry at activation) or "distinct"
+
 ## 4. Board ambiguity reviews
 ### biochemistry-genetics-starter-5 (Biochemistry/Genetics)
 - PLX-BCH-050 Classic alkaptonuria associations [easy]: Ochronosis · Black urine after standing · Elevated homogentisate · Arthritis
@@ -777,6 +1089,35 @@ Decide: decisions.json → pairs → "MSK-018 | bank-ext-066": "same" (exclude t
 - MSK-035 High-risk stress fracture sites [hard]: Tension (superolateral) side of the femoral neck · Anterior tibial cortex · Talus · Proximal fifth metatarsal
 - Flag: MSK-035 board instruction to check against the other groups: "Board overlap: navicular and sesamoids are additional high-risk sites - avoid as distractors."
 - Clear: decisions.json → boards → "msk-starter-5": "cleared:a7cd3b6c"
+
+### renal-starter-5 (Renal)
+- NEPH-027 Stress incontinence triggers [easy]: Coughing · Sneezing · Laughing · Heavy lifting
+- NEPH-026 Acetazolamide clinical uses [medium]: Glaucoma · Altitude sickness · Idiopathic intracranial hypertension · Metabolic alkalosis
+- NEPH-017 Calcium oxalate stone risk exposures [medium]: Ethylene glycol poisoning · Excess vitamin C intake · Fat malabsorption · Hypocitraturia
+- NEPH-013 Alport syndrome clues [medium]: Persistent hematuria · Sensorineural hearing loss · Anterior lenticonus · Basket-weave basement membrane
+- Flag: NEPH-027 board instruction to check against the other groups: "Board overlap: any Valsalva-maneuver category (ambiguity 1)."
+- Clear: decisions.json → boards → "renal-starter-5": "cleared:e2e15784"
+
+### pharmacology-starter-2 (Pharmacology)
+- PHARM-009 Peripheral findings of antimuscarinic (anticholinergic) toxicity [easy]: Mydriasis · Dry skin · Urinary retention · Tachycardia
+- PHARM-001 Hepatic phase II conjugation reactions [easy]: Glucuronidation · Acetylation · Sulfation · Methylation
+- PHARM-006 Direct muscarinic receptor agonists [easy]: Pilocarpine · Cevimeline · Bethanechol · Methacholine
+- PHARM-003 CYP (cytochrome P450) enzyme inhibitors [medium]: Cimetidine · Amiodarone · Clarithromycin · Ritonavir
+- Flag: PHARM-009 board instruction to check against the other groups: "BOARD OVERLAP: mydriasis and tachycardia also occur in sympathomimetic toxicity."
+- Flag: PHARM-001 board instruction to check against the other groups: "Glutathione and amino-acid conjugation are other valid members; a 5th-member board tile could blur this category."
+- Flag: PHARM-006 board instruction to check against the other groups: "Carbachol is another valid member (board note)."
+- Clear: decisions.json → boards → "pharmacology-starter-2": "cleared:8392d452"
+
+### pharmacology-starter-3 (Pharmacology)
+- PHARM-002 Classic CYP (cytochrome P450) enzyme inducers [easy]: Rifampin · Phenobarbital · Carbamazepine · Phenytoin
+- PHARM-008 Peripheral muscarinic findings in organophosphate (cholinergic) poisoning [easy]: Miosis · Lacrimation · Bronchospasm · Diarrhea
+- PHARM-005 Gs-coupled receptors [medium]: Beta-1 receptor · Beta-2 receptor · D1 receptor · V2 receptor
+- PHARM-013 Nonselective beta blockers without alpha blockade [medium]: Nadolol · Propranolol · Timolol · Sotalol
+- Flag: PHARM-002 board instruction to check against the other groups: "BOARD OVERLAP: carbamazepine, phenobarbital, phenytoin also fit an antiseizure-drug category; rifampin does not."
+- Flag: PHARM-008 board instruction to check against the other groups: "BOARD OVERLAP: each sign individually appears in other toxidromes."
+- Flag: PHARM-005 board instruction to check against the other groups: "BOARD OVERLAP: beta-1/beta-2 also fit an adrenergic-receptor category."
+- Flag: PHARM-013 board instruction to check against the other groups: "BOARD OVERLAP: sotalol also fits class III antiarrhythmics; its added K-channel activity does not negate its beta-blockade."
+- Clear: decisions.json → boards → "pharmacology-starter-3": "cleared:13fca67e"
 
 ## 5. Blocked boards
 None.

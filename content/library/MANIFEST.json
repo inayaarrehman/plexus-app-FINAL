@@ -1,7 +1,7 @@
 {
  "about": "Checksums of the staged new library. Staging only: active is false and nothing in src/ reads these files.",
  "active": false,
- "savedAt": "2026-10-08T17:43:03.967Z",
+ "savedAt": "2026-10-08T21:01:18.621Z",
  "systems": [
   "Biochemistry/Genetics",
   "Cardiology",
@@ -12,27 +12,30 @@
   "Heme/Onc",
   "Immunology",
   "MSK",
-  "Microbiology"
+  "Microbiology",
+  "Neurology",
+  "Pharmacology",
+  "Renal"
  ],
  "counts": {
-  "rows": 517,
-  "passedReview": 506,
+  "rows": 623,
+  "passedReview": 610,
   "passedReviewHuman": 0,
-  "passedReviewAi": 506,
-  "heldMedical": 11,
+  "passedReviewAi": 610,
+  "heldMedical": 13,
   "rejected": 0,
   "needsFix": 0,
-  "heldDuplicate": 12,
-  "setAsideDuplicate": 6,
-  "usable": 488,
-  "starter": 200,
-  "daily": 288
+  "heldDuplicate": 20,
+  "setAsideDuplicate": 8,
+  "usable": 582,
+  "starter": 252,
+  "daily": 330
  },
  "files": {
-  "README.md": "9ec3ce30c132b28ab13600a7f7038a72f8f1d16ca5b6884668f487ec7f7ef03f",
+  "README.md": "02185eb72b733371aa3ec3609c4421fe9d5ee9cf760c685d6e248a9c2dd47264",
   "board-flags.json": "e614c1ddae1cb5007ec61adadbee5078e1814697a59459390822fbec79d14a1f",
   "decisions.json": "db2eb213a83c37bf8cf2f08913b4c63f38aed77d77dda89825421cdbd6161830",
-  "library.json": "08fe174848acf647ab88ba3756d173ab2e4998f3667ee03229309121b567358e",
+  "library.json": "2c463bee6d76e48c1f6190138c265b31b9a6700e3c53503f04500c4eb1eab9f1",
   "reports/2026-10-08-biochemistry-genetics-f7b14325d1d2.md": "2c8dea6901183429f9712d4a275c1bb62499fb750a0c80208be620caa2270fd5",
   "reports/2026-10-08-cardiology-7a468f05556e.md": "7e850965368f52b2724aed103fc52487f30d4d30af17b8fe7916dbfbd7855fa7",
   "reports/2026-10-08-dermatology-95b7b2723152.md": "71e9f9d12767ed623919b66e7fc387fc0d8baa8b14240bfda06e486960c4fc5c",
@@ -43,9 +46,12 @@
   "reports/2026-10-08-immunology-741c455344a1.md": "67a0368adef2c909d11ed7194991fe597965e2ae1e4839a616bb9f721c251ea7",
   "reports/2026-10-08-microbiology-c9b380ad455e.md": "7c2c2a5f9847c910f14edb9c846237139d43801d2d7d14eae9aba19726e55ccb",
   "reports/2026-10-08-msk-1656eaa7a197.md": "7198b09abec099ccf505bc70d1714bb31120b3fa827248b06d9a8d342eac6e50",
-  "review-queue.json": "9ac484fe47e4b71d25b7c0a7d49c782741b279658d81ecb21bf2821802c8eecb",
-  "review-queue.md": "20b9f657e42c38941db766ed0470480074cf19d6803988fa5b04bf8870623b09",
-  "revision-reviews.json": "2ec1c2d0788878e60c5f9d0352b9accd474363dd021cc1092a5ca209b1aad5e0",
+  "reports/2026-10-08-neurology-30d632e91215.md": "b242828bd77413dbd221198f6fda2c5ff10473d416cfe20fe0b94a024c0353e6",
+  "reports/2026-10-08-pharmacology-233563508fd9.md": "89e11fb442de8c67e27fd23db0656582e35ec913e841b2efbd72d21485a522f6",
+  "reports/2026-10-08-renal-8f33abcc89c4.md": "1e87796b0985e25cb218f6a32f0f199b4e0d3b976683379b0bbc8783a4f33b51",
+  "review-queue.json": "df1a3cb1dbb0da9809cafda78373415b995117de835860f435810afd25a6c0a6",
+  "review-queue.md": "1e8e85c3cec78e0384157022db9c6aa5a56c8d465c8be2625309d0be11d88b42",
+  "revision-reviews.json": "0c532e0013be491a338d7e27d11959959bb48c50c1b7324ad73b2fed2baffdd1",
   "status-map.json": "092ccf52026b7425f9b1254a8476548c9174f02153f9a5303587819e88e5846a",
   "uploads/Plexus_Biochemistry_Reviewed_Connections.csv": "f7b14325d1d206f30fa05da14bc4c0a6c391843af530459e51cd7522e8b08c9e",
   "uploads/Plexus_Cardio_Reviewed_Connections.csv": "7a468f05556e283745697da126b8e7c97248e35a07becd6f24829631ca91a304",
@@ -56,6 +62,9 @@
   "uploads/Plexus_Hematology_and_Oncology_reviewed_connections.csv": "2ebb676d94e115e6b69bceb3507129e4f16d50132e9cc987d3d56ffe195a6059",
   "uploads/Plexus_Immunology_reviewed_connections.csv": "741c455344a17fa45d7bb07faaf990299be297c1c94968a43639ec4a65feb397",
   "uploads/Plexus_MSK_reviewed_connections.csv": "1656eaa7a19762f1116329273537cefe9609d2109ebde3845ba1676a0ec90d9d",
-  "uploads/Plexus_Microbiology_reviewed_connections.csv": "c9b380ad455e6c578669042a6a9a6f8c33a00629910accde6cc60d49f39ac13c"
+  "uploads/Plexus_Microbiology_reviewed_connections.csv": "c9b380ad455e6c578669042a6a9a6f8c33a00629910accde6cc60d49f39ac13c",
+  "uploads/Plexus_Nephrology_reviewed_connections.csv": "8f33abcc89c48f1fc5646a53ba0d0cb87499d05c4be1e350fd26db61387dfff5",
+  "uploads/Plexus_Neurology_reviewed_connections.csv": "30d632e912158f65066eab0f029485b4d16e46740cbbe142a4d6269450b397ce",
+  "uploads/Plexus_Pharmacology_reviewed_connections.csv": "233563508fd97dfd294bd121da653c152656f292222b9ef5a16337fef5abfe6a"
  }
 }

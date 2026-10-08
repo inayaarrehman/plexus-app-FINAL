@@ -59,6 +59,8 @@ export function words(text) {
   // A") is a name, not the article, so it is protected from the stopword list.
   return String(text ?? '')
     .replace(/(?<=[A-Za-z0-9][ -])A(?![A-Za-z0-9])/g, 'qqletteraqq')
+    // Greek letters as words, so "β1 receptor" = "Beta-1 receptor".
+    .replace(/[αΑ]/g, ' alpha ').replace(/[βΒ]/g, ' beta ').replace(/[γΓ]/g, ' gamma ').replace(/[δΔ]/g, ' delta ').replace(/[κΚ]/g, ' kappa ').replace(/[μ]/g, ' mu ')
     .normalize('NFKD')
     .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
@@ -277,13 +279,16 @@ export function compare(a, b) {
   // Reworded tiles ("Overriding aorta" / "Aorta overriding the septum") are
   // caught by comparing the words used across all four tiles.
   const wordSim = jaccard(tileWords(a), tileWords(b))
-  const subjSim = jaccard(sa.split(' '), sb.split(' '))
+  // Best similarity across each row's title and accepted alternate names.
+  const allNames = (c) => [c.title, ...(Array.isArray(c.alternateNames) ? c.alternateNames : [])].filter(Boolean).map((t) => subjectKey(t).split(' '))
+  let subjSim = jaccard(sa.split(' '), sb.split(' '))
+  for (const x of allNames(a)) for (const y of allNames(b)) subjSim = Math.max(subjSim, jaccard(x, y))
   let kind = null
   // Only near-identical tiles with a matching title count as the same
   // relationship automatically. Similar wording alone ("17-alpha" vs
   // "11-beta-hydroxylase deficiency" patterns) is never merged: it is held
   // for a person to decide.
-  if ((shared === 4 && titleSim >= 0.5) || ((sameTitle || sameSubject) && shared >= 3)) kind = 'same'
+  if ((shared === 4 && (titleSim >= 0.5 || subjSim >= 0.5)) || ((sameTitle || sameSubject) && shared >= 3)) kind = 'same'
   else if (shared === 4 || shared === 3 || ((sameTitle || sameSubject) && shared <= 2) || (titleSim >= 0.8 && shared >= 2) || (wordSim >= 0.6 && subjSim >= 0.5) || (subjSim >= 0.6 && shared >= 2) || (subjSim >= 0.75 && shared >= 1)) kind = 'uncertain'
   else if (shared >= 2) kind = 'overlap'
   // When the reviewer's notes on either row name the other row's id, the

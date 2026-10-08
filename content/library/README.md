@@ -57,7 +57,7 @@ Tiles and titles are compared after normalising case, punctuation, plurals and w
 | Result | Rule | What happens |
 |---|---|---|
 | Same relationship | Same four tiles with a similar title, or the same title with 3+ shared tiles | **Within the new library:** one copy is set aside as `duplicate`. The approved one is kept, otherwise the earlier one. **Against the timed library:** the new entry is kept, and the timed entry is listed in `timedExclusionsAtActivation`. |
-| Unclear | 3 or 4 shared tiles with a different title, the same title with 2 or fewer shared tiles, or very similar titles with 2 shared tiles | **Within the new library:** the later one is `held` out of every pool. **Against the timed library:** the pair is listed for you. Nothing is merged. |
+| Unclear (when one of the pair is already on a starter board, the other is held, so existing allocations are never disturbed) | 3 or 4 shared tiles with a different title, the same title with 2 or fewer shared tiles, or very similar titles with 2 shared tiles | **Within the new library:** the later one is `held` out of every pool. **Against the timed library:** the pair is listed for you. Nothing is merged. |
 | Shared concepts | 2 shared tiles, different relationship | Allowed. Recorded for information only. |
 
 To settle an unclear pair, add it to `content/library/decisions.json`, then re-run the import (or `--status`):
@@ -173,6 +173,6 @@ Each upload is staged under its own subject. "Genetics" is not one of the app's 
 ## Checks
 
 ```
-node scripts/library/test.mjs          # importer checks on placeholder rows (66 checks)
+node scripts/library/test.mjs          # importer checks on placeholder rows (68 checks)
 node scripts/library/timed-snapshot.mjs  # refresh the timed-library manifest
 ```

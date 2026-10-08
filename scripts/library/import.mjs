@@ -210,7 +210,10 @@ for (let i = 0; i < usable.length; i++)
     within.push({ a: a.id, b: b.id, kind, decided: decided || null, ...m, sameSystem: a.system === b.system })
     if (kind === 'same' || kind === 'uncertain') {
       // Keep the approved one; if both or neither are approved, keep the earlier import.
-      const [keep, drop] = a.verification.approved && !b.verification.approved ? [a, b] : b.verification.approved && !a.verification.approved ? [b, a] : order.get(a.id) < order.get(b.id) ? [a, b] : [b, a]
+      // Keep the approved one; then the one already reserved on a starter board
+      // (so a new match never disturbs existing allocations); then the earlier import.
+      const onBoard = (r) => Object.values(state.starterBoards || {}).some((bs) => bs.some((x) => x.ids.includes(r.id)))
+      const [keep, drop] = a.verification.approved && !b.verification.approved ? [a, b] : b.verification.approved && !a.verification.approved ? [b, a] : onBoard(a) && !onBoard(b) ? [a, b] : onBoard(b) && !onBoard(a) ? [b, a] : order.get(a.id) < order.get(b.id) ? [a, b] : [b, a]
       if (kind === 'same') drop.duplicateOf = drop.duplicateOf || keep.id
       else drop.heldFor.push(keep.id)
     }

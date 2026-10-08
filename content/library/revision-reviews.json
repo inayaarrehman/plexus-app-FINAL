@@ -175,6 +175,27 @@
       "evidence": "Notes: \"REVISED: original tile Developmental hip dysplasia replaced with Transient synovitis of the hip ...\"",
       "contentHash": "35f93d85617c1a3549b26657363a82a417b291d1ec04ca12a2d9b440e4b88d54",
       "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "NEPH-022": {
+      "endorsedFinalRow": true,
+      "outstanding": "The review replaced the source tile \"Asterixis\" (a sign of encephalopathy, so overlapping that tile) with \"Peripheral neuropathy\". The new tile is supported by outside references in Notes (Vanholder et al 2016; Rehman et al 2017), not by the cited Bootcamp pages (pp. 54, 87, 96). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).",
+      "evidence": "Notes: \"REVISED: replaced Asterixis with Peripheral neuropathy ...\"",
+      "contentHash": "d650931e31ff38841d772cda14ac54487a578143f8b54f91b994321a6a1bdb14",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "NEPH-029": {
+      "endorsedFinalRow": true,
+      "outstanding": "The review replaced the source tile \"Multiple sclerosis\" with \"Botulism\" and refined the title. The new tile is supported by outside references in Notes (Wijdicks, Ann Neurol 2017; Mehta 2006), not by the cited Bootcamp pages (pp. 44, 46). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).",
+      "evidence": "Notes: \"REVISED: replaced Multiple sclerosis with Botulism, and refined the title ...\"",
+      "contentHash": "67e0bf39de867e5a7680830130012b8205cb146ed2a807715cb8fd3af34ce303",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "NEU-001": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"Title corrected: Encapsulated or specialized was inaccurate because Merkel discs are UNENCAPSULATED ...\" Tiles are as in the source (p. 15); only the title was made accurate. Nothing left unresolved.",
+      "contentHash": "b274e6a8d67a264175041bb8fb8d458d40d7c7e1d7c824b958b1002ec506ac79",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
     }
   }
 }

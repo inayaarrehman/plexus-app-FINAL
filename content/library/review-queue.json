@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T17:42:40.749Z",
+ "generatedAt": "2026-10-08T21:00:34.262Z",
  "active": false,
  "medicalHolds": [
   {
@@ -144,6 +144,32 @@
    ],
    "status": "AI_REVIEWED_REVISED",
    "issue": "The review replaced the source tile \"Developmental hip dysplasia\" with \"Transient synovitis of the hip\". The new tile is supported by outside references in Notes (de Borja et al 2022; AAP DDH report), not by the cited Bootcamp pages (pp. 157, 185-187). The review also notes that hip dislocation fits only the general referred-pain principle and is \"less distinctive\". Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds)."
+  },
+  {
+   "id": "NEPH-022",
+   "system": "Renal",
+   "title": "Uremic complications",
+   "tiles": [
+    "Pericarditis",
+    "Encephalopathy",
+    "Peripheral neuropathy",
+    "Platelet dysfunction"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The review replaced the source tile \"Asterixis\" (a sign of encephalopathy, so overlapping that tile) with \"Peripheral neuropathy\". The new tile is supported by outside references in Notes (Vanholder et al 2016; Rehman et al 2017), not by the cited Bootcamp pages (pp. 54, 87, 96). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds)."
+  },
+  {
+   "id": "NEPH-029",
+   "system": "Renal",
+   "title": "Neuromuscular causes of respiratory acidosis",
+   "tiles": [
+    "Myasthenia gravis",
+    "Amyotrophic lateral sclerosis",
+    "Guillain-Barre syndrome",
+    "Botulism"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The review replaced the source tile \"Multiple sclerosis\" with \"Botulism\" and refined the title. The new tile is supported by outside references in Notes (Wijdicks, Ann Neurol 2017; Mehta 2006), not by the cited Bootcamp pages (pp. 44, 46). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds)."
   }
  ],
  "duplicateDecisions": [
@@ -179,6 +205,39 @@
     "status": "AI_REVIEWED_PASS"
    },
    "decide": "decisions.json → pairs → \"PLX-BCH-002 | PLX-HEM-002\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "NEPH-006 | PLX-BCH-003",
+   "kind": "treated as the same relationship (set aside); confirm",
+   "held": null,
+   "sharedRelationship": "both are \"amino acid lost cystinuria\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "PLX-BCH-003",
+    "library": "new",
+    "system": "Biochemistry/Genetics",
+    "title": "Amino acids lost in cystinuria",
+    "tiles": [
+     "Cystine",
+     "Ornithine",
+     "Lysine",
+     "Arginine"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "NEPH-006",
+    "library": "new",
+    "system": "Renal",
+    "title": "Amino acids lost in cystinuria",
+    "tiles": [
+     "Cystine",
+     "Ornithine",
+     "Lysine",
+     "Arginine"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"NEPH-006 | PLX-BCH-003\": \"same\" or \"distinct\""
   },
   {
    "key": "GI-043 | PLX-BCH-008",
@@ -280,6 +339,72 @@
    "decide": "decisions.json → pairs → \"CARD-017 | PLX-BCH-031\": \"same\" or \"distinct\""
   },
   {
+   "key": "NEPH-015 | PLX-BCH-052",
+   "kind": "possible duplicate (held)",
+   "held": "NEPH-015",
+   "sharedRelationship": "\"findings / associations of cystinuria\" vs \"findings / associations of cystine stone\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "PLX-BCH-052",
+    "library": "new",
+    "system": "Biochemistry/Genetics",
+    "title": "Diagnostic clues for cystinuria",
+    "tiles": [
+     "Hexagonal urinary crystals",
+     "Recurrent nephrolithiasis",
+     "Increased urinary cystine",
+     "Positive cyanide-nitroprusside test"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "NEPH-015",
+    "library": "new",
+    "system": "Renal",
+    "title": "Cystine stone clues",
+    "tiles": [
+     "Hexagonal crystals",
+     "Positive cyanide-nitroprusside test",
+     "COLA transport defect",
+     "Weak radiopacity on plain radiograph"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"NEPH-015 | PLX-BCH-052\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "PLX-BCH-053 | PLX-HEM-021",
+   "kind": "possible duplicate (held)",
+   "held": "PLX-BCH-053",
+   "sharedRelationship": "\"causes of + findings / associations of sideroblastic anemia\" vs \"acquired sideroblastic anemia exposure\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "PLX-BCH-053",
+    "library": "new",
+    "system": "Biochemistry/Genetics",
+    "title": "Causes associated with sideroblastic anemia",
+    "tiles": [
+     "Vitamin B6 deficiency",
+     "Lead poisoning",
+     "Alcohol exposure",
+     "Isoniazid"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "PLX-HEM-021",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "Acquired sideroblastic-anemia exposures",
+    "tiles": [
+     "Alcohol",
+     "Isoniazid",
+     "Chloramphenicol",
+     "Linezolid"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"PLX-BCH-053 | PLX-HEM-021\": \"same\" or \"distinct\""
+  },
+  {
    "key": "PLX-BCH-054 | PLX-HEM-022",
    "kind": "possible duplicate (held)",
    "held": "PLX-HEM-022",
@@ -377,6 +502,39 @@
     "status": "AI_REVIEWED_PASS"
    },
    "decide": "decisions.json → pairs → \"PLX-BCH-063 | PLX-HEM-026\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "CARD-004 | PHARM-012",
+   "kind": "treated as the same relationship (set aside); confirm",
+   "held": null,
+   "sharedRelationship": "both are \"beta 1 selective blocker\"; 3 of 4 tiles identical; tile wording 60% the same",
+   "a": {
+    "id": "CARD-004",
+    "library": "new",
+    "system": "Cardiology",
+    "title": "Beta-1 selective blockers",
+    "tiles": [
+     "Metoprolol",
+     "Nebivolol",
+     "Esmolol",
+     "Atenolol"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "PHARM-012",
+    "library": "new",
+    "system": "Pharmacology",
+    "title": "Beta-1-selective (cardioselective) antagonists",
+    "tiles": [
+     "Metoprolol",
+     "Bisoprolol",
+     "Esmolol",
+     "Atenolol"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"CARD-004 | PHARM-012\": \"same\" or \"distinct\""
   },
   {
    "key": "CARD-016 | MICRO-029",
@@ -544,6 +702,39 @@
    "decide": "decisions.json → pairs → \"DERM-018 | PLX-HEM-042\": \"same\" or \"distinct\""
   },
   {
+   "key": "GI-022 | NEU-048",
+   "kind": "possible duplicate (held)",
+   "held": "NEU-048",
+   "sharedRelationship": "both are \"findings / associations of wilson disease\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "GI-022",
+    "library": "new",
+    "system": "GI",
+    "title": "Wilson disease diagnostic associations",
+    "tiles": [
+     "ATP7B mutation",
+     "Low ceruloplasmin",
+     "Increased urinary copper",
+     "Kayser-Fleischer rings"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "NEU-048",
+    "library": "new",
+    "system": "Neurology",
+    "title": "Wilson disease neurologic and systemic clues",
+    "tiles": [
+     "Kayser-Fleischer rings",
+     "Wing-beating tremor",
+     "Hepatic dysfunction",
+     "Neuropsychiatric changes"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"GI-022 | NEU-048\": \"same\" or \"distinct\""
+  },
+  {
    "key": "PLEXUS-GEN-002 | PLX-HEM-046",
    "kind": "treated as the same relationship (set aside); confirm",
    "held": null,
@@ -608,6 +799,39 @@
     "status": "AI_REVIEWED_PASS"
    },
    "decide": "decisions.json → pairs → \"PLEXUS-GEN-007 | PLX-HEM-029\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "NEU-042 | PLEXUS-GEN-010",
+   "kind": "possible duplicate (held)",
+   "held": "NEU-042",
+   "sharedRelationship": "both are \"findings / associations of ataxia telangiectasia laboratory\"",
+   "a": {
+    "id": "PLEXUS-GEN-010",
+    "library": "new",
+    "system": "Genetics",
+    "title": "Ataxia-telangiectasia clinical and laboratory clues",
+    "tiles": [
+     "Ataxia",
+     "Telangiectasias",
+     "Recurrent sinopulmonary infections",
+     "Elevated AFP"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "NEU-042",
+    "library": "new",
+    "system": "Neurology",
+    "title": "Ataxia-telangiectasia associations",
+    "tiles": [
+     "ATM gene mutation",
+     "Cerebellar ataxia",
+     "Oculocutaneous telangiectasias",
+     "IgA deficiency"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"NEU-042 | PLEXUS-GEN-010\": \"same\" or \"distinct\""
   },
   {
    "key": "PLEXUS-GEN-020 | PLX-HEM-012",
@@ -676,6 +900,39 @@
    "decide": "decisions.json → pairs → \"IMM-017 | PLX-HEM-009\": \"same\" or \"distinct\""
   },
   {
+   "key": "IMM-033 | PLX-HEM-010",
+   "kind": "possible duplicate (held)",
+   "held": "IMM-033",
+   "sharedRelationship": "\"laboratory pattern hemolysis\" vs \"laboratory evidence immune mediated hemolysis\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "PLX-HEM-010",
+    "library": "new",
+    "system": "Heme/Onc",
+    "title": "Typical laboratory pattern of hemolysis",
+    "tiles": [
+     "Increased LDH",
+     "Increased indirect bilirubin",
+     "Decreased haptoglobin",
+     "Reticulocytosis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "IMM-033",
+    "library": "new",
+    "system": "Immunology",
+    "title": "Laboratory evidence of immune-mediated hemolysis",
+    "tiles": [
+     "Positive direct antiglobulin test",
+     "Increased LDH",
+     "Increased bilirubin",
+     "Decreased haptoglobin"
+    ],
+    "status": "AI_REVIEWED_REVISED"
+   },
+   "decide": "decisions.json → pairs → \"IMM-033 | PLX-HEM-010\": \"same\" or \"distinct\""
+  },
+  {
    "key": "MSK-014 | PLX-HEM-038",
    "kind": "possible duplicate (held)",
    "held": "MSK-014",
@@ -740,6 +997,105 @@
     "status": "AI_REVIEWED_PASS"
    },
    "decide": "decisions.json → pairs → \"IMM-040 | MSK-039\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "MICRO-012 | NEU-010",
+   "kind": "possible duplicate (held)",
+   "held": "NEU-010",
+   "sharedRelationship": "\"findings / associations of muscular tetanus\" vs \"findings / associations of tetanus\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "MICRO-012",
+    "library": "new",
+    "system": "Microbiology",
+    "title": "Characteristic muscular findings of tetanus",
+    "tiles": [
+     "Trismus",
+     "Risus sardonicus",
+     "Opisthotonos",
+     "Painful muscle spasms"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "NEU-010",
+    "library": "new",
+    "system": "Neurology",
+    "title": "Classic tetanus manifestations",
+    "tiles": [
+     "Trismus",
+     "Risus sardonicus",
+     "Opisthotonus",
+     "Generalized spastic muscle spasms"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"MICRO-012 | NEU-010\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "NEU-005 | NEU-019",
+   "kind": "possible duplicate (held)",
+   "held": "NEU-019",
+   "sharedRelationship": "\"cranial nerve medially located somatic motor nuclei\" vs \"structure passing through superior orbital fissure\"; 3 of 4 tiles identical",
+   "a": {
+    "id": "NEU-005",
+    "library": "new",
+    "system": "Neurology",
+    "title": "Cranial nerves with medially located somatic motor nuclei",
+    "tiles": [
+     "Oculomotor nerve",
+     "Trochlear nerve",
+     "Abducens nerve",
+     "Hypoglossal nerve"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "NEU-019",
+    "library": "new",
+    "system": "Neurology",
+    "title": "Structures passing through the superior orbital fissure",
+    "tiles": [
+     "Oculomotor nerve",
+     "Trochlear nerve",
+     "Abducens nerve",
+     "Ophthalmic division of trigeminal nerve (V1)"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"NEU-005 | NEU-019\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "NEU-051 | PHARM-007",
+   "kind": "possible duplicate (held)",
+   "held": "PHARM-007",
+   "sharedRelationship": "\"symptomatic alzheimer disease pharmacotherapy\" vs \"acetylcholinesterase inhibitor cns penetration\"; 3 of 4 tiles identical; tile wording 60% the same",
+   "a": {
+    "id": "NEU-051",
+    "library": "new",
+    "system": "Neurology",
+    "title": "Symptomatic Alzheimer disease pharmacotherapy",
+    "tiles": [
+     "Donepezil",
+     "Rivastigmine",
+     "Galantamine",
+     "Memantine"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "PHARM-007",
+    "library": "new",
+    "system": "Pharmacology",
+    "title": "Acetylcholinesterase inhibitors with CNS penetration",
+    "tiles": [
+     "Donepezil",
+     "Rivastigmine",
+     "Galantamine",
+     "Physostigmine"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"NEU-051 | PHARM-007\": \"same\" or \"distinct\""
   }
  ],
  "timedOverlaps": [
@@ -1702,6 +2058,358 @@
     "status": "verified"
    },
    "decide": "decisions.json → pairs → \"MSK-018 | bank-ext-066\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "NEPH-007 | bank-migrated-sys-renal-0002-L1",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "both are \"findings / associations of nephrotic syndrome\"; 3 of 4 tiles identical; tile wording 67% the same",
+   "a": {
+    "id": "NEPH-007",
+    "library": "new",
+    "system": "Renal",
+    "title": "Classic nephrotic syndrome findings",
+    "tiles": [
+     "Heavy proteinuria",
+     "Hypoalbuminemia",
+     "Edema",
+     "Hyperlipidemia"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-migrated-sys-renal-0002-L1",
+    "library": "timed",
+    "system": "Renal",
+    "title": "Nephrotic syndrome findings",
+    "tiles": [
+     "Massive proteinuria",
+     "Hypoalbuminemia",
+     "Edema",
+     "Hyperlipidemia"
+    ],
+    "status": "verified"
+   },
+   "decide": "no decision needed unless you disagree"
+  },
+  {
+   "key": "NEPH-018 | bank-ext-081",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"findings / associations of renal papillary necrosis\" vs \"causes of renal papillary necrosis\"; 3 of 4 tiles identical",
+   "a": {
+    "id": "NEPH-018",
+    "library": "new",
+    "system": "Renal",
+    "title": "Renal papillary necrosis associations",
+    "tiles": [
+     "Sickle cell disease",
+     "Acute pyelonephritis",
+     "Chronic NSAID exposure",
+     "Diabetes mellitus"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-081",
+    "library": "timed",
+    "system": "Renal",
+    "title": "Causes of renal papillary necrosis",
+    "tiles": [
+     "Sickle cell disease",
+     "Analgesic nephropathy",
+     "Diabetes mellitus",
+     "Acute pyelonephritis"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"NEPH-018 | bank-ext-081\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "NEPH-019 | bank-ext-054",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"causes of medication acute interstitial nephritis\" vs \"causes of drug causing acute interstitial nephritis\"; 3 of 4 tiles identical; tile wording 71% the same",
+   "a": {
+    "id": "NEPH-019",
+    "library": "new",
+    "system": "Renal",
+    "title": "Medications that can cause acute interstitial nephritis",
+    "tiles": [
+     "NSAIDs",
+     "Penicillins",
+     "Proton pump inhibitors",
+     "Rifampin"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-054",
+    "library": "timed",
+    "system": "Renal",
+    "title": "Drugs causing acute interstitial nephritis",
+    "tiles": [
+     "NSAIDs",
+     "Penicillins",
+     "Sulfonamides",
+     "Proton pump inhibitors"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"NEPH-019 | bank-ext-054\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "NEPH-028 | bank-migrated-sys-renal-0001-L2",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"findings / associations of normal anion gap metabolic acidosis\" vs \"causes of non anion gap metabolic acidosis\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "NEPH-028",
+    "library": "new",
+    "system": "Renal",
+    "title": "Normal-anion-gap metabolic acidosis associations",
+    "tiles": [
+     "Diarrhea",
+     "Acetazolamide",
+     "Distal renal tubular acidosis",
+     "Proximal renal tubular acidosis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-migrated-sys-renal-0001-L2",
+    "library": "timed",
+    "system": "Renal",
+    "title": "Causes of non-anion gap metabolic acidosis",
+    "tiles": [
+     "Diarrhea",
+     "Renal tubular acidosis",
+     "Acetazolamide",
+     "Early renal failure"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"NEPH-028 | bank-migrated-sys-renal-0001-L2\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "NEPH-029 | bank-migrated-sys-renal-0001-L4",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"causes of neuromuscular respiratory acidosis\" vs \"causes of respiratory acidosis\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "NEPH-029",
+    "library": "new",
+    "system": "Renal",
+    "title": "Neuromuscular causes of respiratory acidosis",
+    "tiles": [
+     "Myasthenia gravis",
+     "Amyotrophic lateral sclerosis",
+     "Guillain-Barre syndrome",
+     "Botulism"
+    ],
+    "status": "AI_REVIEWED_REVISED"
+   },
+   "b": {
+    "id": "bank-migrated-sys-renal-0001-L4",
+    "library": "timed",
+    "system": "Renal",
+    "title": "Causes of respiratory acidosis",
+    "tiles": [
+     "Opioid overdose",
+     "COPD exacerbation",
+     "Guillain-Barré syndrome",
+     "Obesity hypoventilation syndrome"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"NEPH-029 | bank-migrated-sys-renal-0001-L4\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "NEU-002 | bank-ext-034",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"findings / associations of upper motor neuron examination\" vs \"findings / associations of upper motor neuron\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "NEU-002",
+    "library": "new",
+    "system": "Neurology",
+    "title": "Upper motor neuron examination signs",
+    "tiles": [
+     "Hyperreflexia",
+     "Spasticity",
+     "Hypertonia",
+     "Extensor plantar response"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-034",
+    "library": "timed",
+    "system": "Neurology",
+    "title": "Upper motor neuron signs",
+    "tiles": [
+     "Hyperreflexia",
+     "Spasticity",
+     "Babinski sign",
+     "Clonus"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"NEU-002 | bank-ext-034\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "NEU-003 | bank-ext-035",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"findings / associations of low motor neuron examination\" vs \"findings / associations of low motor neuron\"; 3 of 4 tiles identical",
+   "a": {
+    "id": "NEU-003",
+    "library": "new",
+    "system": "Neurology",
+    "title": "Lower motor neuron examination signs",
+    "tiles": [
+     "Fasciculations",
+     "Muscle atrophy",
+     "Hyporeflexia",
+     "Hypotonia"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-035",
+    "library": "timed",
+    "system": "Neurology",
+    "title": "Lower motor neuron signs",
+    "tiles": [
+     "Fasciculations",
+     "Hyporeflexia",
+     "Muscle atrophy",
+     "Flaccid paralysis"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"NEU-003 | bank-ext-035\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "NEU-052 | bank-migrated-sys-neuro-0002-L1",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "\"findings / associations of parkinson disease motor\" vs \"findings / associations of parkinson disease\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "NEU-052",
+    "library": "new",
+    "system": "Neurology",
+    "title": "Classic Parkinson disease motor findings",
+    "tiles": [
+     "Bradykinesia",
+     "Resting tremor",
+     "Cogwheel rigidity",
+     "Postural instability"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-migrated-sys-neuro-0002-L1",
+    "library": "timed",
+    "system": "Neurology",
+    "title": "Features of Parkinson disease",
+    "tiles": [
+     "Resting tremor",
+     "Bradykinesia",
+     "Cogwheel rigidity",
+     "Postural instability"
+    ],
+    "status": "verified"
+   },
+   "decide": "no decision needed unless you disagree"
+  },
+  {
+   "key": "PHARM-004 | bank-medium-02",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "both are \"gq coupled receptor\"; 3 of 4 tiles identical; tile wording 71% the same",
+   "a": {
+    "id": "PHARM-004",
+    "library": "new",
+    "system": "Pharmacology",
+    "title": "Gq-coupled receptors",
+    "tiles": [
+     "M1 receptor",
+     "M3 receptor",
+     "Alpha-1 receptor",
+     "H1 receptor"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-medium-02",
+    "library": "timed",
+    "system": "Pharmacology",
+    "title": "Gq-coupled receptors",
+    "tiles": [
+     "α1 receptor",
+     "H1 receptor",
+     "V1 receptor",
+     "M1 receptor"
+    ],
+    "status": "verified"
+   },
+   "decide": "no decision needed unless you disagree"
+  },
+  {
+   "key": "PHARM-005 | bank-medium-01",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"gs coupled receptor\" vs \"gs coupled receptor high camp\"; 3 of 4 tiles identical; tile wording 71% the same",
+   "a": {
+    "id": "PHARM-005",
+    "library": "new",
+    "system": "Pharmacology",
+    "title": "Gs-coupled receptors",
+    "tiles": [
+     "Beta-1 receptor",
+     "Beta-2 receptor",
+     "D1 receptor",
+     "V2 receptor"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-medium-01",
+    "library": "timed",
+    "system": "Pharmacology",
+    "title": "Gs-coupled receptors (increased cAMP)",
+    "tiles": [
+     "β1 receptor",
+     "β2 receptor",
+     "D1 receptor",
+     "H2 receptor"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"PHARM-005 | bank-medium-01\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "PHARM-009 | bank-migrated-sys-pharm-0002-L3",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"findings / associations of peripheral antimuscarinic anticholinergic toxicity\" vs \"muscarinic antagonist effect\"; 3 of 4 tiles identical; tile wording 71% the same",
+   "a": {
+    "id": "PHARM-009",
+    "library": "new",
+    "system": "Pharmacology",
+    "title": "Peripheral findings of antimuscarinic (anticholinergic) toxicity",
+    "tiles": [
+     "Mydriasis",
+     "Dry skin",
+     "Urinary retention",
+     "Tachycardia"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-migrated-sys-pharm-0002-L3",
+    "library": "timed",
+    "system": "Pharmacology",
+    "title": "Muscarinic antagonist effect",
+    "tiles": [
+     "Mydriasis",
+     "Dry mouth",
+     "Urinary retention",
+     "Tachycardia"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"PHARM-009 | bank-migrated-sys-pharm-0002-L3\": \"same\" (exclude timed entry at activation) or \"distinct\""
   }
  ],
  "boardReviews": [
@@ -1869,6 +2577,176 @@
     "MSK-035 board instruction to check against the other groups: \"Board overlap: navicular and sesamoids are additional high-risk sites - avoid as distractors.\""
    ],
    "clear": "decisions.json → boards → \"msk-starter-5\": \"cleared:a7cd3b6c\""
+  },
+  {
+   "board": "renal-starter-5",
+   "system": "Renal",
+   "signature": "e2e15784",
+   "connections": [
+    {
+     "id": "NEPH-027",
+     "title": "Stress incontinence triggers",
+     "difficulty": "easy",
+     "tiles": [
+      "Coughing",
+      "Sneezing",
+      "Laughing",
+      "Heavy lifting"
+     ]
+    },
+    {
+     "id": "NEPH-026",
+     "title": "Acetazolamide clinical uses",
+     "difficulty": "medium",
+     "tiles": [
+      "Glaucoma",
+      "Altitude sickness",
+      "Idiopathic intracranial hypertension",
+      "Metabolic alkalosis"
+     ]
+    },
+    {
+     "id": "NEPH-017",
+     "title": "Calcium oxalate stone risk exposures",
+     "difficulty": "medium",
+     "tiles": [
+      "Ethylene glycol poisoning",
+      "Excess vitamin C intake",
+      "Fat malabsorption",
+      "Hypocitraturia"
+     ]
+    },
+    {
+     "id": "NEPH-013",
+     "title": "Alport syndrome clues",
+     "difficulty": "medium",
+     "tiles": [
+      "Persistent hematuria",
+      "Sensorineural hearing loss",
+      "Anterior lenticonus",
+      "Basket-weave basement membrane"
+     ]
+    }
+   ],
+   "flags": [
+    "NEPH-027 board instruction to check against the other groups: \"Board overlap: any Valsalva-maneuver category (ambiguity 1).\""
+   ],
+   "clear": "decisions.json → boards → \"renal-starter-5\": \"cleared:e2e15784\""
+  },
+  {
+   "board": "pharmacology-starter-2",
+   "system": "Pharmacology",
+   "signature": "8392d452",
+   "connections": [
+    {
+     "id": "PHARM-009",
+     "title": "Peripheral findings of antimuscarinic (anticholinergic) toxicity",
+     "difficulty": "easy",
+     "tiles": [
+      "Mydriasis",
+      "Dry skin",
+      "Urinary retention",
+      "Tachycardia"
+     ]
+    },
+    {
+     "id": "PHARM-001",
+     "title": "Hepatic phase II conjugation reactions",
+     "difficulty": "easy",
+     "tiles": [
+      "Glucuronidation",
+      "Acetylation",
+      "Sulfation",
+      "Methylation"
+     ]
+    },
+    {
+     "id": "PHARM-006",
+     "title": "Direct muscarinic receptor agonists",
+     "difficulty": "easy",
+     "tiles": [
+      "Pilocarpine",
+      "Cevimeline",
+      "Bethanechol",
+      "Methacholine"
+     ]
+    },
+    {
+     "id": "PHARM-003",
+     "title": "CYP (cytochrome P450) enzyme inhibitors",
+     "difficulty": "medium",
+     "tiles": [
+      "Cimetidine",
+      "Amiodarone",
+      "Clarithromycin",
+      "Ritonavir"
+     ]
+    }
+   ],
+   "flags": [
+    "PHARM-009 board instruction to check against the other groups: \"BOARD OVERLAP: mydriasis and tachycardia also occur in sympathomimetic toxicity.\"",
+    "PHARM-001 board instruction to check against the other groups: \"Glutathione and amino-acid conjugation are other valid members; a 5th-member board tile could blur this category.\"",
+    "PHARM-006 board instruction to check against the other groups: \"Carbachol is another valid member (board note).\""
+   ],
+   "clear": "decisions.json → boards → \"pharmacology-starter-2\": \"cleared:8392d452\""
+  },
+  {
+   "board": "pharmacology-starter-3",
+   "system": "Pharmacology",
+   "signature": "13fca67e",
+   "connections": [
+    {
+     "id": "PHARM-002",
+     "title": "Classic CYP (cytochrome P450) enzyme inducers",
+     "difficulty": "easy",
+     "tiles": [
+      "Rifampin",
+      "Phenobarbital",
+      "Carbamazepine",
+      "Phenytoin"
+     ]
+    },
+    {
+     "id": "PHARM-008",
+     "title": "Peripheral muscarinic findings in organophosphate (cholinergic) poisoning",
+     "difficulty": "easy",
+     "tiles": [
+      "Miosis",
+      "Lacrimation",
+      "Bronchospasm",
+      "Diarrhea"
+     ]
+    },
+    {
+     "id": "PHARM-005",
+     "title": "Gs-coupled receptors",
+     "difficulty": "medium",
+     "tiles": [
+      "Beta-1 receptor",
+      "Beta-2 receptor",
+      "D1 receptor",
+      "V2 receptor"
+     ]
+    },
+    {
+     "id": "PHARM-013",
+     "title": "Nonselective beta blockers without alpha blockade",
+     "difficulty": "medium",
+     "tiles": [
+      "Nadolol",
+      "Propranolol",
+      "Timolol",
+      "Sotalol"
+     ]
+    }
+   ],
+   "flags": [
+    "PHARM-002 board instruction to check against the other groups: \"BOARD OVERLAP: carbamazepine, phenobarbital, phenytoin also fit an antiseizure-drug category; rifampin does not.\"",
+    "PHARM-008 board instruction to check against the other groups: \"BOARD OVERLAP: each sign individually appears in other toxidromes.\"",
+    "PHARM-005 board instruction to check against the other groups: \"BOARD OVERLAP: beta-1/beta-2 also fit an adrenergic-receptor category.\"",
+    "PHARM-013 board instruction to check against the other groups: \"BOARD OVERLAP: sotalol also fits class III antiarrhythmics; its added K-channel activity does not negate its beta-blockade.\""
+   ],
+   "clear": "decisions.json → boards → \"pharmacology-starter-3\": \"cleared:13fca67e\""
   }
  ],
  "blockedBoards": [],
