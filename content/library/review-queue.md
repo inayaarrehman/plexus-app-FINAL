@@ -1,12 +1,12 @@
 # Plexus new library: pending review queue
 
-Generated 2026-10-08T07:29:43.843Z. Staging only; the library is not active and the live app is unchanged.
+Generated 2026-10-08T17:26:46.655Z. Staging only; the library is not active and the live app is unchanged.
 
 | Category | Open |
 |---|---|
-| Medical / source holds | 8 |
-| Duplicate decisions (new library) | 11 |
-| Timed-library overlaps | 18 to decide, 5 recorded |
+| Medical / source holds | 10 |
+| Duplicate decisions (new library) | 15 |
+| Timed-library overlaps | 20 to decide, 5 recorded |
 | Board ambiguity reviews | 2 |
 | Blocked boards | 0 |
 | Difficulty calibration warnings | 1 |
@@ -51,6 +51,16 @@ Issue: The review replaced the source tile "Histamine" with "ATP", stating hista
 Tiles: Breast milk · Saliva · Tears · Mucosa-associated lymphoid tissue
 
 Issue: The review replaced the source tile "Sweat" with "Tears". Notes state the Bootcamp source (p. 37) supports only breast milk, saliva and MALT, and that "Tears" rests on the added outside references (Woof & Mestecky, Immunol Rev 2005; Li et al 2019). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).
+
+### MICRO-011 · Implanted sites classically infected by S. epidermidis (Microbiology, AI_REVIEWED_REVISED)
+Tiles: Prosthetic heart valve · Central venous catheter · Ventriculoperitoneal shunt · Prosthetic joint
+
+Issue: The review replaced the source tile "Cardiac implanted device" (overlapping "Prosthetic heart valve") with "Prosthetic joint". The new tile is supported by outside references in Notes (Patel, NEJM 2023; Boyle et al 2018), not by the cited Bootcamp page (p. 26). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).
+
+### MICRO-064 · Antivirals active against CMV (Microbiology, AI_REVIEWED_REVISED)
+Tiles: Ganciclovir · Maribavir · Foscarnet · Cidofovir
+
+Issue: The review replaced the source tile "Valganciclovir" (a prodrug of ganciclovir, so not a distinct tile) with "Maribavir". The new tile is supported by outside references in Notes (FDA Livtencity label 2025; Imlay & Kaul 2021), not by the cited Bootcamp pages (pp. 245, 308). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).
 
 ## 2. Duplicate decisions (new library)
 ### Vitamin K-dependent clotting factors  /  Vitamin K-dependent procoagulant factors
@@ -140,8 +150,67 @@ treated as the same relationship (set aside); confirm. Shared relationship: both
 
 Decide: decisions.json → pairs → "PLX-BCH-063 | PLX-HEM-026": "same" or "distinct"
 
+### Classic associations of Chagas disease  /  Chronic Chagas disease manifestations
+possible duplicate (held). Shared relationship: "findings / associations of chaga disease" vs "findings / associations of chronic chaga disease"; 2 of 4 tiles identical.
+
+| | CARD-016 (new, Cardiology) | MICRO-029 (new, Microbiology) |
+|---|---|---|
+| Title | Classic associations of Chagas disease | Chronic Chagas disease manifestations |
+| Tile 1 | Trypanosoma cruzi | Dilated cardiomyopathy |
+| Tile 2 | Reduviid insect vector | Cardiac arrhythmias |
+| Tile 3 | Megaesophagus | Megaesophagus |
+| Tile 4 | Megacolon | Megacolon |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: MICRO-029.
+Decide: decisions.json → pairs → "CARD-016 | MICRO-029": "same" or "distinct"
+
+### High-risk oncogenic HPV types  /  High-risk oncogenic HPV types
+treated as the same relationship (set aside); confirm. Shared relationship: both are "high risk oncogenic hpv type"; 4 of 4 tiles identical; tile wording 100% the same.
+
+| | DERM-008 (new, Dermatology) | MICRO-043 (new, Microbiology) |
+|---|---|---|
+| Title | High-risk oncogenic HPV types | High-risk oncogenic HPV types |
+| Tile 1 | HPV 16 | HPV 16 |
+| Tile 2 | HPV 18 | HPV 18 |
+| Tile 3 | HPV 31 | HPV 31 |
+| Tile 4 | HPV 33 | HPV 33 |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Decide: decisions.json → pairs → "DERM-008 | MICRO-043": "same" or "distinct"
+
+### Mucocutaneous Candida syndromes  /  Local mucocutaneous Candida syndromes
+possible duplicate (held). Shared relationship: "mucocutaneous candida syndrome" vs "local mucocutaneous candida syndrome"; 2 of 4 tiles identical.
+
+| | DERM-010 (new, Dermatology) | MICRO-024 (new, Microbiology) |
+|---|---|---|
+| Title | Mucocutaneous Candida syndromes | Local mucocutaneous Candida syndromes |
+| Tile 1 | Oral thrush | Oropharyngeal thrush |
+| Tile 2 | Candidal esophagitis | Esophageal candidiasis |
+| Tile 3 | Vulvovaginal candidiasis | Vulvovaginal candidiasis |
+| Tile 4 | Candidal intertrigo | Candidal intertrigo |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: MICRO-024.
+Decide: decisions.json → pairs → "DERM-010 | MICRO-024": "same" or "distinct"
+
+### Rhino-orbital mucormycosis clues  /  Rhino-orbital-cerebral mucormycosis clues
+possible duplicate (held). Shared relationship: "findings / associations of rhino orbital mucormycosis" vs "findings / associations of rhino orbital cerebral mucormycosis"; 1 of 4 tiles identical.
+
+| | DERM-014 (new, Dermatology) | MICRO-023 (new, Microbiology) |
+|---|---|---|
+| Title | Rhino-orbital mucormycosis clues | Rhino-orbital-cerebral mucormycosis clues |
+| Tile 1 | Necrotic nasal or palatal eschar | Diabetic ketoacidosis |
+| Tile 2 | Broad pauciseptate hyphae | Black palatal eschar |
+| Tile 3 | Wide-angle branching | Broad pauciseptate hyphae |
+| Tile 4 | Amphotericin B | Right-angle hyphal branching |
+| Status | AI_REVIEWED_PASS | AI_REVIEWED_PASS |
+
+Held until decided: MICRO-023.
+Decide: decisions.json → pairs → "DERM-014 | MICRO-023": "same" or "distinct"
+
 ### Infectious associations of erythema nodosum  /  Infections causing caseating/necrotizing granulomas
-possible duplicate (held). Shared relationship: "findings / associations of infectious erythema nodosum" vs "infection causing caseating necrotizing granuloma"; 3 of 4 tiles identical.
+possible duplicate (held). Shared relationship: "findings / associations of infectious erythema nodosum" vs "causes of infection causing caseating necrotizing granuloma"; 3 of 4 tiles identical.
 
 | | DERM-018 (new, Dermatology) | PLX-HEM-042 (new, Heme/Onc) |
 |---|---|---|
@@ -495,7 +564,7 @@ possible repeat of a timed entry. Shared relationship: "schistocyte producing re
 Decide: decisions.json → pairs → "PLX-HEM-011 | bank-ext-058": "same" (exclude timed entry at activation) or "distinct"
 
 ### Infections causing caseating/necrotizing granulomas  /  Granulomatous infections with necrotizing (caseating) granulomas
-possible repeat of a timed entry. Shared relationship: "infection causing caseating necrotizing granuloma" vs "granulomatous infection necrotizing caseating granuloma"; 3 of 4 tiles identical.
+possible repeat of a timed entry. Shared relationship: "causes of infection causing caseating necrotizing granuloma" vs "granulomatous infection necrotizing caseating granuloma"; 3 of 4 tiles identical.
 
 | | PLX-HEM-042 (new, Heme/Onc) | bank-easy-04 (timed, Microbiology) |
 |---|---|---|
@@ -535,6 +604,34 @@ possible repeat of a timed entry. Shared relationship: "immune complex hypersens
 | Status | AI_REVIEWED_PASS | verified |
 
 Decide: decisions.json → pairs → "IMM-030 | bank-ext-061": "same" (exclude timed entry at activation) or "distinct"
+
+### Classic bacterial causes of atypical pneumonia  /  Organisms causing atypical pneumonia
+possible repeat of a timed entry. Shared relationship: "causes of bacterial atypical pneumonia" vs "causes of organism causing atypical pneumonia"; 2 of 4 tiles identical.
+
+| | MICRO-009 (new, Microbiology) | bank-ext-032 (timed, Microbiology) |
+|---|---|---|
+| Title | Classic bacterial causes of atypical pneumonia | Organisms causing atypical pneumonia |
+| Tile 1 | Mycoplasma pneumoniae | Mycoplasma pneumoniae |
+| Tile 2 | Chlamydia pneumoniae | Legionella pneumophila |
+| Tile 3 | Chlamydia psittaci | Chlamydophila pneumoniae |
+| Tile 4 | Legionella pneumophila | Coxiella burnetii |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "MICRO-009 | bank-ext-032": "same" (exclude timed entry at activation) or "distinct"
+
+### Pulmonary endemic dimorphic fungi  /  Dimorphic fungi
+possible repeat of a timed entry. Shared relationship: "pulmonary endemic dimorphic fungi" vs "dimorphic fungi"; 2 of 4 tiles identical; tile wording 67% the same.
+
+| | MICRO-018 (new, Microbiology) | bank-migrated-sys-micro-0001-L2 (timed, Microbiology) |
+|---|---|---|
+| Title | Pulmonary endemic dimorphic fungi | Dimorphic fungi |
+| Tile 1 | Histoplasma capsulatum | Histoplasma capsulatum |
+| Tile 2 | Blastomyces dermatitidis | Coccidioides immitis |
+| Tile 3 | Coccidioides species | Blastomyces dermatitidis |
+| Tile 4 | Paracoccidioides species | Paracoccidioides brasiliensis |
+| Status | AI_REVIEWED_PASS | verified |
+
+Decide: decisions.json → pairs → "MICRO-018 | bank-migrated-sys-micro-0001-L2": "same" (exclude timed entry at activation) or "distinct"
 
 ## 4. Board ambiguity reviews
 ### biochemistry-genetics-starter-5 (Biochemistry/Genetics)

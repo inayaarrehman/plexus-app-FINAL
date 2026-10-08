@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T07:29:43.843Z",
+ "generatedAt": "2026-10-08T17:26:46.655Z",
  "active": false,
  "medicalHolds": [
   {
@@ -105,6 +105,32 @@
    ],
    "status": "AI_REVIEWED_REVISED",
    "issue": "The review replaced the source tile \"Sweat\" with \"Tears\". Notes state the Bootcamp source (p. 37) supports only breast milk, saliva and MALT, and that \"Tears\" rests on the added outside references (Woof & Mestecky, Immunol Rev 2005; Li et al 2019). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds)."
+  },
+  {
+   "id": "MICRO-011",
+   "system": "Microbiology",
+   "title": "Implanted sites classically infected by S. epidermidis",
+   "tiles": [
+    "Prosthetic heart valve",
+    "Central venous catheter",
+    "Ventriculoperitoneal shunt",
+    "Prosthetic joint"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The review replaced the source tile \"Cardiac implanted device\" (overlapping \"Prosthetic heart valve\") with \"Prosthetic joint\". The new tile is supported by outside references in Notes (Patel, NEJM 2023; Boyle et al 2018), not by the cited Bootcamp page (p. 26). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds)."
+  },
+  {
+   "id": "MICRO-064",
+   "system": "Microbiology",
+   "title": "Antivirals active against CMV",
+   "tiles": [
+    "Ganciclovir",
+    "Maribavir",
+    "Foscarnet",
+    "Cidofovir"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The review replaced the source tile \"Valganciclovir\" (a prodrug of ganciclovir, so not a distinct tile) with \"Maribavir\". The new tile is supported by outside references in Notes (FDA Livtencity label 2025; Imlay & Kaul 2021), not by the cited Bootcamp pages (pp. 245, 308). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds)."
   }
  ],
  "duplicateDecisions": [
@@ -307,10 +333,142 @@
    "decide": "decisions.json → pairs → \"PLX-BCH-063 | PLX-HEM-026\": \"same\" or \"distinct\""
   },
   {
+   "key": "CARD-016 | MICRO-029",
+   "kind": "possible duplicate (held)",
+   "held": "MICRO-029",
+   "sharedRelationship": "\"findings / associations of chaga disease\" vs \"findings / associations of chronic chaga disease\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "CARD-016",
+    "library": "new",
+    "system": "Cardiology",
+    "title": "Classic associations of Chagas disease",
+    "tiles": [
+     "Trypanosoma cruzi",
+     "Reduviid insect vector",
+     "Megaesophagus",
+     "Megacolon"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "MICRO-029",
+    "library": "new",
+    "system": "Microbiology",
+    "title": "Chronic Chagas disease manifestations",
+    "tiles": [
+     "Dilated cardiomyopathy",
+     "Cardiac arrhythmias",
+     "Megaesophagus",
+     "Megacolon"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"CARD-016 | MICRO-029\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "DERM-008 | MICRO-043",
+   "kind": "treated as the same relationship (set aside); confirm",
+   "held": null,
+   "sharedRelationship": "both are \"high risk oncogenic hpv type\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "DERM-008",
+    "library": "new",
+    "system": "Dermatology",
+    "title": "High-risk oncogenic HPV types",
+    "tiles": [
+     "HPV 16",
+     "HPV 18",
+     "HPV 31",
+     "HPV 33"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "MICRO-043",
+    "library": "new",
+    "system": "Microbiology",
+    "title": "High-risk oncogenic HPV types",
+    "tiles": [
+     "HPV 16",
+     "HPV 18",
+     "HPV 31",
+     "HPV 33"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"DERM-008 | MICRO-043\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "DERM-010 | MICRO-024",
+   "kind": "possible duplicate (held)",
+   "held": "MICRO-024",
+   "sharedRelationship": "\"mucocutaneous candida syndrome\" vs \"local mucocutaneous candida syndrome\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "DERM-010",
+    "library": "new",
+    "system": "Dermatology",
+    "title": "Mucocutaneous Candida syndromes",
+    "tiles": [
+     "Oral thrush",
+     "Candidal esophagitis",
+     "Vulvovaginal candidiasis",
+     "Candidal intertrigo"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "MICRO-024",
+    "library": "new",
+    "system": "Microbiology",
+    "title": "Local mucocutaneous Candida syndromes",
+    "tiles": [
+     "Oropharyngeal thrush",
+     "Esophageal candidiasis",
+     "Vulvovaginal candidiasis",
+     "Candidal intertrigo"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"DERM-010 | MICRO-024\": \"same\" or \"distinct\""
+  },
+  {
+   "key": "DERM-014 | MICRO-023",
+   "kind": "possible duplicate (held)",
+   "held": "MICRO-023",
+   "sharedRelationship": "\"findings / associations of rhino orbital mucormycosis\" vs \"findings / associations of rhino orbital cerebral mucormycosis\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "DERM-014",
+    "library": "new",
+    "system": "Dermatology",
+    "title": "Rhino-orbital mucormycosis clues",
+    "tiles": [
+     "Necrotic nasal or palatal eschar",
+     "Broad pauciseptate hyphae",
+     "Wide-angle branching",
+     "Amphotericin B"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "MICRO-023",
+    "library": "new",
+    "system": "Microbiology",
+    "title": "Rhino-orbital-cerebral mucormycosis clues",
+    "tiles": [
+     "Diabetic ketoacidosis",
+     "Black palatal eschar",
+     "Broad pauciseptate hyphae",
+     "Right-angle hyphal branching"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"DERM-014 | MICRO-023\": \"same\" or \"distinct\""
+  },
+  {
    "key": "DERM-018 | PLX-HEM-042",
    "kind": "possible duplicate (held)",
    "held": "PLX-HEM-042",
-   "sharedRelationship": "\"findings / associations of infectious erythema nodosum\" vs \"infection causing caseating necrotizing granuloma\"; 3 of 4 tiles identical",
+   "sharedRelationship": "\"findings / associations of infectious erythema nodosum\" vs \"causes of infection causing caseating necrotizing granuloma\"; 3 of 4 tiles identical",
    "a": {
     "id": "DERM-018",
     "library": "new",
@@ -1116,7 +1274,7 @@
   {
    "key": "PLX-HEM-042 | bank-easy-04",
    "kind": "possible repeat of a timed entry",
-   "sharedRelationship": "\"infection causing caseating necrotizing granuloma\" vs \"granulomatous infection necrotizing caseating granuloma\"; 3 of 4 tiles identical",
+   "sharedRelationship": "\"causes of infection causing caseating necrotizing granuloma\" vs \"granulomatous infection necrotizing caseating granuloma\"; 3 of 4 tiles identical",
    "a": {
     "id": "PLX-HEM-042",
     "library": "new",
@@ -1208,6 +1366,70 @@
     "status": "verified"
    },
    "decide": "decisions.json → pairs → \"IMM-030 | bank-ext-061\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "MICRO-009 | bank-ext-032",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"causes of bacterial atypical pneumonia\" vs \"causes of organism causing atypical pneumonia\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "MICRO-009",
+    "library": "new",
+    "system": "Microbiology",
+    "title": "Classic bacterial causes of atypical pneumonia",
+    "tiles": [
+     "Mycoplasma pneumoniae",
+     "Chlamydia pneumoniae",
+     "Chlamydia psittaci",
+     "Legionella pneumophila"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-032",
+    "library": "timed",
+    "system": "Microbiology",
+    "title": "Organisms causing atypical pneumonia",
+    "tiles": [
+     "Mycoplasma pneumoniae",
+     "Legionella pneumophila",
+     "Chlamydophila pneumoniae",
+     "Coxiella burnetii"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"MICRO-009 | bank-ext-032\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "MICRO-018 | bank-migrated-sys-micro-0001-L2",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"pulmonary endemic dimorphic fungi\" vs \"dimorphic fungi\"; 2 of 4 tiles identical; tile wording 67% the same",
+   "a": {
+    "id": "MICRO-018",
+    "library": "new",
+    "system": "Microbiology",
+    "title": "Pulmonary endemic dimorphic fungi",
+    "tiles": [
+     "Histoplasma capsulatum",
+     "Blastomyces dermatitidis",
+     "Coccidioides species",
+     "Paracoccidioides species"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-migrated-sys-micro-0001-L2",
+    "library": "timed",
+    "system": "Microbiology",
+    "title": "Dimorphic fungi",
+    "tiles": [
+     "Histoplasma capsulatum",
+     "Coccidioides immitis",
+     "Blastomyces dermatitidis",
+     "Paracoccidioides brasiliensis"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"MICRO-018 | bank-migrated-sys-micro-0001-L2\": \"same\" (exclude timed entry at activation) or \"distinct\""
   }
  ],
  "boardReviews": [

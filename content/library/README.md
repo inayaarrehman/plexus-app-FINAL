@@ -173,6 +173,6 @@ Each upload is staged under its own subject. "Genetics" is not one of the app's 
 ## Checks
 
 ```
-node scripts/library/test.mjs          # importer checks on placeholder rows (64 checks)
+node scripts/library/test.mjs          # importer checks on placeholder rows (66 checks)
 node scripts/library/timed-snapshot.mjs  # refresh the timed-library manifest
 ```

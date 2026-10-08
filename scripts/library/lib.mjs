@@ -240,10 +240,10 @@ export const contentHash = (c) => sha(c)
 // restrictive cardiomyopathy" = "Causes of restrictive cardiomyopathy". Causes
 // and findings of the same disease stay different subjects.
 const FILLER = new Set(['classic', 'characteristic', 'typical', 'source', 'listed', 'described', 'key', 'common', 'important', 'recognized', 'major', 'clinical', 'diagnostic', 'can', 'that', 'which', 'may', 'be', 'is', 'are', 'four', 'main'])
-const RELATION = { complication: 'FIND', consequence: 'FIND', cause: 'CAUSE', condition: 'CAUSE', produce: 'CAUSE', lead: 'CAUSE', etiology: 'CAUSE', finding: 'FIND', clue: 'FIND', association: 'FIND', associated: 'FIND', feature: 'FIND', sign: 'FIND', manifestation: 'FIND', presentation: 'FIND' }
+const RELATION = { caus: 'CAUSE', complication: 'FIND', consequence: 'FIND', cause: 'CAUSE', condition: 'CAUSE', produce: 'CAUSE', lead: 'CAUSE', etiology: 'CAUSE', finding: 'FIND', clue: 'FIND', association: 'FIND', associated: 'FIND', feature: 'FIND', sign: 'FIND', manifestation: 'FIND', presentation: 'FIND' }
 // Light verb stemming for subjects only ("disrupting" / "disrupt").
 const stem = (w) => (w.length > 6 && w.endsWith('ing') ? w.slice(0, -3) : w.length > 5 && w.endsWith('ed') ? w.slice(0, -2) : w)
-export const subjectKey = (title) => [...new Set(words(title).filter((w) => !FILLER.has(w)).map((w) => RELATION[w] || stem(w)))].sort().join(' ')
+export const subjectKey = (title) => [...new Set(words(title).filter((w) => !FILLER.has(w)).map((w) => RELATION[w] || RELATION[stem(w)] || stem(w)))].sort().join(' ')
 // The topic of a title in its original word order ("Kaposi sarcoma clues" →
 // "kaposi sarcoma"), used to notice when one connection's notes or
 // explanation talk about another connection's subject.
@@ -284,7 +284,7 @@ export function compare(a, b) {
   // "11-beta-hydroxylase deficiency" patterns) is never merged: it is held
   // for a person to decide.
   if ((shared === 4 && titleSim >= 0.5) || ((sameTitle || sameSubject) && shared >= 3)) kind = 'same'
-  else if (shared === 4 || shared === 3 || ((sameTitle || sameSubject) && shared <= 2) || (titleSim >= 0.8 && shared >= 2) || (wordSim >= 0.6 && subjSim >= 0.5) || (subjSim >= 0.6 && shared >= 2)) kind = 'uncertain'
+  else if (shared === 4 || shared === 3 || ((sameTitle || sameSubject) && shared <= 2) || (titleSim >= 0.8 && shared >= 2) || (wordSim >= 0.6 && subjSim >= 0.5) || (subjSim >= 0.6 && shared >= 2) || (subjSim >= 0.75 && shared >= 1)) kind = 'uncertain'
   else if (shared >= 2) kind = 'overlap'
   // When the reviewer's notes on either row name the other row's id, the
   // reviewer saw both and kept them as separate connections. That is

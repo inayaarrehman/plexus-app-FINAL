@@ -126,6 +126,48 @@
       "evidence": "Notes: \"REVISED: title broadened from immune transfusion hemolysis to immune-mediated hemolysis because the four-marker pattern is not transfusion-specific.\" Tiles are as in the source (pp. 62-63); only the title scope was widened, with qualifiers stated. Nothing left unresolved.",
       "contentHash": "7ceac8ce7da1bf1d6e20ec46b7aed2c511b385fa62bbdface74a4d797fae2a6b",
       "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "MICRO-002": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: tiles 3-4 \"disambiguated by organism so all four are distinct toxins\". The toxins are the same ones in the cited source sections (Shigella p. 74, EHEC p. 68); only the labels were made specific. The remaining board note (the Shiga pair may feel easy) is a play-difficulty remark, not a medical concern.",
+      "contentHash": "ae366d3667127b55a6e2c03fc0e3468637e586ffb0d8153418df3d3a1f3a5940",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "MICRO-008": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"Explanation revised: HACEK now typically grows in modern blood cultures\". Tiles unchanged from the source; the explanation was made more accurate. Tropheryma whipplei is mentioned only as an optional alternate.",
+      "contentHash": "19c6778cdb42ee59a119fc457cc8f0a18fd9fa640f0ba9c5a52c65c8a0557fa5",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "MICRO-011": {
+      "endorsedFinalRow": true,
+      "outstanding": "The review replaced the source tile \"Cardiac implanted device\" (overlapping \"Prosthetic heart valve\") with \"Prosthetic joint\". The new tile is supported by outside references in Notes (Patel, NEJM 2023; Boyle et al 2018), not by the cited Bootcamp page (p. 26). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).",
+      "evidence": "Notes: \"Tile 4 Cardiac implanted device replaced with Prosthetic joint: original was non-distinct from Tile 1 ...\"",
+      "contentHash": "3c10c3fa6a7f490b58c5971b851473151e4123fb77b7c47ae78291e0807c1786",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "MICRO-020": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"Explanation corrected: cryptococcal antigen detects capsular POLYSACCHARIDE, not a protein (original source error) ... All four tiles valid.\" Tiles are as in the source; only an explanation error was corrected.",
+      "contentHash": "df113694ea71cb1a54f9c47e5380b506b559f9f52d3a84757f750de87587ab53",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "MICRO-040": {
+      "endorsedFinalRow": true,
+      "outstanding": null,
+      "evidence": "Notes: \"Taxonomy/segment counts corrected in explanation; Bunyavirus groups updated to order Bunyavirales.\" Tile 3 names the same virus group under current taxonomy; nothing medical left unresolved. The note about mixed abstraction (families vs rotavirus) is a tile-fairness remark for board review.",
+      "contentHash": "475b18bc157a6aea2fda6a3e9831212e57f9b2b0e71d0a6988228daf415c1503",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "MICRO-064": {
+      "endorsedFinalRow": true,
+      "outstanding": "The review replaced the source tile \"Valganciclovir\" (a prodrug of ganciclovir, so not a distinct tile) with \"Maribavir\". The new tile is supported by outside references in Notes (FDA Livtencity label 2025; Imlay & Kaul 2021), not by the cited Bootcamp pages (pp. 245, 308). Confirm the new tile and add the reference to Source, or record that this is accepted (same question as the other source-replacement holds).",
+      "evidence": "Notes: \"Tile 2 Valganciclovir replaced with Maribavir: valganciclovir is the valyl-ester prodrug of ganciclovir ...\"",
+      "contentHash": "e69325095fa90b91481c2a3493d30e865076052e6fbc147ca08462c4fdc10a98",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
     }
   }
 }
