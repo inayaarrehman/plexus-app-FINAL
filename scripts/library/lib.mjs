@@ -226,6 +226,10 @@ export const contentHash = (c) => sha(c)
 const FILLER = new Set(['classic', 'characteristic', 'typical', 'source', 'listed', 'described', 'key', 'common', 'important', 'recognized', 'major', 'clinical', 'diagnostic', 'can', 'that', 'which', 'may', 'be', 'is', 'are', 'four', 'main'])
 const RELATION = { cause: 'CAUSE', condition: 'CAUSE', produce: 'CAUSE', lead: 'CAUSE', etiology: 'CAUSE', finding: 'FIND', clue: 'FIND', association: 'FIND', associated: 'FIND', feature: 'FIND', sign: 'FIND', manifestation: 'FIND', presentation: 'FIND' }
 export const subjectKey = (title) => [...new Set(words(title).filter((w) => !FILLER.has(w)).map((w) => RELATION[w] || w))].sort().join(' ')
+// The topic of a title in its original word order ("Kaposi sarcoma clues" →
+// "kaposi sarcoma"), used to notice when one connection's notes or
+// explanation talk about another connection's subject.
+export const topicKey = (title) => words(title).filter((w) => !FILLER.has(w) && !RELATION[w]).join(' ')
 const tileWords = (c) => [...new Set((c.tiles || []).flatMap((t) => words(t)))]
 export function compare(a, b) {
   const ak = new Set(a.tiles.map(tileKey))
@@ -302,6 +306,7 @@ function profile(c) {
       variants: (c.tiles || []).map(tileVariants),
       names: [c.title, ...(c.alternateNames || [])].map(titleKey).filter(Boolean),
       text: words(`${c.title || ''} ${c.explanation || ''}`).join(' '),
+      notes: words(c.notes || '').join(' '),
       sentences,
       tags: (c.tags || []).map((x) => String(x).toLowerCase()),
     }
@@ -346,6 +351,12 @@ export function pairCheck(a, b) {
   if (f2 >= 0) flag.push(`tile "${a.tiles[f2]}" is named in "${b.title}"'s title or explanation`)
   const tagSet = new Set(A.tags)
   if (B.tags.filter((t) => tagSet.has(t)).length >= 2) flag.push('share two concept tags')
+  // One connection's notes or explanation name the other's subject
+  // ("clinically mimics ... Kaposi sarcoma"): the two may compete for tiles.
+  for (const [x, X, y] of [[a, A, b], [b, B, a]]) {
+    const topic = topicKey(y.title)
+    if (topic.length >= 5 && topic !== topicKey(x.title) && (phrase(X.notes, topic) || phrase(X.text, topic))) flag.push(`"${x.title}" mentions the subject of "${y.title}" (${topic})`)
+  }
   return { block, flag }
 }
 // Back-compatible: every issue (block and flag).
@@ -355,10 +366,20 @@ export const pairIssues = (a, b) => {
 }
 // General instructions in a member's notes that name no specific id or tile
 // ("avoid additional homocysteine-elevating tiles on the same board").
+// Difficulty calibration is kept apart from medical and ambiguity issues: a
+// note about how hard a connection plays ("may be too transparent for a Hard
+// puzzle") is a difficulty warning, never a board-ambiguity flag. Notes that
+// confirm the difficulty ("Hard difficulty appropriate") are not warnings.
+const DIFFICULTY_RE = /\b(too (transparent|easy|obvious|hard|difficult|obscure)|difficulty|for an? (easy|medium|hard|expert) (puzzle|board)|underrated|overrated)\b/i
+export const isDifficultyNote = (text) => DIFFICULTY_RE.test(text) && !/\b(appropriate|correct|fits|confirmed)\b/i.test(text)
+export function difficultyWarnings(c) {
+  return noteSentences(c.notes).filter(isDifficultyNote)
+}
 function cautions(conns) {
   const out = []
   for (const c of conns)
     for (const s of profile(c).sentences) {
+      if (isDifficultyNote(s.text)) continue
       // Explicit instructions, and any other sentence about the board, that
       // name no specific id or tile: a person must judge them.
       if (!s.explicit && !/\b(board|puzzle)\b/i.test(s.text)) continue
@@ -429,7 +450,7 @@ export function buildBoards(conns, want, { seed = 'plexus', restarts = 400 } = {
   const tierOf = conns.map((c) => c.difficulty)
   // Connections whose notes carry a general board instruction always need an
   // ambiguity review wherever they go, so they are picked last.
-  const generalCautions = conns.map((c) => profile(c).sentences.filter((x) => (x.explicit || /\b(board|puzzle)\b/i.test(x.text)) && !/\b[A-Z]{2,}-(?:[A-Z]{2,}-)?\d+\b/.test(x.text)).length)
+  const generalCautions = conns.map((c) => profile(c).sentences.filter((x) => !isDifficultyNote(x.text) && (x.explicit || /\b(board|puzzle)\b/i.test(x.text)) && !/\b[A-Z]{2,}-(?:[A-Z]{2,}-)?\d+\b/.test(x.text)).length)
   let best = { boards: [], score: -Infinity }
   for (let r = 0; r < restarts; r++) {
     const rand = rng(`${seed}:${r}`)

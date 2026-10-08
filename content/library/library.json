@@ -72,7 +72,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-002": {
    "id": "PLX-BCH-002",
@@ -145,7 +146,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-003": {
    "id": "PLX-BCH-003",
@@ -218,7 +220,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-004": {
    "id": "PLX-BCH-004",
@@ -291,7 +294,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-005": {
    "id": "PLX-BCH-005",
@@ -364,7 +368,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-2",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-006": {
    "id": "PLX-BCH-006",
@@ -437,7 +442,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-007": {
    "id": "PLX-BCH-007",
@@ -510,7 +516,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-008": {
    "id": "PLX-BCH-008",
@@ -589,7 +596,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-009": {
    "id": "PLX-BCH-009",
@@ -661,7 +669,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "review",
-   "starterBoard": null
+   "starterBoard": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-010": {
    "id": "PLX-BCH-010",
@@ -734,7 +743,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-011": {
    "id": "PLX-BCH-011",
@@ -807,7 +817,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-012": {
    "id": "PLX-BCH-012",
@@ -880,7 +891,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-013": {
    "id": "PLX-BCH-013",
@@ -953,7 +965,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-014": {
    "id": "PLX-BCH-014",
@@ -1026,7 +1039,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-015": {
    "id": "PLX-BCH-015",
@@ -1099,7 +1113,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-016": {
    "id": "PLX-BCH-016",
@@ -1172,7 +1187,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-017": {
    "id": "PLX-BCH-017",
@@ -1245,7 +1261,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-4",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-018": {
    "id": "PLX-BCH-018",
@@ -1318,7 +1335,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-019": {
    "id": "PLX-BCH-019",
@@ -1391,7 +1409,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-020": {
    "id": "PLX-BCH-020",
@@ -1464,7 +1483,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-021": {
    "id": "PLX-BCH-021",
@@ -1537,7 +1557,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-022": {
    "id": "PLX-BCH-022",
@@ -1610,7 +1631,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-023": {
    "id": "PLX-BCH-023",
@@ -1683,7 +1705,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-4",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-024": {
    "id": "PLX-BCH-024",
@@ -1756,7 +1779,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-025": {
    "id": "PLX-BCH-025",
@@ -1829,7 +1853,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-2",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-026": {
    "id": "PLX-BCH-026",
@@ -1902,7 +1927,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-027": {
    "id": "PLX-BCH-027",
@@ -1975,7 +2001,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-028": {
    "id": "PLX-BCH-028",
@@ -2048,7 +2075,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-1",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-029": {
    "id": "PLX-BCH-029",
@@ -2121,7 +2149,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-030": {
    "id": "PLX-BCH-030",
@@ -2194,7 +2223,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-3",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-031": {
    "id": "PLX-BCH-031",
@@ -2267,7 +2297,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-032": {
    "id": "PLX-BCH-032",
@@ -2340,7 +2371,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-033": {
    "id": "PLX-BCH-033",
@@ -2413,7 +2445,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-034": {
    "id": "PLX-BCH-034",
@@ -2486,7 +2519,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-3",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-035": {
    "id": "PLX-BCH-035",
@@ -2559,7 +2593,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-036": {
    "id": "PLX-BCH-036",
@@ -2632,7 +2667,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-037": {
    "id": "PLX-BCH-037",
@@ -2705,7 +2741,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-038": {
    "id": "PLX-BCH-038",
@@ -2778,7 +2815,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-039": {
    "id": "PLX-BCH-039",
@@ -2851,7 +2889,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-040": {
    "id": "PLX-BCH-040",
@@ -2924,7 +2963,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-3",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-041": {
    "id": "PLX-BCH-041",
@@ -2997,7 +3037,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-042": {
    "id": "PLX-BCH-042",
@@ -3070,7 +3111,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-043": {
    "id": "PLX-BCH-043",
@@ -3143,7 +3185,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-044": {
    "id": "PLX-BCH-044",
@@ -3216,7 +3259,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-5",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-045": {
    "id": "PLX-BCH-045",
@@ -3289,7 +3333,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-046": {
    "id": "PLX-BCH-046",
@@ -3362,7 +3407,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-2",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-047": {
    "id": "PLX-BCH-047",
@@ -3435,7 +3481,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-048": {
    "id": "PLX-BCH-048",
@@ -3508,7 +3555,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-4",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-049": {
    "id": "PLX-BCH-049",
@@ -3581,7 +3629,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-050": {
    "id": "PLX-BCH-050",
@@ -3654,7 +3703,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-5",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-051": {
    "id": "PLX-BCH-051",
@@ -3727,7 +3777,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-052": {
    "id": "PLX-BCH-052",
@@ -3800,7 +3851,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-053": {
    "id": "PLX-BCH-053",
@@ -3873,7 +3925,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-054": {
    "id": "PLX-BCH-054",
@@ -3946,7 +3999,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-055": {
    "id": "PLX-BCH-055",
@@ -4019,7 +4073,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-4",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-056": {
    "id": "PLX-BCH-056",
@@ -4092,7 +4147,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-057": {
    "id": "PLX-BCH-057",
@@ -4165,7 +4221,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-058": {
    "id": "PLX-BCH-058",
@@ -4238,7 +4295,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-1",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-059": {
    "id": "PLX-BCH-059",
@@ -4311,7 +4369,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-060": {
    "id": "PLX-BCH-060",
@@ -4384,7 +4443,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-061": {
    "id": "PLX-BCH-061",
@@ -4457,7 +4517,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-062": {
    "id": "PLX-BCH-062",
@@ -4530,7 +4591,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-063": {
    "id": "PLX-BCH-063",
@@ -4603,7 +4665,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-064": {
    "id": "PLX-BCH-064",
@@ -4676,7 +4739,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-2",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-065": {
    "id": "PLX-BCH-065",
@@ -4749,7 +4813,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-066": {
    "id": "PLX-BCH-066",
@@ -4822,7 +4887,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-067": {
    "id": "PLX-BCH-067",
@@ -4895,7 +4961,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-068": {
    "id": "PLX-BCH-068",
@@ -4968,7 +5035,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-069": {
    "id": "PLX-BCH-069",
@@ -5041,7 +5109,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-070": {
    "id": "PLX-BCH-070",
@@ -5114,7 +5183,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-5",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-071": {
    "id": "PLX-BCH-071",
@@ -5187,7 +5257,10 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-1",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": [
+    "Intentionally introductory category; may be too transparent for a Hard puzzle."
+   ]
   },
   "PLX-BCH-072": {
    "id": "PLX-BCH-072",
@@ -5260,7 +5333,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-073": {
    "id": "PLX-BCH-073",
@@ -5333,7 +5407,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-1",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-074": {
    "id": "PLX-BCH-074",
@@ -5406,7 +5481,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-075": {
    "id": "PLX-BCH-075",
@@ -5479,7 +5555,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-3",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-076": {
    "id": "PLX-BCH-076",
@@ -5552,7 +5629,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-077": {
    "id": "PLX-BCH-077",
@@ -5625,7 +5703,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "biochemistry-genetics-starter-5",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-078": {
    "id": "PLX-BCH-078",
@@ -5698,7 +5777,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "PLX-BCH-079": {
    "id": "PLX-BCH-079",
@@ -5778,7 +5858,8 @@
    ],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-001": {
    "id": "CARD-001",
@@ -5857,7 +5938,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-2",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-002": {
    "id": "CARD-002",
@@ -5943,7 +6025,8 @@
    ],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-1",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-003": {
    "id": "CARD-003",
@@ -6016,7 +6099,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-004": {
    "id": "CARD-004",
@@ -6089,7 +6173,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-005": {
    "id": "CARD-005",
@@ -6162,7 +6247,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-5",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-006": {
    "id": "CARD-006",
@@ -6235,7 +6321,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-007": {
    "id": "CARD-007",
@@ -6314,7 +6401,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-1",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-008": {
    "id": "CARD-008",
@@ -6387,7 +6475,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-3",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-009": {
    "id": "CARD-009",
@@ -6460,7 +6549,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-010": {
    "id": "CARD-010",
@@ -6533,7 +6623,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-4",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-011": {
    "id": "CARD-011",
@@ -6606,7 +6697,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-012": {
    "id": "CARD-012",
@@ -6686,7 +6778,8 @@
    ],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-2",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-013": {
    "id": "CARD-013",
@@ -6759,7 +6852,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-014": {
    "id": "CARD-014",
@@ -6833,7 +6927,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-016": {
    "id": "CARD-016",
@@ -6906,7 +7001,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-5",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-017": {
    "id": "CARD-017",
@@ -6980,7 +7076,8 @@
    "timedSame": [],
    "timedUncertain": [],
    "pool": "held",
-   "starterBoard": null
+   "starterBoard": null,
+   "difficultyWarnings": []
   },
   "CARD-018": {
    "id": "CARD-018",
@@ -7053,7 +7150,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-019": {
    "id": "CARD-019",
@@ -7126,7 +7224,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-2",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-020": {
    "id": "CARD-020",
@@ -7199,7 +7298,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-021": {
    "id": "CARD-021",
@@ -7272,7 +7372,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-022": {
    "id": "CARD-022",
@@ -7345,7 +7446,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-023": {
    "id": "CARD-023",
@@ -7418,7 +7520,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-024": {
    "id": "CARD-024",
@@ -7491,7 +7594,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-025": {
    "id": "CARD-025",
@@ -7565,7 +7669,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-4",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-027": {
    "id": "CARD-027",
@@ -7638,7 +7743,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-028": {
    "id": "CARD-028",
@@ -7711,7 +7817,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-029": {
    "id": "CARD-029",
@@ -7784,7 +7891,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-030": {
    "id": "CARD-030",
@@ -7857,7 +7965,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-5",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-031": {
    "id": "CARD-031",
@@ -7931,7 +8040,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-032": {
    "id": "CARD-032",
@@ -8004,7 +8114,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-033": {
    "id": "CARD-033",
@@ -8077,7 +8188,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-3",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-034": {
    "id": "CARD-034",
@@ -8157,7 +8269,8 @@
    ],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-4",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-035": {
    "id": "CARD-035",
@@ -8230,7 +8343,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-036": {
    "id": "CARD-036",
@@ -8303,7 +8417,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-037": {
    "id": "CARD-037",
@@ -8376,7 +8491,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-038": {
    "id": "CARD-038",
@@ -8449,7 +8565,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-039": {
    "id": "CARD-039",
@@ -8522,7 +8639,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-040": {
    "id": "CARD-040",
@@ -8595,7 +8713,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-041": {
    "id": "CARD-041",
@@ -8668,7 +8787,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-1",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-042": {
    "id": "CARD-042",
@@ -8741,7 +8861,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-043": {
    "id": "CARD-043",
@@ -8814,7 +8935,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-1",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-044": {
    "id": "CARD-044",
@@ -8887,7 +9009,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-045": {
    "id": "CARD-045",
@@ -8960,7 +9083,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-3",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-046": {
    "id": "CARD-046",
@@ -9033,7 +9157,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-4",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-047": {
    "id": "CARD-047",
@@ -9106,7 +9231,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-5",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-048": {
    "id": "CARD-048",
@@ -9179,7 +9305,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-049": {
    "id": "CARD-049",
@@ -9252,7 +9379,8 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-2",
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-050": {
    "id": "CARD-050",
@@ -9325,7 +9453,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": "Cross-system head/neck embryology with low cardiology relevance - reserve for embryology content."
+   "placementNote": "Cross-system head/neck embryology with low cardiology relevance - reserve for embryology content.",
+   "difficultyWarnings": []
   },
   "CARD-051": {
    "id": "CARD-051",
@@ -9398,7 +9527,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-052": {
    "id": "CARD-052",
@@ -9471,7 +9601,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-053": {
    "id": "CARD-053",
@@ -9544,7 +9675,8 @@
    "timedUncertain": [],
    "pool": "daily",
    "starterBoard": null,
-   "placementNote": null
+   "placementNote": null,
+   "difficultyWarnings": []
   },
   "CARD-054": {
    "id": "CARD-054",
@@ -9617,6 +9749,2832 @@
    "timedUncertain": [],
    "pool": "systemsStarter",
    "starterBoard": "cardiology-starter-3",
+   "placementNote": null,
+   "difficultyWarnings": []
+  },
+  "DERM-001": {
+   "id": "DERM-001",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-001",
+     "Connection Title": "Major epidermal cell populations",
+     "Tile 1": "Keratinocytes",
+     "Tile 2": "Melanocytes",
+     "Tile 3": "Langerhans cells",
+     "Tile 4": "Merkel cells",
+     "Connection Type": "Shared anatomical location",
+     "Explanation": "These four cell populations occur in the epidermis and provide structural, pigmentary, antigen-presenting, and sensory functions, respectively.",
+     "Organ System": "Dermatology",
+     "Discipline": "Anatomy / Histology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Epidermal cell types; Cells of the epidermis",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Skin Structure and Function > Epidermis, PDF p. 4",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: all four are epidermal residents with distinct functions and distinct embryologic origins (keratinocytes/Merkel from surface ectoderm, melanocytes from neural crest, Langerhans from yolk-sac/fetal-liver myeloid progenitors). Retain anatomical-location framing; do not imply shared lineage. Added refs: Martins F et al, J Eur Acad Dermatol Venereol 2026; Van Keymeulen A et al, J Cell Biol 2009."
+    },
+    "title": "Major epidermal cell populations",
+    "connectionType": "Shared anatomical location",
+    "explanation": "These four cell populations occur in the epidermis and provide structural, pigmentary, antigen-presenting, and sensory functions, respectively.",
+    "organSystems": "Dermatology",
+    "discipline": "Anatomy / Histology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Epidermal cell types",
+     "Cells of the epidermis"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Skin Structure and Function > Epidermis, PDF p. 4",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: all four are epidermal residents with distinct functions and distinct embryologic origins (keratinocytes/Merkel from surface ectoderm, melanocytes from neural crest, Langerhans from yolk-sac/fetal-liver myeloid progenitors). Retain anatomical-location framing; do not imply shared lineage. Added refs: Martins F et al, J Eur Acad Dermatol Venereol 2026; Van Keymeulen A et al, J Cell Biol 2009.",
+    "tiles": [
+     "Keratinocytes",
+     "Melanocytes",
+     "Langerhans cells",
+     "Merkel cells"
+    ]
+   },
+   "contentHash": "bb8b1e3fd854937e11fdfa9a8b6b8ba55b5e9a4af8c29ba4a7ece7a375c75a16",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 2,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-002": {
+   "id": "DERM-002",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-002",
+     "Connection Title": "Junctions connecting adjacent cells",
+     "Tile 1": "Tight junctions",
+     "Tile 2": "Adherens junctions",
+     "Tile 3": "Desmosomes",
+     "Tile 4": "Gap junctions",
+     "Connection Type": "Shared structural relationship",
+     "Explanation": "All four connect neighboring cells. Hemidesmosomes instead attach epithelial cells to the underlying basement membrane.",
+     "Organ System": "Dermatology",
+     "Discipline": "Cell Biology / Histology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Cell-to-cell junctions; Intercellular junctions",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Skin Structure and Function > Epithelial Cell Junctions, PDF pp. 6-11",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: these four are cell-cell junctions; hemidesmosomes are cell-matrix (integrin-based) and correctly excluded. Use standard junction names consistently. Added refs: Green KJ et al, F1000Res 2020; Walko G et al, Cell Tissue Res 2015."
+    },
+    "title": "Junctions connecting adjacent cells",
+    "connectionType": "Shared structural relationship",
+    "explanation": "All four connect neighboring cells. Hemidesmosomes instead attach epithelial cells to the underlying basement membrane.",
+    "organSystems": "Dermatology",
+    "discipline": "Cell Biology / Histology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Cell-to-cell junctions",
+     "Intercellular junctions"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Skin Structure and Function > Epithelial Cell Junctions, PDF pp. 6-11",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: these four are cell-cell junctions; hemidesmosomes are cell-matrix (integrin-based) and correctly excluded. Use standard junction names consistently. Added refs: Green KJ et al, F1000Res 2020; Walko G et al, Cell Tissue Res 2015.",
+    "tiles": [
+     "Tight junctions",
+     "Adherens junctions",
+     "Desmosomes",
+     "Gap junctions"
+    ]
+   },
+   "contentHash": "615a0cd7788c91af0fcc3746a8b862ac5caf37c050965f88b598324017b2c04d",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 3,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-4",
+   "placementNote": null
+  },
+  "DERM-003": {
+   "id": "DERM-003",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-003",
+     "Connection Title": "Classic scarlet fever findings",
+     "Tile 1": "Sandpaper-textured rash",
+     "Tile 2": "Pastia lines",
+     "Tile 3": "Circumoral pallor",
+     "Tile 4": "Strawberry tongue",
+     "Connection Type": "Classic disease-finding associations",
+     "Explanation": "A toxin-associated group A streptococcal illness can produce this characteristic rash and accompanying findings. Individual findings are not mandatory or exclusive to scarlet fever.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Clinical Medicine",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Scarlet fever; Findings of scarlatina",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Bacterial Infectious Conditions > Scarlet Fever, PDF p. 38",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. Board-overlap warning: strawberry tongue is shared with Kawasaki disease and toxic shock syndrome; Pastia lines, circumoral pallor and sandpaper rash are specific, so the complete set remains scarlet fever. Do not place the strawberry-tongue tile on a board that also features a Kawasaki/TSS group. Added refs: Dietrich ML, Steele RW, Pediatr Rev 2018; McCrindle BW et al, Circulation 2017 (AHA KD)."
+    },
+    "title": "Classic scarlet fever findings",
+    "connectionType": "Classic disease-finding associations",
+    "explanation": "A toxin-associated group A streptococcal illness can produce this characteristic rash and accompanying findings. Individual findings are not mandatory or exclusive to scarlet fever.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Clinical Medicine",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Scarlet fever",
+     "Findings of scarlatina"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Bacterial Infectious Conditions > Scarlet Fever, PDF p. 38",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. Board-overlap warning: strawberry tongue is shared with Kawasaki disease and toxic shock syndrome; Pastia lines, circumoral pallor and sandpaper rash are specific, so the complete set remains scarlet fever. Do not place the strawberry-tongue tile on a board that also features a Kawasaki/TSS group. Added refs: Dietrich ML, Steele RW, Pediatr Rev 2018; McCrindle BW et al, Circulation 2017 (AHA KD).",
+    "tiles": [
+     "Sandpaper-textured rash",
+     "Pastia lines",
+     "Circumoral pallor",
+     "Strawberry tongue"
+    ]
+   },
+   "contentHash": "e60381d1305cdbd3fdfdeb5b80002f43cc90bec0e28e3246839b64b2730dd981",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 4,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-004": {
+   "id": "DERM-004",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-004",
+     "Connection Title": "Staphylococcal scalded skin syndrome clues",
+     "Tile 1": "Exfoliative toxin",
+     "Tile 2": "Desmoglein 1 cleavage",
+     "Tile 3": "Positive Nikolsky sign",
+     "Tile 4": "Mucosal sparing",
+     "Connection Type": "Classic disease-mechanism associations",
+     "Explanation": "Staphylococcal exfoliative toxin disrupts desmoglein 1, producing superficial epidermal splitting and fragile skin while typically sparing mucosa.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "SSSS; Staphylococcal scalded skin syndrome",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Bacterial Infectious Conditions > Staphylococcal Scalded Skin Syndrome, PDF p. 43",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. Board-overlap warning: bullous impetigo shares three of four tiles (exfoliative toxin, Dsg1 cleavage, mucosal sparing) because it is the localized end of the same toxin-mediated spectrum; generalized positive Nikolsky distinguishes SSSS. Do not share a board with a bullous impetigo group. Added refs: Stanley JR, Amagai M, N Engl J Med 2006; Amagai M et al, Nat Med 2000."
+    },
+    "title": "Staphylococcal scalded skin syndrome clues",
+    "connectionType": "Classic disease-mechanism associations",
+    "explanation": "Staphylococcal exfoliative toxin disrupts desmoglein 1, producing superficial epidermal splitting and fragile skin while typically sparing mucosa.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "SSSS",
+     "Staphylococcal scalded skin syndrome"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Bacterial Infectious Conditions > Staphylococcal Scalded Skin Syndrome, PDF p. 43",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. Board-overlap warning: bullous impetigo shares three of four tiles (exfoliative toxin, Dsg1 cleavage, mucosal sparing) because it is the localized end of the same toxin-mediated spectrum; generalized positive Nikolsky distinguishes SSSS. Do not share a board with a bullous impetigo group. Added refs: Stanley JR, Amagai M, N Engl J Med 2006; Amagai M et al, Nat Med 2000.",
+    "tiles": [
+     "Exfoliative toxin",
+     "Desmoglein 1 cleavage",
+     "Positive Nikolsky sign",
+     "Mucosal sparing"
+    ]
+   },
+   "contentHash": "02ed13c1ee42201655c29fef106576b32f13c2da310f5e06f4522832a385eee5",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 5,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-005": {
+   "id": "DERM-005",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-005",
+     "Connection Title": "Necrotizing fasciitis warning signs",
+     "Tile 1": "Pain out of proportion",
+     "Tile 2": "Crepitus",
+     "Tile 3": "Bullae",
+     "Tile 4": "Violaceous skin",
+     "Connection Type": "Classic disease-finding associations",
+     "Explanation": "A destructive fascial infection may cause disproportionate pain, gas-related crepitus, bullae, and purple skin discoloration. These are possible warning signs rather than a required four-part presentation.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Surgery",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Necrotizing soft tissue infection clues; Necrotizing fasciitis",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Bacterial Infectious Conditions > Necrotizing Fasciitis, PDF p. 45",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified; can-occur wording appropriate. Crepitus (gas present in ~25%) and hemorrhagic bullae (~38%) are late/variable and their absence never excludes the diagnosis; pain out of proportion is the earliest clue. Added refs: Stevens DL, Bryant AE, N Engl J Med 2017; Hua C et al, Lancet Infect Dis 2023."
+    },
+    "title": "Necrotizing fasciitis warning signs",
+    "connectionType": "Classic disease-finding associations",
+    "explanation": "A destructive fascial infection may cause disproportionate pain, gas-related crepitus, bullae, and purple skin discoloration. These are possible warning signs rather than a required four-part presentation.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Surgery",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Necrotizing soft tissue infection clues",
+     "Necrotizing fasciitis"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Bacterial Infectious Conditions > Necrotizing Fasciitis, PDF p. 45",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified; can-occur wording appropriate. Crepitus (gas present in ~25%) and hemorrhagic bullae (~38%) are late/variable and their absence never excludes the diagnosis; pain out of proportion is the earliest clue. Added refs: Stevens DL, Bryant AE, N Engl J Med 2017; Hua C et al, Lancet Infect Dis 2023.",
+    "tiles": [
+     "Pain out of proportion",
+     "Crepitus",
+     "Bullae",
+     "Violaceous skin"
+    ]
+   },
+   "contentHash": "7f2d2990d950e60125b9358bedc88e95718eb13254b9656af37742b7c13d6177",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 6,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-3",
+   "placementNote": null
+  },
+  "DERM-006": {
+   "id": "DERM-006",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-006",
+     "Connection Title": "Syndromes that HSV-1 can cause",
+     "Tile 1": "Herpes labialis",
+     "Tile 2": "Herpetic whitlow",
+     "Tile 3": "Herpes keratitis",
+     "Tile 4": "Herpes encephalitis",
+     "Connection Type": "Shared infectious cause",
+     "Explanation": "HSV-1 can cause oral lesions, digital infection, keratitis, and encephalitis. This category states capability and does not assign every case exclusively to HSV-1.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Clinical Medicine",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "HSV-1 manifestations; Diseases caused by herpes simplex type 1",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Herpes Simplex and Varicella Infections > HSV-1 and Visual Diagnosis, PDF pp. 49-51",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified with can-cause wording. HSV-2 can also cause whitlow, labialis (rare), keratitis (uncommon) and CNS disease (more often meningitis); HSV-1 predominates for keratitis and sporadic encephalitis. Added refs: Ruderfer D, Krilov LR, Pediatr Rev 2015; Steiner I et al, Lancet Neurol 2007."
+    },
+    "title": "Syndromes that HSV-1 can cause",
+    "connectionType": "Shared infectious cause",
+    "explanation": "HSV-1 can cause oral lesions, digital infection, keratitis, and encephalitis. This category states capability and does not assign every case exclusively to HSV-1.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Clinical Medicine",
+    "difficulty": "easy",
+    "alternateNames": [
+     "HSV-1 manifestations",
+     "Diseases caused by herpes simplex type 1"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Herpes Simplex and Varicella Infections > HSV-1 and Visual Diagnosis, PDF pp. 49-51",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified with can-cause wording. HSV-2 can also cause whitlow, labialis (rare), keratitis (uncommon) and CNS disease (more often meningitis); HSV-1 predominates for keratitis and sporadic encephalitis. Added refs: Ruderfer D, Krilov LR, Pediatr Rev 2015; Steiner I et al, Lancet Neurol 2007.",
+    "tiles": [
+     "Herpes labialis",
+     "Herpetic whitlow",
+     "Herpes keratitis",
+     "Herpes encephalitis"
+    ]
+   },
+   "contentHash": "a6f096d0c8fc2e45702b3530ab542f689f48198d11f62aa74225f5d01bd5a07d",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 7,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-007": {
+   "id": "DERM-007",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-007",
+     "Connection Title": "Clinical forms of VZV infection",
+     "Tile 1": "Varicella",
+     "Tile 2": "Herpes zoster",
+     "Tile 3": "Herpes zoster ophthalmicus",
+     "Tile 4": "Herpes zoster oticus",
+     "Connection Type": "Shared infectious cause",
+     "Explanation": "VZV causes primary varicella and can later reactivate as zoster, including ophthalmic and otic forms.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Clinical Medicine",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Varicella-zoster virus manifestations; VZV diseases",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Herpes Simplex and Varicella Infections > Varicella Zoster Virus, PDF pp. 48, 52",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. Intentional parent-subtype overlap (ophthalmicus and oticus/Ramsay Hunt are dermatomal subtypes of zoster) is fair but reduces elegance; board-overlap caution if a dedicated zoster-complications group is used. Added refs: Bubak AN et al, Nat Rev Dis Primers 2026; Kennedy PGE, Gershon AA, Viruses 2018."
+    },
+    "title": "Clinical forms of VZV infection",
+    "connectionType": "Shared infectious cause",
+    "explanation": "VZV causes primary varicella and can later reactivate as zoster, including ophthalmic and otic forms.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Clinical Medicine",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Varicella-zoster virus manifestations",
+     "VZV diseases"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Herpes Simplex and Varicella Infections > Varicella Zoster Virus, PDF pp. 48, 52",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. Intentional parent-subtype overlap (ophthalmicus and oticus/Ramsay Hunt are dermatomal subtypes of zoster) is fair but reduces elegance; board-overlap caution if a dedicated zoster-complications group is used. Added refs: Bubak AN et al, Nat Rev Dis Primers 2026; Kennedy PGE, Gershon AA, Viruses 2018.",
+    "tiles": [
+     "Varicella",
+     "Herpes zoster",
+     "Herpes zoster ophthalmicus",
+     "Herpes zoster oticus"
+    ]
+   },
+   "contentHash": "0868b1c14e40969dd35bb9b339b98f106b19c79fb8d279a4f239d22c078c38c8",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 8,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-008": {
+   "id": "DERM-008",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-008",
+     "Connection Title": "High-risk oncogenic HPV types",
+     "Tile 1": "HPV 16",
+     "Tile 2": "HPV 18",
+     "Tile 3": "HPV 31",
+     "Tile 4": "HPV 33",
+     "Connection Type": "Shared oncogenic association",
+     "Explanation": "The source lists these HPV types among those associated with cervical cancer risk. The set is not an exhaustive list of high-risk HPV types.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Oncology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "High-risk HPV strains; Cervical cancer-associated HPV types",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Viral Infectious Conditions > Verrucae, PDF p. 55",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: all four are IARC Group 1 (high-risk) types and are included in the nonavalent vaccine; 16 highest risk, 18 second, 31/33 medium-risk. Keep high-risk framing; these are not the usual cause of ordinary cutaneous warts. Added refs: Perkins RB et al, JAMA 2023; Wei F et al, Lancet 2024."
+    },
+    "title": "High-risk oncogenic HPV types",
+    "connectionType": "Shared oncogenic association",
+    "explanation": "The source lists these HPV types among those associated with cervical cancer risk. The set is not an exhaustive list of high-risk HPV types.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Oncology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "High-risk HPV strains",
+     "Cervical cancer-associated HPV types"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Viral Infectious Conditions > Verrucae, PDF p. 55",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: all four are IARC Group 1 (high-risk) types and are included in the nonavalent vaccine; 16 highest risk, 18 second, 31/33 medium-risk. Keep high-risk framing; these are not the usual cause of ordinary cutaneous warts. Added refs: Perkins RB et al, JAMA 2023; Wei F et al, Lancet 2024.",
+    "tiles": [
+     "HPV 16",
+     "HPV 18",
+     "HPV 31",
+     "HPV 33"
+    ]
+   },
+   "contentHash": "cd5b9e8f3f2e788439650c65039d22df2074e24894c8e511557e0e64e1916d49",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 9,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-009": {
+   "id": "DERM-009",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-009",
+     "Connection Title": "HPV-associated wart subtypes",
+     "Tile 1": "Verruca vulgaris",
+     "Tile 2": "Verruca plana",
+     "Tile 3": "Verruca plantaris",
+     "Tile 4": "Condylomata acuminata",
+     "Connection Type": "Shared infectious cause",
+     "Explanation": "These are common, flat, plantar, and anogenital warts associated with different HPV types.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Forms of HPV warts; Verruca subtypes",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Viral Infectious Conditions > Verruca Subtypes, PDF p. 56",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: vulgaris (HPV 2/27/57), plana (3/10), plantaris (1/2/4), condylomata acuminata (6/11). Shared cause does not imply identical types or transmission routes. Added refs: Rook's Dermatology Handbook, Viral infections 2023; Chin-Hong PV, Reid GE, Clin Transplant 2019 (AST)."
+    },
+    "title": "HPV-associated wart subtypes",
+    "connectionType": "Shared infectious cause",
+    "explanation": "These are common, flat, plantar, and anogenital warts associated with different HPV types.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Forms of HPV warts",
+     "Verruca subtypes"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Viral Infectious Conditions > Verruca Subtypes, PDF p. 56",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: vulgaris (HPV 2/27/57), plana (3/10), plantaris (1/2/4), condylomata acuminata (6/11). Shared cause does not imply identical types or transmission routes. Added refs: Rook's Dermatology Handbook, Viral infections 2023; Chin-Hong PV, Reid GE, Clin Transplant 2019 (AST).",
+    "tiles": [
+     "Verruca vulgaris",
+     "Verruca plana",
+     "Verruca plantaris",
+     "Condylomata acuminata"
+    ]
+   },
+   "contentHash": "811ca828aa12a25e49e17047f5c7a16834980bb06f89a00b6b6b117f3121e99a",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 10,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-010": {
+   "id": "DERM-010",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-010",
+     "Connection Title": "Mucocutaneous Candida syndromes",
+     "Tile 1": "Oral thrush",
+     "Tile 2": "Candidal esophagitis",
+     "Tile 3": "Vulvovaginal candidiasis",
+     "Tile 4": "Candidal intertrigo",
+     "Connection Type": "Shared infectious cause",
+     "Explanation": "Candida can infect oral, esophageal, vaginal, and moist intertriginous sites, producing these syndromes.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Clinical Medicine",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Mucocutaneous candidiasis; Candida infections of skin and mucosa",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Candidal Infections > Mucocutaneous Candidiasis and Candidal Intertrigo, PDF pp. 59-60",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified. Most often Candida albicans but not exclusively; do not present albicans as the only species. Added refs: Cornely OA et al, Lancet Infect Dis 2025 (ECMM/ISHAM/ASM); Pappas PG et al, Clin Infect Dis 2016 (IDSA)."
+    },
+    "title": "Mucocutaneous Candida syndromes",
+    "connectionType": "Shared infectious cause",
+    "explanation": "Candida can infect oral, esophageal, vaginal, and moist intertriginous sites, producing these syndromes.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Clinical Medicine",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Mucocutaneous candidiasis",
+     "Candida infections of skin and mucosa"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Candidal Infections > Mucocutaneous Candidiasis and Candidal Intertrigo, PDF pp. 59-60",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified. Most often Candida albicans but not exclusively; do not present albicans as the only species. Added refs: Cornely OA et al, Lancet Infect Dis 2025 (ECMM/ISHAM/ASM); Pappas PG et al, Clin Infect Dis 2016 (IDSA).",
+    "tiles": [
+     "Oral thrush",
+     "Candidal esophagitis",
+     "Vulvovaginal candidiasis",
+     "Candidal intertrigo"
+    ]
+   },
+   "contentHash": "0f6088c4998095495ef92f510d4cf4d1bd5c4390220e21f5ff640f2ee3419438",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 11,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-5",
+   "placementNote": null
+  },
+  "DERM-011": {
+   "id": "DERM-011",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-011",
+     "Connection Title": "Dermatophyte infections named by site",
+     "Tile 1": "Tinea corporis",
+     "Tile 2": "Tinea capitis",
+     "Tile 3": "Tinea pedis",
+     "Tile 4": "Tinea manuum",
+     "Connection Type": "Shared infectious cause",
+     "Explanation": "Dermatophytes can infect body skin, scalp, feet, and hands. These site-specific names describe infections of keratinized tissue.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Clinical Medicine",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Site-specific dermatophytoses; Dermatophyte tinea infections",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Fungal Infectious Conditions > Tinea Corporis, Capitis, and Pedis (includes Manuum), PDF pp. 62-64",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: all four are true dermatophytoses (Trichophyton/Microsporum/Epidermophyton). Do not add tinea versicolor (Malassezia, not a dermatophyte). Added refs: Caplan AS et al, Am Fam Physician 2025; Milam EC et al, JAMA 2016."
+    },
+    "title": "Dermatophyte infections named by site",
+    "connectionType": "Shared infectious cause",
+    "explanation": "Dermatophytes can infect body skin, scalp, feet, and hands. These site-specific names describe infections of keratinized tissue.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Clinical Medicine",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Site-specific dermatophytoses",
+     "Dermatophyte tinea infections"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Fungal Infectious Conditions > Tinea Corporis, Capitis, and Pedis (includes Manuum), PDF pp. 62-64",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: all four are true dermatophytoses (Trichophyton/Microsporum/Epidermophyton). Do not add tinea versicolor (Malassezia, not a dermatophyte). Added refs: Caplan AS et al, Am Fam Physician 2025; Milam EC et al, JAMA 2016.",
+    "tiles": [
+     "Tinea corporis",
+     "Tinea capitis",
+     "Tinea pedis",
+     "Tinea manuum"
+    ]
+   },
+   "contentHash": "587a13609056b0e3329aa0116f62ecb94b443909a156ddf5278c353c734c60a5",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 12,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-012": {
+   "id": "DERM-012",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-012",
+     "Connection Title": "Tinea versicolor clues",
+     "Tile 1": "Malassezia",
+     "Tile 2": "Spaghetti-and-meatballs KOH",
+     "Tile 3": "Hypopigmented or hyperpigmented patches",
+     "Tile 4": "Selenium sulfide shampoo",
+     "Connection Type": "Classic disease-finding-treatment associations",
+     "Explanation": "Malassezia-associated superficial infection causes variably pigmented lesions, has a characteristic yeast-and-hyphae appearance on KOH preparation, and can be treated with selenium sulfide.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Pityriasis versicolor; Malassezia skin infection",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Fungal Infectious Conditions > Tinea Versicolor, PDF p. 66",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified; KOH nickname is a standard descriptor (short hyphae plus yeast clusters). Note oral terbinafine/griseofulvin are ineffective against Malassezia. Added refs: Hudson A et al, JAMA 2018; Chen J, Ji C, N Engl J Med 2024; FDA label Selenium Sulfide 2025."
+    },
+    "title": "Tinea versicolor clues",
+    "connectionType": "Classic disease-finding-treatment associations",
+    "explanation": "Malassezia-associated superficial infection causes variably pigmented lesions, has a characteristic yeast-and-hyphae appearance on KOH preparation, and can be treated with selenium sulfide.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Pityriasis versicolor",
+     "Malassezia skin infection"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Fungal Infectious Conditions > Tinea Versicolor, PDF p. 66",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified; KOH nickname is a standard descriptor (short hyphae plus yeast clusters). Note oral terbinafine/griseofulvin are ineffective against Malassezia. Added refs: Hudson A et al, JAMA 2018; Chen J, Ji C, N Engl J Med 2024; FDA label Selenium Sulfide 2025.",
+    "tiles": [
+     "Malassezia",
+     "Spaghetti-and-meatballs KOH",
+     "Hypopigmented or hyperpigmented patches",
+     "Selenium sulfide shampoo"
+    ]
+   },
+   "contentHash": "b4204e2eb6be8d3a3d01286afa4ad7f33f5ac8f400f6fedbce6fb2d0c0057529",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 13,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-4",
+   "placementNote": null
+  },
+  "DERM-013": {
+   "id": "DERM-013",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-013",
+     "Connection Title": "Sporotrichosis clues",
+     "Tile 1": "Rose-thorn inoculation",
+     "Tile 2": "Ascending lymphangitic nodules",
+     "Tile 3": "Cigar-shaped yeast",
+     "Tile 4": "Itraconazole",
+     "Connection Type": "Classic disease-finding-treatment associations",
+     "Explanation": "The source connects vegetation-related inoculation, spread along lymphatics, cigar-shaped fungal forms, and itraconazole therapy with sporotrichosis.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Lymphocutaneous sporotrichosis; Rose gardener disease",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Fungal Infectious Conditions > Sporotrichosis, PDF p. 67",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified for the lymphocutaneous form (~70-75% of cases). Rose-thorn exposure is classic not required; cigar-shaped yeast seen in <30% so culture is gold standard. Added refs: Barros MB et al, Clin Microbiol Rev 2011; Qin J, Zhang J, N Engl J Med 2019; Thompson GR et al, Lancet Infect Dis 2021."
+    },
+    "title": "Sporotrichosis clues",
+    "connectionType": "Classic disease-finding-treatment associations",
+    "explanation": "The source connects vegetation-related inoculation, spread along lymphatics, cigar-shaped fungal forms, and itraconazole therapy with sporotrichosis.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Lymphocutaneous sporotrichosis",
+     "Rose gardener disease"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Fungal Infectious Conditions > Sporotrichosis, PDF p. 67",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified for the lymphocutaneous form (~70-75% of cases). Rose-thorn exposure is classic not required; cigar-shaped yeast seen in <30% so culture is gold standard. Added refs: Barros MB et al, Clin Microbiol Rev 2011; Qin J, Zhang J, N Engl J Med 2019; Thompson GR et al, Lancet Infect Dis 2021.",
+    "tiles": [
+     "Rose-thorn inoculation",
+     "Ascending lymphangitic nodules",
+     "Cigar-shaped yeast",
+     "Itraconazole"
+    ]
+   },
+   "contentHash": "76d2380b93420f48e43087c6218ef10be49ae5a9ca45dacb754ffc96d944d61d",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 14,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-1",
+   "placementNote": null
+  },
+  "DERM-014": {
+   "id": "DERM-014",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-014",
+     "Connection Title": "Rhino-orbital mucormycosis clues",
+     "Tile 1": "Necrotic nasal or palatal eschar",
+     "Tile 2": "Broad pauciseptate hyphae",
+     "Tile 3": "Wide-angle branching",
+     "Tile 4": "Amphotericin B",
+     "Connection Type": "Classic disease-finding-treatment associations",
+     "Explanation": "The source links destructive sinonasal disease with broad fungal hyphae, wide-angle branching, and amphotericin B treatment in mucormycosis.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Rhinocerebral mucormycosis clues; Mucormycosis",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Fungal Infectious Conditions > Mucormycosis, PDF p. 68",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: pauciseptate (non-/pauci-septate) is accurate per ECMM/MSG and NEJM; broad ribbon-like morphology is more reliable than the historically taught 90-degree wide-angle branching, which can be hard to identify in tissue. Antifungals do not replace urgent surgical debridement. Added refs: Cornely OA et al, Lancet Infect Dis 2019; Kontoyiannis DP, Walsh TJ, N Engl J Med 2026."
+    },
+    "title": "Rhino-orbital mucormycosis clues",
+    "connectionType": "Classic disease-finding-treatment associations",
+    "explanation": "The source links destructive sinonasal disease with broad fungal hyphae, wide-angle branching, and amphotericin B treatment in mucormycosis.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Rhinocerebral mucormycosis clues",
+     "Mucormycosis"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Fungal Infectious Conditions > Mucormycosis, PDF p. 68",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: pauciseptate (non-/pauci-septate) is accurate per ECMM/MSG and NEJM; broad ribbon-like morphology is more reliable than the historically taught 90-degree wide-angle branching, which can be hard to identify in tissue. Antifungals do not replace urgent surgical debridement. Added refs: Cornely OA et al, Lancet Infect Dis 2019; Kontoyiannis DP, Walsh TJ, N Engl J Med 2026.",
+    "tiles": [
+     "Necrotic nasal or palatal eschar",
+     "Broad pauciseptate hyphae",
+     "Wide-angle branching",
+     "Amphotericin B"
+    ]
+   },
+   "contentHash": "396ee1224133d6b3fe3f6617268f04ae74b9cb1061c85c3975b7d0eaf72252f8",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 15,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-015": {
+   "id": "DERM-015",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-015",
+     "Connection Title": "Pemphigus vulgaris clinical and biopsy clues",
+     "Tile 1": "Flaccid bullae",
+     "Tile 2": "Oral erosions",
+     "Tile 3": "Acantholysis",
+     "Tile 4": "Intercellular IgG network",
+     "Connection Type": "Classic disease-finding associations",
+     "Explanation": "Pemphigus vulgaris combines fragile intraepidermal blisters and frequent mucosal disease with keratinocyte separation and a net-like intercellular IgG pattern.",
+     "Organ System": "Dermatology",
+     "Discipline": "Pathology / Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Pemphigus vulgaris; Autoimmune desmosomal blistering",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Autoimmune Blistering Conditions > Pemphigus Vulgaris and Summary, PDF pp. 73, 76",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: suprabasal acantholysis, fishnet/intercellular IgG on DIF, anti-desmoglein 3 +/- 1. Mucosal involvement characteristic but not universal; desmogleins are desmosomal (intra-epidermal), not intradermal. Added refs: Schmidt E et al, Lancet 2019; Kasperkiewicz M et al, Nat Rev Dis Primers 2017."
+    },
+    "title": "Pemphigus vulgaris clinical and biopsy clues",
+    "connectionType": "Classic disease-finding associations",
+    "explanation": "Pemphigus vulgaris combines fragile intraepidermal blisters and frequent mucosal disease with keratinocyte separation and a net-like intercellular IgG pattern.",
+    "organSystems": "Dermatology",
+    "discipline": "Pathology / Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Pemphigus vulgaris",
+     "Autoimmune desmosomal blistering"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Autoimmune Blistering Conditions > Pemphigus Vulgaris and Summary, PDF pp. 73, 76",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: suprabasal acantholysis, fishnet/intercellular IgG on DIF, anti-desmoglein 3 +/- 1. Mucosal involvement characteristic but not universal; desmogleins are desmosomal (intra-epidermal), not intradermal. Added refs: Schmidt E et al, Lancet 2019; Kasperkiewicz M et al, Nat Rev Dis Primers 2017.",
+    "tiles": [
+     "Flaccid bullae",
+     "Oral erosions",
+     "Acantholysis",
+     "Intercellular IgG network"
+    ]
+   },
+   "contentHash": "d26d07dda7372104b4ba7adb342923ece7851d5922b6aab4e0e22510daa1205d",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 16,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-1",
+   "placementNote": null
+  },
+  "DERM-016": {
+   "id": "DERM-016",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-016",
+     "Connection Title": "Bullous pemphigoid clinical and biopsy clues",
+     "Tile 1": "Tense bullae",
+     "Tile 2": "Negative Nikolsky sign",
+     "Tile 3": "Subepidermal split",
+     "Tile 4": "Linear IgG and C3",
+     "Connection Type": "Classic disease-finding associations",
+     "Explanation": "Bullous pemphigoid classically produces firm blisters from separation below the epidermis with linear immunoreactant deposition at the basement membrane zone.",
+     "Organ System": "Dermatology",
+     "Discipline": "Pathology / Immunology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Bullous pemphigoid; Hemidesmosomal autoimmune blistering",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Autoimmune Blistering Conditions > Bullous Pemphigoid and Summary, PDF pp. 74, 76",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: subepidermal split, linear IgG/C3 at BMZ, anti-BP180/BP230; Nikolsky typically negative (high specificity for pemphigus). Avoid absolute no-mucosa / not-life-threatening wording. Added refs: Schmidt E, Zillikens D, Lancet 2013; Akbarialiabad H et al, Nat Rev Dis Primers 2025."
+    },
+    "title": "Bullous pemphigoid clinical and biopsy clues",
+    "connectionType": "Classic disease-finding associations",
+    "explanation": "Bullous pemphigoid classically produces firm blisters from separation below the epidermis with linear immunoreactant deposition at the basement membrane zone.",
+    "organSystems": "Dermatology",
+    "discipline": "Pathology / Immunology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Bullous pemphigoid",
+     "Hemidesmosomal autoimmune blistering"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Autoimmune Blistering Conditions > Bullous Pemphigoid and Summary, PDF pp. 74, 76",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: subepidermal split, linear IgG/C3 at BMZ, anti-BP180/BP230; Nikolsky typically negative (high specificity for pemphigus). Avoid absolute no-mucosa / not-life-threatening wording. Added refs: Schmidt E, Zillikens D, Lancet 2013; Akbarialiabad H et al, Nat Rev Dis Primers 2025.",
+    "tiles": [
+     "Tense bullae",
+     "Negative Nikolsky sign",
+     "Subepidermal split",
+     "Linear IgG and C3"
+    ]
+   },
+   "contentHash": "dc6bee45bd8b60f81bf25e636d449b7109058154cd07370d972d88a711c12c68",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 17,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-5",
+   "placementNote": null
+  },
+  "DERM-017": {
+   "id": "DERM-017",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-017",
+     "Connection Title": "Dermatitis herpetiformis clues",
+     "Tile 1": "Celiac disease",
+     "Tile 2": "Pruritic extensor vesicles",
+     "Tile 3": "Granular papillary IgA",
+     "Tile 4": "Dapsone",
+     "Connection Type": "Classic disease-finding-treatment associations",
+     "Explanation": "Dermatitis herpetiformis is linked to celiac disease and intensely itchy extensor lesions, with granular IgA at dermal papillae; dapsone can control the skin eruption.",
+     "Organ System": "Dermatology",
+     "Discipline": "Pathology / Immunology / Pharmacology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Dermatitis herpetiformis; Celiac-associated blistering eruption",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Autoimmune Blistering Conditions > Dermatitis Herpetiformis and Summary, PDF pp. 75-76",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: cutaneous manifestation of celiac disease; pathognomonic granular IgA in dermal papillae; skin autoantigen is epidermal transglutaminase (TG3) vs intestinal tTG (TG2). Dapsone controls skin but does not replace a gluten-free diet. Added refs: Reunala T et al, Am J Clin Dermatol 2021; Antiga E et al, Front Immunol 2019."
+    },
+    "title": "Dermatitis herpetiformis clues",
+    "connectionType": "Classic disease-finding-treatment associations",
+    "explanation": "Dermatitis herpetiformis is linked to celiac disease and intensely itchy extensor lesions, with granular IgA at dermal papillae; dapsone can control the skin eruption.",
+    "organSystems": "Dermatology",
+    "discipline": "Pathology / Immunology / Pharmacology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Dermatitis herpetiformis",
+     "Celiac-associated blistering eruption"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Autoimmune Blistering Conditions > Dermatitis Herpetiformis and Summary, PDF pp. 75-76",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: cutaneous manifestation of celiac disease; pathognomonic granular IgA in dermal papillae; skin autoantigen is epidermal transglutaminase (TG3) vs intestinal tTG (TG2). Dapsone controls skin but does not replace a gluten-free diet. Added refs: Reunala T et al, Am J Clin Dermatol 2021; Antiga E et al, Front Immunol 2019.",
+    "tiles": [
+     "Celiac disease",
+     "Pruritic extensor vesicles",
+     "Granular papillary IgA",
+     "Dapsone"
+    ]
+   },
+   "contentHash": "3224811535951b1a01576a71123d72bdadbfe50d286d8c2d153bd4e47a533fa1",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 18,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-3",
+   "placementNote": null
+  },
+  "DERM-018": {
+   "id": "DERM-018",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-018",
+     "Connection Title": "Infectious associations of erythema nodosum",
+     "Tile 1": "Coccidioidomycosis",
+     "Tile 2": "Histoplasmosis",
+     "Tile 3": "Tuberculosis",
+     "Tile 4": "Streptococcal infection",
+     "Connection Type": "Shared reactive manifestation",
+     "Explanation": "The source lists these infections among triggers or associations of erythema nodosum, an inflammatory process affecting subcutaneous fat. The association does not mean each infection always causes nodules.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Infectious triggers of erythema nodosum; Infections linked to erythema nodosum",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Reactive Disease > Erythema Nodosum, PDF p. 78",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: all four are recognized EN triggers (strep is the most common identifiable infectious cause). Competing label granulomatous infection fits coccidioidomycosis/histoplasmosis/TB but NOT streptococcus (pyogenic), so it is not an equally strong complete grouping -- this confirms infectious-trigger as the intended category. Added refs: Perez-Garza DM et al, Am J Clin Dermatol 2021; Lionakis MS et al, Nat Rev Immunol 2023."
+    },
+    "title": "Infectious associations of erythema nodosum",
+    "connectionType": "Shared reactive manifestation",
+    "explanation": "The source lists these infections among triggers or associations of erythema nodosum, an inflammatory process affecting subcutaneous fat. The association does not mean each infection always causes nodules.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Infectious triggers of erythema nodosum",
+     "Infections linked to erythema nodosum"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Reactive Disease > Erythema Nodosum, PDF p. 78",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: all four are recognized EN triggers (strep is the most common identifiable infectious cause). Competing label granulomatous infection fits coccidioidomycosis/histoplasmosis/TB but NOT streptococcus (pyogenic), so it is not an equally strong complete grouping -- this confirms infectious-trigger as the intended category. Added refs: Perez-Garza DM et al, Am J Clin Dermatol 2021; Lionakis MS et al, Nat Rev Immunol 2023.",
+    "tiles": [
+     "Coccidioidomycosis",
+     "Histoplasmosis",
+     "Tuberculosis",
+     "Streptococcal infection"
+    ]
+   },
+   "contentHash": "4d58ffe46373a267f576c90051f6ba6748e395860d40d0276276667727c2cbc1",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 19,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-easy-04",
+     "title": "Granulomatous infections with necrotizing (caseating) granulomas",
+     "shared": 3,
+     "titleSim": 0
+    }
+   ],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-019": {
+   "id": "DERM-019",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-019",
+     "Connection Title": "DRESS syndrome presentation",
+     "Tile 1": "Delayed drug reaction",
+     "Tile 2": "Morbilliform eruption",
+     "Tile 3": "Eosinophilia",
+     "Tile 4": "Systemic involvement",
+     "Connection Type": "Classic syndrome-finding associations",
+     "Explanation": "DRESS refers to a delayed drug reaction with an exanthem, eosinophilia, and systemic manifestations. The group describes a characteristic syndrome rather than mandatory findings at every time point.",
+     "Organ System": "Dermatology",
+     "Discipline": "Immunology / Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Drug reaction with eosinophilia and systemic symptoms; DRESS features",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Reactive Disease > DRESS Syndrome, PDF p. 80",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: latency 2-8 weeks, morbilliform eruption (near-universal), eosinophilia (~52-95%, time-variable), multiorgan involvement (liver most common). Delayed-drug-hypersensitivity is a defensible broader alternate. Added refs: Kroshinsky D et al, N Engl J Med 2024; Wei BM et al, J Am Acad Dermatol 2024."
+    },
+    "title": "DRESS syndrome presentation",
+    "connectionType": "Classic syndrome-finding associations",
+    "explanation": "DRESS refers to a delayed drug reaction with an exanthem, eosinophilia, and systemic manifestations. The group describes a characteristic syndrome rather than mandatory findings at every time point.",
+    "organSystems": "Dermatology",
+    "discipline": "Immunology / Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Drug reaction with eosinophilia and systemic symptoms",
+     "DRESS features"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Reactive Disease > DRESS Syndrome, PDF p. 80",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: latency 2-8 weeks, morbilliform eruption (near-universal), eosinophilia (~52-95%, time-variable), multiorgan involvement (liver most common). Delayed-drug-hypersensitivity is a defensible broader alternate. Added refs: Kroshinsky D et al, N Engl J Med 2024; Wei BM et al, J Am Acad Dermatol 2024.",
+    "tiles": [
+     "Delayed drug reaction",
+     "Morbilliform eruption",
+     "Eosinophilia",
+     "Systemic involvement"
+    ]
+   },
+   "contentHash": "92d7a12fc7aedea913fe825f2e4e1d9e30faba98948c76324deaf7948d023937",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 20,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-020": {
+   "id": "DERM-020",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-020",
+     "Connection Title": "Allergic contact dermatitis mechanism",
+     "Tile 1": "Langerhans antigen presentation",
+     "Tile 2": "T-cell activation",
+     "Tile 3": "Interferon-gamma signaling",
+     "Tile 4": "Epidermal spongiosis",
+     "Connection Type": "Shared disease mechanism",
+     "Explanation": "The source presents allergic contact dermatitis as a delayed, T-cell-mediated response involving antigen presentation, inflammatory signaling, and intercellular epidermal edema.",
+     "Organ System": "Dermatology",
+     "Discipline": "Immunology / Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Type IV contact hypersensitivity; Allergic contact dermatitis pathway",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Atopic and Allergic Disease > Allergic Contact Dermatitis, PDF p. 83",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified type IV (delayed) hypersensitivity pathway plus its histologic consequence (spongiosis). Spongiosis is a tissue outcome, not an immune effector, which is what narrows this from pure delayed-hypersensitivity to dermatitis. Use epidermal (not dermal) spongiosis wording. Added refs: Kabashima K et al, Nat Rev Immunol 2019; Tong Y et al, Front Immunol 2026."
+    },
+    "title": "Allergic contact dermatitis mechanism",
+    "connectionType": "Shared disease mechanism",
+    "explanation": "The source presents allergic contact dermatitis as a delayed, T-cell-mediated response involving antigen presentation, inflammatory signaling, and intercellular epidermal edema.",
+    "organSystems": "Dermatology",
+    "discipline": "Immunology / Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Type IV contact hypersensitivity",
+     "Allergic contact dermatitis pathway"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Atopic and Allergic Disease > Allergic Contact Dermatitis, PDF p. 83",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified type IV (delayed) hypersensitivity pathway plus its histologic consequence (spongiosis). Spongiosis is a tissue outcome, not an immune effector, which is what narrows this from pure delayed-hypersensitivity to dermatitis. Use epidermal (not dermal) spongiosis wording. Added refs: Kabashima K et al, Nat Rev Immunol 2019; Tong Y et al, Front Immunol 2026.",
+    "tiles": [
+     "Langerhans antigen presentation",
+     "T-cell activation",
+     "Interferon-gamma signaling",
+     "Epidermal spongiosis"
+    ]
+   },
+   "contentHash": "a6c552c6a495bef0ad7b352d51f2fddfec87e1700db5b08e32d574a0b8a89e82",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 21,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-2",
+   "placementNote": null
+  },
+  "DERM-021": {
+   "id": "DERM-021",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-021",
+     "Connection Title": "Atopic dermatitis biology",
+     "Tile 1": "Filaggrin barrier dysfunction",
+     "Tile 2": "Th2-predominant inflammation",
+     "Tile 3": "IL-4 and IL-13",
+     "Tile 4": "Elevated IgE",
+     "Connection Type": "Shared disease mechanism",
+     "Explanation": "The source associates atopic dermatitis with barrier impairment and type 2 immune features. Elevated IgE and filaggrin dysfunction are associated features rather than universal requirements.",
+     "Organ System": "Dermatology",
+     "Discipline": "Immunology / Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Atopic eczema pathophysiology; Barrier and type 2 inflammation in atopic dermatitis",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Atopic and Allergic Disease > Atopic Dermatitis, PDF p. 84",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified; non-universal wording correct. ~20-30% of patients (intrinsic AD) have normal IgE and no filaggrin defect; IL-4/IL-13 are central (dupilumab target). Added refs: Stander S, N Engl J Med 2021; Langan SM et al, Lancet 2020; Akdis CA, Akdis M, Clin Exp Allergy 2003."
+    },
+    "title": "Atopic dermatitis biology",
+    "connectionType": "Shared disease mechanism",
+    "explanation": "The source associates atopic dermatitis with barrier impairment and type 2 immune features. Elevated IgE and filaggrin dysfunction are associated features rather than universal requirements.",
+    "organSystems": "Dermatology",
+    "discipline": "Immunology / Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Atopic eczema pathophysiology",
+     "Barrier and type 2 inflammation in atopic dermatitis"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Atopic and Allergic Disease > Atopic Dermatitis, PDF p. 84",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified; non-universal wording correct. ~20-30% of patients (intrinsic AD) have normal IgE and no filaggrin defect; IL-4/IL-13 are central (dupilumab target). Added refs: Stander S, N Engl J Med 2021; Langan SM et al, Lancet 2020; Akdis CA, Akdis M, Clin Exp Allergy 2003.",
+    "tiles": [
+     "Filaggrin barrier dysfunction",
+     "Th2-predominant inflammation",
+     "IL-4 and IL-13",
+     "Elevated IgE"
+    ]
+   },
+   "contentHash": "cfd59cdaaf2ba7bc921b664609047a831f4ae2dba1a4946ffaef61b9bbbc5533",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 22,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-022": {
+   "id": "DERM-022",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-022",
+     "Connection Title": "Acne vulgaris pathogenesis",
+     "Tile 1": "Pilosebaceous plugging",
+     "Tile 2": "Increased sebum",
+     "Tile 3": "Impaired keratinocyte shedding",
+     "Tile 4": "Cutibacterium acnes",
+     "Connection Type": "Shared disease mechanism",
+     "Explanation": "Acne arises through interacting follicular obstruction, sebum production, altered shedding, and inflammatory activity involving Cutibacterium acnes.",
+     "Organ System": "Dermatology",
+     "Discipline": "Pathology / Microbiology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Acne mechanisms; Pilosebaceous pathogenesis of acne",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Pustular Disease > Acne Vulgaris, PDF p. 86",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified four interacting factors. Note sources enumerate these slightly differently (some merge plugging with abnormal shedding or list inflammation separately); all four here are individually supported. C. acnes is also a commensal, so presence alone is not diagnostic. Added refs: Williams HC et al, Lancet 2012; Eichenfield DZ et al, JAMA 2021; Moradi Tuchayi S et al, Nat Rev Dis Primers 2015."
+    },
+    "title": "Acne vulgaris pathogenesis",
+    "connectionType": "Shared disease mechanism",
+    "explanation": "Acne arises through interacting follicular obstruction, sebum production, altered shedding, and inflammatory activity involving Cutibacterium acnes.",
+    "organSystems": "Dermatology",
+    "discipline": "Pathology / Microbiology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Acne mechanisms",
+     "Pilosebaceous pathogenesis of acne"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Pustular Disease > Acne Vulgaris, PDF p. 86",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified four interacting factors. Note sources enumerate these slightly differently (some merge plugging with abnormal shedding or list inflammation separately); all four here are individually supported. C. acnes is also a commensal, so presence alone is not diagnostic. Added refs: Williams HC et al, Lancet 2012; Eichenfield DZ et al, JAMA 2021; Moradi Tuchayi S et al, Nat Rev Dis Primers 2015.",
+    "tiles": [
+     "Pilosebaceous plugging",
+     "Increased sebum",
+     "Impaired keratinocyte shedding",
+     "Cutibacterium acnes"
+    ]
+   },
+   "contentHash": "2e129e3b1ebc9fdbf979abfe1129ffb80256d58f10896ebfe33b9dfada3b7a57",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 23,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-4",
+   "placementNote": null
+  },
+  "DERM-023": {
+   "id": "DERM-023",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-023",
+     "Connection Title": "Hidradenitis suppurativa clues",
+     "Tile 1": "Painful intertriginous nodules",
+     "Tile 2": "Draining sinus tracts",
+     "Tile 3": "Chronic scarring",
+     "Tile 4": "Adalimumab",
+     "Connection Type": "Classic disease-finding-treatment associations",
+     "Explanation": "Hidradenitis suppurativa can cause recurrent painful lesions in body folds with tunnels and scarring. The source includes adalimumab as a treatment option.",
+     "Organ System": "Dermatology",
+     "Discipline": "Pathology / Pharmacology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Hidradenitis suppurativa; HS manifestations and therapy",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Pustular Disease > Hidradenitis Suppurativa, PDF p. 87",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: adalimumab was first biologic approved (PIONEER trials); sinus tracts/scarring reflect established disease; treatment is severity-dependent (secukinumab, bimekizumab now also approved). Added refs: Sabat R et al, Lancet 2025; Kimball AB et al, N Engl J Med 2016."
+    },
+    "title": "Hidradenitis suppurativa clues",
+    "connectionType": "Classic disease-finding-treatment associations",
+    "explanation": "Hidradenitis suppurativa can cause recurrent painful lesions in body folds with tunnels and scarring. The source includes adalimumab as a treatment option.",
+    "organSystems": "Dermatology",
+    "discipline": "Pathology / Pharmacology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Hidradenitis suppurativa",
+     "HS manifestations and therapy"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Pustular Disease > Hidradenitis Suppurativa, PDF p. 87",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: adalimumab was first biologic approved (PIONEER trials); sinus tracts/scarring reflect established disease; treatment is severity-dependent (secukinumab, bimekizumab now also approved). Added refs: Sabat R et al, Lancet 2025; Kimball AB et al, N Engl J Med 2016.",
+    "tiles": [
+     "Painful intertriginous nodules",
+     "Draining sinus tracts",
+     "Chronic scarring",
+     "Adalimumab"
+    ]
+   },
+   "contentHash": "0a54edd80438c7e09b05dc34351d0454bfa66659c2cfaa0023217c4d721b696b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 24,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-1",
+   "placementNote": null
+  },
+  "DERM-024": {
+   "id": "DERM-024",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-024",
+     "Connection Title": "Rosacea flushing triggers",
+     "Tile 1": "Heat exposure",
+     "Tile 2": "Spicy foods",
+     "Tile 3": "Alcohol",
+     "Tile 4": "Emotional stress",
+     "Connection Type": "Shared disease trigger",
+     "Explanation": "These exposures can provoke flushing or worsen rosacea in susceptible patients. Individual trigger patterns vary.",
+     "Organ System": "Dermatology",
+     "Discipline": "Clinical Medicine",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Rosacea triggers; Rosacea flare triggers",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Pustular Disease > Rosacea, PDF p. 89",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified as recognized triggers; non-specific-flushing-triggers is an acceptable broader alternate. Board-overlap warning: do not place in the same 16-tile board as DERM-025 (also rosacea). Added refs: van Zuuren EJ, N Engl J Med 2017; Powell FC, N Engl J Med 2005."
+    },
+    "title": "Rosacea flushing triggers",
+    "connectionType": "Shared disease trigger",
+    "explanation": "These exposures can provoke flushing or worsen rosacea in susceptible patients. Individual trigger patterns vary.",
+    "organSystems": "Dermatology",
+    "discipline": "Clinical Medicine",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Rosacea triggers",
+     "Rosacea flare triggers"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Pustular Disease > Rosacea, PDF p. 89",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified as recognized triggers; non-specific-flushing-triggers is an acceptable broader alternate. Board-overlap warning: do not place in the same 16-tile board as DERM-025 (also rosacea). Added refs: van Zuuren EJ, N Engl J Med 2017; Powell FC, N Engl J Med 2005.",
+    "tiles": [
+     "Heat exposure",
+     "Spicy foods",
+     "Alcohol",
+     "Emotional stress"
+    ]
+   },
+   "contentHash": "5071f7b1501d4f9f651cebf81ce522387300223290d1ae68303ab39a8e188ed4",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 25,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-3",
+   "placementNote": null
+  },
+  "DERM-025": {
+   "id": "DERM-025",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-025",
+     "Connection Title": "Rosacea phenotype clues",
+     "Tile 1": "Facial flushing",
+     "Tile 2": "Persistent facial erythema",
+     "Tile 3": "Ocular involvement",
+     "Tile 4": "Rhinophyma",
+     "Connection Type": "Classic disease-finding associations",
+     "Explanation": "Rosacea can produce vascular facial changes, eye involvement, and phymatous change of the nose. These span phenotypes and need not occur together.",
+     "Organ System": "Dermatology",
+     "Discipline": "Clinical Medicine / Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Rosacea manifestations; Clinical phenotypes of rosacea",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Pustular Disease > Rosacea, PDF p. 89",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified across the four NRS subtypes (erythematotelangiectatic, papulopustular, phymatous, ocular). Ocular/phymatous are phenotype-specific. Board-overlap warning: do not pair with DERM-024 (rosacea triggers). Added refs: van Zuuren EJ, N Engl J Med 2017; van Zuuren EJ et al, Cochrane 2015."
+    },
+    "title": "Rosacea phenotype clues",
+    "connectionType": "Classic disease-finding associations",
+    "explanation": "Rosacea can produce vascular facial changes, eye involvement, and phymatous change of the nose. These span phenotypes and need not occur together.",
+    "organSystems": "Dermatology",
+    "discipline": "Clinical Medicine / Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Rosacea manifestations",
+     "Clinical phenotypes of rosacea"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Pustular Disease > Rosacea, PDF p. 89",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified across the four NRS subtypes (erythematotelangiectatic, papulopustular, phymatous, ocular). Ocular/phymatous are phenotype-specific. Board-overlap warning: do not pair with DERM-024 (rosacea triggers). Added refs: van Zuuren EJ, N Engl J Med 2017; van Zuuren EJ et al, Cochrane 2015.",
+    "tiles": [
+     "Facial flushing",
+     "Persistent facial erythema",
+     "Ocular involvement",
+     "Rhinophyma"
+    ]
+   },
+   "contentHash": "5272d4b51722d8dda19dd00d4e4618a07699dd8ea4d301de988f0eeeca5e35e3",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 26,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-2",
+   "placementNote": null
+  },
+  "DERM-026": {
+   "id": "DERM-026",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-026",
+     "Connection Title": "Lichen planus clues",
+     "Tile 1": "Wickham striae",
+     "Tile 2": "Saw-tooth rete ridges",
+     "Tile 3": "Hypergranulosis",
+     "Tile 4": "Hepatitis C association",
+     "Connection Type": "Classic disease-finding associations",
+     "Explanation": "Lichen planus has characteristic surface and microscopic findings and is associated with hepatitis C in some populations. The association is not universal.",
+     "Organ System": "Dermatology",
+     "Discipline": "Pathology / Immunology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Lichen planus; Lichenoid eruption clues",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Red Plaque Disease > Lichen Planus, PDF p. 91; Histopathology > Hypergranulosis, PDF p. 15",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: Wickham striae, saw-tooth rete ridges, wedge hypergranulosis, band-like interface infiltrate; HCV association (meta-analytic OR ~5.4) varies by population. Not diagnostic requirements. Added refs: Kusari A, Ahluwalia J, N Engl J Med 2018; Boch K et al, Front Med 2021."
+    },
+    "title": "Lichen planus clues",
+    "connectionType": "Classic disease-finding associations",
+    "explanation": "Lichen planus has characteristic surface and microscopic findings and is associated with hepatitis C in some populations. The association is not universal.",
+    "organSystems": "Dermatology",
+    "discipline": "Pathology / Immunology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Lichen planus",
+     "Lichenoid eruption clues"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Red Plaque Disease > Lichen Planus, PDF p. 91; Histopathology > Hypergranulosis, PDF p. 15",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: Wickham striae, saw-tooth rete ridges, wedge hypergranulosis, band-like interface infiltrate; HCV association (meta-analytic OR ~5.4) varies by population. Not diagnostic requirements. Added refs: Kusari A, Ahluwalia J, N Engl J Med 2018; Boch K et al, Front Med 2021.",
+    "tiles": [
+     "Wickham striae",
+     "Saw-tooth rete ridges",
+     "Hypergranulosis",
+     "Hepatitis C association"
+    ]
+   },
+   "contentHash": "8af2cb13252852702d0f710cba5872c56eaad757d486d555b8a8764d9fcc0e7b",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 27,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-027": {
+   "id": "DERM-027",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-027",
+     "Connection Title": "Pityriasis rosea presentation",
+     "Tile 1": "Herald patch",
+     "Tile 2": "Collarette scale",
+     "Tile 3": "Christmas-tree distribution",
+     "Tile 4": "Prodromal illness",
+     "Connection Type": "Classic disease-finding associations",
+     "Explanation": "Pityriasis rosea can begin with a larger initial plaque and then develop scaly lesions in a characteristic truncal pattern, sometimes following a prodrome.",
+     "Organ System": "Dermatology",
+     "Discipline": "Clinical Medicine / Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Pityriasis rosea; Herald-patch eruption",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Red Plaque Disease > Pityriasis Rosea, PDF p. 92",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: herald patch (50-90%), collarette scale, Christmas-tree distribution along Langer lines, variable prodrome; associated with HHV-6/7 reactivation (do not overstate a single causative virus). Added refs: Mashoudy KD et al, Am J Clin Dermatol 2025; Villalon-Gomez JM, Am Fam Physician 2018."
+    },
+    "title": "Pityriasis rosea presentation",
+    "connectionType": "Classic disease-finding associations",
+    "explanation": "Pityriasis rosea can begin with a larger initial plaque and then develop scaly lesions in a characteristic truncal pattern, sometimes following a prodrome.",
+    "organSystems": "Dermatology",
+    "discipline": "Clinical Medicine / Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Pityriasis rosea",
+     "Herald-patch eruption"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Red Plaque Disease > Pityriasis Rosea, PDF p. 92",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: herald patch (50-90%), collarette scale, Christmas-tree distribution along Langer lines, variable prodrome; associated with HHV-6/7 reactivation (do not overstate a single causative virus). Added refs: Mashoudy KD et al, Am J Clin Dermatol 2025; Villalon-Gomez JM, Am Fam Physician 2018.",
+    "tiles": [
+     "Herald patch",
+     "Collarette scale",
+     "Christmas-tree distribution",
+     "Prodromal illness"
+    ]
+   },
+   "contentHash": "434c90523ac70ebd2d179825fde1ff7a5f674e9b26abaec0b0e7c850f7b82475",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 28,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-028": {
+   "id": "DERM-028",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-028",
+     "Connection Title": "Psoriasis histopathology",
+     "Tile 1": "Parakeratosis",
+     "Tile 2": "Acanthosis",
+     "Tile 3": "Munro microabscesses",
+     "Tile 4": "Reduced granular layer",
+     "Connection Type": "Shared histopathologic pattern",
+     "Explanation": "Psoriatic lesions can show retained nuclei in cornified cells, epidermal thickening, neutrophilic microabscesses, and thinning of the granular layer.",
+     "Organ System": "Dermatology",
+     "Discipline": "Pathology / Histology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Microscopic findings in psoriasis; Psoriatic biopsy features",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Red Plaque Disease > Psoriasis, PDF p. 93",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified characteristic histology (Munro microabscesses near-pathognomonic); findings vary with lesion stage/treatment. Board-overlap warning: do not pair with DERM-029 (also psoriasis). Added refs: Griffiths CEM et al, Lancet 2021; Armstrong AW, Read C, JAMA 2020."
+    },
+    "title": "Psoriasis histopathology",
+    "connectionType": "Shared histopathologic pattern",
+    "explanation": "Psoriatic lesions can show retained nuclei in cornified cells, epidermal thickening, neutrophilic microabscesses, and thinning of the granular layer.",
+    "organSystems": "Dermatology",
+    "discipline": "Pathology / Histology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Microscopic findings in psoriasis",
+     "Psoriatic biopsy features"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Red Plaque Disease > Psoriasis, PDF p. 93",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified characteristic histology (Munro microabscesses near-pathognomonic); findings vary with lesion stage/treatment. Board-overlap warning: do not pair with DERM-029 (also psoriasis). Added refs: Griffiths CEM et al, Lancet 2021; Armstrong AW, Read C, JAMA 2020.",
+    "tiles": [
+     "Parakeratosis",
+     "Acanthosis",
+     "Munro microabscesses",
+     "Reduced granular layer"
+    ]
+   },
+   "contentHash": "517e5bb4640af8df2379af526cf67fb15bfb2069557911eb66e45a34fdfc99ee",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 29,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-029": {
+   "id": "DERM-029",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-029",
+     "Connection Title": "Psoriasis clinical associations",
+     "Tile 1": "Silvery plaques",
+     "Tile 2": "Auspitz sign",
+     "Tile 3": "Nail pitting",
+     "Tile 4": "Psoriatic arthritis",
+     "Connection Type": "Classic disease-finding associations",
+     "Explanation": "Psoriasis is associated with scaly plaques, pinpoint bleeding after scale removal, nail changes, and inflammatory joint disease. These features are not universal.",
+     "Organ System": "Dermatology",
+     "Discipline": "Clinical Medicine / Rheumatology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Clinical psoriasis clues; Psoriasis manifestations",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Red Plaque Disease > Psoriasis, PDF p. 93",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified; psoriatic arthritis affects a subset (~5-20%), nail pitting ~50%. Cross-system (derm/rheum) framing is appropriate. Board-overlap warning: do not pair with DERM-028 (psoriasis histology). Added refs: Armstrong AW et al, Nat Rev Dis Primers 2025; Armstrong AW, Read C, JAMA 2020."
+    },
+    "title": "Psoriasis clinical associations",
+    "connectionType": "Classic disease-finding associations",
+    "explanation": "Psoriasis is associated with scaly plaques, pinpoint bleeding after scale removal, nail changes, and inflammatory joint disease. These features are not universal.",
+    "organSystems": "Dermatology",
+    "discipline": "Clinical Medicine / Rheumatology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Clinical psoriasis clues",
+     "Psoriasis manifestations"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Red Plaque Disease > Psoriasis, PDF p. 93",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified; psoriatic arthritis affects a subset (~5-20%), nail pitting ~50%. Cross-system (derm/rheum) framing is appropriate. Board-overlap warning: do not pair with DERM-028 (psoriasis histology). Added refs: Armstrong AW et al, Nat Rev Dis Primers 2025; Armstrong AW, Read C, JAMA 2020.",
+    "tiles": [
+     "Silvery plaques",
+     "Auspitz sign",
+     "Nail pitting",
+     "Psoriatic arthritis"
+    ]
+   },
+   "contentHash": "f31ac3b2fa37401e68bd15ee8d5aa5d2581f97ae01c0b96ff4b5094e440f2ecb",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 30,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [
+    {
+     "id": "bank-ext-110",
+     "title": "Features of psoriasis",
+     "shared": 2,
+     "titleSim": 0.25
+    }
+   ],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-030": {
+   "id": "DERM-030",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-030",
+     "Connection Title": "Risk settings for cutaneous squamous cell carcinoma",
+     "Tile 1": "Chronic wounds",
+     "Tile 2": "Burn scars",
+     "Tile 3": "Arsenic exposure",
+     "Tile 4": "Immunosuppression",
+     "Connection Type": "Shared malignancy risk",
+     "Explanation": "The source identifies these settings as associated with cutaneous SCC. Chronic wounds and burn scars represent persistent local injury contexts; exposure and immune status provide additional risk pathways.",
+     "Organ System": "Dermatology",
+     "Discipline": "Oncology / Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Cutaneous SCC risk factors; Squamous cell skin cancer risk settings",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Skin Cancer > Squamous Cell Carcinoma and Summary, PDF pp. 96, 99",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Independently verified, including burn scars (Marjolin ulcer: ~92-94% SCC, ~30-year latency). Arsenic is an IARC Group 1 carcinogen; organ-transplant/immunosuppression markedly raises risk. Impaired-wound-healing overlaps the first two tiles but not all four. Added refs: Wysong A, N Engl J Med 2023; Burusapat C et al, J Burn Care Res 2021; NCCN Squamous Cell Skin Cancer 2026."
+    },
+    "title": "Risk settings for cutaneous squamous cell carcinoma",
+    "connectionType": "Shared malignancy risk",
+    "explanation": "The source identifies these settings as associated with cutaneous SCC. Chronic wounds and burn scars represent persistent local injury contexts; exposure and immune status provide additional risk pathways.",
+    "organSystems": "Dermatology",
+    "discipline": "Oncology / Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Cutaneous SCC risk factors",
+     "Squamous cell skin cancer risk settings"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Skin Cancer > Squamous Cell Carcinoma and Summary, PDF pp. 96, 99",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Independently verified, including burn scars (Marjolin ulcer: ~92-94% SCC, ~30-year latency). Arsenic is an IARC Group 1 carcinogen; organ-transplant/immunosuppression markedly raises risk. Impaired-wound-healing overlaps the first two tiles but not all four. Added refs: Wysong A, N Engl J Med 2023; Burusapat C et al, J Burn Care Res 2021; NCCN Squamous Cell Skin Cancer 2026.",
+    "tiles": [
+     "Chronic wounds",
+     "Burn scars",
+     "Arsenic exposure",
+     "Immunosuppression"
+    ]
+   },
+   "contentHash": "c78c4ba4e57beba14619f6a58bae7fdc0cbd2c91c87ee2b43b84646c2b98e14e",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 31,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-5",
+   "placementNote": null
+  },
+  "DERM-031": {
+   "id": "DERM-031",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-031",
+     "Connection Title": "Basal cell carcinoma clues",
+     "Tile 1": "Pearly skin lesion",
+     "Tile 2": "Surface telangiectasias",
+     "Tile 3": "Peripheral nuclear palisading",
+     "Tile 4": "Slow local growth",
+     "Connection Type": "Classic disease-finding associations",
+     "Explanation": "Basal cell carcinoma classically presents as a pearly lesion with visible small vessels and palisading tumor nuclei, with a typically slow local course.",
+     "Organ System": "Dermatology",
+     "Discipline": "Oncology / Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Basal cell carcinoma; BCC clinical and biopsy clues",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Skin Cancer > Basal Cell Carcinoma, PDF p. 97",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: pearly papule with arborizing telangiectasia (clinical), peripheral palisading (histologic), slow growth with very low metastatic potential. Appearance varies by subtype; slow growth does not preclude local destruction. Added refs: Rubin AI et al, N Engl J Med 2005; Wehner MR, JAMA 2026."
+    },
+    "title": "Basal cell carcinoma clues",
+    "connectionType": "Classic disease-finding associations",
+    "explanation": "Basal cell carcinoma classically presents as a pearly lesion with visible small vessels and palisading tumor nuclei, with a typically slow local course.",
+    "organSystems": "Dermatology",
+    "discipline": "Oncology / Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Basal cell carcinoma",
+     "BCC clinical and biopsy clues"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Skin Cancer > Basal Cell Carcinoma, PDF p. 97",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: pearly papule with arborizing telangiectasia (clinical), peripheral palisading (histologic), slow growth with very low metastatic potential. Appearance varies by subtype; slow growth does not preclude local destruction. Added refs: Rubin AI et al, N Engl J Med 2005; Wehner MR, JAMA 2026.",
+    "tiles": [
+     "Pearly skin lesion",
+     "Surface telangiectasias",
+     "Peripheral nuclear palisading",
+     "Slow local growth"
+    ]
+   },
+   "contentHash": "6b35cf3bb145646b774c1904c21f2ad712c83d72f49ee99bf0c517f84d396c31",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 32,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-1",
+   "placementNote": null
+  },
+  "DERM-032": {
+   "id": "DERM-032",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-032",
+     "Connection Title": "Keratoacanthoma clues",
+     "Tile 1": "Dome-shaped lesion",
+     "Tile 2": "Central keratin plug",
+     "Tile 3": "Rapid growth over weeks",
+     "Tile 4": "Possible spontaneous regression",
+     "Connection Type": "Classic disease-finding associations",
+     "Explanation": "The source describes keratoacanthoma as a rapidly enlarging dome-shaped lesion with a keratin-filled center that may regress.",
+     "Organ System": "Dermatology",
+     "Discipline": "Oncology / Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Keratoacanthoma; Rapid crateriform keratinizing lesion",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Skin Cancer > Keratoacanthoma, PDF p. 98",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: dome-shaped, central keratin plug, rapid growth over 4-6 weeks, possible (not inevitable) regression. Genuine nosologic overlap with well-differentiated/crateriform SCC (often reported as KA-type cSCC); excision/evaluation is standard, so the set must not teach observation over biopsy. Added refs: Tisack A et al, Br J Dermatol 2021; Nagarajan P, J Cutan Pathol 2020."
+    },
+    "title": "Keratoacanthoma clues",
+    "connectionType": "Classic disease-finding associations",
+    "explanation": "The source describes keratoacanthoma as a rapidly enlarging dome-shaped lesion with a keratin-filled center that may regress.",
+    "organSystems": "Dermatology",
+    "discipline": "Oncology / Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Keratoacanthoma",
+     "Rapid crateriform keratinizing lesion"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Skin Cancer > Keratoacanthoma, PDF p. 98",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: dome-shaped, central keratin plug, rapid growth over 4-6 weeks, possible (not inevitable) regression. Genuine nosologic overlap with well-differentiated/crateriform SCC (often reported as KA-type cSCC); excision/evaluation is standard, so the set must not teach observation over biopsy. Added refs: Tisack A et al, Br J Dermatol 2021; Nagarajan P, J Cutan Pathol 2020.",
+    "tiles": [
+     "Dome-shaped lesion",
+     "Central keratin plug",
+     "Rapid growth over weeks",
+     "Possible spontaneous regression"
+    ]
+   },
+   "contentHash": "49b7e99d1469a67efba57c997a2469c39d5c9dc8c14ab67df493e8747873fa90",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 33,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-4",
+   "placementNote": null
+  },
+  "DERM-033": {
+   "id": "DERM-033",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-033",
+     "Connection Title": "Major melanoma histologic subtypes",
+     "Tile 1": "Superficial spreading melanoma",
+     "Tile 2": "Nodular melanoma",
+     "Tile 3": "Lentigo maligna melanoma",
+     "Tile 4": "Acral lentiginous melanoma",
+     "Connection Type": "Shared disease classification",
+     "Explanation": "These are four recognized melanoma subtypes distinguished by growth pattern and/or anatomic setting.",
+     "Organ System": "Dermatology",
+     "Discipline": "Oncology / Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Melanoma subtypes; Four major melanoma patterns",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Melanoma > Variations, PDF p. 102",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified four classic subtypes (SSM ~70%, LMM ~15%, NM ~5%, ALM ~1%). Tile correctly uses lentigo maligna MELANOMA (invasive) vs lentigo maligna (in situ). WHO 2018 recognizes additional subtypes (e.g., desmoplastic), but the four-major framing is standard teaching. Acral melanoma occurs in all skin tones. Added refs: Joshi UM et al, JAMA 2025; Long GV et al, Lancet 2023."
+    },
+    "title": "Major melanoma histologic subtypes",
+    "connectionType": "Shared disease classification",
+    "explanation": "These are four recognized melanoma subtypes distinguished by growth pattern and/or anatomic setting.",
+    "organSystems": "Dermatology",
+    "discipline": "Oncology / Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Melanoma subtypes",
+     "Four major melanoma patterns"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Melanoma > Variations, PDF p. 102",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified four classic subtypes (SSM ~70%, LMM ~15%, NM ~5%, ALM ~1%). Tile correctly uses lentigo maligna MELANOMA (invasive) vs lentigo maligna (in situ). WHO 2018 recognizes additional subtypes (e.g., desmoplastic), but the four-major framing is standard teaching. Acral melanoma occurs in all skin tones. Added refs: Joshi UM et al, JAMA 2025; Long GV et al, Lancet 2023.",
+    "tiles": [
+     "Superficial spreading melanoma",
+     "Nodular melanoma",
+     "Lentigo maligna melanoma",
+     "Acral lentiginous melanoma"
+    ]
+   },
+   "contentHash": "4d8fc9074f7e42ace7d1c19e0e66659bc89f02b4cfd27c8666bb094dc36972af",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 34,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-2",
+   "placementNote": null
+  },
+  "DERM-034": {
+   "id": "DERM-034",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-034",
+     "Connection Title": "Glomus tumor clues",
+     "Tile 1": "Painful subungual lesion",
+     "Tile 2": "Red-blue nodule",
+     "Tile 3": "Glomus body origin",
+     "Tile 4": "Cold hypersensitivity",
+     "Connection Type": "Classic disease-finding and origin associations",
+     "Explanation": "Glomus tumors arise from the glomus body and classically present as a painful, cold-sensitive, red-blue subungual nodule; the triad of paroxysmal pain, pinpoint tenderness (Love test), and cold hypersensitivity is characteristic.",
+     "Organ System": "Dermatology",
+     "Discipline": "Pathology / Anatomy",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Glomus tumor; Subungual glomus neoplasm",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Vascular Tumors > Glomus Tumor, PDF p. 110",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_REVISED",
+     "Notes": "REVISED: original tiles 3 and 4 (Glomus body origin; Thermoregulatory smooth muscle) are two statements of the same concept -- the glomus body is a thermoregulatory arteriovenous shunt made of modified smooth muscle -- so they are not distinct tiles. Replaced Thermoregulatory smooth muscle with Cold hypersensitivity (classic clinical triad feature) to yield four distinct tiles and retain board relevance; explanation updated accordingly. Do not confuse with carotid-body glomus cells (paraganglioma). Added refs: Chen MM et al, JAMA Otolaryngol Head Neck Surg 2017; Rook's Dermatology Handbook, Soft-tissue tumours 2023; Lee IJ et al, J Hand Surg Eur Vol 2009."
+    },
+    "title": "Glomus tumor clues",
+    "connectionType": "Classic disease-finding and origin associations",
+    "explanation": "Glomus tumors arise from the glomus body and classically present as a painful, cold-sensitive, red-blue subungual nodule; the triad of paroxysmal pain, pinpoint tenderness (Love test), and cold hypersensitivity is characteristic.",
+    "organSystems": "Dermatology",
+    "discipline": "Pathology / Anatomy",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Glomus tumor",
+     "Subungual glomus neoplasm"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Vascular Tumors > Glomus Tumor, PDF p. 110",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_REVISED",
+    "notes": "REVISED: original tiles 3 and 4 (Glomus body origin; Thermoregulatory smooth muscle) are two statements of the same concept -- the glomus body is a thermoregulatory arteriovenous shunt made of modified smooth muscle -- so they are not distinct tiles. Replaced Thermoregulatory smooth muscle with Cold hypersensitivity (classic clinical triad feature) to yield four distinct tiles and retain board relevance; explanation updated accordingly. Do not confuse with carotid-body glomus cells (paraganglioma). Added refs: Chen MM et al, JAMA Otolaryngol Head Neck Surg 2017; Rook's Dermatology Handbook, Soft-tissue tumours 2023; Lee IJ et al, J Hand Surg Eur Vol 2009.",
+    "tiles": [
+     "Painful subungual lesion",
+     "Red-blue nodule",
+     "Glomus body origin",
+     "Cold hypersensitivity"
+    ]
+   },
+   "contentHash": "0b0fdef17c8d429eccd6165c6a9f8b9148b89779fc736459f39a3746309097d9",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 35,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_REVISED",
+    "humanVerified": false,
+    "basis": null,
+    "reviewer": "OpenEvidence",
+    "outstanding": "Tile 4 was changed by the review from the source's \"Thermoregulatory smooth muscle\" to \"Cold hypersensitivity\", a new clinical feature supported by outside references in Notes (Lee et al, J Hand Surg Eur Vol 2009; Chen et al, JAMA Otolaryngol 2017). The row still cites Bootcamp Vascular Tumors > Glomus Tumor p. 110 only. Confirm the new tile and add the supporting reference to Source, or record that this is accepted (same question as PLX-BCH-009).",
+    "approved": false,
+    "state": "held"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "review",
+   "starterBoard": null
+  },
+  "DERM-035": {
+   "id": "DERM-035",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-035",
+     "Connection Title": "Bacillary angiomatosis clues",
+     "Tile 1": "Bartonella infection",
+     "Tile 2": "Bright red vascular papules",
+     "Tile 3": "Warthin-Starry stain",
+     "Tile 4": "Neutrophilic infiltrate",
+     "Connection Type": "Classic disease-cause-biopsy associations",
+     "Explanation": "Bacillary angiomatosis is linked to Bartonella and vascular skin lesions, with bacteria demonstrable by a silver stain and a neutrophil-rich inflammatory component.",
+     "Organ System": "Dermatology",
+     "Discipline": "Microbiology / Pathology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Bacillary angiomatosis; Bartonella-associated vascular proliferation",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Vascular Tumors > Bacillary Angiomatosis, PDF p. 112",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified (B. henselae/quintana; lobular vascular proliferation with neutrophils around bacterial aggregates; Warthin-Starry positive). Neutrophilic infiltrate is frequent but variable; Warthin-Starry is not specific/always positive. Clinically mimics pyogenic granuloma and Kaposi sarcoma. Added refs: Adal KA et al, N Engl J Med 1994; Cockerell CJ, LeBoit PE, J Am Acad Dermatol 1990."
+    },
+    "title": "Bacillary angiomatosis clues",
+    "connectionType": "Classic disease-cause-biopsy associations",
+    "explanation": "Bacillary angiomatosis is linked to Bartonella and vascular skin lesions, with bacteria demonstrable by a silver stain and a neutrophil-rich inflammatory component.",
+    "organSystems": "Dermatology",
+    "discipline": "Microbiology / Pathology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Bacillary angiomatosis",
+     "Bartonella-associated vascular proliferation"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Vascular Tumors > Bacillary Angiomatosis, PDF p. 112",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified (B. henselae/quintana; lobular vascular proliferation with neutrophils around bacterial aggregates; Warthin-Starry positive). Neutrophilic infiltrate is frequent but variable; Warthin-Starry is not specific/always positive. Clinically mimics pyogenic granuloma and Kaposi sarcoma. Added refs: Adal KA et al, N Engl J Med 1994; Cockerell CJ, LeBoit PE, J Am Acad Dermatol 1990.",
+    "tiles": [
+     "Bartonella infection",
+     "Bright red vascular papules",
+     "Warthin-Starry stain",
+     "Neutrophilic infiltrate"
+    ]
+   },
+   "contentHash": "7dfee528d501aa6bbb36029a38acdeeea1c2c9b97fc892f2c16612e2ca5c8e76",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 36,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-2",
+   "placementNote": null
+  },
+  "DERM-036": {
+   "id": "DERM-036",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-036",
+     "Connection Title": "Kaposi sarcoma clues",
+     "Tile 1": "HHV-8",
+     "Tile 2": "Violaceous plaques or nodules",
+     "Tile 3": "Perivascular spindle cells",
+     "Tile 4": "HIV-associated immunosuppression",
+     "Connection Type": "Classic disease-cause-risk associations",
+     "Explanation": "Kaposi sarcoma is associated with HHV-8, purple lesions, and spindle-cell histology. HIV-associated immune dysfunction is an important risk context rather than a universal feature.",
+     "Organ System": "Dermatology",
+     "Discipline": "Oncology / Microbiology / Pathology",
+     "Difficulty": "Easy",
+     "Accepted Alternate Category Names": "Kaposi sarcoma; HHV-8-associated vascular tumor",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Vascular Tumors > Kaposi Sarcoma, PDF p. 113",
+     "Ambiguity Score": "0",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: HHV-8/KSHV is etiologic in all forms; CD31/CD34/LANA-positive spindle cells; HIV elevates risk up to ~20,000-fold but KS also occurs in classic/endemic/iatrogenic forms. HHV-8 and HIV play distinct roles and are not interchangeable causes. Added refs: Cesarman E et al, Nat Rev Dis Primers 2019; Yarchoan R, Uldrick TS, N Engl J Med 2018; Li JJ et al, Am J Pathol 1996."
+    },
+    "title": "Kaposi sarcoma clues",
+    "connectionType": "Classic disease-cause-risk associations",
+    "explanation": "Kaposi sarcoma is associated with HHV-8, purple lesions, and spindle-cell histology. HIV-associated immune dysfunction is an important risk context rather than a universal feature.",
+    "organSystems": "Dermatology",
+    "discipline": "Oncology / Microbiology / Pathology",
+    "difficulty": "easy",
+    "alternateNames": [
+     "Kaposi sarcoma",
+     "HHV-8-associated vascular tumor"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Vascular Tumors > Kaposi Sarcoma, PDF p. 113",
+    "ambiguityScore": 0,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: HHV-8/KSHV is etiologic in all forms; CD31/CD34/LANA-positive spindle cells; HIV elevates risk up to ~20,000-fold but KS also occurs in classic/endemic/iatrogenic forms. HHV-8 and HIV play distinct roles and are not interchangeable causes. Added refs: Cesarman E et al, Nat Rev Dis Primers 2019; Yarchoan R, Uldrick TS, N Engl J Med 2018; Li JJ et al, Am J Pathol 1996.",
+    "tiles": [
+     "HHV-8",
+     "Violaceous plaques or nodules",
+     "Perivascular spindle cells",
+     "HIV-associated immunosuppression"
+    ]
+   },
+   "contentHash": "3c39da9174c879df01e4596c3579a0cd6e43d28f2e510556823fdfdcf0f0d18c",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 37,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "daily",
+   "starterBoard": null,
+   "placementNote": null
+  },
+  "DERM-037": {
+   "id": "DERM-037",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-037",
+     "Connection Title": "Acanthosis nigricans clues",
+     "Tile 1": "Velvety dark plaques",
+     "Tile 2": "Intertriginous distribution",
+     "Tile 3": "Insulin resistance",
+     "Tile 4": "Possible gastrointestinal malignancy",
+     "Connection Type": "Classic disease-finding-risk associations",
+     "Explanation": "Acanthosis nigricans produces velvety hyperpigmented plaques, often in folds. It is commonly linked to insulin resistance, while an abrupt presentation can raise concern for a malignant association.",
+     "Organ System": "Dermatology",
+     "Discipline": "Pathology / Endocrinology / Oncology",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Acanthosis nigricans; Benign and malignant acanthosis nigricans associations",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Benign Dark Skin Lesions > Acanthosis Nigricans, PDF p. 117",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified: insulin resistance (benign, common) and malignant AN (abrupt, ~60% gastric adenocarcinoma, TGF-alpha/EGFR driven) are distinct contexts, not features required together. Most cases are benign -- do not imply most signal cancer. Board-overlap warning: shares a paraneoplastic/gastric-cancer axis with DERM-038 (Leser-Trelat); the two frequently co-occur. Added refs: Valejo Coelho MM et al, JAMA Dermatol 2019; Gillespie J et al, Am J Clin Dermatol 2026."
+    },
+    "title": "Acanthosis nigricans clues",
+    "connectionType": "Classic disease-finding-risk associations",
+    "explanation": "Acanthosis nigricans produces velvety hyperpigmented plaques, often in folds. It is commonly linked to insulin resistance, while an abrupt presentation can raise concern for a malignant association.",
+    "organSystems": "Dermatology",
+    "discipline": "Pathology / Endocrinology / Oncology",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Acanthosis nigricans",
+     "Benign and malignant acanthosis nigricans associations"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Benign Dark Skin Lesions > Acanthosis Nigricans, PDF p. 117",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified: insulin resistance (benign, common) and malignant AN (abrupt, ~60% gastric adenocarcinoma, TGF-alpha/EGFR driven) are distinct contexts, not features required together. Most cases are benign -- do not imply most signal cancer. Board-overlap warning: shares a paraneoplastic/gastric-cancer axis with DERM-038 (Leser-Trelat); the two frequently co-occur. Added refs: Valejo Coelho MM et al, JAMA Dermatol 2019; Gillespie J et al, Am J Clin Dermatol 2026.",
+    "tiles": [
+     "Velvety dark plaques",
+     "Intertriginous distribution",
+     "Insulin resistance",
+     "Possible gastrointestinal malignancy"
+    ]
+   },
+   "contentHash": "b7252fd43bac0034d4b8f4cb26735126e18c977384693d7ca448b0999807eef3",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 38,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-3",
+   "placementNote": null
+  },
+  "DERM-038": {
+   "id": "DERM-038",
+   "library": "new",
+   "system": "Dermatology",
+   "content": {
+    "raw": {
+     "Connection ID": "DERM-038",
+     "Connection Title": "Seborrheic keratosis clues",
+     "Tile 1": "Stuck-on appearance",
+     "Tile 2": "Greasy pigmented surface",
+     "Tile 3": "Increasing frequency with age",
+     "Tile 4": "Leser-Trelat sign",
+     "Connection Type": "Classic disease-finding associations",
+     "Explanation": "The source describes seborrheic keratoses as benign, often pigmented lesions with an adherent appearance that become more common with age. Abrupt eruption of numerous lesions is described as the Leser-Trelat sign.",
+     "Organ System": "Dermatology",
+     "Discipline": "Pathology / Clinical Medicine",
+     "Difficulty": "Medium",
+     "Accepted Alternate Category Names": "Seborrheic keratosis; SK appearance and eruptive pattern",
+     "Source": "Bootcamp.com Dermatology.pdf",
+     "Source Section": "Benign Dark Skin Lesions > Seborrheic Keratosis, PDF p. 118",
+     "Ambiguity Score": "1",
+     "Verification Status": "AI_REVIEWED_PASS",
+     "Notes": "Verified morphology and eruptive Leser-Trelat concept (classically gastric/GI adenocarcinoma). Caveat: the paraneoplastic validity of Leser-Trelat is debated (a large Swedish cohort found no cancer association), so present it as a classic sign, not proven/universal. Board-overlap warning: shares the paraneoplastic/gastric-cancer axis with DERM-037. Added refs: Schwartz RA, J Am Acad Dermatol 1996; Husain Z et al, J Drugs Dermatol 2013; Lindelof B et al, J Am Acad Dermatol 1992."
+    },
+    "title": "Seborrheic keratosis clues",
+    "connectionType": "Classic disease-finding associations",
+    "explanation": "The source describes seborrheic keratoses as benign, often pigmented lesions with an adherent appearance that become more common with age. Abrupt eruption of numerous lesions is described as the Leser-Trelat sign.",
+    "organSystems": "Dermatology",
+    "discipline": "Pathology / Clinical Medicine",
+    "difficulty": "medium",
+    "alternateNames": [
+     "Seborrheic keratosis",
+     "SK appearance and eruptive pattern"
+    ],
+    "sources": "Bootcamp.com Dermatology.pdf",
+    "sourceSection": "Benign Dark Skin Lesions > Seborrheic Keratosis, PDF p. 118",
+    "ambiguityScore": 1,
+    "status": "AI_REVIEWED_PASS",
+    "notes": "Verified morphology and eruptive Leser-Trelat concept (classically gastric/GI adenocarcinoma). Caveat: the paraneoplastic validity of Leser-Trelat is debated (a large Swedish cohort found no cancer association), so present it as a classic sign, not proven/universal. Board-overlap warning: shares the paraneoplastic/gastric-cancer axis with DERM-037. Added refs: Schwartz RA, J Am Acad Dermatol 1996; Husain Z et al, J Drugs Dermatol 2013; Lindelof B et al, J Am Acad Dermatol 1992.",
+    "tiles": [
+     "Stuck-on appearance",
+     "Greasy pigmented surface",
+     "Increasing frequency with age",
+     "Leser-Trelat sign"
+    ]
+   },
+   "contentHash": "19d6ebd8b4e23ec702864c28bcf66d682e315f6fad56b3113484447d4dd4a80f",
+   "version": 1,
+   "origin": {
+    "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+    "fileSha": "95b7b2723152",
+    "row": 39,
+    "importedAt": "2026-10-08T06:54:49.973Z"
+   },
+   "history": [],
+   "verification": {
+    "status": "AI_REVIEWED_PASS",
+    "humanVerified": false,
+    "basis": "ai-review",
+    "reviewer": "OpenEvidence",
+    "outstanding": null,
+    "approved": true,
+    "state": "eligible"
+   },
+   "problems": [],
+   "difficultyWarnings": [],
+   "duplicateOf": null,
+   "heldFor": [],
+   "timedSame": [],
+   "timedUncertain": [],
+   "pool": "systemsStarter",
+   "starterBoard": "dermatology-starter-5",
    "placementNote": null
   }
  },
@@ -9633,14 +12591,15 @@
      "PLX-BCH-073"
     ],
     "signature": "9079e1f6",
-    "status": "review",
-    "publishable": false,
+    "status": "ready",
+    "publishable": true,
     "structural": "pass",
     "block": [],
-    "flags": [
-     "PLX-BCH-071 board instruction to check against the other groups: \"Intentionally introductory category; may be too transparent for a Hard puzzle.\""
-    ],
-    "ambiguityReview": "needed"
+    "flags": [],
+    "ambiguityReview": "none",
+    "difficultyWarnings": [
+     "PLX-BCH-071 [easy]: \"Intentionally introductory category; may be too transparent for a Hard puzzle.\""
+    ]
    },
    {
     "n": 2,
@@ -9658,7 +12617,8 @@
     "structural": "pass",
     "block": [],
     "flags": [],
-    "ambiguityReview": "none"
+    "ambiguityReview": "none",
+    "difficultyWarnings": []
    },
    {
     "n": 3,
@@ -9676,7 +12636,8 @@
     "structural": "pass",
     "block": [],
     "flags": [],
-    "ambiguityReview": "none"
+    "ambiguityReview": "none",
+    "difficultyWarnings": []
    },
    {
     "n": 4,
@@ -9694,7 +12655,8 @@
     "structural": "pass",
     "block": [],
     "flags": [],
-    "ambiguityReview": "none"
+    "ambiguityReview": "none",
+    "difficultyWarnings": []
    },
    {
     "n": 5,
@@ -9714,7 +12676,8 @@
     "flags": [
      "PLX-BCH-077 board instruction to check against the other groups: \"Avoid a competing neurotransmitter-deficiency category on the same board.\""
     ],
-    "ambiguityReview": "needed"
+    "ambiguityReview": "needed",
+    "difficultyWarnings": []
    }
   ],
   "Cardiology": [
@@ -9734,7 +12697,8 @@
     "structural": "pass",
     "block": [],
     "flags": [],
-    "ambiguityReview": "none"
+    "ambiguityReview": "none",
+    "difficultyWarnings": []
    },
    {
     "n": 2,
@@ -9752,7 +12716,8 @@
     "structural": "pass",
     "block": [],
     "flags": [],
-    "ambiguityReview": "none"
+    "ambiguityReview": "none",
+    "difficultyWarnings": []
    },
    {
     "n": 3,
@@ -9770,7 +12735,8 @@
     "structural": "pass",
     "block": [],
     "flags": [],
-    "ambiguityReview": "none"
+    "ambiguityReview": "none",
+    "difficultyWarnings": []
    },
    {
     "n": 4,
@@ -9788,7 +12754,8 @@
     "structural": "pass",
     "block": [],
     "flags": [],
-    "ambiguityReview": "none"
+    "ambiguityReview": "none",
+    "difficultyWarnings": []
    },
    {
     "n": 5,
@@ -9801,6 +12768,104 @@
      "CARD-005"
     ],
     "signature": "30483e4b",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none",
+    "difficultyWarnings": []
+   }
+  ],
+  "Dermatology": [
+   {
+    "n": 1,
+    "id": "dermatology-starter-1",
+    "formedAt": "2026-10-08T06:54:49.973Z",
+    "ids": [
+     "DERM-031",
+     "DERM-015",
+     "DERM-023",
+     "DERM-013"
+    ],
+    "difficultyWarnings": [],
+    "signature": "78a5baa4",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 2,
+    "id": "dermatology-starter-2",
+    "formedAt": "2026-10-08T06:54:49.973Z",
+    "ids": [
+     "DERM-025",
+     "DERM-033",
+     "DERM-035",
+     "DERM-020"
+    ],
+    "difficultyWarnings": [],
+    "signature": "d1e623a7",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 3,
+    "id": "dermatology-starter-3",
+    "formedAt": "2026-10-08T06:54:49.973Z",
+    "ids": [
+     "DERM-017",
+     "DERM-024",
+     "DERM-005",
+     "DERM-037"
+    ],
+    "difficultyWarnings": [],
+    "signature": "85f7e807",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 4,
+    "id": "dermatology-starter-4",
+    "formedAt": "2026-10-08T06:54:49.973Z",
+    "ids": [
+     "DERM-022",
+     "DERM-012",
+     "DERM-032",
+     "DERM-002"
+    ],
+    "difficultyWarnings": [],
+    "signature": "7df0549f",
+    "status": "ready",
+    "publishable": true,
+    "structural": "pass",
+    "block": [],
+    "flags": [],
+    "ambiguityReview": "none"
+   },
+   {
+    "n": 5,
+    "id": "dermatology-starter-5",
+    "formedAt": "2026-10-08T06:54:49.973Z",
+    "ids": [
+     "DERM-010",
+     "DERM-016",
+     "DERM-030",
+     "DERM-038"
+    ],
+    "difficultyWarnings": [],
+    "signature": "81b1c059",
     "status": "ready",
     "publishable": true,
     "structural": "pass",
@@ -9830,6 +12895,16 @@
    "added": 52,
    "revised": 0,
    "unchanged": 0
+  },
+  {
+   "file": "Plexus_Dermatology_reviewed_connections_1.csv",
+   "fileSha": "95b7b2723152",
+   "system": "Dermatology",
+   "importedAt": "2026-10-08T06:54:49.973Z",
+   "rows": 38,
+   "added": 38,
+   "revised": 0,
+   "unchanged": 0
   }
  ],
  "timedExclusionsAtActivation": [
@@ -9849,6 +12924,112 @@
    "replacedBy": "CARD-007"
   }
  ],
- "updatedAt": "2026-10-08T06:48:42.359Z",
- "active": false
+ "updatedAt": "2026-10-08T06:55:13.120Z",
+ "active": false,
+ "pairs": [
+  {
+   "a": "PLX-BCH-004",
+   "b": "PLX-BCH-033",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0,
+   "sameSubject": false,
+   "wordSim": 0.43,
+   "sameSystem": true
+  },
+  {
+   "a": "PLX-BCH-015",
+   "b": "PLX-BCH-040",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0.67,
+   "sameSubject": false,
+   "wordSim": 0.38,
+   "sameSystem": true
+  },
+  {
+   "a": "PLX-BCH-031",
+   "b": "CARD-017",
+   "kind": "uncertain",
+   "decided": null,
+   "shared": 0,
+   "titleSim": 0.75,
+   "sameSubject": true,
+   "wordSim": 0.18,
+   "sameSystem": false
+  },
+  {
+   "a": "PLX-BCH-048",
+   "b": "PLX-BCH-073",
+   "kind": "overlap",
+   "decided": null,
+   "shared": 2,
+   "titleSim": 0,
+   "sameSubject": false,
+   "wordSim": 0.33,
+   "sameSystem": true
+  }
+ ],
+ "counts": {
+  "all": {
+   "rows": 169,
+   "passedReview": 167,
+   "passedReviewHuman": 0,
+   "passedReviewAi": 167,
+   "heldMedical": 2,
+   "rejected": 0,
+   "needsFix": 0,
+   "heldDuplicate": 1,
+   "setAsideDuplicate": 0,
+   "usable": 166,
+   "starter": 60,
+   "daily": 106
+  },
+  "bySystem": {
+   "Biochemistry/Genetics": {
+    "rows": 79,
+    "passedReview": 78,
+    "passedReviewHuman": 0,
+    "passedReviewAi": 78,
+    "heldMedical": 1,
+    "rejected": 0,
+    "needsFix": 0,
+    "heldDuplicate": 0,
+    "setAsideDuplicate": 0,
+    "usable": 78,
+    "starter": 20,
+    "daily": 58
+   },
+   "Cardiology": {
+    "rows": 52,
+    "passedReview": 52,
+    "passedReviewHuman": 0,
+    "passedReviewAi": 52,
+    "heldMedical": 0,
+    "rejected": 0,
+    "needsFix": 0,
+    "heldDuplicate": 1,
+    "setAsideDuplicate": 0,
+    "usable": 51,
+    "starter": 20,
+    "daily": 31
+   },
+   "Dermatology": {
+    "rows": 38,
+    "passedReview": 37,
+    "passedReviewHuman": 0,
+    "passedReviewAi": 37,
+    "heldMedical": 1,
+    "rejected": 0,
+    "needsFix": 0,
+    "heldDuplicate": 0,
+    "setAsideDuplicate": 0,
+    "usable": 37,
+    "starter": 20,
+    "daily": 17
+   }
+  }
+ }
 }

@@ -15,6 +15,7 @@ import path from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 import * as L from './lib.mjs'
+import { buildQueue, queueMarkdown, systemCounts } from './queue.mjs'
 import timedBank from '../../src/data/connectionBank.js'
 import { SYSTEMS } from '../../src/data/constants.js'
 
@@ -185,6 +186,7 @@ const order = new Map(records.map((r, i) => [r.id, i]))
 for (const r of records) {
   r.verification = L.verificationOf(r.content.status, statusMap, { id: r.id, contentHash: r.contentHash, revisionReviews })
   r.problems = L.rowProblems(r.content)
+  r.difficultyWarnings = L.difficultyWarnings(r.content)
   r.duplicateOf = null
   r.heldFor = []
   r.timedSame = []
@@ -294,6 +296,7 @@ function boardState(b, members, block, flags) {
   const staleClear = typeof decision === 'string' && decision.startsWith('cleared:') && !cleared
   const status = block.length ? 'blocked' : flags.length && !cleared ? 'review' : 'ready'
   return {
+    difficultyWarnings: members.filter(Boolean).flatMap((r) => (r.difficultyWarnings || []).map((n) => `${r.id} [${r.content.difficulty}]: "${n}"`)),
     signature,
     status,
     publishable: status === 'ready',
@@ -316,12 +319,17 @@ const timedExclusions = [...new Map(records.filter(eligible).flatMap((r) => r.ti
 // ---------------- write ----------------
 for (const r of records) state.records[r.id] = r
 state.timedExclusionsAtActivation = timedExclusions
+state.pairs = within
+const queue = buildQueue({ state, records, within, timedBank, eligible })
+state.counts = { all: systemCounts(records, null, eligible), bySystem: Object.fromEntries(systemsInLib.map((x) => [x, systemCounts(records, x, eligible)])) }
 state.updatedAt = now
 state.active = false // flipped only at activation, when all uploads are in
 if (!DRY) {
   fs.mkdirSync(DIR, { recursive: true })
   fs.writeFileSync(STATE, JSON.stringify(state, null, 1) + '\n')
   fs.writeFileSync(DECISIONS, JSON.stringify({ about: 'Your decisions. pairs: key is the two ids joined by " | " (sorted); value "distinct" (different relationships, both stay) or "same" (one relationship). boards: key is a starter board id; value "cleared:<signature>" after an ambiguity review (lapses if any member changes), or "rebuild" to release a blocked board and form a new one.', pairs: decisions, boards: boardDecisions }, null, 2) + '\n')
+  fs.writeFileSync(path.join(DIR, 'review-queue.json'), JSON.stringify(queue, null, 1) + '\n')
+  fs.writeFileSync(path.join(DIR, 'review-queue.md'), queueMarkdown(queue))
   if (!fs.existsSync(STATUS_MAP_FILE)) fs.writeFileSync(STATUS_MAP_FILE, JSON.stringify({ about: 'Which verification labels count as approved. Labels are matched case-insensitively. A label in none of these lists stays unresolved. Only the project owner changes this.', ...L.DEFAULT_STATUS_MAP }, null, 2) + '\n')
 }
 
@@ -346,7 +354,8 @@ if (importEntry) {
   const heldRev = mine.filter((r) => r.verification.state === 'held')
   for (const r of heldRev) say(`  HELD ${r.id} "${r.content.title}": ${r.verification.outstanding}`)
   say(`Rows: ${changes.added.length} new, ${changes.revised.length} revised, ${changes.unchanged.length} unchanged${changes.keptFromEarlier.length ? `, ${changes.keptFromEarlier.length} from an earlier ${sys} upload not in this file (kept)` : ''}`)
-  say(`Unique eligible connections: ${approvedUnique} (of ${mine.length} ${sys} records)`)
+  const c = systemCounts(records, sys, eligible)
+  say(`Status: ${c.rows} rows · passed medical review ${c.passedReview} (AI-reviewed ${c.passedReviewAi}, human verified ${c.passedReviewHuman}) · held for medical/source review ${c.heldMedical} · held as possible duplicates ${c.heldDuplicate} · set aside as duplicates ${c.setAsideDuplicate} · usable now ${c.usable}`)
   const b = state.starterBoards[sys] || []
   const cnt = (st) => b.filter((x) => x.status === st).length
   say(`Systems starter boards: ${b.length} of ${L.STARTER_BOARDS_PER_SYSTEM} formed (${b.length * 4} connections reserved) · pass structural checks ${b.length - cnt('blocked')} · ready ${cnt('ready')} · need ambiguity review ${cnt('review')} · blocked ${cnt('blocked')}`)
@@ -357,6 +366,7 @@ if (importEntry) {
     if (x.revalidated && x.revalidated.at === now) say(`    revalidated after revision of ${x.revalidated.afterRevisionOf.join(', ')}: ${x.revalidated.result}`)
     for (const i of x.block || []) say(`    BLOCK: ${i}`)
     for (const i of x.flags || []) say(`    review: ${i}`)
+    for (const i of x.difficultyWarnings || []) say(`    difficulty (separate, does not block): ${i}`)
   }
   if (shortages[sys]) {
     const s = shortages[sys]
@@ -394,9 +404,14 @@ if (importEntry) {
   say()
 }
 say('## Cumulative (staged, not live)')
-say(`Systems imported: ${systemsInLib.length ? systemsInLib.join(', ') : 'none yet'}`)
-say(`Records ${records.length} · eligible and unique ${count(eligible)} (human verified ${count((r) => eligible(r) && r.verification.humanVerified)}, AI-reviewed ${count((r) => eligible(r) && !r.verification.humanVerified)}) · Systems starter ${count((r) => r.pool === 'systemsStarter')} · Daily ${dailyPool.length}`)
-say(`Held as possible duplicates ${count((r) => r.pool === 'held')} · duplicates ${count((r) => r.pool === 'duplicate')} · not eligible yet ${count((r) => r.pool === 'review')} · need a fix ${count((r) => r.pool === 'needsFix')} · rejected ${count((r) => r.pool === 'excluded')}`)
+say('| System | Rows | Passed review | Medical holds | Duplicate holds | Usable now | Starter | Daily |')
+say('|---|---|---|---|---|---|---|---|')
+for (const x of [...systemsInLib, null]) {
+  const c = systemCounts(records, x, eligible)
+  say(`| ${x || 'Total'} | ${c.rows} | ${c.passedReview} | ${c.heldMedical} | ${c.heldDuplicate + c.setAsideDuplicate} | ${c.usable} | ${c.starter} | ${c.daily} |`)
+}
+say(`All passed rows are AI-reviewed (OpenEvidence) unless counted as human verified: ${systemCounts(records, null, eligible).passedReviewHuman} human verified.`)
+say(`Review queue: medical holds ${queue.medicalHolds.length} · duplicate decisions ${queue.duplicateDecisions.length} · timed overlaps to decide ${queue.timedOverlaps.filter((x) => x.kind.startsWith('possible')).length} · board ambiguity reviews ${queue.boardReviews.length} · blocked boards ${queue.blockedBoards.length} · difficulty warnings ${queue.difficultyWarnings.length} (content/library/review-queue.md)`)
 const allBoards = systemsInLib.flatMap((x) => state.starterBoards[x] || [])
 say(`Starter boards: ${systemsInLib.map((x) => `${x} ${(state.starterBoards[x] || []).filter((b) => b.status !== 'blocked').length}/5 passing`).join(', ') || 'none'} · ready ${allBoards.filter((b) => b.status === 'ready').length} · need ambiguity review ${allBoards.filter((b) => b.status === 'review').length} · blocked ${allBoards.filter((b) => b.status === 'blocked').length} · shortages: ${Object.keys(shortages).length ? Object.keys(shortages).join(', ') : 'none'}`)
 say(`Daily: ${dailyPool.length} connections, unassigned and shared across all systems · estimate ${Math.floor(dailyPool.length / 4)} boards (${dailyPool.length} ÷ 4) · capacity check formed ${dailyBoards.length} disjoint boards passing structural checks (${dailyFlagged} of them would need ambiguity review; ${dailyMixed} mix systems)`)
@@ -406,4 +421,19 @@ console.log(report)
 if (!DRY && importEntry) {
   fs.mkdirSync(path.join(DIR, 'reports'), { recursive: true })
   fs.writeFileSync(path.join(DIR, 'reports', `${now.slice(0, 10)}-${L.slug(importEntry.system)}-${importEntry.fileSha}.md`), report + '\n')
+}
+// Checksum manifest of everything staged, so a saved copy can be verified
+// after it is restored (node scripts/library/verify.mjs).
+if (!DRY) {
+  const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]))
+  const files = walk(DIR).filter((f) => !f.endsWith('MANIFEST.json')).sort()
+  const manifest = {
+    about: 'Checksums of the staged new library. Staging only: active is false and nothing in src/ reads these files.',
+    active: false,
+    savedAt: now,
+    systems: systemsInLib,
+    counts: state.counts.all,
+    files: Object.fromEntries(files.map((f) => [path.relative(DIR, f), L.sha(fs.readFileSync(f).toString('binary'))])),
+  }
+  fs.writeFileSync(path.join(DIR, 'MANIFEST.json'), JSON.stringify(manifest, null, 1) + '\n')
 }

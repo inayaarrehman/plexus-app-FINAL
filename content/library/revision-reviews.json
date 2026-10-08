@@ -28,6 +28,13 @@
       "evidence": "Notes: \"All four are verified MI complications (Damluji, Mechanical Complications of AMI, Circulation 2021; Murphy & Goldberg, Am J Med 2022). REVISION: explanation reworded to state distinct timelines and remove any implication of a shared onset day.\" Tiles and title unchanged from the source; only the explanation was reworded, and the remaining note explains why a competing category is weaker.",
       "contentHash": "cd6c34e9c611324c6c97da4d26eaf6e8b2cb012caaafe75b2bdee4d21a6f862b",
       "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
+    },
+    "DERM-034": {
+      "endorsedFinalRow": true,
+      "outstanding": "Tile 4 was changed by the review from the source's \"Thermoregulatory smooth muscle\" to \"Cold hypersensitivity\", a new clinical feature supported by outside references in Notes (Lee et al, J Hand Surg Eur Vol 2009; Chen et al, JAMA Otolaryngol 2017). The row still cites Bootcamp Vascular Tumors > Glomus Tumor p. 110 only. Confirm the new tile and add the supporting reference to Source, or record that this is accepted (same question as PLX-BCH-009).",
+      "evidence": "Notes: \"REVISED: original tiles 3 and 4 (Glomus body origin; Thermoregulatory smooth muscle) are two statements of the same concept ... Replaced Thermoregulatory smooth muscle with Cold hypersensitivity (classic clinical triad feature) ... explanation updated accordingly.\"",
+      "contentHash": "0b0fdef17c8d429eccd6165c6a9f8b9148b89779fc736459f39a3746309097d9",
+      "determinedBy": "Claude, from the row's Notes, 2026-10-08; owner may override"
     }
   }
 }

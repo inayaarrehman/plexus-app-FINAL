@@ -136,9 +136,33 @@ The capacity check is recomputed each time and saves nothing.
    A mode with too little content in its own library reports a shortage. It never falls back to the other library.
 7. Player progress (history, XP ledger, streaks, Systems mastery) is keyed by puzzle and category ids. It is kept as is.
 
+## Review queue, status counts and saving
+
+- **`review-queue.md` / `review-queue.json`** are rebuilt on every import. They keep six categories apart:
+  1. medical / source holds
+  2. duplicate decisions in the new library
+  3. timed-library overlaps
+  4. board ambiguity reviews
+  5. blocked boards
+  6. difficulty-calibration warnings
+
+  Each duplicate or overlap shows both titles, all eight tiles side by side, both statuses and the shared relationship.
+- **Difficulty-calibration notes** ("may be too transparent for a Hard puzzle") are listed separately and never block or flag a board. Notes that confirm a difficulty ("Hard difficulty appropriate") are ignored.
+- **Status counts** keep review outcome apart from current use:
+  - **passed medical review:** eligible under the status map, with the basis recorded
+  - **held for medical/source review**
+  - **held or set aside as duplicates**
+  - **usable now:** passed review and not held
+- **Saving.** Every non-dry import saves `library.json`, which holds:
+  - records with their version `history`
+  - starter-board allocations and their states
+  - match pairs and counts
+
+  It also saves `review-queue.*`, `reports/`, the uploads, and `MANIFEST.json` (checksums of every staged file). `node scripts/library/verify.mjs` checks a saved or restored copy against the manifest, and confirms `active` is false and nothing in `src/` reads staging.
+
 ## Checks
 
 ```
-node scripts/library/test.mjs          # importer checks on placeholder rows (52 checks)
+node scripts/library/test.mjs          # importer checks on placeholder rows (54 checks)
 node scripts/library/timed-snapshot.mjs  # refresh the timed-library manifest
 ```

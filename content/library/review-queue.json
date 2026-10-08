@@ -1,0 +1,456 @@
+{
+ "generatedAt": "2026-10-08T06:54:52.240Z",
+ "active": false,
+ "medicalHolds": [
+  {
+   "id": "PLX-BCH-009",
+   "system": "Biochemistry/Genetics",
+   "title": "Agents using retrograde axonal transport",
+   "tiles": [
+    "Tetanus toxin",
+    "Herpes simplex virus",
+    "Poliovirus",
+    "Rabies virus"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "The corrected tile (Tetanus toxin, replacing Clostridium tetani) is supported only by the outside citation in Notes (Yen and Thwaites, Lancet 2019). The row still cites Bootcamp Cell Biology > Cytoskeleton p. 8, and Notes say that source names the organism. Confirm the correction and add the supporting reference to the Source field, or record that the mismatch is accepted."
+  },
+  {
+   "id": "DERM-034",
+   "system": "Dermatology",
+   "title": "Glomus tumor clues",
+   "tiles": [
+    "Painful subungual lesion",
+    "Red-blue nodule",
+    "Glomus body origin",
+    "Cold hypersensitivity"
+   ],
+   "status": "AI_REVIEWED_REVISED",
+   "issue": "Tile 4 was changed by the review from the source's \"Thermoregulatory smooth muscle\" to \"Cold hypersensitivity\", a new clinical feature supported by outside references in Notes (Lee et al, J Hand Surg Eur Vol 2009; Chen et al, JAMA Otolaryngol 2017). The row still cites Bootcamp Vascular Tumors > Glomus Tumor p. 110 only. Confirm the new tile and add the supporting reference to Source, or record that this is accepted (same question as PLX-BCH-009)."
+  }
+ ],
+ "duplicateDecisions": [
+  {
+   "key": "CARD-017 | PLX-BCH-031",
+   "kind": "possible duplicate (held)",
+   "held": "CARD-017",
+   "sharedRelationship": "both are \"findings / associations of marfan syndrome\"",
+   "a": {
+    "id": "PLX-BCH-031",
+    "library": "new",
+    "system": "Biochemistry/Genetics",
+    "title": "Classic Marfan syndrome associations",
+    "tiles": [
+     "Arachnodactyly",
+     "Upward lens subluxation",
+     "Aortic dissection",
+     "Pectus deformity"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "CARD-017",
+    "library": "new",
+    "system": "Cardiology",
+    "title": "Marfan syndrome associations",
+    "tiles": [
+     "Fibrillin-1 defect",
+     "Upward lens displacement",
+     "Aortic root enlargement",
+     "Mitral valve prolapse"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "decide": "decisions.json → pairs → \"CARD-017 | PLX-BCH-031\": \"same\" or \"distinct\""
+  }
+ ],
+ "timedOverlaps": [
+  {
+   "key": "PLX-BCH-008 | bank-ext-001",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "both are \"fat soluble vitamin\"; 4 of 4 tiles identical; tile wording 100% the same",
+   "a": {
+    "id": "PLX-BCH-008",
+    "library": "new",
+    "system": "Biochemistry/Genetics",
+    "title": "Fat-soluble vitamins",
+    "tiles": [
+     "Vitamin A",
+     "Vitamin D",
+     "Vitamin E",
+     "Vitamin K"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-001",
+    "library": "timed",
+    "system": "Biochemistry/Genetics",
+    "title": "Fat-soluble vitamins",
+    "tiles": [
+     "Vitamin A",
+     "Vitamin D",
+     "Vitamin E",
+     "Vitamin K"
+    ],
+    "status": "verified"
+   },
+   "decide": "no decision needed unless you disagree"
+  },
+  {
+   "key": "PLX-BCH-079 | bank-ext-086",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"storage disease enzyme replacement\" vs \"lysosomal storage disease\"; 3 of 4 tiles identical; tile wording 63% the same",
+   "a": {
+    "id": "PLX-BCH-079",
+    "library": "new",
+    "system": "Biochemistry/Genetics",
+    "title": "Storage diseases with enzyme replacement described in the source",
+    "tiles": [
+     "Fabry disease",
+     "Gaucher disease",
+     "Hurler syndrome",
+     "Pompe disease"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-086",
+    "library": "timed",
+    "system": "Biochemistry/Genetics",
+    "title": "Lysosomal storage diseases",
+    "tiles": [
+     "Tay-Sachs disease",
+     "Gaucher disease",
+     "Fabry disease",
+     "Hurler syndrome"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"PLX-BCH-079 | bank-ext-086\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "CARD-001 | bank-ext-050",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "\"defect tetralogy fallot\" vs \"findings / associations of tetralogy fallot\"; 2 of 4 tiles identical; tile wording 82% the same",
+   "a": {
+    "id": "CARD-001",
+    "library": "new",
+    "system": "Cardiology",
+    "title": "The four defects in tetralogy of Fallot",
+    "tiles": [
+     "Pulmonary outflow stenosis",
+     "Aorta overriding the septum",
+     "Ventricular septal defect",
+     "Right ventricular hypertrophy"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-050",
+    "library": "timed",
+    "system": "Cardiology",
+    "title": "Findings in tetralogy of Fallot",
+    "tiles": [
+     "Pulmonary stenosis",
+     "Right ventricular hypertrophy",
+     "Overriding aorta",
+     "Ventricular septal defect"
+    ],
+    "status": "verified"
+   },
+   "decide": "no decision needed unless you disagree"
+  },
+  {
+   "key": "CARD-002 | bank-medium-16",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "both are \"causes of high output heart failure\"; 2 of 4 tiles identical; tile wording 67% the same",
+   "a": {
+    "id": "CARD-002",
+    "library": "new",
+    "system": "Cardiology",
+    "title": "Classic causes of high-output heart failure",
+    "tiles": [
+     "Thiamine deficiency",
+     "Severe anemia",
+     "Hyperthyroidism",
+     "Arteriovenous fistula"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-medium-16",
+    "library": "timed",
+    "system": "Cardiology",
+    "title": "Causes of high-output heart failure",
+    "tiles": [
+     "Severe anemia",
+     "Thyrotoxicosis",
+     "Arteriovenous fistula",
+     "Thiamine deficiency (beriberi)"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"CARD-002 | bank-medium-16\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "CARD-002 | bank-migrated-sys-cardio-0002-L4",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"causes of high output heart failure\" vs \"causes of widened pulse pressure\"; 3 of 4 tiles identical",
+   "a": {
+    "id": "CARD-002",
+    "library": "new",
+    "system": "Cardiology",
+    "title": "Classic causes of high-output heart failure",
+    "tiles": [
+     "Thiamine deficiency",
+     "Severe anemia",
+     "Hyperthyroidism",
+     "Arteriovenous fistula"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-migrated-sys-cardio-0002-L4",
+    "library": "timed",
+    "system": "Cardiology",
+    "title": "Causes of a widened pulse pressure",
+    "tiles": [
+     "Aortic regurgitation",
+     "Hyperthyroidism",
+     "Severe anemia",
+     "Arteriovenous fistula"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"CARD-002 | bank-migrated-sys-cardio-0002-L4\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "CARD-007 | bank-ext-020",
+   "kind": "same relationship as a timed entry (timed entry to be excluded at activation)",
+   "sharedRelationship": "both are \"drug slow av nodal conduction\"; 3 of 4 tiles identical; tile wording 60% the same",
+   "a": {
+    "id": "CARD-007",
+    "library": "new",
+    "system": "Cardiology",
+    "title": "Drugs that slow AV nodal conduction",
+    "tiles": [
+     "Verapamil",
+     "Diltiazem",
+     "Metoprolol",
+     "Digoxin"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-020",
+    "library": "timed",
+    "system": "Pharmacology",
+    "title": "Drugs that slow AV nodal conduction",
+    "tiles": [
+     "Adenosine",
+     "Diltiazem",
+     "Metoprolol",
+     "Digoxin"
+    ],
+    "status": "verified"
+   },
+   "decide": "no decision needed unless you disagree"
+  },
+  {
+   "key": "CARD-012 | bank-ext-051",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "both are \"causes of restrictive cardiomyopathy\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "CARD-012",
+    "library": "new",
+    "system": "Cardiology",
+    "title": "Conditions that can produce restrictive cardiomyopathy",
+    "tiles": [
+     "Cardiac amyloidosis",
+     "Hemochromatosis",
+     "Cardiac sarcoidosis",
+     "Chest irradiation"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-051",
+    "library": "timed",
+    "system": "Cardiology",
+    "title": "Causes of restrictive cardiomyopathy",
+    "tiles": [
+     "Amyloidosis",
+     "Hemochromatosis",
+     "Sarcoidosis",
+     "Endomyocardial fibrosis"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"CARD-012 | bank-ext-051\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "CARD-034 | bank-migrated-sys-mixed-0002-L4",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "both are \"findings / associations of cardiac tamponade\"; 1 of 4 tiles identical",
+   "a": {
+    "id": "CARD-034",
+    "library": "new",
+    "system": "Cardiology",
+    "title": "Classic cardiac tamponade findings",
+    "tiles": [
+     "Low blood pressure",
+     "Distended neck veins",
+     "Quiet heart sounds",
+     "Pulsus paradoxus"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-migrated-sys-mixed-0002-L4",
+    "library": "timed",
+    "system": "Mixed / Step Review",
+    "title": "Findings in cardiac tamponade",
+    "tiles": [
+     "Pulsus paradoxus",
+     "Electrical alternans",
+     "Beck's triad",
+     "Low-voltage QRS on ECG"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"CARD-034 | bank-migrated-sys-mixed-0002-L4\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "DERM-018 | bank-easy-04",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "\"findings / associations of infectious erythema nodosum\" vs \"granulomatous infection necrotizing caseating granuloma\"; 3 of 4 tiles identical",
+   "a": {
+    "id": "DERM-018",
+    "library": "new",
+    "system": "Dermatology",
+    "title": "Infectious associations of erythema nodosum",
+    "tiles": [
+     "Coccidioidomycosis",
+     "Histoplasmosis",
+     "Tuberculosis",
+     "Streptococcal infection"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-easy-04",
+    "library": "timed",
+    "system": "Microbiology",
+    "title": "Granulomatous infections with necrotizing (caseating) granulomas",
+    "tiles": [
+     "Tuberculosis",
+     "Histoplasmosis",
+     "Coccidioidomycosis",
+     "Nontuberculous mycobacterial infection"
+    ],
+    "status": "needs_review"
+   },
+   "decide": "decisions.json → pairs → \"DERM-018 | bank-easy-04\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  },
+  {
+   "key": "DERM-029 | bank-ext-110",
+   "kind": "possible repeat of a timed entry",
+   "sharedRelationship": "both are \"findings / associations of psoriasis\"; 2 of 4 tiles identical",
+   "a": {
+    "id": "DERM-029",
+    "library": "new",
+    "system": "Dermatology",
+    "title": "Psoriasis clinical associations",
+    "tiles": [
+     "Silvery plaques",
+     "Auspitz sign",
+     "Nail pitting",
+     "Psoriatic arthritis"
+    ],
+    "status": "AI_REVIEWED_PASS"
+   },
+   "b": {
+    "id": "bank-ext-110",
+    "library": "timed",
+    "system": "Dermatology",
+    "title": "Features of psoriasis",
+    "tiles": [
+     "Silvery scale",
+     "Auspitz sign",
+     "Nail pitting",
+     "Extensor-surface plaques"
+    ],
+    "status": "verified"
+   },
+   "decide": "decisions.json → pairs → \"DERM-029 | bank-ext-110\": \"same\" (exclude timed entry at activation) or \"distinct\""
+  }
+ ],
+ "boardReviews": [
+  {
+   "board": "biochemistry-genetics-starter-5",
+   "system": "Biochemistry/Genetics",
+   "signature": "4b155f2b",
+   "connections": [
+    {
+     "id": "PLX-BCH-050",
+     "title": "Classic alkaptonuria associations",
+     "difficulty": "easy",
+     "tiles": [
+      "Ochronosis",
+      "Black urine after standing",
+      "Elevated homogentisate",
+      "Arthritis"
+     ]
+    },
+    {
+     "id": "PLX-BCH-044",
+     "title": "Extrahepatic tissues that can oxidize ketone bodies",
+     "difficulty": "medium",
+     "tiles": [
+      "Heart",
+      "Brain",
+      "Skeletal muscle",
+      "Renal cortex"
+     ]
+    },
+    {
+     "id": "PLX-BCH-070",
+     "title": "Processes supported by peroxisomes",
+     "difficulty": "medium",
+     "tiles": [
+      "Very-long-chain fatty acid beta-oxidation",
+      "Branched-chain fatty acid alpha-oxidation",
+      "Hydrogen peroxide detoxification",
+      "Plasmalogen synthesis"
+     ]
+    },
+    {
+     "id": "PLX-BCH-077",
+     "title": "Aromatic L-amino acid decarboxylase deficiency clues",
+     "difficulty": "hard",
+     "tiles": [
+      "Oculogyric crises",
+      "Hypotonia",
+      "Autonomic dysfunction",
+      "Developmental delay"
+     ]
+    }
+   ],
+   "flags": [
+    "PLX-BCH-077 board instruction to check against the other groups: \"Avoid a competing neurotransmitter-deficiency category on the same board.\""
+   ],
+   "clear": "decisions.json → boards → \"biochemistry-genetics-starter-5\": \"cleared:4b155f2b\""
+  }
+ ],
+ "blockedBoards": [],
+ "difficultyWarnings": [
+  {
+   "id": "PLX-BCH-071",
+   "title": "Levels of protein structure",
+   "difficulty": "easy",
+   "board": "biochemistry-genetics-starter-1",
+   "note": "Intentionally introductory category; may be too transparent for a Hard puzzle."
+  }
+ ]
+}
