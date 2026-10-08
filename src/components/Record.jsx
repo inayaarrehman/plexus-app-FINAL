@@ -32,7 +32,40 @@ function useWide(ref, min = 620) {
   return wide
 }
 
-export default function Record({ history, todayKey, stats, onBack, initialTab = 'record', preview = null }) {
+// The weekly reward: two parts (XP and, every other week, a Kit tool) with
+// what state it is in. It is added automatically the moment the third goal is
+// done; nothing needs claiming. `pending`: not all goals done. `earned`: done
+// and paid. `due`: done but not yet paid (it is paid with the next puzzle
+// you finish, for example after a sync from another device).
+function WeekReward({ xp, item, state }) {
+  const label = state === 'earned' ? 'Weekly reward earned' : 'Weekly reward'
+  const foot =
+    state === 'earned'
+      ? 'Added to your XP and Kit. New goals Monday.'
+      : state === 'due'
+        ? 'Added with the next puzzle you finish. New goals Monday.'
+        : 'Added automatically when all 3 are done. Resets Monday.'
+  return (
+    <div className={`week-reward is-${state}`}>
+      <span className="week-reward-label">{label}</span>
+      <div className="week-reward-items">
+        <span className="week-reward-item">
+          <span className="week-reward-node" aria-hidden="true" />
+          <b>{fmt(xp)} XP</b>
+        </span>
+        {item && (
+          <span className="week-reward-item">
+            <KitIcon item={item} size={18} />
+            <b>{KIT[item].name} +1</b>
+          </span>
+        )}
+      </div>
+      <p className="rounds-foot">{foot}</p>
+    </div>
+  )
+}
+
+export default function Record({ history, todayKey, stats, onBack, initialTab = 'record', initialSection = null, preview = null }) {
   const [tab, setTab] = useState(initialTab)
   const snap = useMemo(() => recordSnapshot({ history, todayKey }), [history, todayKey])
   const { counts, streak, systemsComplete, connections, rounds } = snap
@@ -42,6 +75,17 @@ export default function Record({ history, todayKey, stats, onBack, initialTab = 
   )
   const roundsItem = rounds.week.index % 2 === 0 ? ROUNDS_ITEM_ROTATION[(rounds.week.index / 2) % ROUNDS_ITEM_ROTATION.length] : null
   const unit = (n) => (n === 1 ? 'day' : 'days')
+  const weekState = !rounds.complete ? 'pending' : snap.state.ledger[`rounds:${rounds.week.key}`] ? 'earned' : 'due'
+
+  // Opened from Home's This Week line: bring This Week into view.
+  useEffect(() => {
+    if (initialSection !== 'week') return undefined
+    const t = setTimeout(() => {
+      const el = document.getElementById('this-week')
+      if (el) el.scrollIntoView({ block: 'start', behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+    }, 120)
+    return () => clearTimeout(t)
+  }, [initialSection])
 
   // Where the XP animation starts and ends. Read the marker once per mount,
   // then move it to the current total so a reload never replays the same XP.
@@ -94,9 +138,9 @@ export default function Record({ history, todayKey, stats, onBack, initialTab = 
           <section className="record-hero" aria-label="Level">
             <h1 className="record-level" key={heroLevel}>Level {heroLevel}</h1>
             <p className="record-xpline">
-              <span className="record-xp">{fmt(anim.xp)} XP</span>
-              <span className="record-dot" aria-hidden="true"> · </span>
               <span className="record-tonext">{fmt(toNextXp)} XP to Level {toNextLevel}</span>
+              <span className="record-dot" aria-hidden="true"> · </span>
+              <span className="record-xp">{fmt(anim.xp)} XP</span>
             </p>
             {anim.earned && !anim.activating && (
               <p className="record-earned" role="status">
@@ -140,7 +184,7 @@ export default function Record({ history, todayKey, stats, onBack, initialTab = 
               <dl className="record-totals">
                 <div><dd>{fmt(stats?.gamesWon || 0)}</dd><dt>Puzzles</dt></div>
                 <div><dd>{fmt(connections)}</dd><dt>Connections</dt></div>
-                <div><dd>{fmt(perfectDailies)}</dd><dt>Perfect</dt></div>
+                <div><dd>{fmt(perfectDailies)}</dd><dt>Perfect Dailies</dt></div>
                 <div><dd>{systemsComplete}<span className="record-unit">/16</span></dd><dt>Systems</dt></div>
               </dl>
             </div>
@@ -148,10 +192,7 @@ export default function Record({ history, todayKey, stats, onBack, initialTab = 
             <section className="record-week" aria-labelledby="this-week">
               <h2 className="record-section" id="this-week">This Week</h2>
               <WeekGoals goals={rounds.goals} complete={rounds.complete} />
-              <p className="rounds-reward">
-                {rounds.complete ? 'Earned' : 'Reward'} · +{XP.rounds} XP{roundsItem ? ` · ${KIT[roundsItem].name} +1` : ''}
-              </p>
-              <p className="rounds-foot">Resets Monday</p>
+              <WeekReward xp={XP.rounds} item={roundsItem} state={weekState} />
             </section>
           </div>
         </div>

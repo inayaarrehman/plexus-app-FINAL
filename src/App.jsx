@@ -165,6 +165,7 @@ export default function App() {
     const to = Number(q.get('to') ?? 420)
     return Number.isFinite(from) && Number.isFinite(to) && to >= from && from >= 0 ? { from, to } : { from: 100, to: 420 }
   })
+  const [recordSection, setRecordSection] = useState(null)
   const [view, setView] = useState(() => (myPlexusPreview ? 'record' : 'home')) // 'home' | 'game' | 'archive' | 'systems' | 'challenge' | 'race'
   const [gameCtx, setGameCtx] = useState(null)
   const [challengePhase, setChallengePhase] = useState('intro')
@@ -611,6 +612,7 @@ export default function App() {
           onExit={goHome}
           onOpenRecord={() => {
             setGameCtx(null)
+            setRecordSection(null)
             setView('record')
           }}
           onFinish={handleFinish}
@@ -629,6 +631,7 @@ export default function App() {
           todayKey={todayKey}
           stats={stats}
           preview={myPlexusPreview}
+          initialSection={recordSection}
           onBack={() => {
             if (myPlexusPreview) {
               window.location.hash = ''
@@ -713,7 +716,10 @@ export default function App() {
         onLocked={showLocked}
         nudge={lockNotice}
         onOpenStats={() => setShowStats(true)}
-        onOpenRecord={() => setView('record')}
+        onOpenRecord={(section) => {
+          setRecordSection(typeof section === 'string' ? section : null)
+          setView('record')
+        }}
         record={recordHome}
         onOpenHowTo={() => setShowHowTo(true)}
         onOpenAccount={supaConfigured ? () => setShowAccount(true) : null}

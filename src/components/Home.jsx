@@ -432,20 +432,38 @@ export default function Home({
         </section>
       </div>
 
+      {/* MY PLEXUS: where you see what you've built. Two quiet rows that both
+          open My Plexus (the second straight to This Week). */}
       {record && onOpenRecord && (
-        <button className="home-level home-level-bottom" onClick={onOpenRecord} aria-label={`My Plexus: level ${record.info.level}, ${record.info.toNext} XP to level ${record.info.level + 1}`}>
-          <span className="home-level-text">
-            <b>Level {record.info.level}</b> · {record.info.toNext.toLocaleString('en-US')} XP to Level {record.info.level + 1}
-          </span>
-          <LevelLine info={record.info} width={84} height={14} className="home-level-line" />
-        </button>
-      )}
-
-      {record && onOpenRecord && (
-        <button className="home-rounds" onClick={onOpenRecord}>
-          {record.rounds.complete ? 'This Week: all 3 goals done' : `This Week: ${record.rounds.done} of ${record.rounds.goals.length} goals done`}
-          <span> · resets Monday</span>
-        </button>
+        <section className="home-progress" aria-label="My Plexus">
+          <button
+            className="home-progress-row home-level"
+            onClick={() => onOpenRecord()}
+            aria-label={`My Plexus: level ${record.info.level}, ${record.info.toNext} XP to level ${record.info.level + 1}`}
+          >
+            <span className="home-progress-text">
+              <b>Level {record.info.level}</b> · {record.info.toNext.toLocaleString('en-US')} XP to Level {record.info.level + 1}
+            </span>
+            <LevelLine info={record.info} width={84} height={14} className="home-level-line" />
+            <span className="home-progress-arrow" aria-hidden="true">&rarr;</span>
+          </button>
+          <button
+            className="home-progress-row home-rounds"
+            onClick={() => onOpenRecord('week')}
+            aria-label={`This Week in My Plexus: ${record.rounds.done} of ${record.rounds.goals.length} goals done`}
+          >
+            <span className="home-progress-text">
+              {record.rounds.complete ? 'This Week: all 3 goals done' : `This Week: ${record.rounds.done} of ${record.rounds.goals.length} goals done`}
+              <span className="home-progress-meta"> · resets Monday</span>
+            </span>
+            <span className="home-week-nodes" aria-hidden="true">
+              {record.rounds.goals.map((g) => (
+                <span key={g.id} className={`home-week-node ${g.done ? 'is-done' : ''}`} />
+              ))}
+            </span>
+            <span className="home-progress-arrow" aria-hidden="true">&rarr;</span>
+          </button>
+        </section>
       )}
 
       <LegalFooter onNavigate={onOpenLegal} className="home-legal" />

@@ -1470,7 +1470,7 @@ console.log('\n[41] Home and My Plexus: economy unchanged, previews faithful, co
   assert(firstSentence('Seen with e.g. Lyme disease. More here.').first === 'Seen with e.g. Lyme disease.', 'does not split after e.g.')
   // New UI files: no em dashes in user-facing strings, no rank or currency language.
   const fs = await import('node:fs')
-  for (const f of ['src/components/Home.jsx', 'src/components/DailyPlexus.jsx', 'src/components/Record.jsx', 'src/components/RecordParts.jsx', 'src/components/XpResult.jsx', 'src/components/useGrowthAnimation.js']) {
+  for (const f of ['src/components/HowToModal.jsx', 'src/components/Modal.jsx', 'src/components/Home.jsx', 'src/components/DailyPlexus.jsx', 'src/components/Record.jsx', 'src/components/RecordParts.jsx', 'src/components/XpResult.jsx', 'src/components/useGrowthAnimation.js']) {
     const t = fs.readFileSync(f, 'utf8')
     const strings = [...t.matchAll(/>([^<>{}]*[A-Za-z][^<>{}]*)</g), ...t.matchAll(/'([^'\n]*[A-Za-z ][^'\n]*)'/g), ...t.matchAll(/`([^`\n]*)`/g)].map((m) => m[1])
     assert(!strings.some((x) => /—/.test(x)), f + ' has no em dash in UI strings')

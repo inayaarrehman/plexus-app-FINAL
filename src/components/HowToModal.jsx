@@ -1,17 +1,68 @@
 import React from 'react'
 import Modal from './Modal.jsx'
-import DifficultyIcon from './DifficultyIcon.jsx'
+import BrandMark from './BrandMark.jsx'
+import { MAX_MISTAKES } from '../utils/game.js'
+import { XP } from '../progression/config.js'
+
+// How to play: three steps that match the game as built.
+//   1. Sixteen concepts, four groups of four; select four and submit.
+//      MAX_MISTAKES wrong guesses end the puzzle (the last one ends it).
+//   2. Naming is on today's Daily only: after a group is found, name it for
+//      XP.categoryBonus or skip to see the category. A wrong name never costs
+//      a mistake. The board waits until the group is named or skipped.
+//   3. Finishing today's Daily, won or lost, opens the other modes. Every
+//      finished puzzle earns XP toward My Plexus.
+// Numbers and values come from the game's own constants, so the text cannot
+// drift from the rules.
+const words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six']
+const say = (n) => words[n] || String(n)
+
+const STEPS = [
+  {
+    title: 'Find the connection',
+    body: [
+      'Each Daily has 16 medical concepts in four hidden groups. Select four tiles that share a connection and submit.',
+      `You have ${say(MAX_MISTAKES)} mistakes. The ${MAX_MISTAKES === 4 ? 'fourth' : 'last'} one ends the puzzle. Watch for concepts that seem to fit two groups.`,
+    ],
+  },
+  {
+    title: 'Name it for bonus XP',
+    body: [
+      `On today’s Daily, after you find a group, name the connection for +${XP.categoryBonus} XP. A wrong name never costs a mistake.`,
+      'Or skip to reveal the category. Name it or skip it to keep solving.',
+    ],
+  },
+  {
+    title: 'Keep connecting',
+    body: [
+      'Finish today’s Daily, win or lose, to open 3 Minutes, Race, Systems and the Archive.',
+      'Every puzzle you finish earns XP and grows My Plexus.',
+    ],
+  },
+]
 
 export default function HowToModal({ onClose }) {
   return (
-    <Modal onClose={onClose} title="How to play">
-      <ul className="howto-list">
-        <li>Find groups of <strong>4 clinical concepts</strong> that share a hidden connection.</li>
-        <li>Tap up to 4 tiles, then hit <strong>Submit</strong> to lock in a guess.</li>
-        <li>Each puzzle has 4 categories, from <span className="howto-diff"><DifficultyIcon level={1} size={19} decorative /> easier</span> to <span className="howto-diff"><DifficultyIcon level={4} size={19} decorative /> trickier</span>.</li>
-        <li>Watch for red herrings. An item may look like it fits more than one group.</li>
-        <li>You get <strong>4 mistakes</strong> before the puzzle ends. Good luck, doctor.</li>
-      </ul>
+    <Modal onClose={onClose} title="How to play" className="howto-modal">
+      <ol className="howto-steps">
+        {STEPS.map((s, i) => (
+          <li className={`howto-step howto-step-${i + 1}`} key={s.title}>
+            <span className="howto-num" aria-hidden="true">
+              {i + 1}
+            </span>
+            <div className="howto-text">
+              <h3 className="howto-title">{s.title}</h3>
+              {s.body.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
+          </li>
+        ))}
+      </ol>
+      <p className="howto-signoff">
+        <BrandMark size={22} decorative />
+        <span>Good luck, doctor.</span>
+      </p>
     </Modal>
   )
 }
