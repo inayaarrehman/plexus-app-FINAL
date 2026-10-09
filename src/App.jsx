@@ -29,7 +29,8 @@ import { getDailyPuzzleForDate, getPlayableDailyForDate } from './utils/dailyPuz
 import { getDailyGate, isGatedView, GATED_VIEWS, LOCK_COPY, hasSeenUnlock, markUnlockSeen } from './utils/dailyGate.js'
 import LockGlyph from './components/LockGlyph.jsx'
 import Record from './components/Record.jsx'
-import { recordDailyFinish, recordSystemFinish, backfillIfNeeded, streakInfo, loadProgression, recordSnapshot, ensureProgression } from './progression/store.js'
+import { recordDailyFinish, recordSystemFinish, recordSystemAttemptStart, systemAttempts, attemptXp, backfillIfNeeded, streakInfo, loadProgression, recordSnapshot, ensureProgression } from './progression/store.js'
+import { systemAccent, systemConfettiPalette } from './utils/systemAccent.js'
 import { SYSTEMS } from './data/constants.js'
 import { systemMasteryCounts } from './utils/mastery.js'
 import {
@@ -315,12 +316,15 @@ export default function App() {
   // Systems boards finished on this device (merged with the cloud copy for
   // signed-in players).
   const finishedBoards = useMemo(() => getSystemsBoards(), [refreshTick]) // eslint-disable-line react-hooks/exhaustive-deps
+  // Attempts per Systems board (synced with the XP ledger): orders each
+  // subject's queue of unsolved boards.
+  const boardAttempts = useMemo(() => systemAttempts(finishedBoards), [finishedBoards, refreshTick]) // eslint-disable-line react-hooks/exhaustive-deps
   // My Plexus: Systems boards completed out of boards available today.
   const systemsBoardTotals = useMemo(() => {
     let completed = 0
     let available = 0
     for (const subject of LIBRARY_SUBJECTS) {
-      const p = subjectProgress(subject, todayKey, finishedBoards)
+      const p = subjectProgress(subject, todayKey, finishedBoards, boardAttempts)
       completed += p.completed
       available += p.total
     }
@@ -328,7 +332,7 @@ export default function App() {
   }, [todayKey, finishedBoards])
   const continueSystemCounts = useMemo(() => {
     if (!continueSystem) return { total: 0, solved: 0 }
-    const p = subjectProgress(continueSystem, todayKey, finishedBoards)
+    const p = subjectProgress(continueSystem, todayKey, finishedBoards, boardAttempts)
     return { total: p.total, solved: p.completed }
   }, [continueSystem, todayKey, finishedBoards])
   const challengeBest = useMemo(() => getChallengeStats().personalBest, [refreshTick])
@@ -400,6 +404,10 @@ export default function App() {
       return
     }
     if (key === 'challenge') setChallengePhase('intro')
+    if (key === 'systems') {
+      setSystemsSelected(null)
+      setSystemsNotice(null)
+    }
     setView(key)
   }
 
@@ -470,56 +478,29 @@ export default function App() {
   }
 
 
-  // Systems play the subject's fixed boards in order: the five starter
-  // boards, then boards released from past Dailies. The next board is the
-  // first one this player has not finished. When none is left the Systems
-  // page shows the caught-up message instead of Play.
-  const playSystem = (system) => {
-    if (!modesUnlocked) {
-      showLocked()
-      return
-    }
-    const p = subjectProgress(system, todayKey, getSystemsBoards())
-    if (!p.next) {
-      setSystemPlayNotice(null)
-      setView('systems')
-      return
-    }
-    const puzzle = systemsBoardPuzzle(p.next.board, p.next.index)
+  // Systems: each subject is a queue of unsolved boards (utils/newLibrary.js
+  // subjectProgress). Play opens the head of the queue. A board left after a
+  // guess, or lost, goes to the back; a solved board leaves the queue. When
+  // nothing is left the Systems page shows the subject as connected.
+  const [systemsSelected, setSystemsSelected] = useState(null)
+  const [systemsNotice, setSystemsNotice] = useState(null)
+  const openBoard = (system, board, index, { replay = false } = {}) => {
+    const puzzle = systemsBoardPuzzle(board, index)
     if (!puzzle) {
       setSystemPlayNotice(`This ${subjectLabel(system)} board could not be loaded.`)
-      return
+      return false
     }
+    const boards = getSystemsBoards()
+    const solved = !!boards[board.id]?.won
+    const saved = loadProgress(puzzle.id)
+    // A finished-but-unsolved board (from before boards rotated) or a replay
+    // starts fresh; an unfinished attempt resumes (same attempt, same count).
+    if (replay || (saved?.gameOver && !saved.won)) clearProgress(puzzle.id)
+    const resuming = !replay && saved && !saved.gameOver && saved.attemptId && loadProgression().ledger[`sysattempt:${board.id}:${saved.attemptId}`]
+    const tries = systemAttempts(boards)[board.id]?.count || 0
+    const n = tries + (resuming ? 0 : 1)
     setSystemPlayNotice(null)
-    setGameCtx({
-      puzzle,
-      mode: 'system',
-      progressKey: puzzle.id,
-      headerLabel: `${subjectLabel(system)} · Board ${p.next.index + 1}`,
-      resultTitle: 'Puzzle Results',
-      system,
-      boardId: p.next.board.id,
-      isDaily: false,
-    })
-    setView('game')
-  }
-
-  // Explicit replay of a Systems board: a fresh attempt on the same fixed
-  // board. Tools used in it are spent again; first-completion XP is not paid
-  // again, and This Week counts the board once per week.
-  const replayBoard = (ctx) => {
-    if (!ctx || ctx.mode !== 'system') return
-    clearProgress(ctx.progressKey)
-    setGameCtx({ ...ctx, attempt: (ctx.attempt || 0) + 1 })
-  }
-  const playSystemBoard = (system, board, index) => {
-    if (!modesUnlocked) {
-      showLocked()
-      return
-    }
-    const puzzle = systemsBoardPuzzle(board, index)
-    if (!puzzle) return
-    clearProgress(puzzle.id)
+    setSystemsNotice(null)
     setGameCtx({
       puzzle,
       mode: 'system',
@@ -530,8 +511,86 @@ export default function App() {
       boardId: board.id,
       isDaily: false,
       attempt: Date.now(),
+      systemAttempt: solved ? null : { n, xp: attemptXp(n) },
+      systemCompletion: null,
     })
     setView('game')
+    return true
+  }
+  const playSystem = (system) => {
+    if (!modesUnlocked) {
+      showLocked()
+      return
+    }
+    const boards = getSystemsBoards()
+    const p = subjectProgress(system, todayKey, boards, systemAttempts(boards))
+    if (!p.next) {
+      setSystemPlayNotice(null)
+      setSystemsSelected(system)
+      setGameCtx(null)
+      setView('systems')
+      return
+    }
+    // A board with an attempt still in progress (the app was closed or
+    // refreshed mid-board) resumes first, with its mistakes and try count.
+    const open = p.queue.find((x) => {
+      const saved = loadProgress(x.board.id)
+      return saved && !saved.gameOver && Array.isArray(saved.guessLog) && saved.guessLog.length > 0
+    })
+    const pick = open || p.next
+    openBoard(system, pick.board, pick.index)
+  }
+
+  // Leave a Systems board (Back, or Back to Systems on the result). After a
+  // submitted guess an unsolved board's attempt is over: its saved state is
+  // cleared (nothing is revealed) and it moves to the back of the queue.
+  const leaveSystemBoard = () => {
+    const ctx = gameCtx
+    if (ctx && ctx.mode === 'system') {
+      const saved = loadProgress(ctx.progressKey)
+      const interacted = !!(saved && Array.isArray(saved.guessLog) && saved.guessLog.length > 0)
+      if (saved && !saved.won) {
+        clearProgress(ctx.progressKey)
+        if (interacted && !saved.gameOver && ctx.systemAttempt) setSystemsNotice({ title: 'Still connecting…', text: 'This puzzle will come back around.' })
+      }
+      setSystemsSelected(ctx.system)
+    }
+    setGameCtx(null)
+    setRefreshTick((t) => t + 1)
+    setView('systems')
+  }
+
+  // Explicit replay of a solved board (from the Systems page): a fresh attempt.
+  // Tools used in it are spent again; XP is never paid again, and This Week
+  // counts the board once per week.
+  const playSystemBoard = (system, board, index) => {
+    if (!modesUnlocked) {
+      showLocked()
+      return
+    }
+    openBoard(system, board, index, { replay: true })
+  }
+
+  // The two actions after a Systems board ends: the next unsolved board in the
+  // same subject (or the same board again when it is the only one left, or the
+  // subject's completion when none are), and Back to Systems.
+  const systemActionsFor = (ctx) => {
+    if (!ctx || ctx.mode !== 'system') return null
+    const p = subjectProgress(ctx.system, todayKey, finishedBoards, boardAttempts)
+    const others = p.queue.filter((x) => x.board.id !== ctx.boardId)
+    const back = { label: 'Back to Systems', onClick: leaveSystemBoard }
+    if (!p.queue.length) return { primary: { label: 'View System Completion', onClick: leaveSystemBoard }, secondary: back, othersLeft: 0 }
+    if (!others.length) {
+      const only = p.queue[0]
+      return { primary: { label: 'Try again', onClick: () => openBoard(ctx.system, only.board, only.index) }, secondary: back, othersLeft: 0 }
+    }
+    return { primary: { label: 'Next Puzzle', onClick: () => playSystem(ctx.system) }, secondary: back, othersLeft: others.length }
+  }
+  const onSystemAttemptStart = (attemptId) => {
+    if (!gameCtx || gameCtx.mode !== 'system') return
+    if (recordSystemAttemptStart({ boardId: gameCtx.boardId, attemptId, system: gameCtx.system })) {
+      if (supaConfigured) pushProgress(snapshotLocal())
+    }
   }
 
   const handleContinueStudying = () => {
@@ -601,16 +660,26 @@ export default function App() {
       })
       const updated = recordResult({ won, mistakes, isDaily: false, countsTowardStreak: false })
       setStats(updated)
-      const finished = recordSystemsBoardFinish(gameCtx.boardId || puzzle.id, { won, mistakes, subject: system })
+      // Only a solved board is recorded as complete. A lost board records
+      // no completion and no XP, and is cleared so it comes back fresh.
+      const boardId = gameCtx.boardId || puzzle.id
+      // Count tries before this solve is written (an old unsolved entry counts as a try).
+      const tries = systemAttempts(getSystemsBoards())[boardId]?.count || 1
+      const finished = won ? recordSystemsBoardFinish(boardId, { won, mistakes, subject: system }) : getSystemsBoards()
       const counts = subjectProgress(system, todayKey, finished)
       progression = recordSystemFinish({
         puzzle,
         system,
         won,
         guessLog,
-        boardId: gameCtx.boardId || puzzle.id,
-        systemComplete: counts.total > 0 && counts.completed >= counts.total,
+        boardId,
+        attempts: tries,
+        systemComplete: won && counts.total > 0 && counts.completed >= counts.total,
       })
+      if (!won) clearProgress(gameCtx.progressKey)
+      if (won && progression?.connectedNow) {
+        setGameCtx((c) => (c && c.boardId === boardId ? { ...c, systemCompletion: { label: subjectLabel(system), total: counts.total, accent: systemAccent(system), palette: systemConfettiPalette(system) } } : c))
+      }
     }
     setRefreshTick((t) => t + 1)
     // Back up the just-updated progress to the cloud (no-op for guests / when
@@ -682,7 +751,7 @@ export default function App() {
           dailyStreak={gameCtx.isToday ? streak.current : 0}
           dailyPerfectStreak={gameCtx.isToday ? stats.currentPerfectStreak : 0}
           challengeDayNumber={gameCtx.mode === 'system' ? null : gameCtx.challengeDayNumber}
-          onExit={goHome}
+          onExit={gameCtx.mode === 'system' ? leaveSystemBoard : goHome}
           onOpenRecord={() => {
             setGameCtx(null)
             setRecordSection(null)
@@ -693,7 +762,11 @@ export default function App() {
           puzzleDate={gameCtx.mode === 'system' ? null : gameCtx.dateForHistory}
           onFinish={handleFinish}
           onKnowledgeSignal={recordKnowledgeSignal}
-          onReplay={gameCtx.mode === 'system' ? () => replayBoard(gameCtx) : null}
+          onReplay={null}
+          onAttemptStart={gameCtx.mode === 'system' ? onSystemAttemptStart : null}
+          systemAttempt={gameCtx.systemAttempt || null}
+          systemActions={systemActionsFor(gameCtx)}
+          systemCompletion={gameCtx.systemCompletion || null}
         />
         {reportModal}
       </div>
@@ -755,6 +828,11 @@ export default function App() {
         <Systems
           todayKey={todayKey}
           finishedBoards={finishedBoards}
+          boardAttempts={boardAttempts}
+          initialSelected={systemsSelected}
+          onSelectedChange={setSystemsSelected}
+          notice={systemsNotice}
+          onClearNotice={() => setSystemsNotice(null)}
           onPlaySystem={playSystem}
           onReplayBoard={playSystemBoard}
           onBack={goHome}

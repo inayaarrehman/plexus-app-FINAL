@@ -42,7 +42,13 @@ export default function Game({
   reportMode = 'daily', // daily | archive | system, attached to reports
   puzzleDate = null, // the Daily's calendar date, attached to reports
   onReplay = null, // explicit replay: starts a new attempt (Systems boards)
+  // Systems boards only:
+  onAttemptStart = null, // (attemptId) once the first guess of an attempt is submitted
+  systemAttempt = null, // { n, xp }: which try this is and what solving it pays
+  systemActions = null, // { primary: {label, onClick}, secondary: {label, onClick} } after the board ends
+  systemCompletion = null, // { label, total, palette } when this solve completed the subject for the first time
 }) {
+  const isSystem = reportMode === 'system'
   const initial = useMemo(() => {
     const saved = loadProgress(progressKey)
     if (saved && saved.puzzleId === puzzle.id) return saved
@@ -136,6 +142,17 @@ export default function Game({
       if (res && typeof res === 'object') setXpResult(res)
     }
   }, [gameOver, won, mistakes, guessLog, puzzle, onFinish, toolsUsed])
+
+  // Systems: an attempt counts once the first guess is submitted (opening a
+  // board and leaving is not an attempt). Same attempt id after a refresh.
+  const attemptReported = useRef(false)
+  useEffect(() => {
+    if (!isSystem || !onAttemptStart || attemptReported.current || alreadyOverAtLoad.current) return
+    if (guessLog.length > 0) {
+      attemptReported.current = true
+      onAttemptStart(attemptId)
+    }
+  }, [isSystem, onAttemptStart, guessLog.length, attemptId])
 
   // ---- Puzzle tools (Daily and Systems boards only) ----
   // One tool per board attempt. Tapping a tool explains exactly what it will
@@ -345,7 +362,9 @@ export default function Game({
     if (newMistakes - restored >= MAX_MISTAKES) {
       setSelected([])
       setTimeout(() => {
-        setSolvedCats([0, 1, 2, 3])
+        // Systems boards never reveal unsolved groups: the board comes back
+        // round until it is solved.
+        if (!isSystem) setSolvedCats([0, 1, 2, 3])
         setGameOver(true)
         setWon(false)
       }, 500)
@@ -469,6 +488,13 @@ export default function Game({
 
       {message && <div className="toast">{message}</div>}
 
+      {isSystem && systemAttempt && !gameOver && (
+        <p className="system-attempt-chip" aria-label={`Try ${systemAttempt.n}. Solving it now earns ${systemAttempt.xp} XP.`}>
+          <span className="system-attempt-node" aria-hidden="true" />
+          {systemAttempt.n === 1 ? 'First try' : `Try ${systemAttempt.n}`} · solve for <b>{systemAttempt.xp} XP</b>
+        </p>
+      )}
+
       {/* The Daily's deterministic Puzzle Signature: loose nodes while the
           board is unsolved, its connected form once won — the puzzle's own
           tiny identity, transforming in place. Decorative only. */}
@@ -561,17 +587,61 @@ export default function Game({
         </>
       )}
 
-      {gameOver && (
-        <div className={`result-card ${won ? 'result-card-won' : ''} ${isPerfect ? 'result-card-perfect' : ''}`}>
+      {/* Systems board not solved this time: no answers, no groups revealed.
+          It goes to the back of the subject's queue and comes round again. */}
+      {gameOver && isSystem && !won && (
+        <div className="result-card system-retry-card" role="status">
+          <span className="system-retry-mark" aria-hidden="true">
+            <span /><span /><span />
+          </span>
+          <h2>Still connecting…</h2>
+          <p className="system-retry-line">
+            {systemActions && systemActions.othersLeft === 0
+              ? 'This puzzle stays open until you solve it. It’s the last one left here, so you can try it again right away.'
+              : 'This puzzle will come back around after the other unsolved boards in this system. The answers stay hidden until you solve it.'}
+          </p>
+          {solvedCats.length > 0 && (
+            <p className="system-retry-meta">
+              You found {solvedCats.length} of 4 connections this time.
+            </p>
+          )}
+          {systemActions && (
+            <div className="result-actions">
+              <button className="primary-btn" onClick={systemActions.primary.onClick}>
+                {systemActions.primary.label}
+              </button>
+              <button className="secondary-btn" onClick={systemActions.secondary.onClick}>
+                {systemActions.secondary.label}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {gameOver && !(isSystem && !won) && (
+        <div className={`result-card ${won ? 'result-card-won' : ''} ${isPerfect ? 'result-card-perfect' : ''} ${systemCompletion ? 'result-card-system-complete' : ''}`}>
           {/* The completion payoff: the Plexus constellation assembles (four
               jewel-toned nodes wiring themselves together) as the centrepiece,
               and just as its nodes land a restrained jewel-tone confetti burst
               comes out of it, then settles as the result appears. The Daily
               gets a slightly fuller burst than a system puzzle. */}
           {won && <BrandMark size={58} className="result-brandmark" animate decorative />}
-          {won && <Confetti count={isDaily ? 44 : 32} originY={45} seed={puzzle.id.length * 97 + mistakes} />}
+          {won && !isSystem && <Confetti count={isDaily ? 44 : 32} originY={45} seed={puzzle.id.length * 97 + mistakes} />}
+          {/* A whole subject solved for the first time: the one bigger
+              moment in Systems, in that subject's own node colour. */}
+          {won && isSystem && systemCompletion && (
+            <Confetti count={60} originY={45} seed={puzzle.id.length * 131 + 7} palette={systemCompletion.palette} shapes={['node', 'node', 'line', 'rect', 'node', 'line']} />
+          )}
 
           <h2>{resultTitle || (isDaily ? "Today's Results" : 'Puzzle Results')}</h2>
+          {systemCompletion && (
+            <div className="system-connected" role="status" style={{ '--node-accent': systemCompletion.accent }}>
+              <p className="system-connected-title">System connected.</p>
+              <p className="system-connected-line">
+                Every connection found. {systemCompletion.label}: {systemCompletion.total} of {systemCompletion.total} boards solved.
+              </p>
+            </div>
+          )}
 
           {won && <p className="completion-phrase">{completionPhrase}</p>}
 
@@ -632,6 +702,19 @@ export default function Game({
           {showReview && <ReviewConnections puzzle={puzzle} onKnowledgeSignal={onKnowledgeSignal} onReport={onReport} reportMode={reportMode} puzzleDate={puzzleDate} />}
 
 
+          {isSystem && systemActions ? (
+            <div className="result-actions">
+              <button className="primary-btn" onClick={systemActions.primary.onClick}>
+                {systemActions.primary.label}
+              </button>
+              <button className="secondary-btn" onClick={systemActions.secondary.onClick}>
+                {systemActions.secondary.label}
+              </button>
+              <button className="text-link result-share-link" onClick={handleShare}>
+                {copied ? 'Copied!' : 'Share results'}
+              </button>
+            </div>
+          ) : (
           <div className="result-actions">
             <button className="primary-btn" onClick={handleShare}>
               {copied ? 'Copied!' : 'Share Results'}
@@ -650,6 +733,7 @@ export default function Game({
               Back to Home
             </button>
           </div>
+          )}
 
           {/* XP, level and Kit rewards: secondary, compact, after the actions. */}
           {xpResult && <XpResult result={xpResult} onOpenRecord={onOpenRecord} />}

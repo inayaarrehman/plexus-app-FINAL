@@ -52,8 +52,13 @@ function rng(seed) {
 
 // `count`: pieces (the Daily gets a slightly fuller burst than a system puzzle).
 // `originY`: px from the top of the result card where the constellation sits.
-export default function Confetti({ count = 40, originY = 46, seed = 7 }) {
+// `palette`: optional list of colours to use instead of the four jewels (a
+// completed system bursts in its own node colour and its shades); `shapes`
+// optionally weights the shape mix.
+export default function Confetti({ count = 40, originY = 46, seed = 7, palette = null, shapes = null }) {
   const pieces = useMemo(() => {
+    const pickColor = palette && palette.length ? (i) => palette[i % palette.length] : colorFor
+    const shapeList = shapes && shapes.length ? shapes : SHAPES
     const r = rng(seed)
     return Array.from({ length: count }).map((_, i) => {
       // Fan out sideways from the constellation with only a small lift (the
@@ -71,12 +76,12 @@ export default function Confetti({ count = 40, originY = 46, seed = 7 }) {
         rot: (r() < 0.5 ? -1 : 1) * (220 + r() * 360),
         delay: 0.5 + r() * 0.18,
         duration: 1.35 + r() * 0.6,
-        color: colorFor(i),
+        color: pickColor(i),
         size,
-        shape: SHAPES[i % SHAPES.length],
+        shape: shapeList[i % shapeList.length],
       }
     })
-  }, [count, seed])
+  }, [count, seed, palette, shapes])
 
   if (prefersReducedMotion()) return null
 

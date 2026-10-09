@@ -87,6 +87,9 @@ function Privacy() {
       <h2>Reports and support messages</h2>
       <p>When you report a connection or send a message from Help &amp; Support, Plexus stores what you chose and wrote, the email address if you add one, and for reports the puzzle and connection it is about (puzzle ID, connection ID, title and tiles, game mode and puzzle date). It also stores the app version and the random browser ID above. If you are signed in, the report is linked to your account. Reports are stored in Supabase, and only Plexus can read them. We use your email only to reply about that report. If you delete your account, your reports stay but are no longer linked to it.</p>
 
+      <h2>Connection suggestions</h2>
+      <p>When you use Submit a Connection, Plexus stores the title, the four concepts, your explanation, the organ system you chose and any source you add, along with the app version and the random browser ID above. If you are signed in, the suggestion is linked to your account. Suggestions are stored in Supabase in a review list that only Plexus can read; they are not shown to other players unless a reviewed version is added to the puzzle library. If you delete your account, your suggestions stay but are no longer linked to it.</p>
+
       <h2>Hosting</h2>
       <p>Plexus is hosted by Vercel. Like most web hosts, Vercel processes standard request information, such as your IP address and browser type, to deliver and protect the site.</p>
 

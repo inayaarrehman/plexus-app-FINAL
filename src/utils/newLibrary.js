@@ -136,11 +136,21 @@ export const libraryConnectionMap = () => NEW_LIBRARY.connections
 
 // A subject's Systems state for one player: the boards available today, how
 // many they have finished, and the next unfinished board (null = caught up).
-export function subjectProgress(subject, todayKey, finished = {}) {
+// A subject's boards and where the player stands. A board is complete only
+// once it is SOLVED (a lost or abandoned board stays in rotation). The active
+// queue is the unsolved boards: ones never tried come first, in board order,
+// then the rest by when they were last tried, oldest first. So a board the
+// player leaves or loses goes to the back and comes round again only after
+// the others. `attempts` = { [boardId]: { count, last } } (store.systemAttempts).
+export function subjectProgress(subject, todayKey, finished = {}, attempts = {}) {
   const boards = systemsBoardsFor(subject, todayKey)
-  const completed = boards.filter((b) => finished[b.id]).length
-  const i = boards.findIndex((b) => !finished[b.id])
-  return { subject, boards, total: boards.length, completed, next: i >= 0 ? { board: boards[i], index: i } : null }
+  const solved = (b) => !!finished[b.id]?.won
+  const completed = boards.filter(solved).length
+  const queue = boards
+    .map((board, index) => ({ board, index, tries: attempts[board.id]?.count || 0, last: attempts[board.id]?.last || 0 }))
+    .filter((x) => !solved(x.board))
+    .sort((a, b) => a.last - b.last || a.index - b.index)
+  return { subject, boards, total: boards.length, completed, next: queue[0] || null, queue, solvedIds: new Set(boards.filter(solved).map((b) => b.id)) }
 }
 
 export const CAUGHT_UP_COPY = 'You’re caught up! Check back for more puzzles soon.'

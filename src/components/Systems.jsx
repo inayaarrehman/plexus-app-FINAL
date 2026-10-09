@@ -1,19 +1,14 @@
 import React, { useMemo, useState, useCallback } from 'react'
-import { NODE_VARS } from '../data/constants.js'
+import { systemAccent } from '../utils/systemAccent.js'
 import { categoriesForSystem } from '../utils/mastery.js'
 import { LIBRARY_SUBJECTS, subjectLabel, subjectProgress, CAUGHT_UP_COPY } from '../utils/newLibrary.js'
 import { getSystemGlyph, resolveGlyph } from '../utils/systemGlyphs.js'
 import { haptics } from '../utils/haptics.js'
+import SubmitConnectionModal from './SubmitConnectionModal.jsx'
+import { loadProgress } from '../utils/storage.js'
 
-// Section 5: each system takes ONE accent from the shared four-colour
-// Plexus palette, cycled by position (Coral → Teal → Cobalt → Plum, repeat)
-// rather than a unique hue per system. Colour is visual rhythm, not medical
-// classification, so Cardiology and GI can share coral.
-const ACCENT_COLORS = NODE_VARS
-function systemAccent(system) {
-  const idx = LIBRARY_SUBJECTS.indexOf(system)
-  return ACCENT_COLORS[idx % ACCENT_COLORS.length] || ACCENT_COLORS[0]
-}
+// Each system's accent comes from utils/systemAccent.js (shared with the
+// completion celebration), cycled through the four Plexus node colours.
 
 // The detail-view progress chain — a short node chain (●—●—○—○—○) echoing
 // the Plexus mark, kept ONLY on the system detail page. It was deliberately
@@ -154,9 +149,29 @@ function SystemNode({ system, total, solved, accent, onEnter }) {
   )
 }
 
-export default function Systems({ todayKey, finishedBoards, onPlaySystem, onReplayBoard, onBack, playNotice, onDismissPlayNotice }) {
-  const [selected, setSelected] = useState(null)
+export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, initialSelected = null, onSelectedChange, notice = null, onClearNotice, onPlaySystem, onReplayBoard, onBack, playNotice, onDismissPlayNotice }) {
+  const [selected, setSelectedState] = useState(initialSelected)
+  const setSelected = useCallback(
+    (s) => {
+      setSelectedState(s)
+      onSelectedChange?.(s)
+      if (!s) onClearNotice?.()
+    },
+    [onSelectedChange, onClearNotice]
+  )
   const [entering, setEntering] = useState(false)
+  const [suggesting, setSuggesting] = useState(false)
+  const suggest = (
+    <>
+      <div className="systems-suggest">
+        <p className="systems-suggest-line">Found a connection we missed?</p>
+        <button type="button" className="systems-suggest-btn" onClick={() => setSuggesting(true)}>
+          Submit a Connection
+        </button>
+      </div>
+      {suggesting && <SubmitConnectionModal defaultSystem={selected || ''} onClose={() => setSuggesting(false)} />}
+    </>
+  )
 
   // Systems content is the new library only: each subject's fixed starter
   // boards plus the boards released from past Dailies (utils/newLibrary.js).
@@ -164,23 +179,35 @@ export default function Systems({ todayKey, finishedBoards, onPlaySystem, onRepl
   const rows = useMemo(
     () =>
       LIBRARY_SUBJECTS.map((system) => {
-        const p = subjectProgress(system, todayKey, finishedBoards)
+        const p = subjectProgress(system, todayKey, finishedBoards, boardAttempts)
         return { system, total: p.total, solved: p.completed }
       }),
-    [todayKey, finishedBoards]
+    [todayKey, finishedBoards, boardAttempts]
   )
 
   // Restrained system-entry transition (§16): the tapped node's accent
   // briefly washes outward, then the system page appears. Kept simple — a
   // CSS animation on mount, no shared-element routing. Reduced-motion users
   // get the page immediately (the wash class is a no-op under the media query).
-  const enterSystem = useCallback((system) => {
-    setSelected(system)
-    setEntering(true)
-  }, [])
+  const enterSystem = useCallback(
+    (system) => {
+      setSelected(system)
+      setEntering(true)
+    },
+    [setSelected]
+  )
 
   if (selected) {
-    const p = subjectProgress(selected, todayKey, finishedBoards)
+    const p = subjectProgress(selected, todayKey, finishedBoards, boardAttempts)
+    const returning = p.queue.filter((x) => x.tries > 0)
+    // Same pick as App.playSystem: a board left mid-attempt by a refresh or
+    // closed app resumes first.
+    const inProgress = p.queue.find((x) => {
+      const saved = loadProgress(x.board.id)
+      return saved && !saved.gameOver && Array.isArray(saved.guessLog) && saved.guessLog.length > 0
+    })
+    const upNext = inProgress || p.next
+    const comingBack = returning.filter((x) => x !== upNext)
     const total = p.total
     const solved = p.completed
     const accent = systemAccent(selected)
@@ -207,8 +234,9 @@ export default function Systems({ todayKey, finishedBoards, onPlaySystem, onRepl
             <Glyph system={selected} fraction={total > 0 ? solved / total : 0} empty={total === 0} tone="accent" />
           </div>
           <h1 className="system-detail-title">{name}</h1>
+          {total > 0 && solved >= total && <p className="system-detail-connected">System connected. Every connection found.</p>}
           <p className="system-detail-count">
-            {solved} of {total} boards completed
+            {solved} of {total} boards solved
           </p>
           <ProgressBar value={solved} max={total} accent={accent} />
           {playNotice && (
@@ -219,25 +247,50 @@ export default function Systems({ todayKey, finishedBoards, onPlaySystem, onRepl
               </button>
             </p>
           )}
+          {notice && (
+            <div className="system-still-connecting" role="status">
+              <span className="system-still-node" aria-hidden="true" />
+              <p>
+                <b>{notice.title}</b> {notice.text}
+              </p>
+            </div>
+          )}
           {p.next ? (
-            <button
-              className="system-play-btn"
-              style={{ '--node-accent': accent }}
-              onClick={() => onPlaySystem(selected)}
-            >
-              Play <span className="system-play-arrow" aria-hidden="true">&rarr;</span>
-            </button>
+            <>
+              <button
+                className="system-play-btn"
+                style={{ '--node-accent': accent }}
+                onClick={() => onPlaySystem(selected)}
+              >
+                {inProgress ? 'Continue' : upNext.tries > 0 ? 'Try again' : solved > 0 || returning.length ? 'Next Puzzle' : 'Play'} <span className="system-play-arrow" aria-hidden="true">&rarr;</span>
+              </button>
+              <p className="system-next-line">
+                Up next: Board {upNext.index + 1}
+                {inProgress ? ' · in progress' : upNext.tries > 0 ? ` · back for try ${upNext.tries + 1}` : ''}
+              </p>
+              {returning.length > 0 && (
+                <p className="system-rotation-note">
+                  Boards you leave or miss come back around after the others, until you solve them. Answers stay hidden until then.
+                  {comingBack.length > 0 && (
+                    <>
+                      {' '}
+                      <span className="system-rotation-list">Coming back: {comingBack.map((x) => `Board ${x.index + 1}`).join(', ')}.</span>
+                    </>
+                  )}
+                </p>
+              )}
+            </>
           ) : (
             <p className="system-caught-up" role="status">
               {CAUGHT_UP_COPY}
             </p>
           )}
-          {onReplayBoard && p.boards.some((b) => finishedBoards[b.id]) && (
+          {onReplayBoard && p.boards.some((b) => finishedBoards[b.id]?.won) && (
             <div className="system-replays">
               <p className="system-replays-head">Replay a board</p>
               <div className="system-replays-row">
                 {p.boards.map((b, i) =>
-                  finishedBoards[b.id] ? (
+                  finishedBoards[b.id]?.won ? (
                     <button key={b.id} className="system-replay-btn" onClick={() => onReplayBoard(selected, b, i)}>
                       Board {i + 1}
                     </button>
@@ -246,6 +299,7 @@ export default function Systems({ todayKey, finishedBoards, onPlaySystem, onRepl
               </div>
             </div>
           )}
+          {suggest}
         </div>
       </div>
     )
@@ -272,6 +326,7 @@ export default function Systems({ todayKey, finishedBoards, onPlaySystem, onRepl
           />
         ))}
       </div>
+      {suggest}
     </div>
   )
 }

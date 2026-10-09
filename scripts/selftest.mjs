@@ -1284,7 +1284,7 @@ console.log('\n[41] Home and My Plexus: economy unchanged, previews faithful, co
   const C = await import('../src/progression/config.js')
   const E = await import('../src/progression/engine.js')
   // XP values and level thresholds are exactly what they were.
-  assert(JSON.stringify(C.XP) === JSON.stringify({ daily: 100, perfect: 25, archive: 50, connection: { 1: 5, 2: 10, 3: 15, 4: 20 }, systemPuzzle: 50, systemComplete: 300, challengePerCorrect: 3, challengeMax: 60, challengeNewBest: 15, raceFinish: 20, raceWin: 10, raceSolo: 10, raceDailyLimit: 5, rounds: 250 }), 'XP values unchanged (naming bonus removed)')
+  assert(JSON.stringify(C.XP) === JSON.stringify({ daily: 100, perfect: 25, archive: 50, connection: { 1: 5, 2: 10, 3: 15, 4: 20 }, systemPuzzle: 50, systemAttempt: [100, 75, 50, 25], systemComplete: 300, challengePerCorrect: 3, challengeMax: 60, challengeNewBest: 15, raceFinish: 20, raceWin: 10, raceSolo: 10, raceDailyLimit: 5, rounds: 250 }), 'XP values as designed (Systems pays by attempt: 100/75/50/25)')
   const costs = Array.from({ length: 12 }, (_, i) => C.levelCost(i + 1)).join(',')
   assert(costs === '150,220,290,380,490,600,730,860,1010,1180,1350,1540', 'level thresholds unchanged (' + costs + ')')
   assert(E.levelInfo(149).level === 1 && E.levelInfo(150).level === 2 && E.levelInfo(370).level === 3, 'level boundaries land where they did')

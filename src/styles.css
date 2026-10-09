@@ -6624,3 +6624,103 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 }
 .tool-info-btn { position: relative; }
 .tool-info-btn::after { content: ''; position: absolute; inset: -6px; }
+
+/* ---- Systems: attempts, rotation and completion ---- */
+.system-attempt-chip {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin: -4px auto 12px; font-size: var(--type-caption); font-weight: 600; color: var(--text-dim);
+}
+.system-attempt-chip b { color: var(--text); font-weight: 800; }
+.system-attempt-node { width: 8px; height: 8px; border-radius: 50%; background: var(--node-peacock); box-shadow: 0 0 0 1.5px var(--node-rim); flex: none; }
+
+.system-retry-card { padding-top: 28px; }
+.system-retry-card h2 { margin: 10px 0 8px; }
+.system-retry-line { max-width: 360px; margin: 0 auto 8px; line-height: 1.5; color: var(--text); }
+.system-retry-meta { margin: 0 auto 14px; font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
+/* Three nodes, one link still open: the board is not connected yet. */
+.system-retry-mark { position: relative; display: block; width: 72px; height: 28px; margin: 0 auto; }
+.system-retry-mark span { position: absolute; top: 10px; width: 9px; height: 9px; border-radius: 50%; background: var(--room-text); }
+.system-retry-mark span:nth-child(1) { left: 0; }
+.system-retry-mark span:nth-child(2) { left: 31px; }
+.system-retry-mark span:nth-child(3) { left: 62px; opacity: 0.45; animation: retry-node 1.6s ease-in-out infinite; }
+.system-retry-mark::before { content: ''; position: absolute; top: 14px; left: 6px; width: 30px; height: 1.5px; background: var(--room-text); }
+.system-retry-mark::after { content: ''; position: absolute; top: 14px; left: 38px; width: 26px; height: 0; border-top: 1.5px dashed color-mix(in srgb, var(--room-text) 55%, transparent); }
+@keyframes retry-node { 50% { opacity: 0.9; } }
+
+.system-connected { margin: 0 auto 10px; max-width: 360px; padding: 10px 14px; border-radius: 12px; border: 1.5px solid var(--node-accent, var(--node-peacock)); }
+.system-connected-title { margin: 0; font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; }
+.system-connected-line { margin: 2px 0 0; font-size: var(--type-secondary); color: var(--text); }
+.result-share-link { flex-basis: 100%; text-align: center; margin-top: 2px; background: none; border: none; color: var(--text-dim); font-family: var(--font-ui); font-size: var(--type-caption); font-weight: 700; text-decoration: underline; cursor: pointer; min-height: 36px; }
+
+.system-detail-connected { margin: -4px 0 6px; font-weight: 800; color: var(--text); }
+.system-still-connecting { display: flex; align-items: flex-start; gap: 10px; max-width: 380px; margin: 4px auto 14px; padding: 10px 14px; border-radius: 12px; background: var(--tile-cream); color: var(--ink); text-align: left; animation: still-in 320ms ease-out both; }
+.system-still-connecting p { margin: 0; font-size: var(--type-secondary); line-height: 1.4; }
+.system-still-node { flex: none; margin-top: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--jewel-peacock); }
+@keyframes still-in { from { opacity: 0; transform: translateY(-4px); } }
+.system-next-line { margin: 8px 0 0; font-size: var(--type-caption); font-weight: 700; color: var(--text-dim); }
+.system-rotation-note { max-width: 360px; margin: 10px auto 0; font-size: var(--type-caption); line-height: 1.45; color: var(--text-dim); font-weight: 600; }
+.system-rotation-list { color: var(--text); }
+@media (prefers-reduced-motion: reduce) {
+  .system-retry-mark span:nth-child(3), .system-still-connecting { animation: none; }
+}
+
+/* ---- Systems: Submit a Connection ---- */
+.systems-suggest { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 12px; margin: 28px auto 8px; padding-top: 16px; border-top: 1px solid var(--home-divider); max-width: 460px; }
+.systems-suggest-line { margin: 0; font-size: var(--type-caption); font-weight: 600; color: var(--text-dim); }
+.systems-suggest-btn { min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1.5px solid color-mix(in srgb, var(--room-text) 45%, transparent); background: none; color: var(--room-text); font-family: var(--font-ui); font-size: var(--type-caption); font-weight: 800; cursor: pointer; }
+.systems-suggest-btn:focus-visible { outline: 3px solid var(--room-text); outline-offset: 2px; }
+.submit-connection-lede { margin: 0 0 12px; font-size: var(--type-secondary); line-height: 1.45; }
+.submit-connection-tiles { border: none; margin: 0; padding: 0; min-width: 0; }
+.submit-connection-tile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media (max-width: 360px) { .submit-connection-tile-grid { grid-template-columns: 1fr; } }
+.submit-connection-select { width: 100%; }
+
+/* ---- 3 Minutes: point feedback and scoring help ---- */
+.challenge-score-wrap { position: relative; display: inline-flex; align-items: center; gap: 8px; }
+.challenge-score-info {
+  position: relative; width: 26px; height: 26px; min-width: 26px; min-height: 26px; padding: 0; line-height: 1;
+  border-radius: 999px; border: 1.5px solid rgba(251, 246, 238, 0.5); background: none; color: var(--ivory-text);
+  font-family: var(--font-ui); font-weight: 800; font-style: italic; font-size: 0.78rem; cursor: pointer;
+}
+.challenge-score-info::after { content: ''; position: absolute; inset: -9px; }
+.challenge-score-info[aria-expanded='true'] { background: var(--ivory-text); color: var(--ink); }
+.challenge-score-info:focus-visible, .challenge-scoring-link:focus-visible, .challenge-scoring-close:focus-visible { outline: 3px solid var(--ivory-text); outline-offset: 2px; }
+/* Floats rise from just below the score; a new one pushes older ones up a
+   step, so quick answers stack instead of piling on top of each other. */
+.challenge-floats { position: absolute; right: 34px; top: 100%; width: 0; height: 0; pointer-events: none; }
+.challenge-float {
+  position: absolute; right: 0; top: 0; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;
+  font-size: 0.95rem; font-weight: 800; font-variant-numeric: tabular-nums;
+  transform: translateY(calc(var(--stack, 0) * -20px)); animation: challenge-float 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.challenge-float.is-plus { color: #c9f5ef; }
+.challenge-float.is-minus { color: #ffc3b0; }
+.challenge-float-node { width: 7px; height: 7px; border-radius: 50%; background: var(--node-peacock, #36bdb0); box-shadow: 0 0 0 0 rgba(54, 189, 176, 0.6); animation: challenge-node-pulse 700ms ease-out; }
+@keyframes challenge-float {
+  0% { opacity: 0; translate: 0 6px; }
+  15% { opacity: 1; translate: 0 0; }
+  70% { opacity: 1; }
+  100% { opacity: 0; translate: 0 -22px; }
+}
+@keyframes challenge-node-pulse { to { box-shadow: 0 0 0 8px rgba(54, 189, 176, 0); } }
+@media (prefers-reduced-motion: reduce) {
+  .challenge-float { animation: challenge-float-still 1s linear forwards; }
+  .challenge-float-node { animation: none; }
+  @keyframes challenge-float-still { 0%, 80% { opacity: 1; } 100% { opacity: 0; } }
+}
+.challenge-scoring-link { margin: -16px 0 26px; min-height: 36px; background: none; border: none; color: var(--ivory-text); font-family: var(--font-ui); font-size: var(--type-caption); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.challenge-scoring {
+  width: 100%; max-width: 420px; margin: 0 auto 18px; padding: 12px 14px; border-radius: 12px;
+  background: var(--tile-cream); color: var(--ink); text-align: left; box-shadow: 0 6px 18px rgba(10, 6, 20, 0.3);
+}
+.challenge-intro .challenge-scoring { margin-top: -14px; margin-bottom: 26px; }
+.challenge-scoring.is-playing { position: relative; z-index: 5; margin-top: -8px; }
+.challenge-scoring-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.challenge-scoring-head h2 { margin: 0; font-size: var(--type-secondary); font-weight: 800; color: var(--ink); }
+.challenge-scoring-close { width: 32px; height: 32px; min-height: 32px; padding: 0; border: none; border-radius: 999px; background: none; color: var(--ink); font-size: 0.9rem; cursor: pointer; }
+.challenge-scoring dl { margin: 0; display: grid; gap: 6px; }
+.challenge-scoring dl div { display: grid; grid-template-columns: 4.5em 1fr; gap: 8px; font-size: var(--type-caption); line-height: 1.4; }
+.challenge-scoring dt { font-weight: 800; color: var(--ink); }
+.challenge-scoring dd { margin: 0; color: #2c2a3c; }
+.challenge-scoring-foot { margin: 8px 0 0; font-size: 0.78rem; font-weight: 700; color: #3a3648; }
+.challenge-scoring-close:focus-visible { outline-color: var(--ink); }

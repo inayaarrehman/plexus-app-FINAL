@@ -57,6 +57,27 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
 
   const [timeLeftMs, setTimeLeftMs] = useState(DURATION_MS)
   const [score, setScore] = useState(0)
+  // Point feedback: every change to the score goes through addPoints, which
+  // applies the real rule (never below 0) and shows the change that actually
+  // happened as a small floating "+120" / "-50" by the score.
+  const scoreRef = useRef(0)
+  const [floats, setFloats] = useState([]) // [{ id, value }]
+  const floatId = useRef(0)
+  const [showScoring, setShowScoring] = useState(false)
+  const addPoints = (points) => {
+    const prev = scoreRef.current
+    const next = Math.max(0, prev + points)
+    scoreRef.current = next
+    setScore(next)
+    const delta = next - prev
+    if (delta !== 0) {
+      const id = ++floatId.current
+      // At most three on screen; a quick player's older ones give way.
+      setFloats((list) => [...list.slice(-2), { id, value: delta }])
+      setTimeout(() => setFloats((list) => list.filter((f) => f.id !== id)), 1000)
+    }
+    return delta
+  }
   const [comboStreak, setComboStreak] = useState(0)
   const [highestMultiplier, setHighestMultiplier] = useState(1)
   const [totalActions, setTotalActions] = useState(0)
@@ -139,7 +160,9 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
   const startChallenge = () => {
     usedRef.current = new Set()
     recentRef.current = []
+    scoreRef.current = 0
     setScore(0)
+    setFloats([])
     setComboStreak(0)
     setHighestMultiplier(1)
     setTotalActions(0)
@@ -243,7 +266,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
   const applyCorrect = (basePoints, responseMs, systems) => {
     const multiplier = getMultiplier(comboStreak)
     const points = computeActionPoints({ correct: true, basePoints, multiplier, responseMs })
-    setScore((s) => Math.max(0, s + points))
+    addPoints(points)
     setCorrectActions((n) => n + 1)
     setComboStreak((n) => n + 1)
     setHighestMultiplier((m) => Math.max(m, multiplier))
@@ -252,7 +275,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
   }
 
   const applyIncorrect = (tag, missText, explanation, systems) => {
-    setScore((s) => Math.max(0, s + WRONG_PENALTY))
+    addPoints(WRONG_PENALTY)
     setComboStreak(0)
     recordMiss(tag, missText, explanation)
     bumpSystems(setSystemsMissed, systems)
@@ -306,7 +329,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
       const bonus = speedBonus(responseMs)
       const pointsFirstGroup = Math.round((BASE_POINTS.miniConnections + bonus) * multiplier)
       const pointsSecondGroup = Math.round(BASE_POINTS.miniConnections * multiplier)
-      setScore((s) => Math.max(0, s + pointsFirstGroup + pointsSecondGroup))
+      addPoints(pointsFirstGroup + pointsSecondGroup)
       setCorrectActions((n) => n + 1)
       setComboStreak((n) => n + 1)
       setHighestMultiplier((m) => Math.max(m, multiplier))
@@ -323,7 +346,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
     // going — the player should not lose the board over one bad guess.
     lockRef.current = true
     finishAction(false)
-    setScore((s) => Math.max(0, s + WRONG_PENALTY))
+    addPoints(WRONG_PENALTY)
     setComboStreak(0)
     const involvedGroupIds = new Set(
       selected.map((s) => round.tiles.find((t) => t.text === s)?.groupId).filter(Boolean)
@@ -506,6 +529,10 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
           <h1 className="challenge-title">3 Minutes</h1>
           <p className="challenge-lede">How many connections can you make?</p>
           <ChallengeTypes />
+          <button type="button" className="challenge-scoring-link" aria-expanded={showScoring} aria-controls="challenge-scoring" onClick={() => setShowScoring((v) => !v)}>
+            How scoring works
+          </button>
+          {showScoring && <ScoringInfo id="challenge-scoring" onClose={() => setShowScoring(false)} />}
 
           {/* §15: Start is the one focal action, seated in a restrained Plexus
               network that resolves on activation (§16). The button stays
@@ -628,11 +655,25 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
     <div className={`challenge challenge-playing ${shake ? 'is-shake' : ''} ${feedback === 'incorrect' ? 'is-wrong' : ''}`}>
       <div className="challenge-header">
         <span className={`challenge-timer ${isUrgent ? 'urgent' : ''}`}>{formatTime(timeLeftMs)}</span>
-        <span className="challenge-live-score">
-          {score.toLocaleString()}
-          {multiplierDisplay && <span className="challenge-multiplier">×{multiplierDisplay}</span>}
+        <span className="challenge-score-wrap">
+          <span className="challenge-live-score">
+            <AnimatedNumber value={score} />
+            {multiplierDisplay && <span className="challenge-multiplier" title="Your next correct answer’s streak multiplier">×{multiplierDisplay}</span>}
+          </span>
+          <button type="button" className="challenge-score-info" aria-label="How scoring works" aria-expanded={showScoring} aria-controls="challenge-scoring" onClick={() => setShowScoring((v) => !v)}>
+            <span aria-hidden="true">i</span>
+          </button>
+          <span className="challenge-floats" aria-hidden="true">
+            {floats.map((f, i) => (
+              <span key={f.id} className={`challenge-float ${f.value > 0 ? 'is-plus' : 'is-minus'}`} style={{ '--stack': floats.length - 1 - i }}>
+                {f.value > 0 && <span className="challenge-float-node" />}
+                {f.value > 0 ? `+${f.value}` : `−${Math.abs(f.value)}`}
+              </span>
+            ))}
+          </span>
         </span>
       </div>
+      {showScoring && <ScoringInfo id="challenge-scoring" playing onClose={() => setShowScoring(false)} />}
 
       <p className="challenge-instruction">{INSTRUCTIONS[round.type]}</p>
       {answerNote && feedback === 'incorrect' && (
@@ -1048,6 +1089,101 @@ function ChallengeTypes() {
           <li className="challenge-types-foot">Each round also shows its own one-line instruction. The timer starts only when you tap Start.</li>
         </ul>
       )}
+    </section>
+  )
+}
+
+// The live score counts to its new value instead of jumping. The final value
+// is always set (a timer backs up the animation frame), so it can never stick.
+function AnimatedNumber({ value }) {
+  const [shown, setShown] = useState(value)
+  const fromRef = useRef(value)
+  useEffect(() => {
+    const from = fromRef.current
+    fromRef.current = value
+    let reduce = false
+    try {
+      reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    } catch {
+      reduce = false
+    }
+    if (reduce || from === value) {
+      setShown(value)
+      return undefined
+    }
+    const t0 = performance.now()
+    let raf = 0
+    const step = (t) => {
+      const k = Math.min(1, (t - t0) / 320)
+      setShown(Math.round(from + (value - from) * (1 - Math.pow(1 - k, 3))))
+      if (k < 1) raf = requestAnimationFrame(step)
+    }
+    raf = requestAnimationFrame(step)
+    const done = setTimeout(() => setShown(value), 360)
+    return () => {
+      cancelAnimationFrame(raf)
+      clearTimeout(done)
+    }
+  }, [value])
+  return <span className="challenge-score-num">{shown.toLocaleString()}</span>
+}
+
+// How scoring works, read from the real rules in challengeEngine.js.
+// Non-modal: the clock keeps running and the board stays usable.
+const BASE_MIN = Math.min(...Object.values(BASE_POINTS))
+const BASE_MAX = Math.max(...Object.values(BASE_POINTS))
+function ScoringInfo({ id, playing = false, onClose }) {
+  const ref = useRef(null)
+  const closeRef = useRef(onClose)
+  closeRef.current = onClose
+  // Focus moves in once, when it opens (never again on the timer's re-renders).
+  useEffect(() => {
+    const opener = document.activeElement
+    ref.current?.querySelector('button')?.focus({ preventScroll: true })
+    const onKey = (e) => e.key === 'Escape' && closeRef.current()
+    window.addEventListener('keydown', onKey)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      if (opener && document.contains(opener) && typeof opener.focus === 'function') opener.focus({ preventScroll: true })
+    }
+  }, [])
+  return (
+    <section id={id} className={`challenge-scoring ${playing ? 'is-playing' : ''}`} role="region" aria-label="How scoring works" ref={ref}>
+      <div className="challenge-scoring-head">
+        <h2>How scoring works</h2>
+        <button type="button" className="challenge-scoring-close" onClick={onClose} aria-label="Close scoring help">
+          ✕
+        </button>
+      </div>
+      <dl>
+        <div>
+          <dt>Correct</dt>
+          <dd>
+            Each round pays its base points: {BASE_MIN} for quick yes-or-no rounds up to {BASE_MAX} for the bigger ones. A two-group board pays {BASE_POINTS.miniConnections} for each group.
+          </dd>
+        </div>
+        <div>
+          <dt>Speed</dt>
+          <dd>Answer within 8 seconds for up to +30, shrinking to nothing at 8 seconds (once per round).</dd>
+        </div>
+        <div>
+          <dt>Streak</dt>
+          <dd>Your 3rd correct answer in a row earns ×1.1, the 4th ×1.2, the 5th and every one after ×1.3, on base points plus speed. The × number by your score shows what your next correct answer gets.</dd>
+        </div>
+        <div>
+          <dt>Wrong</dt>
+          <dd>{Math.abs(WRONG_PENALTY)} points off and the streak resets. Speed and streak don’t change the penalty.</dd>
+        </div>
+        <div>
+          <dt>Floor</dt>
+          <dd>Your score never goes below 0.</dd>
+        </div>
+        <div>
+          <dt>Final</dt>
+          <dd>Your total when the 3 minutes end. It counts toward your personal best. XP is separate: 3 per correct answer, up to 60 a game, plus 15 for a new best.</dd>
+        </div>
+      </dl>
+      {playing && <p className="challenge-scoring-foot">The clock keeps running while this is open.</p>}
     </section>
   )
 }

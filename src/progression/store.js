@@ -163,6 +163,8 @@ function run(fn) {
     pending: ctx.pending,
     coverageUsed: ctx.shieldUsed || [],
     weeklyChoice: ctx.weeklyChoice || null,
+    attemptNumber: ctx.attemptNumber ?? null,
+    connectedNow: !!ctx.connectedNow,
     before,
     after,
     levelUp: after.level > before.level,
@@ -228,31 +230,80 @@ export function recordDailyFinish({ dateKey, isToday, puzzle, won, mistakes, gue
 }
 
 // ---- Systems puzzle ----
-export function recordSystemFinish({ puzzle, system, won, guessLog, systemComplete = false, boardId = null }) {
+// ---- Systems ----
+// An attempt is one visit to an unsolved board in which at least one guess
+// was submitted. It is marked once per attempt id (the id is saved with the
+// board, so a refresh or resume is the same attempt) and synced like the rest
+// of the ledger, so leaving and reopening, or switching devices, never resets
+// the count. Opening a board and leaving without a guess is not an attempt.
+export function recordSystemAttemptStart({ boardId, attemptId, system = null }) {
+  if (!boardId || !attemptId) return false
+  const state = loadProgression()
+  if (state.ledger[`syspuzzle:${boardId}`]) return false // already solved: replays are not attempts
+  const ok = mark(state, { id: `sysattempt:${boardId}:${attemptId}`, kind: 'sysattempt', at: Date.now(), m: { board: boardId, system } })
+  if (ok) saveProgression(state)
+  return ok
+}
+// Attempts per board: { [boardId]: { count, last } }. `legacy` (the old
+// finished-boards map) counts a board lost before attempts were tracked as
+// one earlier attempt, at its finish time.
+export function systemAttempts(legacy = {}) {
+  const state = loadProgression()
+  const out = {}
+  for (const e of Object.values(state.ledger)) {
+    if (e.kind !== 'sysattempt' || !e.m?.board) continue
+    const o = (out[e.m.board] ||= { count: 0, last: 0 })
+    o.count += 1
+    o.last = Math.max(o.last, e.at || 0)
+  }
+  // Losses are no longer written to that map, so an unsolved entry there is
+  // always from before this change.
+  for (const [id, b] of Object.entries(legacy || {})) {
+    if (!b || b.won) continue
+    const o = (out[id] ||= { count: 0, last: 0 })
+    o.count += 1
+    o.last = Math.max(o.last, Date.parse(b.finishedAt || '') || 1)
+  }
+  return out
+}
+export function systemSolved(boardId) {
+  return !!loadProgression().ledger[`syspuzzle:${boardId}`]
+}
+// XP for solving a board on attempt n (1-based).
+export const attemptXp = (n) => XP.systemAttempt[Math.min(Math.max(1, n), XP.systemAttempt.length) - 1]
+
+// A Systems board finished. XP only when it is solved, once per board, by the
+// attempt that solved it. XP a board earned under the old rules (group XP from
+// a lost game) counts toward that amount, so nothing is paid twice and
+// nothing already earned is taken away. A lost game pays nothing and reveals
+// nothing; the board goes back into rotation. `systemComplete` (every board
+// solved) pays the subject bonus once, and `connectedNow` reports the first
+// time a subject is fully solved, for the completion celebration.
+export function recordSystemFinish({ puzzle, system, won, guessLog, systemComplete = false, boardId = null, attempts = null }) {
   return run((state, ctx) => {
     const at = ctx.at
-    // This Week: a completed board counts once per board per week, replays
-    // included. First-completion XP below is still paid only once ever.
-    if (won && boardId) mark(state, { id: `sysweek:${weekOf(at).key}:${boardId}`, kind: 'sysweek', at, m: { board: boardId, system } })
-    if (won) {
-      const g = award(state, { id: `syspuzzle:${puzzle.id}`, xp: XP.systemPuzzle, kind: 'syspuzzle', at, m: { system } })
+    const id = boardId || puzzle.id
+    ctx.attemptNumber = null
+    if (!won) return
+    // This Week: a solved board counts once per board per week, replays included.
+    mark(state, { id: `sysweek:${weekOf(at).key}:${id}`, kind: 'sysweek', at, m: { board: id, system } })
+    if (!state.ledger[`syspuzzle:${puzzle.id}`]) {
+      const n = Math.max(1, attempts ?? 1)
+      const prior = Object.entries(state.ledger)
+        .filter(([k, e]) => k.startsWith(`conn:${puzzle.id}:`) && e.kind === 'sysconn')
+        .reduce((a, [, e]) => a + (e.xp || 0), 0)
+      const g = award(state, { id: `syspuzzle:${puzzle.id}`, xp: Math.max(0, attemptXp(n) - prior), kind: 'syspuzzle', at, m: { system, attempt: n } })
       ctx.gained += g
-      ctx.lines.push(['Systems puzzle', g])
+      ctx.attemptNumber = n
+      ctx.lines.push([n === 1 ? 'Solved on the first try' : `Solved on try ${n}`, g])
     }
-    let conn = 0
-    guessLog.filter((x) => x.correct).forEach((x) => {
-      const ci = x.catIndexes[0]
-      const level = puzzle.categories[ci]?.level
-      conn += award(state, { id: `conn:${puzzle.id}:${ci}`, xp: XP.connection[level] || 0, kind: 'sysconn', at, m: { level, system } })
-    })
-    ctx.gained += conn
-    ctx.lines.push(['Connections', conn])
     if (systemComplete) {
       const c = award(state, { id: `system:${system}`, xp: XP.systemComplete, kind: 'system', at, m: { system } })
       if (c) {
         ctx.gained += c
         ctx.lines.push([`${system} complete`, c])
       }
+      ctx.connectedNow = mark(state, { id: `sysconnected:${system}`, kind: 'sysconnected', at, m: { system } })
     }
   })
 }

@@ -12,7 +12,11 @@ export const XP = {
   perfect: 25, // today's Daily, 0 mistakes, no tools used
   archive: 50, // a past Daily from the Archive, first finish only
   connection: { 1: 5, 2: 10, 3: 15, 4: 20 }, // Easy, Medium, Hard, Expert
-  systemPuzzle: 50, // a Systems puzzle solved
+  systemPuzzle: 50, // legacy: a Systems puzzle solved (still used to backfill pre-progression wins)
+  // Systems boards: paid once, only when the board is solved, by which attempt
+  // solved it (1st, 2nd, 3rd, 4th or later). Replaces the old 50 + group XP
+  // (a first-try solve still pays 100). See recordSystemFinish.
+  systemAttempt: [100, 75, 50, 25],
   systemComplete: 300, // every connection in a system solved (once per system)
   challengePerCorrect: 3, // 3-Minute
   challengeMax: 60,
