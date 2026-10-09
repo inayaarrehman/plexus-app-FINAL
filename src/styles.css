@@ -2372,50 +2372,9 @@ body.bg-home .secondary-btn:hover {
   margin-bottom: 3px;
 }
 
-/* ---------- Follow the thread ---------- */
+/* ---------- Verified Connections (kept without an entry point) ---------- */
 
-.follow-thread-btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  width: 100%;
-  margin-top: 12px;
-  padding: 10px 12px;
-  background: transparent;
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--node-cobalt);
-  border-radius: 8px;
-  color: var(--text);
-  cursor: pointer;
-  text-align: left;
-}
-
-.follow-thread-btn:hover {
-  border-color: var(--node-cobalt);
-}
-
-.follow-thread-label {
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.follow-thread-cta {
-  flex-shrink: 0;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--difficulty-hard);
-}
-
-/* ---------- Thread view ---------- */
-
-.thread-systems {
+.verified-systems {
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -2424,17 +2383,17 @@ body.bg-home .secondary-btn:hover {
   margin: 0 0 4px;
 }
 
-.thread-lede {
+.verified-lede {
   color: var(--text-dim);
   font-size: 0.9rem;
   margin: 0 0 16px;
 }
 
-.thread-group {
+.verified-group {
   position: relative;
 }
 
-.thread-system-label {
+.verified-system-label {
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -2443,14 +2402,14 @@ body.bg-home .secondary-btn:hover {
   margin-bottom: 6px;
 }
 
-.thread-node-row {
+.verified-node-row {
   display: flex;
   align-items: flex-start;
   gap: 10px;
   padding: 2px 0;
 }
 
-.thread-node-dot {
+.verified-node-dot {
   flex-shrink: 0;
   width: 10px;
   height: 10px;
@@ -2459,12 +2418,12 @@ body.bg-home .secondary-btn:hover {
   background: var(--node-cobalt);
 }
 
-.thread-node-main {
+.verified-node-main {
   min-width: 0;
   flex: 1;
 }
 
-.thread-node-title {
+.verified-node-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2480,27 +2439,27 @@ body.bg-home .secondary-btn:hover {
   cursor: pointer;
 }
 
-.thread-node-title:disabled {
+.verified-node-title:disabled {
   cursor: default;
 }
 
-.thread-node-caret {
+.verified-node-caret {
   flex-shrink: 0;
   color: var(--difficulty-hard);
   font-weight: 700;
 }
 
-.thread-node-detail {
+.verified-node-detail {
   padding: 2px 0 8px;
 }
 
-.thread-node-explanation {
+.verified-node-explanation {
   color: var(--text-dim);
   font-size: 0.88rem;
   margin: 0 0 8px;
 }
 
-.thread-node-remember {
+.verified-node-remember {
   background: rgba(53, 104, 196, 0.08);
   border-left: 3px solid var(--node-cobalt);
   padding: 8px 12px;
@@ -2509,12 +2468,12 @@ body.bg-home .secondary-btn:hover {
   margin: 0;
 }
 
-.thread-node-remember .remember-label {
+.verified-node-remember .remember-label {
   color: var(--difficulty-hard);
 }
 
 /* The vertical path linking one system group to the next. */
-.thread-connector {
+.verified-connector {
   width: 2px;
   height: 16px;
   margin: 2px 0 8px 4px;
@@ -6958,24 +6917,179 @@ h1, h2, .record-section, .kit-group-head { letter-spacing: -0.02em; }
 p { line-height: 1.5; }
 .home-reset-note, .week-rule, .kit-group-sub, .tool-why, .growth-label-kicker { letter-spacing: 0.01em; }
 
-/* ---- Locked review extras (Follow the thread, Verified Connections) ----
+/* ---- Verified Connections, locked ----
    Visible and explained, never spoiled: a dashed edge, a small lock and the
    progress that opens it. */
-.follow-thread-btn.is-locked { cursor: default; border-style: dashed; background: transparent; }
-.follow-thread-btn.is-locked .follow-thread-cta { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); }
-.follow-thread-btn.is-locked .follow-thread-label { white-space: normal; line-height: 1.45; }
-.lock-mark { flex: none; }
-.thread-locked { text-align: center; padding: 8px 4px 4px; }
-.thread-locked-mark { position: relative; display: block; width: 64px; height: 20px; margin: 0 auto 10px; }
-.thread-locked-mark span { position: absolute; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: 0.85; }
-.thread-locked-mark span:nth-child(1) { left: 0; }
-.thread-locked-mark span:nth-child(2) { left: 28px; opacity: 0.45; }
-.thread-locked-mark span:nth-child(3) { left: 56px; opacity: 0.25; }
-.thread-locked-mark::before { content: ''; position: absolute; top: 9.5px; left: 6px; right: 6px; border-top: 1.5px dashed currentColor; opacity: 0.4; }
-.thread-locked-title { margin: 0 0 4px; font-weight: 700; font-size: 1.05rem; }
-.thread-locked-text { margin: 0 auto 12px; max-width: 320px; font-size: var(--type-secondary); line-height: 1.5; color: var(--text-dim); }
-.thread-locked-progress { display: flex; justify-content: center; gap: 18px; margin: 0; font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
-.thread-locked-progress b { color: var(--text); font-size: 1rem; font-variant-numeric: tabular-nums; }
-.follow-thread-btn.is-locked { flex-direction: column; align-items: flex-start; gap: 4px; border-left: 1.5px dashed color-mix(in srgb, var(--text) 40%, transparent); }
-.follow-thread-btn.is-locked:hover { border-color: var(--border); }
-.follow-thread-btn.is-locked .follow-thread-label { text-transform: none; letter-spacing: 0; font-weight: 500; font-size: var(--type-caption); color: var(--text-dim); overflow: visible; }
+.verified-locked { text-align: center; padding: 8px 4px 4px; }
+.verified-locked-mark { position: relative; display: block; width: 64px; height: 20px; margin: 0 auto 10px; }
+.verified-locked-mark span { position: absolute; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: 0.85; }
+.verified-locked-mark span:nth-child(1) { left: 0; }
+.verified-locked-mark span:nth-child(2) { left: 28px; opacity: 0.45; }
+.verified-locked-mark span:nth-child(3) { left: 56px; opacity: 0.25; }
+.verified-locked-mark::before { content: ''; position: absolute; top: 9.5px; left: 6px; right: 6px; border-top: 1.5px dashed currentColor; opacity: 0.4; }
+.verified-locked-title { margin: 0 0 4px; font-weight: 700; font-size: 1.05rem; }
+.verified-locked-text { margin: 0 auto 12px; max-width: 320px; font-size: var(--type-secondary); line-height: 1.5; color: var(--text-dim); }
+.verified-locked-progress { display: flex; justify-content: center; gap: 18px; margin: 0; font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
+.verified-locked-progress b { color: var(--text); font-size: 1rem; font-variant-numeric: tabular-nums; }
+
+/* =====================================================================
+   LAYOUT SAFETY: shared rules for controls and action groups.
+   Every control is at least 44 x 44 CSS px with its label inside it;
+   separate actions sit in flex rows with explicit gaps and wrap (or
+   stack) when they cannot fit; containers grow with their text. These
+   come last so they hold over older one-off sizes. Checked by
+   scratchpad layout-regression (320 to 1280px, normal and 150% text).
+   ===================================================================== */
+
+/* Touch-target floor for every control. Content stays centred because
+   buttons centre their contents vertically; text inputs grow with text. */
+body :is(button, [role='button'], summary, select, textarea,
+  input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='hidden'])) {
+  min-height: 44px;
+}
+/* Icon-only controls also need the width. */
+body :is(.icon-btn, .install-hint-dismiss, .archive-month-step, .systems-back) {
+  min-width: 44px;
+}
+/* Info buttons: a real 44px box around the 16px icon. No invisible overlay
+   or negative margin, so the target cannot reach over its neighbours. */
+.info-btn {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0;
+}
+.info-btn::after { content: none; }
+
+/* Footer links: full-height targets in a row that wraps. */
+.legal-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 4px;
+}
+
+/* Shared action row for card footers: Save / Report on a connection,
+   Read explanation / Report on Connection of the day. Explicit gaps; the
+   actions wrap, and stack on narrow screens. */
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  margin-top: 12px;
+}
+.card-actions > * { margin: 0; flex: 0 1 auto; max-width: 100%; }
+.card-actions > .report-link,
+.card-actions > .home-cotd-toggle { margin: 0; }
+@media (max-width: 359px) {
+  .card-actions { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+.home-cotd .card-actions { margin-top: 4px; }
+
+/* Title rows with a difficulty badge and a "Why?" control: the title takes
+   the room it needs and wraps; the badge and control keep their own space
+   and drop below the title, to the right, when the row is too narrow. */
+.accordion-header {
+  flex-wrap: wrap;
+  row-gap: 4px;
+  column-gap: 10px;
+}
+.accordion-title {
+  flex: 1 1 11rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+/* The badge and Why? travel together: beside the title when they fit,
+   otherwise on their own line at the right. */
+.accordion-meta { flex: 0 0 auto; margin-left: auto; display: inline-flex; align-items: center; gap: 10px; }
+.accordion-level, .accordion-caret { flex: 0 0 auto; }
+.strand-head { flex-wrap: wrap; row-gap: 4px; }
+.strand-title { flex: 1 1 10rem; overflow-wrap: anywhere; }
+.strand-meta { flex: 0 0 auto; margin-left: auto; }
+
+/* Long titles inside cards wrap instead of spilling out. */
+.mode-title, .system-detail-title, .home-cotd-title, .kit-name, .rounds-label, .result-card h2 {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+.mode-tile, .continue-row .mode-body, .mode-body { min-width: 0; }
+
+/* Headers: Back stays a full target; the title wraps instead of being
+   cut off with an ellipsis or running under the button. */
+.game-header-title {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+  line-height: 1.25;
+}
+
+/* Primary navigation: the four destinations share one row and wrap to a
+   second row (as whole items) when large text cannot fit them. */
+.app-nav { flex-wrap: wrap; row-gap: 4px; }
+.app-nav-item { flex: 1 1 0; }
+.home-nav-links { flex-wrap: wrap; row-gap: 4px; }
+
+/* Archive month selector: arrows keep 44px targets that grow with large
+   text; the month name takes the space between and can wrap. */
+.archive-month-row {
+  grid-template-columns: auto minmax(0, max-content) auto;
+  column-gap: 8px;
+}
+.archive-month-step { width: auto; height: auto; padding: 0 6px 4px; }
+.archive .monthly-title { min-width: 0; overflow-wrap: anywhere; }
+
+/* Systems grid: columns are sized in em, so a system name never spills out
+   of its node when text is enlarged; the grid drops to fewer columns. */
+.system-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5em), 1fr)); }
+.system-node { min-width: 0; }
+.system-node-name { overflow-wrap: anywhere; hyphens: auto; }
+
+/* Systems detail: the board progress line keeps its own space above the
+   main action. */
+.system-detail .node-progress { margin: 4px 0 22px; }
+.system-detail .system-play-btn { margin-top: 0; }
+.system-replays-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* "Found a connection we missed?" and Submit a Connection: side by side
+   when they fit, stacked and centred on smaller screens. */
+.systems-suggest { gap: 10px 14px; }
+.systems-suggest-line { text-align: center; }
+@media (max-width: 479px) {
+  .systems-suggest { flex-direction: column; }
+}
+
+/* 3 Minutes helper rows: the label and its summary wrap rather than being
+   clipped with an ellipsis. */
+.challenge-helper-row { flex-wrap: wrap; row-gap: 2px; }
+.challenge-helper-label { white-space: normal; }
+.challenge-types-names { white-space: normal; overflow: visible; text-overflow: clip; flex: 1 1 10rem; }
+
+/* Answer lists and stacked rows: visible space between separate actions. */
+.challenge-choice-list { gap: 4px; }
+.home-progress { gap: 4px; }
+
+/* The install suggestion is fixed to the bottom; the page reserves its
+   height (set by InstallPrompt) plus the safe-area inset so it never
+   covers the last content. */
+body.has-install-hint .app-shell {
+  padding-bottom: calc(var(--install-hint-space, 96px) + max(16px, env(safe-area-inset-bottom)) + 16px);
+}
+.install-hint { flex-wrap: wrap; }
+.install-hint-actions { flex-wrap: wrap; }
+
+/* Three-column headers (Archive, My Plexus, legal pages): the outer
+   columns are never narrower than Back, so a large-text title wraps in the
+   middle instead of running under the button. */
+.archive .game-header, .record .game-header, .legal .game-header {
+  grid-template-columns: minmax(max-content, 1fr) minmax(0, auto) minmax(max-content, 1fr);
+}
+.game-header .icon-btn { white-space: nowrap; }
+/* Month arrows: the glyph's full height sits inside the button. */
+.archive-month-step { line-height: normal; padding: 0 6px; }
+/* The hero title's descenders keep clear of the Daily constellation. */
+@media (max-width: 899px) { .daily-plexus { margin-top: 12px; } }
+/* Remove-from-saved star: a full-size target. */
+.saved-unsave { min-width: 44px; }

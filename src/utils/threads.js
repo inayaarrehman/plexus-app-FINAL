@@ -7,9 +7,9 @@
 // `tags` and fields already attached to VERIFIED categories in the
 // connection bank — no new medical content is authored here, nothing is
 // generated dynamically, and unverified categories are never exposed. It
-// powers the "Follow the thread" entry point and Thread view, and flags
-// existing categories that could qualify as the new 'plexus' connection
-// type. Because it reads the same verified bank the puzzles come from, a
+// feeds the Verified Connections view (kept without an entry point), the
+// encountered-concepts count in yourPlexus.js, and flags existing
+// categories that could qualify as the new 'plexus' connection type. Because it reads the same verified bank the puzzles come from, a
 // thread can only ever reference medicine the app already teaches.
 import connectionBank from '../data/connectionBank.js'
 
@@ -59,10 +59,9 @@ export function deriveThreads({ minCategories = 3, minSystems = 2 } = {}) {
     .sort((a, b) => b.members.length - a.members.length)
 }
 
-// The thread (if any) a given playable category belongs to, matched by its
-// concept tags. Used to decide whether to offer "Follow the thread →"
-// after that category is solved/reviewed. Returns the richest matching
-// thread, or null. Daily categories carry no tags and simply return null.
+// The concept group (if any) a given playable category belongs to, matched
+// by its concept tags: what Verified Connections would list for it. Returns
+// the richest match, or null. Categories without tags return null.
 export function getThreadForCategory(category, opts) {
   const tags = (category?.tags || []).map((t) => String(t).toLowerCase())
   if (tags.length === 0) return null

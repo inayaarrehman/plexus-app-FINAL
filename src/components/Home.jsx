@@ -164,7 +164,7 @@ function ConnectionOfDay({ cotd, onReport }) {
         {open && rest ? ` ${rest}` : ''}
       </p>
       {open && cotd.explanation && cotd.remember && <p className="home-cotd-remember">{cotd.remember}</p>}
-      <div className="home-cotd-actions">
+      <div className="home-cotd-actions card-actions">
         {more && (
           <button type="button" className="home-cotd-toggle" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
             {open ? 'Hide explanation' : 'Read explanation'}

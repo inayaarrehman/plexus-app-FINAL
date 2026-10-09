@@ -1,23 +1,22 @@
 // ---------------------------------------------------------------------
-// Unlocks for the review extras that look across puzzles.
+// Unlock for Verified Connections, the review extra that looks across puzzles.
 // ---------------------------------------------------------------------
-// "Follow the thread" and the Verified Connections inside it show how one
-// idea links to OTHER connections in the library, some of which may be in
-// puzzles the player has not reached yet. So both open with play:
-//   Follow the thread      after 5 completed Dailies
-//   Verified Connections   after 10 completed Dailies and 5 solved Systems boards
-// Counts come from the same records the rest of the app uses (Daily history
-// and solved Systems boards), so they sync with progress and never go back.
-// Even once unlocked, a thread lists only connections the player has already
-// met in a finished Daily or a solved Systems board; the rest are counted,
-// never named, until they are played.
+// Verified Connections show how one idea links to OTHER connections in the
+// library, some of which may be in puzzles the player has not reached yet,
+// so they open with play: after 10 completed Dailies and 5 solved Systems
+// boards. Counts come from the same records the rest of the app uses (Daily
+// history and solved Systems boards), so they sync with progress and never
+// go back. Even once unlocked, the list names only connections the player
+// has already met in a finished Daily or a solved Systems board; the rest
+// are counted, never named, until they are played.
+// (Follow the Thread, which also unlocked here, has been removed. The
+// Verified Connections view is kept without an entry point.)
 import { getDailyHistory, getSystemsBoards } from './storage.js'
 import { getDailyPuzzleForDate } from './dailyPuzzle.js'
 import { LIBRARY_SUBJECTS, systemsBoardsFor, systemsBoardPuzzle } from './newLibrary.js'
 import { dayKey } from './calendar.js'
 
 export const UNLOCKS = {
-  thread: { dailies: 5, systems: 0 },
   verified: { dailies: 10, systems: 5 },
 }
 
@@ -35,7 +34,7 @@ export function featureState(name, counts = progressCounts()) {
   return { unlocked, need, have, left: { dailies: Math.max(0, need.dailies - counts.dailies), systems: Math.max(0, need.systems - counts.systems) } }
 }
 
-// "5 Dailies" / "10 Dailies and 5 Systems boards"
+// "10 Dailies and 5 Systems boards"
 export function unlockRequirement(name) {
   const n = UNLOCKS[name]
   const parts = [`${n.dailies} Dailies`]

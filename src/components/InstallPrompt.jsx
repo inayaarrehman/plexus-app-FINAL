@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 // ---------------------------------------------------------------------
 // InstallPrompt — unobtrusive "Add to Home Screen" hint.
@@ -116,11 +116,30 @@ export default function InstallPrompt() {
     close()
   }
 
-  if (dismissed || isStandalone()) return null
-  if (!deferred && !showIosHint) return null
+  const visible = !dismissed && !isStandalone() && Boolean(deferred || showIosHint)
+  // While the hint is fixed to the bottom, the page reserves its height so it
+  // never covers the last content (styles.css, body.has-install-hint).
+  const hintRef = useRef(null)
+  useEffect(() => {
+    if (!visible) return undefined
+    const body = document.body
+    const el = hintRef.current
+    const set = () => body.style.setProperty('--install-hint-space', `${Math.ceil(el?.getBoundingClientRect().height || 96)}px`)
+    body.classList.add('has-install-hint')
+    set()
+    const ro = typeof ResizeObserver !== 'undefined' && el ? new ResizeObserver(set) : null
+    ro?.observe(el)
+    return () => {
+      ro?.disconnect()
+      body.classList.remove('has-install-hint')
+      body.style.removeProperty('--install-hint-space')
+    }
+  }, [visible])
+
+  if (!visible) return null
 
   return (
-    <div className="install-hint" role="dialog" aria-label="Install Plexus">
+    <div className="install-hint" role="dialog" aria-label="Install Plexus" ref={hintRef}>
       <div className="install-hint-body">
         <span className="install-hint-title">Add Plexus to your home screen</span>
         {deferred ? (
