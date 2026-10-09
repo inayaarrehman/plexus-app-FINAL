@@ -31,7 +31,7 @@ console.log('[2] Countdown comes from the real reset (local midnight), DST-safe'
   const t = Date.parse('2026-10-08T20:36:00-07:00')
   const i = nextPuzzleInfo(t, LA)
   ok(i.text === 'Next puzzle in 3h 24m', 'normal evening: ' + i.text)
-  ok(dayKey(i.at, LA) === '2026-10-09' && /12:00\s?AM Los Angeles time \(Fri, Oct 9\)/.test(i.detail), 'detail names the exact time and zone: ' + i.detail)
+  ok(dayKey(i.at, LA) === '2026-10-09' && /12:00\s?AM Pacific Time \(Fri, Oct 9\)/.test(i.detail), 'detail names the exact time and zone: ' + i.detail)
 }
 {
   // Fall back: Nov 1 2026 has 25 hours in Los Angeles. From 12:30 AM PDT
@@ -58,7 +58,7 @@ console.log('[2] Countdown comes from the real reset (local midnight), DST-safe'
   // Other zones use their own midnight.
   const t = Date.parse('2026-10-08T20:36:00-07:00') // 04:36 BST on Oct 9
   ok(nextPuzzleInfo(t, 'Europe/London').text === 'Next puzzle in 19h 24m', 'London player counts to London midnight')
-  ok(/London time/.test(nextPuzzleInfo(t, 'Europe/London').detail), 'London detail')
+  ok(/UK Time/.test(nextPuzzleInfo(t, 'Europe/London').detail), 'London detail')
 }
 
 console.log(`\n${failed ? `${failed} FAILED` : 'ALL UI COPY CHECKS PASSED'} (${passed} passed)`)

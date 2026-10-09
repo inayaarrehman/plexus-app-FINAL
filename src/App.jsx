@@ -852,10 +852,11 @@ export default function App() {
         todayKey={todayKey}
         timeZone={timeZone}
         onReport={setReportCtx}
-        onOpenSupport={() => openLegal('support')}
         dailyNumber={todayDayNumber}
         dailyDone={dailyDone}
         currentStreak={streak.current}
+        longestStreak={streak.longest}
+        streakWeek={streak.week}
         continueSystem={continueSystem}
         continueSystemSolved={continueSystemCounts.solved}
         continueSystemTotal={continueSystemCounts.total}

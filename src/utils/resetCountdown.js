@@ -32,6 +32,6 @@ export function nextPuzzleInfo(now = Date.now(), tz = currentTimeZone()) {
     at,
     ms,
     text: ms > 0 ? `Next puzzle in ${formatCountdown(ms)}` : 'Next puzzle is ready',
-    detail: `New Daily at ${clock} ${timeZoneLabel(tz)} (${dateLabel}). Each player gets it at midnight in their own time zone.`,
+    detail: `New Daily at ${clock} ${timeZoneLabel(tz, at)} (${dateLabel}). Each player gets it at midnight in their own time zone.`,
   }
 }

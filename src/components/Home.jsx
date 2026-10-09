@@ -180,6 +180,45 @@ function ConnectionOfDay({ cotd, onReport }) {
   )
 }
 
+// The Daily streak under the play button: the current count (from the
+// streak rules in progression/streak.js, passed down by App) and this week,
+// Monday to Sunday, as a row of linked nodes. A day is filled when it counts
+// toward the streak (its Daily won on that date); a Coverage day shows as a
+// ring with a centre. Links light between neighbouring kept days.
+const WEEK_LETTERS = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
+const WEEK_NAMES = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+function streakTitle(current, longest) {
+  if (current > 0) return `${current} day streak`
+  return longest > 0 ? 'No current streak' : 'No streak yet'
+}
+function StreakWeek({ current = 0, longest = 0, week, kept = false }) {
+  const title = streakTitle(current, longest)
+  const days = Array.isArray(week) && week.length === 7 ? week : null
+  const isKept = (d) => d && (d.done || d.covered)
+  const dayWord = (d) => (d.done ? 'completed' : d.covered ? 'covered by Coverage' : d.future ? 'still to come' : d.today ? 'not completed yet' : 'not completed')
+  return (
+    <div className={`home-streak ${kept ? 'is-kept' : ''} ${current > 0 ? 'has-streak' : 'is-zero'}`}>
+      <p className="home-streak-title">
+        <span className="home-streak-count" aria-label={current > 0 ? `${current} ${current === 1 ? 'day' : 'days'} in a row` : title}>{title}</span>
+      </p>
+      {days && (
+        <ol className="streak-week" aria-label="This week">
+          {days.map((d, i) => (
+            <li
+              key={d.key}
+              className={`streak-day ${d.done ? 'is-done' : ''} ${d.covered ? 'is-covered' : ''} ${d.today ? 'is-today' : ''} ${d.future ? 'is-future' : ''} ${i > 0 && isKept(d) && isKept(days[i - 1]) ? 'is-linked' : ''}`}
+              aria-label={`${WEEK_NAMES[i]}${d.today ? ', today' : ''}: ${dayWord(d)}`}
+            >
+              <span className="streak-day-node" aria-hidden="true" />
+              <span className="streak-day-letter" aria-hidden="true">{WEEK_LETTERS[i]}</span>
+            </li>
+          ))}
+        </ol>
+      )}
+    </div>
+  )
+}
+
 // What changed on today's board since Home was last shown, so only new
 // progress animates. Display state on this device only.
 const DAILY_SEEN_KEY = 'plexus.home.dailySeen.v1'
@@ -219,11 +258,12 @@ function todayProgress(puzzle, dailyDone, history, key) {
 export default function Home({
   todayKey,
   timeZone,
-  onOpenSupport,
   onReport,
   dailyNumber,
   dailyDone,
   currentStreak,
+  longestStreak = 0,
+  streakWeek = null,
   continueSystem,
   continueSystemSolved,
   continueSystemTotal,
@@ -298,7 +338,6 @@ export default function Home({
       : status === 'partial'
         ? `Today's Plexus: ${found} of ${total} connections found. Continue.`
         : "Today's Plexus: not started. Play."
-  const streakText = currentStreak > 0 ? `${currentStreak} day streak` : null
   const continueOpen = Boolean(continueSystem) && continueSystemTotal > 0 && continueSystemSolved < continueSystemTotal
 
   return (
@@ -317,12 +356,6 @@ export default function Home({
             <button className="home-nav-link" onClick={onOpenStats}>Stats</button>
           )}
           <button className="home-nav-link" onClick={onOpenHowTo}>How to play</button>
-          {onOpenSupport && (
-            <button className="home-nav-link home-nav-support" onClick={onOpenSupport} aria-label="Help & Support">
-              <span className="nav-label-long">Help &amp; Support</span>
-              <span className="nav-label-short" aria-hidden="true">Help</span>
-            </button>
-          )}
           {onOpenAccount && (
             <button className="home-nav-link" onClick={onOpenAccount}>Account</button>
           )}
@@ -370,17 +403,11 @@ export default function Home({
                 <span className="play-today-btn-arrow" aria-hidden="true"> &rarr;</span>
               </button>
             )}
-            {streakText && (
-              <span className={`home-streak ${status === 'finished' ? 'is-kept' : ''}`}>
-                <span className="home-streak-node" aria-hidden="true" />
-                <span className="home-streak-count">{streakText}</span>
-              </span>
-            )}
           </div>
 
-          <ResetCountdown timeZone={timeZone} todayKey={today} />
+          <StreakWeek current={currentStreak} longest={longestStreak} week={streakWeek} kept={status === 'finished'} />
 
-          {connectionOfDay && <ConnectionOfDay cotd={connectionOfDay} onReport={onReport ? () => onReport(connectionOfDay.report) : undefined} />}
+          <ResetCountdown timeZone={timeZone} todayKey={today} />
         </div>
       </section>
 
@@ -459,6 +486,13 @@ export default function Home({
           </div>
         </section>
       </div>
+
+      {/* Connection of the day sits after the ways to play. */}
+      {connectionOfDay && (
+        <section className="home-cotd-section" aria-label="Connection of the day">
+          <ConnectionOfDay cotd={connectionOfDay} onReport={onReport ? () => onReport(connectionOfDay.report) : undefined} />
+        </section>
+      )}
 
       {/* MY PLEXUS: where you see what you've built. Two quiet rows that both
           open My Plexus (the second straight to This Week). */}

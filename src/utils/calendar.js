@@ -174,12 +174,64 @@ export function weekOfKey(key, tz = currentTimeZone()) {
   }
 }
 
-// "Los Angeles time" from "America/Los_Angeles"; "UTC" for UTC zones.
-export function timeZoneLabel(tz = currentTimeZone()) {
-  if (!tz || /^(UTC|Etc\/(UTC|GMT|Universal|Zulu)|GMT|Universal|Zulu)$/i.test(tz)) return 'UTC'
-  const city = tz.split('/').pop().replace(/_/g, ' ')
-  if (/^Etc\//.test(tz) || /^GMT[+-]/.test(city)) return tz
-  return `${city} time`
+// A readable name for a time zone, for display only: "Pacific Time" from
+// "America/Los_Angeles". The IANA id is still what every date and reset uses.
+// Generic names ("Pacific Time", not "Pacific Daylight Time") stay right on
+// both sides of a daylight-saving change. Common zones are named here so they
+// read the same on every browser; anything else uses the browser's generic
+// name, then its name for the zone at `at`, then the city, then the offset.
+const ZONE_NAMES = {
+  'America/Los_Angeles': 'Pacific Time',
+  'America/Vancouver': 'Pacific Time',
+  'America/Tijuana': 'Pacific Time',
+  'America/New_York': 'Eastern Time',
+  'America/Detroit': 'Eastern Time',
+  'America/Toronto': 'Eastern Time',
+  'America/Indiana/Indianapolis': 'Eastern Time',
+  'America/Kentucky/Louisville': 'Eastern Time',
+  'America/Chicago': 'Central Time',
+  'America/Winnipeg': 'Central Time',
+  'America/Denver': 'Mountain Time',
+  'America/Boise': 'Mountain Time',
+  'America/Edmonton': 'Mountain Time',
+  'America/Phoenix': 'Mountain Standard Time',
+  'America/Anchorage': 'Alaska Time',
+  'Pacific/Honolulu': 'Hawaii Time',
+  'America/Halifax': 'Atlantic Time',
+  'America/Puerto_Rico': 'Atlantic Time',
+  'America/St_Johns': 'Newfoundland Time',
+  'Europe/London': 'UK Time',
+}
+const isUtcZone = (tz) => !tz || /^(UTC|Etc\/(UTC|GMT|Universal|Zulu)|GMT|Universal|Zulu)$/i.test(tz)
+function intlZoneName(tz, style, at) {
+  try {
+    const part = new Intl.DateTimeFormat('en-US', { timeZone: tz, timeZoneName: style }).formatToParts(new Date(at)).find((p) => p.type === 'timeZoneName')
+    const v = part?.value || ''
+    // "GMT-5" style answers are offsets, not names; let the caller fall back.
+    return v && !/^(GMT|UTC)([+-]|$)/.test(v) ? v : ''
+  } catch {
+    return ''
+  }
+}
+function offsetLabel(tz, at) {
+  const mins = Math.round(zoneOffset(at, tz) / 60000)
+  if (!mins) return 'UTC'
+  const a = Math.abs(mins)
+  return `UTC${mins > 0 ? '+' : '-'}${Math.floor(a / 60)}${a % 60 ? `:${pad(a % 60)}` : ''}`
+}
+export function timeZoneLabel(tz = currentTimeZone(), at = Date.now()) {
+  if (isUtcZone(tz)) return 'UTC'
+  if (ZONE_NAMES[tz]) return ZONE_NAMES[tz]
+  const generic = intlZoneName(tz, 'longGeneric', at) || intlZoneName(tz, 'long', at)
+  if (generic) return generic
+  if (/^Etc\//.test(tz)) {
+    try {
+      return offsetLabel(tz, at)
+    } catch {
+      return tz
+    }
+  }
+  return `${tz.split('/').pop().replace(/_/g, ' ')} time`
 }
 
 // A calendar date for display ("Wednesday, October 7"), never shifted by the

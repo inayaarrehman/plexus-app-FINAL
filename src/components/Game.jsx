@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import InfoIcon from './InfoIcon.jsx'
+import { ToolArt } from './RecordParts.jsx'
 import { buildTiles, isFullMatch, isOneAway, shuffle, attemptKey, isDuplicateAttempt, MAX_MISTAKES, STREAK_MILESTONES } from '../utils/game.js'
 import { loadProgress, saveProgress } from '../utils/storage.js'
 import { getCompletionPhrase } from '../utils/completionPhrases.js'
@@ -10,7 +11,7 @@ import { pickConnectionOfDay } from '../utils/connectionOfDay.js'
 import BrandMark from './BrandMark.jsx'
 import Confetti from './Confetti.jsx'
 import XpResult from './XpResult.jsx'
-import { loadProgression, spendTool, toolUsedInAttempt } from '../progression/store.js'
+import { loadProgression, spendTool, toolUsedInAttempt, toolsAllowedIn } from '../progression/store.js'
 import { kitCounts, itemOpen, levelInfo, totalXp } from '../progression/engine.js'
 import { KIT, PUZZLE_TOOLS } from '../progression/config.js'
 import PuzzleSignature from './PuzzleSignature.jsx'
@@ -154,12 +155,14 @@ export default function Game({
     }
   }, [isSystem, onAttemptStart, guessLog.length, attemptId])
 
-  // ---- Puzzle tools (Daily and Systems boards only) ----
+  // ---- Puzzle tools (Daily puzzles only) ----
   // One tool per board attempt. Tapping a tool explains exactly what it will
   // do and that it uses one; nothing is spent until the player confirms and
   // the effect is actually available. A refused or unavailable action spends
   // nothing.
-  const toolsAllowed = reportMode === 'daily' || reportMode === 'system'
+  // Systems, the Archive and the timed modes show no tools; spendTool refuses
+  // anything that is not a Daily attempt as well.
+  const toolsAllowed = toolsAllowedIn(reportMode)
   const curbsideTiles = curbside.filter((text) => tiles.some((t) => t.text === text && !solvedCats.includes(t.catIndex)))
   const ruleOutActive = ruleOut && tiles.some((t) => t.text === ruleOut.outsider && !solvedCats.includes(t.catIndex)) ? ruleOut : null
   const [toolAsk, setToolAsk] = useState(null) // item being explained before use
@@ -206,7 +209,7 @@ export default function Game({
   const toolState = (item) => {
     const def = KIT[item]
     if (!itemOpen(item, kit.level)) return { ok: false, why: `Unlocks at Level ${def.unlock}` }
-    if (toolsUsed > 0) return { ok: false, why: 'One tool per board' }
+    if (toolsUsed > 0) return { ok: false, why: 'One tool per Daily' }
     if (!(kit.counts[item] > 0)) return { ok: false, why: 'None left' }
     if (!toolEffect(item)) {
       if (item === 'lab') return { ok: false, why: 'After a “one away” guess' }
@@ -222,7 +225,7 @@ export default function Game({
       flashMessage('Not available right now. Nothing was used.')
       return
     }
-    if (!spendTool(item, attemptId, { puzzle: puzzle.id })) {
+    if (!spendTool(item, attemptId, { puzzle: puzzle.id, mode: reportMode })) {
       setKit(readKit())
       flashMessage('Not available right now. Nothing was used.')
       return
@@ -799,7 +802,7 @@ function ToolBar({ kit, toolState, toolsUsed, ask, setAsk, onConfirm, isDaily, c
     <section className="tool-section" aria-labelledby="tool-section-title" onKeyDown={onKey}>
       <div className="tool-section-head">
         <h3 id="tool-section-title" className="tool-section-title">Tools</h3>
-        <p className="tool-section-rule">{toolsUsed > 0 ? 'Tool used. One tool per board.' : 'You can use one tool per board.'}</p>
+        <p className="tool-section-rule">{toolsUsed > 0 ? 'Tool used. One tool per Daily.' : 'You can use one tool per Daily.'}</p>
       </div>
       <ul className="tool-list">
         {PUZZLE_TOOLS.map((item) => {
@@ -815,6 +818,7 @@ function ToolBar({ kit, toolState, toolsUsed, ask, setAsk, onConfirm, isDaily, c
                 aria-label={`Use ${KIT[item].name}, ${count} left${st.ok ? '' : `. ${locked ? `Unlocks at Level ${KIT[item].unlock}` : st.why}`}`}
               >
                 <span className="tool-top">
+                  <ToolArt item={item} locked={locked} size="icon" className="tool-btn-art" />
                   <span className="kit-use-name">{KIT[item].name}</span>
                   <span className="kit-use-count">×{count}</span>
                 </span>
@@ -843,8 +847,8 @@ function ToolBar({ kit, toolState, toolsUsed, ask, setAsk, onConfirm, isDaily, c
           <dl className="tool-info-facts">
             <div><dt>When</dt><dd>{TOOL_DETAIL[info].when}</dd></div>
             <div><dt>Status</dt><dd>{toolStatusText(info, toolState(info), kit.counts[info] || 0, kit.level)}</dd></div>
-            <div><dt>Limit</dt><dd>One tool per board{isDaily ? '. A Daily solved with a tool doesn’t count as Perfect' : ''}.</dd></div>
-            <div><dt>Get more</dt><dd>Level up and complete weekly goals.</dd></div>
+            <div><dt>Limit</dt><dd>One tool per Daily. A Daily solved with a tool doesn’t count as Perfect.</dd></div>
+            <div><dt>Get more</dt><dd>Level up and complete weekly goals. Tools earned in Systems are saved for your Dailies.</dd></div>
           </dl>
           <button type="button" className="tool-info-close" onClick={() => { setInfo(null); document.getElementById(`tool-info-btn-${info}`)?.focus() }}>Close</button>
         </div>
@@ -855,8 +859,7 @@ function ToolBar({ kit, toolState, toolsUsed, ask, setAsk, onConfirm, isDaily, c
       {ask && def && (
         <div className="kit-intro" role="group" aria-label={`Use ${def.name}?`}>
           <p className="kit-intro-text">
-            <b>{def.name}</b>. {effectLine[ask]} It uses 1 of your {kit.counts[ask]}, and you can use one tool per board.
-            {isDaily ? ' A Daily solved with a tool doesn’t count as Perfect.' : ''}
+            <b>{def.name}</b>. {effectLine[ask]} It uses 1 of your {kit.counts[ask]}, and you can use one tool per Daily. A Daily solved with a tool doesn’t count as Perfect.
           </p>
           <div className="kit-intro-actions">
             <button className="kit-intro-use" onClick={() => onConfirm(ask)}>Use {def.name}</button>

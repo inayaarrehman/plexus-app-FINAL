@@ -36,7 +36,8 @@ import {
   localDayKey,
   entryDay,
 } from './engine.js'
-import { currentStreak, longestStreak, coverGaps, isStreakDay, finishedOnDate } from './streak.js'
+import { currentStreak, longestStreak, coverGaps, isStreakDay, finishedOnDate, addDays as addDayKey } from './streak.js'
+import { weekdayOf } from '../utils/calendar.js'
 
 const KEY = 'plexus.progression.v1'
 
@@ -72,7 +73,22 @@ export function streakInfo(state, history, todayKey) {
   return {
     current: currentStreak(history, todayKey, { shielded, pendingShield }),
     longest: longestStreak(history, { shielded }),
+    week: streakWeek(history, todayKey, shielded),
   }
+}
+
+// This week, Monday to Sunday in the player's own calendar, judged by the
+// same rule the streak count uses: a day is `done` when its Daily was won and
+// finished on that date (isStreakDay), `covered` when a Coverage kept the
+// streak for it. Nothing here is stored; it is read from the Daily history.
+export function streakWeek(history, todayKey, shielded = new Set()) {
+  const h = history || {}
+  const monday = addDayKey(todayKey, -weekdayOf(todayKey))
+  return Array.from({ length: 7 }, (_, i) => {
+    const key = addDayKey(monday, i)
+    const done = isStreakDay(h[key], key)
+    return { key, done, covered: !done && shielded.has(key), today: key === todayKey, future: key > todayKey }
+  })
 }
 
 // ---- Your Tools start (runs once per save, safe to repeat) ----
@@ -354,12 +370,24 @@ export function recordRaceWin({ raceId }) {
 }
 
 // ---- puzzle tools ----
+// Tools are for Daily puzzles only. Systems boards, 3 Minutes and Race can
+// still earn tools (they are kept for Dailies) but can never spend one. The
+// check lives here, not just in the board's buttons, so a stale screen or
+// another route cannot use a tool outside a Daily: the caller must say the
+// board is a Daily, and the attempt must be a Daily attempt
+// ('daily-YYYY-MM-DD:<start>').
+export const TOOL_MODES = ['daily']
+const DAILY_ATTEMPT = /^daily-\d{4}-\d{2}-\d{2}:/
+export function toolsAllowedIn(mode) {
+  return TOOL_MODES.includes(mode)
+}
 // One tool per board attempt: the use id is the attempt id, so a second
 // spend in the same attempt (another tab, a double tap, a refresh) is
-// refused. Returns false (nothing spent) when the tool is locked, empty, or
-// this attempt already used a tool.
+// refused. Returns false (nothing spent) when the board is not a Daily, the
+// tool is locked or empty, or this attempt already used a tool.
 export function spendTool(item, attemptId, m = {}) {
   if (!PUZZLE_TOOLS.includes(item) || !attemptId) return false
+  if (!toolsAllowedIn(m.mode) || !DAILY_ATTEMPT.test(String(attemptId))) return false
   const state = loadProgression()
   ensureV2(state)
   const info = levelInfo(totalXp(state))
@@ -369,7 +397,7 @@ export function spendTool(item, attemptId, m = {}) {
   return ok
 }
 // Older name kept for callers.
-export const spendCurbside = (puzzleId) => spendTool('curbside', `${puzzleId}:${Date.now()}`, { puzzle: puzzleId })
+export const spendCurbside = (puzzleId) => spendTool('curbside', `${puzzleId}:${Date.now()}`, { puzzle: puzzleId, mode: 'daily' })
 
 export function toolUsedInAttempt(attemptId) {
   return loadProgression().kit.uses[`tool:${attemptId}`] || null

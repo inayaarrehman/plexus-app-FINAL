@@ -1158,7 +1158,7 @@ console.log('\n[38] Progression engine: XP, levels, streaks, This Week, Kit, mer
   const r2=S.recordDailyFinish({dateKey:today,isToday:true,puzzle:{...puzzle,id:'daily-'+today},won:true,mistakes:0,guessLog:gl,history:{[today]:hist['2026-10-05']}})
   assert(r2.gained===0,'same Daily twice pays nothing')
   assert(r.levelUp && r.after.level===2,'level up to 2'); assert(r.grants.includes('curbside'),'level 2 grants Curbside')
-  assert(S.spendCurbside('x')===true,'curbside usable'); 
+  assert(S.spendCurbside('daily-2026-10-09')===true,'curbside usable'); 
   // system complete one-time
   const sp={id:'system-live-cardio-1',categories:[{level:1},{level:2},{level:3},{level:4}]}
   const rs=S.recordSystemFinish({puzzle:sp,system:'Cardiology',won:true,guessLog:gl,systemComplete:true}); assert(rs.gained===50+50+300,'system finish + complete = 400, got '+rs.gained)

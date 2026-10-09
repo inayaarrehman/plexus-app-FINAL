@@ -72,7 +72,7 @@ console.log('[1] New player: starter Consult once, level schedule, unlocks')
   ok(!E.itemOpen('lab', 2) && E.itemOpen('lab', 3) && !E.itemOpen('second-opinion', 4) && E.itemOpen('second-opinion', 5), 'Rule Out opens at 3, Second Opinion at 5')
   // Claim: refused at cap, allowed after spending.
   ok(S.claimTool('curbside') === false, 'a pending claim cannot be taken in at the cap')
-  ok(S.spendTool('curbside', 'att-1') === true, 'spend a Consult')
+  ok(S.spendTool('curbside', 'daily-2026-10-12:1', { mode: 'daily' }) === true, 'spend a Consult')
   ok(S.claimTool('curbside') === true && E.kitCounts(load()).curbside === 5, 'after spending, a pending claim fills the slot')
 }
 
@@ -81,19 +81,39 @@ console.log('[2] One tool per attempt; locked or empty tools spend nothing')
   reset()
   at('2026-10-12T10:00:00-07:00')
   S.ensureProgression()
-  ok(S.spendTool('curbside', 'daily-A:1') === true, 'first tool in an attempt is spent')
-  ok(S.spendTool('curbside', 'daily-A:1') === false, 'a second tool in the same attempt is refused')
-  ok(S.spendTool('curbside', 'daily-A:2') === false, 'an empty tool cannot be spent (nothing changes)')
+  ok(S.spendTool('curbside', 'daily-2026-10-12:1', { mode: 'daily' }) === true, 'first tool in an attempt is spent')
+  ok(S.spendTool('curbside', 'daily-2026-10-12:1', { mode: 'daily' }) === false, 'a second tool in the same attempt is refused')
+  ok(S.spendTool('curbside', 'daily-2026-10-12:2', { mode: 'daily' }) === false, 'an empty tool cannot be spent (nothing changes)')
   const st = load()
   st.kit.grants.g1 = { item: 'lab', qty: 1, source: 'test', at: Date.now() }
   save(st)
-  ok(S.spendTool('lab', 'daily-A:3') === false && E.kitCounts(load()).lab === 1, 'Rule Out below Level 3 is refused and not spent')
+  ok(S.spendTool('lab', 'daily-2026-10-12:3', { mode: 'daily' }) === false && E.kitCounts(load()).lab === 1, 'Rule Out below Level 3 is refused and not spent')
   ok(S.spendTool('imaging', 'x') === false, 'a removed tool can never be spent')
   // Explicit replay is a new attempt and spends inventory again.
   const st2 = load()
   st2.kit.grants.g2 = { item: 'curbside', qty: 2, source: 'test', at: Date.now() }
   save(st2)
-  ok(S.spendTool('curbside', 'daily-A:4') && S.spendTool('curbside', 'daily-A:5'), 'a replay (new attempt id) can use a tool again, spending it')
+  ok(S.spendTool('curbside', 'daily-2026-10-12:4', { mode: 'daily' }) && S.spendTool('curbside', 'daily-2026-10-12:5', { mode: 'daily' }), 'a replay (new attempt id) can use a tool again, spending it')
+}
+
+console.log('[2b] Tools are for Dailies only: Systems, timed modes and stale routes spend nothing')
+{
+  reset()
+  at('2026-10-12T10:00:00-07:00')
+  S.ensureProgression()
+  const st = load()
+  st.kit.grants.g9 = { item: 'curbside', qty: 3, source: 'sysweek', at: Date.now() }
+  save(st)
+  const held = E.kitCounts(load()).curbside
+  ok(S.spendTool('curbside', 'sys-cardiology-1:1', { mode: 'system' }) === false, 'a Systems board cannot use a tool')
+  ok(S.spendTool('curbside', 'daily-2026-10-12:7', { mode: 'system' }) === false, 'a Systems caller with a Daily-looking id is refused')
+  ok(S.spendTool('curbside', 'sys-cardiology-1:2', { mode: 'daily' }) === false, 'a non-Daily attempt id claiming Daily is refused')
+  ok(S.spendTool('curbside', 'challenge:1', { mode: 'challenge' }) === false && S.spendTool('curbside', 'race:abc', { mode: 'race' }) === false, '3 Minutes and Race cannot use a tool')
+  ok(S.spendTool('curbside', 'daily-2026-10-12:8') === false, 'a caller that does not say Daily is refused')
+  ok(S.spendTool('curbside', 'daily-2026-10-11:1', { mode: 'archive' }) === false, 'an Archive board cannot use a tool')
+  ok(E.kitCounts(load()).curbside === held && Object.keys(load().kit.uses).length === 0, 'nothing was consumed by any refused use')
+  ok(S.spendTool('curbside', 'daily-2026-10-12:9', { mode: 'daily' }) === true && E.kitCounts(load()).curbside === held - 1, 'tools earned outside Dailies still work in a Daily')
+  ok(S.toolsAllowedIn('daily') && !S.toolsAllowedIn('system') && !S.toolsAllowedIn('archive') && !S.toolsAllowedIn('challenge') && !S.toolsAllowedIn('race'), 'only Daily boards show tools')
 }
 
 console.log('[3] Perfect, assisted solves and first-completion credit')

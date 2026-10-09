@@ -34,7 +34,7 @@ const STEPS = [
     title: 'Keep connecting',
     body: [
       'Finish today’s Daily, win or lose, to open 3 Minutes, Race, Systems and the Archive.',
-      'Every puzzle you finish earns XP and grows My Plexus. Levels and This Week earn tools: Consult highlights two tiles that belong together, Rule Out finds the odd tile in a “one away” guess, and Second Opinion gives back one mistake. One tool per Daily or Systems board; a board solved with a tool shows “Solved with assistance.”',
+      'Every puzzle you finish earns XP and grows My Plexus. Levels and This Week earn tools: Consult highlights two tiles that belong together, Rule Out finds the odd tile in a “one away” guess, and Second Opinion gives back one mistake. Tools work in Dailies only, one per Daily; a Daily solved with a tool shows “Solved with assistance.” Tools you earn from Systems and This Week are saved for your Dailies.',
       'Coverage protects your streak through a missed day, used automatically. You earn one for every 7 Dailies you complete.',
       'Systems boards stay open until you solve them. Leave or miss one and it comes back around after the others, answers still hidden. Solving pays 100 XP on the first try, then 75, 50, and 25 from the fourth try on.',
     ],

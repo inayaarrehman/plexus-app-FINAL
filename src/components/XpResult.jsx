@@ -1,7 +1,7 @@
 import React from 'react'
-import { KIT, nextLevelReward } from '../progression/config.js'
+import { KIT, PUZZLE_TOOLS, nextLevelReward } from '../progression/config.js'
 import { formatDayKey } from '../utils/calendar.js'
-import { LevelLine, fmt } from './RecordParts.jsx'
+import { LevelLine, ToolArt, fmt } from './RecordParts.jsx'
 
 // The XP block on the results card. Secondary to the puzzle result and the
 // streak, so it sits after the actions and stays compact: total XP with its
@@ -17,7 +17,7 @@ export default function XpResult({ result, onOpenRecord }) {
     const i = held.indexOf(p)
     if (i >= 0) held.splice(i, 1)
   }
-  const items = summarizeGrants(held)
+  const items = countGrants(held)
   const next = nextLevelReward(after.level)
 
   if (!(gained > 0) && items.length === 0 && coverageUsed.length === 0 && pending.length === 0) return null
@@ -45,9 +45,10 @@ export default function XpResult({ result, onOpenRecord }) {
       {items.length > 0 && (
         <p className="xp-items">
           <span className="xp-items-label">Your Tools</span>
-          {items.map((it) => (
-            <span className="xp-item" key={it}>
-              {it}
+          {items.map(({ item, label }) => (
+            <span className="xp-item" key={item}>
+              {PUZZLE_TOOLS.includes(item) && <ToolArt item={item} size="icon" className="xp-item-art" />}
+              {label}
             </span>
           ))}
         </p>
@@ -66,10 +67,13 @@ export default function XpResult({ result, onOpenRecord }) {
   )
 }
 
-function summarizeGrants(grants = []) {
+function countGrants(grants = []) {
   const c = {}
   grants.forEach((g) => {
     c[g] = (c[g] || 0) + 1
   })
-  return Object.entries(c).map(([item, n]) => `${KIT[item]?.name || item} +${n}`)
+  return Object.entries(c).map(([item, n]) => ({ item, label: `${KIT[item]?.name || item} +${n}` }))
+}
+function summarizeGrants(grants = []) {
+  return countGrants(grants).map((g) => g.label)
 }

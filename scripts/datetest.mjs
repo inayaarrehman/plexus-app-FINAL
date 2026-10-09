@@ -30,7 +30,7 @@ ok(C.dayKey(wed10pm, LA) === '2026-10-07', 'California at 10 PM Wed Oct 7 (UTC T
 ok(C.dayKey(wed10pm, 'UTC') === '2026-10-08', 'the same instant is Oct 8 in UTC')
 ok(C.formatDayKey('2026-10-07', undefined, 'en-US') === 'Wednesday, October 7', 'label reads Wednesday, October 7')
 ok(C.dayKey(wed10pm, TOKYO) === '2026-10-08', 'and Thursday Oct 8 in Tokyo')
-ok(C.timeZoneLabel(LA) === 'Los Angeles time' && C.timeZoneLabel('Etc/UTC') === 'UTC' && C.timeZoneLabel('America/Argentina/Buenos_Aires') === 'Buenos Aires time', 'time zone labels read naturally')
+ok(C.timeZoneLabel(LA) === 'Pacific Time' && C.timeZoneLabel('America/New_York') === 'Eastern Time' && C.timeZoneLabel('America/Chicago') === 'Central Time' && C.timeZoneLabel('America/Denver') === 'Mountain Time' && C.timeZoneLabel('Etc/UTC') === 'UTC' && C.timeZoneLabel('Etc/GMT+5') === 'UTC-5' && /Time$/.test(C.timeZoneLabel('America/Argentina/Buenos_Aires')), 'time zone labels read as zone names')
 
 // 2. Same puzzle per calendar date worldwide; a date key never shifts.
 const pLA = getDailyPuzzleForDate('2026-10-07')

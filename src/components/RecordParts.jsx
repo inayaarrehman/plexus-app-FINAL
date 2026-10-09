@@ -284,20 +284,53 @@ export function WeekGoals({ goals, complete }) {
     if (!el) return
     const measure = () => {
       const box = el.getBoundingClientRect()
-      const p = [...el.querySelectorAll('.rounds-node')].map((n) => {
+      const nodes = [...el.querySelectorAll('.rounds-node')]
+      const p = nodes.map((n) => {
         const r = n.getBoundingClientRect()
-        return [r.left - box.left + r.width / 2, r.top - box.top + r.height / 2]
+        // Relative to the padding box, where the absolutely placed svg starts.
+        return [r.left - box.left - el.clientLeft + r.width / 2, r.top - box.top - el.clientTop + r.height / 2]
       })
-      setPts({ p, w: box.width, h: box.height })
+      const radii = nodes.map((n) => n.getBoundingClientRect().height / 2)
+      setPts((old) => {
+        const next = { p, radii, w: box.width, h: box.height }
+        return old && JSON.stringify(old) === JSON.stringify(next) ? old : next
+      })
     }
     measure()
+    // Fonts arriving late can re-wrap labels; measure again once they load.
+    document.fonts?.ready?.then(measure).catch(() => {})
     if (typeof ResizeObserver === 'undefined') return
+    // The wrap and every row: a label that wraps changes a row's height and
+    // moves the node centres, so the spine is redrawn from the new centres.
     const ro = new ResizeObserver(measure)
     ro.observe(el)
+    el.querySelectorAll('.rounds-goal').forEach((row) => ro.observe(row))
     return () => ro.disconnect()
   }, [goals.length])
+  // The spine: one segment from each goal's node centre to the next one's,
+  // trimmed to the node rims so it meets each node without crossing it. It
+  // sits behind the nodes and takes the colour of a finished goal above it.
+  const spine =
+    pts && pts.p.length > 1
+      ? pts.p.slice(0, -1).map((a, i) => {
+          const b = pts.p[i + 1]
+          const dx = b[0] - a[0]
+          const dy = b[1] - a[1]
+          const len = Math.hypot(dx, dy) || 1
+          const ra = (pts.radii[i] || 0) - 1
+          const rb = (pts.radii[i + 1] || 0) - 1
+          return { x1: a[0] + (dx / len) * ra, y1: a[1] + (dy / len) * ra, x2: b[0] - (dx / len) * rb, y2: b[1] - (dy / len) * rb, done: Boolean(goals[i]?.done), jewel: JEWELS[i % 3] }
+        })
+      : []
   return (
     <div className={`rounds-wrap ${complete ? 'is-complete' : ''}`} ref={wrap}>
+      {spine.length > 0 && (
+        <svg className="rounds-spine" width={pts.w} height={pts.h} viewBox={`0 0 ${pts.w} ${pts.h}`} aria-hidden="true" focusable="false">
+          {spine.map((sg, i) => (
+            <line key={i} className={`rounds-spine-seg jewel-${sg.jewel} ${sg.done ? 'is-done' : ''}`} x1={sg.x1} y1={sg.y1} x2={sg.x2} y2={sg.y2} />
+          ))}
+        </svg>
+      )}
       {complete && pts && pts.p.length === 3 && (
         <svg className="rounds-links" width={pts.w} height={pts.h} viewBox={`0 0 ${pts.w} ${pts.h}`} aria-hidden="true">
           {[[0, 1], [1, 2], [2, 0]].map(([a, b]) => (
@@ -355,9 +388,9 @@ export const fmt = (n) => Number(n || 0).toLocaleString('en-US')
 // Your Tools: one small node drawing per tool, showing what it does in the
 // Plexus language (nodes, links, an open node for what is unknown). They are
 // illustrations only: counts and states sit beside them in text.
-//   Consult         two nodes joined: "these two belong together"
-//   Rule Out        three joined nodes and the open one that does not fit
-//   Second Opinion  a node with a link that loops back to it: one more try
+//   Consult         two teal nodes joined: "these two belong together"
+//   Rule Out        a purple triangle and a separate orange node, dashed off
+//   Second Opinion  a return arrow round a teal node, small blue nodes on it
 //   Coverage        seven nodes round a centre, lit by Dailies toward the next
 //   Mutation        a chain whose letters are shuffled (one link out of place)
 //   CRISPR          an arc closing over a node: the block
@@ -365,36 +398,64 @@ export const fmt = (n) => Number(n || 0).toLocaleString('en-US')
 // ---------------------------------------------------------------------
 const ART_JEWEL = { curbside: 'peacock', lab: 'plum', 'second-opinion': 'cobalt', shield: 'peacock', mutation: 'terracotta', crispr: 'plum' }
 export function ToolArt({ item, locked = false, lit = 0, size = 'card', className = '' }) {
-  const dims = size === 'xs' ? [26, 20] : size === 'sm' ? [56, 44] : [76, 58]
+  const dims = size === 'icon' ? [30, 24] : size === 'xs' ? [26, 20] : size === 'sm' ? [56, 44] : [76, 58]
   const jewel = ART_JEWEL[item] || 'peacock'
+  // Board buttons and reward choices draw the same idea with fewer, larger
+  // parts so it still reads at about 24px.
+  const compact = size === 'icon' || size === 'xs'
   let body = null
   if (item === 'curbside') {
+    // Consult: two teal nodes joined by one clear link.
     body = (
       <>
-        <line x1="22" y1="30" x2="50" y2="30" className="ta-link ta-strong" />
-        <path d="M33 17l2 4M39 17l-2 4M36 15v4" className="ta-spark" />
-        <circle cx="20" cy="30" r="10" className="ta-node" />
-        <circle cx="52" cy="30" r="10" className="ta-node" />
+        <line x1="20" y1="28" x2="52" y2="28" className="ta-link ta-strong" />
+        <circle cx="20" cy="28" r="9" className="ta-node ta-c-peacock" />
+        <circle cx="52" cy="28" r="9" className="ta-node ta-c-peacock" />
       </>
     )
   } else if (item === 'lab') {
+    // Rule Out: a joined purple triangle and a separate orange node, held off
+    // by a faint dashed link: the one that does not belong.
     body = (
       <>
-        <path d="M12 42 25 16 38 42Z" className="ta-link" />
-        <circle cx="25" cy="16" r="6" className="ta-node" />
-        <circle cx="12" cy="42" r="6" className="ta-node" />
-        <circle cx="38" cy="42" r="6" className="ta-node" />
-        <circle cx="58" cy="29" r="7" className="ta-open" />
+        <line x1="40" y1="40" x2="58" y2="22" className="ta-link ta-dash ta-exclude" />
+        <path d="M12 41 26 15 40 41Z" className="ta-link ta-c-plum" />
+        <circle cx="26" cy="15" r={compact ? 7 : 6} className="ta-node ta-c-plum" />
+        <circle cx="12" cy="41" r={compact ? 7 : 6} className="ta-node ta-c-plum" />
+        <circle cx="40" cy="41" r={compact ? 7 : 6} className="ta-node ta-c-plum" />
+        <circle cx="59" cy="21" r={compact ? 7.5 : 6.5} className="ta-node ta-c-terracotta" />
       </>
     )
   } else if (item === 'second-opinion') {
+    // Second Opinion: a return arrow circling a central node, with small
+    // nodes set on the circle.
+    const cx = 36
+    const cy = 28
+    const r = compact ? 20 : 18
+    const at = (deg) => {
+      const a = (deg * Math.PI) / 180
+      return [cx + Math.cos(a) * r, cy + Math.sin(a) * r]
+    }
+    const [sx, sy] = at(-55)
+    const [ex, ey] = at(235)
+    // Arrowhead at the end of the arc, pointing on round toward the start.
+    const ta = (235 * Math.PI) / 180
+    const tx = -Math.sin(ta)
+    const ty = Math.cos(ta)
+    const nx = Math.cos(ta)
+    const ny = Math.sin(ta)
+    const hl = compact ? 8 : 6.5
+    const hw = compact ? 7 : 5.5
+    const head = `M${(ex - tx * hl + nx * hw).toFixed(1)} ${(ey - ty * hl + ny * hw).toFixed(1)}L${(ex + tx * 1.5).toFixed(1)} ${(ey + ty * 1.5).toFixed(1)}L${(ex - tx * hl - nx * hw).toFixed(1)} ${(ey - ty * hl - ny * hw).toFixed(1)}`
     body = (
       <>
-        <path d="M33 22c6-9 22-11 26-2 4 9-6 17-15 15l-9-3" className="ta-link ta-dash" />
-        <circle cx="21" cy="29" r="12" className="ta-ring" />
-        <circle cx="21" cy="29" r="8" className="ta-node" />
-        <circle cx="56" cy="17" r="3.4" className="ta-node" />
-        <circle cx="48" cy="38" r="3.4" className="ta-node" />
+        <path d={`M${sx.toFixed(1)} ${sy.toFixed(1)}A${r} ${r} 0 1 1 ${ex.toFixed(1)} ${ey.toFixed(1)}`} className="ta-link ta-c-cobalt" />
+        <path d={head} className="ta-link ta-c-cobalt ta-head" />
+        {(compact ? [35, 145] : [25, 115, 180]).map((d) => {
+          const [x, y] = at(d)
+          return <circle key={d} cx={x.toFixed(1)} cy={y.toFixed(1)} r={compact ? 5 : 3.6} className="ta-node ta-c-cobalt" />
+        })}
+        <circle cx={cx} cy={cy} r={compact ? 8.5 : 7.5} className="ta-node ta-c-peacock" />
       </>
     )
   } else if (item === 'shield') {

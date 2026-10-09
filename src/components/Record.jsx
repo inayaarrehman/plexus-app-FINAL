@@ -62,7 +62,7 @@ function WeekReward({ rounds, choices, level, onChoose }) {
               const open = itemOpen(item, level)
               return (
                 <button key={item} className="week-choice-btn" disabled={!open} onClick={() => onChoose(due, item)}>
-                  <ToolArt item={item} locked={!open} size="xs" />
+                  <ToolArt item={item} locked={!open} size="icon" />
                   <span>
                     {KIT[item].name}
                     {!open && <span className="week-choice-lock"> · Level {KIT[item].unlock}</span>}
@@ -377,7 +377,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
         <section className="record-kit" aria-label="Your Tools">
           <div className="kit-section">
             <h2 className="kit-group-head">
-              Puzzle Tools <span className="kit-group-sub">Daily and Systems boards · one per board</span>
+              Puzzle Tools <span className="kit-group-sub">Dailies only · one per Daily</span>
             </h2>
             <ul className="kit-list tool-cards">
               {PUZZLE_TOOLS.map((item) => (
@@ -465,7 +465,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
               <span className="kit-more-chev" aria-hidden="true" />
             </summary>
             <p className="kit-foot">
-              Caps: puzzle tools {KIT.curbside.max} each, Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Rewards that arrive when you are full wait here as claims, nothing is lost. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Tools are off in 3 Minutes and Race. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
+              Caps: puzzle tools {KIT.curbside.max} each, Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Rewards that arrive when you are full wait here as claims, nothing is lost. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Tools can be used in Dailies only, not in Systems, 3 Minutes or Race. Tools earned in Systems are saved for your Dailies. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
             </p>
           </details>
           {convertedList.length > 0 && (
