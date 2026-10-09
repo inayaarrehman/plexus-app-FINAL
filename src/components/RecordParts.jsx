@@ -98,7 +98,7 @@ export function growthLayout(info, rewardsFor, size = 'compact') {
     // sides keeps neighbouring clusters apart.
     const dir = v % 2 === 0 ? -1 : 1
     const items = v >= 2 ? rewardsFor(v) : []
-    const r = state === 'current' ? 17 : state === 'done' ? 8 : 7
+    const r = state === 'current' ? 19 : state === 'done' ? 8.5 : 7
     const k = items.length
     const spread = k > 1 ? Math.min(34, 132 / (k - 1)) : 0
     const tilt = (jit(v, 3) - 0.5) * 24
@@ -221,7 +221,22 @@ export function PlexusGrowth({ info, ariaInfo = null, rewardsFor, rewardText, si
           const act = activating && nd.state === 'next'
           return (
             <g key={nd.level} className={`g-level is-${nd.state} ${act ? 'is-activating' : ''} jewel-${nd.jewel}`} data-level={nd.level}>
-              {nd.state === 'current' && <circle className="g-ring" cx={nd.x} cy={nd.y} r={nd.r + 5} />}
+              {nd.state === 'current' && (
+                <>
+                  {/* XP into this level, as a ring round the current node. */}
+                  <circle className="g-ring" cx={nd.x} cy={nd.y} r={nd.r + 6} />
+                  <circle
+                    className={`g-ring-fill jewel-${nd.jewel}`}
+                    cx={nd.x}
+                    cy={nd.y}
+                    r={nd.r + 6}
+                    pathLength="100"
+                    strokeDasharray={`${Math.max(0.5, f * 100)} 100`}
+                    transform={`rotate(-90 ${nd.x} ${nd.y})`}
+                  />
+                </>
+              )}
+              {nd.state === 'done' && <circle className="g-done-dot" cx={nd.x} cy={nd.y} r="2.4" />}
               <circle className="g-node" cx={nd.x} cy={nd.y} r={act ? 11 : nd.r} />
               {nd.state === 'current' ? (
                 <text className="g-num g-num-in" x={nd.x} y={nd.y} textAnchor="middle" dominantBaseline="central">
@@ -243,7 +258,15 @@ export function PlexusGrowth({ info, ariaInfo = null, rewardsFor, rewardText, si
           className={`growth-label ${lay.label.dir < 0 ? 'is-above' : 'is-below'} ${label ? 'is-earned' : ''} jewel-${next.jewel}`}
           style={{ left: `clamp(124px, ${lx}%, calc(100% - 34px))`, top: `${ly}%` }}
         >
-          <span className="growth-label-kicker">{lb.kicker}</span>
+          <span className="growth-label-kicker">
+            {!label && (
+              <svg className="growth-label-lock" width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false">
+                <rect x="2" y="5.2" width="8" height="5.8" rx="1.4" fill="currentColor" />
+                <path d="M3.9 5.4V3.9a2.1 2.1 0 0 1 4.2 0v1.5" stroke="currentColor" strokeWidth="1.3" />
+              </svg>
+            )}
+            {lb.kicker}
+          </span>
           <span className="growth-label-text">{lb.text}</span>
         </p>
       )}
@@ -327,3 +350,109 @@ export function KitIcon({ item, size = 24, className = '' }) {
 }
 
 export const fmt = (n) => Number(n || 0).toLocaleString('en-US')
+
+// ---------------------------------------------------------------------
+// Your Tools: one small node drawing per tool, showing what it does in the
+// Plexus language (nodes, links, an open node for what is unknown). They are
+// illustrations only: counts and states sit beside them in text.
+//   Consult         two nodes joined: "these two belong together"
+//   Rule Out        three joined nodes and the open one that does not fit
+//   Second Opinion  a node with a link that loops back to it: one more try
+//   Coverage        seven nodes round a centre, lit by Dailies toward the next
+//   Mutation        a chain whose letters are shuffled (one link out of place)
+//   CRISPR          an arc closing over a node: the block
+// `lit` (Coverage only) = how many of the seven outer nodes are lit.
+// ---------------------------------------------------------------------
+const ART_JEWEL = { curbside: 'peacock', lab: 'plum', 'second-opinion': 'cobalt', shield: 'peacock', mutation: 'terracotta', crispr: 'plum' }
+export function ToolArt({ item, locked = false, lit = 0, size = 'card', className = '' }) {
+  const dims = size === 'xs' ? [26, 20] : size === 'sm' ? [56, 44] : [76, 58]
+  const jewel = ART_JEWEL[item] || 'peacock'
+  let body = null
+  if (item === 'curbside') {
+    body = (
+      <>
+        <line x1="22" y1="30" x2="50" y2="30" className="ta-link ta-strong" />
+        <path d="M33 17l2 4M39 17l-2 4M36 15v4" className="ta-spark" />
+        <circle cx="20" cy="30" r="10" className="ta-node" />
+        <circle cx="52" cy="30" r="10" className="ta-node" />
+      </>
+    )
+  } else if (item === 'lab') {
+    body = (
+      <>
+        <path d="M12 42 25 16 38 42Z" className="ta-link" />
+        <circle cx="25" cy="16" r="6" className="ta-node" />
+        <circle cx="12" cy="42" r="6" className="ta-node" />
+        <circle cx="38" cy="42" r="6" className="ta-node" />
+        <circle cx="58" cy="29" r="7" className="ta-open" />
+      </>
+    )
+  } else if (item === 'second-opinion') {
+    body = (
+      <>
+        <path d="M33 22c6-9 22-11 26-2 4 9-6 17-15 15l-9-3" className="ta-link ta-dash" />
+        <circle cx="21" cy="29" r="12" className="ta-ring" />
+        <circle cx="21" cy="29" r="8" className="ta-node" />
+        <circle cx="56" cy="17" r="3.4" className="ta-node" />
+        <circle cx="48" cy="38" r="3.4" className="ta-node" />
+      </>
+    )
+  } else if (item === 'shield') {
+    const pts = Array.from({ length: 7 }, (_, i) => {
+      const a = (-90 + i * (360 / 7)) * (Math.PI / 180)
+      return [36 + Math.cos(a) * 20, 29 + Math.sin(a) * 20]
+    })
+    body = (
+      <>
+        <circle cx="36" cy="29" r="20" className="ta-link ta-faint" />
+        {pts.map(([x, y], i) => (
+          <line key={`l${i}`} x1="36" y1="29" x2={x} y2={y} className={`ta-link ${i < lit ? '' : 'ta-faint'}`} />
+        ))}
+        {pts.map(([x, y], i) => (
+          <circle key={i} cx={x} cy={y} r="4" className={i < lit ? 'ta-node' : 'ta-open-solid'} />
+        ))}
+        <circle cx="36" cy="29" r="7" className="ta-node" />
+      </>
+    )
+  } else if (item === 'mutation') {
+    body = (
+      <>
+        <path d="M8 34 21 22 35 34 49 22 63 32" className="ta-link" />
+        <circle cx="8" cy="34" r="5" className="ta-node" />
+        <circle cx="21" cy="22" r="5" className="ta-node" />
+        <circle cx="35" cy="34" r="5" className="ta-node ta-alt" />
+        <circle cx="49" cy="22" r="5" className="ta-node" />
+        <circle cx="63" cy="32" r="5" className="ta-node ta-alt" />
+        <path d="M40 12l3 4-3 4" className="ta-spark" />
+      </>
+    )
+  } else if (item === 'crispr') {
+    body = (
+      <>
+        <path d="M14 42C16 20 56 20 58 42" className="ta-link ta-strong" />
+        <line x1="36" y1="20" x2="36" y2="34" className="ta-link" />
+        <line x1="14" y1="42" x2="58" y2="42" className="ta-link ta-faint" />
+        <circle cx="36" cy="20" r="5" className="ta-node" />
+        <circle cx="14" cy="42" r="5" className="ta-node" />
+        <circle cx="58" cy="42" r="5" className="ta-node" />
+        <circle cx="36" cy="36" r="6" className="ta-node ta-alt" />
+      </>
+    )
+  }
+  return (
+    <svg className={`tool-art tool-art-${size} jewel-${jewel} ${locked ? 'is-locked' : ''} ${className}`} width={dims[0]} height={dims[1]} viewBox="0 0 72 56" fill="none" aria-hidden="true" focusable="false">
+      {body}
+    </svg>
+  )
+}
+
+// Quantity as nodes: held of the cap, filled ones first ("●●○○○").
+export function Pips({ value = 0, max = 5, className = '' }) {
+  return (
+    <span className={`pips ${className}`} aria-hidden="true">
+      {Array.from({ length: max }, (_, i) => (
+        <span key={i} className={`pip ${i < value ? 'is-on' : ''}`} />
+      ))}
+    </span>
+  )
+}

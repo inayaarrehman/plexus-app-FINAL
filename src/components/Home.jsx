@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import InfoIcon from './InfoIcon.jsx'
 import { SYSTEMS } from '../puzzles.js'
 import { subjectLabel } from '../utils/newLibrary.js'
 import { getDailyPuzzleForDate } from '../utils/dailyPuzzle.js'
@@ -529,14 +530,14 @@ function ResetCountdown({ timeZone, todayKey: dayKeyNow }) {
         <span className="home-reset-countdown">{info.text}</span>
         <button
           type="button"
-          className={`home-reset-info ${open ? 'is-open' : ''}`}
+          className={`info-btn home-reset-info ${open ? 'is-open' : ''}`}
           aria-expanded={open}
           aria-controls="home-reset-detail"
           aria-label="When the next puzzle arrives"
           onClick={() => setOpen((v) => !v)}
           onKeyDown={(e) => e.key === 'Escape' && setOpen(false)}
         >
-          <span aria-hidden="true">i</span>
+          <InfoIcon />
         </button>
       </p>
       {open && (

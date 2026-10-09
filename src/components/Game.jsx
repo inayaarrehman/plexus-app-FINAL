@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
+import InfoIcon from './InfoIcon.jsx'
 import { buildTiles, isFullMatch, isOneAway, shuffle, attemptKey, isDuplicateAttempt, MAX_MISTAKES, STREAK_MILESTONES } from '../utils/game.js'
 import { loadProgress, saveProgress } from '../utils/storage.js'
 import { getCompletionPhrase } from '../utils/completionPhrases.js'
@@ -823,13 +824,13 @@ function ToolBar({ kit, toolState, toolsUsed, ask, setAsk, onConfirm, isDaily, c
               <button
                 type="button"
                 id={`tool-info-btn-${item}`}
-                className={`tool-info-btn ${info === item ? 'is-open' : ''}`}
+                className={`info-btn tool-info-btn ${info === item ? 'is-open' : ''}`}
                 aria-expanded={info === item}
                 aria-controls="tool-info-panel"
                 aria-label={`About ${KIT[item].name}`}
                 onClick={() => toggleInfo(item)}
               >
-                <span aria-hidden="true">i</span>
+                <InfoIcon />
               </button>
             </li>
           )

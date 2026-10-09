@@ -4,7 +4,8 @@ import { KIT, PUZZLE_TOOLS, RACE_ITEMS, RACE_REWARDS, REMOVED_NAMES, COVERAGE_EV
 import { itemOpen, levelInfo } from '../progression/engine.js'
 import { formatDayKey } from '../utils/calendar.js'
 import { getRaceSummary } from '../lib/raceApi.js'
-import { PlexusGrowth, WeekGoals, KitIcon, fmt } from './RecordParts.jsx'
+import { PlexusGrowth, WeekGoals, ToolArt, Pips, fmt } from './RecordParts.jsx'
+import InfoIcon from './InfoIcon.jsx'
 import { useGrowthAnimation, readSeenXp, writeSeenXp } from './useGrowthAnimation.js'
 
 // My Plexus (internally "Record"): the player's own Plexus, growing as they
@@ -43,17 +44,15 @@ function WeekReward({ rounds, choices, level, onChoose }) {
   const state = !rounds.complete ? 'pending' : rounds.paid ? 'earned' : 'due'
   const due = choices[0] || null
   return (
-    <div className={`week-reward is-${state}`}>
-      <span className="week-reward-label">{state === 'earned' ? 'Weekly reward earned' : 'Weekly reward'}</span>
-      <div className="week-reward-items">
-        <span className="week-reward-item">
-          <span className="week-reward-node" aria-hidden="true" />
-          <b>{fmt(XP.rounds)} XP</b>
-        </span>
-        <span className="week-reward-item">
-          <KitIcon item="curbside" size={18} />
-          <b>+1 puzzle tool of your choice</b>
-        </span>
+    <div className={`week-reward mp-reward is-${state}`}>
+      <div className="mp-reward-main">
+        <RewardMark state={state} />
+        <div className="mp-reward-text">
+          <span className="week-reward-label">{state === 'earned' ? 'Weekly reward earned' : state === 'due' ? 'Weekly reward unlocked' : 'Weekly reward'}</span>
+          <p className="mp-reward-title">
+            <b>{fmt(XP.rounds)} XP</b> + 1 tool of your choice
+          </p>
+        </div>
       </div>
       {due && (
         <div className="week-choice" role="group" aria-label="Choose your weekly tool">
@@ -63,8 +62,11 @@ function WeekReward({ rounds, choices, level, onChoose }) {
               const open = itemOpen(item, level)
               return (
                 <button key={item} className="week-choice-btn" disabled={!open} onClick={() => onChoose(due, item)}>
-                  {KIT[item].name}
-                  {!open && <span className="week-choice-lock"> · Level {KIT[item].unlock}</span>}
+                  <ToolArt item={item} locked={!open} size="xs" />
+                  <span>
+                    {KIT[item].name}
+                    {!open && <span className="week-choice-lock"> · Level {KIT[item].unlock}</span>}
+                  </span>
                 </button>
               )
             })}
@@ -79,17 +81,58 @@ function WeekReward({ rounds, choices, level, onChoose }) {
   )
 }
 
-function ToolRow({ item, def, count, open, pending, onClaim, earn, extra }) {
+// The weekly reward's mark: three goal nodes joining into one reward node.
+// Open while pending, filled once the week's two goals are done.
+function RewardMark({ state }) {
+  const lit = state !== 'pending'
+  return (
+    <svg className={`mp-reward-mark ${lit ? 'is-lit' : ''}`} width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true" focusable="false">
+      <path d="M10 13 26 26M10 39 26 26M42 13 26 26" className="mrm-link" />
+      <circle cx="10" cy="13" r="4" className="mrm-node n1" />
+      <circle cx="10" cy="39" r="4" className="mrm-node n2" />
+      <circle cx="42" cy="13" r="4" className="mrm-node n3" />
+      <circle cx="26" cy="26" r="9" className="mrm-core" />
+      <path d="M26 21.5v9M21.5 26h9" className="mrm-plus" />
+    </svg>
+  )
+}
+
+function LockIcon() {
+  return (
+    <svg className="tool-lock-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false">
+      <rect x="2" y="5.2" width="8" height="5.8" rx="1.4" fill="currentColor" />
+      <path d="M3.9 5.4V3.9a2.1 2.1 0 0 1 4.2 0v1.5" stroke="currentColor" strokeWidth="1.3" />
+    </svg>
+  )
+}
+
+// One tool, as a card: its drawing, what it does, how many you hold of the
+// cap (as nodes and as a number) or what unlocks it, and any claims waiting.
+function ToolCard({ item, def, count, open, pending = [], onClaim, art = {}, children }) {
   const waiting = pending.length
   const full = def.max && count >= def.max
   return (
-    <li className={`kit-item ${open ? '' : 'is-locked'}`}>
-      <KitIcon item={item} size={26} />
-      <div className="kit-text">
-        <span className="kit-name">{def.name}</span>
-        <span className="kit-desc">{def.desc}</span>
-        {earn && <span className="kit-earn">{earn}</span>}
-        {extra && <span className="kit-earn">{extra}</span>}
+    <li className={`tool-card kit-item ${open ? '' : 'is-locked'} ${count > 0 && open ? 'has-some' : ''}`}>
+      <span className="tool-card-art">
+        <ToolArt item={item} locked={!open} {...art} />
+      </span>
+      <div className="tool-card-body kit-text">
+        <h3 className="kit-name">{def.name}</h3>
+        <p className="kit-desc">{def.desc}</p>
+        {open ? (
+          <div className="tool-card-qty" aria-label={`${count} of ${def.max} held`}>
+            <Pips value={count} max={def.max} />
+            <span className="kit-count">
+              {count}
+              <span className="kit-cap"> / {def.max}</span>
+            </span>
+          </div>
+        ) : (
+          <span className="tool-lock">
+            <LockIcon /> Unlocks at Level {def.unlock}
+          </span>
+        )}
+        {children}
         {waiting > 0 && (
           <span className="kit-pending">
             {waiting} waiting{full ? ' (inventory full)' : ''}
@@ -101,20 +144,6 @@ function ToolRow({ item, def, count, open, pending, onClaim, earn, extra }) {
           </span>
         )}
       </div>
-      <span className="kit-count">
-        {open ? (
-          <>
-            ×{count}
-            {def.max ? <span className="kit-cap"> / {def.max}</span> : null}
-          </>
-        ) : (
-          <>
-            Unlocks at
-            <br />
-            Level {def.unlock}
-          </>
-        )}
-      </span>
     </li>
   )
 }
@@ -223,38 +252,19 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
 
       {tab === 'record' ? (
         <div className="record-main">
-          <section className="record-hero" aria-label="Level">
+          <section className="record-hero mp-hero" aria-label="Level">
             <h1 className="record-level" key={heroLevel}>Level {heroLevel}</h1>
-            <dl className="record-xpstats">
-              <div>
-                <dt>Total XP</dt>
-                <dd>
-                  {fmt(target)}
-                  {gained > 0 && (
-                    <span className="record-gain" key={`${runKey}-${target}`} aria-label={`${fmt(gained)} XP since your last visit`}>
-                      +{fmt(gained)}
-                    </span>
-                  )}
-                </dd>
-              </div>
-              <div>
-                <dt>To Level {heroLevel + 1}</dt>
-                <dd>{fmt(live.toNext)} XP</dd>
-              </div>
-            </dl>
-            <div className="record-progress">
-              <span className="record-progress-label" id="lvl-progress-label">
-                Level {heroLevel} progress: {fmt(live.intoLevel)} of {fmt(live.cost)} XP
-              </span>
-              <div className="record-progress-track" role="progressbar" aria-labelledby="lvl-progress-label" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
-                <span className={`record-progress-fill ${barFrom !== pct ? 'is-growing' : ''}`} key={`${runKey}-${pct}`} style={{ width: `${pct}%`, '--bar-from': `${barFrom}%` }} />
-              </div>
-            </div>
-            {nextReward && !preview && (
-              <p className="record-next">
-                Next reward: <b>Level {nextReward.level}</b> · {rewardLabel(nextReward.items)}
-              </p>
-            )}
+            <p className="mp-total">
+              <b>{fmt(target)}</b> total XP
+              {gained > 0 && (
+                <span className="record-gain" key={`${runKey}-${target}`} aria-label={`${fmt(gained)} XP since your last visit`}>
+                  +{fmt(gained)}
+                </span>
+              )}
+            </p>
+            <p className="mp-tonext">
+              <b>{fmt(live.toNext)} XP</b> to Level {heroLevel + 1}
+            </p>
             {anim.earned && !anim.activating && (
               <p className="record-earned" role="status">
                 Level {anim.earned.level}
@@ -276,7 +286,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
             )}
           </section>
 
-          <div className="record-net" ref={netRef}>
+          <div className="record-net mp-path" ref={netRef}>
             <PlexusGrowth
               key={anim.level}
               info={shown}
@@ -288,34 +298,76 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
               activating={anim.activating}
               label={anim.activating && anim.earned && anim.earned.items.length ? { kicker: `Level ${anim.earned.level}`, text: rewardLabel(anim.earned.items) } : null}
             />
+            <div className="record-progress mp-progress">
+              <span className="record-progress-label" id="lvl-progress-label">
+                <span className="sr-only">Level {heroLevel} progress: {fmt(live.intoLevel)} of {fmt(live.cost)} XP</span>
+                <span aria-hidden="true">
+                  <b>{fmt(live.intoLevel)}</b> / {fmt(live.cost)} XP
+                </span>
+              </span>
+              <div className="record-progress-track" role="progressbar" aria-labelledby="lvl-progress-label" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
+                <span className={`record-progress-fill ${barFrom !== pct ? 'is-growing' : ''}`} key={`${runKey}-${pct}`} style={{ width: `${pct}%`, '--bar-from': `${barFrom}%` }} />
+              </div>
+              {nextReward && !preview && (
+                <p className="record-next sr-only">
+                  Next reward: Level {nextReward.level} · {rewardLabel(nextReward.items)}
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="record-side">
-            <div className="record-stats">
-              <dl className="record-streaks">
-                <div><dd>{fmt(streak.current)}<span className="record-unit"> {unit(streak.current)}</span></dd><dt>Current streak</dt></div>
-                <div><dd>{fmt(streak.longest)}<span className="record-unit"> {unit(streak.longest)}</span></dd><dt>Best streak</dt></div>
-              </dl>
-              <dl className="record-totals">
-                <div><dd>{fmt(stats?.gamesWon || 0)}</dd><dt>Puzzles</dt></div>
-                <div><dd>{fmt(connections)}</dd><dt>Connections</dt></div>
-                <div><dd>{fmt(perfectDailies)}</dd><dt>Perfect Dailies</dt></div>
-                <div>
+            <section className="mp-stats" aria-labelledby="mp-stats-head">
+              <h2 className="record-section mp-stats-head" id="mp-stats-head">
+                Your stats
+              </h2>
+              <dl className="mp-stat-grid">
+                <div className="mp-stat jewel-peacock">
+                  <dt>Current streak</dt>
+                  <dd>
+                    {fmt(streak.current)}
+                    <span className="record-unit"> {unit(streak.current)}</span>
+                  </dd>
+                </div>
+                <div className="mp-stat jewel-cobalt">
+                  <dt>Best streak</dt>
+                  <dd>
+                    {fmt(streak.longest)}
+                    <span className="record-unit"> {unit(streak.longest)}</span>
+                  </dd>
+                </div>
+                <div className="mp-stat jewel-plum">
+                  <dt>Puzzles</dt>
+                  <dd>{fmt(stats?.gamesWon || 0)}</dd>
+                </div>
+                <div className="mp-stat jewel-plum">
+                  <dt>Connections</dt>
+                  <dd>{fmt(connections)}</dd>
+                </div>
+                <div className="mp-stat jewel-terracotta">
+                  <dt>Perfect Dailies</dt>
+                  <dd>{fmt(perfectDailies)}</dd>
+                </div>
+                <div className="mp-stat jewel-peacock">
+                  <dt>Systems boards</dt>
                   <dd>
                     {fmt(systemsBoards?.completed || 0)}
                     <span className="record-unit">/{fmt(systemsBoards?.available || 0)}</span>
                   </dd>
-                  <dt>Systems boards</dt>
                 </div>
               </dl>
-            </div>
+            </section>
 
-            <section className="record-week" aria-labelledby="this-week">
-              <h2 className="record-section" id="this-week">This Week</h2>
-              <p className="week-progress" aria-live="polite">
-                <b>{Math.min(rounds.done, WEEKLY_GOALS_NEEDED)}/{WEEKLY_GOALS_NEEDED}</b> goals completed for your weekly reward
-              </p>
-              <p className="week-rule">Complete any {WEEKLY_GOALS_NEEDED} of the {rounds.goals.length} goals below.</p>
+            <section className="record-week mp-week" aria-labelledby="this-week">
+              <div className="mp-week-head">
+                <h2 className="record-section" id="this-week">This Week</h2>
+                <div className="mp-week-meta">
+                  <p className="week-progress" aria-live="polite">
+                    <b>{Math.min(rounds.done, WEEKLY_GOALS_NEEDED)}/{WEEKLY_GOALS_NEEDED}</b> goals completed for your weekly reward
+                  </p>
+                  <p className="week-rule">Complete any {WEEKLY_GOALS_NEEDED} of the {rounds.goals.length} goals below.</p>
+                </div>
+              </div>
               <WeekGoals goals={rounds.goals} complete={rounds.complete} />
               <WeekReward rounds={rounds} choices={weeklyChoices} level={info.level} onChoose={onChoose} />
             </section>
@@ -323,58 +375,99 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
         </div>
       ) : (
         <section className="record-kit" aria-label="Your Tools">
-          <h2 className="kit-group-head">Puzzle Tools <span className="kit-group-sub">Daily and Systems boards · one per board</span></h2>
-          <ul className="kit-list">
-            {PUZZLE_TOOLS.map((item) => (
-              <ToolRow key={item} item={item} def={KIT[item]} count={counts[item]} open={itemOpen(item, info.level)} pending={pending[item] || []} onClaim={onClaim} earn={EARN[item]} />
-            ))}
-          </ul>
-          <h2 className="kit-group-head">Streak Protection</h2>
-          <ul className="kit-list">
-            <ToolRow
-              item="shield"
-              def={KIT.shield}
-              count={counts.shield}
-              open
-              pending={pending.shield || []}
-              onClaim={onClaim}
-              earn={`Earned: one for every ${COVERAGE_EVERY} Dailies you complete on their day (Archive replays don’t count).`}
-              extra={`Next Coverage: ${coverage.count % COVERAGE_EVERY}/${COVERAGE_EVERY} Dailies`}
-            />
-          </ul>
-          <h2 className="kit-group-head">Race Power-ups <span className="kit-group-sub">Chaos races only</span></h2>
-          <ul className="kit-list">
-            {Object.entries(RACE_ITEMS).map(([item, def]) => {
-              const inv = race?.inventory?.[item] ?? 0
-              const prog =
-                item === 'mutation'
-                  ? `Mutation: ${(race?.progress?.qualifyingWins ?? 0) % RACE_REWARDS.mutationEveryWins}/${RACE_REWARDS.mutationEveryWins} qualifying wins`
-                  : `CRISPR: ${(race?.progress?.qualifyingRaces ?? 0) % RACE_REWARDS.crisprEveryRaces}/${RACE_REWARDS.crisprEveryRaces} qualifying races`
-              return (
-                <li key={item} className={`kit-item ${race ? '' : 'is-locked'}`}>
-                  <KitIcon item={item} size={26} />
-                  <div className="kit-text">
-                    <span className="kit-name">{def.name}</span>
-                    <span className="kit-desc">{def.desc}</span>
-                    <span className="kit-earn">
-                      {item === 'mutation'
-                        ? `Earned: one for every ${RACE_REWARDS.mutationEveryWins} qualifying Race wins.`
-                        : `Earned: one for every ${RACE_REWARDS.crisprEveryRaces} qualifying Races, win or lose.`}
-                    </span>
-                    {race ? <span className="kit-earn">{prog}</span> : <span className="kit-earn">{race === undefined ? 'Loading…' : 'Sign in to earn and use Race power-ups.'}</span>}
-                    {race && (race.pending?.[item] || 0) > 0 && <span className="kit-pending">{race.pending[item]} waiting (inventory full)</span>}
-                  </div>
-                  <span className="kit-count">
-                    ×{inv}
-                    <span className="kit-cap"> / {def.max}</span>
-                  </span>
+          <div className="kit-section">
+            <h2 className="kit-group-head">
+              Puzzle Tools <span className="kit-group-sub">Daily and Systems boards · one per board</span>
+            </h2>
+            <ul className="kit-list tool-cards">
+              {PUZZLE_TOOLS.map((item) => (
+                <ToolCard key={item} item={item} def={KIT[item]} count={counts[item]} open={itemOpen(item, info.level)} pending={pending[item] || []} onClaim={onClaim} />
+              ))}
+            </ul>
+            <details className="kit-more">
+              <summary>
+                <span className="kit-more-mark" aria-hidden="true" />
+                How to earn tools
+                <span className="kit-more-chev" aria-hidden="true" />
+              </summary>
+              <ul className="kit-more-list">
+                {PUZZLE_TOOLS.map((item) => (
+                  <li key={item}>
+                    <b>{KIT[item].name}.</b> {EARN[item].replace(/^Earned: (.)/, (_, c) => c.toUpperCase())}
+                  </li>
+                ))}
+                <li>
+                  <b>{KIT.shield.name}.</b> One for every {COVERAGE_EVERY} Dailies you complete on their day (Archive replays don’t count).
                 </li>
-              )
-            })}
-          </ul>
-          <p className="kit-foot">
-            Caps: puzzle tools {KIT.curbside.max} each, Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Rewards that arrive when you are full wait here as claims, nothing is lost. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Tools are off in 3 Minutes and Race. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
-          </p>
+              </ul>
+            </details>
+          </div>
+
+          <div className="kit-section">
+            <h2 className="kit-group-head">Streak Protection</h2>
+            <ul className="kit-list tool-cards">
+              <ToolCard item="shield" def={KIT.shield} count={counts.shield} open pending={pending.shield || []} onClaim={onClaim} art={{ lit: coverage.count % COVERAGE_EVERY }}>
+                <p className="tool-card-progress">
+                  <b>
+                    {coverage.count % COVERAGE_EVERY}/{COVERAGE_EVERY}
+                  </b>{' '}
+                  Dailies toward your next Coverage
+                </p>
+              </ToolCard>
+            </ul>
+          </div>
+
+          <div className="kit-section">
+            <h2 className="kit-group-head">
+              Race Power-ups <span className="kit-group-sub">Chaos races only</span>
+            </h2>
+            <ul className="kit-list race-cards">
+              {Object.entries(RACE_ITEMS).map(([item, def]) => {
+                const inv = race?.inventory?.[item] ?? 0
+                const prog =
+                  item === 'mutation'
+                    ? `${(race?.progress?.qualifyingWins ?? 0) % RACE_REWARDS.mutationEveryWins}/${RACE_REWARDS.mutationEveryWins} qualifying wins to the next`
+                    : `${(race?.progress?.qualifyingRaces ?? 0) % RACE_REWARDS.crisprEveryRaces}/${RACE_REWARDS.crisprEveryRaces} qualifying races to the next`
+                return (
+                  <li key={item} className={`race-card kit-item ${race ? '' : 'is-locked'}`}>
+                    <ToolArt item={item} locked={!race} size="sm" />
+                    <h3 className="kit-name">{def.name}</h3>
+                    <p className="kit-desc">{def.desc}</p>
+                    <div className="tool-card-qty" aria-label={`${inv} of ${def.max} held`}>
+                      <Pips value={inv} max={def.max} />
+                      <span className="kit-count">
+                        {inv}
+                        <span className="kit-cap"> / {def.max}</span>
+                      </span>
+                    </div>
+                    {race && <p className="tool-card-progress">{prog}</p>}
+                    {race && (race.pending?.[item] || 0) > 0 && <span className="kit-pending">{race.pending[item]} waiting (inventory full)</span>}
+                  </li>
+                )
+              })}
+            </ul>
+            <p className="kit-note">
+              <InfoIcon size={15} />
+              <span>
+                {race === undefined
+                  ? 'Loading…'
+                  : race
+                    ? `Earned in qualifying races: a Mutation every ${RACE_REWARDS.mutationEveryWins} wins, a CRISPR every ${RACE_REWARDS.crisprEveryRaces} races.`
+                    : 'Sign in to earn and use Race power-ups.'}
+              </span>
+            </p>
+          </div>
+
+          <details className="kit-more">
+            <summary>
+              <span className="kit-more-mark is-rules" aria-hidden="true" />
+              Tool rules and limits
+              <span className="kit-more-chev" aria-hidden="true" />
+            </summary>
+            <p className="kit-foot">
+              Caps: puzzle tools {KIT.curbside.max} each, Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Rewards that arrive when you are full wait here as claims, nothing is lost. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Tools are off in 3 Minutes and Race. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
+            </p>
+          </details>
           {convertedList.length > 0 && (
             <p className="kit-foot">
               Retired tools converted 1:1: {convertedList.map(([old, n]) => `${REMOVED_NAMES[old] || old} ×${n}`).join(', ')} (Imaging to Consult, Readout to Rule Out, Time Out to Second Opinion).

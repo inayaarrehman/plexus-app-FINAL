@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import InfoIcon from './InfoIcon.jsx'
 import {
   ROUND_TYPES,
   BASE_POINTS,
@@ -186,7 +187,6 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
   // Under reduced motion (or if matchMedia is unavailable) we skip straight to
   // play so gameplay is never perceptibly delayed.
   const handleStart = () => {
-    markChallengeTypesSeen()
     let reduce = false
     try {
       reduce =
@@ -529,8 +529,10 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
           <h1 className="challenge-title">3 Minutes</h1>
           <p className="challenge-lede">How many connections can you make?</p>
           <ChallengeTypes />
-          <button type="button" className="challenge-scoring-link" aria-expanded={showScoring} aria-controls="challenge-scoring" onClick={() => setShowScoring((v) => !v)}>
-            How scoring works
+          <button type="button" className="challenge-helper-row challenge-scoring-link" aria-expanded={showScoring} aria-controls="challenge-scoring" onClick={() => setShowScoring((v) => !v)}>
+            <span className="challenge-helper-label">How scoring works</span>
+            <span className="challenge-types-names" aria-hidden="true">Points, speed, streaks</span>
+            <Chevron open={showScoring} />
           </button>
           {showScoring && <ScoringInfo id="challenge-scoring" onClose={() => setShowScoring(false)} />}
 
@@ -660,8 +662,8 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
             <AnimatedNumber value={score} />
             {multiplierDisplay && <span className="challenge-multiplier" title="Your next correct answer’s streak multiplier">×{multiplierDisplay}</span>}
           </span>
-          <button type="button" className="challenge-score-info" aria-label="How scoring works" aria-expanded={showScoring} aria-controls="challenge-scoring" onClick={() => setShowScoring((v) => !v)}>
-            <span aria-hidden="true">i</span>
+          <button type="button" className="info-btn challenge-score-info" aria-label="How scoring works" aria-expanded={showScoring} aria-controls="challenge-scoring" onClick={() => setShowScoring((v) => !v)}>
+            <InfoIcon />
           </button>
           <span className="challenge-floats" aria-hidden="true">
             {floats.map((f, i) => (
@@ -1009,8 +1011,7 @@ function mistakeLabel(round) {
 // The round types (challengeEngine.js ROUND_TYPES) grouped into the five
 // families the intro names. Each line matches the round's real rule (the
 // same wording as INSTRUCTIONS). Examples use everyday items on purpose, so
-// they can never give away a live medical answer. Open by default until the
-// player has started once; always reopenable. Reading never starts the timer:
+// they can never give away a live medical answer. Closed by default; one tap opens it. Reading never starts the timer:
 // the clock only starts from the Start button.
 export const CHALLENGE_TYPES = [
   {
@@ -1049,30 +1050,16 @@ export const CHALLENGE_TYPES = [
     example: 'Fruits and Colors: Orange belongs to both.',
   },
 ]
-const TYPES_SEEN_KEY = 'plexus.challengeTypesSeen.v1'
-function typesSeen() {
-  try {
-    return localStorage.getItem(TYPES_SEEN_KEY) === '1'
-  } catch {
-    return false
-  }
-}
-export function markChallengeTypesSeen() {
-  try {
-    localStorage.setItem(TYPES_SEEN_KEY, '1')
-  } catch {
-    // ignore
-  }
-}
 function ChallengeTypes() {
-  const [open, setOpen] = useState(() => !typesSeen())
+  // Hidden until asked for: players who know the rounds go straight to Start.
+  const [open, setOpen] = useState(false)
   return (
     <section className={`challenge-types ${open ? 'is-open' : ''}`} aria-labelledby="challenge-types-title">
       <h2 className="challenge-types-head" id="challenge-types-title">
-        <button type="button" className="challenge-types-toggle" aria-expanded={open} aria-controls="challenge-types-list" onClick={() => setOpen((v) => !v)}>
-          <span>Challenge types</span>
-          <span className="challenge-types-names" aria-hidden="true">{open ? 'Hide' : CHALLENGE_TYPES.map((t) => t.name).join(' · ')}</span>
-          <span className="challenge-types-chev" aria-hidden="true">{open ? '▴' : '▾'}</span>
+        <button type="button" className="challenge-helper-row challenge-types-toggle" aria-expanded={open} aria-controls="challenge-types-list" onClick={() => setOpen((v) => !v)}>
+          <span className="challenge-helper-label">What are the challenges?</span>
+          <span className="challenge-types-names" aria-hidden="true">{CHALLENGE_TYPES.map((t) => t.name).join(' · ')}</span>
+          <Chevron open={open} />
         </button>
       </h2>
       {open && (
@@ -1185,5 +1172,13 @@ function ScoringInfo({ id, playing = false, onClose }) {
       </dl>
       {playing && <p className="challenge-scoring-foot">The clock keeps running while this is open.</p>}
     </section>
+  )
+}
+
+function Chevron({ open }) {
+  return (
+    <svg className={`challenge-helper-chev ${open ? 'is-open' : ''}`} width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
+      <path d="M3.5 5.25 7 8.75l3.5-3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   )
 }
