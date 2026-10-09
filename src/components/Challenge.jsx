@@ -163,6 +163,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
   // Under reduced motion (or if matchMedia is unavailable) we skip straight to
   // play so gameplay is never perceptibly delayed.
   const handleStart = () => {
+    markChallengeTypesSeen()
     let reduce = false
     try {
       reduce =
@@ -504,7 +505,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
         <div className="challenge-intro-inner">
           <h1 className="challenge-title">3 Minutes</h1>
           <p className="challenge-lede">How many connections can you make?</p>
-          <p className="challenge-mixes">Group · Classify · Sequence · Link · Overlap</p>
+          <ChallengeTypes />
 
           {/* §15: Start is the one focal action, seated in a restrained Plexus
               network that resolves on activation (§16). The button stays
@@ -582,6 +583,10 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
               {showReviewMisses ? 'Hide mistakes' : `Review ${mistakes.length} mistake${mistakes.length === 1 ? '' : 's'}`}
             </button>
           )}
+        </div>
+
+        <div className="challenge-results-types">
+          <ChallengeTypes />
         </div>
 
         {showReviewMisses && (
@@ -955,4 +960,94 @@ function mistakeLabel(round) {
     default:
       return round.anchor || round.categoryTitle || ''
   }
+}
+
+// ---------------------------------------------------------------------
+// Challenge types: what each family of rounds asks, before Start.
+// ---------------------------------------------------------------------
+// The round types (challengeEngine.js ROUND_TYPES) grouped into the five
+// families the intro names. Each line matches the round's real rule (the
+// same wording as INSTRUCTIONS). Examples use everyday items on purpose, so
+// they can never give away a live medical answer. Open by default until the
+// player has started once; always reopenable. Reading never starts the timer:
+// the clock only starts from the Start button.
+export const CHALLENGE_TYPES = [
+  {
+    id: 'group',
+    name: 'Group',
+    rounds: ['miniConnections', 'rapidAssociation', 'impostor'],
+    rule: 'Find the four that belong together. Some rounds mix two groups of four; some name the group and you pick its four. Another shows five and you tap the one that does not belong.',
+    example: 'Fruits: tap Apple, Pear, Plum and Fig out of Apple, Oak, Pear, Pine, Plum, Elm, Fig, Ash.',
+  },
+  {
+    id: 'classify',
+    name: 'Classify',
+    rounds: ['split', 'matchTheLink', 'sameOrDifferent'],
+    rule: 'Sort concepts into the right group. Place each one in A or B, match each concept to its group, or answer whether both concepts belong to the group shown.',
+    example: 'A Fish, B Bird: Salmon and Trout go to A, Robin and Crow go to B.',
+  },
+  {
+    id: 'sequence',
+    name: 'Sequence',
+    rounds: ['chain', 'completeTheChain'],
+    rule: 'Put steps in order, first to last, or tap the step that fills the gap in a chain.',
+    example: 'Seed → ? → Flower → Fruit. The missing step is Sprout.',
+  },
+  {
+    id: 'link',
+    name: 'Link',
+    rounds: ['commonLink', 'completeConnection', 'linkTwo'],
+    rule: 'Name what connects them. Pick the connection four concepts share, pick the one that completes a group of three, or tap the exactly two that belong to a group.',
+    example: 'Mercury, Venus, Earth, Mars share one link: inner planets.',
+  },
+  {
+    id: 'overlap',
+    name: 'Overlap',
+    rounds: ['doubleAgent'],
+    rule: 'Two groups are shown. Tap the one concept that belongs to both.',
+    example: 'Fruits and Colors: Orange belongs to both.',
+  },
+]
+const TYPES_SEEN_KEY = 'plexus.challengeTypesSeen.v1'
+function typesSeen() {
+  try {
+    return localStorage.getItem(TYPES_SEEN_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+export function markChallengeTypesSeen() {
+  try {
+    localStorage.setItem(TYPES_SEEN_KEY, '1')
+  } catch {
+    // ignore
+  }
+}
+function ChallengeTypes() {
+  const [open, setOpen] = useState(() => !typesSeen())
+  return (
+    <section className={`challenge-types ${open ? 'is-open' : ''}`} aria-labelledby="challenge-types-title">
+      <h2 className="challenge-types-head" id="challenge-types-title">
+        <button type="button" className="challenge-types-toggle" aria-expanded={open} aria-controls="challenge-types-list" onClick={() => setOpen((v) => !v)}>
+          <span>Challenge types</span>
+          <span className="challenge-types-names" aria-hidden="true">{open ? 'Hide' : CHALLENGE_TYPES.map((t) => t.name).join(' · ')}</span>
+          <span className="challenge-types-chev" aria-hidden="true">{open ? '▴' : '▾'}</span>
+        </button>
+      </h2>
+      {open && (
+        <ul className="challenge-types-list" id="challenge-types-list">
+          {CHALLENGE_TYPES.map((t) => (
+            <li key={t.id} className={`challenge-type is-${t.id}`}>
+              <p className="challenge-type-name">{t.name}</p>
+              <p className="challenge-type-rule">{t.rule}</p>
+              <p className="challenge-type-example">
+                <span className="challenge-type-example-label">Example</span> {t.example}
+              </p>
+            </li>
+          ))}
+          <li className="challenge-types-foot">Each round also shows its own one-line instruction. The timer starts only when you tap Start.</li>
+        </ul>
+      )}
+    </section>
+  )
 }

@@ -86,3 +86,28 @@ export async function getSupabase() {
   }
   return _loadPromise
 }
+
+// A second client used ONLY for guest racing: an anonymous Supabase session
+// kept under its own storage key, so it never replaces or mixes with a real
+// account session (the app's account, sync and My Plexus never see it). It is
+// created only when a signed-out player chooses to race as a guest.
+let _guest = null
+let _guestPromise = null
+export async function getGuestSupabase() {
+  if (!isSupabaseConfigured()) return null
+  if (_guest) return _guest
+  if (!_guestPromise) {
+    _guestPromise = import('@supabase/supabase-js')
+      .then(({ createClient }) => {
+        _guest = createClient(supabaseUrl(), supabaseAnonKey(), {
+          auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false, storageKey: 'plexus.race.guest.v1' },
+        })
+        return _guest
+      })
+      .catch(() => {
+        _guestPromise = null
+        return null
+      })
+  }
+  return _guestPromise
+}

@@ -18,7 +18,7 @@ const envSupport = (() => {
   }
 })()
 export const SUPPORT_EMAIL = (envSupport || CONTACT_EMAIL || '').trim()
-export const LEGAL_UPDATED = 'October 7, 2026'
+export const LEGAL_UPDATED = 'October 8, 2026'
 export const COPYRIGHT = '© 2026 Plexus. All rights reserved.'
 
 export const DISCLAIMER_TEXT =

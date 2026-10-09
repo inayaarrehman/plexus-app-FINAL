@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { INSTRUCTIONS } from '../utils/challengeEngine.js'
 import { RACE_LENGTH, normalizeJoinCode, isValidJoinCode, buildRaceChallenge, raceLinkForCode } from '../utils/raceEngine.js'
 import { timedCanonicalId } from '../utils/timedLibrary.js'
-import { raceCall, subscribeMatch, getRaceSummary } from '../lib/raceApi.js'
+import { raceCall, subscribeMatch, getRaceSummary, startGuestRacing, isGuestRacing } from '../lib/raceApi.js'
 import { scrambleLabel, activeEffect } from '../utils/mutation.js'
 import { haptics } from '../utils/haptics.js'
 import { recordRaceFinish, recordRaceWin } from '../progression/store.js'
@@ -21,6 +21,31 @@ import { RACE_REWARDS } from '../progression/config.js'
 // ---------------------------------------------------------------------
 
 const CHAOS_COPY = 'Chaos: Use earned Mutation and CRISPR power-ups during this race. Both players must agree.'
+const CHAOS_COPY_FREE = 'Chaos: Each player gets one Mutation and one CRISPR for this race. Both players must agree.'
+// Shown before a Chaos race starts. Matches the server rules (effect_ms 2000,
+// one charge of each per race, CRISPR spent when it blocks).
+function PowerupExplainer({ free }) {
+  return (
+    <div className="race-powerup-explainer">
+      <p className="race-powerup-explainer-head">{free ? 'Your Chaos loadout for this race' : 'How power-ups work'}</p>
+      <dl>
+        <div>
+          <dt>Mutation</dt>
+          <dd>Scrambles the letters on your opponent’s answer choices for 2 seconds.</dd>
+        </div>
+        <div>
+          <dt>CRISPR</dt>
+          <dd>Arm it to block the next Mutation sent at you. It is used up when it blocks.</dd>
+        </div>
+      </dl>
+      <p className="race-powerup-explainer-foot">
+        {free
+          ? 'One of each for both players. They end with the race and never use or add to Your Tools.'
+          : 'Each player can bring at most one of each, from items earned in qualifying races.'}
+      </p>
+    </div>
+  )
+}
 const SESSION_KEY = 'plexus.raceMatch.v1'
 const tz = () => {
   try {
@@ -34,7 +59,7 @@ const fmtTime = (ms) => {
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 }
 const REJECT = {
-  'not-equipped': 'No Mutation equipped for this race.',
+  'not-equipped': 'No Mutation left for this race.',
   'no-mutation': 'You have no Mutation left.',
   'target-finished': 'Your opponent has finished.',
   'target-disconnected': 'Your opponent is not connected right now.',
@@ -50,9 +75,11 @@ const NOT_COUNTED = {
   'not-qualifying': 'This race didn’t count toward Race rewards: both players need to answer all 10 rounds with at least 3 right, take at least 20 seconds, and stay connected.',
   abandoned: 'This race was abandoned, so it didn’t count toward Race rewards.',
   'opponent-left': 'Your opponent left, so this race didn’t count toward Race rewards.',
+  guest: 'Guest races don’t earn Race rewards. Sign in to earn them.',
+  'opponent-guest': 'Your opponent raced as a guest, so this race didn’t count toward Race rewards.',
 }
 
-export default function ServerRace({ bank, initialCode = '', onExit }) {
+export default function ServerRace({ bank, initialCode = '', onExit, account = true, onFallback }) {
   const [view, setView] = useState('entry') // entry | lobby | race | results
   const [joinInput, setJoinInput] = useState(initialCode ? normalizeJoinCode(initialCode) : '')
   const [state, setState] = useState(null) // server state
@@ -127,6 +154,10 @@ export default function ServerRace({ bank, initialCode = '', onExit }) {
   const opp = players.find((p) => p.user_id !== me) || null
   const status = state?.match?.status || null
   const chaos = !!state?.match?.chaos
+  const free = !!state?.free_loadout
+  const guest = !account
+  const hasMut = (p) => !!(p && (p.temp_mutation || p.equip_mutation))
+  const hasCrispr = (p) => !!(p && (p.temp_crispr || p.equip_crispr))
 
   // Phase from the server's view.
   useEffect(() => {
@@ -195,13 +226,28 @@ export default function ServerRace({ bank, initialCode = '', onExit }) {
     }
     return apply(r)
   }
+  // Signed-out players get a guest identity on the server first (only when
+  // they actually create or join).
+  const ensureGuest = async () => {
+    if (account || isGuestRacing()) return true
+    setBusy(true)
+    const g = await startGuestRacing()
+    setBusy(false)
+    if (!g.ok) {
+      onFallback?.()
+      return false
+    }
+    return true
+  }
   const create = async () => {
+    if (!(await ensureGuest())) return
     const r = await act('create')
     if (r?.ok) setMe(r.players[0].user_id)
   }
   const join = async () => {
     const c = normalizeJoinCode(joinInput)
     if (!isValidJoinCode(c)) return
+    if (!(await ensureGuest())) return
     const r = await act('join', { code: c })
     if (r?.ok) setMe(r.you || r.players[r.players.length - 1].user_id)
   }
@@ -301,7 +347,11 @@ export default function ServerRace({ bank, initialCode = '', onExit }) {
           </div>
         </div>
         {error && <p className="race-error" role="alert">{error}</p>}
-        <p className="race-note">Signed-in races are scored by the Plexus server and count toward Race rewards.</p>
+        <p className="race-note">
+          {guest
+            ? 'You’re racing as a guest. Races are scored by the Plexus server, and Chaos works with a loadout for each race. Sign in to earn Race rewards.'
+            : 'Signed-in races are scored by the Plexus server and count toward Race rewards.'}
+        </p>
       </div>
     )
   }
@@ -309,7 +359,7 @@ export default function ServerRace({ bank, initialCode = '', onExit }) {
   if (view === 'lobby') {
     const both = players.length === 2
     const canStart = both && (!chaos || players.every((p) => p.chaos_accepted))
-    const loadoutText = (p) => (p ? [p.equip_mutation ? 'Mutation' : null, p.equip_crispr ? 'CRISPR' : null].filter(Boolean).join(' + ') || 'nothing equipped' : '')
+    const loadoutText = (p) => (p ? [hasMut(p) ? 'Mutation' : null, hasCrispr(p) ? 'CRISPR' : null].filter(Boolean).join(' + ') || 'nothing equipped' : '')
     return (
       <div className="race">
         {header}
@@ -334,11 +384,11 @@ export default function ServerRace({ bank, initialCode = '', onExit }) {
         </div>
         <div className="race-players">
           <div className="race-player">
-            <span className="race-player-name">You</span>
+            <span className="race-player-name">You{guest ? ' (guest)' : ''}</span>
             <span className="race-player-status is-ready">{chaos ? (mine?.chaos_accepted ? `Chaos accepted · ${loadoutText(mine)}` : 'Chaos not accepted yet') : 'Ready'}</span>
           </div>
           <div className="race-player">
-            <span className="race-player-name">Opponent</span>
+            <span className="race-player-name">Opponent{opp?.guest ? ' (guest)' : ''}</span>
             <span className={`race-player-status ${opp ? 'is-ready' : 'is-offline'}`}>
               {!opp ? 'Waiting to join…' : chaos ? (opp.chaos_accepted ? `Chaos accepted · ${loadoutText(opp)}` : 'Chaos not accepted yet') : 'In the lobby'}
             </span>
@@ -348,9 +398,22 @@ export default function ServerRace({ bank, initialCode = '', onExit }) {
         <div className={`race-chaos ${chaos ? 'is-on' : ''}`}>
           <label className="race-chaos-toggle">
             <input type="checkbox" checked={chaos} onChange={toggleChaos} disabled={busy} />
-            <span>{CHAOS_COPY}</span>
+            <span>{free ? CHAOS_COPY_FREE : CHAOS_COPY}</span>
           </label>
-          {chaos && (
+          {!chaos && <p className="race-chaos-classic">Classic: no power-ups.</p>}
+          {chaos && <PowerupExplainer free={free} />}
+          {chaos && free && (
+            <div className="race-chaos-loadout">
+              {!mine?.chaos_accepted ? (
+                <button className="race-secondary-btn" onClick={acceptChaos} disabled={busy}>
+                  Accept Chaos
+                </button>
+              ) : (
+                <p className="race-chaos-head">Accepted. Waiting for {opp?.chaos_accepted ? 'start' : 'your opponent'}.</p>
+              )}
+            </div>
+          )}
+          {chaos && !free && (
             <div className="race-chaos-loadout">
               <p className="race-chaos-head">Your loadout (at most one of each, used only in this race)</p>
               <label className={!mine?.has_mutation ? 'is-off' : ''}>
@@ -409,19 +472,19 @@ export default function ServerRace({ bank, initialCode = '', onExit }) {
         </div>
         {chaos && (
           <div className="race-powerups" role="group" aria-label="Power-ups">
-            {mine?.equip_mutation && (
+            {hasMut(mine) && (
               <button className="race-powerup" onClick={attack} disabled={mine.mutation_spent || !opp || !!opp.finished_at}>
                 {mine.mutation_spent ? 'Mutation spent' : 'Send Mutation'}
               </button>
             )}
-            {mine?.equip_crispr && (
+            {hasCrispr(mine) && (
               <button className="race-powerup" onClick={arm} disabled={mine.crispr_armed || mine.crispr_spent}>
                 {mine.crispr_spent ? 'CRISPR spent' : mine.crispr_armed ? 'CRISPR armed' : 'Arm CRISPR'}
               </button>
             )}
             <span className="race-powerup-opp">
-              Opponent: {opp?.crispr_spent ? 'CRISPR spent' : opp?.crispr_armed ? 'CRISPR armed' : opp?.equip_crispr ? 'CRISPR ready' : 'no CRISPR'}
-              {opp?.equip_mutation ? (opp.mutation_spent ? ' · Mutation spent' : ' · Mutation ready') : ''}
+              Opponent: {opp?.crispr_spent ? 'CRISPR spent' : opp?.crispr_armed ? 'CRISPR armed' : hasCrispr(opp) ? 'CRISPR ready' : 'no CRISPR'}
+              {hasMut(opp) ? (opp.mutation_spent ? ' · Mutation spent' : ' · Mutation ready') : ''}
             </span>
           </div>
         )}
@@ -491,7 +554,7 @@ export default function ServerRace({ bank, initialCode = '', onExit }) {
       {outcome && outcome !== 'abandoned' && (
         <div className={`race-outcome race-outcome-${outcome}`}>{outcome === 'win' ? 'You win!' : outcome === 'lose' ? 'You lost' : 'It’s a tie'}</div>
       )}
-      {chaos && <p className="race-note">Chaos race. Results are kept apart from standard races.</p>}
+      {chaos && <p className="race-note">Chaos race. Results are kept apart from standard races.{free ? ' This race’s power-ups have ended.' : ''}</p>}
       <div className="race-result-grid">
         <div className="race-result-stat">
           <span className="race-result-num">{fmtTime(mine?.run_ms)}</span>
@@ -511,7 +574,7 @@ export default function ServerRace({ bank, initialCode = '', onExit }) {
         </div>
       )}
       {!waiting && log && <p className="race-note">{log.counted ? 'This race counted toward Race rewards.' : NOT_COUNTED[log.reason] || NOT_COUNTED['not-qualifying']}</p>}
-      {prog && (
+      {prog && !guest && (
         <p className="race-note race-reward-progress">
           Mutation: {prog.qualifyingWins % RACE_REWARDS.mutationEveryWins}/{RACE_REWARDS.mutationEveryWins} qualifying wins · CRISPR: {prog.qualifyingRaces % RACE_REWARDS.crisprEveryRaces}/{RACE_REWARDS.crisprEveryRaces} qualifying races
         </p>

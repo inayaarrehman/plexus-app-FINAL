@@ -142,7 +142,8 @@ function fracOf(info) {
 // travelling pulse while XP is being added. `activating` lights the next node
 // as the level is reached, and `label` overrides the reward label (used to
 // show the reward just earned).
-export function PlexusGrowth({ info, rewardsFor, rewardText, size = 'compact', moving = false, activating = false, label, className = '' }) {
+export function PlexusGrowth({ info, ariaInfo = null, rewardsFor, rewardText, size = 'compact', moving = false, activating = false, label, className = '' }) {
+  const said = ariaInfo || info
   const gid = React.useId().replace(/:/g, '')
   const lay = growthLayout(info, rewardsFor, size)
   const { nodes, cur, next } = lay
@@ -168,7 +169,7 @@ export function PlexusGrowth({ info, rewardsFor, rewardText, size = 'compact', m
         viewBox={`0 ${lay.top} ${lay.width} ${lay.height}`}
         className="growth-svg"
         role="img"
-        aria-label={`Your Plexus: level ${info.level}, ${info.toNext} XP to level ${info.level + 1}.`}
+        aria-label={`Your Plexus: level ${said.level}, ${said.toNext} XP to level ${said.level + 1}.`}
       >
         <defs>
           <linearGradient id={`${gid}-tl`} x1="1" x2="0" y1="0" y2="0">

@@ -647,7 +647,7 @@ export default function Game({
               </button>
             )}
             <button className="secondary-btn" onClick={onExit}>
-              Keep Playing
+              Back to Home
             </button>
           </div>
 
@@ -667,45 +667,109 @@ function readKit() {
   return { counts: kitCounts(st), level: levelInfo(totalXp(st)).level }
 }
 
-// The puzzle tool bar: Consult, Rule Out and Second Opinion. Each shows its
-// count and why it is unavailable; tapping an available one explains its
-// effect and asks before spending.
+// The puzzle tools, in their own section below the board controls. Each tool
+// has a use button (asks before spending) and a separate info button that
+// only explains: opening an explanation never spends anything. Info works by
+// tap, click and keyboard (Enter/Space to open, Escape to close).
+const TOOL_DETAIL = {
+  curbside: {
+    what: 'Highlights two tiles that belong together.',
+    more: 'The two tiles come from the easiest group you have not solved yet.',
+    when: 'Any time before the board ends.',
+  },
+  lab: {
+    what: 'After a “one away” guess, identifies the tile that does not belong with the other three.',
+    more: 'It works on your most recent submitted one-away guess, not on tiles you have only selected.',
+    when: 'After you submit a guess and see “one away”.',
+  },
+  'second-opinion': {
+    what: 'Restores one mistake allowance. The original mistake stays recorded.',
+    more: 'Your results still count the mistake. You just get one more guess.',
+    when: 'After at least one mistake.',
+  },
+}
+function toolStatusText(item, st, count, level) {
+  if (st.ok) return `Ready to use · ${count} left`
+  const def = KIT[item]
+  if (level < def.unlock) return `Locked · unlocks at Level ${def.unlock}`
+  return `${st.why} · ${count} left`
+}
 function ToolBar({ kit, toolState, toolsUsed, ask, setAsk, onConfirm, isDaily, consultTiles, ruleOut, restored }) {
-  const anyHeld = PUZZLE_TOOLS.some((it) => kit.counts[it] > 0)
-  if (!anyHeld && toolsUsed === 0) return null
+  const [info, setInfo] = useState(null)
   const def = ask ? KIT[ask] : null
   const effectLine = {
     curbside: 'Two tiles from the same unsolved group will be highlighted.',
     lab: 'In your last “one away” guess, the tile that doesn’t belong with the other three will be marked.',
     'second-opinion': 'You get one mistake allowance back. The mistake stays on your record.',
   }
+  const toggleInfo = (item) => setInfo((cur) => (cur === item ? null : item))
+  const onKey = (e) => {
+    if (e.key === 'Escape' && info) {
+      e.stopPropagation()
+      const was = info
+      setInfo(null)
+      document.getElementById(`tool-info-btn-${was}`)?.focus()
+    }
+  }
   return (
-    <div className="kit-bar tool-bar">
-      <div className="tool-row" role="group" aria-label="Your Tools">
+    <section className="tool-section" aria-labelledby="tool-section-title" onKeyDown={onKey}>
+      <div className="tool-section-head">
+        <h3 id="tool-section-title" className="tool-section-title">Tools</h3>
+        <p className="tool-section-rule">{toolsUsed > 0 ? 'Tool used. One tool per board.' : 'You can use one tool per board.'}</p>
+      </div>
+      <ul className="tool-list">
         {PUZZLE_TOOLS.map((item) => {
           const st = toolState(item)
+          const count = kit.counts[item] || 0
+          const locked = kit.level < KIT[item].unlock
           return (
-            <button
-              key={item}
-              className={`kit-use tool-btn ${st.ok ? '' : 'is-off'}`}
-              onClick={() => st.ok && setAsk(item)}
-              aria-disabled={!st.ok}
-              aria-label={`${KIT[item].name}, ${kit.counts[item]} left${st.ok ? '' : `. ${st.why}`}`}
-            >
-              <span className="tool-top">
-                <span className="kit-use-name">{KIT[item].name}</span>
-                <span className="kit-use-count">×{kit.counts[item]}</span>
-              </span>
-              {!st.ok && <span className="tool-why">{st.why}</span>}
-            </button>
+            <li key={item} className={`tool-item ${locked ? 'is-locked' : ''}`}>
+              <button
+                className={`kit-use tool-btn ${st.ok ? '' : 'is-off'}`}
+                onClick={() => st.ok && setAsk(item)}
+                aria-disabled={!st.ok}
+                aria-label={`Use ${KIT[item].name}, ${count} left${st.ok ? '' : `. ${locked ? `Unlocks at Level ${KIT[item].unlock}` : st.why}`}`}
+              >
+                <span className="tool-top">
+                  <span className="kit-use-name">{KIT[item].name}</span>
+                  <span className="kit-use-count">×{count}</span>
+                </span>
+                {!st.ok && <span className="tool-why">{st.why}</span>}
+              </button>
+              <button
+                type="button"
+                id={`tool-info-btn-${item}`}
+                className={`tool-info-btn ${info === item ? 'is-open' : ''}`}
+                aria-expanded={info === item}
+                aria-controls="tool-info-panel"
+                aria-label={`About ${KIT[item].name}`}
+                onClick={() => toggleInfo(item)}
+              >
+                <span aria-hidden="true">i</span>
+              </button>
+            </li>
           )
         })}
-      </div>
-      {consultTiles.length > 0 && <span className="kit-hint">Consult: these two belong together.</span>}
-      {ruleOut && <span className="kit-hint">Rule Out: the marked tile doesn’t belong with the other three.</span>}
-      {restored > 0 && <span className="kit-hint">Second Opinion: one mistake allowance restored. Your original mistake stays recorded.</span>}
+      </ul>
+      {info && (
+        <div id="tool-info-panel" className="tool-info-panel" role="region" aria-label={`About ${KIT[info].name}`}>
+          <p className="tool-info-name"><b>{KIT[info].name}</b></p>
+          <p className="tool-info-what">{TOOL_DETAIL[info].what}</p>
+          <p className="tool-info-more">{TOOL_DETAIL[info].more}</p>
+          <dl className="tool-info-facts">
+            <div><dt>When</dt><dd>{TOOL_DETAIL[info].when}</dd></div>
+            <div><dt>Status</dt><dd>{toolStatusText(info, toolState(info), kit.counts[info] || 0, kit.level)}</dd></div>
+            <div><dt>Limit</dt><dd>One tool per board{isDaily ? '. A Daily solved with a tool doesn’t count as Perfect' : ''}.</dd></div>
+            <div><dt>Get more</dt><dd>Level up and complete weekly goals.</dd></div>
+          </dl>
+          <button type="button" className="tool-info-close" onClick={() => { setInfo(null); document.getElementById(`tool-info-btn-${info}`)?.focus() }}>Close</button>
+        </div>
+      )}
+      {consultTiles.length > 0 && <p className="kit-hint">Consult: these two belong together.</p>}
+      {ruleOut && <p className="kit-hint">Rule Out: the marked tile doesn’t belong with the other three.</p>}
+      {restored > 0 && <p className="kit-hint">Second Opinion: one mistake allowance restored. Your original mistake stays recorded.</p>}
       {ask && def && (
-        <div className="kit-intro" role="group" aria-label={`About ${def.name}`}>
+        <div className="kit-intro" role="group" aria-label={`Use ${def.name}?`}>
           <p className="kit-intro-text">
             <b>{def.name}</b>. {effectLine[ask]} It uses 1 of your {kit.counts[ask]}, and you can use one tool per board.
             {isDaily ? ' A Daily solved with a tool doesn’t count as Perfect.' : ''}
@@ -716,7 +780,7 @@ function ToolBar({ kit, toolState, toolsUsed, ask, setAsk, onConfirm, isDaily, c
           </div>
         </div>
       )}
-    </div>
+    </section>
   )
 }
 

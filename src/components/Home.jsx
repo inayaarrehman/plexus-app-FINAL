@@ -9,7 +9,8 @@ import DailyPlexus from './DailyPlexus.jsx'
 import LockGlyph from './LockGlyph.jsx'
 import { loadProgress, getDailyHistory } from '../utils/storage.js'
 import { dateKey } from '../utils/game.js'
-import { formatDayKey, timeZoneLabel } from '../utils/calendar.js'
+import { formatDayKey } from '../utils/calendar.js'
+import { nextPuzzleInfo } from '../utils/resetCountdown.js'
 import { reportContext } from '../utils/reportContext.js'
 import { LevelLine } from './RecordParts.jsx'
 import LegalFooter from './LegalFooter.jsx'
@@ -246,7 +247,6 @@ export default function Home({
   // so it changes at local midnight even while Home stays open.
   const today = todayKey || dateKey(Date.now())
   const todayLabel = formatDayKey(today)
-  const resetNote = `Resets at midnight · ${timeZoneLabel(timeZone)}`
 
   const todayPuzzle = useMemo(() => getDailyPuzzleForDate(today), [today])
   const progress = useMemo(() => todayProgress(todayPuzzle, dailyDone, getDailyHistory()[today], today), [todayPuzzle, dailyDone, today])
@@ -377,7 +377,7 @@ export default function Home({
             )}
           </div>
 
-          <p className="home-reset-note">{resetNote}</p>
+          <ResetCountdown timeZone={timeZone} todayKey={today} />
 
           {connectionOfDay && <ConnectionOfDay cotd={connectionOfDay} onReport={onReport ? () => onReport(connectionOfDay.report) : undefined} />}
         </div>
@@ -477,11 +477,11 @@ export default function Home({
           <button
             className="home-progress-row home-rounds"
             onClick={() => onOpenRecord('week')}
-            aria-label={`This Week in My Plexus: ${record.rounds.done} of ${record.rounds.goals.length} goals done, any ${record.rounds.need} earn the reward`}
+            aria-label={`This Week in My Plexus: ${Math.min(record.rounds.done, record.rounds.need)} of ${record.rounds.need} goals completed for your weekly reward${record.rounds.complete ? ', reward earned' : ''}. Complete any ${record.rounds.need} of the ${record.rounds.goals.length} goals.`}
           >
             <span className="home-progress-text">
-              {record.rounds.complete ? 'This Week: reward earned' : `This Week: ${record.rounds.done} of ${record.rounds.need} goals`}
-              <span className="home-progress-meta"> · resets Monday</span>
+              {`${Math.min(record.rounds.done, record.rounds.need)}/${record.rounds.need} goals completed for your weekly reward`}
+              <span className="home-progress-meta">{record.rounds.complete ? ' · reward earned' : ' · resets Monday'}</span>
             </span>
             <span className="home-week-nodes" aria-hidden="true">
               {record.rounds.goals.map((g) => (
@@ -494,6 +494,56 @@ export default function Home({
       )}
 
       <LegalFooter onNavigate={onOpenLegal} className="home-legal" />
+    </div>
+  )
+}
+
+// "Next puzzle in 3h 24m" with the exact reset time and zone in a small
+// note behind an info button (tap, click or keyboard). Ticks on the minute
+// and when the tab comes back, so it stays right across sleep and midnight.
+function ResetCountdown({ timeZone, todayKey: dayKeyNow }) {
+  const [now, setNow] = useState(() => Date.now())
+  const [open, setOpen] = useState(false)
+  useEffect(() => {
+    let timer
+    const tick = () => {
+      setNow(Date.now())
+      timer = setTimeout(tick, 60000 - (Date.now() % 60000) + 50)
+    }
+    timer = setTimeout(tick, 60000 - (Date.now() % 60000) + 50)
+    const onVis = () => document.visibilityState === 'visible' && setNow(Date.now())
+    document.addEventListener('visibilitychange', onVis)
+    window.addEventListener('focus', onVis)
+    return () => {
+      clearTimeout(timer)
+      document.removeEventListener('visibilitychange', onVis)
+      window.removeEventListener('focus', onVis)
+    }
+  }, [])
+  // A new day (App passes the new key at midnight) restarts from a fresh now.
+  useEffect(() => setNow(Date.now()), [dayKeyNow, timeZone])
+  const info = nextPuzzleInfo(now, timeZone || undefined)
+  return (
+    <div className="home-reset">
+      <p className="home-reset-note">
+        <span className="home-reset-countdown">{info.text}</span>
+        <button
+          type="button"
+          className={`home-reset-info ${open ? 'is-open' : ''}`}
+          aria-expanded={open}
+          aria-controls="home-reset-detail"
+          aria-label="When the next puzzle arrives"
+          onClick={() => setOpen((v) => !v)}
+          onKeyDown={(e) => e.key === 'Escape' && setOpen(false)}
+        >
+          <span aria-hidden="true">i</span>
+        </button>
+      </p>
+      {open && (
+        <p id="home-reset-detail" className="home-reset-detail">
+          {info.detail}
+        </p>
+      )}
     </div>
   )
 }

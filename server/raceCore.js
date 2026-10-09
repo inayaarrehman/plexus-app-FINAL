@@ -43,17 +43,27 @@ const fromDb = (data) => (data && data.ok === false ? { status: 409, json: data 
 
 export async function handleRace({ token, body }, { rpc, getUser, makeCode = makeJoinCode }) {
   if (!body || typeof body !== 'object' || !ACTIONS.has(body.action)) return bad('bad-action')
+  // Public: lets a signed-out device know the race server is up (so it can
+  // offer guest racing). Reveals nothing about players or matches.
+  if (body.action === 'config') return { status: 200, json: { ok: true, rounds: RACE_LENGTH, guests: true } }
   if (!token) return bad('signed-out', 401)
   const user = await getUser(token).catch(() => null)
-  if (!user || !user.id || user.is_anonymous) return bad('signed-out', 401)
+  if (!user || !user.id) return bad('signed-out', 401)
   const u = user.id
+  // Guests race with an anonymous Supabase session (a real, verified server
+  // identity). They can play Classic and Chaos with the introductory loadout,
+  // but never earn Race rewards: the database marks their seat as guest.
+  const guest = user.is_anonymous === true
   const a = body.action
   const matchId = body.matchId
   if (!['config', 'me', 'create', 'join'].includes(a) && !UUID.test(String(matchId || ''))) return bad('bad-match')
 
   try {
     const out = await dispatch()
-    if (out.status === 200 && out.json && typeof out.json === 'object') out.json.you = u
+    if (out.status === 200 && out.json && typeof out.json === 'object') {
+      out.json.you = u
+      out.json.guest = guest
+    }
     return out
   } catch (e) {
     return { status: 500, json: { ok: false, reason: 'server', error: String(e?.message || e).slice(0, 200) } }
@@ -64,12 +74,13 @@ export async function handleRace({ token, body }, { rpc, getUser, makeCode = mak
       case 'config':
         return { status: 200, json: { ok: true, rounds: RACE_LENGTH } }
       case 'me':
+        if (guest) return { status: 200, json: { ok: true, guest: true, inventory: { mutation: 0, crispr: 0 }, pending: { mutation: 0, crispr: 0 }, progress: null, today: null } }
         return fromDb(await rpc('race_me', { p_user: u, p_tz: tzOf(body) }))
       case 'create': {
         // A fresh code; retry a few times if it is already in use.
         for (let i = 0; i < 8; i++) {
           const code = makeCode()
-          const r = await rpc('race_create', { p_user: u, p_code: code, p_tz: tzOf(body) })
+          const r = await rpc('race_create', { p_user: u, p_code: code, p_tz: tzOf(body), p_guest: guest })
           if (r && r.ok === false && r.reason === 'code-taken') continue
           return fromDb(r)
         }
@@ -78,7 +89,7 @@ export async function handleRace({ token, body }, { rpc, getUser, makeCode = mak
       case 'join': {
         const code = normalizeJoinCode(body.code)
         if (!isValidJoinCode(code)) return bad('bad-code')
-        return fromDb(await rpc('race_join', { p_user: u, p_code: code, p_tz: tzOf(body) }))
+        return fromDb(await rpc('race_join', { p_user: u, p_code: code, p_tz: tzOf(body), p_guest: guest }))
       }
       case 'state':
         return fromDb(await rpc('race_state', { p_user: u, p_match: matchId }))
@@ -102,7 +113,7 @@ export async function handleRace({ token, body }, { rpc, getUser, makeCode = mak
       }
       case 'rematch': {
         for (let i = 0; i < 8; i++) {
-          const r = await rpc('race_rematch', { p_user: u, p_match: matchId, p_code: makeCode(), p_tz: tzOf(body) })
+          const r = await rpc('race_rematch', { p_user: u, p_match: matchId, p_code: makeCode(), p_tz: tzOf(body), p_guest: guest })
           if (r && r.ok === false && r.reason === 'code-taken') continue
           return fromDb(r)
         }

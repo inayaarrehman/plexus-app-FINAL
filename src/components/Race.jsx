@@ -12,7 +12,7 @@ import { openLiveRace, isSupabaseConfigured } from '../lib/liveRace.js'
 import { haptics } from '../utils/haptics.js'
 import { timedCanonicalId } from '../utils/timedLibrary.js'
 import { recordRaceFinish, recordRaceWin } from '../progression/store.js'
-import { raceCall } from '../lib/raceApi.js'
+import { raceCall, hasAccountSession } from '../lib/raceApi.js'
 import ServerRace from './ServerRace.jsx'
 
 // ---------------------------------------------------------------------
@@ -43,25 +43,30 @@ function raceVerdict(you, opp) {
   return 'tie'
 }
 
-// Signed-in players with the race server available get server-run races
-// (scored and rewarded by the server, with the Chaos option). Everyone else
-// keeps the original shared-code race, which never earns Race rewards.
+// With the race server available, everyone gets server-run races: signed-in
+// players as themselves (scored, rewarded, Chaos), signed-out players as
+// guests (an anonymous server identity created when they create or join;
+// Classic and Chaos with the introductory loadout, no rewards). The original
+// shared-code race is the fallback when the server or guest sign-in is not
+// available.
 export default function Race(props) {
   const [mode, setMode] = useState(isSupabaseConfigured() ? 'checking' : 'local')
+  const [account, setAccount] = useState(false)
   const [why, setWhy] = useState(null)
   useEffect(() => {
     if (mode !== 'checking') return
-    raceCall('config').then((r) => {
+    Promise.all([raceCall('config'), hasAccountSession()]).then(([r, acct]) => {
+      setAccount(acct)
       setWhy(r.ok ? null : r.reason)
       setMode(r.ok ? 'server' : 'local')
     })
   }, [mode])
   if (mode === 'checking') return <div className="race"><p className="race-note">Loading Race…</p></div>
-  if (mode === 'server') return <ServerRace {...props} />
-  return <LocalRace {...props} signedOut={why === 'signed-out'} />
+  if (mode === 'server') return <ServerRace {...props} account={account} onFallback={() => { setWhy('guest-unavailable'); setMode('local') }} />
+  return <LocalRace {...props} signedOut={!account && why !== 'not-configured'} guestUnavailable={why === 'guest-unavailable'} />
 }
 
-function LocalRace({ bank, initialCode = '', onExit, signedOut = false }) {
+function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUnavailable = false }) {
   const live = isSupabaseConfigured()
   const [phase, setPhase] = useState(initialCode ? 'join' : 'entry') // entry | join | lobby | countdown | playing | results
   const [code, setCode] = useState(initialCode ? normalizeJoinCode(initialCode) : '')
@@ -327,7 +332,8 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false }) {
             ? 'One of you taps “Create a race” and shares the code or link; the other enters it. Then either of you starts, and you’ll both race the same board at the same time.'
             : 'Both players enter the same code to get the identical challenge set, then compare times.'}
         </p>
-        {signedOut && <p className="race-note">Sign in to earn Race rewards and use Chaos power-ups.</p>}
+        {guestUnavailable && <p className="race-note">Guest racing on the Plexus server isn’t available right now, so this is a shared-code race. Sign in to race on the server with Chaos.</p>}
+        {signedOut && !guestUnavailable && <p className="race-note">Sign in to earn Race rewards.</p>}
       </div>
     )
   }

@@ -36,9 +36,9 @@
   --room-indigo: #50528f;
   --room-indigo-deep: #34366b;
   --room-indigo-deeper: #25274f;
-  --room-garnet: #843f50;
-  --room-garnet-deep: #61293a;
-  --room-garnet-deeper: #461d2a;
+  --room-garnet: #8e4d5c; /* softened from #843f50: lighter, less saturated; ivory text 5.8:1 */
+  --room-garnet-deep: #6b3343;
+  --room-garnet-deeper: #4f2433;
   --room-peacock: #1c6874;
   --room-peacock-deep: #134b55;
   --room-peacock-deeper: #0d363f;
@@ -4663,11 +4663,11 @@ body.env-daily {
   --room-deep: var(--room-garnet-deep);
   --room-deeper: var(--room-garnet-deeper);
   --room-text: #fbf6ee;
-  --room-dim: #dcc6c5;
-  --difficulty-easy: #e9c5b7;
-  --difficulty-medium: #b2d2cb;
-  --difficulty-hard: #c1cde3;
-  --difficulty-expert: #d7c6dd;
+  --room-dim: #e9dbda; /* 4.6:1 on the softened garnet */
+  --difficulty-easy: #f0d9cf;
+  --difficulty-medium: #cee2de;
+  --difficulty-hard: #d6deed;
+  --difficulty-expert: #e5dbe9;
 }
 body.env-systems {
   --room: var(--room-peacock);
@@ -6450,16 +6450,64 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
   .home-nav-support .nav-label-long { display: none; }
   .home-nav-support .nav-label-short { display: inline; }
 }
-.home-reset-note { margin: 10px 0 0; font-size: 0.78rem; font-weight: 600; color: var(--home-text-dim); }
+.home-reset-note { margin: 10px 0 0; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; font-size: var(--type-caption); font-weight: 700; color: var(--home-text-dim); }
+.home-reset-countdown { font-variant-numeric: tabular-nums; }
+.home-reset-info {
+  width: 26px; height: 26px; min-width: 26px; min-height: 26px; padding: 0; border-radius: 999px; line-height: 1;
+  border: 1.5px solid color-mix(in srgb, var(--room-text, currentColor) 45%, transparent);
+  background: none; color: inherit; font-family: var(--font-ui); font-weight: 800; font-style: italic; font-size: 0.78rem; cursor: pointer;
+  /* 26px visual, 44px touch target */
+  position: relative;
+}
+.home-reset-info::after { content: ''; position: absolute; inset: -9px; }
+.home-reset-info.is-open { background: var(--tile-cream); color: var(--ink); border-color: var(--tile-cream); }
+.home-reset-info:focus-visible { outline: 3px solid var(--room-text, currentColor); outline-offset: 2px; }
+.home-reset-detail { margin: 6px auto 0; max-width: 340px; font-size: 0.78rem; line-height: 1.4; color: var(--home-text-dim); font-weight: 600; }
 
 /* ---- Your Tools on the board ---- */
-.tool-bar { flex-direction: column; gap: 8px; }
-.tool-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-.tool-btn { flex-direction: column; gap: 0; min-width: 96px; padding: 6px 12px; line-height: 1.2; }
-.tool-top { display: inline-flex; gap: 6px; align-items: baseline; }
-.tool-btn.is-off { opacity: 0.55; cursor: default; }
-.tool-why { font-size: 0.68rem; font-weight: 600; color: var(--text-dim); }
-.tool-bar .kit-hint { text-align: center; max-width: 360px; }
+/* Board actions get their own row; tools sit in a separate section below,
+   in normal flow, so nothing can overlap Shuffle / Deselect / Submit. */
+.game-controls { margin: 0 0 var(--space-5); row-gap: 10px; }
+.game-controls > button { flex: 0 1 auto; min-width: 96px; }
+.tool-section {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  margin: 0 auto var(--space-4); padding-top: var(--space-4);
+  border-top: 1px solid var(--home-divider);
+  max-width: 460px; width: 100%;
+}
+.tool-section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 4px 10px; text-align: center; }
+.tool-section-title { margin: 0; font-family: var(--font-ui); font-size: var(--type-secondary); font-weight: 800; letter-spacing: 0.02em; color: var(--text); }
+.tool-section-rule { margin: 0; font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
+.tool-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 12px; width: 100%; }
+.tool-item { display: inline-flex; align-items: stretch; gap: 4px; max-width: 100%; }
+.tool-btn { flex-direction: column; align-items: center; gap: 2px; min-width: 104px; max-width: 100%; padding: 6px 12px; line-height: 1.2; text-align: center; white-space: normal; }
+.tool-top { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 2px 6px; align-items: baseline; }
+.tool-btn.is-off { cursor: default; border-style: dashed; }
+.tool-btn.is-off .kit-use-name { color: var(--text-dim); }
+.tool-why { font-size: var(--type-caption); font-weight: 600; color: var(--text-dim); }
+.tool-info-btn {
+  flex: none; align-self: center;
+  width: 32px; height: 32px; min-width: 32px; min-height: 32px; padding: 0; line-height: 1;
+  border-radius: 999px; border: 1.5px solid color-mix(in srgb, var(--text) 45%, transparent);
+  background: none; color: var(--text); font-family: var(--font-ui); font-weight: 800; font-size: 0.9rem; font-style: italic;
+  cursor: pointer;
+}
+.tool-info-btn.is-open { background: var(--tile-cream); color: var(--ink); border-color: var(--tile-cream); }
+.tool-info-btn:focus-visible, .tool-btn:focus-visible { outline: 3px solid var(--room-text); outline-offset: 2px; }
+.tool-info-panel { width: 100%; max-width: 420px; padding: 12px 14px; border-radius: 12px; background: var(--tile-cream); color: var(--ink); text-align: left; box-shadow: 0 2px 0 rgba(10, 6, 20, 0.22); }
+.tool-info-panel p { margin: 0 0 6px; font-size: var(--type-secondary); line-height: 1.45; }
+.tool-info-more { color: #4a4658; }
+.tool-info-facts { margin: 8px 0 10px; display: grid; gap: 4px; font-size: var(--type-caption); }
+.tool-info-facts div { display: grid; grid-template-columns: 5.5em 1fr; gap: 8px; }
+.tool-info-facts dt { font-weight: 800; color: var(--ink); }
+.tool-info-facts dd { margin: 0; color: #3a3648; }
+.tool-info-close { min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1.5px solid color-mix(in srgb, var(--ink) 35%, transparent); background: none; color: var(--ink); font-family: var(--font-ui); font-size: var(--type-caption); font-weight: 700; cursor: pointer; }
+.tool-section .kit-hint { margin: 0; text-align: center; max-width: 380px; }
+.tool-section .kit-intro { margin: 0; width: 100%; }
+@media (max-width: 360px) {
+  .game-controls > button { min-width: 0; flex: 1 0 auto; padding-left: 12px; padding-right: 12px; white-space: nowrap; }
+  .tool-btn { min-width: 92px; }
+}
 .tile.tile-ruled-out {
   position: relative;
   background: color-mix(in srgb, var(--node-terracotta) 14%, var(--tile-cream));
@@ -6488,8 +6536,17 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 .record-progress-label { display: block; font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; margin-bottom: 6px; }
 .record-progress-track { height: 8px; border-radius: 999px; background: color-mix(in srgb, var(--text) 18%, transparent); overflow: hidden; }
 .record-progress-fill { display: block; height: 100%; border-radius: inherit; background: var(--node-peacock, #087f78); transition: width 400ms ease-out; }
+.record-progress-fill.is-growing { animation: record-bar-grow 1100ms cubic-bezier(0.22, 1, 0.36, 1) 300ms both; }
+@keyframes record-bar-grow { from { width: var(--bar-from, 0%); } }
+.record-gain { display: inline-block; margin-left: 8px; font-family: var(--font-ui); font-size: var(--type-caption); font-weight: 800; color: var(--node-peacock, #36bdb0); animation: record-gain-in 600ms ease-out 200ms both; vertical-align: middle; }
+@keyframes record-gain-in { from { opacity: 0; transform: translateY(4px); } }
+@media (prefers-reduced-motion: reduce) {
+  .record-progress-fill.is-growing, .record-gain { animation: none; }
+}
 .record-next { margin: 10px 0 0; font-size: var(--type-secondary); }
-.week-rule { margin: -4px 0 10px; font-size: var(--type-caption); font-weight: 700; color: var(--text-dim); }
+.week-progress { margin: -4px 0 4px; font-size: var(--type-secondary); font-weight: 600; color: var(--text); }
+.week-progress b { font-variant-numeric: tabular-nums; font-weight: 800; }
+.week-rule { margin: 0 0 10px; font-size: var(--type-caption); font-weight: 700; color: var(--text-dim); }
 .week-choice { margin: 10px 0 4px; }
 .week-choice-head { margin: 0 0 6px; font-size: var(--type-caption); font-weight: 700; }
 .week-choice-row { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -6521,3 +6578,49 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 .race-playing.is-mutated .race-option { outline: 2px dashed var(--node-plum, #7a49b2); outline-offset: -4px; }
 .race-error { color: var(--node-terracotta, #bf5236); font-weight: 700; font-size: var(--type-secondary); }
 .race-toast { position: static; margin: 6px auto; }
+
+/* ---- 3 Minutes: Challenge types (before Start) ---- */
+.challenge-types { width: 100%; max-width: 420px; margin: 0 0 28px; text-align: left; }
+.challenge-types-head { margin: 0; font-size: inherit; }
+.challenge-types-toggle {
+  width: 100%; min-height: 44px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 10px 14px; border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--room-text) 30%, transparent);
+  background: color-mix(in srgb, var(--room-deep) 70%, transparent);
+  color: var(--room-text); font-family: var(--font-ui); font-size: var(--type-secondary); font-weight: 800; text-align: left; cursor: pointer;
+}
+.challenge-types-toggle:focus-visible { outline: 3px solid var(--room-text); outline-offset: 2px; }
+.challenge-types-names { flex: 1 1 auto; font-size: var(--type-caption); font-weight: 600; color: var(--text-dim); }
+.challenge-types-chev { margin-left: auto; color: var(--text-dim); }
+.challenge-types-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 8px; }
+.challenge-type { padding: 10px 14px; border-radius: 12px; background: var(--tile-cream); color: var(--ink); box-shadow: 0 2px 0 rgba(10, 6, 20, 0.22); }
+.challenge-type p { margin: 0; }
+.challenge-type-name { font-weight: 800; font-size: var(--type-secondary); }
+.challenge-type-rule { margin-top: 2px !important; font-size: var(--type-caption); line-height: 1.45; color: #2c2a3c; }
+.challenge-type-example { margin-top: 6px !important; font-size: var(--type-caption); line-height: 1.4; color: #3a3648; }
+.challenge-type-example-label { display: inline-block; margin-right: 4px; padding: 0 6px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 10%, transparent); font-weight: 800; font-size: 0.72rem; letter-spacing: 0.02em; color: var(--ink); }
+.challenge-types-foot { font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; padding: 2px 4px 0; }
+.challenge-results-types { width: 100%; margin-top: 18px; }
+.challenge-results-types .challenge-types { margin-bottom: 0; }
+.challenge-intro .challenge-intro-inner { max-width: 420px; }
+
+/* ---- Race: Chaos loadout explainer ---- */
+.race-powerup-explainer { margin: 10px 0 4px; padding: 12px 14px; border-radius: 12px; background: var(--tile-cream); color: var(--ink); text-align: left; }
+.race-powerup-explainer-head { margin: 0 0 6px; font-weight: 800; font-size: var(--type-secondary); }
+.race-powerup-explainer dl { margin: 0; display: grid; gap: 6px; }
+.race-powerup-explainer dl div { display: grid; grid-template-columns: 6.5em 1fr; gap: 8px; font-size: var(--type-caption); line-height: 1.4; }
+.race-powerup-explainer dt { font-weight: 800; }
+.race-powerup-explainer dd { margin: 0; color: #2c2a3c; }
+.race-powerup-explainer-foot { margin: 8px 0 0; font-size: var(--type-caption); color: #3a3648; line-height: 1.4; }
+.race-chaos-classic { margin: 6px 0 0; font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
+@media (max-width: 360px) { .race-powerup-explainer dl div { grid-template-columns: 1fr; gap: 0; } }
+
+/* Narrow phones with enlarged text: let the top navigation and the Home
+   header links wrap instead of pushing the page sideways. */
+@media (max-width: 380px) {
+  .app-nav { flex-wrap: wrap; row-gap: 6px; }
+  .app-nav-item { flex: 1 0 auto; }
+  .home-nav-links { flex-shrink: 1; min-width: 0; flex-wrap: wrap; justify-content: flex-end; row-gap: 4px; }
+}
+.tool-info-btn { position: relative; }
+.tool-info-btn::after { content: ''; position: absolute; inset: -6px; }

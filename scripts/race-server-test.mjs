@@ -26,12 +26,15 @@ const ok = (c, m) => {
   }
 }
 
-sql(`set client_min_messages = warning; truncate public.race_matches, public.race_inventory, public.race_progress cascade; delete from auth.users where id in (${Object.values(USERS).map((u) => `'${u.id}'`).join(',')}); insert into auth.users(id) values ${Object.values(USERS).map((u) => `('${u.id}')`).join(',')}; update public.race_config set value = 0 where key = 'countdown_ms';`)
+sql(`set client_min_messages = warning; truncate public.race_matches, public.race_inventory, public.race_progress cascade; delete from auth.users where id in (${Object.values(USERS).map((u) => `'${u.id}'`).join(',')}); insert into auth.users(id, is_anonymous) values ${Object.values(USERS).map((u) => `('${u.id}', ${u.is_anonymous ? 'true' : 'false'})`).join(',')}; update public.race_config set value = 0 where key = 'countdown_ms'; update public.race_config set value = 0 where key = 'chaos_free_loadout';`)
 
-console.log('[1] Sign-in is required; guests and anonymous sessions are refused')
+console.log('[1] A verified session is required (an anonymous guest session counts)')
 ok((await call(null, { action: 'me' })).status === 401, 'no token: 401')
 ok((await call('tok-x', { action: 'me' })).status === 401, 'bad token: 401')
-ok((await call('tok-anon', { action: 'create' })).status === 401, 'anonymous account: 401')
+{
+  const gm = await call('tok-anon', { action: 'me' })
+  ok(gm.status === 200 && gm.json.guest === true && gm.json.inventory.mutation === 0, 'a guest session is accepted and has no Race inventory')
+}
 ok((await call('tok-a', { action: 'drop-tables' })).status === 400, 'unknown action refused')
 ok((await call('tok-a', { action: 'state', matchId: "1'; drop table x; --" })).json.reason === 'bad-match', 'malformed match id refused')
 
@@ -89,11 +92,40 @@ const r2 = await call('tok-a', { action: 'rematch', matchId: m })
 ok(r1.json.match.code === 'RSTU' && r2.json.match.id === r1.json.match.id && r2.json.players.length === 2, 'both "Race again" taps land in the same new match with a new code')
 ok(JSON.stringify(roundsFor('RSTU')) !== JSON.stringify(roundsFor('WXYZ')), 'the new match has different questions')
 
+console.log('[4c] Guests: introductory Chaos loadout, no rewards')
+sql(`update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
+codes = ['GSTA']
+{
+  const g = await call('tok-anon', { action: 'create', tz: 'UTC' })
+  ok(g.status === 200 && g.json.guest === true && g.json.players[0].guest === true, 'a guest can create a race (seat marked guest)')
+  const gid = g.json.match.id
+  await call('tok-b', { action: 'join', code: 'GSTA' })
+  await call('tok-b', { action: 'chaos', matchId: gid, on: true })
+  const ga = await call('tok-anon', { action: 'accept', matchId: gid, mutation: true, crispr: true })
+  ok(ga.json.players.find((p) => p.guest).temp_mutation && ga.json.players.find((p) => p.guest).temp_crispr, 'the guest receives the temporary loadout')
+  const binv = (await call('tok-b', { action: 'me' })).json.inventory
+  await call('tok-b', { action: 'accept', matchId: gid })
+  await call('tok-b', { action: 'start', matchId: gid })
+  sql(`update public.race_matches set start_at = now() - interval '40 seconds' where id='${gid}'`)
+  await call('tok-anon', { action: 'heartbeat', matchId: gid })
+  const hit = await call('tok-b', { action: 'attack', matchId: gid })
+  ok(hit.json.event?.kind === 'mutation', 'a temporary Mutation is applied by the server')
+  ok(JSON.stringify((await call('tok-b', { action: 'me' })).json.inventory) === JSON.stringify(binv), "the signed-in player's earned inventory is untouched")
+  const rr = roundsFor('GSTA')
+  const right = (r) => (r.type === 'rapidAssociation' ? r.correctAnswers : r.correctAnswer)
+  for (let i = 0; i < 10; i++) {
+    await call('tok-anon', { action: 'answer', matchId: gid, round: i, answer: right(rr[i]) })
+    await call('tok-b', { action: 'answer', matchId: gid, round: i, answer: right(rr[i]) })
+  }
+  const fin = (await call('tok-b', { action: 'state', matchId: gid })).json
+  ok(fin.match.status === 'finished' && fin.match.result.qualified === false && fin.log.reason === 'opponent-guest', 'a race against a guest finishes but does not count toward rewards')
+}
+
 console.log('[5] Unauthorized actions')
 const c3 = await call('tok-a', { action: 'create' })
 ok((await call('tok-b', { action: 'attack', matchId: c3.json.match.id })).json.reason === 'not-in-match', 'a non-player cannot act on a match')
 ok((await call('tok-b', { action: 'answer', matchId: c3.json.match.id, round: 0, answer: 'x' })).json.reason === 'not-in-match', 'a non-player cannot answer')
 
-sql(`update public.race_config set value = 3000 where key = 'countdown_ms'`)
+sql(`update public.race_config set value = 3000 where key = 'countdown_ms'; update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
 console.log(`\n${failed ? `${failed} FAILED` : 'ALL RACE SERVER CHECKS PASSED'} (${passed} passed)`)
 process.exit(failed ? 1 : 0)

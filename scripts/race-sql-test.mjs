@@ -1,4 +1,4 @@
-// Race backend checks against a real Postgres with migration 0006 applied.
+// Race backend checks against a real Postgres with migrations 0006 and 0007 applied.
 //   PGTEST="psql -h /tmp/pgtest -p 5544 -U postgres -d t" node scripts/race-sql-test.mjs
 // The database needs Supabase-like stubs (auth.users, auth.uid(), roles anon /
 // authenticated / service_role); scripts/race-sql-setup.sql creates them.
@@ -36,6 +36,9 @@ run(`set client_min_messages = warning; truncate public.race_matches, public.rac
 run(`insert into auth.users(id) values ('${A}'),('${B}'),('${C}')`)
 // Fast settings for tests (restored at the end).
 run(`update public.race_config set value = 0 where key = 'countdown_ms'`)
+// Sections 1-9 check the earned-item rules (0006), which still apply when the
+// Chaos introductory loadout is off. Section 10 turns it on.
+run(`update public.race_config set value = 0 where key = 'chaos_free_loadout'`)
 
 let codeN = 0
 const newCode = () => {
@@ -303,6 +306,90 @@ console.log('[9] Players can read only their own data and cannot write')
   const anyMatch = run(`select match_id from public.race_participants where user_id='${A}' limit 1`)
   ok(as(C, `select count(*) from public.race_events where match_id='${anyMatch}'`) === '0', "a player cannot read another match's events")
   ok(as(C, `select count(*) from public.race_user_tz where user_id <> '${C}'`) === '0', "a player cannot read others' time zones")
+}
+
+console.log('[10] Chaos introductory loadout (0007): one temporary Mutation and CRISPR each, guests included')
+{
+  run(`update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
+  run(`truncate public.race_matches, public.race_inventory, public.race_progress cascade`)
+  const G = uid(31)
+  run(`insert into auth.users(id, is_anonymous) values ('${G}', true) on conflict do nothing`)
+  // A holds earned items; they must not be touched by a Chaos race.
+  run(`select public.race_grant('${A}', 'mutation'); select public.race_grant('${A}', 'crispr')`)
+  const inv0 = me(A)
+  const code = newCode()
+  const s = j(`select public.race_create('${A}', '${code}', 'America/Los_Angeles', false)`)
+  const m = s.match.id
+  const sj = j(`select public.race_join('${G}', '${code}', 'UTC', true)`)
+  ok(sj.ok && sj.players.find((p) => p.user_id === G).guest === true, 'a guest can join and is marked guest')
+  ok(sj.free_loadout === true, 'state reports that the introductory loadout is on')
+  call('race_set_chaos', A, m, true)
+  let st = call('race_accept_chaos', A, m, false, false)
+  ok(st.players.find((p) => p.user_id === A).temp_mutation && st.players.find((p) => p.user_id === A).temp_crispr, 'accepting gives one temporary Mutation and one temporary CRISPR')
+  ok(!st.players.find((p) => p.user_id === A).equip_mutation, 'earned items are not equipped while the loadout is on')
+  st = call('race_accept_chaos', G, m, true, true)
+  ok(st.ok && st.players.every((p) => p.temp_mutation && p.temp_crispr), 'the guest gets the same loadout (asking for earned items is ignored)')
+  call('race_start', A, m)
+  run(`update public.race_matches set start_at = now() - interval '30 seconds' where id='${m}'`)
+  seen(A, m)
+  seen(G, m)
+  // Immediate CRISPR on both sides neutralizes both Mutations (documented).
+  call('race_arm', A, m)
+  call('race_arm', G, m)
+  const a1 = call('race_attack', A, m)
+  ok(a1.event?.kind === 'blocked', "A's Mutation is blocked by the guest's armed CRISPR")
+  run(`update public.race_events set created_at = now() - interval '1 minute', starts_at = now() - interval '1 minute', ends_at = now() - interval '1 minute' where match_id='${m}'`)
+  seen(A, m)
+  seen(G, m)
+  const a2 = call('race_attack', G, m)
+  ok(a2.event?.kind === 'blocked', "the guest's Mutation is blocked by A's armed CRISPR")
+  ok(call('race_attack', A, m).reason === 'not-equipped', 'one Mutation per race: a second attack is refused')
+  ok(call('race_arm', A, m).reason === 'not-equipped', 'a spent CRISPR cannot be armed again')
+  const inv1 = me(A)
+  ok(inv1.inventory.mutation === inv0.inventory.mutation && inv1.inventory.crispr === inv0.inventory.crispr, 'earned inventory is unchanged by temporary charges')
+  for (let r = 0; r < 10; r++) {
+    call('race_answer', A, m, r, r < 8)
+    call('race_answer', G, m, r, r < 6)
+  }
+  const fin = call('race_state', A, m)
+  ok(fin.match.status === 'finished' && fin.match.result.qualified === false, 'a race with a guest finishes but never qualifies')
+  ok(fin.log && !fin.log.counted && fin.log.reason === 'opponent-guest', 'the signed-in player sees why it did not count')
+  ok(j(`select count(*) from public.race_inventory where user_id='${G}'`) === 0 && j(`select count(*) from public.race_progress where user_id='${G}'`) === 0, 'the guest gets no inventory and no progress rows')
+  ok(call('race_state', G, m).log.reason === 'guest', 'the guest log says guest')
+  const inv2 = me(A)
+  ok(inv2.inventory.mutation === inv0.inventory.mutation && inv2.inventory.crispr === inv0.inventory.crispr && inv2.pending.mutation === inv0.pending.mutation, 'after the race, nothing temporary reached inventory')
+
+  // A temporary charge delivered without a CRISPR in the way.
+  const code2 = newCode()
+  const m2 = j(`select public.race_create('${A}', '${code2}', 'UTC', false)`).match.id
+  call('race_join', B, code2, 'UTC')
+  call('race_set_chaos', B, m2, true)
+  call('race_accept_chaos', A, m2, false, false)
+  call('race_accept_chaos', B, m2, false, false)
+  call('race_start', B, m2)
+  run(`update public.race_matches set start_at = now() - interval '30 seconds' where id='${m2}'`)
+  seen(A, m2)
+  seen(B, m2)
+  const hit = call('race_attack', B, m2)
+  ok(hit.event?.kind === 'mutation' && hit.players.find((p) => p.user_id === B).mutation_spent, 'an unblocked temporary Mutation lands and is spent for this race only')
+  ok(me(B).inventory.mutation === 0, 'B had no earned Mutation and still has none')
+
+  // Classic stays power-up free.
+  const code3 = newCode()
+  const m3 = j(`select public.race_create('${A}', '${code3}', 'UTC', false)`).match.id
+  call('race_join', B, code3, 'UTC')
+  call('race_start', A, m3)
+  ok(call('race_attack', A, m3).reason === 'not-available' && call('race_arm', A, m3).reason === 'not-available', 'Classic Race has no power-ups')
+  ok(call('race_accept_chaos', A, m3, false, false).reason !== undefined, 'a Classic race cannot be given a loadout')
+  // Loadout off again: 0006 behaviour (equip earned only).
+  run(`update public.race_config set value = 0 where key = 'chaos_free_loadout'`)
+  const code4 = newCode()
+  const m4 = j(`select public.race_create('${A}', '${code4}', 'UTC', false)`).match.id
+  call('race_join', B, code4, 'UTC')
+  call('race_set_chaos', A, m4, true)
+  const off = call('race_accept_chaos', B, m4, false, false)
+  ok(!off.players.find((p) => p.user_id === B).temp_mutation, 'with the loadout off, no temporary charges are given')
+  run(`update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
 }
 
 run(`update public.race_config set value = 3000 where key = 'countdown_ms'`)

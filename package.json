@@ -17,7 +17,8 @@
     "library:verify-activation": "node scripts/library/activation-test.mjs",
     "test:tools": "node scripts/tools-test.mjs",
     "test:race-db": "node scripts/race-sql-test.mjs",
-    "test:race-server": "node scripts/race-server-test.mjs"
+    "test:race-server": "node scripts/race-server-test.mjs",
+    "test:ui-copy": "node scripts/ui-copy-test.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",

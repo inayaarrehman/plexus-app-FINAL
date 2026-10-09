@@ -72,7 +72,7 @@ function WeekReward({ rounds, choices, level, onChoose }) {
         </div>
       )}
       <p className="rounds-foot">
-        {state === 'pending' ? `Complete any ${WEEKLY_GOALS_NEEDED} goals. ` : 'Added to your XP. '}
+        {state === 'pending' ? '' : 'Added to your XP. '}
         New goals {reset}.
       </p>
     </div>
@@ -157,21 +157,33 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
   // Where the XP animation starts and ends. Read the marker once per mount,
   // then move it to the current total so a reload never replays the same XP.
   const target = preview ? preview.to : snap.xp
-  const [from] = useState(() => {
-    if (preview) return preview.from
+  const [{ from, hadSeen }] = useState(() => {
+    if (preview) return { from: preview.from, hadSeen: true }
     const seen = readSeenXp()
-    if (seen == null || !(seen <= snap.xp)) return levelInfo(snap.xp).levelStart
-    return seen
+    if (seen == null || !(seen <= snap.xp)) return { from: levelInfo(snap.xp).levelStart, hadSeen: false }
+    return { from: seen, hadSeen: true }
   })
   useEffect(() => {
     if (!preview) writeSeenXp(snap.xp)
   }, [preview, snap.xp])
   const [runKey, setRunKey] = useState(0)
   const anim = useGrowthAnimation({ from, to: target, runKey, rewardsFor: levelRewards })
-  const heroLevel = anim.activating && anim.earned ? anim.earned.level : anim.level
+  // The numbers are always the true saved values, shown at once. Only the
+  // network and the bar fill animate, so a paused or interrupted animation
+  // can never leave a wrong total or a wrong "To Level" on screen.
+  const truth = levelInfo(target)
+  const heroLevel = truth.level
   const shown = { level: anim.level, intoLevel: anim.intoLevel, cost: anim.cost, toNext: anim.toNext }
-  const live = anim.activating ? levelInfo(anim.xp) : { intoLevel: anim.intoLevel, cost: anim.cost, toNext: anim.toNext }
-  const pct = live.cost > 0 ? Math.max(0, Math.min(100, Math.round((live.intoLevel / live.cost) * 100))) : 0
+  const live = { intoLevel: truth.intoLevel, cost: truth.cost, toNext: truth.toNext }
+  const pctOf = (into, cost) => (cost > 0 ? Math.max(0, Math.min(100, Math.round((into / cost) * 100))) : 0)
+  const pct = pctOf(live.intoLevel, live.cost)
+  // Bar animation start: where this level's bar was at the last visit (0 if
+  // a level was reached since). Pure CSS, so it ends at the true width even
+  // if the tab is hidden while it plays.
+  const fromInfo = levelInfo(Math.min(from ?? target, target))
+  const barFrom = fromInfo.level === truth.level ? pctOf(fromInfo.intoLevel, fromInfo.cost) : 0
+  // "+N" only for XP actually earned since the last visit (not on a first visit).
+  const gained = hadSeen ? Math.max(0, target - (from ?? target)) : 0
   // Your Tools always reads the real saved level, never a preview.
   const info = snap.info
 
@@ -216,7 +228,14 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
             <dl className="record-xpstats">
               <div>
                 <dt>Total XP</dt>
-                <dd>{fmt(anim.xp)}</dd>
+                <dd>
+                  {fmt(target)}
+                  {gained > 0 && (
+                    <span className="record-gain" key={`${runKey}-${target}`} aria-label={`${fmt(gained)} XP since your last visit`}>
+                      +{fmt(gained)}
+                    </span>
+                  )}
+                </dd>
               </div>
               <div>
                 <dt>To Level {heroLevel + 1}</dt>
@@ -228,7 +247,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
                 Level {heroLevel} progress: {fmt(live.intoLevel)} of {fmt(live.cost)} XP
               </span>
               <div className="record-progress-track" role="progressbar" aria-labelledby="lvl-progress-label" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
-                <span className="record-progress-fill" style={{ width: `${pct}%` }} />
+                <span className={`record-progress-fill ${barFrom !== pct ? 'is-growing' : ''}`} key={`${runKey}-${pct}`} style={{ width: `${pct}%`, '--bar-from': `${barFrom}%` }} />
               </div>
             </div>
             {nextReward && !preview && (
@@ -261,6 +280,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
             <PlexusGrowth
               key={anim.level}
               info={shown}
+              ariaInfo={{ level: truth.level, toNext: truth.toNext }}
               rewardsFor={levelRewards}
               rewardText={rewardLabel(levelRewards(anim.level + 1))}
               size={wide ? 'wide' : 'compact'}
@@ -292,7 +312,10 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
 
             <section className="record-week" aria-labelledby="this-week">
               <h2 className="record-section" id="this-week">This Week</h2>
-              <p className="week-rule">Complete any {WEEKLY_GOALS_NEEDED} goals</p>
+              <p className="week-progress" aria-live="polite">
+                <b>{Math.min(rounds.done, WEEKLY_GOALS_NEEDED)}/{WEEKLY_GOALS_NEEDED}</b> goals completed for your weekly reward
+              </p>
+              <p className="week-rule">Complete any {WEEKLY_GOALS_NEEDED} of the {rounds.goals.length} goals below.</p>
               <WeekGoals goals={rounds.goals} complete={rounds.complete} />
               <WeekReward rounds={rounds} choices={weeklyChoices} level={info.level} onChoose={onChoose} />
             </section>
