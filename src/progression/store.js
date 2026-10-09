@@ -9,9 +9,12 @@ import {
   XP,
   STREAK_MILESTONES,
   levelRewards,
-  PERFECT_REWARD_EVERY,
-  ROUNDS_ITEM_ROTATION,
+  nextLevelReward,
   KIT,
+  PUZZLE_TOOLS,
+  REMOVED_TOOLS,
+  STARTER_GIFT,
+  COVERAGE_EVERY,
 } from './config.js'
 import {
   emptyState,
@@ -19,14 +22,21 @@ import {
   award,
   grant,
   useItem,
+  mark,
+  heldOf,
   totalXp,
   levelInfo,
   kitCounts,
+  pendingClaims,
+  claimPending,
   roundsProgress,
+  weeklyChoicesDue,
+  itemOpen,
+  weekOf,
   localDayKey,
   entryDay,
 } from './engine.js'
-import { currentStreak, longestStreak, needsShield, isStreakDay, finishedOnDate } from './streak.js'
+import { currentStreak, longestStreak, coverGaps, isStreakDay, finishedOnDate } from './streak.js'
 
 const KEY = 'plexus.progression.v1'
 
@@ -58,46 +68,89 @@ export function shieldedDates(state) {
 
 export function streakInfo(state, history, todayKey) {
   const shielded = shieldedDates(state)
-  const pendingShield = (kitCounts(state).shield || 0) > 0
+  const pendingShield = kitCounts(state).shield || 0
   return {
     current: currentStreak(history, todayKey, { shielded, pendingShield }),
     longest: longestStreak(history, { shielded }),
   }
 }
 
+// ---- Your Tools start (runs once per save, safe to repeat) ----
+// XP earned before the economy started, i.e. under the old reward schedule.
+function xpBefore(state, at) {
+  let t = 0
+  for (const e of Object.values(state.ledger)) if ((e.at || 0) < at) t += e.xp || 0
+  return t
+}
+export function ensureV2(state, now = Date.now(), ctx = null) {
+  if (!state.v2) state.v2 = { at: now, coverageFrom: now, levelFrom: 1, converted: {} }
+  const v2 = state.v2
+  // Levels already reached before this version keep what they were given
+  // then; the new schedule pays only levels above them. Recomputed every time
+  // so a fresh device that synced an older save afterwards can't pay twice.
+  const before = xpBefore(state, v2.at)
+  v2.levelFrom = Math.max(v2.levelFrom || 1, levelInfo(before).level)
+  // A brand-new player (nothing earned before) gets one Consult, once.
+  const hadOld = before > 0 || Object.values(state.kit.grants).some((g) => (g.at || 0) < v2.at)
+  if (!hadOld) STARTER_GIFT.forEach((item, i) => grant(state, { id: `starter:${i}`, item, source: 'starter', at: v2.at }))
+  // Removed tools convert 1:1 (owner's decision). Ids count up per held
+  // unit, so repeating this, or syncing with another device, never converts
+  // the same unit twice. The original grants stay in the save as a record.
+  for (const [old, to] of Object.entries(REMOVED_TOOLS)) {
+    const held = heldOf(state, old)
+    for (let n = 1; n <= held; n++) {
+      const r = grant(state, { id: `convert:${old}:${n}`, item: to, source: `convert:${old}`, at: now })
+      if (r && ctx?.grants) ctx.grants.push(to)
+    }
+    v2.converted[old] = Math.max(v2.converted[old] || 0, held)
+  }
+  return state
+}
+
 // ---- follow-ups run after every batch of awards ----
-function followUps(state, ctx) {
-  const now = ctx.at || Date.now()
-  // Level rewards for every level reached (idempotent, so merges stay consistent).
+function payLevels(state, ctx, now) {
   const info = levelInfo(totalXp(state))
-  for (let L = 2; L <= info.level; L++) {
+  for (let L = Math.max(2, (state.v2.levelFrom || 1) + 1); L <= info.level; L++) {
     levelRewards(L).forEach((item, i) => {
-      if (grant(state, { id: `level:${L}:${i}`, item, source: 'level', at: now }) && ctx.grants) ctx.grants.push(item)
+      const r = grant(state, { id: `lvl2:${L}:${i}`, item, source: 'level', at: now })
+      if (r && ctx.grants) ctx.grants.push(item)
+      if (r === 'pending' && ctx.pending) ctx.pending.push(item)
     })
   }
-  // This Week: complete when all three goals are done; reward once per week.
+  return info
+}
+// Distinct scheduled Dailies completed since Coverage counting began.
+export function coverageProgress(state) {
+  const from = state.v2?.coverageFrom ?? Infinity
+  const count = Object.values(state.ledger).filter((e) => e.kind === 'daily' && (e.at || 0) >= from).length
+  return { count, every: COVERAGE_EVERY, earned: Math.floor(count / COVERAGE_EVERY), toNext: COVERAGE_EVERY - (count % COVERAGE_EVERY) }
+}
+function followUps(state, ctx) {
+  const now = ctx.at || Date.now()
+  ensureV2(state, now, ctx)
+  const info = payLevels(state, ctx, now)
+  // Coverage: one per COVERAGE_EVERY scheduled Dailies.
+  const cov = coverageProgress(state)
+  for (let k = 1; k <= cov.earned; k++) {
+    const r = grant(state, { id: `coverage:${k}`, item: 'shield', source: 'coverage', at: now })
+    if (r && ctx.grants) ctx.grants.push('shield')
+    if (r === 'pending' && ctx.pending) ctx.pending.push('shield')
+  }
+  // This Week: any two goals pays 250 XP once, plus a tool the player picks.
   const rp = roundsProgress(state, now)
   if (rp.complete && !rp.paid) {
     ctx.gained += award(state, { id: `rounds:${rp.week.key}`, xp: XP.rounds, kind: 'rounds', at: now })
     ctx.lines.push(['This Week', XP.rounds])
-    if (rp.week.index % 2 === 0) {
-      const item = ROUNDS_ITEM_ROTATION[(rp.week.index / 2) % ROUNDS_ITEM_ROTATION.length]
-      if (grant(state, { id: `rounds:${rp.week.key}:item`, item, source: 'rounds', at: now }) && ctx.grants) ctx.grants.push(item)
-    }
-    // This Week XP can itself cross a level: grant those rewards too.
-    const again = levelInfo(totalXp(state))
-    for (let L = info.level + 1; L <= again.level; L++) {
-      levelRewards(L).forEach((item, i) => {
-        if (grant(state, { id: `level:${L}:${i}`, item, source: 'level', at: now }) && ctx.grants) ctx.grants.push(item)
-      })
-    }
+    ctx.weeklyChoice = rp.week.key
+    // This Week XP can itself cross a level.
+    if (levelInfo(totalXp(state)).level > info.level) payLevels(state, ctx, now)
   }
 }
 
 function run(fn) {
   const state = loadProgression()
   const before = levelInfo(totalXp(state))
-  const ctx = { gained: 0, lines: [], grants: [], at: Date.now() }
+  const ctx = { gained: 0, lines: [], grants: [], pending: [], at: Date.now() }
   fn(state, ctx)
   followUps(state, ctx)
   const after = levelInfo(totalXp(state))
@@ -107,6 +160,9 @@ function run(fn) {
     gained: ctx.gained,
     lines: ctx.lines.filter((l) => l[1] > 0),
     grants: ctx.grants,
+    pending: ctx.pending,
+    coverageUsed: ctx.shieldUsed || [],
+    weeklyChoice: ctx.weeklyChoice || null,
     before,
     after,
     levelUp: after.level > before.level,
@@ -135,23 +191,26 @@ export function recordDailyFinish({ dateKey, isToday, puzzle, won, mistakes, gue
     })
     ctx.gained += conn
     ctx.lines.push(['Connections', conn])
+    // Perfect: won with no mistakes and no tools. Restoring a mistake with
+    // Second Opinion keeps the mistake on record, so it is never perfect.
     if (isToday && won && mistakes === 0 && toolsUsed === 0) {
       const p = award(state, { id: `perfect:${dateKey}`, xp: XP.perfect, kind: 'perfect', at })
       ctx.gained += p
       ctx.lines.push(['Perfect', p])
-      const perfectCount = Object.values(state.ledger).filter((e) => e.kind === 'perfect').length
-      if (perfectCount > 0 && perfectCount % PERFECT_REWARD_EVERY === 0) {
-        if (grant(state, { id: `perfect-reward:${perfectCount}`, item: 'curbside', source: 'perfect', at })) ctx.grants.push('curbside')
-      }
     }
     if (isToday && history) {
-      // Streak Shield: cover yesterday if it was the only gap in a live streak.
+      // Coverage: when today is finished after missed days, each charge
+      // covers one missed day (oldest first, adjacent to the streak). Uses
+      // are keyed by the covered date, so two devices or a re-sync can never
+      // spend twice for the same day. Covering a day pays nothing.
       const shielded = shieldedDates(state)
       if (isStreakDay(history[dateKey], dateKey)) {
-        const gap = needsShield(history, dateKey, shielded)
-        if (gap && useItem(state, { id: `shield:${gap}`, item: 'shield', at, m: { date: gap } })) {
-          ctx.shieldUsed = gap
-          shielded.add(gap)
+        const gaps = coverGaps(history, dateKey, shielded, kitCounts(state).shield || 0)
+        for (const gap of gaps) {
+          if (useItem(state, { id: `shield:${gap}`, item: 'shield', at, m: { date: gap } })) {
+            ;(ctx.shieldUsed ||= []).push(gap)
+            shielded.add(gap)
+          }
         }
       }
       const streak = currentStreak(history, dateKey, { shielded })
@@ -161,7 +220,6 @@ export function recordDailyFinish({ dateKey, isToday, puzzle, won, mistakes, gue
           if (got) {
             ctx.gained += got
             ctx.lines.push([`${ms.days} day streak`, got])
-            if (ms.grant && grant(state, { id: `streak:${ms.days}:item`, item: ms.grant, source: 'streak', at })) ctx.grants.push(ms.grant)
           }
         }
       })
@@ -170,9 +228,12 @@ export function recordDailyFinish({ dateKey, isToday, puzzle, won, mistakes, gue
 }
 
 // ---- Systems puzzle ----
-export function recordSystemFinish({ puzzle, system, won, guessLog, systemComplete = false }) {
+export function recordSystemFinish({ puzzle, system, won, guessLog, systemComplete = false, boardId = null }) {
   return run((state, ctx) => {
     const at = ctx.at
+    // This Week: a completed board counts once per board per week, replays
+    // included. First-completion XP below is still paid only once ever.
+    if (won && boardId) mark(state, { id: `sysweek:${weekOf(at).key}:${boardId}`, kind: 'sysweek', at, m: { board: boardId, system } })
     if (won) {
       const g = award(state, { id: `syspuzzle:${puzzle.id}`, xp: XP.systemPuzzle, kind: 'syspuzzle', at, m: { system } })
       ctx.gained += g
@@ -191,17 +252,19 @@ export function recordSystemFinish({ puzzle, system, won, guessLog, systemComple
       if (c) {
         ctx.gained += c
         ctx.lines.push([`${system} complete`, c])
-        if (grant(state, { id: `system:${system}:item`, item: 'curbside', source: 'system', at })) ctx.grants.push('curbside')
       }
     }
   })
 }
 
 // ---- 3-Minute ----
-export function recordChallengeSession({ completedAt, roundsCorrect = 0, isNewBest = false }) {
+export function recordChallengeSession({ completedAt, roundsCorrect = 0, isNewBest = false, actions = null }) {
   return run((state, ctx) => {
     const at = ctx.at
     const id = `challenge:${completedAt || at}`
+    // An inactive session (the clock ran out with no answer at all) earns
+    // nothing and does not count toward This Week.
+    if (actions === 0) return
     const xp = Math.min(XP.challengeMax, roundsCorrect * XP.challengePerCorrect) + (isNewBest && roundsCorrect > 0 ? XP.challengeNewBest : 0)
     if (xp > 0) {
       ctx.gained += award(state, { id, xp, kind: 'challenge', at })
@@ -219,6 +282,9 @@ export function recordChallengeSession({ completedAt, roundsCorrect = 0, isNewBe
 export function recordRaceFinish({ raceId, solo = false }) {
   return run((state, ctx) => {
     const at = ctx.at
+    // Finished race (solo or head-to-head) counts toward This Week, even past
+    // the daily XP limit. Abandoned races never reach this point.
+    mark(state, { id: `racedone:${raceId}`, kind: 'racedone', at })
     const today = localDayKey(at)
     const racesToday = Object.entries(state.ledger).filter(([id, e]) => e.kind === 'race' && !id.endsWith(':win') && entryDay(e) === today).length
     if (racesToday >= XP.raceDailyLimit) return
@@ -236,12 +302,57 @@ export function recordRaceWin({ raceId }) {
   })
 }
 
-// ---- Curbside ----
-export function spendCurbside(puzzleId) {
+// ---- puzzle tools ----
+// One tool per board attempt: the use id is the attempt id, so a second
+// spend in the same attempt (another tab, a double tap, a refresh) is
+// refused. Returns false (nothing spent) when the tool is locked, empty, or
+// this attempt already used a tool.
+export function spendTool(item, attemptId, m = {}) {
+  if (!PUZZLE_TOOLS.includes(item) || !attemptId) return false
   const state = loadProgression()
-  const ok = useItem(state, { id: `curbside:${puzzleId}:${Date.now()}`, item: 'curbside', m: { puzzle: puzzleId } })
+  ensureV2(state)
+  const info = levelInfo(totalXp(state))
+  if (!itemOpen(item, info.level)) return false
+  const ok = useItem(state, { id: `tool:${attemptId}`, item, m: { ...m, attempt: attemptId } })
   if (ok) saveProgression(state)
   return ok
+}
+// Older name kept for callers.
+export const spendCurbside = (puzzleId) => spendTool('curbside', `${puzzleId}:${Date.now()}`, { puzzle: puzzleId })
+
+export function toolUsedInAttempt(attemptId) {
+  return loadProgression().kit.uses[`tool:${attemptId}`] || null
+}
+
+// Take one pending claim into the inventory (only while under the cap).
+export function claimTool(item) {
+  const state = loadProgression()
+  const ok = claimPending(state, item)
+  if (ok) saveProgression(state)
+  return ok
+}
+
+// The weekly reward's tool: any unlocked puzzle tool, chosen by the player.
+export function chooseWeeklyTool(weekKey, item) {
+  const state = loadProgression()
+  ensureV2(state)
+  if (!PUZZLE_TOOLS.includes(item)) return false
+  if (!weeklyChoicesDue(state).includes(weekKey)) return false
+  if (!itemOpen(item, levelInfo(totalXp(state)).level)) return false
+  const r = grant(state, { id: `rounds:${weekKey}:item`, item, source: 'rounds', at: Date.now() })
+  if (r) saveProgression(state)
+  return r
+}
+
+// Starts the economy for this save (starter gift, conversions) without
+// waiting for the first puzzle. Call after any cloud sync on load.
+export function ensureProgression() {
+  const state = loadProgression()
+  const before = JSON.stringify(state)
+  ensureV2(state)
+  payLevels(state, { grants: [], pending: [] }, Date.now())
+  if (JSON.stringify(state) !== before) saveProgression(state)
+  return state
 }
 
 // ---- one-time backfill for existing players ----
@@ -280,7 +391,6 @@ export function backfillIfNeeded({ history = {}, mastery = {}, bankById = {}, sy
   if (systemWins > 0) award(state, { id: 'bf-syspuzzles', xp: systemWins * XP.systemPuzzle, kind: 'bf-syspuzzle', at })
   systems.forEach((sys) => {
     award(state, { id: `system:${sys}`, xp: XP.systemComplete, kind: 'bf-system', at, m: { system: sys } })
-    grant(state, { id: `system:${sys}:item`, item: 'curbside', source: 'system', at })
   })
   for (const s of challenge.history || []) {
     const xp = Math.min(XP.challengeMax, (s.roundsCorrect || 0) * XP.challengePerCorrect)
@@ -292,7 +402,6 @@ export function backfillIfNeeded({ history = {}, mastery = {}, bankById = {}, sy
   STREAK_MILESTONES.forEach((ms) => {
     if (longest >= ms.days) {
       award(state, { id: `streak:${ms.days}`, xp: ms.xp, kind: 'bf-streak', at })
-      if (ms.grant) grant(state, { id: `streak:${ms.days}:item`, item: ms.grant, source: 'streak', at })
     }
   })
   state.migrated = at
@@ -304,12 +413,12 @@ export function backfillIfNeeded({ history = {}, mastery = {}, bankById = {}, sy
 // ---- read model for the UI ----
 export function recordSnapshot({ history = {}, todayKey }) {
   const state = loadProgression()
+  ensureV2(state)
   const xp = totalXp(state)
   const info = levelInfo(xp)
   const counts = kitCounts(state)
   const streak = streakInfo(state, history, todayKey)
   const entries = Object.values(state.ledger)
-  const systemsComplete = entries.filter((e) => e.kind === 'system' || e.kind === 'bf-system').length
   // Connections solved: each live award is one connection; backfilled Dailies
   // count 4 per won day; backfilled Systems carry their count.
   let connections = 0
@@ -318,5 +427,19 @@ export function recordSnapshot({ history = {}, todayKey }) {
     else if (e.kind === 'bf-conn') connections += 4
     else if (e.kind === 'bf-sysconn') connections += e.m?.count || 0
   }
-  return { state, xp, info, counts, streak, systemsComplete, connections, rounds: roundsProgress(state), kit: KIT }
+  return {
+    state,
+    xp,
+    info,
+    counts,
+    streak,
+    connections,
+    rounds: roundsProgress(state),
+    kit: KIT,
+    pending: pendingClaims(state),
+    weeklyChoices: weeklyChoicesDue(state),
+    coverage: coverageProgress(state),
+    nextReward: nextLevelReward(Math.max(info.level, state.v2?.levelFrom || 1)),
+    converted: state.v2?.converted || {},
+  }
 }

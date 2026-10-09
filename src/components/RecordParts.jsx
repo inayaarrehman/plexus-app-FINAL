@@ -250,8 +250,8 @@ export function PlexusGrowth({ info, rewardsFor, rewardText, size = 'compact', m
   )
 }
 
-// This Week: each goal is a node. Progress fills the node; when all three are
-// done the nodes join into a small triangle.
+// This Week: each goal is a node. Progress fills the node; when the week's
+// reward is earned (any two goals) the nodes join into a small triangle.
 export function WeekGoals({ goals, complete }) {
   const wrap = React.useRef(null)
   const [pts, setPts] = React.useState(null)
@@ -301,7 +301,7 @@ export function WeekGoals({ goals, complete }) {
   )
 }
 
-// Your Kit icons: thin line drawings with one node each, like the rest of Plexus.
+// Your Tools icons: thin line drawings with one node each, like the rest of Plexus.
 const KIT_ICONS = {
   curbside: { d: 'M5 12h14', n: [[5, 12], [19, 12]] },
   lab: { d: 'M9 4h6M10 4v6l-4 9h12l-4-9V4', n: [[12, 15.5]] },
@@ -310,6 +310,8 @@ const KIT_ICONS = {
   shield: { d: 'M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z', n: [[12, 11]] },
   'second-opinion': { d: 'M8 7H4v4M4.5 11A8 8 0 1 0 7 6', n: [[12, 12]] },
   'time-out': { d: 'M12 7v5l3 2M12 4a8 8 0 1 1 0 16 8 8 0 0 1 0-16z', n: [[12, 12]] },
+  mutation: { d: 'M7 3c0 6 10 6 10 12s-10 6-10 6M17 3c0 6-10 6-10 12M9 7h6M9 17h6', n: [[12, 12]] },
+  crispr: { d: 'M6 6l12 12M18 6L6 18M4 4a2 2 0 1 0 4 4M20 4a2 2 0 1 1-4 4', n: [[12, 12]] },
 }
 export function KitIcon({ item, size = 24, className = '' }) {
   const ic = KIT_ICONS[item] || KIT_ICONS.curbside

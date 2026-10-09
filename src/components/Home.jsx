@@ -477,10 +477,10 @@ export default function Home({
           <button
             className="home-progress-row home-rounds"
             onClick={() => onOpenRecord('week')}
-            aria-label={`This Week in My Plexus: ${record.rounds.done} of ${record.rounds.goals.length} goals done`}
+            aria-label={`This Week in My Plexus: ${record.rounds.done} of ${record.rounds.goals.length} goals done, any ${record.rounds.need} earn the reward`}
           >
             <span className="home-progress-text">
-              {record.rounds.complete ? 'This Week: all 3 goals done' : `This Week: ${record.rounds.done} of ${record.rounds.goals.length} goals done`}
+              {record.rounds.complete ? 'This Week: reward earned' : `This Week: ${record.rounds.done} of ${record.rounds.need} goals`}
               <span className="home-progress-meta"> · resets Monday</span>
             </span>
             <span className="home-week-nodes" aria-hidden="true">

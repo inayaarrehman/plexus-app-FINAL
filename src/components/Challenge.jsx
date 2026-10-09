@@ -220,7 +220,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
         completedAt: new Date().toISOString(),
       }
       const { stats, isNewBest: newBest } = recordChallengeResult(summary)
-      recordChallengeSession({ completedAt: summary.completedAt, roundsCorrect: correctActions, isNewBest: newBest })
+      recordChallengeSession({ completedAt: summary.completedAt, roundsCorrect: correctActions, isNewBest: newBest, actions: totalActions })
       setPersonalBest(stats.personalBest)
       setIsNewBest(newBest)
       setResultsExtra({

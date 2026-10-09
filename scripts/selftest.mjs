@@ -1174,8 +1174,8 @@ console.log('\n[38] Progression engine: XP, levels, streaks, This Week, Kit, mer
   assert(tot===(100+50+25)+(100)+(50+50)+30+150+30+15,'backfill total '+tot)
   assert(S.backfillIfNeeded({history:bh})===null,'backfill runs once')
   // rounds goals rotate and differ week to week
-  for(let w=0;w<12;w++){const a=E.roundsGoals(w).map(g=>g.id).join(),b=E.roundsGoals(w+1).map(g=>g.id).join();assert(a!==b,'weeks differ '+w)}
-  assert(!C.ROUNDS_POOL.some(g=>/race/i.test(g.label)),'no live-race weekly goal')
+  // This Week: three fixed goals, any two pay the reward
+  assert(C.WEEKLY_GOALS.map(g=>g.id).join()==='dailies,systems,timed' && C.WEEKLY_GOALS_NEEDED===2,'three fixed weekly goals, any two')
   const allNames = Object.values(C.KIT).map((k) => k.name + ' ' + k.desc).join(' ')
   assert(!/\b(Dr\.|MD|DO)\b/.test(allNames) && !allNames.includes('\u2014'), 'no credential language or em dashes in Kit names')
   // Kit opens by level; each tool is first granted at the level it unlocks
@@ -1184,17 +1184,16 @@ console.log('\n[38] Progression engine: XP, levels, streaks, This Week, Kit, mer
     assert(!E.itemOpen(item, def.unlock - 1) && E.itemOpen(item, def.unlock), item+' opens at level '+def.unlock)
     if (item !== 'shield') { let first=null; for (let L=2;L<40&&first===null;L++) if (C.levelRewards(L).includes(item)) first=L; assert(first!==null && first>=def.unlock && first<=Math.max(def.unlock,2), item+' first granted at level '+first) }
   }
-  assert(C.KIT['time-out'].unlock<=14 && C.KIT['second-opinion'].unlock<=12, 'core tools within weeks, not months')
-  // same number of items per level as before, so no level ever adds a grant
-  const oldCount=(L)=>L<2?0:(L===6||L===18)?3:L===26?6:1
-  for (let L=1;L<=60;L++) assert(C.levelRewards(L).length===oldCount(L),'reward count unchanged at level '+L)
+  assert(C.KIT.curbside.unlock===1 && C.KIT.lab.unlock===3 && C.KIT['second-opinion'].unlock===5, 'Consult L1, Rule Out L3, Second Opinion L5')
+  assert(!C.KIT.imaging && !C.KIT.readout && !C.KIT['time-out'], 'removed tools are gone from Your Tools')
   // migration: a save from the rank system keeps every point, item and flag
   for(const k of Object.keys(store)) delete store[k]
   const old=E.emptyState(); old.seen={level:7,stages:{student:true}}
   E.award(old,{id:'bf-daily',xp:2200,kind:'bf-daily',at})
   const oldItems={2:'curbside',3:'curbside',4:'curbside',5:'curbside',6:['lab','imaging','curbside'],7:'curbside'}
-  for (const [L,v] of Object.entries(oldItems)) [].concat(v).forEach((item,i)=>E.grant(old,{id:`level:${L}:${i}`,item,source:'level',at}))
-  E.grant(old,{id:'rounds:2026-W40:item',item:'time-out',source:'rounds',at})
+  // Written directly, as the old version saved them (removed tools included).
+  for (const [L,v] of Object.entries(oldItems)) [].concat(v).forEach((item,i)=>{old.kit.grants[`level:${L}:${i}`]={item,qty:1,source:'level',at}})
+  old.kit.grants['rounds:2026-W40:item']={item:'time-out',qty:1,source:'rounds',at}
   old.migrated=at
   localStorage.setItem('plexus.progression.v1', JSON.stringify(old))
   const beforeCounts=E.kitCounts(E.normalize(old))
@@ -1202,7 +1201,14 @@ console.log('\n[38] Progression engine: XP, levels, streaks, This Week, Kit, mer
   const after=S.loadProgression()
   assert(E.totalXp(after)===2200,'migration keeps XP: '+E.totalXp(after))
   assert(E.levelInfo(E.totalXp(after)).level===7,'migration keeps level 7')
-  assert(JSON.stringify(E.kitCounts(after))===JSON.stringify(beforeCounts),'migration keeps Kit exactly, no new or duplicate grants')
+  const ac=E.kitCounts(after)
+  assert(ac.lab===beforeCounts.lab,'Lab balance carries over as Rule Out')
+  // This save already holds 6 Consults (over the new cap of 5, kept as is), so
+  // the converted Imaging waits as a pending claim instead of being lost.
+  assert(ac.curbside===beforeCounts.curbside && after.kit.grants['convert:imaging:1'].pending===true,'Imaging converts to Consult; over the cap it waits as a pending claim')
+  assert(ac['second-opinion']===beforeCounts['second-opinion']+1,'Time Out converts to Second Opinion, 1:1')
+  assert(after.v2.converted.imaging===1 && after.v2.converted['time-out']===1,'conversion is logged per removed tool')
+  assert(!Object.keys(after.kit.grants).some(id=>id.startsWith('lvl2:')||id.startsWith('starter:')),'levels already reached are not paid again; no starter gift for existing players')
   assert(after.kit.grants['level:5:0'].item==='curbside','a grant from the old schedule stays as it was')
   assert(after.seen.stages.student===true && !('promotion' in mr),'legacy stage flag kept, no promotion in results')
   assert(E.mergeStates(after,old).seen.stages.student===true,'legacy field survives a merge')
@@ -1282,7 +1288,7 @@ console.log('\n[41] Home and My Plexus: economy unchanged, previews faithful, co
   const costs = Array.from({ length: 12 }, (_, i) => C.levelCost(i + 1)).join(',')
   assert(costs === '150,220,290,380,490,600,730,860,1010,1180,1350,1540', 'level thresholds unchanged (' + costs + ')')
   assert(E.levelInfo(149).level === 1 && E.levelInfo(150).level === 2 && E.levelInfo(370).level === 3, 'level boundaries land where they did')
-  assert(C.levelRewards(5).join() === 'lab' && C.levelRewards(6).join() === 'lab,imaging,curbside', 'reward schedule unchanged')
+  assert([2,3,4,5,6,7,8,9].map(L=>C.levelRewards(L).join()||'-').join(' ') === 'curbside lab - second-opinion curbside lab second-opinion curbside', 'Your Tools level schedule')
   // Connection of the day preview: first sentence + rest is always the exact
   // explanation, the preview ends at a sentence end, and no em dashes.
   const { firstSentence } = await import('../src/utils/connectionOfDay.js')

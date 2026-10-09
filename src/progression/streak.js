@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------------
 //   • A streak day is a date's Daily, won, finished on that date.
 //   • A loss on the day ends the streak.
-//   • A missed day ends it, unless a Streak Shield covered that day.
+//   • A missed day ends it, unless a Coverage covered that day.
 //   • Today not played yet never breaks it.
 // Computed from history, so it merges across devices with no extra state.
 //
@@ -62,7 +62,7 @@ function travelGap(h, before, after) {
   return lostToTravel(finishTime(h[before]), offsetOf(h[before]), finishTime(h[after]), offsetOf(h[after]))
 }
 
-// `shielded`: set of date keys a Streak Shield has covered.
+// `shielded`: set of date keys a Coverage has covered.
 // `pendingShield`: true when a shield is available and would cover yesterday
 // once today's Daily is finished (so the streak shows as still alive).
 // `now`: the current instant, used for the travel allowance on today.
@@ -78,7 +78,7 @@ export function currentStreak(history, todayKey, { shielded = new Set(), pending
     if (!h[key]?.completed && !shielded.has(key) && isStreakDay(h[dby], dby) && lostToTravel(finishTime(h[dby]), offsetOf(h[dby]), now, nowOffset)) key = dby
   }
   let count = 0
-  let usedPending = false
+  let usedPending = 0
   let lastCounted = null
   for (let guard = 0; guard < 4000; guard++) {
     const e = h[key]
@@ -88,8 +88,8 @@ export function currentStreak(history, todayKey, { shielded = new Set(), pending
     } else if (isLossDay(e, key)) break
     else if (shielded.has(key)) {
       /* covered day: keeps the streak, adds nothing */
-    } else if (pendingShield && !usedPending && key === addDays(todayKey, -1) && count === 0 && !isStreakDay(h[todayKey], todayKey)) {
-      usedPending = true // yesterday missed, a shield will cover it when today is finished
+    } else if (count === 0 && usedPending < Number(pendingShield || 0) && dayIndex(todayKey) - dayIndex(key) === usedPending + 1 && !isStreakDay(h[todayKey], todayKey) && !h[key]?.completed) {
+      usedPending += 1 // a missed day right before today: held Coverage will cover it when today is finished
     } else if (lastCounted && !e?.completed && dayIndex(lastCounted) - dayIndex(key) === 1 && isStreakDay(h[addDays(key, -1)], addDays(key, -1)) && travelGap(h, addDays(key, -1), lastCounted)) {
       /* one date skipped by travel */
     } else break
@@ -128,14 +128,31 @@ export function longestStreak(history, { shielded = new Set() } = {}) {
 // yesterday was missed (no entry), the day before was a streak day (or itself
 // covered), and today's finish is a streak day. Not when the gap is only a
 // date lost to travel (no shield is spent on that).
-export function needsShield(history, todayKey, shielded = new Set()) {
+
+// Coverage: the missed days, oldest first, that held charges should cover
+// when `todayKey` is finished. Only an unbroken run of missed days directly
+// before today, ending at a streak day (or a covered day), and only if there
+// are enough charges for the whole run; otherwise the streak is gone anyway
+// and nothing is spent.
+export function coverGaps(history, todayKey, shielded = new Set(), available = 0) {
   const h = history || {}
-  const y = addDays(todayKey, -1)
-  const yy = addDays(todayKey, -2)
-  if (h[y]?.completed || shielded.has(y)) return null
-  if (!(isStreakDay(h[yy], yy) || shielded.has(yy))) return null
-  if (isStreakDay(h[todayKey], todayKey) && travelGap(h, yy, todayKey)) return null
-  return y
+  if (!(available > 0)) return []
+  const gaps = []
+  let key = addDays(todayKey, -1)
+  for (let i = 0; i <= available; i++) {
+    if (isStreakDay(h[key], key) || shielded.has(key)) break
+    if (h[key]?.completed) return [] // a lost Daily ends the streak; not a missed day
+    gaps.push(key)
+    key = addDays(key, -1)
+  }
+  if (gaps.length === 0 || gaps.length > available) return []
+  if (!(isStreakDay(h[key], key) || shielded.has(key))) return []
+  if (gaps.length === 1 && isStreakDay(h[todayKey], todayKey) && travelGap(h, key, todayKey)) return [] // a date skipped by travel needs no cover
+  return gaps.reverse()
+}
+// Older single-day form, kept for callers and tests.
+export function needsShield(history, todayKey, shielded = new Set()) {
+  return coverGaps(history, todayKey, shielded, 1)[0] || null
 }
 
 export { DAY }

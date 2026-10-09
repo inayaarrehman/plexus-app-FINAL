@@ -12,6 +12,8 @@ import { openLiveRace, isSupabaseConfigured } from '../lib/liveRace.js'
 import { haptics } from '../utils/haptics.js'
 import { timedCanonicalId } from '../utils/timedLibrary.js'
 import { recordRaceFinish, recordRaceWin } from '../progression/store.js'
+import { raceCall } from '../lib/raceApi.js'
+import ServerRace from './ServerRace.jsx'
 
 // ---------------------------------------------------------------------
 // Race Mode — "Race a friend through the same Plexus," live.
@@ -41,7 +43,25 @@ function raceVerdict(you, opp) {
   return 'tie'
 }
 
-export default function Race({ bank, initialCode = '', onExit }) {
+// Signed-in players with the race server available get server-run races
+// (scored and rewarded by the server, with the Chaos option). Everyone else
+// keeps the original shared-code race, which never earns Race rewards.
+export default function Race(props) {
+  const [mode, setMode] = useState(isSupabaseConfigured() ? 'checking' : 'local')
+  const [why, setWhy] = useState(null)
+  useEffect(() => {
+    if (mode !== 'checking') return
+    raceCall('config').then((r) => {
+      setWhy(r.ok ? null : r.reason)
+      setMode(r.ok ? 'server' : 'local')
+    })
+  }, [mode])
+  if (mode === 'checking') return <div className="race"><p className="race-note">Loading Race…</p></div>
+  if (mode === 'server') return <ServerRace {...props} />
+  return <LocalRace {...props} signedOut={why === 'signed-out'} />
+}
+
+function LocalRace({ bank, initialCode = '', onExit, signedOut = false }) {
   const live = isSupabaseConfigured()
   const [phase, setPhase] = useState(initialCode ? 'join' : 'entry') // entry | join | lobby | countdown | playing | results
   const [code, setCode] = useState(initialCode ? normalizeJoinCode(initialCode) : '')
@@ -307,6 +327,7 @@ export default function Race({ bank, initialCode = '', onExit }) {
             ? 'One of you taps “Create a race” and shares the code or link; the other enters it. Then either of you starts, and you’ll both race the same board at the same time.'
             : 'Both players enter the same code to get the identical challenge set, then compare times.'}
         </p>
+        {signedOut && <p className="race-note">Sign in to earn Race rewards and use Chaos power-ups.</p>}
       </div>
     )
   }

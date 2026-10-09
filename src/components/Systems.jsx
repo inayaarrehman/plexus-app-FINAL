@@ -154,7 +154,7 @@ function SystemNode({ system, total, solved, accent, onEnter }) {
   )
 }
 
-export default function Systems({ todayKey, finishedBoards, onPlaySystem, onBack, playNotice, onDismissPlayNotice }) {
+export default function Systems({ todayKey, finishedBoards, onPlaySystem, onReplayBoard, onBack, playNotice, onDismissPlayNotice }) {
   const [selected, setSelected] = useState(null)
   const [entering, setEntering] = useState(false)
 
@@ -231,6 +231,20 @@ export default function Systems({ todayKey, finishedBoards, onPlaySystem, onBack
             <p className="system-caught-up" role="status">
               {CAUGHT_UP_COPY}
             </p>
+          )}
+          {onReplayBoard && p.boards.some((b) => finishedBoards[b.id]) && (
+            <div className="system-replays">
+              <p className="system-replays-head">Replay a board</p>
+              <div className="system-replays-row">
+                {p.boards.map((b, i) =>
+                  finishedBoards[b.id] ? (
+                    <button key={b.id} className="system-replay-btn" onClick={() => onReplayBoard(selected, b, i)}>
+                      Board {i + 1}
+                    </button>
+                  ) : null
+                )}
+              </div>
+            </div>
           )}
         </div>
       </div>

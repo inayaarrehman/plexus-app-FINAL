@@ -42,6 +42,7 @@ import StatsModal from '../src/components/StatsModal.jsx'
 import ReviewConnections from '../src/components/ReviewConnections.jsx'
 import Confetti from '../src/components/Confetti.jsx'
 import { buildTiles } from '../src/utils/game.js'
+import { LIBRARY_SUBJECTS, NEW_DAILY_START } from '../src/utils/newLibrary.js'
 import { assembleSystemPuzzle } from '../src/utils/puzzleAssembler.js'
 import { generateRound, validateRound } from '../src/utils/challengeEngine.js'
 import { saveProgress, getDailyHistory, getSystemProgress, getConceptMastery, recordConceptMastery } from '../src/utils/storage.js'
@@ -118,7 +119,7 @@ check('Home renders a plain-text "Today complete" line + a Continue section afte
   )
   if (!html.includes('Today complete')) throw new Error('expected the "Today complete" line once the daily is done')
   if (!html.includes('Cardiology')) throw new Error('expected the Continue row to name the last-played system')
-  if (!html.includes('18 of 42 connections solved')) throw new Error('expected the Continue row to show progress as "X of Y connections solved"')
+  if (!html.includes('18 of 42 boards completed')) throw new Error('expected the Continue row to show progress as "X of Y boards completed"')
   if (!html.includes('7 day streak')) throw new Error('expected the streak shown as plain text, not a decorated pill')
   if (!html.includes('2,840')) throw new Error('expected the 3-Minute Challenge personal best to render')
   return html
@@ -478,9 +479,14 @@ check('Archive marks completed days with a Plexus and shows "X / Y completed" pl
   )
   if (!html.includes('archive-cell is-done')) throw new Error('expected the completed day in the completed state')
   if (!html.includes('puzzle-signature')) throw new Error('expected a Plexus mark on the completed day')
-  const expectedAvail = today.getDate()
+  // Playable: today, and new-library Dailies up to today (older ones retired).
+  let expectedAvail = 0
+  for (let day = 1; day <= today.getDate(); day++) {
+    const k = `${y}-${m}-${String(day).padStart(2, '0')}`
+    if (k === key || k >= NEW_DAILY_START) expectedAvail++
+  }
   const plain = html.replace(/<!-- -->/g, '')
-  if (!plain.includes(`1 / ${expectedAvail} completed`)) throw new Error(`expected "1 / ${expectedAvail} completed" (only Dailies available so far)`)
+  if (!plain.includes(`1 / ${expectedAvail} completed`)) throw new Error(`expected "1 / ${expectedAvail} completed" (playable Dailies so far)`)
   if (!plain.includes('4 day streak')) throw new Error('expected the existing streak')
   return html
 })
@@ -489,29 +495,29 @@ check('Archive marks completed days with a Plexus and shows "X / Y completed" pl
 // Systems
 // ---------------------------------------------------------------
 
-check(`Systems renders the tactile node grid (all ${SYSTEMS.length} named systems)`, () => {
+check(`Systems renders the tactile node grid (all ${LIBRARY_SUBJECTS.length} library subjects)`, () => {
   const html = renderToStaticMarkup(
     React.createElement(Systems, {
-      bank: connectionBank,
-      mastery: getConceptMastery(),
+      todayKey: NEW_DAILY_START,
+      finishedBoards: {},
       onPlaySystem: () => {},
       onBack: () => {},
     })
   )
   const nodeMatches = html.match(/system-node-name/g) || []
-  if (nodeMatches.length !== SYSTEMS.length) {
-    throw new Error(`expected ${SYSTEMS.length} system nodes, found ${nodeMatches.length}`)
+  if (nodeMatches.length !== LIBRARY_SUBJECTS.length) {
+    throw new Error(`expected ${LIBRARY_SUBJECTS.length} system nodes, found ${nodeMatches.length}`)
   }
   // Each node carries its own anatomical Plexus glyph SVG and an accessible label.
   const glyphMatches = html.match(/system-glyph /g) || []
-  if (glyphMatches.length !== SYSTEMS.length) {
-    throw new Error(`expected ${SYSTEMS.length} anatomical glyph SVGs, found ${glyphMatches.length}`)
+  if (glyphMatches.length !== LIBRARY_SUBJECTS.length) {
+    throw new Error(`expected ${LIBRARY_SUBJECTS.length} anatomical glyph SVGs, found ${glyphMatches.length}`)
   }
-  if (!html.includes('connections completed')) throw new Error('expected accessible X/Y labels on active nodes')
+  if (!html.includes('boards completed')) throw new Error('expected accessible X/Y labels on active nodes')
   return html
 })
 
-check('Systems grid renders per-node mastery counts from real data', () => {
+check('Systems grid renders per-node board counts from saved progress', () => {
   // Systems.jsx manages `selected` as internal state driven by pressing a
   // node, which renderToStaticMarkup can't simulate directly. Exercise the
   // grid render (which pulls live mastery counts) here; the detail data path
@@ -519,13 +525,14 @@ check('Systems grid renders per-node mastery counts from real data', () => {
   const mastery = recordConceptMastery([{ bankCategoryId: 'bank-easy-01', solved: true, cleanSolve: true }])
   const html = renderToStaticMarkup(
     React.createElement(Systems, {
-      bank: connectionBank,
-      mastery,
+      todayKey: NEW_DAILY_START,
+      finishedBoards: { 'cardiology-starter-1': { finishedAt: 'x', won: true } },
       onPlaySystem: () => {},
       onBack: () => {},
     })
   )
-  if (!html.includes('system-node')) throw new Error('expected system nodes to render with mastery data present')
+  void mastery
+  if (!html.includes('Cardiology. 1 of 5 boards completed.')) throw new Error('expected the finished board to count')
   return html
 })
 

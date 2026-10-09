@@ -1,19 +1,26 @@
 import React from 'react'
-import { KIT, levelRewards } from '../progression/config.js'
+import { KIT, nextLevelReward } from '../progression/config.js'
+import { formatDayKey } from '../utils/calendar.js'
 import { LevelLine, fmt } from './RecordParts.jsx'
 
 // The XP block on the results card. Secondary to the puzzle result and the
 // streak, so it sits after the actions and stays compact: total XP with its
-// breakdown, the level line, Kit rewards grouped in one row, and This Week.
+// breakdown, the level line, tool rewards grouped in one row, and This Week.
 // A level-up lights the next node and updates the level number, briefly.
 // Under it: the next reward and when it arrives, and a quiet way into My
 // Plexus (never forced).
 export default function XpResult({ result, onOpenRecord }) {
-  const { gained, lines, after, levelUp, grants, rounds } = result
-  const items = summarizeGrants(grants)
-  const nextRewards = levelRewards(after.level + 1)
+  const { gained, lines, after, levelUp, grants, rounds, pending = [], coverageUsed = [], weeklyChoice = null } = result
+  // Grants that went into the inventory (pending claims are listed apart).
+  const held = [...grants]
+  for (const p of pending) {
+    const i = held.indexOf(p)
+    if (i >= 0) held.splice(i, 1)
+  }
+  const items = summarizeGrants(held)
+  const next = nextLevelReward(after.level)
 
-  if (!(gained > 0) && items.length === 0) return null
+  if (!(gained > 0) && items.length === 0 && coverageUsed.length === 0 && pending.length === 0) return null
 
   return (
     <div className={`xp-result ${levelUp ? 'is-level-up' : ''}`} role="status">
@@ -23,14 +30,21 @@ export default function XpResult({ result, onOpenRecord }) {
       <p className="xp-level">
         <b>Level {after.level}</b> · {fmt(after.toNext)} XP to Level {after.level + 1}
       </p>
-      {nextRewards.length > 0 && (
+      {next && (
         <p className="xp-next">
-          Next reward at Level {after.level + 1} · {nextRewards.map((it) => `${KIT[it]?.name || it} +1`).join(' · ')}
+          Next reward at Level {next.level} · {next.items.map((it) => `${KIT[it]?.name || it} +1`).join(' · ')}
         </p>
       )}
+      {coverageUsed.length > 0 && (
+        <p className="xp-coverage">
+          Coverage used for {coverageUsed.map((d) => formatDayKey(d, { month: 'short', day: 'numeric' })).join(' and ')}. Your streak continues.
+        </p>
+      )}
+      {pending.length > 0 && <p className="xp-pending">Inventory full: {summarizeGrants(pending).join(' · ')} waiting as a claim in Your Tools.</p>}
+      {weeklyChoice && <p className="xp-pending">Weekly reward earned. Choose your tool in Your Tools.</p>}
       {items.length > 0 && (
         <p className="xp-items">
-          <span className="xp-items-label">Your Kit</span>
+          <span className="xp-items-label">Your Tools</span>
           {items.map((it) => (
             <span className="xp-item" key={it}>
               {it}
@@ -40,7 +54,7 @@ export default function XpResult({ result, onOpenRecord }) {
       )}
       {rounds && (
         <p className="xp-rounds">
-          {rounds.complete ? 'This Week: all 3 goals done' : `This Week: ${rounds.done} of ${rounds.goals.length} goals done`}
+          {rounds.complete ? 'This Week: reward earned' : `This Week: ${rounds.done} of ${rounds.need} goals`}
         </p>
       )}
       {onOpenRecord && (

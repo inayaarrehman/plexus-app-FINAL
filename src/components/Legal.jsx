@@ -69,18 +69,19 @@ function Privacy() {
       <p className="legal-lead">You can play Plexus without an account. Without one, your progress stays in this browser and Plexus does not receive it.</p>
 
       <h2>On your device</h2>
-      <p>Plexus saves your game in your browser's local storage: puzzle progress, Daily history, streaks and stats, XP, level and Your Kit, and a few settings. If you send a report, it also keeps a random ID for this browser (used only to limit spam) and, until you close the tab, any report you have not sent yet. If you sign in, your browser also keeps a sign-in session.</p>
+      <p>Plexus saves your game in your browser's local storage: puzzle progress, Daily history, streaks and stats, XP, level and Your Tools, and a few settings. If you send a report, it also keeps a random ID for this browser (used only to limit spam) and, until you close the tab, any report you have not sent yet. If you sign in, your browser also keeps a sign-in session.</p>
 
       <h2>If you create an account</h2>
       <ul>
         <li><b>Email address and password.</b> Sign-in is handled by Supabase, our database and sign-in provider. Supabase stores your password in hashed form; Plexus never sees it.</li>
         <li><b>A profile record</b> linked to your account. Plexus does not ask for your name.</li>
-        <li><b>A cloud copy of your progress</b> so it follows you between devices: streaks and stats, Daily history (including dates, mistakes, finish times and the time zone offset at each finish), 3-Minute bests, and your XP history and Your Kit.</li>
+        <li><b>A cloud copy of your progress</b> so it follows you between devices: streaks and stats, Daily history (including dates, mistakes, finish times and the time zone offset at each finish), 3-Minute bests, Systems boards finished, and your XP history and Your Tools.</li>
         <li><b>Account records kept by Supabase</b>, such as when the account was created and last signed in, and security logs that can include your IP address. Supabase may also send account emails, such as confirming your sign-up.</li>
       </ul>
 
       <h2>Live races</h2>
-      <p>A live race connects two players through Supabase Realtime. During the race, the other player receives a random temporary player ID, the name "Player" and your running score. Races are not saved.</p>
+      <p>A live race connects two players through Supabase Realtime. During the race, the other player receives a random temporary player ID, the name "Player" and your running score.</p>
+      <p>If you are signed in, the race is run by the Plexus server and saved so results and Race rewards can be checked: the race code, both players' account IDs, each answer you give and whether it was right, your score and time, connection status during the race, whether you turned on Chaos and which power-ups you equipped, armed or used, and the time zone your device reports (used to decide which day a race counts toward). Your Race power-up inventory and reward progress are stored with your account. The other player sees your Chaos choices, loadout and power-up effects during the race.</p>
 
       <h2>Reports and support messages</h2>
       <p>When you report a connection or send a message from Help &amp; Support, Plexus stores what you chose and wrote, the email address if you add one, and for reports the puzzle and connection it is about (puzzle ID, connection ID, title and tiles, game mode and puzzle date). It also stores the app version and the random browser ID above. If you are signed in, the report is linked to your account. Reports are stored in Supabase, and only Plexus can read them. We use your email only to reply about that report. If you delete your account, your reports stay but are no longer linked to it.</p>

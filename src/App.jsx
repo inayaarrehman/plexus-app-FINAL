@@ -19,7 +19,7 @@ import { onAuthChange } from './lib/auth.js'
 import { syncProgress, pushProgress } from './lib/progressRepo.js'
 import { snapshotLocal } from './utils/progressSync.js'
 import { timedBank } from './utils/timedLibrary.js'
-import { subjectProgress, libraryConnectionMap, subjectLabel } from './utils/newLibrary.js'
+import { subjectProgress, libraryConnectionMap, subjectLabel, LIBRARY_SUBJECTS } from './utils/newLibrary.js'
 import StatsModal from './components/StatsModal.jsx'
 import DevViewer from './components/DevViewer.jsx'
 import BrandMark from './components/BrandMark.jsx'
@@ -29,13 +29,14 @@ import { getDailyPuzzleForDate, getPlayableDailyForDate } from './utils/dailyPuz
 import { getDailyGate, isGatedView, GATED_VIEWS, LOCK_COPY, hasSeenUnlock, markUnlockSeen } from './utils/dailyGate.js'
 import LockGlyph from './components/LockGlyph.jsx'
 import Record from './components/Record.jsx'
-import { recordDailyFinish, recordSystemFinish, backfillIfNeeded, streakInfo, loadProgression, recordSnapshot } from './progression/store.js'
+import { recordDailyFinish, recordSystemFinish, backfillIfNeeded, streakInfo, loadProgression, recordSnapshot, ensureProgression } from './progression/store.js'
 import { SYSTEMS } from './data/constants.js'
 import { systemMasteryCounts } from './utils/mastery.js'
 import {
   loadStats,
   recordResult,
   loadProgress,
+  clearProgress,
   getDailyHistory,
   recordDailyHistory,
   getSystemProgress,
@@ -188,22 +189,37 @@ export default function App() {
   // Pull the signed-in player's cloud progress, merge it with what's on this
   // device (monotonic — never loses a streak), and refresh the UI. Runs on load
   // if already signed in, and on every sign-in / sign-out.
+  // Your Tools start (starter Consult for new players, removed-tool
+  // conversion) runs after any cloud sync, so a fresh device never treats an
+  // existing player as new.
+  const startTools = () => {
+    try {
+      ensureProgression()
+    } catch {
+      /* storage unavailable */
+    }
+    setRefreshTick((t) => t + 1)
+  }
   const resyncProgress = () => {
-    if (!supaConfigured) return
+    if (!supaConfigured) {
+      startTools()
+      return
+    }
     syncProgress()
       .then((merged) => {
-        if (merged) {
-          setStats(loadStats())
-          setRefreshTick((t) => t + 1)
-        }
+        if (merged) setStats(loadStats())
       })
       .catch(() => {
         /* best-effort — offline / not signed in is fine */
       })
+      .finally(startTools)
   }
 
   useEffect(() => {
-    if (!supaConfigured) return undefined
+    if (!supaConfigured) {
+      startTools()
+      return undefined
+    }
     resyncProgress()
     const off = onAuthChange(() => resyncProgress())
     return () => {
@@ -228,6 +244,14 @@ export default function App() {
     if (code) {
       setRaceInitialCode(code)
       setView('race')
+      return
+    }
+    // A server race in progress on this tab (reload or reconnect): go back to
+    // it; the race screen resumes from the server's state.
+    try {
+      if (sessionStorage.getItem('plexus.raceMatch.v1')) setView('race')
+    } catch {
+      /* storage unavailable */
     }
   }, [])
 
@@ -291,6 +315,17 @@ export default function App() {
   // Systems boards finished on this device (merged with the cloud copy for
   // signed-in players).
   const finishedBoards = useMemo(() => getSystemsBoards(), [refreshTick]) // eslint-disable-line react-hooks/exhaustive-deps
+  // My Plexus: Systems boards completed out of boards available today.
+  const systemsBoardTotals = useMemo(() => {
+    let completed = 0
+    let available = 0
+    for (const subject of LIBRARY_SUBJECTS) {
+      const p = subjectProgress(subject, todayKey, finishedBoards)
+      completed += p.completed
+      available += p.total
+    }
+    return { completed, available }
+  }, [todayKey, finishedBoards])
   const continueSystemCounts = useMemo(() => {
     if (!continueSystem) return { total: 0, solved: 0 }
     const p = subjectProgress(continueSystem, todayKey, finishedBoards)
@@ -469,6 +504,36 @@ export default function App() {
     setView('game')
   }
 
+  // Explicit replay of a Systems board: a fresh attempt on the same fixed
+  // board. Tools used in it are spent again; first-completion XP is not paid
+  // again, and This Week counts the board once per week.
+  const replayBoard = (ctx) => {
+    if (!ctx || ctx.mode !== 'system') return
+    clearProgress(ctx.progressKey)
+    setGameCtx({ ...ctx, attempt: (ctx.attempt || 0) + 1 })
+  }
+  const playSystemBoard = (system, board, index) => {
+    if (!modesUnlocked) {
+      showLocked()
+      return
+    }
+    const puzzle = systemsBoardPuzzle(board, index)
+    if (!puzzle) return
+    clearProgress(puzzle.id)
+    setGameCtx({
+      puzzle,
+      mode: 'system',
+      progressKey: puzzle.id,
+      headerLabel: `${subjectLabel(system)} · Board ${index + 1}`,
+      resultTitle: 'Puzzle Results',
+      system,
+      boardId: board.id,
+      isDaily: false,
+      attempt: Date.now(),
+    })
+    setView('game')
+  }
+
   const handleContinueStudying = () => {
     if (!modesUnlocked) {
       showLocked()
@@ -543,6 +608,7 @@ export default function App() {
         system,
         won,
         guessLog,
+        boardId: gameCtx.boardId || puzzle.id,
         systemComplete: counts.total > 0 && counts.completed >= counts.total,
       })
     }
@@ -605,7 +671,7 @@ export default function App() {
     return (
       <div className="app-shell">
         <Game
-          key={gameCtx.progressKey}
+          key={`${gameCtx.progressKey}:${gameCtx.attempt || 0}`}
           puzzle={gameCtx.puzzle}
           isDaily={gameCtx.mode === 'daily' || gameCtx.mode === 'archive'}
           progressKey={gameCtx.progressKey}
@@ -627,6 +693,7 @@ export default function App() {
           puzzleDate={gameCtx.mode === 'system' ? null : gameCtx.dateForHistory}
           onFinish={handleFinish}
           onKnowledgeSignal={recordKnowledgeSignal}
+          onReplay={gameCtx.mode === 'system' ? () => replayBoard(gameCtx) : null}
         />
         {reportModal}
       </div>
@@ -637,6 +704,7 @@ export default function App() {
     return (
       <div className="app-shell app-shell-wide">
         <Record
+          systemsBoards={systemsBoardTotals}
           history={getDailyHistory()}
           todayKey={todayKey}
           stats={stats}
@@ -688,6 +756,7 @@ export default function App() {
           todayKey={todayKey}
           finishedBoards={finishedBoards}
           onPlaySystem={playSystem}
+          onReplayBoard={playSystemBoard}
           onBack={goHome}
           playNotice={systemPlayNotice}
           onDismissPlayNotice={() => setSystemPlayNotice(null)}

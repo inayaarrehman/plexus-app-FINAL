@@ -9,8 +9,9 @@ import { pickConnectionOfDay } from '../utils/connectionOfDay.js'
 import BrandMark from './BrandMark.jsx'
 import Confetti from './Confetti.jsx'
 import XpResult from './XpResult.jsx'
-import { loadProgression, spendCurbside } from '../progression/store.js'
-import { kitCounts } from '../progression/engine.js'
+import { loadProgression, spendTool, toolUsedInAttempt } from '../progression/store.js'
+import { kitCounts, itemOpen, levelInfo, totalXp } from '../progression/engine.js'
+import { KIT, PUZZLE_TOOLS } from '../progression/config.js'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import { groupColor } from './GroupMotif.jsx'
 import { difficultyLabelOf } from './DifficultyIcon.jsx'
@@ -40,6 +41,7 @@ export default function Game({
   onReport, // opens Report this connection with the group's details
   reportMode = 'daily', // daily | archive | system, attached to reports
   puzzleDate = null, // the Daily's calendar date, attached to reports
+  onReplay = null, // explicit replay: starts a new attempt (Systems boards)
 }) {
   const initial = useMemo(() => {
     const saved = loadProgress(progressKey)
@@ -54,8 +56,15 @@ export default function Game({
       won: false,
       toolsUsed: 0,
       curbside: [],
+      attemptId: `${progressKey}:${Date.now()}`,
+      ruleOut: null,
+      restored: 0,
     }
   }, [progressKey, puzzle])
+  // Every board attempt has an id. It is saved with the board, so a refresh
+  // or resumed game is the same attempt (one tool per attempt holds), and an
+  // explicit replay starts a new one.
+  const attemptId = useMemo(() => initial.attemptId || `${progressKey}:legacy`, [initial, progressKey])
 
   // Whether this puzzle was ALREADY completed before this component mounted
   // (e.g. reopening "Review today" or an Archive day). Captured once so we
@@ -69,11 +78,14 @@ export default function Game({
   const [guessLog, setGuessLog] = useState(initial.guessLog)
   const [gameOver, setGameOver] = useState(initial.gameOver)
   const [won, setWon] = useState(initial.won)
-  // Your Kit on the board: tools used this puzzle (a used tool removes Perfect
-  // eligibility) and the two tiles a Curbside is currently highlighting.
-  const [toolsUsed, setToolsUsed] = useState(initial.toolsUsed || 0)
+  // Your Tools on the board: tools used this attempt (a used tool removes
+  // Perfect eligibility), the two tiles a Consult is highlighting, the tile
+  // Rule Out marked, and mistake allowances restored by Second Opinion.
+  const [toolsUsed, setToolsUsed] = useState(initial.toolsUsed || (toolUsedInAttempt(initial.attemptId || `${progressKey}:legacy`) ? 1 : 0))
   const [curbside, setCurbside] = useState(initial.curbside || [])
-  const [curbsideLeft, setCurbsideLeft] = useState(() => kitCounts(loadProgression()).curbside || 0)
+  const [ruleOut, setRuleOut] = useState(initial.ruleOut || null) // { texts, outsider }
+  const [restored, setRestored] = useState(initial.restored || 0) // Second Opinion
+  const [kit, setKit] = useState(() => readKit())
   const [xpResult, setXpResult] = useState(null)
   // One solved group's explanation open at a time.
   const [expandedCat, setExpandedCat] = useState(null)
@@ -111,8 +123,11 @@ export default function Game({
       won,
       toolsUsed,
       curbside,
+      attemptId,
+      ruleOut,
+      restored,
     })
-  }, [progressKey, puzzle.id, tiles, solvedCats, mistakes, guessLog, gameOver, won, toolsUsed, curbside])
+  }, [progressKey, puzzle.id, tiles, solvedCats, mistakes, guessLog, gameOver, won, toolsUsed, curbside, attemptId, ruleOut, restored])
 
   useEffect(() => {
     if (gameOver && !finishReported.current && !alreadyOverAtLoad.current) {
@@ -122,39 +137,84 @@ export default function Game({
     }
   }, [gameOver, won, mistakes, guessLog, puzzle, onFinish, toolsUsed])
 
-  // Curbside: highlight two tiles from the easiest unsolved group. Uses one
-  // from Your Kit and marks the puzzle as tool-assisted (no Perfect).
+  // ---- Puzzle tools (Daily and Systems boards only) ----
+  // One tool per board attempt. Tapping a tool explains exactly what it will
+  // do and that it uses one; nothing is spent until the player confirms and
+  // the effect is actually available. A refused or unavailable action spends
+  // nothing.
+  const toolsAllowed = reportMode === 'daily' || reportMode === 'system'
   const curbsideTiles = curbside.filter((text) => tiles.some((t) => t.text === text && !solvedCats.includes(t.catIndex)))
-  // First use of a tool explains it before anything is spent; after that a
-  // tap uses it straight away (no repeated confirmations).
-  const [curbsideIntro, setCurbsideIntro] = useState(false)
-  const onCurbsideTap = () => {
-    if (gameOver || curbsideTiles.length > 0) return
-    if (!kitIntroSeen('curbside')) {
-      setCurbsideIntro(true)
+  const ruleOutActive = ruleOut && tiles.some((t) => t.text === ruleOut.outsider && !solvedCats.includes(t.catIndex)) ? ruleOut : null
+  const [toolAsk, setToolAsk] = useState(null) // item being explained before use
+  const catOf = (text) => tiles.find((t) => t.text === text)?.catIndex
+  // The most recent submitted "one away" guess whose four tiles are all
+  // still unsolved. Rule Out only ever works on such a guess, never on an
+  // unsubmitted selection.
+  const lastOneAway = useMemo(() => {
+    for (let i = guessLog.length - 1; i >= 0; i--) {
+      const g = guessLog[i]
+      if (g.correct || !g.oneAway || !Array.isArray(g.texts) || g.texts.length !== 4) continue
+      if (g.texts.every((tx) => tiles.some((t) => t.text === tx && !solvedCats.includes(t.catIndex)))) return g
+    }
+    return null
+  }, [guessLog, tiles, solvedCats])
+  const toolEffect = (item) => {
+    if (gameOver || !toolsAllowed) return null
+    if (item === 'curbside') {
+      const unsolved = puzzle.categories
+        .map((c, i) => ({ ...c, catIndex: i }))
+        .filter((c) => !solvedCats.includes(c.catIndex))
+        .sort((a, b) => a.level - b.level)
+      const target = unsolved[0]
+      if (!target) return null
+      const pair = tiles.filter((t) => t.catIndex === target.catIndex).slice(0, 2).map((t) => t.text)
+      return pair.length === 2 ? { pair } : null
+    }
+    if (item === 'lab') {
+      if (!lastOneAway) return null
+      // The board's intended grouping decides the outsider: three share a
+      // group, one does not.
+      const cats = lastOneAway.texts.map(catOf)
+      const counts = {}
+      cats.forEach((c) => (counts[c] = (counts[c] || 0) + 1))
+      const outsider = lastOneAway.texts.find((tx, i) => counts[cats[i]] === 1)
+      return outsider ? { texts: lastOneAway.texts, outsider } : null
+    }
+    if (item === 'second-opinion') {
+      if (mistakes - restored <= 0) return null // before any mistake, or nothing spent to restore
+      return { restore: 1 }
+    }
+    return null
+  }
+  const toolState = (item) => {
+    const def = KIT[item]
+    if (!itemOpen(item, kit.level)) return { ok: false, why: `Unlocks at Level ${def.unlock}` }
+    if (toolsUsed > 0) return { ok: false, why: 'One tool per board' }
+    if (!(kit.counts[item] > 0)) return { ok: false, why: 'None left' }
+    if (!toolEffect(item)) {
+      if (item === 'lab') return { ok: false, why: 'After a “one away” guess' }
+      if (item === 'second-opinion') return { ok: false, why: 'After a mistake' }
+      return { ok: false, why: 'Not available now' }
+    }
+    return { ok: true }
+  }
+  const confirmTool = (item) => {
+    setToolAsk(null)
+    const effect = toolEffect(item)
+    if (!effect || !toolState(item).ok) {
+      flashMessage('Not available right now. Nothing was used.')
       return
     }
-    handleCurbside()
-  }
-  const confirmCurbside = () => {
-    markKitIntroSeen('curbside')
-    setCurbsideIntro(false)
-    handleCurbside()
-  }
-
-  const handleCurbside = () => {
-    if (gameOver || curbsideTiles.length > 0) return
-    const unsolved = puzzle.categories
-      .map((c, i) => ({ ...c, catIndex: i }))
-      .filter((c) => !solvedCats.includes(c.catIndex))
-      .sort((a, b) => a.level - b.level)
-    const target = unsolved[0]
-    if (!target) return
-    const pair = tiles.filter((t) => t.catIndex === target.catIndex).slice(0, 2).map((t) => t.text)
-    if (pair.length < 2 || !spendCurbside(puzzle.id)) return
-    setCurbside(pair)
+    if (!spendTool(item, attemptId, { puzzle: puzzle.id })) {
+      setKit(readKit())
+      flashMessage('Not available right now. Nothing was used.')
+      return
+    }
+    if (item === 'curbside') setCurbside(effect.pair)
+    if (item === 'lab') setRuleOut({ texts: effect.texts, outsider: effect.outsider })
+    if (item === 'second-opinion') setRestored((n) => n + 1)
     setToolsUsed((n) => n + 1)
-    setCurbsideLeft(kitCounts(loadProgression()).curbside || 0)
+    setKit(readKit())
     haptics.select()
   }
 
@@ -257,9 +317,9 @@ export default function Game({
   const handleWrongGuess = (levels, catIndexes, key, alreadyGuessed) => {
     // Wrong guess. The haptic is identical for every wrong guess (including
     // One Away) so it can never signal how close the selection was.
-    setGuessLog((prev) => [...prev, { levels, catIndexes, correct: false, attemptKey: key }])
-    haptics.incorrect()
     const oneAway = isOneAway(selected)
+    setGuessLog((prev) => [...prev, { levels, catIndexes, correct: false, attemptKey: key, oneAway, texts: selected.map((t) => t.text) }])
+    haptics.incorrect()
     // One Away gets its own subtle feedback (a synchronized pulse) instead
     // of the plain shake — applied identically to all 4 selected tiles, on
     // purpose: it must never single out which 3 belong together.
@@ -281,7 +341,8 @@ export default function Game({
 
     const newMistakes = mistakes + 1
     setMistakes(newMistakes)
-    if (newMistakes >= MAX_MISTAKES) {
+    // Second Opinion restores one allowance; the mistake itself stays counted.
+    if (newMistakes - restored >= MAX_MISTAKES) {
       setSelected([])
       setTimeout(() => {
         setSolvedCats([0, 1, 2, 3])
@@ -291,7 +352,7 @@ export default function Game({
     }
   }
 
-  const mistakesLeft = MAX_MISTAKES - mistakes
+  const mistakesLeft = Math.min(MAX_MISTAKES, MAX_MISTAKES - mistakes + restored)
 
   const finishTimer = useRef(null)
   const finishWon = (delay) => {
@@ -457,7 +518,7 @@ export default function Game({
                     isSelected && selected.length >= 2 ? 'tile-proposing' : ''
                   } ${isSelected && selected.length === 4 ? 'tile-grouped' : ''} ${
                     isShaking ? 'tile-break' : ''
-                  } ${isOneAwayPulse ? 'tile-oneaway-pulse' : ''} ${curbsideTiles.includes(tile.text) ? 'tile-curbside' : ''} ${
+                  } ${isOneAwayPulse ? 'tile-oneaway-pulse' : ''} ${curbsideTiles.includes(tile.text) ? 'tile-curbside' : ''} ${ruleOutActive?.outsider === tile.text ? 'tile-ruled-out' : ''} ${
                     isConnecting ? 'tile-connecting' : ''
                   }`}
                   onClick={() => toggleTile(tile)}
@@ -496,31 +557,7 @@ export default function Game({
               Submit
             </button>
           </div>
-          {(curbsideLeft > 0 || curbsideTiles.length > 0) && (
-            <div className="kit-bar">
-              <button className="kit-use" onClick={onCurbsideTap} disabled={curbsideTiles.length > 0 || curbsideIntro} aria-describedby="curbside-desc">
-                <span className="kit-use-name">Curbside</span>
-                <span className="kit-use-count">×{curbsideLeft}</span>
-              </button>
-              {curbsideTiles.length > 0 ? (
-                <span className="kit-hint">These two belong together.</span>
-              ) : (
-                <span className="kit-desc" id="curbside-desc">Highlights two tiles that belong together.</span>
-              )}
-              {curbsideIntro && (
-                <div className="kit-intro" role="group" aria-label="About Curbside">
-                  <p className="kit-intro-text">
-                    <b>Curbside</b> highlights two tiles from the same group. It uses 1 of your {curbsideLeft}
-                    {isDaily ? ', and a Daily solved with a tool does not count as Perfect.' : '.'}
-                  </p>
-                  <div className="kit-intro-actions">
-                    <button className="kit-intro-use" onClick={confirmCurbside}>Use Curbside</button>
-                    <button className="kit-intro-cancel" onClick={() => setCurbsideIntro(false)}>Not now</button>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
+          {toolsAllowed && <ToolBar kit={kit} toolState={toolState} toolsUsed={toolsUsed} ask={toolAsk} setAsk={setToolAsk} onConfirm={confirmTool} isDaily={isDaily} consultTiles={curbsideTiles} ruleOut={ruleOutActive} restored={restored} />}
         </>
       )}
 
@@ -569,6 +606,7 @@ export default function Game({
               ? `Solved with ${mistakes} mistake${mistakes === 1 ? '' : 's'}.`
               : 'Out of guesses. Here are the groups you missed.'}
           </p>
+          {won && toolsUsed > 0 && <p className="result-assisted">Solved with assistance.</p>}
 
           {isDaily && dailyStreak > 0 && (
             <div className={`streak-banner ${isMilestone ? 'milestone' : ''}`}>
@@ -603,6 +641,11 @@ export default function Game({
                 {challengeCopied ? 'Link copied!' : 'Challenge a friend'}
               </button>
             )}
+            {onReplay && (
+              <button className="secondary-btn" onClick={onReplay}>
+                Play again
+              </button>
+            )}
             <button className="secondary-btn" onClick={onExit}>
               Keep Playing
             </button>
@@ -618,23 +661,63 @@ export default function Game({
   )
 }
 
-// Which Kit tools the player has already had explained (per device).
-const KIT_INTRO_KEY = 'plexus.kitIntro.v1'
-function kitIntroSeen(item) {
-  try {
-    return Boolean(JSON.parse(localStorage.getItem(KIT_INTRO_KEY) || '{}')[item])
-  } catch {
-    return false
-  }
+// Current tool balances and level, read fresh from the saved progression.
+function readKit() {
+  const st = loadProgression()
+  return { counts: kitCounts(st), level: levelInfo(totalXp(st)).level }
 }
-function markKitIntroSeen(item) {
-  try {
-    const seen = JSON.parse(localStorage.getItem(KIT_INTRO_KEY) || '{}')
-    seen[item] = true
-    localStorage.setItem(KIT_INTRO_KEY, JSON.stringify(seen))
-  } catch {
-    /* storage unavailable: the explanation simply shows again next time */
+
+// The puzzle tool bar: Consult, Rule Out and Second Opinion. Each shows its
+// count and why it is unavailable; tapping an available one explains its
+// effect and asks before spending.
+function ToolBar({ kit, toolState, toolsUsed, ask, setAsk, onConfirm, isDaily, consultTiles, ruleOut, restored }) {
+  const anyHeld = PUZZLE_TOOLS.some((it) => kit.counts[it] > 0)
+  if (!anyHeld && toolsUsed === 0) return null
+  const def = ask ? KIT[ask] : null
+  const effectLine = {
+    curbside: 'Two tiles from the same unsolved group will be highlighted.',
+    lab: 'In your last “one away” guess, the tile that doesn’t belong with the other three will be marked.',
+    'second-opinion': 'You get one mistake allowance back. The mistake stays on your record.',
   }
+  return (
+    <div className="kit-bar tool-bar">
+      <div className="tool-row" role="group" aria-label="Your Tools">
+        {PUZZLE_TOOLS.map((item) => {
+          const st = toolState(item)
+          return (
+            <button
+              key={item}
+              className={`kit-use tool-btn ${st.ok ? '' : 'is-off'}`}
+              onClick={() => st.ok && setAsk(item)}
+              aria-disabled={!st.ok}
+              aria-label={`${KIT[item].name}, ${kit.counts[item]} left${st.ok ? '' : `. ${st.why}`}`}
+            >
+              <span className="tool-top">
+                <span className="kit-use-name">{KIT[item].name}</span>
+                <span className="kit-use-count">×{kit.counts[item]}</span>
+              </span>
+              {!st.ok && <span className="tool-why">{st.why}</span>}
+            </button>
+          )
+        })}
+      </div>
+      {consultTiles.length > 0 && <span className="kit-hint">Consult: these two belong together.</span>}
+      {ruleOut && <span className="kit-hint">Rule Out: the marked tile doesn’t belong with the other three.</span>}
+      {restored > 0 && <span className="kit-hint">Second Opinion: one mistake allowance restored. Your original mistake stays recorded.</span>}
+      {ask && def && (
+        <div className="kit-intro" role="group" aria-label={`About ${def.name}`}>
+          <p className="kit-intro-text">
+            <b>{def.name}</b>. {effectLine[ask]} It uses 1 of your {kit.counts[ask]}, and you can use one tool per board.
+            {isDaily ? ' A Daily solved with a tool doesn’t count as Perfect.' : ''}
+          </p>
+          <div className="kit-intro-actions">
+            <button className="kit-intro-use" onClick={() => onConfirm(ask)}>Use {def.name}</button>
+            <button className="kit-intro-cancel" onClick={() => setAsk(null)}>Not now</button>
+          </div>
+        </div>
+      )}
+    </div>
+  )
 }
 
 // ---- Solve animation helpers ----

@@ -5,8 +5,10 @@
 //   {
 //     version: 1,
 //     ledger: { [eventId]: { xp, base, kind, at, m? } },   // every XP award
-//     kit:    { grants: { [id]: { item, qty, source, at } },
-//               uses:   { [id]: { item, at, m? } } },
+//     kit:    { grants: { [id]: { item, qty, source, at, pending? } },
+//               uses:   { [id]: { item, at, m? } },
+//               claims: { [grantId]: at } },   // pending grants taken in
+//     v2:     { at, levelFrom, coverageFrom, converted } // Your Tools economy start
 //     seen:   { level, stages? },                           // UI acknowledgements
 //             (`stages` is a legacy field from the removed rank system. It is
 //              kept and merged untouched so older saves and devices stay
@@ -26,14 +28,14 @@ import {
   PRACTICE_TAPER_RATE,
   levelCost,
   KIT,
-  ROUNDS_POOL,
-  ROUNDS_ROTATION,
+  WEEKLY_GOALS,
+  WEEKLY_GOALS_NEEDED,
 } from './config.js'
 
 export const PRACTICE_KINDS = new Set(['syspuzzle', 'sysconn', 'challenge', 'race'])
 
 export function emptyState() {
-  return { version: 1, ledger: {}, kit: { grants: {}, uses: {} }, seen: { level: 1, stages: {} }, migrated: null, profile: {} }
+  return { version: 1, ledger: {}, kit: { grants: {}, uses: {}, claims: {} }, seen: { level: 1, stages: {} }, migrated: null, profile: {}, v2: null }
 }
 
 export function normalize(state) {
@@ -42,10 +44,11 @@ export function normalize(state) {
   return {
     version: 1,
     ledger: { ...(s.ledger || {}) },
-    kit: { grants: { ...(s.kit?.grants || {}) }, uses: { ...(s.kit?.uses || {}) } },
+    kit: { grants: { ...(s.kit?.grants || {}) }, uses: { ...(s.kit?.uses || {}) }, claims: { ...(s.kit?.claims || {}) } },
     seen: { level: s.seen?.level || 1, stages: { ...(s.seen?.stages || {}) } },
     migrated: s.migrated || e.migrated,
     profile: { ...(s.profile || {}) },
+    v2: s.v2 && typeof s.v2 === 'object' ? { ...s.v2, converted: { ...(s.v2.converted || {}) } } : null,
   }
 }
 
@@ -124,21 +127,51 @@ export function itemOpen(item, level) {
   return level >= (KIT[item]?.unlock || 1)
 }
 
-// ---- Your Kit ----
+// ---- Your Tools ----
+// A grant past an item's cap is stored as `pending` instead of being lost. A
+// pending grant counts once it is claimed (kit.claims), which is only allowed
+// while the player is under the cap. Everything is keyed by id, so a grant,
+// claim or use can never happen twice, on one device or after a sync.
 export function grant(state, { id, item, qty = 1, source, at = Date.now() }) {
   if (!id || state.kit.grants[id] || !KIT[item]) return false
   const cap = KIT[item].max
-  if (cap && kitCounts(state)[item] >= cap) return false // held at the limit: nothing is lost later, the grant just doesn't happen
-  state.kit.grants[id] = { item, qty, source, at }
-  return true
+  const pending = !!(cap && kitCounts(state)[item] + qty > cap)
+  state.kit.grants[id] = { item, qty, source, at, ...(pending ? { pending: true } : {}) }
+  return pending ? 'pending' : 'granted'
+}
+const grantCounts = (g, claims, id) => !g.pending || !!claims[id]
+// Held balance of any item id, including ones no longer in KIT (used to
+// convert removed tools).
+export function heldOf(state, item) {
+  let n = 0
+  const claims = state.kit.claims || {}
+  for (const [id, g] of Object.entries(state.kit.grants)) if (g.item === item && grantCounts(g, claims, id)) n += g.qty || 1
+  for (const u of Object.values(state.kit.uses)) if (u.item === item) n -= 1
+  return Math.max(0, n)
 }
 export function kitCounts(state) {
   const c = {}
-  for (const k of Object.keys(KIT)) c[k] = 0
-  for (const g of Object.values(state.kit.grants)) if (c[g.item] !== undefined) c[g.item] += g.qty || 1
-  for (const u of Object.values(state.kit.uses)) if (c[u.item] !== undefined) c[u.item] -= 1
-  for (const k of Object.keys(c)) c[k] = Math.max(0, c[k])
+  for (const k of Object.keys(KIT)) c[k] = heldOf(state, k)
   return c
+}
+// Pending claims per item, oldest first.
+export function pendingClaims(state) {
+  const out = {}
+  const claims = state.kit.claims || {}
+  for (const [id, g] of Object.entries(state.kit.grants)) {
+    if (!g.pending || claims[id] || !KIT[g.item]) continue
+    ;(out[g.item] ||= []).push({ id, ...g })
+  }
+  for (const k of Object.keys(out)) out[k].sort((a, b) => (a.at || 0) - (b.at || 0) || a.id.localeCompare(b.id))
+  return out
+}
+export function claimPending(state, item, at = Date.now()) {
+  const list = pendingClaims(state)[item] || []
+  const cap = KIT[item]?.max
+  if (!list.length) return false
+  if (cap && kitCounts(state)[item] + (list[0].qty || 1) > cap) return false
+  state.kit.claims[list[0].id] = at
+  return true
 }
 export function useItem(state, { id, item, at = Date.now(), m }) {
   if (!id || state.kit.uses[id]) return false
@@ -147,21 +180,34 @@ export function useItem(state, { id, item, at = Date.now(), m }) {
   return true
 }
 
-// ---- Rounds ----
-export function roundsGoals(weekIndex) {
-  const ids = ROUNDS_ROTATION[((weekIndex % ROUNDS_ROTATION.length) + ROUNDS_ROTATION.length) % ROUNDS_ROTATION.length]
-  return ids.map((id) => ROUNDS_POOL.find((g) => g.id === id))
+// A zero-XP ledger marker (counts toward This Week, pays nothing).
+export function mark(state, { id, kind, at = Date.now(), m }) {
+  if (!id || state.ledger[id]) return false
+  state.ledger[id] = { xp: 0, base: 0, kind, at, d: dayKey(at), ...(m ? { m } : {}) }
+  return true
 }
+
+// ---- This Week ----
+// Complete any two of three fixed goals:
+//   dailies  scheduled Dailies completed (each date once; assisted counts)
+//   systems  different Systems boards completed this week (replays count,
+//            once per board per week)
+//   timed    3-Minute sessions or Races finished (abandoned ones are never
+//            recorded)
 export function roundsProgress(state, now = Date.now()) {
   const wk = weekOf(now)
   const entries = Object.values(state.ledger).filter((e) => inWeek(e, wk) && !String(e.kind).startsWith('bf'))
-  const goals = roundsGoals(wk.index).map((g) => {
-    let rel = entries.filter((e) => g.kinds.includes(e.kind) && (!g.level || e.m?.level === g.level))
-    let count = g.distinct ? new Set(rel.map((e) => e.m?.[g.distinct]).filter(Boolean)).size : rel.length
-    count = Math.min(count, g.target)
+  const counters = {
+    dailies: entries.filter((e) => e.kind === 'daily').length,
+    systems: new Set(entries.filter((e) => e.kind === 'sysweek').map((e) => e.m?.board)).size,
+    timed: entries.filter((e) => e.kind === 'challenge' || e.kind === 'racedone').length,
+  }
+  const goals = WEEKLY_GOALS.map((g) => {
+    const count = Math.min(counters[g.id] || 0, g.target)
     return { ...g, count, done: count >= g.target }
   })
-  return { week: wk, goals, done: goals.filter((g) => g.done).length, complete: goals.every((g) => g.done), paid: weekRewardPaid(state, wk) }
+  const done = goals.filter((g) => g.done).length
+  return { week: wk, goals, done, need: WEEKLY_GOALS_NEEDED, complete: done >= WEEKLY_GOALS_NEEDED, paid: weekRewardPaid(state, wk) }
 }
 // Has this week's reward been paid? By its id, or by any weekly reward earned
 // inside this week's dates (ids from before the week label was corrected, or
@@ -169,6 +215,14 @@ export function roundsProgress(state, now = Date.now()) {
 export function weekRewardPaid(state, wk) {
   if (state.ledger[`rounds:${wk.key}`]) return true
   return Object.values(state.ledger).some((e) => e.kind === 'rounds' && inWeek(e, wk))
+}
+// Weekly rewards paid under Your Tools whose chosen tool has not been picked.
+export function weeklyChoicesDue(state) {
+  const from = state.v2?.at || Infinity
+  return Object.entries(state.ledger)
+    .filter(([id, e]) => e.kind === 'rounds' && (e.at || 0) >= from && id.startsWith('rounds:') && !state.kit.grants[`${id}:item`])
+    .map(([id]) => id.slice('rounds:'.length))
+    .sort()
 }
 
 // ---- merge (two devices, or device + cloud) ----
@@ -179,10 +233,25 @@ export function mergeStates(a, b) {
   return {
     version: 1,
     ledger: { ...B.ledger, ...A.ledger },
-    kit: { grants: { ...B.kit.grants, ...A.kit.grants }, uses: { ...B.kit.uses, ...A.kit.uses } },
+    kit: { grants: { ...B.kit.grants, ...A.kit.grants }, uses: { ...B.kit.uses, ...A.kit.uses }, claims: { ...B.kit.claims, ...A.kit.claims } },
     seen: { level: Math.max(A.seen.level, B.seen.level), stages: { ...B.seen.stages, ...A.seen.stages } },
     migrated: pickMigrated,
     profile: { ...B.profile, ...A.profile },
+    v2: mergeV2(A.v2, B.v2),
+  }
+}
+// Your Tools start marker: the earliest start (so Coverage counting and
+// weekly choices begin at the first update on any device), and the highest
+// level already paid under the old schedule (so no level is paid twice).
+function mergeV2(a, b) {
+  if (!a || !b) return a || b || null
+  const conv = { ...b.converted }
+  for (const [k, v] of Object.entries(a.converted || {})) conv[k] = Math.max(conv[k] || 0, v || 0)
+  return {
+    at: Math.min(a.at, b.at),
+    coverageFrom: Math.min(a.coverageFrom ?? a.at, b.coverageFrom ?? b.at),
+    levelFrom: Math.max(a.levelFrom || 1, b.levelFrom || 1),
+    converted: conv,
   }
 }
 
