@@ -15,6 +15,7 @@ import { nextPuzzleInfo } from '../utils/resetCountdown.js'
 import { reportContext } from '../utils/reportContext.js'
 import { LevelLine } from './RecordParts.jsx'
 import LegalFooter from './LegalFooter.jsx'
+import TapBloom from './TapBloom.jsx'
 
 // Each system takes one accent from the four-colour Plexus palette, cycled by
 // position — same rule as the Systems page, so the home previews match.
@@ -529,6 +530,8 @@ export default function Home({
       )}
 
       <LegalFooter onNavigate={onOpenLegal} className="home-legal" />
+      {/* A small node bloom on taps on empty space and on the logo. Decorative. */}
+      <TapBloom />
     </div>
   )
 }

@@ -7093,3 +7093,19 @@ body.has-install-hint .app-shell {
 @media (max-width: 899px) { .daily-plexus { margin-top: 12px; } }
 /* Remove-from-saved star: a full-size target. */
 .saved-unsave { min-width: 44px; }
+
+/* Homepage tap bloom (components/TapBloom.jsx): one decorative canvas over
+   the viewport. It never takes input, never adds width or height, and sits
+   under notices and dialogs. */
+.tap-bloom {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 40;
+  display: block;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tap-bloom { display: none; }
+}
