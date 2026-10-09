@@ -221,7 +221,7 @@ body {
   padding: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   line-height: 1.4;
 }
@@ -4610,31 +4610,27 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
    shared rules below map them onto the variables components already use.
    Same values in light and dark mode.
    ================================================================== */
+/* Outfit (SIL Open Font License, public/fonts/OFL-Outfit.txt), self-hosted:
+   geometric and friendly, kept crisp with slightly tighter display spacing.
+   Two static weights: Regular serves 300-550, Bold serves 551-900. */
 @font-face {
-  font-family: 'Bricolage Grotesque';
-  src: url('/fonts/bricolage-grotesque-700.woff') format('woff');
-  font-weight: 600 900;
+  font-family: 'Outfit';
+  src: url('/fonts/outfit-400.woff') format('woff');
+  font-weight: 300 550;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Instrument Sans';
-  src: url('/fonts/instrument-sans-400.woff') format('woff');
-  font-weight: 300 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Instrument Sans';
-  src: url('/fonts/instrument-sans-700.woff') format('woff');
-  font-weight: 600 900;
+  font-family: 'Outfit';
+  src: url('/fonts/outfit-700.woff') format('woff');
+  font-weight: 551 900;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-  --font-display: 'Bricolage Grotesque', 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-ui: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Outfit', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-ui: 'Outfit', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-sans: var(--font-ui);
   --font-serif: var(--font-display); /* retired: anything still pointing here gets the display sans */
   --type-display: clamp(2.3rem, 9.6vw, 2.9rem);
@@ -4830,8 +4826,8 @@ body.env-systems .app-nav-item.active::after { background: var(--room-text); box
 
 /* ==================================================================
    TYPE
-   Bricolage Grotesque for headings and identity moments, Instrument Sans
-   for everything else. Hierarchy through size and weight.
+   Outfit throughout: Bold for headings and identity moments, Regular for
+   reading. Hierarchy through size, weight and spacing.
    ================================================================== */
 .home-hero-title,
 .systems-title,
@@ -6908,3 +6904,36 @@ body.env-record {
 .mp-progress { margin-top: 2.2rem; }
 .growth-compact .growth-label { white-space: nowrap; max-width: none; }
 .growth-label-kicker { white-space: nowrap; }
+
+/* ---- Outfit tuning ----
+   Outfit is wider and rounder than Instrument Sans: display sizes get a
+   touch more negative tracking so headings stay tight and confident, small
+   caps-like labels a touch of positive tracking, and body copy a slightly
+   taller line so it reads easily on phones. */
+html { font-feature-settings: 'ss01' 0; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+.home-hero-title, .systems-title, .system-detail-title, .challenge-title, .record-level, .race-title { letter-spacing: -0.035em; }
+h1, h2, .record-section, .kit-group-head { letter-spacing: -0.02em; }
+p { line-height: 1.5; }
+.home-reset-note, .week-rule, .kit-group-sub, .tool-why, .growth-label-kicker { letter-spacing: 0.01em; }
+
+/* ---- Locked review extras (Follow the thread, Verified Connections) ----
+   Visible and explained, never spoiled: a dashed edge, a small lock and the
+   progress that opens it. */
+.follow-thread-btn.is-locked { cursor: default; border-style: dashed; background: transparent; }
+.follow-thread-btn.is-locked .follow-thread-cta { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); }
+.follow-thread-btn.is-locked .follow-thread-label { white-space: normal; line-height: 1.45; }
+.lock-mark { flex: none; }
+.thread-locked { text-align: center; padding: 8px 4px 4px; }
+.thread-locked-mark { position: relative; display: block; width: 64px; height: 20px; margin: 0 auto 10px; }
+.thread-locked-mark span { position: absolute; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: 0.85; }
+.thread-locked-mark span:nth-child(1) { left: 0; }
+.thread-locked-mark span:nth-child(2) { left: 28px; opacity: 0.45; }
+.thread-locked-mark span:nth-child(3) { left: 56px; opacity: 0.25; }
+.thread-locked-mark::before { content: ''; position: absolute; top: 9.5px; left: 6px; right: 6px; border-top: 1.5px dashed currentColor; opacity: 0.4; }
+.thread-locked-title { margin: 0 0 4px; font-weight: 700; font-size: 1.05rem; }
+.thread-locked-text { margin: 0 auto 12px; max-width: 320px; font-size: var(--type-secondary); line-height: 1.5; color: var(--text-dim); }
+.thread-locked-progress { display: flex; justify-content: center; gap: 18px; margin: 0; font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
+.thread-locked-progress b { color: var(--text); font-size: 1rem; font-variant-numeric: tabular-nums; }
+.follow-thread-btn.is-locked { flex-direction: column; align-items: flex-start; gap: 4px; border-left: 1.5px dashed color-mix(in srgb, var(--text) 40%, transparent); }
+.follow-thread-btn.is-locked:hover { border-color: var(--border); }
+.follow-thread-btn.is-locked .follow-thread-label { text-transform: none; letter-spacing: 0; font-weight: 500; font-size: var(--type-caption); color: var(--text-dim); overflow: visible; }

@@ -8,10 +8,10 @@
  *   - Cross-origin (e.g. Supabase API/realtime): never touched — always network.
  * Bump CACHE_VERSION to force-retire old caches on the next deploy.
  */
-const CACHE_VERSION = 'plexus-v3'
+const CACHE_VERSION = 'plexus-v4'
 const APP_SHELL = [
   '/', '/index.html', '/manifest.webmanifest', '/favicon.svg', '/icons/icon-192.png',
-  '/fonts/bricolage-grotesque-700.woff', '/fonts/instrument-sans-400.woff', '/fonts/instrument-sans-700.woff',
+  '/fonts/outfit-400.woff', '/fonts/outfit-700.woff',
 ]
 
 self.addEventListener('install', (event) => {

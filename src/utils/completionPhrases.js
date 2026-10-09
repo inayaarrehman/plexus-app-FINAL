@@ -5,7 +5,7 @@
 // shows the same phrase (useful for tests and for not feeling random on a
 // replay/reopen), except a perfect (zero-mistake) solve always gets its
 // own distinct phrase regardless of rotation.
-const PHRASES = ['Connected.', 'All four linked.', 'Clean solve.', "That's the connection.", 'Network complete.']
+const PHRASES = ['Connected.', 'All four linked.', 'Clean solve.', "That's the connection.", 'Fully connected.']
 const PERFECT_PHRASE = 'Perfectly connected.'
 
 function hashString(str) {

@@ -5,18 +5,18 @@ import ThreadModal from './ThreadModal.jsx'
 import { groupColor } from './GroupMotif.jsx'
 import { difficultyLabelOf } from './DifficultyIcon.jsx'
 import { reportContext } from '../utils/reportContext.js'
+import { featureState, unlockRequirement, encounteredConnectionIds } from '../utils/featureUnlocks.js'
 
 const levelColor = (level) => groupColor(level)
 
-// onKnowledgeSignal(tag, 'knew-it' | 'review-later') — Section 12's "I Knew
-// That" feature: a lightweight, entirely optional signal the player can
-// leave on any category during review. Never asked automatically, never
-// scored — just another input for a future Weak Spots view.
 // onReport(context): opens Report this connection for a category.
-export default function ReviewConnections({ puzzle, onKnowledgeSignal, onReport, reportMode = 'daily', puzzleDate = null }) {
+// "Follow the thread" opens once the player has finished enough Dailies
+// (utils/featureUnlocks.js); until then it shows as locked, without naming
+// the thread or the systems it reaches, so nothing ahead is hinted at.
+export default function ReviewConnections({ puzzle, onReport, reportMode = 'daily', puzzleDate = null }) {
   const [openIndex, setOpenIndex] = useState(null)
-  const [signaled, setSignaled] = useState({})
   const [activeThread, setActiveThread] = useState(null)
+  const threadLock = featureState('thread')
   // Reflects saved state per category so the toggle updates instantly;
   // seeded lazily from persistence the first time a category is checked.
   const [savedMap, setSavedMap] = useState({})
@@ -25,12 +25,6 @@ export default function ReviewConnections({ puzzle, onKnowledgeSignal, onReport,
   const handleSave = (cat) => {
     const nowSaved = toggleSavedConnection(cat)
     setSavedMap((prev) => ({ ...prev, [cat.catIndex]: nowSaved }))
-  }
-
-  const sendSignal = (tag, signal) => {
-    if (!onKnowledgeSignal) return
-    onKnowledgeSignal(tag, signal)
-    setSignaled((prev) => ({ ...prev, [tag]: signal }))
   }
 
   const ordered = puzzle.categories
@@ -81,33 +75,26 @@ export default function ReviewConnections({ puzzle, onKnowledgeSignal, onReport,
                   </span>
                   {savedFor(cat) ? 'Saved' : 'Save'}
                 </button>
-                {thread && (
-                  <button className="follow-thread-btn" onClick={() => setActiveThread(thread)}>
-                    <span className="follow-thread-label">
-                      {thread.label} &middot; {thread.systems.slice(0, 3).join(' · ')}
-                    </span>
-                    <span className="follow-thread-cta">
-                      Follow the thread <span aria-hidden="true">&rarr;</span>
-                    </span>
-                  </button>
-                )}
-                {onKnowledgeSignal && (
-                  <div className="knowledge-signal-row">
-                    <span className="knowledge-signal-label">Did you know this one?</span>
-                    <button
-                      className={`chip-btn ${signaled[cat.title] === 'knew-it' ? 'chip-btn-active' : ''}`}
-                      onClick={() => sendSignal(cat.title, 'knew-it')}
-                    >
-                      Knew it
+                {thread &&
+                  (threadLock.unlocked ? (
+                    <button className="follow-thread-btn" onClick={() => setActiveThread(thread)}>
+                      <span className="follow-thread-label">
+                        {thread.label} &middot; {thread.systems.slice(0, 3).join(' · ')}
+                      </span>
+                      <span className="follow-thread-cta">
+                        Follow the thread <span aria-hidden="true">&rarr;</span>
+                      </span>
                     </button>
-                    <button
-                      className={`chip-btn ${signaled[cat.title] === 'review-later' ? 'chip-btn-active' : ''}`}
-                      onClick={() => sendSignal(cat.title, 'review-later')}
-                    >
-                      Review later
-                    </button>
-                  </div>
-                )}
+                  ) : (
+                    <div className="follow-thread-btn is-locked" role="note">
+                      <span className="follow-thread-cta">
+                        <LockMark /> Follow the thread
+                      </span>
+                      <span className="follow-thread-label">
+                        This connection links to others across Plexus. Unlocks after {unlockRequirement('thread')} ({threadLock.have.dailies}/{threadLock.need.dailies}).
+                      </span>
+                    </div>
+                  ))}
                 {onReport && (
                   <button type="button" className="report-link" onClick={() => onReport(reportContext(puzzle, puzzle.categories[cat.catIndex], { mode: reportMode, date: puzzleDate }))}>
                     Report this connection
@@ -118,7 +105,16 @@ export default function ReviewConnections({ puzzle, onKnowledgeSignal, onReport,
           </div>
         )
       })}
-      {activeThread && <ThreadModal thread={activeThread} onClose={() => setActiveThread(null)} />}
+      {activeThread && <ThreadModal thread={activeThread} verified={featureState('verified')} encountered={encounteredConnectionIds({ extra: [puzzle] })} onClose={() => setActiveThread(null)} />}
     </div>
+  )
+}
+
+function LockMark() {
+  return (
+    <svg className="lock-mark" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false">
+      <rect x="2" y="5.2" width="8" height="5.8" rx="1.4" fill="currentColor" />
+      <path d="M3.9 5.4V3.9a2.1 2.1 0 0 1 4.2 0v1.5" stroke="currentColor" strokeWidth="1.3" />
+    </svg>
   )
 }

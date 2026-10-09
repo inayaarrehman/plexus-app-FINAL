@@ -98,19 +98,20 @@ const G = {
     ],
     order: [8, 3, 7, 0, 4, 1, 5, 2, 6],
   },
-  // Heme/Onc: a hematopoietic tree — a progenitor branching down into cell
-  // nodes. Biologic/cellular rather than an organ.
+  // Heme/Onc: hemoglobin read as a network: four globin subunits in a
+  // square around the central iron, each with its heme branching outward.
+  // A compact molecule, nothing like the branching airways of Pulmonary.
   'Heme/Onc': {
     nodes: [
-      [50, 16], [50, 32], [34, 46], [66, 46],
-      [24, 60], [44, 60], [56, 60], [76, 60],
-      [34, 78], [66, 78],
+      [50, 50], [34, 34], [66, 34], [66, 66], [34, 66],
+      [22, 22], [78, 22], [78, 78], [22, 78],
     ],
     links: [
-      [0, 1], [1, 2], [1, 3], [2, 4], [2, 5],
-      [3, 6], [3, 7], [4, 8], [5, 8], [6, 9], [7, 9],
+      [1, 2], [2, 3], [3, 4], [4, 1],
+      [0, 1], [0, 2], [0, 3], [0, 4],
+      [1, 5], [2, 6], [3, 7], [4, 8],
     ],
-    order: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    order: [0, 1, 2, 3, 4, 5, 6, 7, 8],
   },
   // MSK: two epiphyseal node clusters (bone ends) meeting through a central
   // joint.
@@ -138,31 +139,35 @@ const G = {
     ],
     order: [0, 1, 8, 2, 5, 3, 6, 4, 7],
   },
-  // Psychiatry: a distributed signaling mesh — a hub with radiating spokes and
-  // an outer ring. Deliberately NOT a brain contour (distinct from Neurology).
+  // Psychiatry: a head in profile, facing right, with a small cluster of
+  // connected nodes where the mind sits. The contour carries the form;
+  // Neurology stays the front-on brain.
   Psychiatry: {
     nodes: [
-      [50, 22], [70, 32], [78, 52], [68, 72],
-      [48, 78], [30, 70], [22, 50], [32, 30], [50, 50],
+      [38, 86], [26, 60], [32, 30], [50, 18], [68, 26], [72, 40],
+      [81, 50], [72, 56], [72, 68], [62, 74], [60, 86],
+      [44, 42], [58, 38], [52, 52],
     ],
     links: [
-      [8, 0], [8, 2], [8, 4], [8, 6],
-      [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 0],
+      [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10],
+      [11, 12], [12, 13], [13, 11],
     ],
-    order: [8, 0, 2, 4, 6, 1, 3, 5, 7],
+    order: [11, 12, 13, 3, 2, 4, 1, 5, 0, 6, 7, 8, 9, 10],
   },
-  // Microbiology: an irregular ring of cocci-like nodes around a central body
-  // — a microorganism read as a network, not a cartoon bacterium.
+  // Microbiology: a virus: a six-sided capsid with spikes ending in nodes,
+  // facets drawn to the genome at its centre.
   Microbiology: {
     nodes: [
-      [50, 22], [66, 28], [76, 44], [74, 62],
-      [58, 74], [40, 72], [26, 58], [28, 38], [50, 48],
+      [50, 50],
+      [50, 30], [67, 40], [67, 60], [50, 70], [33, 60], [33, 40],
+      [50, 16], [79, 33], [79, 67], [50, 84], [21, 67], [21, 33],
     ],
     links: [
-      [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 0],
-      [8, 0], [8, 3], [8, 6],
+      [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 1],
+      [0, 1], [0, 3], [0, 5],
+      [1, 7], [2, 8], [3, 9], [4, 10], [5, 11], [6, 12],
     ],
-    order: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+    order: [0, 1, 3, 5, 2, 4, 6, 7, 8, 9, 10, 11, 12],
   },
   // Immunology: the Y of an immunoglobulin — a stem forking into two Fab arms.
   Immunology: {
@@ -190,22 +195,43 @@ const G = {
     ],
     order: [1, 0, 2, 4, 3, 5, 7, 6, 8],
   },
-  // Pharmacology: a ligand cluster docking into a receptor pocket — binding
-  // rendered as a network.
+  // Pharmacology: a pill bottle: cap above a taller body, corners as nodes,
+  // and a two-node capsule inside.
   Pharmacology: {
     nodes: [
-      [26, 40], [24, 52], [30, 64], [44, 70], [58, 66],
-      [60, 40], [72, 34], [70, 48], [58, 52],
+      [36, 16], [64, 16], [64, 27], [36, 27],
+      [30, 33], [70, 33], [70, 82], [30, 82],
+      [43, 57], [57, 57],
     ],
     links: [
-      [0, 1], [1, 2], [2, 3], [3, 4],
-      [5, 6], [6, 7], [7, 8], [8, 5], [4, 8],
+      [0, 1], [1, 2], [2, 3], [3, 0],
+      [3, 4], [2, 5],
+      [4, 5], [5, 6], [6, 7], [7, 4],
+      [8, 9],
     ],
-    order: [0, 1, 2, 3, 4, 8, 5, 7, 6],
+    order: [8, 9, 4, 5, 6, 7, 3, 2, 0, 1],
   },
-  // Biochemistry/Genetics: a paired, rung-linked double strand — DNA implied
-  // by two node columns joined by base-pair rungs.
+  // Biochemistry: an amino acid: the alpha carbon at the centre, its amine
+  // and carboxyl groups branching to either side, and a side chain dropping
+  // to a six-node ring (an aromatic residue).
   'Biochemistry/Genetics': {
+    nodes: [
+      [50, 38], [32, 28], [20, 20], [22, 38],
+      [68, 28], [80, 20], [78, 38],
+      [50, 52],
+      [50, 60], [58, 65], [58, 75], [50, 80], [42, 75], [42, 65],
+    ],
+    links: [
+      [0, 1], [1, 2], [1, 3],
+      [0, 4], [4, 5], [4, 6],
+      [0, 7], [7, 8],
+      [8, 9], [9, 10], [10, 11], [11, 12], [12, 13], [13, 8],
+    ],
+    order: [0, 1, 4, 7, 2, 5, 8, 3, 6, 9, 13, 10, 12, 11],
+  },
+  // Genetics: a paired, rung-linked double strand: DNA implied by two node
+  // columns joined by base-pair rungs.
+  Genetics: {
     nodes: [
       [36, 20], [64, 22], [34, 40], [66, 40],
       [36, 60], [64, 58], [34, 80], [66, 78],
@@ -253,12 +279,11 @@ const GLYPH_SCALE = {
   Immunology: 1.06,
   MSK: 1.05,
   Reproductive: 1.05,
-  Pharmacology: 1.05,
 }
 
 // Returns { nodes: [{x,y}], links: [[i,j]], order: [i...], scale } for a system.
-// Genetics is its own subject in the new library and shares the strand glyph.
-const GLYPH_ALIAS = { Genetics: 'Biochemistry/Genetics' }
+// Genetics keeps the double strand; Biochemistry has its own amino acid.
+const GLYPH_ALIAS = {}
 export function getSystemGlyph(system) {
   const g = G[system] || G[GLYPH_ALIAS[system]] || fallbackGlyph()
   return {

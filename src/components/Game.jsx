@@ -38,7 +38,6 @@ export default function Game({
   onExit,
   onOpenRecord,
   onFinish,
-  onKnowledgeSignal,
   onReport, // opens Report this connection with the group's details
   reportMode = 'daily', // daily | archive | system, attached to reports
   puzzleDate = null, // the Daily's calendar date, attached to reports
@@ -634,7 +633,7 @@ export default function Game({
             <Confetti count={60} originY={45} seed={puzzle.id.length * 131 + 7} palette={systemCompletion.palette} shapes={['node', 'node', 'line', 'rect', 'node', 'line']} />
           )}
 
-          <h2>{resultTitle || (isDaily ? "Today's Results" : 'Puzzle Results')}</h2>
+          <h2>{resultTitle || (isDaily ? 'Today’s Plexus' : 'Puzzle Results')}</h2>
           {systemCompletion && (
             <div className="system-connected" role="status" style={{ '--node-accent': systemCompletion.accent }}>
               <p className="system-connected-title">System connected.</p>
@@ -700,7 +699,7 @@ export default function Game({
             {showReview ? 'Hide connections' : 'Show connections'}
             <span aria-hidden="true">{showReview ? ' ▴' : ' ▾'}</span>
           </button>
-          {showReview && <ReviewConnections puzzle={puzzle} onKnowledgeSignal={onKnowledgeSignal} onReport={onReport} reportMode={reportMode} puzzleDate={puzzleDate} />}
+          {showReview && <ReviewConnections puzzle={puzzle} onReport={onReport} reportMode={reportMode} puzzleDate={puzzleDate} />}
 
 
           {isSystem && systemActions ? (

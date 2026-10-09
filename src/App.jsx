@@ -25,6 +25,7 @@ import DevViewer from './components/DevViewer.jsx'
 import BrandMark from './components/BrandMark.jsx'
 import { dayNumber, dateKeyFromDayNumber } from './utils/game.js'
 import { finishStamp, useToday } from './utils/calendarHooks.js'
+import { formatDayKey } from './utils/calendar.js'
 import { getDailyPuzzleForDate, getPlayableDailyForDate } from './utils/dailyPuzzle.js'
 import { getDailyGate, isGatedView, GATED_VIEWS, LOCK_COPY, hasSeenUnlock, markUnlockSeen } from './utils/dailyGate.js'
 import LockGlyph from './components/LockGlyph.jsx'
@@ -447,7 +448,7 @@ export default function App() {
       mode: isToday ? 'daily' : 'archive',
       progressKey: `daily-${dateStr}`,
       headerLabel: isToday ? `Daily #${todayDayNumber}` : `Archive · ${dateStr}`,
-      resultTitle: isToday ? "Today's Results" : `Result for ${dateStr}`,
+      resultTitle: isToday ? 'Today’s Plexus' : `Plexus for ${formatDayKey(dateStr, { weekday: 'short', month: 'short', day: 'numeric' })}`,
       dailyNumber: puzzle.number,
       dailyStreak: streak.current,
       dateForHistory: dateStr,
