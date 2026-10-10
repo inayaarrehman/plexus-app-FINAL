@@ -7210,7 +7210,6 @@ body.has-install-hint .app-shell {
 .leave-board-text { margin: 0 0 16px; font-size: var(--type-secondary); line-height: 1.5; }
 .leave-board-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .leave-board-actions > * { flex: 1 1 160px; }
-}
 /* Desktop left column: the heading fits its column at large text sizes. */
 .systems-left { min-width: 0; }
 .systems-left .systems-title { font-size: min(clamp(2rem, 1.5rem + 2vw, 2.7rem), 19cqi); }
