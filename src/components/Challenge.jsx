@@ -16,7 +16,8 @@ import { haptics } from '../utils/haptics.js'
 import { timedCanonicalId } from '../utils/timedLibrary.js'
 import TileText from './TileText.jsx'
 import { recordChallengeSession } from '../progression/store.js'
-import { TimedXpNote, TimedResultLine } from './TimedXp.jsx'
+import { TimedXpNote, TimedResultLine, timedXpGained } from './TimedXp.jsx'
+import Modal from './Modal.jsx'
 
 // The timed mode is 3 minutes (formerly 5). Kept as a single constant so
 // there are no other "five minute" assumptions hiding in the component.
@@ -42,7 +43,7 @@ function topEntry(counts) {
   return entries[0][0]
 }
 
-export default function Challenge({ bank, onExit, onPhaseChange }) {
+export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0, onRequestedExit = null }) {
   const [phase, setPhase] = useState('intro') // 'intro' | 'playing' | 'results'
   const [xpResult, setXpResult] = useState(null) // what this session earned (progression)
   const [activating, setActivating] = useState(false) // §16 intro network resolve
@@ -101,6 +102,10 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
   const [answerNote, setAnswerNote] = useState(null) // shown briefly after a wrong answer
   const logMistake = (entry) => setMistakes((prev) => [...prev, entry])
 
+  // Ending a run early: asks first (in-app End, or browser Back mid-run).
+  // An ended run is never finished: no score, XP, best or This Week credit.
+  const [confirmEnd, setConfirmEnd] = useState(false) // false | 'button' | 'request'
+  const resultsRef = useRef(null)
   const lockRef = useRef(false)
   const roundStartRef = useRef(null)
   const endAtRef = useRef(null)
@@ -264,6 +269,30 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
   useEffect(() => {
     onPhaseChange?.(phase)
   }, [phase, onPhaseChange])
+
+  const seenExitRequest = useRef(exitRequest)
+  useEffect(() => {
+    if (exitRequest === seenExitRequest.current) return
+    seenExitRequest.current = exitRequest
+    if (phase === 'playing') setConfirmEnd('request')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [exitRequest])
+  const endSession = () => {
+    const how = confirmEnd
+    setConfirmEnd(false)
+    clearInterval(timerRef.current)
+    finishRef.current = () => {}
+    lockRef.current = true
+    setRound(null)
+    setActivating(false)
+    setPhase('intro')
+    onPhaseChange?.('intro')
+    if (how === 'request') onRequestedExit?.()
+  }
+  // The summary takes focus when results appear.
+  useEffect(() => {
+    if (phase === 'results') resultsRef.current?.focus({ preventScroll: false })
+  }, [phase])
 
   const applyCorrect = (basePoints, responseMs, systems) => {
     const multiplier = getMultiplier(comboStreak)
@@ -528,50 +557,54 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
     return (
       <div className={`challenge challenge-intro ${activating ? 'is-activating' : ''}`}>
         <div className="challenge-intro-inner">
-          <h1 className="challenge-title">3 Minutes</h1>
-          <p className="challenge-lede">How many connections can you make?</p>
-          <ChallengeTypes />
-          <button type="button" className="challenge-helper-row challenge-scoring-link" aria-expanded={showScoring} aria-controls="challenge-scoring" onClick={() => setShowScoring((v) => !v)}>
-            <span className="challenge-helper-label">How scoring works</span>
-            <span className="challenge-types-names" aria-hidden="true">Points, speed, streaks</span>
-            <Chevron open={showScoring} />
-          </button>
-          {showScoring && <ScoringInfo id="challenge-scoring" onClose={() => setShowScoring(false)} />}
-
-          {/* §15: Start is the one focal action, seated in a restrained Plexus
-              network that resolves on activation (§16). The button stays
-              perfectly clear on top; the network is decorative. */}
-          <div className="challenge-start-wrap">
-            <svg className="challenge-start-net" viewBox="0 0 220 140" aria-hidden="true" fill="none">
-              <g className="csn-links">
-                <line x1="30" y1="38" x2="76" y2="70" />
-                <line x1="76" y1="70" x2="110" y2="24" />
-                <line x1="110" y1="24" x2="150" y2="60" />
-                <line x1="150" y1="60" x2="192" y2="34" />
-                <line x1="76" y1="70" x2="60" y2="112" />
-                <line x1="150" y1="60" x2="168" y2="108" />
-                <line x1="60" y1="112" x2="110" y2="120" />
-                <line x1="110" y1="120" x2="168" y2="108" />
-              </g>
-              <g className="csn-nodes">
-                <circle cx="30" cy="38" r="3.4" />
-                <circle cx="110" cy="24" r="3.4" />
-                <circle cx="192" cy="34" r="3.4" />
-                <circle cx="76" cy="70" r="3.4" />
-                <circle cx="150" cy="60" r="3.4" />
-                <circle cx="60" cy="112" r="3.4" />
-                <circle cx="168" cy="108" r="3.4" />
-                <circle cx="110" cy="120" r="3.4" />
-              </g>
-            </svg>
-            <button className="challenge-start-btn" onClick={handleStart} disabled={activating}>
-              Start
-              <span className="challenge-start-arrow" aria-hidden="true">&rarr;</span>
+          <header className="challenge-intro-head">
+            <h1 className="challenge-title">3 Minutes</h1>
+            <p className="challenge-lede">A fast mix of medical connection challenges.</p>
+          </header>
+          <div className="challenge-help">
+            <ChallengeTypes />
+            <button type="button" className="challenge-helper-row challenge-scoring-link" aria-expanded={showScoring} aria-controls="challenge-scoring" onClick={() => setShowScoring((v) => !v)}>
+              <span className="challenge-helper-label">How scoring works</span>
+              <Chevron open={showScoring} />
             </button>
+            {showScoring && <ScoringInfo id="challenge-scoring" onClose={() => setShowScoring(false)} />}
           </div>
 
-          {personalBest > 0 && <p className="challenge-best">Personal best: {personalBest.toLocaleString()}</p>}
-          <TimedXpNote />
+          {/* Start is the one focal action, seated in a restrained Plexus
+              network that resolves on activation. Decorative network. */}
+          <section className="challenge-start-area" aria-label="Start">
+            <div className="challenge-start-wrap">
+              <svg className="challenge-start-net" viewBox="0 0 220 140" aria-hidden="true" fill="none">
+                <g className="csn-links">
+                  <line x1="30" y1="38" x2="76" y2="70" />
+                  <line x1="76" y1="70" x2="110" y2="24" />
+                  <line x1="110" y1="24" x2="150" y2="60" />
+                  <line x1="150" y1="60" x2="192" y2="34" />
+                  <line x1="76" y1="70" x2="60" y2="112" />
+                  <line x1="150" y1="60" x2="168" y2="108" />
+                  <line x1="60" y1="112" x2="110" y2="120" />
+                  <line x1="110" y1="120" x2="168" y2="108" />
+                </g>
+                <g className="csn-nodes">
+                  <circle cx="30" cy="38" r="3.4" />
+                  <circle cx="110" cy="24" r="3.4" />
+                  <circle cx="192" cy="34" r="3.4" />
+                  <circle cx="76" cy="70" r="3.4" />
+                  <circle cx="150" cy="60" r="3.4" />
+                  <circle cx="60" cy="112" r="3.4" />
+                  <circle cx="168" cy="108" r="3.4" />
+                  <circle cx="110" cy="120" r="3.4" />
+                </g>
+              </svg>
+              <button className="challenge-start-btn" onClick={handleStart} disabled={activating}>
+                Start
+                <span className="challenge-start-arrow" aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+            <p className="challenge-start-note">The timer starts when you tap Start.</p>
+            {personalBest > 0 && <p className="challenge-best">Personal best: {personalBest.toLocaleString()}</p>}
+            <TimedXpNote />
+          </section>
         </div>
       </div>
     )
@@ -582,48 +615,52 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
   // -------------------------------------------------------------------
   if (phase === 'results') {
     const accuracy = totalActions > 0 ? Math.round((correctActions / totalActions) * 100) : 0
-    const missEntries = Object.entries(misses)
+    const gained = timedXpGained(xpResult, '3 Minutes')
     return (
       <div className="challenge challenge-results">
-        <h2 className="challenge-results-heading">3 Minutes</h2>
-        <div className="challenge-final-score">{score.toLocaleString()}</div>
-        {isNewBest ? (
-          <div className="challenge-new-best">New personal best</div>
-        ) : (
-          <p className="challenge-best">Personal best: {personalBest.toLocaleString()}</p>
-        )}
-        <p className="challenge-results-line">
-          {roundsCompleted} round{roundsCompleted === 1 ? '' : 's'} &middot; {accuracy}% accuracy
-        </p>
-        <TimedResultLine result={xpResult} kind="3 Minutes" />
-        {resultsExtra.strongestSystem && (
-          <p className="challenge-results-line">
-            <span className="challenge-results-label">Strongest</span> {resultsExtra.strongestSystem}
-          </p>
-        )}
-        {resultsExtra.reviewSystem && (
-          <p className="challenge-results-line">
-            <span className="challenge-results-label">Review</span> {resultsExtra.reviewSystem}
-          </p>
-        )}
+        <section className="challenge-summary" aria-labelledby="challenge-summary-title" tabIndex={-1} ref={resultsRef}>
+          <p className="challenge-summary-eyebrow">Session complete</p>
+          <h2 className="challenge-results-heading" id="challenge-summary-title">3 Minutes</h2>
+          <dl className="challenge-summary-stats">
+            <div className="challenge-stat is-score">
+              <dt>Score</dt>
+              <dd className="challenge-final-score">{score.toLocaleString()}</dd>
+            </div>
+            <div className="challenge-stat">
+              <dt>Accuracy</dt>
+              <dd>
+                {accuracy}%<span className="challenge-stat-sub">{correctActions} of {totalActions} correct</span>
+              </dd>
+            </div>
+            <div className="challenge-stat">
+              <dt>XP earned</dt>
+              <dd>{gained > 0 ? `+${gained}` : '0'}</dd>
+            </div>
+          </dl>
+          {isNewBest ? (
+            <p className="challenge-new-best">New personal best</p>
+          ) : (
+            <p className="challenge-best">Personal best: {personalBest.toLocaleString()}</p>
+          )}
+          <TimedResultLine result={xpResult} kind="3 Minutes" />
+        </section>
 
         <div className="challenge-results-actions">
           <button className="primary-btn" onClick={startChallenge}>
             Play again
           </button>
           {mistakes.length > 0 && (
-            <button className="secondary-btn" onClick={() => setShowReviewMisses((v) => !v)}>
+            <button className="secondary-btn" onClick={() => setShowReviewMisses((v) => !v)} aria-expanded={showReviewMisses} aria-controls="challenge-review-misses">
               {showReviewMisses ? 'Hide mistakes' : `Review ${mistakes.length} mistake${mistakes.length === 1 ? '' : 's'}`}
             </button>
           )}
-        </div>
-
-        <div className="challenge-results-types">
-          <ChallengeTypes />
+          <button className="text-link challenge-done-link" onClick={onExit}>
+            Back to Home
+          </button>
         </div>
 
         {showReviewMisses && (
-          <ol className="challenge-review-misses">
+          <ol className="challenge-review-misses" id="challenge-review-misses">
             {mistakes.map((m, i) => (
               <li className="challenge-miss-item" key={i}>
                 <div className="challenge-miss-tag">{m.label}</div>
@@ -638,13 +675,29 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
                 {m.explanation && <p className="challenge-miss-explanation">{m.explanation}</p>}
               </li>
             ))}
-            <li className="challenge-miss-note">Missed topics are saved to Weak Spots.</li>
           </ol>
         )}
 
-        <button className="text-link" onClick={onExit}>
-          Done
-        </button>
+        {(resultsExtra.strongestSystem || resultsExtra.reviewSystem) && (
+          <section className="challenge-results-more" aria-label="Topics">
+            <p className="challenge-results-line">
+              {roundsCompleted} round{roundsCompleted === 1 ? '' : 's'} played
+            </p>
+            {resultsExtra.strongestSystem && (
+              <p className="challenge-results-line">
+                <span className="challenge-results-label">Strongest</span> {resultsExtra.strongestSystem}
+              </p>
+            )}
+            {resultsExtra.reviewSystem && (
+              <p className="challenge-results-line">
+                <span className="challenge-results-label">Review</span> {resultsExtra.reviewSystem}
+              </p>
+            )}
+          </section>
+        )}
+        <div className="challenge-results-types">
+          <ChallengeTypes />
+        </div>
       </div>
     )
   }
@@ -659,8 +712,24 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
 
   return (
     <div className={`challenge challenge-playing ${shake ? 'is-shake' : ''} ${feedback === 'incorrect' ? 'is-wrong' : ''}`}>
+      {confirmEnd && (
+        <Modal title="End this session?" onClose={() => setConfirmEnd(false)} className="leave-board-modal">
+          <p className="leave-board-text">Only sessions played to the end count. If you end now, this score isn’t saved and earns no XP or This Week progress. The clock keeps running while you decide.</p>
+          <div className="leave-board-actions">
+            <button type="button" className="primary-btn" onClick={() => setConfirmEnd(false)}>
+              Keep playing
+            </button>
+            <button type="button" className="secondary-btn" onClick={endSession}>
+              End session
+            </button>
+          </div>
+        </Modal>
+      )}
       <div className="challenge-header">
-        <span className={`challenge-timer ${isUrgent ? 'urgent' : ''}`}>{formatTime(timeLeftMs)}</span>
+        <button type="button" className="challenge-end-btn" onClick={() => setConfirmEnd('button')}>
+          End
+        </button>
+        <span className={`challenge-timer ${isUrgent ? 'urgent' : ''}`} role="timer" aria-label={`Time left ${formatTime(timeLeftMs)}`} aria-live="off">{formatTime(timeLeftMs)}</span>
         <span className="challenge-score-wrap">
           <span className="challenge-live-score">
             <AnimatedNumber value={score} />
@@ -1061,8 +1130,7 @@ function ChallengeTypes() {
     <section className={`challenge-types ${open ? 'is-open' : ''}`} aria-labelledby="challenge-types-title">
       <h2 className="challenge-types-head" id="challenge-types-title">
         <button type="button" className="challenge-helper-row challenge-types-toggle" aria-expanded={open} aria-controls="challenge-types-list" onClick={() => setOpen((v) => !v)}>
-          <span className="challenge-helper-label">What are the challenges?</span>
-          <span className="challenge-types-names" aria-hidden="true">{CHALLENGE_TYPES.map((t) => t.name).join(' · ')}</span>
+          <span className="challenge-helper-label">Challenge types</span>
           <Chevron open={open} />
         </button>
       </h2>

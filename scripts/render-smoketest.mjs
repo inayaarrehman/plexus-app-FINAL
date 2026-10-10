@@ -150,7 +150,7 @@ check('Home omits the Continue section with no play history yet, but still offer
 
 check('AppNav renders all 4 primary nav items with the active one marked', () => {
   const html = renderToStaticMarkup(React.createElement(AppNav, { active: 'systems', onNavigate: () => {} }))
-  ;['Today', 'Systems', '3-Minute', 'Archive'].forEach((label) => {
+  ;['Today', 'Systems', '3 Minutes', 'Archive'].forEach((label) => {
     if (!html.includes(label)) throw new Error(`expected the nav to include "${label}"`)
   })
   if (!html.includes('app-nav-item active')) throw new Error('expected the active nav item to carry the "active" class')
@@ -268,11 +268,14 @@ check('Game renders the result card + streak banner on a pre-seeded win', () => 
     })
   )
   if (!html.includes('result-card')) throw new Error('expected result-card in won-game markup')
-  if (!html.includes('streak-banner')) throw new Error('expected streak-banner when dailyStreak > 0')
-  if (!html.includes('milestone')) throw new Error('expected milestone styling at a 7-day streak')
+  if (!/<dt>Streak<\/dt><dd>7 days/.test(html)) throw new Error('expected the streak in the result summary when dailyStreak > 0')
+  if (!html.includes('is-milestone')) throw new Error('expected milestone styling at a 7-day streak')
   if (!html.includes('completion-phrase')) throw new Error('expected a rotating completion phrase on a win')
   if (!html.includes('brand-mark')) throw new Error('expected the brand mark to render on a win')
-  if (!html.includes('connection-of-day')) throw new Error('expected a Connection of the Day panel on a completed Daily win')
+  // Summary first: outcome, connections, mistakes, streak, then the actions,
+  // with one Review connections section after the card.
+  const iCard = html.indexOf('result-card'), iShare = html.indexOf('Share Results'), iReview = html.indexOf('Review connections')
+  if (!(iCard >= 0 && iShare > iCard && iReview > iShare)) throw new Error('expected result summary, then Share Results, then Review connections')
   if (html.includes('Amazing') || html.includes('genius') || html.includes('Great job'))
     throw new Error('completion feedback must avoid generic hype language')
   return html
@@ -350,26 +353,15 @@ check('Game results show four Plexus group motifs (no shape glyphs, no NYT squar
   if (html.includes('🟨') || html.includes('🟩') || html.includes('🟦') || html.includes('🟪')) {
     throw new Error('share text must not reuse the NYT Connections colored-square emoji grid')
   }
-  // 4 connections lead into 1 Plexus: one row per connection, each with a
-  // single node in its colour, the title first, difficulty quiet.
-  const rows = (html.match(/class="rc-row /g) || []).length
-  if (rows !== 4) throw new Error(`expected four connection rows, found ${rows}`)
-  if ((html.match(/class="rc-node"/g) || []).length !== 4) throw new Error('expected one connection node per row')
-  if (html.includes('plexus-merge')) throw new Error('the feeder lines above the constellation should be gone')
-  if (html.includes('difficulty-icon')) throw new Error('solved cards and results should not use difficulty icons')
-  if (html.includes('converge-mark')) throw new Error('the old fan icons should be gone')
-  const levels = [...html.matchAll(/class="rc-meta">(Easy|Medium|Hard|Expert)/g)].map((m) => m[1]).join(',')
-  if (levels !== 'Easy,Medium,Hard,Expert') throw new Error(`expected results ordered Easy to Expert, got ${levels}`)
-  if (!html.includes('4 of 4 connections found')) throw new Error('expected the results list to say how many connections were found')
-  // the title leads each row, difficulty follows as metadata
-  if (!/<span class="rc-title ">[^<]+<\/span><span class="rc-meta">/.test(html)) throw new Error('row title should come before difficulty')
-  const metas = (html.match(/class="strand-meta"/g) || []).length
-  if (metas !== 4) throw new Error(`expected quiet difficulty metadata on each solved card, found ${metas}`)
-  if ((html.match(/class="strand-node"/g) || []).length !== 16) throw new Error('each solved card shows its four concepts as linked nodes')
-  if (html.includes('strand-motif') || html.includes('result-motif-row')) throw new Error('old motif/legend rows must be gone')
-  for (const w of ['Easy', 'Medium', 'Hard', 'Expert']) if (!html.includes(w)) throw new Error(`expected the ${w} label`)
+  // One list of connections, behind Review connections (no duplicate list
+  // of titles on the card, no solved strands repeated above the summary).
+  if ((html.match(/class="rc-row /g) || []).length) throw new Error('the duplicate list of connection titles should be gone')
+  if (html.includes('strand-stack')) throw new Error('solved strands should give way to the summary once the board is over')
+  if (!html.includes('4 of 4 found')) throw new Error('expected Review connections to say how many were found')
+  if (!/<dt>Connections<\/dt><dd>4\/4/.test(html)) throw new Error('expected 4/4 connections in the summary')
+  if (html.includes('difficulty-icon') || html.includes('converge-mark') || html.includes('plexus-merge')) throw new Error('old result decorations must be gone')
   if (/[●▲◆■]/.test(html) || html.includes('result-square')) throw new Error('old shape glyphs must be gone')
-  if (!html.includes('Show connections')) throw new Error('expected the Show connections link')
+  if (!html.includes('aria-controls="result-review-panel"')) throw new Error('expected the Review connections toggle')
   return html
 })
 
@@ -437,7 +429,8 @@ check('Game renders the result card on a pre-seeded loss (no streak banner)', ()
     })
   )
   if (!html.includes('result-card')) throw new Error('expected result-card in lost-game markup')
-  if (html.includes('streak-banner')) throw new Error('did not expect a streak banner on a loss with 0 streak')
+  if (html.includes('<dt>Streak</dt>')) throw new Error('did not expect a streak on a loss with 0 streak')
+  if (!html.includes('Not this time.')) throw new Error('expected a clear, kind loss line')
   return html
 })
 

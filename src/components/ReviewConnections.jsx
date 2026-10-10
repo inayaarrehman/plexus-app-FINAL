@@ -7,7 +7,7 @@ import { reportContext } from '../utils/reportContext.js'
 const levelColor = (level) => groupColor(level)
 
 // onReport(context): opens Report this connection for a category.
-export default function ReviewConnections({ puzzle, onReport, reportMode = 'daily', puzzleDate = null }) {
+export default function ReviewConnections({ puzzle, onReport, reportMode = 'daily', puzzleDate = null, found = null }) {
   const [openIndex, setOpenIndex] = useState(null)
   // Reflects saved state per category so the toggle updates instantly;
   // seeded lazily from persistence the first time a category is checked.
@@ -37,7 +37,10 @@ export default function ReviewConnections({ puzzle, onReport, reportMode = 'dail
             >
               <span className="accordion-title">{cat.title}</span>
               <span className="accordion-meta">
-                <span className="accordion-level">{difficultyLabelOf(cat)}</span>
+                <span className="accordion-level">
+                  {difficultyLabelOf(cat)}
+                  {found && !found.has(cat.catIndex) && <span className="accordion-missed"> · not found</span>}
+                </span>
                 <span className="accordion-caret">{isOpen ? 'Hide why' : 'Why?'}</span>
               </span>
             </button>

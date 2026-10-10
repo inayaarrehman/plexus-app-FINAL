@@ -75,7 +75,7 @@ function Privacy() {
       <ul>
         <li><b>Email address and password.</b> Sign-in is handled by Supabase, our database and sign-in provider. Supabase stores your password in hashed form; Plexus never sees it.</li>
         <li><b>A profile record</b> linked to your account. Plexus does not ask for your name.</li>
-        <li><b>A cloud copy of your progress</b> so it follows you between devices: streaks and stats, Daily history (including dates, mistakes, finish times and the time zone offset at each finish), 3-Minute bests, Systems boards finished, and your XP history and Your Tools.</li>
+        <li><b>A cloud copy of your progress</b> so it follows you between devices: streaks and stats, Daily history (including dates, mistakes, finish times and the time zone offset at each finish), 3 Minutes personal bests, Systems boards finished, and your XP history and Your Tools.</li>
         <li><b>Account records kept by Supabase</b>, such as when the account was created and last signed in, and security logs that can include your IP address. Supabase may also send account emails, such as confirming your sign-up.</li>
       </ul>
 

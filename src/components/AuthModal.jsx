@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Modal from './Modal.jsx'
-import { signInWithPassword, signUpWithPassword, signOut, getCurrentUser, deleteMyAccount } from '../lib/auth.js'
+import { signInWithPassword, signUpWithPassword, signOut, getCurrentUser, deleteMyAccount, requestPasswordReset, updatePassword } from '../lib/auth.js'
+import { clearAuthHash } from '../lib/authRedirect.js'
 import { clearDeviceData } from '../legal/deviceData.js'
 import { CONTACT_EMAIL } from '../legal/config.js'
 import LegalFooter from './LegalFooter.jsx'
@@ -11,9 +12,12 @@ import LegalFooter from './LegalFooter.jsx'
 // adds cloud save. Email + password (matches the Editor's auth). On success
 // it calls onAuthChanged so the app runs a progress sync.
 // ---------------------------------------------------------------------
-export default function AuthModal({ onClose, onAuthChanged, onOpenLegal }) {
+// initialMode: 'in' | 'up' | 'forgot' | 'reset' (arrived from a reset link) |
+// 'expired' (the link was expired or already used).
+export default function AuthModal({ onClose, onAuthChanged, onOpenLegal, initialMode = 'in' }) {
   const [user, setUser] = useState(null)
-  const [mode, setMode] = useState('in') // 'in' | 'up'
+  const [mode, setMode] = useState(initialMode)
+  const [password2, setPassword2] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [busy, setBusy] = useState(false)
@@ -26,6 +30,71 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal }) {
   useEffect(() => {
     getCurrentUser().then((u) => setUser(u))
   }, [])
+  // Arriving from an email link: the address no longer needs the token.
+  useEffect(() => {
+    if (initialMode === 'reset' || initialMode === 'expired') clearAuthHash()
+  }, [initialMode])
+
+  const switchMode = (m) => {
+    setMode(m)
+    setMsg('')
+    setNotice('')
+    setPassword('')
+    setPassword2('')
+  }
+
+  const doForgot = async () => {
+    const addr = email.trim()
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(addr)) {
+      setMsg('Enter the email address you signed up with.')
+      return
+    }
+    setBusy(true)
+    setMsg('')
+    try {
+      const r = await requestPasswordReset(addr)
+      if (!r.ok) {
+        setMsg(r.status === 429 || /rate|too many|seconds/i.test(r.error || '') ? 'Too many requests. Wait a minute, then try again.' : 'Could not send the email right now. Please try again.')
+        return
+      }
+      setNotice(`If an account uses ${addr}, a reset link is on its way. Open it on this device. It works once and expires after a while.`)
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  const doReset = async () => {
+    if (password.length < 6) {
+      setMsg('Use at least 6 characters.')
+      return
+    }
+    if (password !== password2) {
+      setMsg('The two passwords don’t match.')
+      return
+    }
+    setBusy(true)
+    setMsg('')
+    try {
+      const r = await updatePassword(password)
+      if (!r.ok) {
+        if (r.reason === 'no-session') {
+          switchMode('expired')
+          return
+        }
+        setMsg(r.error || 'Could not update the password. Please try again.')
+        return
+      }
+      setPassword('')
+      setPassword2('')
+      const u = await getCurrentUser()
+      setUser(u)
+      setMode('in')
+      setNotice('Password updated. You’re signed in, and your progress is saved to your account.')
+      onAuthChanged?.()
+    } finally {
+      setBusy(false)
+    }
+  }
 
   const afterSignedIn = async () => {
     setNotice('Signed in. Your progress is now saved to the cloud.')
@@ -175,7 +244,7 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal }) {
 
   return (
     <Modal title="Account" onClose={onClose}>
-      {user ? (
+      {user && mode !== 'reset' ? (
         <div className="auth-modal">
           <p className="auth-signed-in">
             Signed in as <strong>{user.email}</strong>
@@ -191,10 +260,57 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal }) {
           {yourData}
           <LegalFooter onNavigate={openLegal} className="auth-legal" />
         </div>
+      ) : mode === 'forgot' ? (
+        <div className="auth-modal">
+          <h3 className="auth-step-title">Reset your password</h3>
+          <p className="auth-sub">Enter your account email and we’ll send a link to choose a new password.</p>
+          <label className="auth-field">
+            <span className="auth-label">Email</span>
+            <input type="email" value={email} autoComplete="username" onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && !busy && doForgot()} placeholder="you@example.com" />
+          </label>
+          {msg && <p className="auth-error" role="alert">{msg}</p>}
+          {notice && <p className="auth-notice" role="status">{notice}</p>}
+          <button className="auth-btn-primary" onClick={doForgot} disabled={busy || !email.trim()}>
+            {busy ? 'Sending…' : notice ? 'Send again' : 'Send reset link'}
+          </button>
+          <button className="auth-switch" onClick={() => switchMode('in')} disabled={busy}>
+            Back to sign in
+          </button>
+        </div>
+      ) : mode === 'reset' ? (
+        <div className="auth-modal">
+          <h3 className="auth-step-title">Choose a new password</h3>
+          <p className="auth-sub">Your reset link worked. Pick a new password for your account.</p>
+          <label className="auth-field">
+            <span className="auth-label">New password</span>
+            <input type="password" value={password} autoComplete="new-password" onChange={(e) => setPassword(e.target.value)} placeholder="At least 6 characters" />
+          </label>
+          <label className="auth-field">
+            <span className="auth-label">Repeat new password</span>
+            <input type="password" value={password2} autoComplete="new-password" onChange={(e) => setPassword2(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && !busy && doReset()} />
+          </label>
+          {msg && <p className="auth-error" role="alert">{msg}</p>}
+          <button className="auth-btn-primary" onClick={doReset} disabled={busy || !password || !password2}>
+            {busy ? 'Saving…' : 'Save new password'}
+          </button>
+        </div>
+      ) : mode === 'expired' ? (
+        <div className="auth-modal">
+          <h3 className="auth-step-title">This link has expired</h3>
+          <p className="auth-sub">Reset links work once and only for a limited time. Request a new one and open the newest email.</p>
+          <button className="auth-btn-primary" onClick={() => switchMode('forgot')}>
+            Send a new link
+          </button>
+          <button className="auth-switch" onClick={() => switchMode('in')}>
+            Back to sign in
+          </button>
+        </div>
       ) : (
         <div className="auth-modal">
           <p className="auth-sub">
-            {mode === 'in' ? 'Sign in to save your streak and sync it across devices.' : 'Create an account to keep your streak safe and synced across devices.'}
+            {mode === 'in'
+              ? 'Sign in to keep your streak, XP and tools safe and on every device.'
+              : 'A free account keeps your streak, XP and tools safe if you switch devices or clear your browser. Everything you’ve played as a guest comes with you.'}
           </p>
 
           <label className="auth-field">
@@ -221,12 +337,17 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal }) {
             />
           </label>
 
-          {msg && <p className="auth-error">{msg}</p>}
-          {notice && <p className="auth-notice">{notice}</p>}
+          {msg && <p className="auth-error" role="alert">{msg}</p>}
+          {notice && <p className="auth-notice" role="status">{notice}</p>}
 
           <button className="auth-btn-primary" onClick={mode === 'in' ? doSignIn : doSignUp} disabled={!canSubmit}>
             {busy ? 'Working…' : mode === 'in' ? 'Sign in' : 'Create account'}
           </button>
+          {mode === 'in' && (
+            <button className="auth-switch auth-forgot" onClick={() => switchMode('forgot')} disabled={busy}>
+              Forgot password?
+            </button>
+          )}
 
           <button
             className="auth-switch"
@@ -247,7 +368,7 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal }) {
             </p>
           )}
 
-          <p className="auth-guest-note">You can keep playing as a guest. Signing in just backs up your progress.</p>
+          <p className="auth-guest-note">You can keep playing as a guest. Your progress stays in this browser until you sign in.</p>
           {yourData}
           <LegalFooter onNavigate={openLegal} className="auth-legal" />
         </div>

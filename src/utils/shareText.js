@@ -9,7 +9,8 @@ function guessRows(guessLog) {
   return guessLog.map((g) => g.levels.map((lv) => NODE_BY_LEVEL[lv] || '⚪').join('')).join('\n')
 }
 
-export function buildShareText({ isDaily, dailyNumber, puzzleTitle, shareLabel, guessLog, won, mistakes, dailyStreak, toolsUsed = 0 }) {
+// `url`: the app's address, added as the last line so friends can play.
+export function buildShareText({ isDaily, dailyNumber, puzzleTitle, shareLabel, guessLog, won, mistakes, dailyStreak, toolsUsed = 0, url = '' }) {
   const perfect = mistakes === 0 && !toolsUsed
   const rows = guessRows(guessLog)
 
@@ -17,10 +18,10 @@ export function buildShareText({ isDaily, dailyNumber, puzzleTitle, shareLabel, 
     const header = `PLEXUS · ${String(dailyNumber ?? '').padStart(3, '0')}`
     const missLine = won ? (perfect ? 'Perfectly connected.' : `${mistakes} miss${mistakes === 1 ? '' : 'es'}`) : 'Not solved today'
     const streakLine = won && dailyStreak > 0 ? `\n${dailyStreak} day streak` : ''
-    return `${header}\n${rows}\n${missLine}${streakLine}`
+    return `${header}\n${rows}\n${missLine}${streakLine}${url ? `\n${url}` : ''}`
   }
 
   const header = shareLabel ? `PLEXUS · ${shareLabel}` : `PLEXUS · ${puzzleTitle}`
   const missLine = won ? (perfect ? 'Perfectly connected.' : `${mistakes} miss${mistakes === 1 ? '' : 'es'}`) : 'Not solved'
-  return `${header}\n${rows}\n${missLine}`
+  return `${header}\n${rows}\n${missLine}${url ? `\n${url}` : ''}`
 }

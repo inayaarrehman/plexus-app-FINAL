@@ -7,7 +7,6 @@ import { getCompletionPhrase } from '../utils/completionPhrases.js'
 import { pickConnectionPhrase } from '../utils/connectionMicrocopy.js'
 import { buildShareText } from '../utils/shareText.js'
 import { computeDailyMicroStat } from '../utils/dailyMicroStat.js'
-import { pickConnectionOfDay } from '../utils/connectionOfDay.js'
 import BrandMark from './BrandMark.jsx'
 import Confetti from './Confetti.jsx'
 import XpResult from './XpResult.jsx'
@@ -16,7 +15,6 @@ import { kitCounts, itemOpen, levelInfo, totalXp } from '../progression/engine.j
 import { KIT, PUZZLE_TOOLS } from '../progression/config.js'
 import PuzzleSignature from './PuzzleSignature.jsx'
 import { groupColor } from './GroupMotif.jsx'
-import { difficultyLabelOf } from './DifficultyIcon.jsx'
 import ReviewConnections from './ReviewConnections.jsx'
 import TileText from './TileText.jsx'
 import Modal from './Modal.jsx'
@@ -49,6 +47,9 @@ export default function Game({
   systemAttempt = null, // { n, xp }: which try this is and what solving it pays
   systemActions = null, // { primary: {label, onClick}, secondary: {label, onClick} } after the board ends
   systemCompletion = null, // { label, total, palette } when this solve completed the subject for the first time
+  onPlayTimed = null, // today's Daily: opens 3 Minutes from the result
+  exitRequest = 0, // bumped by the app when browser Back is pressed mid-board
+  onRequestedExit = null, // leaves after a browser-Back request is confirmed
 }) {
   const isSystem = reportMode === 'system'
   const initial = useMemo(() => {
@@ -106,6 +107,10 @@ export default function Game({
   const [shakeIds, setShakeIds] = useState([])
   const [oneAwayIds, setOneAwayIds] = useState([])
   const [message, setMessage] = useState('')
+  // Screen-reader announcements of outcomes (group found, mistakes, the end).
+  // Never the timer or each tap; tiles expose their own pressed state.
+  const [announce, setAnnounce] = useState('')
+  const resultRef = useRef(null)
   const [popCatIndex, setPopCatIndex] = useState(null)
   const [copied, setCopied] = useState(false)
   const [challengeCopied, setChallengeCopied] = useState(false)
@@ -317,6 +322,7 @@ export default function Game({
         { levels: [selected[0].level, selected[0].level, selected[0].level, selected[0].level], catIndexes, correct: true, durationMs, attemptKey: key },
       ])
       setPopCatIndex(catIndex)
+      setAnnounce(`Connection found: ${puzzle.categories[catIndex]?.title}. ${solvedCats.length + 1} of 4 found.`)
       setExpandedCat(null)
       setTimeout(() => setPopCatIndex(null), 700)
       setSelected([])
@@ -363,6 +369,11 @@ export default function Game({
 
     const newMistakes = mistakes + 1
     setMistakes(newMistakes)
+    {
+      const left = Math.max(0, MAX_MISTAKES - newMistakes + restored)
+      const what = alreadyGuessed ? 'Already tried that combination.' : oneAway ? 'One link away.' : 'Not quite.'
+      setAnnounce(`${what} ${left === 0 ? 'No mistakes left.' : `${left} mistake${left === 1 ? '' : 's'} left.`}`)
+    }
     // Second Opinion restores one allowance; the mistake itself stays counted.
     if (newMistakes - restored >= MAX_MISTAKES) {
       setSelected([])
@@ -396,6 +407,17 @@ export default function Game({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useEffect(() => () => clearTimeout(finishTimer.current), [])
+  // A fresh finish brings the summary into view and moves focus to it.
+  useEffect(() => {
+    if (!gameOver || alreadyOverAtLoad.current) return
+    const t = setTimeout(() => {
+      const el = resultRef.current
+      if (!el) return
+      el.focus({ preventScroll: true })
+      el.scrollIntoView?.({ block: 'start', behavior: prefersReducedMotion() ? 'auto' : 'smooth' })
+    }, 60)
+    return () => clearTimeout(t)
+  }, [gameOver])
 
   const isMilestone = isDaily && won && STREAK_MILESTONES.includes(dailyStreak)
 
@@ -411,11 +433,6 @@ export default function Game({
     [isDaily, gameOver, won, mistakes, guessLog, dailyPerfectStreak]
   )
 
-  const connectionOfDay = useMemo(
-    () => (isDaily && gameOver && won ? pickConnectionOfDay(puzzle) : null),
-    [isDaily, gameOver, won, puzzle]
-  )
-
   const shareText = useMemo(
     () =>
       buildShareText({
@@ -428,6 +445,7 @@ export default function Game({
         mistakes,
         toolsUsed,
         dailyStreak,
+        url: typeof window !== 'undefined' ? `${window.location.origin}/` : '',
       }),
     [isDaily, dailyNumber, puzzle.title, shareLabel, guessLog, won, mistakes, toolsUsed, dailyStreak]
   )
@@ -468,18 +486,27 @@ export default function Game({
     .filter((c) => solvedCats.includes(c.catIndex))
     .sort((a, b) => solvedCats.indexOf(a.catIndex) - solvedCats.indexOf(b.catIndex))
 
-  // Results summary: one row per difficulty, Easy to Expert. A group is
-  // "found" when a correct guess solved it (a loss reveals the rest unfound).
   const foundOrder = guessLog.filter((g) => g.correct).map((g) => g.catIndexes[0])
-  const resultGroups = puzzle.categories
-    .map((c, i) => ({ ...c, catIndex: i, found: foundOrder.includes(i) }))
-    .sort((a, b) => a.level - b.level)
 
   // Leaving an unsolved Systems board after meaningful play (a guess was
   // submitted) ends the attempt and sends the board to the back of the
   // rotation (App.leaveSystemBoard). Say so first; nothing else changes.
   const leaveNeedsConfirm = isSystem && !!systemAttempt && !gameOver && guessLog.length > 0
-  const requestExit = () => (leaveNeedsConfirm ? setConfirmLeave(true) : onExit())
+  const requestExit = () => (leaveNeedsConfirm ? setConfirmLeave('button') : onExit())
+  // Browser Back after a guess asks the same question.
+  const seenExitRequest = useRef(exitRequest)
+  useEffect(() => {
+    if (exitRequest === seenExitRequest.current) return
+    seenExitRequest.current = exitRequest
+    if (leaveNeedsConfirm) setConfirmLeave('request')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [exitRequest])
+  const confirmedLeave = () => {
+    const how = confirmLeave
+    setConfirmLeave(false)
+    if (how === 'request' && onRequestedExit) onRequestedExit()
+    else onExit()
+  }
 
   return (
     <div className="game">
@@ -490,7 +517,7 @@ export default function Game({
             <button type="button" className="primary-btn" onClick={() => setConfirmLeave(false)}>
               Keep playing
             </button>
-            <button type="button" className="secondary-btn" onClick={() => { setConfirmLeave(false); onExit() }}>
+            <button type="button" className="secondary-btn" onClick={confirmedLeave}>
               Leave board
             </button>
           </div>
@@ -503,14 +530,16 @@ export default function Game({
         <div className="game-header-title">
           <span>{headerLabel}</span>
         </div>
-        <div className="mistakes-indicator" aria-label={`${mistakesLeft} mistakes remaining`}>
-          {Array.from({ length: MAX_MISTAKES }).map((_, i) => (
-            <span key={i} className={`dot ${i < mistakesLeft ? 'dot-live' : 'dot-spent'}`} />
-          ))}
-        </div>
       </div>
 
-      {message && <div className="toast">{message}</div>}
+      {message && gameOver && (
+        <div className="toast" role="status">
+          {message}
+        </div>
+      )}
+      <p className="sr-only" role="status" aria-live="polite">
+        {announce}
+      </p>
 
       {isSystem && systemAttempt && !gameOver && (
         <p className="system-attempt-chip" aria-label={`Try ${systemAttempt.n}. Solving it now earns ${systemAttempt.xp} XP.`}>
@@ -533,7 +562,8 @@ export default function Game({
           one connecting path, in the category's colour. Once the whole
           board is solved the stack draws together (strand-stack-complete)
           and leads into the completion mark on the result card below. */}
-      <div className={`strand-stack ${gameOver ? 'strand-stack-complete' : ''}`}>
+      {!gameOver && (
+      <div className="strand-stack">
         {orderedSolvedCats.map((c) => (
           <SolvedGroup
             key={c.catIndex}
@@ -548,12 +578,36 @@ export default function Game({
           />
         ))}
       </div>
+      )}
 
       {!gameOver && (
         <>
-          {solvedCats.length === 0 && selected.length === 0 && (
-            <p className="board-hint">Find the four concepts that belong together.</p>
-          )}
+          {/* One steady row above the board: what to do or how many are
+              selected, and mistakes left in words and dots. Its height never
+              changes, so selecting tiles never moves the board. */}
+          <div className="board-status">
+            <p className="board-status-select">
+              {message ? (
+                <span className="board-feedback" aria-hidden="true">{message}</span>
+              ) : selected.length === 0 ? (
+                <span className="board-hint">Select four that belong together.</span>
+              ) : (
+                <span>
+                  <b>{selected.length}</b> of 4 selected
+                </span>
+              )}
+            </p>
+            <div className="board-status-mistakes">
+              <span className="mistakes-label">
+                {mistakesLeft} mistake{mistakesLeft === 1 ? '' : 's'} left
+              </span>
+              <span className="mistakes-indicator" aria-hidden="true">
+                {Array.from({ length: MAX_MISTAKES }).map((_, i) => (
+                  <span key={i} className={`dot ${i < mistakesLeft ? 'dot-live' : 'dot-spent'}`} />
+                ))}
+              </span>
+            </div>
+          </div>
           <div className={`tile-grid ${connecting ? 'is-connecting' : ''}`} ref={gridRef}>
             {remainingTiles.map((tile) => {
               const isSelected = selected.some((t) => t.text === tile.text && t.catIndex === tile.catIndex)
@@ -571,6 +625,8 @@ export default function Game({
                   } ${isOneAwayPulse ? 'tile-oneaway-pulse' : ''} ${curbsideTiles.includes(tile.text) ? 'tile-curbside' : ''} ${ruleOutActive?.outsider === tile.text ? 'tile-ruled-out' : ''} ${
                     isConnecting ? 'tile-connecting' : ''
                   }`}
+                  type="button"
+                  aria-pressed={isSelected}
                   onClick={() => toggleTile(tile)}
                   data-term={tile.text}
                 >
@@ -643,21 +699,23 @@ export default function Game({
       )}
 
       {gameOver && !(isSystem && !won) && (
-        <div className={`result-card ${won ? 'result-card-won' : ''} ${isPerfect ? 'result-card-perfect' : ''} ${systemCompletion ? 'result-card-system-complete' : ''}`}>
-          {/* The completion payoff: the Plexus constellation assembles (four
-              jewel-toned nodes wiring themselves together) as the centrepiece,
-              and just as its nodes land a restrained jewel-tone confetti burst
-              comes out of it, then settles as the result appears. The Daily
-              gets a slightly fuller burst than a system puzzle. */}
+        <>
+        <section
+          className={`result-card ${won ? 'result-card-won' : 'result-card-lost'} ${isPerfect ? 'result-card-perfect' : ''} ${systemCompletion ? 'result-card-system-complete' : ''}`}
+          ref={resultRef}
+          tabIndex={-1}
+          aria-labelledby="result-title"
+        >
+          {/* The completion payoff: the Plexus constellation assembles as the
+              centrepiece, and as its nodes land a restrained confetti burst
+              comes out of it. The Daily gets a slightly fuller burst. */}
           {won && <BrandMark size={58} className="result-brandmark" animate decorative />}
           {won && !isSystem && <Confetti count={isDaily ? 44 : 32} originY={45} seed={puzzle.id.length * 97 + mistakes} />}
-          {/* A whole subject solved for the first time: the one bigger
-              moment in Systems, in that subject's own node colour. */}
           {won && isSystem && systemCompletion && (
             <Confetti count={60} originY={45} seed={puzzle.id.length * 131 + 7} palette={systemCompletion.palette} shapes={['node', 'node', 'line', 'rect', 'node', 'line']} />
           )}
 
-          <h2>{resultTitle || (isDaily ? 'Today’s Plexus' : 'Puzzle Results')}</h2>
+          <h2 id="result-title">{resultTitle || (isDaily ? 'Today’s Plexus' : 'Puzzle Results')}</h2>
           {systemCompletion && (
             <div className="system-connected" role="status" style={{ '--node-accent': systemCompletion.accent }}>
               <p className="system-connected-title">System connected.</p>
@@ -667,64 +725,48 @@ export default function Game({
             </div>
           )}
 
-          {won && <p className="completion-phrase">{completionPhrase}</p>}
-
-          {/* The four connections, Easy to Expert, each a converge mark (four
-              concepts into one) on a thin spine that rises toward the finished
-              Plexus above: 4 concepts make a connection, 4 connections make a
-              Plexus. The title leads; difficulty is quiet metadata. */}
-          <ol
-            className="result-connections"
-            aria-label={`${foundOrder.length} of ${puzzle.categories.length} connections found`}
-          >
-            {resultGroups.map((g) => {
-              return (
-                <li key={g.catIndex} className={`rc-row ${g.found ? '' : 'is-missed'}`} style={{ '--strand-color': groupColor(g.level) }}>
-                  <span className="rc-node" aria-hidden="true" />
-                  <span className="rc-text">
-                    <span className="rc-title ">
-                      {g.title}
-                    </span>
-                    <span className="rc-meta">
-                      {difficultyLabelOf(g)}
-                      {!g.found && ' · not found'}
-                    </span>
-                  </span>
-                </li>
-              )
-            })}
-          </ol>
-
+          {won ? (
+            <p className="completion-phrase">{completionPhrase}</p>
+          ) : (
+            <p className="completion-phrase result-lost-line">Not this time.</p>
+          )}
           <p className="result-summary">
             {won
-              ? `Solved with ${mistakes} mistake${mistakes === 1 ? '' : 's'}.`
-              : 'Out of guesses. Here are the groups you missed.'}
+              ? `All ${puzzle.categories.length} connections found.`
+              : `You found ${foundOrder.length} of ${puzzle.categories.length} connections. Every answer is in the review below.`}
           </p>
+
+          <dl className="result-stats">
+            <div className="result-stat">
+              <dt>Connections</dt>
+              <dd>
+                {foundOrder.length}/{puzzle.categories.length}
+              </dd>
+            </div>
+            <div className="result-stat">
+              <dt>Mistakes</dt>
+              <dd>{mistakes}</dd>
+            </div>
+            {isDaily && dailyStreak > 0 && (
+              <div className={`result-stat ${isMilestone ? 'is-milestone' : ''}`}>
+                <dt>Streak</dt>
+                <dd>
+                  {dailyStreak} day{dailyStreak === 1 ? '' : 's'}
+                  {isMilestone ? '!' : ''}
+                </dd>
+              </div>
+            )}
+          </dl>
           {won && toolsUsed > 0 && <p className="result-assisted">Solved with assistance.</p>}
-
-          {isDaily && dailyStreak > 0 && (
-            <div className={`streak-banner ${isMilestone ? 'milestone' : ''}`}>
-              {dailyStreak} day streak{isMilestone ? '!' : ''}
-            </div>
-          )}
-
           {dailyMicroStat && <p className="daily-micro-stat">{dailyMicroStat}</p>}
-
-          {/* One takeaway right away (the same Connection of the day Home
-              shows), with the full review one tap away. */}
-          {connectionOfDay && (
-            <div className="connection-of-day result-takeaway">
-              <h3 className="connection-of-day-heading">Connection of the day</h3>
-              <p className="connection-of-day-title">{connectionOfDay.title}</p>
-              <p className="connection-of-day-explanation">{connectionOfDay.remember || connectionOfDay.explanation}</p>
-            </div>
+          {onPlayTimed && !alreadyOverAtLoad.current && (
+            <p className="result-unlocked">
+              {won ? 'Nicely done.' : 'Good effort.'} 3 Minutes, Race, Systems and the Archive are open for today.
+            </p>
           )}
-          <button className="result-review-toggle" onClick={() => setShowReview((v) => !v)} aria-expanded={showReview}>
-            {showReview ? 'Hide connections' : 'Show connections'}
-            <span aria-hidden="true">{showReview ? ' ▴' : ' ▾'}</span>
-          </button>
-          {showReview && <ReviewConnections puzzle={puzzle} onReport={onReport} reportMode={reportMode} puzzleDate={puzzleDate} />}
 
+          {/* XP, level and reward progress, compact. */}
+          {xpResult && <XpResult result={xpResult} onOpenRecord={onOpenRecord} />}
 
           {isSystem && systemActions ? (
             <div className="result-actions">
@@ -739,31 +781,52 @@ export default function Game({
               </button>
             </div>
           ) : (
-          <div className="result-actions">
-            <button className="primary-btn" onClick={handleShare}>
-              {copied ? 'Copied!' : 'Share Results'}
-            </button>
-            {challengeDayNumber != null && (
-              <button className="secondary-btn" onClick={handleChallenge}>
-                {challengeCopied ? 'Link copied!' : 'Challenge a friend'}
+            <div className="result-actions">
+              <button className="primary-btn result-share-btn" onClick={handleShare}>
+                {copied ? 'Copied!' : 'Share Results'}
               </button>
-            )}
-            {onReplay && (
-              <button className="secondary-btn" onClick={onReplay}>
-                Play again
+              {onPlayTimed && (
+                <button className="secondary-btn result-next-btn" onClick={onPlayTimed}>
+                  Play 3 Minutes <span aria-hidden="true">&rarr;</span>
+                </button>
+              )}
+              {challengeDayNumber != null && (
+                <button className="secondary-btn" onClick={handleChallenge}>
+                  {challengeCopied ? 'Link copied!' : 'Challenge a friend'}
+                </button>
+              )}
+              {onReplay && (
+                <button className="secondary-btn" onClick={onReplay}>
+                  Play again
+                </button>
+              )}
+              <button className="text-link result-home-link" onClick={onExit}>
+                Back to Home
               </button>
-            )}
-            <button className="secondary-btn" onClick={onExit}>
-              Back to Home
-            </button>
-          </div>
+            </div>
           )}
+          <p className="sr-only" role="status" aria-live="polite">
+            {copied ? 'Results copied to the clipboard.' : challengeCopied ? 'Challenge link copied.' : ''}
+          </p>
+        </section>
 
-          {/* XP, level and Kit rewards: secondary, compact, after the actions. */}
-          {xpResult && <XpResult result={xpResult} onOpenRecord={onOpenRecord} />}
-
-
-        </div>
+        {/* One place for every connection: titles, why they connect, the
+            terms, Save and Report. Closed until asked for. */}
+        <section className="result-review" aria-label="Review connections">
+          <button className="result-review-toggle" onClick={() => setShowReview((v) => !v)} aria-expanded={showReview} aria-controls="result-review-panel">
+            <span>Review connections</span>
+            <span className="result-review-count">
+              {foundOrder.length} of {puzzle.categories.length} found
+            </span>
+            <span className={`result-review-chev ${showReview ? 'is-open' : ''}`} aria-hidden="true" />
+          </button>
+          {showReview && (
+            <div id="result-review-panel">
+              <ReviewConnections puzzle={puzzle} onReport={onReport} reportMode={reportMode} puzzleDate={puzzleDate} found={foundSet} />
+            </div>
+          )}
+        </section>
+        </>
       )}
     </div>
   )

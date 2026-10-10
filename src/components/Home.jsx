@@ -124,7 +124,7 @@ function RaceGlyph() {
 function ModeTile({ locked, justUnlocked, order, onOpen, onLocked, visual, title, sub, meta, action, className = '' }) {
   const cls = `mode-tile ${className} ${locked ? 'is-locked' : ''} ${justUnlocked ? 'is-unlocking' : ''}`
   return (
-    <button className={cls} onClick={locked ? onLocked : onOpen} aria-disabled={locked ? 'true' : undefined} style={{ '--unlock-delay': `${order * 140}ms` }}>
+    <button className={cls} onClick={locked ? onLocked : onOpen} aria-haspopup={locked ? 'dialog' : undefined} aria-label={locked ? `${title}, locked. Finish today’s Daily, win or lose, to unlock.` : undefined} style={{ '--unlock-delay': `${order * 140}ms` }}>
       <span className="mode-visual">{visual}</span>
       <span className="mode-title">{title}</span>
       <span className="mode-sub">{sub}</span>
@@ -455,7 +455,7 @@ export default function Home({
           <h2 className="home-modes-label" id="other-ways">Other ways to play</h2>
           {locked && (
             <p className="home-unlock-note">
-              <LockGlyph size={13} /> Finish today’s Plexus to unlock 3 Minutes, Race and Systems.
+              <LockGlyph size={13} /> Finish today’s Daily, win or lose, to unlock more ways to play.
             </p>
           )}
           <div className="mode-pair">
@@ -464,7 +464,7 @@ export default function Home({
               justUnlocked={justUnlocked}
               order={0}
               onOpen={onStartChallenge}
-              onLocked={onLocked}
+              onLocked={() => onLocked?.('challenge')}
               className="mode-tile-timer"
               visual={<TimerGlyph />}
               title="3 Minutes"
@@ -477,7 +477,7 @@ export default function Home({
               justUnlocked={justUnlocked}
               order={1}
               onOpen={onStartRace}
-              onLocked={onLocked}
+              onLocked={() => onLocked?.('race')}
               className="mode-tile-race"
               visual={<RaceGlyph />}
               title="Race"
@@ -517,7 +517,9 @@ export default function Home({
           >
             <span className="home-progress-text">
               {`${Math.min(record.rounds.done, record.rounds.need)}/${record.rounds.need} goals completed for your weekly reward`}
-              <span className="home-progress-meta">{record.rounds.complete ? ' · reward earned' : ' · resets Monday'}</span>
+              <span className="home-progress-meta">
+                {record.rounds.complete ? ' · reward earned' : record.rounds.outlook?.joinedMidWeek && !record.rounds.outlook.attainable ? ' · your first full week starts Monday' : ' · resets Monday'}
+              </span>
             </span>
             <span className="home-week-nodes" aria-hidden="true">
               {record.rounds.goals.map((g) => (

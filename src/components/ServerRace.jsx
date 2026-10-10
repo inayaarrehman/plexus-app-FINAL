@@ -352,8 +352,8 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
         {error && <p className="race-error" role="alert">{error}</p>}
         <p className="race-note">
           {guest
-            ? 'You’re racing as a guest. Races are scored by the Plexus server, and Chaos works with a loadout for each race. Sign in to earn Race rewards.'
-            : 'Signed-in races are scored by the Plexus server and count toward Race rewards.'}
+            ? 'You’re playing as a guest. You can race and use Chaos, but guest races don’t earn Race rewards. Sign in to earn them and keep your progress.'
+            : 'This race counts toward your Race rewards.'}
         </p>
       </div>
     )
@@ -456,7 +456,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
         </div>
       )
     }
-    if (!round) return <div className="race"><p className="race-note">Waiting for the server…</p></div>
+    if (!round) return <div className="race"><p className="race-note">Getting the round ready…</p></div>
     const isRapid = round.type === 'rapidAssociation'
     // Mutation: the answer tiles only, a fixed scrambled rendering until the
     // effect's stored end, then exactly the original text.

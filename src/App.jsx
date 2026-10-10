@@ -16,6 +16,7 @@ import ReportModal from './components/ReportModal.jsx'
 import HowToModal from './components/HowToModal.jsx'
 import { isSupabaseConfigured } from './lib/supabaseClient.js'
 import { onAuthChange } from './lib/auth.js'
+import { AUTH_REDIRECT, clearAuthHash } from './lib/authRedirect.js'
 import { syncProgress, pushProgress } from './lib/progressRepo.js'
 import { snapshotLocal } from './utils/progressSync.js'
 import { timedBank } from './utils/timedLibrary.js'
@@ -29,6 +30,7 @@ import { formatDayKey } from './utils/calendar.js'
 import { getDailyPuzzleForDate, getPlayableDailyForDate } from './utils/dailyPuzzle.js'
 import { getDailyGate, isGatedView, GATED_VIEWS, LOCK_COPY, hasSeenUnlock, markUnlockSeen } from './utils/dailyGate.js'
 import LockGlyph from './components/LockGlyph.jsx'
+import Modal from './components/Modal.jsx'
 import Record from './components/Record.jsx'
 import { recordDailyFinish, recordSystemFinish, recordSystemAttemptStart, systemAttempts, attemptXp, backfillIfNeeded, streakInfo, loadProgression, recordSnapshot, ensureProgression } from './progression/store.js'
 import { systemAccent, systemConfettiPalette } from './utils/systemAccent.js'
@@ -141,14 +143,23 @@ export default function App() {
     return LEGAL_PAGES.includes(h) || h === 'support' ? h : null
   }
   const [legalPage, setLegalPage] = useState(() => parseLegalHash())
+  // Opened from inside the app: the legal page is one history entry, so
+  // closing it (or browser Back) returns to the screen underneath.
+  const legalFromApp = useRef(false)
   const openLegal = (page) => {
+    legalFromApp.current = true
     window.location.hash = page
     setLegalPage(page)
   }
   const closeLegal = () => {
     setLegalPage(null)
     if ([...LEGAL_PAGES, 'support'].includes(window.location.hash.replace(/^#/, ''))) {
-      history.replaceState(null, '', window.location.pathname + window.location.search)
+      if (legalFromApp.current) {
+        legalFromApp.current = false
+        history.back()
+      } else {
+        history.replaceState(history.state, '', window.location.pathname + window.location.search)
+      }
     }
   }
   useEffect(() => {
@@ -172,11 +183,28 @@ export default function App() {
     const to = Number(q.get('to') ?? 420)
     return Number.isFinite(from) && Number.isFinite(to) && to >= from && from >= 0 ? { from, to } : { from: 100, to: 420 }
   })
-  const [recordSection, setRecordSection] = useState(null)
+  // A refresh reopens the screen this history entry was showing (behind the
+  // same Daily gate). Simple screens are restored as the initial state; a
+  // board is reopened by the restore effect further down.
+  const [initRoute] = useState(() => {
+    try {
+      const r = history.state?.plexus?.route
+      if (!r || window.location.hash.replace(/^#/, '')) return null
+      if (r.view === 'home') return null
+      const locked = !getDailyGate().unlocked
+      if (r.view === 'game') return locked && r.mode !== 'daily' ? { refused: true } : { game: r }
+      if (!['archive', 'systems', 'record', 'challenge', 'race'].includes(r.view)) return null
+      if (locked && GATED_VIEWS.includes(r.view)) return { refused: true }
+      return { view: r.view, landing: r.landing || null, section: r.section || null }
+    } catch {
+      return null
+    }
+  })
+  const [recordSection, setRecordSection] = useState(() => initRoute?.section || null)
   // Report this connection: the connection being reported (null when closed).
   const [reportCtx, setReportCtx] = useState(null)
   const reportModal = reportCtx ? <ReportModal context={reportCtx} onClose={() => setReportCtx(null)} /> : null
-  const [view, setView] = useState(() => (myPlexusPreview ? 'record' : 'home')) // 'home' | 'game' | 'archive' | 'systems' | 'challenge' | 'race'
+  const [view, setView] = useState(() => (myPlexusPreview ? 'record' : initRoute?.view || 'home')) // 'home' | 'game' | 'archive' | 'systems' | 'challenge' | 'race'
   const [gameCtx, setGameCtx] = useState(null)
   const [challengePhase, setChallengePhase] = useState('intro')
   // A race join code carried in the URL hash (#race=CODE) drops a tapped
@@ -184,7 +212,10 @@ export default function App() {
   const [raceInitialCode, setRaceInitialCode] = useState('')
   const [showHowTo, setShowHowTo] = useState(false)
   const [showStats, setShowStats] = useState(false)
-  const [showAccount, setShowAccount] = useState(false)
+  // A password reset link (or an expired one) opens Account at the right step.
+  const [showAccount, setShowAccount] = useState(() => !!AUTH_REDIRECT && isSupabaseConfigured())
+  const accountMode = AUTH_REDIRECT?.kind === 'recovery' ? 'reset' : AUTH_REDIRECT?.kind === 'link-error' ? (/expired|invalid|access_denied/i.test(`${AUTH_REDIRECT.code} ${AUTH_REDIRECT.description}`) ? 'expired' : 'in') : 'in'
+  const [accountInitial, setAccountInitial] = useState(accountMode)
   const [stats, setStats] = useState(loadStats())
   const supaConfigured = isSupabaseConfigured()
 
@@ -246,6 +277,9 @@ export default function App() {
     if (code) {
       setRaceInitialCode(code)
       setView('race')
+      // The code now lives in Race's join screen; drop it from the address so
+      // a refresh or later history entry does not reopen the invite.
+      history.replaceState(history.state, '', window.location.pathname + window.location.search)
       return
     }
     // A server race in progress on this tab (reload or reconnect): go back to
@@ -289,6 +323,10 @@ export default function App() {
     lockTimer.current = setTimeout(() => setLockNotice(0), 2800)
   }
   useEffect(() => () => clearTimeout(lockTimer.current), [])
+  // Tapping a locked mode shows what it is and how to open it. It never
+  // opens the mode or shows any puzzle content.
+  const [lockedPreview, setLockedPreview] = useState(null)
+  const openLockedPreview = (key) => (LOCKED_PREVIEWS[key] ? setLockedPreview(key) : showLocked())
 
   // A race invite (#race=CODE) that arrives before today's Daily is finished
   // is held here and used the first time Race is opened after unlocking.
@@ -407,6 +445,7 @@ export default function App() {
     if (key === 'challenge') setChallengePhase('intro')
     if (key === 'systems') {
       setSystemsSelected(null)
+      setSystemsLanding(null)
       setSystemsNotice(null)
     }
     setView(key)
@@ -418,6 +457,7 @@ export default function App() {
   const blockedView = !modesUnlocked && isGatedView(view, gameCtx?.mode)
   useEffect(() => {
     if (!blockedView) return
+    replaceNextRoute.current = true
     if (view === 'race' && raceInitialCode) setPendingRaceCode(raceInitialCode)
     setGameCtx(null)
     setView('home')
@@ -483,7 +523,9 @@ export default function App() {
   // subjectProgress). Play opens the head of the queue. A board left after a
   // guess, or lost, goes to the back; a solved board leaves the queue. When
   // nothing is left the Systems page shows the subject as connected.
-  const [systemsSelected, setSystemsSelected] = useState(null)
+  const [systemsSelected, setSystemsSelected] = useState(() => initRoute?.landing || null)
+  // Phone only: the system whose landing page is open (null = the directory).
+  const [systemsLanding, setSystemsLanding] = useState(() => initRoute?.landing || null)
   const [systemsNotice, setSystemsNotice] = useState(null)
   const openBoard = (system, board, index, { replay = false } = {}) => {
     const puzzle = systemsBoardPuzzle(board, index)
@@ -528,6 +570,7 @@ export default function App() {
     if (!p.next) {
       setSystemPlayNotice(null)
       setSystemsSelected(system)
+      setSystemsLanding(system)
       setGameCtx(null)
       setView('systems')
       return
@@ -545,16 +588,23 @@ export default function App() {
   // Leave a Systems board (Back, or Back to Systems on the result). After a
   // submitted guess an unsolved board's attempt is over: its saved state is
   // cleared (nothing is revealed) and it moves to the back of the queue.
+  // The bookkeeping of leaving a board, shared with browser Back.
+  const endSystemBoard = (ctx) => {
+    if (!ctx || ctx.mode !== 'system') return
+    setRefreshTick((t) => t + 1)
+    const saved = loadProgress(ctx.progressKey)
+    const interacted = !!(saved && Array.isArray(saved.guessLog) && saved.guessLog.length > 0)
+    if (saved && !saved.won) {
+      clearProgress(ctx.progressKey)
+      if (interacted && !saved.gameOver && ctx.systemAttempt) setSystemsNotice({ title: 'Still connecting…', text: 'This puzzle will come back around.' })
+    }
+  }
   const leaveSystemBoard = () => {
     const ctx = gameCtx
     if (ctx && ctx.mode === 'system') {
-      const saved = loadProgress(ctx.progressKey)
-      const interacted = !!(saved && Array.isArray(saved.guessLog) && saved.guessLog.length > 0)
-      if (saved && !saved.won) {
-        clearProgress(ctx.progressKey)
-        if (interacted && !saved.gameOver && ctx.systemAttempt) setSystemsNotice({ title: 'Still connecting…', text: 'This puzzle will come back around.' })
-      }
+      endSystemBoard(ctx)
       setSystemsSelected(ctx.system)
+      setSystemsLanding(ctx.system)
     }
     setGameCtx(null)
     setRefreshTick((t) => t + 1)
@@ -689,6 +739,168 @@ export default function App() {
     return progression
   }
 
+  // ---------------------------------------------------------------------
+  // Browser history. Every app screen is one history entry (same address;
+  // the screen lives in history.state), so browser Back and Forward follow
+  // the player through Today, Systems and a system's page, the Archive,
+  // My Plexus, 3 Minutes, Race and the boards. Rules:
+  //   • a new screen pushes an entry; going to the screen the previous entry
+  //     already shows steps back instead, so in-app Back and browser Back
+  //     agree and history never fills with duplicates;
+  //   • moving from one board to the next replaces the board's entry, and
+  //     leaving a board replaces it when its parent is not the entry below;
+  //   • entries restore a screen, never an action: going Back or Forward to a
+  //     Systems board opens that system's page (no board is picked or
+  //     started), and a Daily reopens from its saved progress, so nothing is
+  //     paid, spent or counted again;
+  //   • leaving a Systems board after a guess, or a 3 Minutes run in play,
+  //     asks first, exactly as the in-app Back does;
+  //   • a refresh reopens the same screen, behind the same Daily gate.
+  // At the first entry, Back leaves the site as usual.
+  const wide = useWideLayout()
+  const route = useMemo(() => {
+    if (view === 'game' && gameCtx) {
+      return gameCtx.mode === 'system'
+        ? { view: 'game', mode: 'system', system: gameCtx.system }
+        : { view: 'game', mode: gameCtx.mode, date: gameCtx.dateForHistory }
+    }
+    if (view === 'systems') return { view, landing: wide ? null : systemsLanding }
+    if (view === 'record') return { view, section: recordSection || null }
+    return { view }
+  }, [view, gameCtx, wide, systemsLanding, recordSection])
+  const routeKey = JSON.stringify(route)
+  const routeKeyRef = useRef(routeKey)
+  routeKeyRef.current = routeKey
+  const fromPop = useRef(false)
+  const replaceNextRoute = useRef(!!initRoute?.refused)
+  // A refresh that reopens a board waits for it before writing history; one
+  // the gate refused replaces its entry with Today.
+  const restoring = useRef(!!initRoute?.game)
+  // The first write after a page load only ever replaces the current entry.
+  const firstSync = useRef(true)
+  const overlayRoute = isDevRoute || !!legalPage || challengeInvite !== null || !!myPlexusPreview
+  useEffect(() => {
+    if (overlayRoute) return
+    if (restoring.current) {
+      if (route.view !== 'game' && !replaceNextRoute.current) return
+      restoring.current = false
+      fromPop.current = true
+    }
+    const cur = history.state?.plexus
+    const entry = (prevKey) => ({ ...(history.state || {}), plexus: { route, key: routeKey, prevKey } })
+    if (firstSync.current) {
+      firstSync.current = false
+      fromPop.current = false
+      replaceNextRoute.current = false
+      if (!cur || cur.key !== routeKey) history.replaceState(entry(cur?.prevKey ?? null), '')
+      return
+    }
+    if (fromPop.current) {
+      fromPop.current = false
+      replaceNextRoute.current = false
+      if (!cur || cur.key !== routeKey) history.replaceState(entry(cur?.prevKey ?? null), '')
+      return
+    }
+    if (cur?.key === routeKey) return
+    if (!cur) {
+      history.replaceState(entry(null), '')
+      return
+    }
+    const leavingBoard = cur.route?.view === 'game' && cur.route.mode === 'system'
+    if (replaceNextRoute.current || (cur.route?.view === 'game' && route.view === 'game')) {
+      replaceNextRoute.current = false
+      history.replaceState(entry(cur.prevKey), '')
+      return
+    }
+    if (cur.prevKey === routeKey) {
+      history.back()
+      return
+    }
+    if (leavingBoard) {
+      history.replaceState(entry(cur.prevKey), '')
+      return
+    }
+    history.pushState(entry(cur.key), '')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [routeKey, overlayRoute])
+
+  // Open a remembered screen without adding history.
+  const applyRoute = (r) => {
+    if (!r) return
+    if (!modesUnlocked && (GATED_VIEWS.includes(r.view) || (r.view === 'game' && r.mode !== 'daily' && r.date !== todayKey))) {
+      replaceNextRoute.current = true
+      setGameCtx(null)
+      setView('home')
+      showLocked()
+      return
+    }
+    if (r.view === 'game') {
+      if (r.mode === 'system') {
+        replaceNextRoute.current = true
+        setGameCtx(null)
+        setSystemsSelected(r.system)
+        setSystemsLanding(r.system)
+        setView('systems')
+        return
+      }
+      const puzzle = r.date === todayKey ? getDailyPuzzleForDate(todayKey) : getPlayableDailyForDate(r.date, todayKey)
+      if (puzzle) openArchiveDay(r.date, puzzle, !!getDailyHistory()[r.date]?.completed)
+      else {
+        replaceNextRoute.current = true
+        setGameCtx(null)
+        setView('home')
+      }
+      return
+    }
+    setGameCtx(null)
+    if (r.view === 'systems') {
+      setSystemsSelected(r.landing || null)
+      setSystemsLanding(r.landing || null)
+    }
+    if (r.view === 'record') setRecordSection(r.section || null)
+    if (r.view === 'challenge') setChallengePhase('intro')
+    setView(r.view)
+  }
+
+  // Browser Back during a board after a guess, or a 3 Minutes run in play:
+  // stay put and ask, the same question the in-app Back asks.
+  const [exitRequest, setExitRequest] = useState(0)
+  const popGuard = () => {
+    if (view === 'challenge' && challengePhase === 'playing') return true
+    if (view === 'game' && gameCtx?.mode === 'system' && gameCtx.systemAttempt) {
+      const saved = loadProgress(gameCtx.progressKey)
+      return !!(saved && !saved.gameOver && Array.isArray(saved.guessLog) && saved.guessLog.length > 0)
+    }
+    return false
+  }
+  const popHandler = useRef(() => {})
+  popHandler.current = (e) => {
+    const p = e.state?.plexus
+    if (!p || overlayRoute) return
+    if (p.key === routeKeyRef.current) return
+    if (popGuard()) {
+      history.pushState(history.state && history.state.plexus?.key === routeKeyRef.current ? history.state : { plexus: { route, key: routeKey, prevKey: p.key } }, '')
+      setExitRequest((n) => n + 1)
+      return
+    }
+    if (view === 'game' && gameCtx?.mode === 'system') endSystemBoard(gameCtx)
+    fromPop.current = true
+    applyRoute(p.route)
+  }
+  useEffect(() => {
+    const onPop = (e) => popHandler.current(e)
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
+  // A refresh: reopen the screen this entry was showing.
+  useEffect(() => {
+    if (initRoute?.game) applyRoute(initRoute.game)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  // After an asked-for exit (board or 3 Minutes run) that started as browser
+  // Back, finish the step back.
+  const finishRequestedExit = () => setTimeout(() => history.back(), 0)
+
   if (isDevRoute) {
     return <DevViewer />
   }
@@ -768,6 +980,12 @@ export default function App() {
           systemAttempt={gameCtx.systemAttempt || null}
           systemActions={systemActionsFor(gameCtx)}
           systemCompletion={gameCtx.systemCompletion || null}
+          onPlayTimed={gameCtx.mode === 'daily' ? () => navigate('challenge') : null}
+          exitRequest={exitRequest}
+          onRequestedExit={() => {
+            endSystemBoard(gameCtx)
+            finishRequestedExit()
+          }}
         />
         {reportModal}
       </div>
@@ -800,7 +1018,7 @@ export default function App() {
     return (
       <div className="app-shell">
         {challengePhase !== 'playing' && <AppNav active="challenge" onNavigate={navigate} />}
-        <Challenge bank={bank} onExit={goHome} onPhaseChange={setChallengePhase} />
+        <Challenge bank={bank} onExit={goHome} onPhaseChange={setChallengePhase} exitRequest={exitRequest} onRequestedExit={finishRequestedExit} />
       </div>
     )
   }
@@ -832,6 +1050,12 @@ export default function App() {
           boardAttempts={boardAttempts}
           initialSelected={systemsSelected}
           onSelectedChange={setSystemsSelected}
+          landing={wide ? null : systemsLanding}
+          onOpenLanding={setSystemsLanding}
+          onCloseLanding={() => {
+            setSystemsLanding(null)
+            setSystemsSelected(null)
+          }}
           notice={systemsNotice}
           onClearNotice={() => setSystemsNotice(null)}
           onPlaySystem={playSystem}
@@ -846,7 +1070,7 @@ export default function App() {
 
   return (
     <div className="app-shell app-shell-home">
-      <AppNav active="home" onNavigate={navigate} locked={!modesUnlocked} onLocked={showLocked} />
+      <AppNav active="home" onNavigate={navigate} locked={!modesUnlocked} onLocked={openLockedPreview} />
       <Home
         key={todayKey}
         todayKey={todayKey}
@@ -877,7 +1101,7 @@ export default function App() {
         }}
         locked={!modesUnlocked}
         justUnlocked={justUnlocked}
-        onLocked={showLocked}
+        onLocked={openLockedPreview}
         nudge={lockNotice}
         onOpenStats={() => setShowStats(true)}
         onOpenRecord={(section) => {
@@ -896,10 +1120,67 @@ export default function App() {
         </p>
       )}
       {showHowTo && <HowToModal onClose={() => setShowHowTo(false)} />}
+      {lockedPreview && (
+        <Modal title={LOCKED_PREVIEWS[lockedPreview].title} onClose={() => setLockedPreview(null)} className="locked-preview">
+          <p className="locked-preview-text">{LOCKED_PREVIEWS[lockedPreview].text}</p>
+          <p className="locked-preview-rule">
+            <LockGlyph size={14} />
+            <span>{LOCK_COPY}</span>
+          </p>
+          <div className="leave-board-actions">
+            <button
+              type="button"
+              className="primary-btn"
+              onClick={() => {
+                setLockedPreview(null)
+                openDailyToday()
+              }}
+            >
+              {dailyDone ? 'View today’s Daily' : 'Play today’s Daily'}
+            </button>
+            <button type="button" className="secondary-btn" onClick={() => setLockedPreview(null)}>
+              Not now
+            </button>
+          </div>
+        </Modal>
+      )}
       {reportModal}
       {showStats && <StatsModal stats={stats} onClose={() => setShowStats(false)} />}
-      {showAccount && <AuthModal onClose={() => setShowAccount(false)} onAuthChanged={resyncProgress} onOpenLegal={openLegal} />}
+      {showAccount && (
+        <AuthModal
+          initialMode={accountInitial}
+          onClose={() => {
+            setShowAccount(false)
+            setAccountInitial('in')
+            clearAuthHash()
+          }}
+          onAuthChanged={resyncProgress}
+          onOpenLegal={openLegal}
+        />
+      )}
       <InstallPrompt />
     </div>
   )
+}
+
+// What each locked mode is, for the preview shown when it is tapped.
+const LOCKED_PREVIEWS = {
+  challenge: { title: '3 Minutes', text: 'A fast mix of medical connection challenges. Score as many as you can before the clock runs out.' },
+  race: { title: 'Race', text: 'Race a friend through the same rounds. Share a code, and the faster, sharper player wins.' },
+  systems: { title: 'Systems', text: 'Practice one organ system at a time, from Cardiology to Genetics. Boards stay open until you solve them.' },
+  archive: { title: 'Archive', text: 'Play past Dailies you missed, and look back at the connections you have solved.' },
+}
+
+// Desktop layout (Systems shows a preview there instead of a page per system).
+function useWideLayout() {
+  const q = '(min-width: 900px)'
+  const [wide, setWide] = useState(() => (typeof window !== 'undefined' && window.matchMedia ? window.matchMedia(q).matches : false))
+  useEffect(() => {
+    if (!window.matchMedia) return undefined
+    const mq = window.matchMedia(q)
+    const on = () => setWide(mq.matches)
+    mq.addEventListener?.('change', on)
+    return () => mq.removeEventListener?.('change', on)
+  }, [])
+  return wide
 }

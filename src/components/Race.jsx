@@ -335,7 +335,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
             ? 'One of you taps “Create a race” and shares the code or link; the other enters it. Then either of you starts, and you’ll both race the same board at the same time.'
             : 'Both players enter the same code to get the identical challenge set, then compare times.'}
         </p>
-        {guestUnavailable && <p className="race-note">Guest racing on the Plexus server isn’t available right now, so this is a shared-code race. Sign in to race on the server with Chaos.</p>}
+        {guestUnavailable && <p className="race-note">Live races for guests aren’t available right now, so this is a shared-code race: you both play the same set and compare scores. Sign in for live races with Chaos.</p>}
         {signedOut && !guestUnavailable && <p className="race-note">Sign in to earn Race rewards.</p>}
       </div>
     )

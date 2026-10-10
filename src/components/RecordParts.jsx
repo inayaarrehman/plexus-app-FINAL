@@ -276,7 +276,7 @@ export function PlexusGrowth({ info, ariaInfo = null, rewardsFor, rewardText, si
 
 // This Week: each goal is a node. Progress fills the node; when the week's
 // reward is earned (any two goals) the nodes join into a small triangle.
-export function WeekGoals({ goals, complete }) {
+export function WeekGoals({ goals, complete, notes = {} }) {
   const wrap = React.useRef(null)
   const [pts, setPts] = React.useState(null)
   React.useLayoutEffect(() => {
@@ -346,7 +346,10 @@ export function WeekGoals({ goals, complete }) {
               <span className="rounds-gutter" aria-hidden="true">
                 <span className="rounds-node" style={{ '--p': p }} />
               </span>
-              <span className="rounds-label">{g.label}</span>
+              <span className="rounds-label">
+                <span className="rounds-label-text">{g.label}</span>
+                {notes[g.id] && <span className="rounds-note">{notes[g.id]}</span>}
+              </span>
               <span className="rounds-count">
                 {g.count}/{g.target}
               </span>

@@ -241,12 +241,12 @@ function systemLabel(name, total, solved) {
   return `${name}, ${solved} of ${total} boards solved${solved >= total ? ', all solved' : ''}`
 }
 
-export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, initialSelected = null, onSelectedChange, notice = null, onClearNotice, onPlaySystem, onReplayBoard, onBack, playNotice, onDismissPlayNotice }) {
+export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, initialSelected = null, onSelectedChange, landing = null, onOpenLanding, onCloseLanding, notice = null, onClearNotice, onPlaySystem, onReplayBoard, onBack, playNotice, onDismissPlayNotice }) {
   const wide = useWide()
   // Preview selection (desktop): the system returned to, the last visited, or Cardiology.
-  const [preview, setPreview] = useState(() => initialSelected || readLast() || 'Cardiology')
-  // Landing page (phone): open when returning to a system.
-  const [landing, setLanding] = useState(initialSelected)
+  const [preview, setPreview] = useState(() => initialSelected || landing || readLast() || 'Cardiology')
+  // Landing page (phone): controlled by the app so browser Back and Forward
+  // move between the directory and a system's page.
   const [suggesting, setSuggesting] = useState(false)
 
   const rows = useMemo(
@@ -270,16 +270,16 @@ export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, 
         setPreview(system)
         onSelectedChange?.(system)
       } else {
-        setLanding(system)
+        setPreview(system)
         onSelectedChange?.(system)
+        onOpenLanding?.(system)
         window.scrollTo?.(0, 0)
       }
     },
-    [wide, onSelectedChange]
+    [wide, onSelectedChange, onOpenLanding]
   )
   const backToSystems = () => {
-    setLanding(null)
-    onSelectedChange?.(null)
+    onCloseLanding?.()
     onClearNotice?.()
   }
   const play = (system) => {

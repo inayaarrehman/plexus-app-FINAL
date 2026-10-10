@@ -39,6 +39,29 @@ export async function signUpWithPassword(email, password, displayName) {
   return error ? { ok: false, error: error.message } : { ok: true, user: data.user }
 }
 
+// Password recovery ---------------------------------------------------------
+// Sends Supabase's reset email. The link returns to this site, signs the
+// player in for the reset, and the Account panel asks for a new password
+// (lib/authRedirect.js). The reply never says whether the email has an
+// account.
+export async function requestPasswordReset(email) {
+  const sb = await getSupabase()
+  if (!sb) return { ok: false, reason: 'not-configured' }
+  const redirectTo = typeof window !== 'undefined' ? `${window.location.origin}/` : undefined
+  const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo })
+  return error ? { ok: false, error: error.message, status: error.status } : { ok: true }
+}
+
+// Sets a new password for the player signed in by a reset link.
+export async function updatePassword(password) {
+  const sb = await getSupabase()
+  if (!sb) return { ok: false, reason: 'not-configured' }
+  const { data } = await sb.auth.getSession()
+  if (!data?.session) return { ok: false, reason: 'no-session' }
+  const { error } = await sb.auth.updateUser({ password })
+  return error ? { ok: false, error: error.message } : { ok: true }
+}
+
 export async function signOut() {
   const sb = await getSupabase()
   if (!sb) return

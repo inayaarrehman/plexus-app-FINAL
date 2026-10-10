@@ -27,7 +27,7 @@ import { getDailyPuzzleForDate } from './dailyPuzzle.js'
 export const GATED_VIEWS = ['systems', 'challenge', 'race', 'archive']
 export const GATED_GAME_MODES = ['system', 'archive']
 
-export const LOCK_COPY = "Complete today's Plexus to unlock."
+export const LOCK_COPY = "Finish today’s Daily, win or lose, to unlock."
 
 const LATEST_KEY = 'plexus.latestDaily.v1'
 const MAX_TRUSTED_ROLLBACK_DAYS = 1

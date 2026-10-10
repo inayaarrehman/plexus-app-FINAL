@@ -31,6 +31,7 @@ import {
   pendingClaims,
   claimPending,
   roundsProgress,
+  weekOutlook,
   weekProgress,
   weeklyChoicesDue,
   timedXpStatus,
@@ -40,7 +41,7 @@ import {
   entryDay,
 } from './engine.js'
 import { currentStreak, longestStreak, coverGaps, isStreakDay, finishedOnDate, addDays as addDayKey } from './streak.js'
-import { weekdayOf, weekOfKey } from '../utils/calendar.js'
+import { weekdayOf, weekOfKey, dayKey } from '../utils/calendar.js'
 import { getDailyHistory } from '../utils/storage.js'
 
 const KEY = 'plexus.progression.v1'
@@ -577,6 +578,19 @@ export function backfillIfNeeded({ history = {}, mastery = {}, bankById = {}, sy
   return run(() => {})
 }
 
+// This Week plus what is still possible this week (engine.weekOutlook).
+// The first day: the earliest finished Daily, or when progression started.
+function withOutlook(rounds, state, history, todayKey) {
+  try {
+    const keys = Object.keys(history || {}).filter((k) => history[k]?.completed).sort()
+    const started = state.migrated ? dayKey(state.migrated) : null
+    const firstKey = [keys[0], started].filter(Boolean).sort()[0] || null
+    return { ...rounds, outlook: weekOutlook(rounds, todayKey || dayKey(Date.now()), firstKey) }
+  } catch {
+    return rounds
+  }
+}
+
 // ---- read model for the UI ----
 export function recordSnapshot({ history = {}, todayKey }) {
   const state = loadProgression()
@@ -601,7 +615,7 @@ export function recordSnapshot({ history = {}, todayKey }) {
     counts,
     streak,
     connections,
-    rounds: roundsProgress(state, Date.now(), history),
+    rounds: withOutlook(roundsProgress(state, Date.now(), history), state, history, todayKey),
     timed: timedXpStatus(state),
     kit: KIT,
     pending: pendingClaims(state),

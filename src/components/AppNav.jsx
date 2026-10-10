@@ -10,13 +10,13 @@ import { LOCK_COPY } from '../utils/dailyGate.js'
 const ITEMS = [
   { key: 'home', label: 'Today' },
   { key: 'systems', label: 'Systems' },
-  { key: 'challenge', label: '3-Minute' },
+  { key: 'challenge', label: '3 Minutes' },
   { key: 'archive', label: 'Archive' },
 ]
 
 // `locked`: before today's Daily is finished, every destination except Today
-// stays visible with a small lock; tapping it calls `onLocked` (the shared
-// restrained notice) instead of navigating.
+// stays visible with a small lock; tapping it calls `onLocked(key)`, which
+// shows a short preview of that mode and the requirement, never the mode.
 export default function AppNav({ active, onNavigate, locked = false, onLocked }) {
   return (
     <nav className="app-nav" aria-label="Primary">
@@ -26,9 +26,9 @@ export default function AppNav({ active, onNavigate, locked = false, onLocked })
           <button
             key={item.key}
             className={`app-nav-item ${active === item.key ? 'active' : ''} ${isLocked ? 'is-locked' : ''}`}
-            onClick={() => (isLocked ? onLocked && onLocked() : onNavigate(item.key))}
-            aria-disabled={isLocked ? 'true' : undefined}
-            aria-label={isLocked ? `${item.label}. ${LOCK_COPY}` : undefined}
+            onClick={() => (isLocked ? onLocked && onLocked(item.key) : onNavigate(item.key))}
+            aria-haspopup={isLocked ? 'dialog' : undefined}
+            aria-label={isLocked ? `${item.label}, locked. ${LOCK_COPY}` : undefined}
           >
             {item.label}
             {isLocked && <LockGlyph size={11} className="app-nav-lock" />}

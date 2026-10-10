@@ -256,6 +256,32 @@ export function weekProgress(state, wk, history = null) {
   const done = goals.filter((g) => g.done).length
   return { week: wk, goals, done, need: WEEKLY_GOALS_NEEDED, complete: done >= WEEKLY_GOALS_NEEDED, paid: weekRewardPaid(state, wk), keptDays: kept }
 }
+// Which goals can still be finished this week, from today. Used to tell a
+// player who arrives partway through a week (or misses a day) honestly what
+// is still possible, without changing any rule.
+//   dailies  done, or count + Dailies still to come this week (today's too,
+//            if not finished yet) reaches the target
+//   timed    always possible while the week lasts
+//   streak   done, or every day from Monday to yesterday was kept
+// `firstKey`: the first day this player was here (date key); a first day
+// after this week's Monday means they joined partway through the week.
+export function weekOutlook(progress, todayKey, firstKey = null) {
+  const days = Array.from({ length: 7 }, (_, i) => addDays(progress.week.startKey, i))
+  const ti = days.indexOf(todayKey)
+  const joinedMidWeek = !!firstKey && firstKey > progress.week.startKey && firstKey <= progress.week.endKey
+  if (ti < 0) return { possible: Object.fromEntries(progress.goals.map((g) => [g.id, true])), attainable: true, joinedMidWeek }
+  const kept = new Set(progress.keptDays || [])
+  const left = 6 - ti + (kept.has(todayKey) ? 0 : 1)
+  const possible = {}
+  for (const g of progress.goals) {
+    if (g.done) possible[g.id] = true
+    else if (g.id === 'dailies') possible[g.id] = g.count + left >= g.target
+    else if (g.id === 'streak') possible[g.id] = days.slice(0, ti).every((d) => kept.has(d))
+    else possible[g.id] = true
+  }
+  const reachable = progress.goals.filter((g) => possible[g.id]).length >= progress.need
+  return { possible, attainable: progress.complete || reachable, joinedMidWeek }
+}
 export function roundsProgress(state, now = Date.now(), history = null) {
   return weekProgress(state, weekOf(now), history)
 }

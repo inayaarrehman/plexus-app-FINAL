@@ -38,6 +38,26 @@ function useWide(ref, min = 620) {
 
 // The weekly reward: 250 XP plus one puzzle tool the player chooses. The XP
 // is added the moment the second goal is done; the tool waits for a choice.
+// Honest wording when part of this week is already out of reach (a player
+// who joined partway through, or a missed day). Rules and rewards unchanged.
+function weekOutlookLine(rounds) {
+  const o = rounds.outlook
+  if (!o || rounds.complete) return null
+  if (o.joinedMidWeek && !o.attainable) return 'You joined partway through this week, so this week’s reward isn’t reachable. Your first full week starts Monday. Until then, everything you play still earns XP.'
+  if (o.joinedMidWeek && !o.possible?.streak) return 'Your first full week starts Monday. You can still earn this week’s reward with the other two goals.'
+  if (!o.attainable) return 'This week’s reward is out of reach now. New goals start Monday, and everything you play still earns XP.'
+  return null
+}
+function weekGoalNotes(rounds) {
+  const o = rounds.outlook
+  if (!o || rounds.complete) return {}
+  const notes = {}
+  for (const g of rounds.goals) {
+    if (o.possible?.[g.id] === false) notes[g.id] = o.joinedMidWeek ? 'Starts with your first full week' : 'Not possible this week'
+  }
+  return notes
+}
+
 function WeekReward({ rounds, choices, level, onChoose }) {
   const resetKey = rounds.week.endKey
   const reset = formatDayKey(resetKey, { weekday: 'long', month: 'short', day: 'numeric' })
@@ -368,7 +388,8 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
                   <p className="week-rule">Complete any {WEEKLY_GOALS_NEEDED} of the {rounds.goals.length} goals below.</p>
                 </div>
               </div>
-              <WeekGoals goals={rounds.goals} complete={rounds.complete} />
+              {weekOutlookLine(rounds) && <p className="week-outlook" role="note">{weekOutlookLine(rounds)}</p>}
+              <WeekGoals goals={rounds.goals} complete={rounds.complete} notes={weekGoalNotes(rounds)} />
               <p className="week-note">
                 The every-day goal needs each day from Monday to Sunday: that day’s Daily finished on the day, win or lose, or the day covered by Coverage. Timed sessions count when you play them to the end with at least {TIMED_QUALIFY.minAnswers} answers and {TIMED_QUALIFY.minCorrect} correct.
               </p>

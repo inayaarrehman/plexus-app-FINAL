@@ -30,9 +30,13 @@ export function TimedXpNote({ className = '' }) {
 // One line on a timed result: what the session earned and whether it counts
 // toward This Week. `result` is what recordChallengeSession/recordRaceFinish
 // returned (or null when nothing was recorded).
+// XP this session added (the lines XpResult shows for this mode).
+export function timedXpGained(result, kind = '3 Minutes') {
+  return result?.lines?.filter((l) => l[0] === kind).reduce((a, l) => a + l[1], 0) || 0
+}
 export function TimedResultLine({ result, kind = '3 Minutes' }) {
   if (!result) return null
-  const gained = result.lines?.filter((l) => l[0] === kind).reduce((a, l) => a + l[1], 0) || 0
+  const gained = timedXpGained(result, kind)
   const counts = result.qualified === true
   let text
   if (result.qualified === false || (!counts && gained === 0)) {
