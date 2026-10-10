@@ -7109,3 +7109,23 @@ body.has-install-hint .app-shell {
 @media (prefers-reduced-motion: reduce) {
   .tap-bloom { display: none; }
 }
+
+/* Timed XP budget: a quiet note on the 3 Minutes and Race start screens
+   (only when XP is reduced or used up) and one line on their results. */
+.timed-xp-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 34rem;
+  margin: 14px auto 0;
+  font-size: var(--type-caption);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--text-dim);
+  text-align: left;
+}
+.timed-xp-node { flex: none; width: 8px; height: 8px; margin-top: 0.45em; border-radius: 50%; box-shadow: inset 0 0 0 1.5px currentColor; }
+.timed-xp-note.is-reduced .timed-xp-node { background: linear-gradient(90deg, currentColor 50%, transparent 50%); }
+.timed-xp-result { margin: 6px auto 0; max-width: 34rem; font-size: var(--type-caption); font-weight: 600; line-height: 1.45; color: var(--text-dim); }
+.week-note { margin: 10px 0 0; font-size: var(--type-caption); line-height: 1.5; color: var(--text-dim); }
+.tool-card-note { margin: 4px 0 0; font-size: var(--type-caption); line-height: 1.45; color: var(--text-dim); }

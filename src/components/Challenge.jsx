@@ -16,6 +16,7 @@ import { haptics } from '../utils/haptics.js'
 import { timedCanonicalId } from '../utils/timedLibrary.js'
 import TileText from './TileText.jsx'
 import { recordChallengeSession } from '../progression/store.js'
+import { TimedXpNote, TimedResultLine } from './TimedXp.jsx'
 
 // The timed mode is 3 minutes (formerly 5). Kept as a single constant so
 // there are no other "five minute" assumptions hiding in the component.
@@ -43,6 +44,7 @@ function topEntry(counts) {
 
 export default function Challenge({ bank, onExit, onPhaseChange }) {
   const [phase, setPhase] = useState('intro') // 'intro' | 'playing' | 'results'
+  const [xpResult, setXpResult] = useState(null) // what this session earned (progression)
   const [activating, setActivating] = useState(false) // §16 intro network resolve
   const [shake, setShake] = useState(false) // brief wrong-answer feedback
   const shakeTimer = useRef(null)
@@ -244,7 +246,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
         completedAt: new Date().toISOString(),
       }
       const { stats, isNewBest: newBest } = recordChallengeResult(summary)
-      recordChallengeSession({ completedAt: summary.completedAt, roundsCorrect: correctActions, isNewBest: newBest, actions: totalActions })
+      setXpResult(recordChallengeSession({ completedAt: summary.completedAt, roundsCorrect: correctActions, isNewBest: newBest, actions: totalActions }))
       setPersonalBest(stats.personalBest)
       setIsNewBest(newBest)
       setResultsExtra({
@@ -569,6 +571,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
           </div>
 
           {personalBest > 0 && <p className="challenge-best">Personal best: {personalBest.toLocaleString()}</p>}
+          <TimedXpNote />
         </div>
       </div>
     )
@@ -592,6 +595,7 @@ export default function Challenge({ bank, onExit, onPhaseChange }) {
         <p className="challenge-results-line">
           {roundsCompleted} round{roundsCompleted === 1 ? '' : 's'} &middot; {accuracy}% accuracy
         </p>
+        <TimedResultLine result={xpResult} kind="3 Minutes" />
         {resultsExtra.strongestSystem && (
           <p className="challenge-results-line">
             <span className="challenge-results-label">Strongest</span> {resultsExtra.strongestSystem}

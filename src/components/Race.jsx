@@ -14,6 +14,7 @@ import { timedCanonicalId } from '../utils/timedLibrary.js'
 import { recordRaceFinish, recordRaceWin } from '../progression/store.js'
 import { raceCall, hasAccountSession } from '../lib/raceApi.js'
 import ServerRace from './ServerRace.jsx'
+import { TimedXpNote, TimedResultLine } from './TimedXp.jsx'
 
 // ---------------------------------------------------------------------
 // Race Mode — "Race a friend through the same Plexus," live.
@@ -103,6 +104,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
   // XP: finishing a race pays once per run; a win adds a bonus when the
   // opponent's result arrives. A run with no opponent counts as a solo run.
   const raceRunRef = useRef(null)
+  const [raceXp, setRaceXp] = useState(null)
   const raceRecordedRef = useRef({ finish: false, win: false })
   useEffect(() => {
     if (phase === 'playing' && !raceRunRef.current) {
@@ -112,7 +114,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
     if (phase !== 'playing' && phase !== 'results') raceRunRef.current = null
     if (phase === 'results' && raceRunRef.current && !raceRecordedRef.current.finish) {
       raceRecordedRef.current.finish = true
-      recordRaceFinish({ raceId: raceRunRef.current, solo: !(oppOnline || oppResult) })
+      setRaceXp(recordRaceFinish({ raceId: raceRunRef.current, solo: !(oppOnline || oppResult), answered: total, correct: correctCount }))
     }
   }, [phase, code, oppOnline, oppResult])
   useEffect(() => {
@@ -305,6 +307,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
         </div>
         <h1 className="race-title">Race</h1>
         <p className="race-lede">Race a friend through the same Plexus, live.</p>
+        <TimedXpNote />
 
         <div className="race-entry-actions">
           <button className="race-primary-btn" onClick={createRace}>
@@ -473,6 +476,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
     return (
       <div className="race race-results">
         <h1 className="race-title">Race complete</h1>
+        <TimedResultLine result={raceXp} kind="Race" />
 
         {verdictResult && (
           <div className={`race-outcome race-outcome-${verdictResult}`}>

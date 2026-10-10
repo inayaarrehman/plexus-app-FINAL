@@ -24,14 +24,30 @@ export const XP = {
   raceFinish: 20,
   raceWin: 10,
   raceSolo: 10,
-  raceDailyLimit: 5,
   rounds: 250, // This Week reward
+  coverageAlt: 50, // Coverage earned while full, when every puzzle tool is full too
 }
 
-// Practice (Systems, 3-Minute, Race) halves after this much in one local day,
-// so steady play always beats grinding. Dailies are never tapered.
+// Systems practice halves after this much XP (Systems, 3 Minutes and Race
+// together) in one local day. Unchanged; Dailies are never tapered.
 export const PRACTICE_TAPER_AFTER = 600
 export const PRACTICE_TAPER_RATE = 0.5
+
+// ---- Timed XP (3 Minutes and Race share one daily budget) ----
+// Per local day (the player's own midnight):
+//   the first 150 XP from timed play is paid in full,
+//   further timed XP is paid at half rate until the day's timed total reaches
+//   225 XP (so up to 75 more XP from 150 XP of play),
+//   after that timed sessions pay no XP but stay playable and still count
+//   toward This Week when they qualify.
+// Both modes draw on the same budget, so switching modes cannot reset it.
+export const TIMED_XP = { full: 150, cap: 225, rate: 0.5 }
+
+// A timed session that counts toward This Week: played to its end (the 3
+// Minutes clock ran out, or every Race round was answered) with at least 3
+// answers submitted and at least 1 correct. Starting, leaving early or letting
+// the clock run with no answers counts for nothing and earns nothing.
+export const TIMED_QUALIFY = { minAnswers: 3, minCorrect: 1 }
 
 export const STREAK_MILESTONES = [
   { days: 3, xp: 50 },
@@ -59,7 +75,9 @@ export function levelCost(level) {
 // curbside is shown as Consult, lab as Rule Out, shield as Coverage.
 //   group  'puzzle' (Daily + Systems boards), 'streak', or 'race'
 //   unlock level the tool can be used from (puzzle tools)
-//   max    inventory cap; awards past it wait as pending claims
+//   max    inventory cap; puzzle tools past it wait as pending claims.
+//          Coverage past its cap is swapped for a puzzle tool or XP instead
+//          (COVERAGE_OVERFLOW below).
 //   server race items live in the trusted backend, not in this save
 export const KIT = {
   curbside: { name: 'Consult', group: 'puzzle', desc: 'Highlights two tiles that belong together.', unlock: 1, max: 5, ready: true },
@@ -115,16 +133,31 @@ export function nextLevelReward(level) {
 // Archive replays, not necessarily consecutive). Counting starts from this
 // version (the owner's decision), so past Dailies are not back-paid.
 export const COVERAGE_EVERY = 7
+// Earned while already holding the cap of Coverage: instead of a claim that
+// could never be used, the player gets the puzzle tool they hold fewest of
+// (unlocked and under its cap; ties go Consult, Rule Out, Second Opinion), or
+// XP.coverageAlt if every unlocked puzzle tool is full. Paid once per Coverage.
+export const COVERAGE_OVERFLOW = true
 
 // ---- This Week ----
 // Three fixed goals; finishing any two pays the weekly reward once, Monday
 // to Monday in the player's time zone.
+//   dailies  scheduled Dailies completed this week (Coverage does not count)
+//   timed    qualifying timed sessions finished this week (TIMED_QUALIFY)
+//   streak   every day Monday to Sunday kept: that date's Daily finished on
+//            its date (win or lose, STREAK_GOAL_DAY), or the day protected by
+//            Coverage. Only this week's days count, so a streak carried in
+//            from last week cannot complete it.
 export const WEEKLY_GOALS = [
   { id: 'dailies', label: 'Complete 3 Dailies', target: 3 },
-  { id: 'systems', label: 'Complete 2 different Systems boards', target: 2 },
   { id: 'timed', label: 'Finish 2 timed sessions (3 Minutes or Race)', target: 2 },
+  { id: 'streak', label: 'Complete the Daily every day, Monday to Sunday', target: 7 },
 ]
 export const WEEKLY_GOALS_NEEDED = 2
+// What keeps a day for the streak goal: 'won' (the Plexus streak rule: that
+// date's Daily won on that date) or 'completed' (that date's Daily finished
+// on that date, win or lose). Coverage keeps a missed day either way.
+export const STREAK_GOAL_DAY = 'completed' // owner's decision: showing up every day, win or lose
 // The weekly reward also includes one puzzle tool of the player's choice
 // (any they have unlocked).
 export const WEEKLY_TOOL_CHOICE = true

@@ -848,7 +848,7 @@ function ToolBar({ kit, toolState, toolsUsed, ask, setAsk, onConfirm, isDaily, c
             <div><dt>When</dt><dd>{TOOL_DETAIL[info].when}</dd></div>
             <div><dt>Status</dt><dd>{toolStatusText(info, toolState(info), kit.counts[info] || 0, kit.level)}</dd></div>
             <div><dt>Limit</dt><dd>One tool per Daily. A Daily solved with a tool doesn’t count as Perfect.</dd></div>
-            <div><dt>Get more</dt><dd>Level up and complete weekly goals. Tools earned in Systems are saved for your Dailies.</dd></div>
+            <div><dt>Get more</dt><dd>Level up and complete This Week.</dd></div>
           </dl>
           <button type="button" className="tool-info-close" onClick={() => { setInfo(null); document.getElementById(`tool-info-btn-${info}`)?.focus() }}>Close</button>
         </div>

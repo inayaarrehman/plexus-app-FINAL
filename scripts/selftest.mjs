@@ -1175,7 +1175,7 @@ console.log('\n[38] Progression engine: XP, levels, streaks, This Week, Kit, mer
   assert(S.backfillIfNeeded({history:bh})===null,'backfill runs once')
   // rounds goals rotate and differ week to week
   // This Week: three fixed goals, any two pay the reward
-  assert(C.WEEKLY_GOALS.map(g=>g.id).join()==='dailies,systems,timed' && C.WEEKLY_GOALS_NEEDED===2,'three fixed weekly goals, any two')
+  assert(C.WEEKLY_GOALS.map(g=>g.id).join()==='dailies,timed,streak' && C.WEEKLY_GOALS_NEEDED===2,'three fixed weekly goals (Dailies, timed, every day), any two') && assert(C.STREAK_GOAL_DAY === 'completed', 'the every-day goal counts any finished Daily')
   const allNames = Object.values(C.KIT).map((k) => k.name + ' ' + k.desc).join(' ')
   assert(!/\b(Dr\.|MD|DO)\b/.test(allNames) && !allNames.includes('\u2014'), 'no credential language or em dashes in Kit names')
   // Kit opens by level; each tool is first granted at the level it unlocks
@@ -1284,7 +1284,7 @@ console.log('\n[41] Home and My Plexus: economy unchanged, previews faithful, co
   const C = await import('../src/progression/config.js')
   const E = await import('../src/progression/engine.js')
   // XP values and level thresholds are exactly what they were.
-  assert(JSON.stringify(C.XP) === JSON.stringify({ daily: 100, perfect: 25, archive: 50, connection: { 1: 5, 2: 10, 3: 15, 4: 20 }, systemPuzzle: 50, systemAttempt: [100, 75, 50, 25], systemComplete: 300, challengePerCorrect: 3, challengeMax: 60, challengeNewBest: 15, raceFinish: 20, raceWin: 10, raceSolo: 10, raceDailyLimit: 5, rounds: 250 }), 'XP values as designed (Systems pays by attempt: 100/75/50/25)')
+  assert(JSON.stringify(C.XP) === JSON.stringify({ daily: 100, perfect: 25, archive: 50, connection: { 1: 5, 2: 10, 3: 15, 4: 20 }, systemPuzzle: 50, systemAttempt: [100, 75, 50, 25], systemComplete: 300, challengePerCorrect: 3, challengeMax: 60, challengeNewBest: 15, raceFinish: 20, raceWin: 10, raceSolo: 10, rounds: 250, coverageAlt: 50 }) && JSON.stringify(C.TIMED_XP) === JSON.stringify({ full: 150, cap: 225, rate: 0.5 }), 'XP values as designed (Systems by attempt 100/75/50/25; timed budget 150 full, cap 225)')
   const costs = Array.from({ length: 12 }, (_, i) => C.levelCost(i + 1)).join(',')
   assert(costs === '150,220,290,380,490,600,730,860,1010,1180,1350,1540', 'level thresholds unchanged (' + costs + ')')
   assert(E.levelInfo(149).level === 1 && E.levelInfo(150).level === 2 && E.levelInfo(370).level === 3, 'level boundaries land where they did')

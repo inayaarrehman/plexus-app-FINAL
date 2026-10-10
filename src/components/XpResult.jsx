@@ -10,7 +10,7 @@ import { LevelLine, ToolArt, fmt } from './RecordParts.jsx'
 // Under it: the next reward and when it arrives, and a quiet way into My
 // Plexus (never forced).
 export default function XpResult({ result, onOpenRecord }) {
-  const { gained, lines, after, levelUp, grants, rounds, pending = [], coverageUsed = [], weeklyChoice = null } = result
+  const { gained, lines, after, levelUp, grants, rounds, pending = [], coverageUsed = [], coverageAlt = [], weeklyChoice = null } = result
   // Grants that went into the inventory (pending claims are listed apart).
   const held = [...grants]
   for (const p of pending) {
@@ -20,7 +20,7 @@ export default function XpResult({ result, onOpenRecord }) {
   const items = countGrants(held)
   const next = nextLevelReward(after.level)
 
-  if (!(gained > 0) && items.length === 0 && coverageUsed.length === 0 && pending.length === 0) return null
+  if (!(gained > 0) && items.length === 0 && coverageUsed.length === 0 && pending.length === 0 && coverageAlt.length === 0) return null
 
   return (
     <div className={`xp-result ${levelUp ? 'is-level-up' : ''}`} role="status">
@@ -38,6 +38,11 @@ export default function XpResult({ result, onOpenRecord }) {
       {coverageUsed.length > 0 && (
         <p className="xp-coverage">
           Coverage used for {coverageUsed.map((d) => formatDayKey(d, { month: 'short', day: 'numeric' })).join(' and ')}. Your streak continues.
+        </p>
+      )}
+      {coverageAlt.length > 0 && (
+        <p className="xp-coverage">
+          You earned a Coverage while holding {KIT.shield.max}, so you got {coverageAlt.map((c) => (c.item ? KIT[c.item]?.name : `${c.xp} XP`)).join(' and ')} instead.
         </p>
       )}
       {pending.length > 0 && <p className="xp-pending">Inventory full: {summarizeGrants(pending).join(' · ')} waiting as a claim in Your Tools.</p>}

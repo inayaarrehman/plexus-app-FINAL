@@ -15,6 +15,7 @@ import {
   REMOVED_TOOLS,
   STARTER_GIFT,
   COVERAGE_EVERY,
+  TIMED_QUALIFY,
 } from './config.js'
 import {
   emptyState,
@@ -30,14 +31,17 @@ import {
   pendingClaims,
   claimPending,
   roundsProgress,
+  weekProgress,
   weeklyChoicesDue,
+  timedXpStatus,
   itemOpen,
   weekOf,
   localDayKey,
   entryDay,
 } from './engine.js'
 import { currentStreak, longestStreak, coverGaps, isStreakDay, finishedOnDate, addDays as addDayKey } from './streak.js'
-import { weekdayOf } from '../utils/calendar.js'
+import { weekdayOf, weekOfKey } from '../utils/calendar.js'
+import { getDailyHistory } from '../utils/storage.js'
 
 const KEY = 'plexus.progression.v1'
 
@@ -120,7 +124,56 @@ export function ensureV2(state, now = Date.now(), ctx = null) {
     }
     v2.converted[old] = Math.max(v2.converted[old] || 0, held)
   }
+  resolveCoverageOverflow(state, ctx, now)
   return state
+}
+
+// ---- Coverage past the cap ----
+// The puzzle tool a Coverage earned at the cap turns into: the unlocked tool
+// held fewest of that is under its cap (ties: Consult, Rule Out, Second
+// Opinion), or null when every unlocked puzzle tool is full.
+function overflowTool(state) {
+  const level = levelInfo(totalXp(state)).level
+  const counts = kitCounts(state)
+  const open = PUZZLE_TOOLS.filter((it) => itemOpen(it, level) && counts[it] < KIT[it].max)
+  if (!open.length) return null
+  return open.reduce((best, it) => (counts[it] < counts[best] ? it : best), open[0])
+}
+// Pays Coverage number `k` (id coverage:k) as the alternative: the grant
+// keeps the Coverage id, so it can only ever be paid once, and XP goes under
+// coverage:k:xp alongside a marker grant. Nothing here can earn Coverage, so
+// there is no loop.
+function payCoverageAlternative(state, ctx, id, now) {
+  const tool = overflowTool(state)
+  if (tool) {
+    state.kit.grants[id] = { item: tool, qty: 1, source: 'coverage-alt', at: now }
+    if (ctx) {
+      ctx.grants?.push(tool)
+      ;(ctx.coverageAlt ||= []).push({ item: tool })
+    }
+    return
+  }
+  state.kit.grants[id] = { item: 'coverage-xp', qty: 0, source: 'coverage-alt', at: now }
+  const got = award(state, { id: `${id}:xp`, xp: XP.coverageAlt, kind: 'coverage-alt', at: now })
+  if (got && ctx) {
+    ctx.gained = (ctx.gained || 0) + got
+    ctx.lines?.push(['Coverage full', got])
+    ;(ctx.coverageAlt ||= []).push({ xp: got })
+  }
+}
+// Older saves can hold Coverage claims that waited past the cap. Each one is
+// settled once: taken in as Coverage if there is room now, otherwise swapped
+// for the alternative above under the same id. Also tidies the rare case of
+// two devices settling the same Coverage differently (the grant record wins,
+// so it is still paid once).
+function resolveCoverageOverflow(state, ctx, now = Date.now()) {
+  for (const [id, g] of Object.entries(state.kit.grants)) {
+    if (g.item === 'shield' && g.pending && !state.kit.claims[id]) {
+      if (kitCounts(state).shield < KIT.shield.max) state.kit.claims[id] = now
+      else payCoverageAlternative(state, ctx, id, now)
+    }
+    if (g.source === 'coverage-alt' && g.item !== 'coverage-xp' && state.ledger[`${id}:xp`]) delete state.ledger[`${id}:xp`]
+  }
 }
 
 // ---- follow-ups run after every batch of awards ----
@@ -145,22 +198,34 @@ function followUps(state, ctx) {
   const now = ctx.at || Date.now()
   ensureV2(state, now, ctx)
   const info = payLevels(state, ctx, now)
-  // Coverage: one per COVERAGE_EVERY scheduled Dailies.
+  // Coverage: one per COVERAGE_EVERY scheduled Dailies. At the cap, the
+  // player gets a puzzle tool (or XP) instead of a claim they could not use.
   const cov = coverageProgress(state)
   for (let k = 1; k <= cov.earned; k++) {
-    const r = grant(state, { id: `coverage:${k}`, item: 'shield', source: 'coverage', at: now })
-    if (r && ctx.grants) ctx.grants.push('shield')
-    if (r === 'pending' && ctx.pending) ctx.pending.push('shield')
+    const id = `coverage:${k}`
+    if (state.kit.grants[id]) continue
+    if (kitCounts(state).shield >= KIT.shield.max) payCoverageAlternative(state, ctx, id, now)
+    else if (grant(state, { id, item: 'shield', source: 'coverage', at: now })) ctx.grants?.push('shield')
   }
   // This Week: any two goals pays 250 XP once, plus a tool the player picks.
-  const rp = roundsProgress(state, now)
-  if (rp.complete && !rp.paid) {
-    ctx.gained += award(state, { id: `rounds:${rp.week.key}`, xp: XP.rounds, kind: 'rounds', at: now })
-    ctx.lines.push(['This Week', XP.rounds])
-    ctx.weeklyChoice = rp.week.key
-    // This Week XP can itself cross a level.
-    if (levelInfo(totalXp(state)).level > info.level) payLevels(state, ctx, now)
+  // Usually only this week; when Coverage just protected a day of last week
+  // (a missed Sunday covered by Monday's Daily), last week is checked too.
+  const history = ctx.history || getDailyHistory()
+  const weeks = [weekOfKey(localDayKey(now))]
+  for (const d of ctx.shieldUsed || []) {
+    const wk = weekOfKey(d)
+    if (!weeks.some((w) => w.key === wk.key)) weeks.push(wk)
   }
+  for (const wk of weeks) {
+    const rp = weekProgress(state, wk, history)
+    if (!rp.complete || rp.paid) continue
+    const at = wk.key === weeks[0].key ? now : Math.min(now, wk.end - 1000)
+    ctx.gained += award(state, { id: `rounds:${wk.key}`, xp: XP.rounds, kind: 'rounds', at })
+    ctx.lines.push(['This Week', XP.rounds])
+    ctx.weeklyChoice = wk.key
+  }
+  // Weekly or Coverage XP can itself cross a level.
+  if (levelInfo(totalXp(state)).level > info.level) payLevels(state, ctx, now)
 }
 
 function run(fn) {
@@ -178,13 +243,16 @@ function run(fn) {
     grants: ctx.grants,
     pending: ctx.pending,
     coverageUsed: ctx.shieldUsed || [],
+    coverageAlt: ctx.coverageAlt || [],
     weeklyChoice: ctx.weeklyChoice || null,
+    timedNote: ctx.timedNote || null,
+    qualified: ctx.qualified ?? null,
     attemptNumber: ctx.attemptNumber ?? null,
     connectedNow: !!ctx.connectedNow,
     before,
     after,
     levelUp: after.level > before.level,
-    rounds: roundsProgress(state),
+    rounds: roundsProgress(state, Date.now(), ctx.history || getDailyHistory()),
   }
 }
 
@@ -193,6 +261,7 @@ function run(fn) {
 export function recordDailyFinish({ dateKey, isToday, puzzle, won, mistakes, guessLog, toolsUsed = 0, history }) {
   return run((state, ctx) => {
     const at = ctx.at
+    if (history) ctx.history = history
     if (isToday) {
       ctx.gained += award(state, { id: `daily:${dateKey}`, xp: XP.daily, kind: 'daily', at })
       ctx.lines.push(['Daily', XP.daily])
@@ -324,40 +393,59 @@ export function recordSystemFinish({ puzzle, system, won, guessLog, systemComple
   })
 }
 
+// ---- Timed sessions (3 Minutes and Race) ----
+// A session qualifies for This Week when it was played to its end with at
+// least TIMED_QUALIFY.minAnswers answers and TIMED_QUALIFY.minCorrect correct.
+// XP follows correct answers (3 Minutes) or a qualifying finish (Race) and is
+// paid from the shared daily timed budget (engine.timedPay). Past the budget
+// a qualifying session still counts toward This Week.
+export function timedQualifies({ answers = 0, correct = 0 } = {}) {
+  return answers >= TIMED_QUALIFY.minAnswers && correct >= TIMED_QUALIFY.minCorrect
+}
+export function timedStatus(now = Date.now()) {
+  return timedXpStatus(loadProgression(), now)
+}
+function timedLine(ctx, label, paid, base) {
+  ctx.gained += paid
+  if (base > 0 && paid < base) ctx.timedNote = paid > 0 ? 'reduced' : 'limit'
+  ctx.lines.push([label, paid])
+}
+
 // ---- 3-Minute ----
+// Called only when the clock runs out (leaving early records nothing).
+// `actions` is the number of answers submitted.
 export function recordChallengeSession({ completedAt, roundsCorrect = 0, isNewBest = false, actions = null }) {
   return run((state, ctx) => {
     const at = ctx.at
     const id = `challenge:${completedAt || at}`
-    // An inactive session (the clock ran out with no answer at all) earns
-    // nothing and does not count toward This Week.
-    if (actions === 0) return
-    const xp = Math.min(XP.challengeMax, roundsCorrect * XP.challengePerCorrect) + (isNewBest && roundsCorrect > 0 ? XP.challengeNewBest : 0)
-    if (xp > 0) {
-      ctx.gained += award(state, { id, xp, kind: 'challenge', at })
-    } else if (!state.ledger[id]) {
-      // A session with nothing correct still counts as played for This Week.
-      state.ledger[id] = { xp: 0, base: 0, kind: 'challenge', at }
-    }
-    ctx.lines.push(['3 Minutes', state.ledger[id]?.xp || 0])
+    if (state.ledger[id]) return
+    const answers = actions ?? roundsCorrect
+    const q = timedQualifies({ answers, correct: roundsCorrect })
+    // Nothing correct: nothing earned and nothing counted.
+    if (!(roundsCorrect > 0)) return
+    const base = Math.min(XP.challengeMax, roundsCorrect * XP.challengePerCorrect) + (isNewBest ? XP.challengeNewBest : 0)
+    const paid = award(state, { id, xp: base, kind: 'challenge', at, m: { q, answers, correct: roundsCorrect } })
+    ctx.qualified = q
+    timedLine(ctx, '3 Minutes', paid, base)
   })
 }
 
 // ---- Race ----
-// Finishing pays once per race run; a win adds a small bonus when the result
-// arrives (the opponent may finish after you). Up to 5 races a day earn XP.
-export function recordRaceFinish({ raceId, solo = false }) {
+// A finished race (every round answered) that qualifies pays its finish XP
+// once per run from the shared timed budget; a win adds a small bonus when
+// the result arrives (the opponent may finish after you). A race that does
+// not qualify, or was abandoned, earns nothing and does not count.
+export function recordRaceFinish({ raceId, solo = false, answered = null, correct = null }) {
   return run((state, ctx) => {
     const at = ctx.at
-    // Finished race (solo or head-to-head) counts toward This Week, even past
-    // the daily XP limit. Abandoned races never reach this point.
-    mark(state, { id: `racedone:${raceId}`, kind: 'racedone', at })
-    const today = localDayKey(at)
-    const racesToday = Object.entries(state.ledger).filter(([id, e]) => e.kind === 'race' && !id.endsWith(':win') && entryDay(e) === today).length
-    if (racesToday >= XP.raceDailyLimit) return
-    const g = award(state, { id: `race:${raceId}`, xp: solo ? XP.raceSolo : XP.raceFinish, kind: 'race', at })
-    ctx.gained += g
-    ctx.lines.push(['Race', g])
+    // Callers from before answers were passed: treat as qualifying.
+    const q = answered == null ? true : timedQualifies({ answers: answered, correct: correct || 0 })
+    ctx.qualified = q
+    if (!q) return
+    mark(state, { id: `racedone:${raceId}`, kind: 'racedone', at, m: { q: true } })
+    const base = solo ? XP.raceSolo : XP.raceFinish
+    const paid = award(state, { id: `race:${raceId}`, xp: base, kind: 'race', at })
+    timedLine(ctx, 'Race', paid, base)
   })
 }
 export function recordRaceWin({ raceId }) {
@@ -513,7 +601,8 @@ export function recordSnapshot({ history = {}, todayKey }) {
     counts,
     streak,
     connections,
-    rounds: roundsProgress(state),
+    rounds: roundsProgress(state, Date.now(), history),
+    timed: timedXpStatus(state),
     kit: KIT,
     pending: pendingClaims(state),
     weeklyChoices: weeklyChoicesDue(state),

@@ -7,6 +7,7 @@ import { scrambleLabel, activeEffect } from '../utils/mutation.js'
 import { haptics } from '../utils/haptics.js'
 import { recordRaceFinish, recordRaceWin } from '../progression/store.js'
 import { RACE_REWARDS } from '../progression/config.js'
+import { TimedXpNote, TimedResultLine } from './TimedXp.jsx'
 
 // ---------------------------------------------------------------------
 // Race, run by the server (signed-in players)
@@ -302,10 +303,11 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
 
   // XP on this device (same rules as before), once per match.
   const recorded = useRef({})
+  const [raceXp, setRaceXp] = useState(null)
   useEffect(() => {
     if (!matchId || !mine?.finished_at || recorded.current[matchId]) return
     recorded.current[matchId] = true
-    recordRaceFinish({ raceId: matchId, solo: false })
+    setRaceXp(recordRaceFinish({ raceId: matchId, solo: false, answered: mine.answered || 0, correct: mine.correct || 0 }))
   }, [matchId, mine?.finished_at])
   useEffect(() => {
     if (!matchId || mine?.outcome !== 'win' || recorded.current[`${matchId}:win`]) return
@@ -335,6 +337,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
         {header}
         <h1 className="race-title">Race</h1>
         <p className="race-lede">Race a friend through the same Plexus, live.</p>
+        <TimedXpNote />
         <div className="race-entry-actions">
           <button className="race-primary-btn" onClick={create} disabled={busy}>
             Create a race
@@ -551,6 +554,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
     <div className="race race-results">
       {header}
       <h1 className="race-title">{waiting ? 'Finished' : 'Race complete'}</h1>
+      <TimedResultLine result={raceXp} kind="Race" />
       {outcome && outcome !== 'abandoned' && (
         <div className={`race-outcome race-outcome-${outcome}`}>{outcome === 'win' ? 'You win!' : outcome === 'lose' ? 'You lost' : 'It’s a tie'}</div>
       )}

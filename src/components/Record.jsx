@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { recordSnapshot, claimTool, chooseWeeklyTool } from '../progression/store.js'
-import { KIT, PUZZLE_TOOLS, RACE_ITEMS, RACE_REWARDS, REMOVED_NAMES, COVERAGE_EVERY, levelRewards, XP, WEEKLY_GOALS_NEEDED } from '../progression/config.js'
+import { KIT, PUZZLE_TOOLS, RACE_ITEMS, RACE_REWARDS, REMOVED_NAMES, COVERAGE_EVERY, levelRewards, XP, WEEKLY_GOALS_NEEDED, TIMED_QUALIFY } from '../progression/config.js'
 import { itemOpen, levelInfo } from '../progression/engine.js'
 import { formatDayKey } from '../utils/calendar.js'
 import { getRaceSummary } from '../lib/raceApi.js'
@@ -369,6 +369,9 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
                 </div>
               </div>
               <WeekGoals goals={rounds.goals} complete={rounds.complete} />
+              <p className="week-note">
+                The every-day goal needs each day from Monday to Sunday: that day’s Daily finished on the day, win or lose, or the day covered by Coverage. Timed sessions count when you play them to the end with at least {TIMED_QUALIFY.minAnswers} answers and {TIMED_QUALIFY.minCorrect} correct.
+              </p>
               <WeekReward rounds={rounds} choices={weeklyChoices} level={info.level} onChoose={onChoose} />
             </section>
           </div>
@@ -397,7 +400,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
                   </li>
                 ))}
                 <li>
-                  <b>{KIT.shield.name}.</b> One for every {COVERAGE_EVERY} Dailies you complete on their day (Archive replays don’t count).
+                  <b>{KIT.shield.name}.</b> One for every {COVERAGE_EVERY} Dailies you complete on their day (Archive replays don’t count). If you already hold {KIT.shield.max}, you get the puzzle tool you have fewest of instead, or {XP.coverageAlt} XP if your tools are full.
                 </li>
               </ul>
             </details>
@@ -413,6 +416,9 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
                   </b>{' '}
                   Dailies toward your next Coverage
                 </p>
+                {counts.shield >= KIT.shield.max && (
+                  <p className="tool-card-note">You hold {KIT.shield.max} of {KIT.shield.max}. Your next one becomes a puzzle tool, or {XP.coverageAlt} XP if your tools are full.</p>
+                )}
               </ToolCard>
             </ul>
           </div>
@@ -465,7 +471,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
               <span className="kit-more-chev" aria-hidden="true" />
             </summary>
             <p className="kit-foot">
-              Caps: puzzle tools {KIT.curbside.max} each, Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Rewards that arrive when you are full wait here as claims, nothing is lost. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Tools can be used in Dailies only, not in Systems, 3 Minutes or Race. Tools earned in Systems are saved for your Dailies. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
+              Caps: puzzle tools {KIT.curbside.max} each, Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Puzzle tools that arrive when you are full wait here as claims, nothing is lost. Coverage that arrives when you hold {KIT.shield.max} becomes a puzzle tool or {XP.coverageAlt} XP. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Tools can be used in Dailies only, not in Systems, 3 Minutes or Race. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
             </p>
           </details>
           {convertedList.length > 0 && (

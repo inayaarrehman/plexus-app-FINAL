@@ -169,7 +169,9 @@ console.log('[4] Coverage: earned every 7 scheduled Dailies from this version, c
   at('2026-11-01T12:00:00-07:00')
   history['2026-11-01'] = { completed: true, won: true, mistakes: 0, completedDay: '2026-11-01' }
   finishDaily('2026-11-01', { history })
-  ok((E.pendingClaims(load()).shield || []).length === 1, 'a third Coverage past the cap waits as a pending claim')
+  ok(!(E.pendingClaims(load()).shield || []).length, 'a third Coverage past the cap is not left as an unusable claim')
+  const alt = load().kit.grants['coverage:3']
+  ok(alt && alt.source === 'coverage-alt' && C.PUZZLE_TOOLS.includes(alt.item) && E.kitCounts(load()).shield === 2, 'it becomes a puzzle tool instead (' + alt?.item + '), Coverage stays at 2')
   // Miss Nov 2 and Nov 3, finish Nov 4: two charges cover two missed days.
   at('2026-11-04T12:00:00-07:00')
   history['2026-11-04'] = { completed: true, won: true, mistakes: 0, completedDay: '2026-11-04' }
@@ -187,32 +189,28 @@ console.log('[4] Coverage: earned every 7 scheduled Dailies from this version, c
   ok(K.coverGaps({ '2026-11-01': { completed: true, won: true, completedDay: '2026-11-01' } }, '2026-11-05', new Set(), 2).length === 0, 'a gap longer than the charges held spends nothing')
 }
 
-console.log('[5] This Week: any 2 of 3, counted once, Monday reset in local time')
+console.log('[5] This Week: any 2 of 3 (Dailies, timed, 7-day streak), counted once, Monday reset in local time')
 {
   reset()
   at('2026-10-12T09:00:00-07:00') // Monday
   S.ensureProgression()
   const wk = E.weekOf(Date.now()).key
-  for (const [i, key] of ['2026-10-12', '2026-10-13'].entries()) {
+  for (const key of ['2026-10-12', '2026-10-13']) {
     at(`${key}T12:00:00-07:00`)
     finishDaily(key)
-    void i
   }
-  // Systems: the same board twice counts once; a lost board does not count.
+  // Systems boards no longer count toward This Week; their XP is unchanged.
   const sp = puzzle('cardiology-starter-1')
-  S.recordSystemFinish({ puzzle: sp, system: 'Cardiology', won: true, guessLog: gl, boardId: 'cardiology-starter-1' })
-  const replay = S.recordSystemFinish({ puzzle: sp, system: 'Cardiology', won: true, guessLog: gl, boardId: 'cardiology-starter-1' })
-  ok(replay.gained === 0, 'a replayed board earns no repeat first-completion XP')
-  S.recordSystemFinish({ puzzle: puzzle('gi-starter-1'), system: 'GI', won: false, guessLog: [], boardId: 'gi-starter-1' })
+  const sys = S.recordSystemFinish({ puzzle: sp, system: 'Cardiology', won: true, guessLog: gl, boardId: 'cardiology-starter-1' })
+  ok(sys.gained === 100, 'a first-try Systems solve still pays 100 XP')
   let rp = E.roundsProgress(load())
-  ok(rp.goals.find((g) => g.id === 'systems').count === 1, 'replays count once per board per week; lost boards do not count')
+  ok(!rp.goals.some((g) => g.id === 'systems') && rp.goals.map((g) => g.id).join() === 'dailies,timed,streak', 'goals are Dailies, timed and streak')
   ok(rp.goals.find((g) => g.id === 'dailies').count === 2 && !rp.complete, 'two Dailies, no goal complete yet')
-  const r3 = finishDaily('2026-10-14')
-  void r3
+  finishDaily('2026-10-14')
   rp = E.roundsProgress(load())
   ok(rp.done === 1 && !rp.complete && !rp.paid, 'one goal done is not enough')
-  S.recordChallengeSession({ completedAt: 'cs1', roundsCorrect: 4 })
-  const r = S.recordRaceFinish({ raceId: 'race-1', solo: true })
+  S.recordChallengeSession({ completedAt: 'cs1', roundsCorrect: 4, actions: 6 })
+  const r = S.recordRaceFinish({ raceId: 'race-1', solo: true, answered: 10, correct: 5 })
   rp = E.roundsProgress(load())
   ok(rp.done === 2 && rp.complete && rp.paid, 'two goals complete the week')
   ok(r.lines.some((l) => l[0] === 'This Week' && l[1] === 250) && r.weeklyChoice === wk, '250 XP paid and a tool choice offered')
@@ -220,16 +218,13 @@ console.log('[5] This Week: any 2 of 3, counted once, Monday reset in local time
   ok(S.chooseWeeklyTool(wk, 'second-opinion') === false, 'a locked tool cannot be chosen')
   ok(!!S.chooseWeeklyTool(wk, 'curbside') && !E.weeklyChoicesDue(load()).includes(wk), 'choose Consult; the choice is made once')
   ok(S.chooseWeeklyTool(wk, 'curbside') === false, 'the weekly tool cannot be claimed twice')
-  const more = S.recordChallengeSession({ completedAt: 'cs2', roundsCorrect: 4 })
+  const more = S.recordChallengeSession({ completedAt: 'cs2', roundsCorrect: 4, actions: 5 })
   ok(!more.lines.some((l) => l[0] === 'This Week'), 'the weekly reward is paid once per week')
-  // Sunday 23:30 local still this week; Monday 00:10 local is a new week.
   at('2026-10-18T23:30:00-07:00')
   ok(E.roundsProgress(load()).paid, 'Sunday night is still the same week')
   at('2026-10-19T00:10:00-07:00')
   const nw = E.roundsProgress(load())
   ok(!nw.paid && nw.done === 0 && nw.week.key !== wk, 'resets Monday 00:00 local time')
-  // An inactive 3-Minute session (no answers) does not count; an abandoned
-  // 3-Minute or Race is never recorded at all.
   S.recordChallengeSession({ completedAt: 'idle', roundsCorrect: 0, actions: 0 })
   ok(E.roundsProgress(load()).goals.find((g) => g.id === 'timed').count === 0, 'an inactive 3-Minute session does not count')
   ok(nw.goals.find((g) => g.id === 'timed').count === 0, 'nothing carried into the new week')

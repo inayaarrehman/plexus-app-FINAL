@@ -21,18 +21,24 @@
 // can never pay twice. Level, totals and weekly goal progress are derived
 // from the ledger, never stored, so they cannot drift.
 
-import { dayKey, weekOfKey } from '../utils/calendar.js'
+import { dayKey, weekOfKey, addDays } from '../utils/calendar.js'
+import { isStreakDay, finishedOnDate } from './streak.js'
 import {
   XP,
   PRACTICE_TAPER_AFTER,
   PRACTICE_TAPER_RATE,
+  TIMED_XP,
   levelCost,
   KIT,
   WEEKLY_GOALS,
   WEEKLY_GOALS_NEEDED,
+  STREAK_GOAL_DAY,
 } from './config.js'
 
+// Practice XP that the Systems taper looks at (unchanged). Timed XP is paid
+// under its own daily budget (TIMED_KINDS) and is not tapered again.
 export const PRACTICE_KINDS = new Set(['syspuzzle', 'sysconn', 'challenge', 'race'])
+export const TIMED_KINDS = new Set(['challenge', 'race'])
 
 export function emptyState() {
   return { version: 1, ledger: {}, kit: { grants: {}, uses: {}, claims: {} }, seen: { level: 1, stages: {} }, migrated: null, profile: {}, v2: null }
@@ -88,12 +94,40 @@ function practiceEarnedOn(state, day) {
   return t
 }
 
-// Adds one award if its id is new. Practice XP past the daily allowance is
-// paid at the taper rate. Returns the XP actually added (0 for a repeat).
+// Timed XP already paid on a local day (3 Minutes and Race together).
+export function timedEarnedOn(state, day) {
+  let t = 0
+  for (const e of Object.values(state.ledger)) if (TIMED_KINDS.has(e.kind) && entryDay(e) === day) t += e.xp || 0
+  return t
+}
+// What `xp` earned from timed play pays, given what was already paid today:
+// full rate up to TIMED_XP.full, then TIMED_XP.rate until TIMED_XP.cap, then 0.
+export function timedPay(earned, xp) {
+  const full = Math.max(0, Math.min(xp, TIMED_XP.full - earned))
+  const room = Math.max(0, TIMED_XP.cap - Math.max(earned, TIMED_XP.full))
+  return full + Math.min(room, Math.floor((xp - full) * TIMED_XP.rate))
+}
+// For the note shown before a timed session starts.
+//   tier 'full'    the next session pays full XP (fullLeft of it, then half)
+//   tier 'reduced' half XP, up to `left` more XP today
+//   tier 'done'    no more timed XP today
+export function timedXpStatus(state, now = Date.now()) {
+  const earned = timedEarnedOn(state, dayKey(now))
+  const left = Math.max(0, TIMED_XP.cap - earned)
+  const tier = earned < TIMED_XP.full ? 'full' : left > 0 ? 'reduced' : 'done'
+  return { earned, left, fullLeft: Math.max(0, TIMED_XP.full - earned), tier, full: TIMED_XP.full, cap: TIMED_XP.cap }
+}
+
+// Adds one award if its id is new. Timed XP is paid under the timed budget;
+// other practice XP past the daily allowance is paid at the taper rate.
+// Returns the XP actually added (0 for a repeat). A timed award that pays
+// nothing (budget used up) is still recorded, so the session counts.
 export function award(state, { id, xp, kind, at = Date.now(), m }) {
   if (!id || state.ledger[id] || !(xp > 0)) return 0
   let paid = xp
-  if (PRACTICE_KINDS.has(kind)) {
+  if (TIMED_KINDS.has(kind)) {
+    paid = timedPay(timedEarnedOn(state, dayKey(at)), xp)
+  } else if (PRACTICE_KINDS.has(kind)) {
     const before = practiceEarnedOn(state, dayKey(at))
     const full = Math.max(0, Math.min(xp, PRACTICE_TAPER_AFTER - before))
     paid = full + Math.floor((xp - full) * PRACTICE_TAPER_RATE)
@@ -188,26 +222,42 @@ export function mark(state, { id, kind, at = Date.now(), m }) {
 }
 
 // ---- This Week ----
-// Complete any two of three fixed goals:
-//   dailies  scheduled Dailies completed (each date once; assisted counts)
-//   systems  different Systems boards completed this week (replays count,
-//            once per board per week)
-//   timed    3-Minute sessions or Races finished (abandoned ones are never
-//            recorded)
-export function roundsProgress(state, now = Date.now()) {
-  const wk = weekOf(now)
+// Complete any two of three fixed goals (config.WEEKLY_GOALS):
+//   dailies  scheduled Dailies completed this week, each date once (a lost or
+//            assisted Daily counts; Coverage never does)
+//   timed    qualifying 3 Minutes sessions or Races finished this week.
+//            Entries saved before qualification was recorded count as before.
+//   streak   days Monday to Sunday of this week that were kept: that date's
+//            Daily finished on that date (config.STREAK_GOAL_DAY: 'completed'
+//            counts wins and losses, 'won' only wins), or the date covered by
+//            Coverage. Needs all 7. Days before this Monday never count.
+// `history` is the Daily history (utils/storage); without it the streak goal
+// reads 0. Systems boards no longer count toward This Week.
+export function coveredDates(state) {
+  const set = new Set()
+  for (const u of Object.values(state.kit.uses)) if (u.item === 'shield' && u.m?.date) set.add(u.m.date)
+  return set
+}
+export function weekProgress(state, wk, history = null) {
   const entries = Object.values(state.ledger).filter((e) => inWeek(e, wk) && !String(e.kind).startsWith('bf'))
+  const covered = coveredDates(state)
+  const days = Array.from({ length: 7 }, (_, i) => addDays(wk.startKey, i))
+  const keeps = STREAK_GOAL_DAY === 'completed' ? finishedOnDate : isStreakDay
+  const kept = days.filter((d) => (history && keeps(history[d], d)) || covered.has(d))
   const counters = {
     dailies: entries.filter((e) => e.kind === 'daily').length,
-    systems: new Set(entries.filter((e) => e.kind === 'sysweek').map((e) => e.m?.board)).size,
-    timed: entries.filter((e) => e.kind === 'challenge' || e.kind === 'racedone').length,
+    timed: entries.filter((e) => (e.kind === 'challenge' || e.kind === 'racedone') && e.m?.q !== false).length,
+    streak: kept.length,
   }
   const goals = WEEKLY_GOALS.map((g) => {
     const count = Math.min(counters[g.id] || 0, g.target)
     return { ...g, count, done: count >= g.target }
   })
   const done = goals.filter((g) => g.done).length
-  return { week: wk, goals, done, need: WEEKLY_GOALS_NEEDED, complete: done >= WEEKLY_GOALS_NEEDED, paid: weekRewardPaid(state, wk) }
+  return { week: wk, goals, done, need: WEEKLY_GOALS_NEEDED, complete: done >= WEEKLY_GOALS_NEEDED, paid: weekRewardPaid(state, wk), keptDays: kept }
+}
+export function roundsProgress(state, now = Date.now(), history = null) {
+  return weekProgress(state, weekOf(now), history)
 }
 // Has this week's reward been paid? By its id, or by any weekly reward earned
 // inside this week's dates (ids from before the week label was corrected, or
