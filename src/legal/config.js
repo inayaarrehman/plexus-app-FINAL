@@ -5,7 +5,7 @@
 // to request deletion. Leave it empty until a contact address is chosen; the
 // pages then point to the in-app options only.
 
-export const CONTACT_EMAIL = ''
+export const CONTACT_EMAIL = 'contact@playplexus.com'
 
 // Support email shown on Help & Support. Set it here, or as the Vercel
 // environment variable VITE_SUPPORT_EMAIL (then redeploy). When neither is set,
@@ -18,7 +18,7 @@ const envSupport = (() => {
   }
 })()
 export const SUPPORT_EMAIL = (envSupport || CONTACT_EMAIL || '').trim()
-export const LEGAL_UPDATED = 'October 8, 2026'
+export const LEGAL_UPDATED = 'October 9, 2026'
 export const COPYRIGHT = '© 2026 Plexus. All rights reserved.'
 
 export const DISCLAIMER_TEXT =
