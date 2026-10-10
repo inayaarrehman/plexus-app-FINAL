@@ -140,7 +140,7 @@ for (const big of [false, true]) {
   {
     const { page, ctx, errors } = await open({ big })
     await page.click('.app-nav >> text=Systems')
-    await page.click(`:is(.map-cell, .more-system, .map-label)[aria-label^="${SUBJECT}"]`)
+    await page.click(`:is(.bm-label, .beyond-row)[aria-label^="${SUBJECT}"]`)
     await page.waitForSelector('.system-play-btn')
     for (const w of WIDTHS) {
       await page.setViewportSize({ width: w, height: 800 })

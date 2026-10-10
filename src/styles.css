@@ -7152,67 +7152,10 @@ body.has-install-hint .app-shell {
 .systems-overall-pct { flex: none; font-size: var(--type-caption); font-weight: 700; color: var(--text-dim); font-variant-numeric: tabular-nums; }
 
 /* ---- Body map, shared ---- */
-.body-map { position: relative; display: grid; }
 .body-outline { pointer-events: none; fill: none; stroke: color-mix(in srgb, var(--text) 24%, transparent); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-.body-map .system-glyph { width: 100%; height: 100%; display: block; }
 .map-name { display: block; font-weight: 700; font-size: var(--type-secondary); line-height: 1.2; color: var(--text); overflow-wrap: anywhere; }
 .map-count { display: block; font-size: var(--type-caption); line-height: 1.3; color: var(--text-dim); font-variant-numeric: tabular-nums; }
 .map-done { font-weight: 700; color: var(--text); }
-
-/* ---- Desktop map: icons inside the body, labels outside with a leader ---- */
-.body-map.is-wide {
-  grid-template-columns: minmax(96px, 1fr) 84px 84px 84px minmax(96px, 1fr);
-  grid-template-rows: repeat(6, minmax(84px, auto));
-  column-gap: 0;
-  align-items: center;
-  justify-self: center;
-  width: 100%;
-  max-width: 560px;
-}
-.body-map.is-wide .body-outline { grid-column: 2 / 5; grid-row: 1 / 7; width: 100%; height: 100%; align-self: stretch; }
-.map-icon-btn {
-  position: relative;
-  z-index: 1;
-  justify-self: center;
-  width: 72px;
-  height: 72px;
-  padding: 8px;
-  border: 1.5px solid transparent;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--room, #1d6a6a) 82%, transparent);
-  cursor: pointer;
-  transition: background-color 160ms ease, border-color 160ms ease;
-}
-.map-icon-btn:hover { background: color-mix(in srgb, var(--text) 9%, var(--room, #1d6a6a)); }
-.map-icon-btn.is-selected { border-color: color-mix(in srgb, var(--node-accent) 75%, var(--text)); background: color-mix(in srgb, var(--node-accent) 16%, var(--room, #1d6a6a)); }
-.map-label {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 4px 6px;
-  border: none;
-  border-radius: 10px;
-  background: none;
-  color: var(--text);
-  font-family: var(--font-ui);
-  text-align: left;
-  cursor: pointer;
-}
-.map-label.is-left { flex-direction: row; justify-content: flex-end; text-align: right; }
-.map-label.is-right { flex-direction: row-reverse; justify-content: flex-end; text-align: left; }
-.map-label-text { flex: 0 1 auto; min-width: 0; }
-.map-leader { flex: 1 1 18px; min-width: 14px; max-width: 120px; height: 1.5px; background: color-mix(in srgb, var(--text) 30%, transparent); position: relative; }
-.map-leader::after { content: ''; position: absolute; top: 50%; width: 5px; height: 5px; margin-top: -2.5px; border-radius: 50%; background: color-mix(in srgb, var(--text) 55%, transparent); }
-.map-label.is-left .map-leader::after { left: -2px; }
-.map-label.is-right .map-leader::after { right: -2px; }
-.map-label:hover .map-name { text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--text) 40%, transparent); text-underline-offset: 3px; }
-.map-label.is-selected { background: color-mix(in srgb, var(--text) 8%, transparent); }
-.map-label.is-selected .map-name { color: var(--text); text-decoration: underline; text-decoration-color: var(--node-accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
-.map-label.is-selected .map-leader { background: color-mix(in srgb, var(--node-accent) 70%, var(--text)); }
-.map-label:focus-visible, .map-icon-btn:focus-visible, .map-cell:focus-visible, .more-system:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
 
 /* ---- Desktop columns ---- */
 .systems-columns { display: grid; grid-template-columns: minmax(220px, 0.8fr) minmax(460px, 1.6fr) minmax(280px, 1fr); gap: 32px; align-items: start; }
@@ -7261,77 +7204,17 @@ body.has-install-hint .app-shell {
 .system-landing-back:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
 .system-landing .systems-suggest { border-top: 1px solid color-mix(in srgb, var(--text) 16%, transparent); margin: 28px auto 0; padding-top: 18px; width: 100%; max-width: 420px; }
 
-/* ---- Phone directory map: one tap target per system, no labels to collide ---- */
-.body-map.is-phone {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-auto-rows: minmax(118px, auto);
-  gap: 6px 8px;
-  margin: 22px auto 8px;
-  max-width: 420px;
-}
-.body-map.is-phone .body-outline { grid-column: 1 / -1; grid-row: 1 / -1; width: 100%; height: 100%; opacity: 0.8; }
-.map-cell {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 2px;
-  min-width: 0;
-  padding: 8px 4px;
-  border: none;
-  border-radius: 16px;
-  background: color-mix(in srgb, var(--room, #1d6a6a) 70%, transparent);
-  color: var(--text);
-  font-family: var(--font-ui);
-  text-align: center;
-  cursor: pointer;
-}
-.map-cell:active { background: color-mix(in srgb, var(--text) 10%, var(--room, #1d6a6a)); }
-.map-icon, .more-system-icon { display: block; width: 58px; height: 58px; margin-bottom: 2px; }
-
-/* ---- More systems ---- */
-.more-systems { margin-top: 28px; }
-.more-systems-title { margin: 0 0 10px; font-size: 1.05rem; font-weight: 700; }
-.more-systems-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.more-system { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 100%; min-height: 118px; padding: 10px 4px; border: 1.5px solid transparent; border-radius: 16px; background: color-mix(in srgb, var(--text) 6%, transparent); color: var(--text); font-family: var(--font-ui); text-align: center; cursor: pointer; }
-.more-system:hover { background: color-mix(in srgb, var(--text) 10%, transparent); }
-.more-system.is-selected { border-color: color-mix(in srgb, var(--node-accent) 75%, var(--text)); background: color-mix(in srgb, var(--node-accent) 14%, transparent); }
-@media (min-width: 900px) {
-  .systems-directory.is-wide .more-systems { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 24px; margin-top: 28px; padding-top: 20px; border-top: 1px solid color-mix(in srgb, var(--text) 16%, transparent); }
-  .systems-directory.is-wide .more-systems-title { margin: 0; }
-  .systems-directory.is-wide .more-systems-list { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-}
 @media (prefers-reduced-motion: reduce) {
-  .map-icon-btn, .systems-overall-fill, .system-howto-chev { transition: none; }
+  .systems-overall-fill, .system-howto-chev { transition: none; }
 }
 .leave-board-text { margin: 0 0 16px; font-size: var(--type-secondary); line-height: 1.5; }
 .leave-board-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .leave-board-actions > * { flex: 1 1 160px; }
-/* The outline is decoration: it takes the map's size, never sets it. */
-.body-map .body-outline { contain: size; min-height: 0; min-width: 0; }
-/* Desktop labels keep whole words; the leader line gives way instead. */
-.map-label .map-label-text { flex: 0 0 auto; max-width: 100%; }
-.map-label .map-name { overflow-wrap: normal; }
-.map-leader { flex: 1 1 0; }
-@media (max-width: 399px) {
-  .more-systems-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-.body-map.is-phone .body-outline { position: absolute; inset: 0; width: 100%; height: 100%; contain: none; z-index: 0; }
-.body-map.is-phone .body-outline { grid-area: auto; }
-/* Phone map and More systems: names shrink to fit their tile instead of
-   breaking mid-word (long names at large text sizes). */
-.map-cell, .more-system { container-type: inline-size; }
-.map-cell .map-name, .more-system .map-name { overflow-wrap: normal; font-size: min(var(--type-secondary), 14.5cqi); }
 /* Desktop left column: the heading fits its column at large text sizes. */
 .systems-left { min-width: 0; }
 .systems-left .systems-title { font-size: min(clamp(2rem, 1.5rem + 2vw, 2.7rem), 19cqi); }
 .systems-left .systems-intro { container-type: inline-size; }
-/* Desktop map labels: at large text sizes the names shrink to the map's
-   width rather than spilling past their button. */
-.body-map.is-wide { container-type: inline-size; }
-.body-map.is-wide .map-label .map-name { font-size: min(var(--type-secondary), 3.1cqi); }
 .system-howto-chev { margin-right: 4px; }
 
 /* ---- 3 Minutes: setup page with room to breathe ---- */
@@ -7462,3 +7345,93 @@ body.has-install-hint .app-shell {
 .howto-detail { padding: 2px 0; }
 .challenge-header { flex-wrap: wrap; row-gap: 6px; }
 .challenge-header .challenge-score-wrap { margin-left: auto; min-width: 0; }
+
+/* =====================================================================
+   Systems body map (BodyMap.jsx): one SVG, label and organ buttons over it.
+   The outline is quiet; the organ symbols are brighter Plexus nodes and
+   straight links. Flat: no glow, no gradients.
+   ===================================================================== */
+.bodymap { position: relative; width: 100%; max-width: 440px; margin: 18px auto 6px; container-type: inline-size; color: var(--text); }
+.bm-art { display: block; width: 100%; height: auto; pointer-events: none; overflow: visible; }
+.bm-outline { fill: none; stroke: color-mix(in srgb, var(--text) 30%, transparent); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.bm-connector polyline { fill: none; stroke: color-mix(in srgb, var(--text) 48%, transparent); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+.bm-connector circle { fill: color-mix(in srgb, var(--text) 75%, transparent); }
+.bm-connector.is-hot polyline { stroke: color-mix(in srgb, var(--text) 90%, transparent); stroke-width: 1.5; }
+.bm-organ line { stroke: color-mix(in srgb, var(--text) 82%, transparent); stroke-width: 1.6; stroke-linecap: round; }
+.bm-organ circle { fill: var(--room, #1d6a6a); stroke: var(--text); stroke-width: 1.4; transform-box: fill-box; transform-origin: center; }
+.bm-organ circle.is-lit { fill: var(--node-accent); stroke: var(--text); stroke-width: 1.3; }
+.bm-organ.is-hot line, .bm-organ.is-selected line { stroke: var(--text); stroke-width: 2; }
+.bm-organ.is-selected circle:not(.is-lit) { stroke: var(--node-accent); stroke-width: 2; }
+.bm-organ.is-pulse circle { animation: bm-pulse 340ms ease-out; }
+@keyframes bm-pulse { 0% { transform: scale(1); } 45% { transform: scale(1.45); } 100% { transform: scale(1); } }
+
+.bm-target { position: absolute; z-index: 1; margin: 0; padding: 0; border: none; border-radius: 12px; background: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.bm-target:active { background: color-mix(in srgb, var(--text) 8%, transparent); }
+
+.bm-label {
+  position: absolute; z-index: 2; transform: translateY(-50%);
+  display: flex; flex-direction: column; justify-content: center; gap: 1px;
+  min-height: 44px; min-width: 44px; padding: 4px 6px; margin: 0;
+  border: none; border-radius: 10px; background: transparent; color: var(--text);
+  font-family: var(--font-ui); cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.bm-label.is-left { text-align: right; align-items: flex-end; }
+.bm-label.is-right { text-align: left; align-items: flex-start; }
+.bm-name { display: block; font-weight: 700; font-size: clamp(12.5px, 4.25cqi, 16px); line-height: 1.15; white-space: nowrap; }
+.bm-count { display: block; font-size: clamp(11.5px, 3.7cqi, 14px); line-height: 1.2; color: var(--text-dim); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bm-done { font-weight: 700; color: var(--text); }
+.bm-label:hover .bm-name { text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--text) 45%, transparent); text-underline-offset: 3px; }
+.bm-label:active { background: color-mix(in srgb, var(--text) 9%, transparent); }
+.bm-label.is-selected { background: color-mix(in srgb, var(--text) 9%, transparent); }
+.bm-label.is-selected .bm-name { text-decoration: underline; text-decoration-color: var(--node-accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.bm-label:focus-visible { outline: 3px solid var(--text); outline-offset: 1px; }
+@media (prefers-reduced-motion: reduce) { .bm-organ.is-pulse circle { animation: none; } }
+
+/* Narrow phones: a little more width for the map. */
+@media (max-width: 360px) {
+  .app-shell.app-shell-systems { padding-left: calc(10px + env(safe-area-inset-left)); padding-right: calc(10px + env(safe-area-inset-right)); }
+}
+.systems-directory.is-phone .systems-intro .systems-title { font-size: clamp(1.8rem, 1.4rem + 2vw, 2.3rem); }
+.systems-directory.is-phone .systems-sub { margin-bottom: 12px; font-size: 1rem; }
+
+/* ---- Beyond the body map: compact rows ---- */
+.beyond-map { margin-top: 22px; padding-top: 18px; border-top: 1px solid color-mix(in srgb, var(--text) 16%, transparent); }
+.beyond-map-title { margin: 0 0 8px; font-size: 1.15rem; font-weight: 700; }
+.beyond-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; column-gap: 14px; }
+.beyond-row {
+  display: flex; align-items: center; gap: 12px; width: 100%; min-height: 56px; padding: 6px 6px;
+  border: none; border-bottom: 1px solid color-mix(in srgb, var(--text) 10%, transparent); border-radius: 0;
+  background: transparent; color: var(--text); font-family: var(--font-ui); text-align: left; cursor: pointer;
+}
+.beyond-row:hover { background: color-mix(in srgb, var(--text) 6%, transparent); }
+.beyond-row:active { background: color-mix(in srgb, var(--text) 10%, transparent); }
+.beyond-row.is-selected { background: color-mix(in srgb, var(--node-accent) 14%, transparent); box-shadow: inset 3px 0 0 var(--node-accent); }
+.beyond-row:focus-visible { outline: 3px solid var(--text); outline-offset: 1px; border-radius: 8px; }
+.beyond-icon { flex: none; width: 40px; height: 40px; }
+.beyond-icon .system-glyph { width: 100%; height: 100%; display: block; }
+.beyond-text { flex: 1 1 auto; min-width: 0; }
+.beyond-name { display: block; font-weight: 700; font-size: var(--type-secondary); line-height: 1.2; }
+.beyond-count { display: block; font-size: var(--type-caption); color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.beyond-chev { flex: none; color: var(--text-dim); }
+/* Two columns when the rows fit comfortably (filled down each column), three
+   on wide screens. Measured against the section and the text size, so large
+   text falls back to one column instead of squeezing. */
+.beyond-map { container: beyond / inline-size; }
+@container beyond (min-width: 22.5rem) {
+  .beyond-list { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, auto); grid-auto-flow: column; }
+}
+@container beyond (min-width: 42rem) {
+  .beyond-list { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, auto); }
+}
+.beyond-name, .beyond-count { overflow-wrap: anywhere; }
+@media (min-width: 900px) {
+  .systems-directory.is-wide .beyond-map { max-width: 900px; margin: 28px auto 0; }
+  .systems-map-col .bodymap { margin-top: 0; }
+}
+/* Lower rows use the same node style as the map: clearly visible at zero,
+   solved parts filled in the system's colour. */
+.beyond-icon .glyph-link { stroke: color-mix(in srgb, var(--text) 78%, transparent); stroke-width: 2.6; }
+.beyond-icon .glyph-link.is-on { stroke: var(--text); }
+.beyond-icon .glyph-node { fill: var(--room, #1d6a6a); stroke: var(--text); stroke-width: 2.2; }
+.beyond-icon .glyph-node.is-on { fill: var(--node-accent); stroke: var(--text); }
+.beyond-list { row-gap: 4px; }

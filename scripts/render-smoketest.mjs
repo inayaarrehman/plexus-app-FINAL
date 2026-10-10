@@ -497,16 +497,17 @@ check(`Systems renders the body map and More systems (all ${LIBRARY_SUBJECTS.len
       onBack: () => {},
     })
   )
-  const nodeMatches = html.match(/class="map-name"/g) || []
+  const nodeMatches = html.match(/class="(bm-name|beyond-name)"/g) || []
   if (nodeMatches.length !== LIBRARY_SUBJECTS.length) {
     throw new Error(`expected ${LIBRARY_SUBJECTS.length} selectable systems, found ${nodeMatches.length}`)
   }
-  if (!html.includes('body-outline')) throw new Error('expected the body outline')
+  if (!html.includes('bm-outline')) throw new Error('expected the body outline')
+  if (!html.includes('Beyond the body map')) throw new Error('expected the Beyond the body map section')
   // Each node carries its own anatomical Plexus glyph SVG and an accessible label.
-  const glyphMatches = html.match(/system-glyph /g) || []
-  if (glyphMatches.length !== LIBRARY_SUBJECTS.length) {
-    throw new Error(`expected ${LIBRARY_SUBJECTS.length} anatomical glyph SVGs, found ${glyphMatches.length}`)
-  }
+  // Ten organ symbols drawn on the body map, six node icons in the rows below.
+  const organs = (html.match(/class="bm-organ /g) || []).length
+  const icons = (html.match(/system-glyph /g) || []).length
+  if (organs !== 10 || icons !== 6) throw new Error(`expected 10 organ symbols and 6 row icons, found ${organs} and ${icons}`)
   if (!html.includes('boards solved')) throw new Error('expected accessible X of Y labels')
   return html
 })

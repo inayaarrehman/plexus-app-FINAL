@@ -6,6 +6,7 @@ import { getSystemGlyph, resolveGlyph } from '../utils/systemGlyphs.js'
 import { haptics } from '../utils/haptics.js'
 import SubmitConnectionModal from './SubmitConnectionModal.jsx'
 import { loadProgress } from '../utils/storage.js'
+import BodyMap from './BodyMap.jsx'
 
 // ---------------------------------------------------------------------
 // Systems: a body map of the organ systems with a preview of the chosen one.
@@ -14,28 +15,14 @@ import { loadProgress } from '../utils/storage.js'
 // map in the middle, and a preview of the selected system on the right.
 // Choosing an organ or its label only changes the preview; the preview's
 // button opens the next eligible board (App.playSystem, the existing
-// rotation). Phone and tablet: the heading, a phone body map and a grid of
-// the other systems; choosing a system opens its own landing page.
+// rotation). Phone and tablet: the heading, the body map and the rows
+// "Beyond the body map"; choosing a system opens its own landing page. The
+// map itself is BodyMap.jsx (one SVG with label and organ targets over it).
 // Every count comes from subjectProgress (the real boards and the player's
 // solved boards and attempts). Nothing here picks a board or shows answers.
 
-// Where each mapped system sits. Desktop: a row of the map and a column
-// (L, C or R) inside the body, with its label on that side. Phone: a cell
-// of a 3-column grid.
-const BODY_MAP = [
-  { system: 'Neurology', row: 1, col: 'C', side: 'L', m: [1, 2] },
-  { system: 'Psychiatry', row: 1, col: 'R', side: 'R', m: [1, 1] },
-  { system: 'Endocrine', row: 2, col: 'C', side: 'R', m: [1, 3] },
-  { system: 'Pulmonary', row: 3, col: 'L', side: 'L', m: [2, 1] },
-  { system: 'Cardiology', row: 3, col: 'R', side: 'R', m: [2, 3] },
-  { system: 'Renal', row: 4, col: 'L', side: 'L', m: [3, 1] },
-  { system: 'GI', row: 4, col: 'R', side: 'R', m: [3, 3] },
-  { system: 'Heme/Onc', row: 5, col: 'L', side: 'L', m: [4, 1] },
-  { system: 'Reproductive', row: 5, col: 'R', side: 'R', m: [4, 3] },
-  { system: 'MSK', row: 6, col: 'L', side: 'L', m: [4, 2] },
-]
-const MORE_SYSTEMS = ['Microbiology', 'Immunology', 'Dermatology', 'Pharmacology', 'Biochemistry/Genetics', 'Genetics']
-const ICON_COL = { L: 2, C: 3, R: 4 }
+// Systems not drawn on the body: compact rows under the map.
+const BEYOND_SYSTEMS = ['Heme/Onc', 'Microbiology', 'Immunology', 'Pharmacology', 'Biochemistry/Genetics', 'Genetics']
 const LAST_KEY = 'plexus.systems.last.v1'
 const readLast = () => {
   try {
@@ -85,20 +72,6 @@ function Glyph({ system, fraction, empty, tone = 'accent' }) {
           })}
         </g>
       </g>
-    </svg>
-  )
-}
-
-// A thin, friendly body outline for the map. Decorative only.
-function BodyOutline({ className = '' }) {
-  return (
-    <svg className={`body-outline ${className}`} viewBox="0 0 252 504" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
-      <circle cx="126" cy="44" r="34" />
-      <path d="M112 77 L112 98 M140 77 L140 98" />
-      <path d="M112 98 C 80 100 30 104 18 132 L 14 300 M140 98 C 172 100 222 104 234 132 L 238 300" />
-      <path d="M40 140 C 36 220 34 300 44 384 L 50 500 M212 140 C 216 220 218 300 208 384 L 202 500" />
-      <path d="M126 384 L 122 500 M126 384 L 130 500" />
-      <path d="M44 384 C 80 392 172 392 208 384" />
     </svg>
   )
 }
@@ -326,71 +299,23 @@ export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, 
     )
   }
 
-  const mapButton = ({ system, row, col, side, m }) => {
-    const r = rows[system] || { total: 0, solved: 0 }
-    const name = subjectLabel(system)
-    const selected = wide && preview === system
-    const complete = r.total > 0 && r.solved >= r.total
-    const label = systemLabel(name, r.total, r.solved)
-    const style = wide
-      ? { '--node-accent': systemAccent(system), gridRow: row }
-      : { '--node-accent': systemAccent(system), gridRow: m[0], gridColumn: m[1] }
-    if (!wide) {
-      return (
-        <button key={system} className={`map-cell ${complete ? 'is-complete' : ''}`} style={style} onClick={() => choose(system)} aria-label={label}>
-          <span className="map-icon" aria-hidden="true">
-            <Glyph system={system} fraction={r.total ? r.solved / r.total : 0} empty={r.total === 0} />
-          </span>
-          <span className="map-name">{name}</span>
-          <span className="map-count">
-            {r.solved} of {r.total}
-            {complete && <span className="map-done"> · done</span>}
-          </span>
-        </button>
-      )
-    }
-    // Desktop: the icon inside the body, the label outside on its side.
-    const labelCols = side === 'L' ? `1 / ${ICON_COL[col]}` : `${ICON_COL[col] + 1} / 6`
-    return (
-      <React.Fragment key={system}>
-        <button
-          type="button"
-          tabIndex={-1}
-          aria-hidden="true"
-          className={`map-icon-btn ${selected ? 'is-selected' : ''}`}
-          style={{ ...style, gridColumn: ICON_COL[col] }}
-          onClick={() => choose(system)}
-        >
-          <Glyph system={system} fraction={r.total ? r.solved / r.total : 0} empty={r.total === 0} />
-        </button>
-        <button
-          type="button"
-          className={`map-label is-${side === 'L' ? 'left' : 'right'} ${selected ? 'is-selected' : ''} ${complete ? 'is-complete' : ''}`}
-          style={{ ...style, gridColumn: labelCols }}
-          aria-pressed={selected}
-          aria-label={label}
-          onClick={() => choose(system)}
-        >
-          <span className="map-label-text">
-            <span className="map-name">{name}</span>
-            <span className="map-count">
-              {r.solved} of {r.total}
-              {complete && <span className="map-done"> · done</span>}
-            </span>
-          </span>
-          <span className="map-leader" aria-hidden="true" />
-        </button>
-      </React.Fragment>
-    )
-  }
+  const bodyMap = (
+    <BodyMap
+      rows={rows}
+      wide={wide}
+      selected={wide ? preview : null}
+      onChoose={choose}
+      label={(system, r) => systemLabel(subjectLabel(system), r.total, r.solved)}
+    />
+  )
 
-  const moreList = (
-    <section className="more-systems" aria-labelledby="more-systems-title">
-      <h2 className="more-systems-title" id="more-systems-title">
-        More systems
+  const beyondList = (
+    <section className="beyond-map" aria-labelledby="beyond-map-title">
+      <h2 className="beyond-map-title" id="beyond-map-title">
+        Beyond the body map
       </h2>
-      <ul className="more-systems-list">
-        {MORE_SYSTEMS.map((system) => {
+      <ul className="beyond-list">
+        {BEYOND_SYSTEMS.map((system) => {
           const r = rows[system] || { total: 0, solved: 0 }
           const name = subjectLabel(system)
           const selected = wide && preview === system
@@ -398,20 +323,27 @@ export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, 
           return (
             <li key={system}>
               <button
-                className={`more-system ${selected ? 'is-selected' : ''} ${complete ? 'is-complete' : ''}`}
+                type="button"
+                className={`beyond-row ${selected ? 'is-selected' : ''} ${complete ? 'is-complete' : ''}`}
                 style={{ '--node-accent': systemAccent(system) }}
+                data-system={system}
                 aria-pressed={wide ? selected : undefined}
                 aria-label={systemLabel(name, r.total, r.solved)}
                 onClick={() => choose(system)}
               >
-                <span className="more-system-icon" aria-hidden="true">
+                <span className="beyond-icon" aria-hidden="true">
                   <Glyph system={system} fraction={r.total ? r.solved / r.total : 0} empty={r.total === 0} />
                 </span>
-                <span className="map-name">{name}</span>
-                <span className="map-count">
-                  {r.solved} of {r.total}
-                  {complete && <span className="map-done"> · done</span>}
+                <span className="beyond-text">
+                  <span className="beyond-name">{name}</span>
+                  <span className="beyond-count">
+                    {r.solved} of {r.total}
+                    {complete && <span className="bm-done"> · done</span>}
+                  </span>
                 </span>
+                <svg className="beyond-chev" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false">
+                  <path d="M4.5 2.5 8 6l-3.5 3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </button>
             </li>
           )
@@ -445,11 +377,8 @@ export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, 
     return (
       <div className="systems systems-directory is-phone">
         {head}
-        <div className="body-map is-phone">
-          <BodyOutline className="is-phone" />
-          {BODY_MAP.map(mapButton)}
-        </div>
-        {moreList}
+        {bodyMap}
+        {beyondList}
         {suggestLink}
       </div>
     )
@@ -463,10 +392,7 @@ export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, 
           {head}
           {suggestLink}
         </div>
-        <div className="body-map is-wide" role="group" aria-label="Body map of systems">
-          <BodyOutline />
-          {BODY_MAP.map(mapButton)}
-        </div>
+        <div className="systems-map-col">{bodyMap}</div>
         <SystemPanel
           system={preview}
           st={st}
@@ -479,7 +405,7 @@ export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, 
           variant="preview"
         />
       </div>
-      {moreList}
+      {beyondList}
     </div>
   )
 }
