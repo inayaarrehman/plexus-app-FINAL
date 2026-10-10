@@ -824,7 +824,7 @@ export default function App() {
 
   if (view === 'systems' && !blockedView) {
     return (
-      <div className="app-shell">
+      <div className="app-shell app-shell-systems">
         <AppNav active="systems" onNavigate={navigate} />
         <Systems
           todayKey={todayKey}

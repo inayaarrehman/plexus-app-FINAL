@@ -7129,3 +7129,207 @@ body.has-install-hint .app-shell {
 .timed-xp-result { margin: 6px auto 0; max-width: 34rem; font-size: var(--type-caption); font-weight: 600; line-height: 1.45; color: var(--text-dim); }
 .week-note { margin: 10px 0 0; font-size: var(--type-caption); line-height: 1.5; color: var(--text-dim); }
 .tool-card-note { margin: 4px 0 0; font-size: var(--type-caption); line-height: 1.45; color: var(--text-dim); }
+
+/* =====================================================================
+   SYSTEMS: body map directory, preview and phone landing page.
+   The peacock room, cream text, Outfit and the node organ artwork stay as
+   they were; the layout follows the body-map concept. Flat and soft: a
+   selection is a lighter wash and a thin outline, never a glow.
+   ===================================================================== */
+@media (min-width: 900px) {
+  .app-shell.app-shell-systems { max-width: 1160px; }
+  .app-shell-systems > .app-nav { max-width: 600px; margin-left: auto; margin-right: auto; }
+}
+.systems-directory, .system-landing { color: var(--text); }
+.systems-intro .systems-head { margin: 0 0 6px; }
+.systems-intro .systems-title { font-size: clamp(2rem, 1.5rem + 2vw, 2.7rem); font-weight: 700; letter-spacing: -0.02em; }
+.systems-sub { margin: 0 0 18px; font-size: 1.05rem; color: var(--text-dim); }
+.systems-overall { margin: 0 0 8px; font-size: var(--type-secondary); color: var(--text-dim); }
+.systems-overall b { color: var(--text); font-size: 1.15em; font-weight: 700; }
+.systems-overall-bar { display: flex; align-items: center; gap: 12px; max-width: 280px; }
+.systems-overall-track { flex: 1 1 auto; height: 8px; border-radius: 999px; background: color-mix(in srgb, var(--text) 16%, transparent); overflow: hidden; }
+.systems-overall-fill { display: block; height: 100%; border-radius: inherit; background: var(--text); min-width: 0; transition: width 400ms ease; }
+.systems-overall-pct { flex: none; font-size: var(--type-caption); font-weight: 700; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+
+/* ---- Body map, shared ---- */
+.body-map { position: relative; display: grid; }
+.body-outline { pointer-events: none; fill: none; stroke: color-mix(in srgb, var(--text) 24%, transparent); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.body-map .system-glyph { width: 100%; height: 100%; display: block; }
+.map-name { display: block; font-weight: 700; font-size: var(--type-secondary); line-height: 1.2; color: var(--text); overflow-wrap: anywhere; }
+.map-count { display: block; font-size: var(--type-caption); line-height: 1.3; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.map-done { font-weight: 700; color: var(--text); }
+
+/* ---- Desktop map: icons inside the body, labels outside with a leader ---- */
+.body-map.is-wide {
+  grid-template-columns: minmax(96px, 1fr) 84px 84px 84px minmax(96px, 1fr);
+  grid-template-rows: repeat(6, minmax(84px, auto));
+  column-gap: 0;
+  align-items: center;
+  justify-self: center;
+  width: 100%;
+  max-width: 560px;
+}
+.body-map.is-wide .body-outline { grid-column: 2 / 5; grid-row: 1 / 7; width: 100%; height: 100%; align-self: stretch; }
+.map-icon-btn {
+  position: relative;
+  z-index: 1;
+  justify-self: center;
+  width: 72px;
+  height: 72px;
+  padding: 8px;
+  border: 1.5px solid transparent;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--room, #1d6a6a) 82%, transparent);
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+.map-icon-btn:hover { background: color-mix(in srgb, var(--text) 9%, var(--room, #1d6a6a)); }
+.map-icon-btn.is-selected { border-color: color-mix(in srgb, var(--node-accent) 75%, var(--text)); background: color-mix(in srgb, var(--node-accent) 16%, var(--room, #1d6a6a)); }
+.map-label {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 4px 6px;
+  border: none;
+  border-radius: 10px;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-ui);
+  text-align: left;
+  cursor: pointer;
+}
+.map-label.is-left { flex-direction: row; justify-content: flex-end; text-align: right; }
+.map-label.is-right { flex-direction: row-reverse; justify-content: flex-end; text-align: left; }
+.map-label-text { flex: 0 1 auto; min-width: 0; }
+.map-leader { flex: 1 1 18px; min-width: 14px; max-width: 120px; height: 1.5px; background: color-mix(in srgb, var(--text) 30%, transparent); position: relative; }
+.map-leader::after { content: ''; position: absolute; top: 50%; width: 5px; height: 5px; margin-top: -2.5px; border-radius: 50%; background: color-mix(in srgb, var(--text) 55%, transparent); }
+.map-label.is-left .map-leader::after { left: -2px; }
+.map-label.is-right .map-leader::after { right: -2px; }
+.map-label:hover .map-name { text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--text) 40%, transparent); text-underline-offset: 3px; }
+.map-label.is-selected { background: color-mix(in srgb, var(--text) 8%, transparent); }
+.map-label.is-selected .map-name { color: var(--text); text-decoration: underline; text-decoration-color: var(--node-accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.map-label.is-selected .map-leader { background: color-mix(in srgb, var(--node-accent) 70%, var(--text)); }
+.map-label:focus-visible, .map-icon-btn:focus-visible, .map-cell:focus-visible, .more-system:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
+
+/* ---- Desktop columns ---- */
+.systems-columns { display: grid; grid-template-columns: minmax(220px, 0.8fr) minmax(460px, 1.6fr) minmax(280px, 1fr); gap: 32px; align-items: start; }
+.systems-left { padding-top: 8px; display: flex; flex-direction: column; gap: 28px; }
+.systems-left .systems-suggest { flex-direction: column; align-items: flex-start; border-top: none; padding-top: 0; margin: 0; max-width: none; justify-content: flex-start; }
+.systems-left .systems-suggest-line { text-align: left; }
+
+/* ---- Selected system: desktop preview and phone landing ---- */
+.system-panel { display: flex; flex-direction: column; align-items: center; text-align: center; color: var(--text); }
+.system-panel.is-preview { padding: 8px 0 8px 28px; border-left: 1px solid color-mix(in srgb, var(--text) 16%, transparent); min-height: 100%; }
+.system-panel-art { width: 136px; height: 136px; margin: 6px 0 10px; }
+.system-panel.is-landing .system-panel-art { width: 168px; height: 168px; margin: 18px 0 14px; }
+.system-panel-art .system-glyph { width: 100%; height: 100%; display: block; }
+.system-panel-title { margin: 0; font-family: var(--font-display); font-size: clamp(1.9rem, 1.6rem + 1vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; overflow-wrap: anywhere; }
+.system-panel-count { margin: 6px 0 16px; font-size: 1.02rem; color: var(--text-dim); }
+.board-path { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 0; margin: 0 0 12px; padding: 0; }
+.board-path-node { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; box-shadow: inset 0 0 0 1.8px color-mix(in srgb, var(--text) 55%, transparent); color: var(--room, #1d6a6a); }
+.board-path-node + .board-path-node { margin-left: 18px; }
+.board-path-node + .board-path-node::before { content: ''; position: absolute; right: 100%; top: 50%; width: 18px; height: 1.8px; margin-top: -0.9px; background: color-mix(in srgb, var(--text) 30%, transparent); }
+.board-path-node.is-solved { background: var(--node-accent); box-shadow: 0 0 0 1.5px var(--node-rim, transparent); color: var(--ink, #1b1a2e); }
+.board-path-node.is-solved + .board-path-node::before { background: color-mix(in srgb, var(--node-accent) 80%, var(--text)); }
+.board-path-node.is-next { width: 30px; height: 30px; box-shadow: inset 0 0 0 2.4px var(--text); }
+.board-path-node.is-next::after { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--text); }
+.system-panel .system-next-line { margin: 0 0 14px; font-size: 1rem; font-weight: 600; color: var(--text); }
+.system-panel .system-play-btn { width: 100%; max-width: 300px; justify-content: center; min-height: 56px; border-radius: 16px; background: var(--tile-cream, #fbf6ee); color: var(--ink, #1b1a2e); font-size: 1.08rem; }
+.system-panel.is-landing .system-play-btn { max-width: 420px; }
+.system-all-solved { display: flex; align-items: flex-start; gap: 10px; max-width: 320px; margin: 4px 0 8px; padding: 12px 14px; border-radius: 14px; background: color-mix(in srgb, var(--text) 9%, transparent); text-align: left; font-size: var(--type-secondary); line-height: 1.45; }
+.system-all-solved-mark { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--node-accent); color: var(--ink, #1b1a2e); }
+.system-howto { width: 100%; max-width: 320px; margin: 20px 0 0; text-align: left; border-top: 1px solid color-mix(in srgb, var(--text) 16%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--text) 16%, transparent); }
+.system-panel.is-landing .system-howto { max-width: 420px; }
+.system-howto summary { display: flex; align-items: center; gap: 12px; min-height: 52px; list-style: none; cursor: pointer; font-weight: 600; font-size: var(--type-secondary); }
+.system-howto summary::-webkit-details-marker { display: none; }
+.system-howto-icon { flex: none; color: var(--text-dim); }
+.system-howto-chev { margin-left: auto; width: 9px; height: 9px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translate(-2px, -2px); transition: transform 160ms ease; }
+.system-howto[open] .system-howto-chev { transform: rotate(-135deg) translate(-2px, -2px); }
+.system-howto p { margin: 0 0 12px; font-size: var(--type-secondary); line-height: 1.5; color: var(--text-dim); }
+.system-howto summary:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; border-radius: 6px; }
+.system-helper { width: 100%; max-width: 320px; margin: 14px 0 0; text-align: left; font-size: var(--type-secondary); line-height: 1.45; color: var(--text-dim); }
+.system-panel.is-landing .system-helper { max-width: 420px; }
+.system-panel .system-replays { width: 100%; max-width: 320px; margin-top: 18px; text-align: left; }
+.system-panel .system-replays-head { margin: 0 0 8px; font-size: var(--type-caption); font-weight: 700; color: var(--text-dim); }
+
+/* ---- Phone landing ---- */
+.system-landing { display: flex; flex-direction: column; align-items: stretch; }
+.system-landing-back { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 6px; border: none; background: none; color: var(--text); font-family: var(--font-ui); font-size: var(--type-secondary); font-weight: 600; cursor: pointer; border-radius: 8px; }
+.system-landing-back:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
+.system-landing .systems-suggest { border-top: 1px solid color-mix(in srgb, var(--text) 16%, transparent); margin: 28px auto 0; padding-top: 18px; width: 100%; max-width: 420px; }
+
+/* ---- Phone directory map: one tap target per system, no labels to collide ---- */
+.body-map.is-phone {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: minmax(118px, auto);
+  gap: 6px 8px;
+  margin: 22px auto 8px;
+  max-width: 420px;
+}
+.body-map.is-phone .body-outline { grid-column: 1 / -1; grid-row: 1 / -1; width: 100%; height: 100%; opacity: 0.8; }
+.map-cell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+  min-width: 0;
+  padding: 8px 4px;
+  border: none;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--room, #1d6a6a) 70%, transparent);
+  color: var(--text);
+  font-family: var(--font-ui);
+  text-align: center;
+  cursor: pointer;
+}
+.map-cell:active { background: color-mix(in srgb, var(--text) 10%, var(--room, #1d6a6a)); }
+.map-icon, .more-system-icon { display: block; width: 58px; height: 58px; margin-bottom: 2px; }
+
+/* ---- More systems ---- */
+.more-systems { margin-top: 28px; }
+.more-systems-title { margin: 0 0 10px; font-size: 1.05rem; font-weight: 700; }
+.more-systems-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.more-system { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 100%; min-height: 118px; padding: 10px 4px; border: 1.5px solid transparent; border-radius: 16px; background: color-mix(in srgb, var(--text) 6%, transparent); color: var(--text); font-family: var(--font-ui); text-align: center; cursor: pointer; }
+.more-system:hover { background: color-mix(in srgb, var(--text) 10%, transparent); }
+.more-system.is-selected { border-color: color-mix(in srgb, var(--node-accent) 75%, var(--text)); background: color-mix(in srgb, var(--node-accent) 14%, transparent); }
+@media (min-width: 900px) {
+  .systems-directory.is-wide .more-systems { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 24px; margin-top: 28px; padding-top: 20px; border-top: 1px solid color-mix(in srgb, var(--text) 16%, transparent); }
+  .systems-directory.is-wide .more-systems-title { margin: 0; }
+  .systems-directory.is-wide .more-systems-list { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .map-icon-btn, .systems-overall-fill, .system-howto-chev { transition: none; }
+}
+.leave-board-text { margin: 0 0 16px; font-size: var(--type-secondary); line-height: 1.5; }
+.leave-board-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.leave-board-actions > * { flex: 1 1 160px; }
+/* The outline is decoration: it takes the map's size, never sets it. */
+.body-map .body-outline { contain: size; min-height: 0; min-width: 0; }
+/* Desktop labels keep whole words; the leader line gives way instead. */
+.map-label .map-label-text { flex: 0 0 auto; max-width: 100%; }
+.map-label .map-name { overflow-wrap: normal; }
+.map-leader { flex: 1 1 0; }
+@media (max-width: 399px) {
+  .more-systems-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.body-map.is-phone .body-outline { position: absolute; inset: 0; width: 100%; height: 100%; contain: none; z-index: 0; }
+.body-map.is-phone .body-outline { grid-area: auto; }
+/* Phone map and More systems: names shrink to fit their tile instead of
+   breaking mid-word (long names at large text sizes). */
+.map-cell, .more-system { container-type: inline-size; }
+.map-cell .map-name, .more-system .map-name { overflow-wrap: normal; font-size: min(var(--type-secondary), 14.5cqi); }
+/* Desktop left column: the heading fits its column at large text sizes. */
+.systems-left { min-width: 0; }
+.systems-left .systems-title { font-size: min(clamp(2rem, 1.5rem + 2vw, 2.7rem), 19cqi); }
+.systems-left .systems-intro { container-type: inline-size; }
+/* Desktop map labels: at large text sizes the names shrink to the map's
+   width rather than spilling past their button. */
+.body-map.is-wide { container-type: inline-size; }
+.body-map.is-wide .map-label .map-name { font-size: min(var(--type-secondary), 3.1cqi); }
+.system-howto-chev { margin-right: 4px; }

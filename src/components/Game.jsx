@@ -19,6 +19,7 @@ import { groupColor } from './GroupMotif.jsx'
 import { difficultyLabelOf } from './DifficultyIcon.jsx'
 import ReviewConnections from './ReviewConnections.jsx'
 import TileText from './TileText.jsx'
+import Modal from './Modal.jsx'
 import SolvedGroup from './SolvedGroup.jsx'
 import { reportContext } from '../utils/reportContext.js'
 import { haptics } from '../utils/haptics.js'
@@ -166,6 +167,7 @@ export default function Game({
   const curbsideTiles = curbside.filter((text) => tiles.some((t) => t.text === text && !solvedCats.includes(t.catIndex)))
   const ruleOutActive = ruleOut && tiles.some((t) => t.text === ruleOut.outsider && !solvedCats.includes(t.catIndex)) ? ruleOut : null
   const [toolAsk, setToolAsk] = useState(null) // item being explained before use
+  const [confirmLeave, setConfirmLeave] = useState(false)
   const catOf = (text) => tiles.find((t) => t.text === text)?.catIndex
   // The most recent submitted "one away" guess whose four tiles are all
   // still unsolved. Rule Out only ever works on such a guess, never on an
@@ -473,10 +475,29 @@ export default function Game({
     .map((c, i) => ({ ...c, catIndex: i, found: foundOrder.includes(i) }))
     .sort((a, b) => a.level - b.level)
 
+  // Leaving an unsolved Systems board after meaningful play (a guess was
+  // submitted) ends the attempt and sends the board to the back of the
+  // rotation (App.leaveSystemBoard). Say so first; nothing else changes.
+  const leaveNeedsConfirm = isSystem && !!systemAttempt && !gameOver && guessLog.length > 0
+  const requestExit = () => (leaveNeedsConfirm ? setConfirmLeave(true) : onExit())
+
   return (
     <div className="game">
+      {confirmLeave && (
+        <Modal title="Leave this board?" onClose={() => setConfirmLeave(false)} className="leave-board-modal">
+          <p className="leave-board-text">It will come back after your other boards, with the answers still hidden.</p>
+          <div className="leave-board-actions">
+            <button type="button" className="primary-btn" onClick={() => setConfirmLeave(false)}>
+              Keep playing
+            </button>
+            <button type="button" className="secondary-btn" onClick={() => { setConfirmLeave(false); onExit() }}>
+              Leave board
+            </button>
+          </div>
+        </Modal>
+      )}
       <div className="game-header">
-        <button className="icon-btn" onClick={onExit} aria-label="Back">
+        <button className="icon-btn" onClick={requestExit} aria-label="Back">
           ← Back
         </button>
         <div className="game-header-title">

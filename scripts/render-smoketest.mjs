@@ -495,7 +495,7 @@ check('Archive marks completed days with a Plexus and shows "X / Y completed" pl
 // Systems
 // ---------------------------------------------------------------
 
-check(`Systems renders the tactile node grid (all ${LIBRARY_SUBJECTS.length} library subjects)`, () => {
+check(`Systems renders the body map and More systems (all ${LIBRARY_SUBJECTS.length} library subjects)`, () => {
   const html = renderToStaticMarkup(
     React.createElement(Systems, {
       todayKey: NEW_DAILY_START,
@@ -504,20 +504,21 @@ check(`Systems renders the tactile node grid (all ${LIBRARY_SUBJECTS.length} lib
       onBack: () => {},
     })
   )
-  const nodeMatches = html.match(/system-node-name/g) || []
+  const nodeMatches = html.match(/class="map-name"/g) || []
   if (nodeMatches.length !== LIBRARY_SUBJECTS.length) {
-    throw new Error(`expected ${LIBRARY_SUBJECTS.length} system nodes, found ${nodeMatches.length}`)
+    throw new Error(`expected ${LIBRARY_SUBJECTS.length} selectable systems, found ${nodeMatches.length}`)
   }
+  if (!html.includes('body-outline')) throw new Error('expected the body outline')
   // Each node carries its own anatomical Plexus glyph SVG and an accessible label.
   const glyphMatches = html.match(/system-glyph /g) || []
   if (glyphMatches.length !== LIBRARY_SUBJECTS.length) {
     throw new Error(`expected ${LIBRARY_SUBJECTS.length} anatomical glyph SVGs, found ${glyphMatches.length}`)
   }
-  if (!html.includes('boards completed')) throw new Error('expected accessible X/Y labels on active nodes')
+  if (!html.includes('boards solved')) throw new Error('expected accessible X of Y labels')
   return html
 })
 
-check('Systems grid renders per-node board counts from saved progress', () => {
+check('Systems renders per-system board counts from saved progress', () => {
   // Systems.jsx manages `selected` as internal state driven by pressing a
   // node, which renderToStaticMarkup can't simulate directly. Exercise the
   // grid render (which pulls live mastery counts) here; the detail data path
@@ -532,7 +533,8 @@ check('Systems grid renders per-node board counts from saved progress', () => {
     })
   )
   void mastery
-  if (!html.includes('Cardiology. 1 of 5 boards completed.')) throw new Error('expected the finished board to count')
+  if (!html.includes('Cardiology, 1 of 5 boards solved')) throw new Error('expected the finished board to count')
+  if (!/<b>1<\/b> of <b>77<\/b> boards solved/.test(html)) throw new Error('expected the overall count from real boards')
   return html
 })
 

@@ -140,12 +140,12 @@ for (const big of [false, true]) {
   {
     const { page, ctx, errors } = await open({ big })
     await page.click('.app-nav >> text=Systems')
-    await page.click(`.system-node[aria-label^="${SUBJECT}"]`)
+    await page.click(`:is(.map-cell, .more-system, .map-label)[aria-label^="${SUBJECT}"]`)
     await page.waitForSelector('.system-play-btn')
     for (const w of WIDTHS) {
       await page.setViewportSize({ width: w, height: 800 })
       await page.waitForTimeout(120)
-      const prog = await rect(page, '.system-detail .node-progress')
+      const prog = await rect(page, '.system-panel .board-path')
       const play = await rect(page, '.system-play-btn')
       ok(play.t - prog.b >= 16, `${tag} @${w}: at least 16px between the board progress line and ${await page.textContent('.system-play-btn')} (${(play.t - prog.b).toFixed(1)})`)
       const line = await rect(page, '.systems-suggest-line')

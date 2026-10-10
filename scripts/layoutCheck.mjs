@@ -22,6 +22,9 @@ export async function checkLayout(page, { targets = true, tight = true } = {}) {
     }
     const shown = (el) => {
       if (el.closest('[aria-hidden="true"]') && !el.matches(SEL)) return false
+      // Content of a closed <details> is not rendered (only its summary is).
+      const det = el.closest('details')
+      if (det && !det.open && !el.closest('summary')) return false
       for (let e = el; e && e.nodeType === 1; e = e.parentElement) {
         const cs = getComputedStyle(e)
         if (cs.display === 'none' || cs.visibility === 'hidden' || parseFloat(cs.opacity) < 0.05) return false
