@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { INSTRUCTIONS } from '../utils/challengeEngine.js'
-import { RACE_LENGTH, normalizeJoinCode, isValidJoinCode, buildRaceChallenge, raceLinkForCode } from '../utils/raceEngine.js'
+import { RACE_LENGTH, normalizeJoinCode, isValidJoinCode, buildRaceChallenge } from '../utils/raceEngine.js'
 import { timedCanonicalId } from '../utils/timedLibrary.js'
 import { raceCall, subscribeMatch, getRaceSummary, startGuestRacing, isGuestRacing } from '../lib/raceApi.js'
 import { scrambleLabel, activeEffect } from '../utils/mutation.js'
 import { haptics } from '../utils/haptics.js'
 import { recordRaceFinish, recordRaceWin } from '../progression/store.js'
-import { RACE_REWARDS } from '../progression/config.js'
+import { RACE_REWARDS, MUTATION_MS, CRISPR_UNLOCK_LEVEL, nextCrisprLevel } from '../progression/config.js'
+import RaceInvite, { RACE_SCORING_COPY, raceJoinError } from './RaceInvite.jsx'
 import { TimedXpNote, TimedResultLine } from './TimedXp.jsx'
 
 // ---------------------------------------------------------------------
@@ -21,10 +22,12 @@ import { TimedXpNote, TimedResultLine } from './TimedXp.jsx'
 // fallback), never simulated on this device.
 // ---------------------------------------------------------------------
 
+const MUTATION_SECONDS = Math.round(MUTATION_MS / 1000)
 const CHAOS_COPY = 'Chaos: Use earned Mutation and CRISPR power-ups during this race. Both players must agree.'
-const CHAOS_COPY_FREE = 'Chaos: Each player gets one Mutation and one CRISPR for this race. Both players must agree.'
-// Shown before a Chaos race starts. Matches the server rules (effect_ms 2000,
-// one charge of each per race, CRISPR spent when it blocks).
+const CHAOS_COPY_FREE = `Chaos: Each player gets one Mutation for this race. Players at Level ${CRISPR_UNLOCK_LEVEL} or above can also bring an earned CRISPR. Both players must agree.`
+// Shown before a Chaos race starts. Matches the server rules (effect_ms
+// 10000, one charge of each per race, CRISPR spent when it blocks and only
+// from Level 12).
 function PowerupExplainer({ free }) {
   return (
     <div className="race-powerup-explainer">
@@ -32,17 +35,17 @@ function PowerupExplainer({ free }) {
       <dl>
         <div>
           <dt>Mutation</dt>
-          <dd>Scrambles the letters on your opponent’s answer choices for 2 seconds.</dd>
+          <dd>Scrambles the letters on your opponent’s answer choices for {MUTATION_SECONDS} seconds.</dd>
         </div>
         <div>
           <dt>CRISPR</dt>
-          <dd>Arm it to block the next Mutation sent at you. It is used up when it blocks.</dd>
+          <dd>Level {CRISPR_UNLOCK_LEVEL} and above. Arm it to block the next Mutation sent at you. It is used up when it blocks.</dd>
         </div>
       </dl>
       <p className="race-powerup-explainer-foot">
         {free
-          ? 'One of each for both players. They end with the race and never use or add to Your Tools.'
-          : 'Each player can bring at most one of each, from items earned in qualifying races.'}
+          ? `One Mutation each, for this race only; it never uses Your Tools. CRISPR comes from levels: one at Level ${CRISPR_UNLOCK_LEVEL}, then one every ${RACE_REWARDS.crisprLevelEvery} levels.`
+          : 'Each player can bring at most one of each, from items they have earned.'}
       </p>
     </div>
   )
@@ -69,6 +72,8 @@ const REJECT = {
   'target-immune': 'Your opponent is immune for a few seconds.',
   'not-started': 'The race has not started yet.',
   'not-available': 'Chaos is off for this race.',
+  'crispr-locked': `CRISPR unlocks at Level ${CRISPR_UNLOCK_LEVEL}.`,
+  'no-crispr': 'You have no CRISPR left.',
 }
 const NOT_COUNTED = {
   'opponent-limit': 'You can keep racing. Reward progress against this opponent resets tomorrow.',
@@ -87,10 +92,11 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
   const [offset, setOffset] = useState(0) // server clock minus this device's clock
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
-  const [copied, setCopied] = useState(false)
   const [loadout, setLoadout] = useState({ mutation: false, crispr: false })
   const [selected, setSelected] = useState([])
   const [verdict, setVerdict] = useState(null)
+  // The tiles of a wrong answer, marked red (and shaken) for a moment.
+  const [wrongTiles, setWrongTiles] = useState([])
   const [notice, setNotice] = useState('')
   const [summary, setSummary] = useState(null)
   const [tick, setTick] = useState(0)
@@ -127,7 +133,10 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
     getRaceSummary().then((s) => setSummary(s))
   }, [])
 
-  // Resume a match after a reload or reconnect.
+  // Resume a match after a reload or reconnect. Otherwise a race link
+  // (#race=CODE) joins that race's lobby straight away, under the same rules
+  // as typing the code.
+  const autoJoined = useRef(false)
   useEffect(() => {
     let id = null
     try {
@@ -135,9 +144,20 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
     } catch {
       /* ignore */
     }
-    if (!id) return
+    // Signed-out players keep their one-tap join step: the code is filled in
+    // and they choose to join as a guest (no guest identity is made for them).
+    const joinFromLink = () => {
+      const c = normalizeJoinCode(initialCode)
+      if (autoJoined.current || !isValidJoinCode(c)) return
+      autoJoined.current = true
+      if (account || isGuestRacing()) join(c)
+    }
+    if (!id) {
+      joinFromLink()
+      return
+    }
     raceCall('state', { matchId: id }).then((r) => {
-      if (r.ok && ['lobby', 'active'].includes(r.match.status)) {
+      if (r.ok && ['lobby', 'active'].includes(r.match.status) && (!initialCode || r.match.code === normalizeJoinCode(initialCode))) {
         apply(r)
         setMe(r.you || null)
       } else {
@@ -146,8 +166,10 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
         } catch {
           /* ignore */
         }
+        joinFromLink()
       }
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apply])
 
   const players = state?.players || []
@@ -200,7 +222,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
       if (e.kind === 'blocked') flash(e.to_user === me ? 'Your CRISPR blocked a Mutation.' : 'Your Mutation was blocked by CRISPR.')
       if (e.kind === 'mutation' && e.to_user === me) {
         haptics.incorrect()
-        flash('Mutation! Letters scrambled for 2 seconds.', 2000)
+        flash(`Mutation! Letters scrambled for ${MUTATION_SECONDS} seconds.`, 2400)
       }
       if (e.kind === 'mutation' && e.from_user === me) flash('Mutation sent.')
       if (e.kind === 'armed' && e.from_user !== me) flash('Your opponent armed CRISPR.')
@@ -208,7 +230,11 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
   }, [state?.events, me])
 
   const rounds = useMemo(() => (code ? buildRaceChallenge(bank, { code, length: RACE_LENGTH, canonicalOf: timedCanonicalId }) : []), [bank, code])
-  const idx = mine?.answered || 0
+  // While an answer's verdict shows, the answered round stays on screen even
+  // if a realtime update or poll already moved the match on, so the
+  // wrong-answer marking is always seen for its full half second.
+  const [heldIdx, setHeldIdx] = useState(null)
+  const idx = heldIdx ?? (mine?.answered || 0)
   const round = rounds[idx] || null
   const startAt = state?.match?.start_at ? Date.parse(state.match.start_at) : null
   const countdownLeft = startAt ? Math.ceil((startAt - nowServer()) / 1000) : null
@@ -222,7 +248,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
     const r = await raceCall(action, { tz: tz(), ...payload })
     setBusy(false)
     if (!r.ok) {
-      setError(r.reason === 'race-full' ? 'That race already has two players.' : r.reason === 'no-such-race' ? 'No open race with that code.' : r.reason === 'already-started' ? 'That race has already started.' : r.error || 'Something went wrong. Try again.')
+      setError(raceJoinError(r.reason) || REJECT[r.reason] || 'Something went wrong. Try again.')
       return r
     }
     return apply(r)
@@ -245,8 +271,8 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
     const r = await act('create')
     if (r?.ok) setMe(r.players[0].user_id)
   }
-  const join = async () => {
-    const c = normalizeJoinCode(joinInput)
+  const join = async (fromLink) => {
+    const c = normalizeJoinCode(typeof fromLink === 'string' ? fromLink : joinInput)
     if (!isValidJoinCode(c)) return
     if (!(await ensureGuest())) return
     const r = await act('join', { code: c })
@@ -276,14 +302,20 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
     const r = await raceCall('answer', { matchId, round: idx, answer })
     if (r.ok) {
       const right = !!r.lastAnswer?.correct
+      setHeldIdx(idx)
       setVerdict(right ? 'correct' : 'incorrect')
+      if (!right) setWrongTiles(Array.isArray(answer) ? answer : [answer])
       right ? haptics.correct() : haptics.incorrect()
+      // About half a second to register, then the next round. The race clock
+      // (the server's) keeps running throughout.
       setTimeout(() => {
         setVerdict(null)
+        setWrongTiles([])
         setSelected([])
+        setHeldIdx(null)
         apply(r)
         lockRef.current = false
-      }, 420)
+      }, 460)
     } else {
       lockRef.current = false
       if (r.reason === 'out-of-order' || r.reason === 'finished') raceCall('state', { matchId }).then(apply)
@@ -298,7 +330,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
   const arm = async () => {
     const r = await raceCall('arm', { matchId })
     if (r.ok) apply(r)
-    else flash('CRISPR could not be armed.')
+    else flash(REJECT[r.reason] || 'CRISPR could not be armed.')
   }
 
   // XP on this device (same rules as before), once per match.
@@ -337,14 +369,22 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
         {header}
         <h1 className="race-title">Race</h1>
         <p className="race-lede">Race a friend through the same Plexus, live.</p>
+        <p className="race-scoring">{RACE_SCORING_COPY}</p>
         <TimedXpNote />
+        {isValidJoinCode(initialCode) && !error && (busy || account || isGuestRacing() ? (
+          busy && <p className="race-note" role="status">Joining race {normalizeJoinCode(initialCode)}…</p>
+        ) : (
+          <p className="race-note race-invite-note" role="status">
+            You’ve been invited to race <b>{normalizeJoinCode(initialCode)}</b>. Tap Join to enter the lobby as a guest.
+          </p>
+        ))}
         <div className="race-entry-actions">
           <button className="race-primary-btn" onClick={create} disabled={busy}>
             Create a race
           </button>
           <div className="race-join-row">
             <input className="race-code-input" value={joinInput} onChange={(e) => setJoinInput(normalizeJoinCode(e.target.value))} placeholder="Enter code" aria-label="Race join code" autoCapitalize="characters" maxLength={4} />
-            <button className="race-secondary-btn" onClick={join} disabled={!isValidJoinCode(joinInput) || busy}>
+            <button className="race-secondary-btn" onClick={() => join()} disabled={!isValidJoinCode(joinInput) || busy}>
               Join
             </button>
           </div>
@@ -367,24 +407,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
       <div className="race">
         {header}
         <h1 className="race-title">Race lobby</h1>
-        <div className="race-code-card">
-          <span className="race-code-label">Join code</span>
-          <span className="race-code-value">{code}</span>
-          <button
-            className="race-copy-btn"
-            onClick={async () => {
-              try {
-                await navigator.clipboard.writeText(raceLinkForCode(code))
-                setCopied(true)
-                setTimeout(() => setCopied(false), 1500)
-              } catch {
-                /* the code is on screen */
-              }
-            }}
-          >
-            {copied ? 'Link copied' : 'Copy invite link'}
-          </button>
-        </div>
+        <RaceInvite code={code} />
         <div className="race-players">
           <div className="race-player">
             <span className="race-player-name">You{guest ? ' (guest)' : ''}</span>
@@ -407,6 +430,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
           {chaos && <PowerupExplainer free={free} />}
           {chaos && free && (
             <div className="race-chaos-loadout">
+              <CrisprChoice mine={mine} loadout={loadout} setLoadout={setLoadout} />
               {!mine?.chaos_accepted ? (
                 <button className="race-secondary-btn" onClick={acceptChaos} disabled={busy}>
                   Accept Chaos
@@ -423,10 +447,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
                 <input type="checkbox" checked={loadout.mutation} disabled={!mine?.has_mutation || mine?.chaos_accepted} onChange={(e) => setLoadout((l) => ({ ...l, mutation: e.target.checked }))} />
                 Mutation {mine?.has_mutation ? '' : '(none earned yet)'}
               </label>
-              <label className={!mine?.has_crispr ? 'is-off' : ''}>
-                <input type="checkbox" checked={loadout.crispr} disabled={!mine?.has_crispr || mine?.chaos_accepted} onChange={(e) => setLoadout((l) => ({ ...l, crispr: e.target.checked }))} />
-                CRISPR {mine?.has_crispr ? '' : '(none earned yet)'}
-              </label>
+              <CrisprChoice mine={mine} loadout={loadout} setLoadout={setLoadout} />
               {!mine?.chaos_accepted ? (
                 <button className="race-secondary-btn" onClick={acceptChaos} disabled={busy}>
                   Accept Chaos
@@ -439,6 +460,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
         </div>
         {error && <p className="race-error" role="alert">{error}</p>}
         <p className="race-note">{!both ? 'Share the code or link. The race starts once your opponent joins.' : chaos && !canStart ? 'Both players must accept Chaos before the race can start. Turn Chaos off to race without power-ups.' : 'Either of you can start. It begins the race for both.'}</p>
+        <p className="race-scoring">{RACE_SCORING_COPY}</p>
         <button className="race-primary-btn" onClick={start} disabled={!canStart || busy}>
           Start race
         </button>
@@ -461,6 +483,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
     // Mutation: the answer tiles only, a fixed scrambled rendering until the
     // effect's stored end, then exactly the original text.
     const label = (text) => (effect ? scrambleLabel(text, effect.seed) : text)
+    const effectLeft = effect ? Math.max(1, Math.ceil((effect.endsAt - nowServer()) / 1000)) : 0
     return (
       <div className={`race race-playing ${verdict === 'incorrect' ? 'is-wrong' : ''} ${effect ? 'is-mutated' : ''}`}>
         <div className="race-live">
@@ -491,6 +514,12 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
             </span>
           </div>
         )}
+        {effect && (
+          <p className="race-mutation-banner" aria-live="off">
+            <span className="race-mutation-dot" aria-hidden="true" />
+            Mutation: letters scrambled · {effectLeft}s
+          </p>
+        )}
         {notice && <div className="toast race-toast" role="status">{notice}</div>}
         <div className="race-round">
           {isRapid && <p className="race-anchor">{round.anchor}</p>}
@@ -519,7 +548,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
               return (
                 <button
                   key={opt.text}
-                  className={`race-option ${isSel ? 'is-selected' : ''}`}
+                  className={`race-option ${isSel ? 'is-selected' : ''} ${wrongTiles.includes(opt.text) ? 'is-wrong-tile' : ''}`}
                   data-original={opt.text}
                   aria-label={opt.text}
                   onClick={() => {
@@ -580,7 +609,8 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
       {!waiting && log && <p className="race-note">{log.counted ? 'This race counted toward Race rewards.' : NOT_COUNTED[log.reason] || NOT_COUNTED['not-qualifying']}</p>}
       {prog && !guest && (
         <p className="race-note race-reward-progress">
-          Mutation: {prog.qualifyingWins % RACE_REWARDS.mutationEveryWins}/{RACE_REWARDS.mutationEveryWins} qualifying wins · CRISPR: {prog.qualifyingRaces % RACE_REWARDS.crisprEveryRaces}/{RACE_REWARDS.crisprEveryRaces} qualifying races
+          Mutation: {prog.qualifyingWins % RACE_REWARDS.mutationEveryWins}/{RACE_REWARDS.mutationEveryWins} qualifying wins · CRISPR:{' '}
+          {summary?.level >= CRISPR_UNLOCK_LEVEL ? `next at Level ${nextCrisprLevel(summary.level)}` : `unlocks at Level ${CRISPR_UNLOCK_LEVEL}`}
         </p>
       )}
       {log?.granted?.length > 0 && <p className="race-note">Earned: {log.granted.map((g) => `${g.item === 'mutation' ? 'Mutation' : 'CRISPR'}${g.as === 'pending' ? ' (inventory full, waiting as a claim)' : ''}`).join(', ')}</p>}
@@ -595,5 +625,24 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
         </button>
       </div>
     </div>
+  )
+}
+
+// The CRISPR line of a Chaos loadout: equippable only at Level 12 and above
+// with an earned charge; otherwise it says what is needed (the server checks
+// the same rule when the loadout is accepted).
+function CrisprChoice({ mine, loadout, setLoadout }) {
+  const unlocked = !!mine?.crispr_unlocked
+  const can = unlocked && !!mine?.has_crispr
+  return (
+    <label className={`race-crispr-choice ${can ? '' : 'is-off'}`}>
+      <input type="checkbox" checked={can && loadout.crispr} disabled={!can || mine?.chaos_accepted} onChange={(e) => setLoadout((l) => ({ ...l, crispr: e.target.checked }))} />
+      CRISPR{' '}
+      {!unlocked ? (
+        <span className="race-lock-note">(unlocks at Level {CRISPR_UNLOCK_LEVEL})</span>
+      ) : !mine?.has_crispr ? (
+        <span className="race-lock-note">(none held)</span>
+      ) : null}
+    </label>
   )
 }

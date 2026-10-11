@@ -18,6 +18,11 @@ import TileText from './TileText.jsx'
 import { recordChallengeSession } from '../progression/store.js'
 import { TimedXpNote, TimedResultLine, timedXpGained } from './TimedXp.jsx'
 import Modal from './Modal.jsx'
+import ChallengePowerups, { PowerupIntro, MUTATION_SECONDS } from './ChallengePowerups.jsx'
+import { raceCall, getRaceSummary } from '../lib/raceApi.js'
+import { isSupabaseConfigured } from '../lib/supabaseClient.js'
+import { scrambleLabel } from '../utils/mutation.js'
+import { MUTATION_MS } from '../progression/config.js'
 
 // The timed mode is 3 minutes (formerly 5). Kept as a single constant so
 // there are no other "five minute" assumptions hiding in the component.
@@ -59,6 +64,19 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
   const [matches, setMatches] = useState({}) // Match the Link: concept -> label
   const [chainOrder, setChainOrder] = useState([]) // Chain: ordered step texts
 
+  // Powerups (see ChallengePowerups.jsx for the solo rules). The refs are
+  // what scoring reads, so an effect ends exactly on time even if a render
+  // is late; the state drives what is drawn.
+  const [power, setPower] = useState({ loaded: false, summary: null })
+  const [mutation, setMutation] = useState(null) // { endsAt, seed } | null
+  const mutationRef = useRef(null)
+  const [crisprArmed, setCrisprArmed] = useState(false)
+  const crisprRef = useRef(false)
+  const [powerUsed, setPowerUsed] = useState({ mutation: false, crispr: false })
+  const [powerBusy, setPowerBusy] = useState(false)
+  const [powerNote, setPowerNote] = useState('')
+  const powerNoteTimer = useRef(null)
+
   const [timeLeftMs, setTimeLeftMs] = useState(DURATION_MS)
   const [score, setScore] = useState(0)
   // Point feedback: every change to the score goes through addPoints, which
@@ -83,6 +101,74 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     return delta
   }
   const [comboStreak, setComboStreak] = useState(0)
+
+  const refreshPower = () => {
+    if (!isSupabaseConfigured()) {
+      setPower({ loaded: true, summary: null })
+      return
+    }
+    getRaceSummary().then((s) => setPower({ loaded: true, summary: s && !s.guest ? s : null }))
+  }
+  useEffect(() => {
+    refreshPower()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  const flashPowerNote = (text) => {
+    clearTimeout(powerNoteTimer.current)
+    setPowerNote(text)
+    powerNoteTimer.current = setTimeout(() => setPowerNote(''), 3200)
+  }
+  const clearPowerups = () => {
+    mutationRef.current = null
+    setMutation(null)
+    crisprRef.current = false
+    setCrisprArmed(false)
+    setPowerBusy(false)
+    clearTimeout(powerNoteTimer.current)
+    setPowerNote('')
+  }
+  const mutationLive = () => !!mutationRef.current && Date.now() < mutationRef.current.endsAt
+  const setInventory = (inventory) => inventory && setPower((p) => (p.summary ? { ...p, summary: { ...p.summary, inventory } } : p))
+  const activateMutation = async () => {
+    if (powerBusy || powerUsed.mutation || mutationLive() || phase !== 'playing') return
+    setPowerBusy(true)
+    const r = await raceCall('solo', { item: 'mutation' })
+    setPowerBusy(false)
+    if (!r.ok) {
+      flashPowerNote(r.reason === 'no-mutation' ? 'No Mutation left. Win Chaos races to earn more.' : 'That powerup could not be used just now.')
+      refreshPower()
+      return
+    }
+    setInventory(r.inventory)
+    setPowerUsed((u) => ({ ...u, mutation: true }))
+    if (endAtRef.current && Date.now() >= endAtRef.current) return
+    const m = { endsAt: Date.now() + (Number(r.effectMs) || MUTATION_MS), seed: Math.floor(Math.random() * 2 ** 31) }
+    mutationRef.current = m
+    setMutation(m)
+  }
+  const armCrispr = () => {
+    const s = power.summary
+    if (powerBusy || powerUsed.crispr || crisprRef.current || !s?.crisprUnlocked || !(s.inventory?.crispr > 0) || phase !== 'playing') return
+    crisprRef.current = true
+    setCrisprArmed(true)
+  }
+  // A wrong answer: an armed CRISPR forgives it (no penalty, streak kept) and
+  // is spent now; otherwise the normal penalty. Returns true when forgiven.
+  const penalizeWrong = () => {
+    if (crisprRef.current) {
+      crisprRef.current = false
+      setCrisprArmed(false)
+      setPowerUsed((u) => ({ ...u, crispr: true }))
+      flashPowerNote('CRISPR blocked that miss: no points off, streak kept.')
+      raceCall('solo', { item: 'crispr' }).then((r) => (r.ok ? setInventory(r.inventory) : refreshPower()))
+      return true
+    }
+    addPoints(WRONG_PENALTY)
+    setComboStreak(0)
+    return false
+  }
+  // What an answer tile shows: scrambled while Mutation is on (display only).
+  const tileText = (t) => (mutation ? scrambleLabel(t, mutation.seed) : t)
   const [highestMultiplier, setHighestMultiplier] = useState(1)
   const [totalActions, setTotalActions] = useState(0)
   const [correctActions, setCorrectActions] = useState(0)
@@ -183,6 +269,9 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     setIsNewBest(false)
     setShowReviewMisses(false)
     setMistakes([])
+    clearPowerups()
+    setPowerUsed({ mutation: false, crispr: false })
+    refreshPower()
     endAtRef.current = Date.now() + DURATION_MS
     setTimeLeftMs(DURATION_MS)
     setPhase('playing')
@@ -215,6 +304,10 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     if (phase !== 'playing') return undefined
     timerRef.current = setInterval(() => {
       const remaining = endAtRef.current - Date.now()
+      if (mutationRef.current && Date.now() >= mutationRef.current.endsAt) {
+        mutationRef.current = null
+        setMutation(null)
+      }
       if (remaining <= 0) {
         clearInterval(timerRef.current)
         setTimeLeftMs(0)
@@ -231,6 +324,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
   useEffect(() => {
     finishRef.current = () => {
       setPhase('results')
+      clearPowerups()
       const missEntries = Object.keys(misses)
       if (missEntries.length > 0) {
         recordWeakSpots(missEntries.map((tag) => ({ tag, solved: false })))
@@ -264,6 +358,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
   useEffect(() => () => {
     clearInterval(timerRef.current)
     clearTimeout(shakeTimer.current)
+    clearTimeout(powerNoteTimer.current)
   }, [])
 
   useEffect(() => {
@@ -283,6 +378,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     clearInterval(timerRef.current)
     finishRef.current = () => {}
     lockRef.current = true
+    clearPowerups()
     setRound(null)
     setActivating(false)
     setPhase('intro')
@@ -296,7 +392,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
 
   const applyCorrect = (basePoints, responseMs, systems) => {
     const multiplier = getMultiplier(comboStreak)
-    const points = computeActionPoints({ correct: true, basePoints, multiplier, responseMs })
+    const points = computeActionPoints({ correct: true, basePoints, multiplier, responseMs }) * (mutationLive() ? 2 : 1)
     addPoints(points)
     setCorrectActions((n) => n + 1)
     setComboStreak((n) => n + 1)
@@ -306,8 +402,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
   }
 
   const applyIncorrect = (tag, missText, explanation, systems) => {
-    addPoints(WRONG_PENALTY)
-    setComboStreak(0)
+    penalizeWrong()
     recordMiss(tag, missText, explanation)
     bumpSystems(setSystemsMissed, systems)
     // Immediate, tactile wrong-answer feedback — a quick shake + light haptic
@@ -360,7 +455,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
       const bonus = speedBonus(responseMs)
       const pointsFirstGroup = Math.round((BASE_POINTS.miniConnections + bonus) * multiplier)
       const pointsSecondGroup = Math.round(BASE_POINTS.miniConnections * multiplier)
-      addPoints(pointsFirstGroup + pointsSecondGroup)
+      addPoints((pointsFirstGroup + pointsSecondGroup) * (mutationLive() ? 2 : 1))
       setCorrectActions((n) => n + 1)
       setComboStreak((n) => n + 1)
       setHighestMultiplier((m) => Math.max(m, multiplier))
@@ -377,8 +472,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     // going — the player should not lose the board over one bad guess.
     lockRef.current = true
     finishAction(false)
-    addPoints(WRONG_PENALTY)
-    setComboStreak(0)
+    penalizeWrong()
     const involvedGroupIds = new Set(
       selected.map((s) => round.tiles.find((t) => t.text === s)?.groupId).filter(Boolean)
     )
@@ -604,6 +698,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
             <p className="challenge-start-note">The timer starts when you tap Start.</p>
             {personalBest > 0 && <p className="challenge-best">Personal best: {personalBest.toLocaleString()}</p>}
             <TimedXpNote />
+            <PowerupIntro summary={power.summary} loaded={power.loaded} />
           </section>
         </div>
       </div>
@@ -749,6 +844,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
         </span>
       </div>
       {showScoring && <ScoringInfo id="challenge-scoring" playing onClose={() => setShowScoring(false)} />}
+      <ChallengePowerups summary={power.summary} loaded={power.loaded} now={Date.now()} mutation={mutation} crisprArmed={crisprArmed} used={powerUsed} busy={powerBusy} note={powerNote} onMutation={activateMutation} onCrispr={armCrispr} />
 
       <p className="challenge-instruction">{INSTRUCTIONS[round.type]}</p>
       {answerNote && feedback === 'incorrect' && (
@@ -774,8 +870,9 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                   onClick={() => handleToggle(text)}
                   disabled={!!feedback}
                   data-term={text}
+                  aria-label={mutation ? text : undefined}
                 >
-                  <TileText>{text}</TileText>
+                  <TileText>{tileText(text)}</TileText>
                 </button>
               )
             })}
@@ -800,8 +897,9 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                 } ${feedback === 'incorrect' && o.correct ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick(o)}
                 disabled={!!feedback}
+                aria-label={mutation ? o.text : undefined}
               >
-                {o.text}
+                {tileText(o.text)}
               </button>
             ))}
           </div>
@@ -827,8 +925,9 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                 } ${feedback === 'incorrect' && o.correct ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick(o)}
                 disabled={!!feedback}
+                aria-label={mutation ? o.text : undefined}
               >
-                {o.text}
+                {tileText(o.text)}
               </button>
             ))}
           </div>
@@ -853,8 +952,9 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                 } ${feedback === 'incorrect' && o.both ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick({ ...o, correct: o.both })}
                 disabled={!!feedback}
+                aria-label={mutation ? o.text : undefined}
               >
-                {o.text}
+                {tileText(o.text)}
               </button>
             ))}
           </div>
@@ -883,8 +983,9 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                 } ${feedback === 'incorrect' && o.correct ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick(o)}
                 disabled={!!feedback}
+                aria-label={mutation ? o.text : undefined}
               >
-                {o.text}
+                {tileText(o.text)}
               </button>
             ))}
           </div>
@@ -907,8 +1008,9 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                   onClick={() => handleToggle(o.text, 2)}
                   disabled={!!feedback}
                   data-term={o.text}
+                  aria-label={mutation ? o.text : undefined}
                 >
-                  <TileText>{o.text}</TileText>
+                  <TileText>{tileText(o.text)}</TileText>
                 </button>
               )
             })}
@@ -926,8 +1028,18 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
         <>
           <p className="challenge-anchor">{round.prompt}</p>
           <div className="challenge-sod-pair">
-            <span className="challenge-sod-concept">{round.pair[0]}</span>
-            <span className="challenge-sod-concept">{round.pair[1]}</span>
+            {round.pair.map((c) => (
+              <span className="challenge-sod-concept" key={c}>
+                {mutation ? (
+                  <>
+                    <span aria-hidden="true">{tileText(c)}</span>
+                    <span className="sr-only">{c}</span>
+                  </>
+                ) : (
+                  c
+                )}
+              </span>
+            ))}
           </div>
           <div className="challenge-sod-actions">
             <button
@@ -968,8 +1080,9 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                   onClick={() => cycleTile(t.text)}
                   disabled={!!feedback}
                   data-term={t.text}
+                  aria-label={mutation ? t.text : undefined}
                 >
-                  <TileText>{t.text}</TileText>
+                  <TileText>{tileText(t.text)}</TileText>
                   {g && <span className={`challenge-split-badge ${g}`}>{g === 'a' ? 'A' : 'B'}</span>}
                 </button>
               )
@@ -994,9 +1107,10 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                 className={`challenge-match-concept ${activeConcept === c ? 'active' : ''} ${matches[c] ? 'assigned' : ''}`}
                 onClick={() => !feedback && setActiveConcept(c)}
                 disabled={!!feedback}
+                aria-label={mutation ? `${c}${matches[c] ? `, ${matches[c]}` : ''}` : undefined}
               >
-                <span className="challenge-match-concept-text">{c}</span>
-                {matches[c] && <span className="challenge-match-assigned">{matches[c]}</span>}
+                <span className="challenge-match-concept-text">{tileText(c)}</span>
+                {matches[c] && <span className="challenge-match-assigned">{tileText(matches[c])}</span>}
               </button>
             ))}
           </div>
@@ -1007,8 +1121,9 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                 className="challenge-match-label"
                 onClick={() => assignMatch(l)}
                 disabled={!!feedback || !activeConcept}
+                aria-label={mutation ? l : undefined}
               >
-                {l}
+                {tileText(l)}
               </button>
             ))}
           </div>
@@ -1034,9 +1149,10 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                   className={`challenge-chain-step-btn ${pos >= 0 ? 'placed' : ''}`}
                   onClick={() => placeChainStep(s)}
                   disabled={!!feedback}
+                  aria-label={mutation ? `${pos >= 0 ? `${pos + 1}. ` : ''}${s}` : undefined}
                 >
                   {pos >= 0 && <span className="challenge-chain-num">{pos + 1}</span>}
-                  {s}
+                  {tileText(s)}
                 </button>
               )
             })}
@@ -1232,6 +1348,10 @@ function ScoringInfo({ id, playing = false, onClose }) {
         <div>
           <dt>Wrong</dt>
           <dd>{Math.abs(WRONG_PENALTY)} points off and the streak resets. Speed and streak don’t change the penalty.</dd>
+        </div>
+        <div>
+          <dt>Powerups</dt>
+          <dd>An active Mutation doubles the points for correct answers in its {MUTATION_SECONDS} seconds. An armed CRISPR cancels the penalty for one wrong answer and keeps your streak.</dd>
         </div>
         <div>
           <dt>Floor</dt>

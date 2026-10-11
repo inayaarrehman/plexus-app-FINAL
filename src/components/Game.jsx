@@ -21,6 +21,7 @@ import Modal from './Modal.jsx'
 import SolvedGroup from './SolvedGroup.jsx'
 import { reportContext } from '../utils/reportContext.js'
 import { haptics } from '../utils/haptics.js'
+import { appLink } from '../utils/appUrl.js'
 
 const levelColor = (level) => groupColor(level)
 
@@ -48,6 +49,7 @@ export default function Game({
   systemActions = null, // { primary: {label, onClick}, secondary: {label, onClick} } after the board ends
   systemCompletion = null, // { label, total, palette } when this solve completed the subject for the first time
   onPlayTimed = null, // today's Daily: opens 3 Minutes from the result
+  shareUrl = '', // the link added to shared results (opens this puzzle's view)
   exitRequest = 0, // bumped by the app when browser Back is pressed mid-board
   onRequestedExit = null, // leaves after a browser-Back request is confirmed
 }) {
@@ -445,9 +447,9 @@ export default function Game({
         mistakes,
         toolsUsed,
         dailyStreak,
-        url: typeof window !== 'undefined' ? `${window.location.origin}/` : '',
+        url: shareUrl || appLink(''),
       }),
-    [isDaily, dailyNumber, puzzle.title, shareLabel, guessLog, won, mistakes, toolsUsed, dailyStreak]
+    [isDaily, dailyNumber, puzzle.title, shareLabel, guessLog, won, mistakes, toolsUsed, dailyStreak, shareUrl]
   )
 
   const handleShare = async () => {
@@ -464,9 +466,8 @@ export default function Game({
   // its day number is in the URL — no categories, tiles, answers, or the
   // sender's result). Distinct from "Share Results".
   const handleChallenge = async () => {
-    const base = `${window.location.origin}${window.location.pathname}`
     const n = String(challengeDayNumber).padStart(3, '0')
-    const url = `${base}#challenge/${challengeDayNumber}`
+    const url = appLink(`#challenge/${challengeDayNumber}`)
     const text = `I challenged you to today’s Plexus, Daily ${n}\n${url}`
     try {
       await navigator.clipboard.writeText(text)

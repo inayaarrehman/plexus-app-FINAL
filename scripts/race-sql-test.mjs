@@ -1,4 +1,4 @@
-// Race backend checks against a real Postgres with migrations 0006 and 0007 applied.
+// Race backend checks against a real Postgres with migrations 0003 and 0006-0009 applied.
 //   PGTEST="psql -h /tmp/pgtest -p 5544 -U postgres -d t" node scripts/race-sql-test.mjs
 // The database needs Supabase-like stubs (auth.users, auth.uid(), roles anon /
 // authenticated / service_role); scripts/race-sql-setup.sql creates them.
@@ -30,10 +30,17 @@ const B = uid(2)
 const C = uid(3)
 const call = (fn, ...args) => j(`select public.${fn}(${args.map((a) => (a === null ? 'null' : typeof a === 'boolean' || typeof a === 'number' ? String(a) : `'${a}'`)).join(',')})`)
 const me = (u) => call('race_me', u, 'America/Los_Angeles')
+// Synced XP decides the level (0009): Level 12 starts at 7260 XP, Level 16 at 14640.
+const setXp = (u, xp) => run(`insert into public.user_progress (user_id, data) values ('${u}', '{"progression":{"ledger":{"t":{"xp":${xp}}}}}') on conflict (user_id) do update set data = excluded.data`)
 const seen = (u, m) => run(`update public.race_participants set last_seen = now() where match_id='${m}' and user_id='${u}'`)
 
 run(`set client_min_messages = warning; truncate public.race_matches, public.race_inventory, public.race_progress cascade; delete from auth.users;`)
 run(`insert into auth.users(id) values ('${A}'),('${B}'),('${C}')`)
+// B is Level 12, so B may equip CRISPR. Its Level 12 reward is marked as
+// already paid so the inventory counts below stay simple (section 11 tests
+// the rewards themselves).
+setXp(B, 7260)
+run(`insert into public.race_level_grants (user_id, level, item) values ('${B}', 12, 'crispr') on conflict do nothing`)
 // Fast settings for tests (restored at the end).
 run(`update public.race_config set value = 0 where key = 'countdown_ms'`)
 // Sections 1-9 check the earned-item rules (0006), which still apply when the
@@ -91,6 +98,9 @@ console.log('[2] Chaos consent and loadouts')
   ok(call('race_accept_chaos', A, m, true, false).reason === 'no-mutation', 'cannot equip a Mutation you do not hold')
   call('race_grant', A, 'mutation')
   call('race_grant', B, 'crispr')
+  call('race_grant', A, 'crispr')
+  ok(call('race_accept_chaos', A, m, true, true).reason === 'crispr-locked', 'below Level 12, a held CRISPR cannot be equipped')
+  call('race_consume', A, 'crispr')
   ok(call('race_accept_chaos', A, m, true, false).ok, 'A accepts with a Mutation')
   let st = call('race_accept_chaos', B, m, false, true)
   ok(st.players.find((p) => p.user_id === A).equip_mutation && st.players.find((p) => p.user_id === B).equip_crispr, 'both loadouts are visible to both players')
@@ -140,7 +150,7 @@ console.log('[4] Effect timing, overlap and immunity')
   const r = call('race_attack', A, m)
   ok(r.event?.kind === 'mutation', 'Mutation delivered')
   const ms = Date.parse(r.event.ends_at) - Date.parse(r.event.starts_at)
-  ok(ms === 2000, 'the effect lasts exactly 2 seconds (stored start and end): ' + ms)
+  ok(ms === 10000, 'the effect lasts exactly 10 seconds (stored start and end): ' + ms)
   ok(r.event.to_user === B && r.event.from_user === A, 'targets the opponent')
   ok(me(A).inventory.mutation === 0, 'a delivered Mutation is spent')
   // B tries to hit back while A has no effect: allowed. A second effect on B
@@ -149,7 +159,7 @@ console.log('[4] Effect timing, overlap and immunity')
   run(`update public.race_participants set mutation_spent = false where match_id='${m}' and user_id='${A}'`)
   call('race_grant', A, 'mutation')
   ok(call('race_attack', A, m).reason === 'effect-active', 'no overlapping effect while one is running')
-  run(`update public.race_events set starts_at = starts_at - interval '3 seconds', ends_at = ends_at - interval '3 seconds' where match_id='${m}'`)
+  run(`update public.race_events set starts_at = starts_at - interval '11 seconds', ends_at = ends_at - interval '11 seconds' where match_id='${m}'`)
   ok(call('race_attack', A, m).reason === 'target-immune', '5 seconds of immunity after the effect resolves')
   ok(me(A).inventory.mutation === 1, 'rejected attacks spend nothing')
   run(`update public.race_events set starts_at = starts_at - interval '10 seconds', ends_at = ends_at - interval '10 seconds' where match_id='${m}'`)
@@ -161,7 +171,7 @@ console.log('[4] Effect timing, overlap and immunity')
   // Reconnect: state returns the stored timing, never restarted.
   const st = call('race_state', B, m)
   const ev = st.events.filter((e) => e.kind === 'mutation').pop()
-  ok(ev && Date.parse(ev.ends_at) - Date.parse(ev.starts_at) === 2000 && st.now, 'state carries the effect start/end and server time for reconnects')
+  ok(ev && Date.parse(ev.ends_at) - Date.parse(ev.starts_at) === 10000 && st.now && st.effect_ms === 10000, 'state carries the effect start/end and server time for reconnects')
 }
 
 console.log('[5] Simultaneous attacks are applied once')
@@ -229,7 +239,7 @@ console.log('[6] Results, qualification and settlement')
   ok(call('race_state', A, m6).match.status === 'abandoned', 'an abandoned match never qualifies')
 }
 
-console.log('[7] Rewards: every 5 wins a Mutation, every 10 races a CRISPR, caps and pending claims')
+console.log('[7] Rewards: every 5 wins a Mutation (no race CRISPR), caps and pending claims')
 {
   run(`truncate public.race_matches, public.race_inventory, public.race_progress cascade`)
   // Spread matches across opponents and days to stay under the limits.
@@ -248,9 +258,8 @@ console.log('[7] Rewards: every 5 wins a Mutation, every 10 races a CRISPR, caps
   playOnDay(U[0], A, { aCorrect: 4, bCorrect: 8 })
   ok(me(A).inventory.mutation === 1, 'the 5th qualifying win earns a Mutation (A as either seat)')
   for (let i = 0; i < 4; i++) playOnDay(A, U[i % 4], { aCorrect: 3, bCorrect: 9 })
-  ok(me(A).progress.qualifyingRaces === 9 && me(A).inventory.crispr === 0, 'CRISPR: 9/10 qualifying races')
   playOnDay(A, U[1], { aCorrect: 3, bCorrect: 9 })
-  ok(me(A).inventory.crispr === 1 && me(A).progress.qualifyingRaces === 10, 'the 10th qualifying race (a loss) earns a CRISPR')
+  ok(me(A).inventory.crispr === 0 && me(A).progress.qualifyingRaces === 10, 'races no longer award CRISPR (10 qualifying races, still none)')
   for (let i = 0; i < 20; i++) playOnDay(A, U[i % 5], { aCorrect: 9, bCorrect: 3 })
   const s = me(A)
   ok(s.inventory.mutation === 3 && s.pending.mutation >= 1, `Mutation capped at 3 with ${s.pending.mutation} pending claim(s)`)
@@ -308,7 +317,7 @@ console.log('[9] Players can read only their own data and cannot write')
   ok(as(C, `select count(*) from public.race_user_tz where user_id <> '${C}'`) === '0', "a player cannot read others' time zones")
 }
 
-console.log('[10] Chaos introductory loadout (0007): one temporary Mutation and CRISPR each, guests included')
+console.log('[10] Chaos introductory loadout (0007, 0009): one temporary Mutation each, guests included; CRISPR only if earned')
 {
   run(`update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
   run(`truncate public.race_matches, public.race_inventory, public.race_progress cascade`)
@@ -316,6 +325,8 @@ console.log('[10] Chaos introductory loadout (0007): one temporary Mutation and 
   run(`insert into auth.users(id, is_anonymous) values ('${G}', true) on conflict do nothing`)
   // A holds earned items; they must not be touched by a Chaos race.
   run(`select public.race_grant('${A}', 'mutation'); select public.race_grant('${A}', 'crispr')`)
+  setXp(A, 7260)
+  run(`insert into public.race_level_grants (user_id, level, item) values ('${A}', 12, 'crispr') on conflict do nothing`)
   const inv0 = me(A)
   const code = newCode()
   const s = j(`select public.race_create('${A}', '${code}', 'America/Los_Angeles', false)`)
@@ -325,28 +336,32 @@ console.log('[10] Chaos introductory loadout (0007): one temporary Mutation and 
   ok(sj.free_loadout === true, 'state reports that the introductory loadout is on')
   call('race_set_chaos', A, m, true)
   let st = call('race_accept_chaos', A, m, false, false)
-  ok(st.players.find((p) => p.user_id === A).temp_mutation && st.players.find((p) => p.user_id === A).temp_crispr, 'accepting gives one temporary Mutation and one temporary CRISPR')
-  ok(!st.players.find((p) => p.user_id === A).equip_mutation, 'earned items are not equipped while the loadout is on')
-  st = call('race_accept_chaos', G, m, true, true)
-  ok(st.ok && st.players.every((p) => p.temp_mutation && p.temp_crispr), 'the guest gets the same loadout (asking for earned items is ignored)')
+  const pa = st.players.find((p) => p.user_id === A)
+  ok(pa.temp_mutation && !pa.temp_crispr && !pa.equip_crispr, 'accepting gives one temporary Mutation and no CRISPR')
+  ok(!pa.equip_mutation, 'earned Mutations are not equipped while the loadout is on')
+  ok(call('race_accept_chaos', G, m, true, true).reason === 'crispr-locked', 'a guest asking for CRISPR is refused (no level, no CRISPR)')
+  st = call('race_accept_chaos', G, m, true, false)
+  const pg = st.players.find((p) => p.user_id === G)
+  ok(st.ok && pg.temp_mutation && !pg.temp_crispr && !pg.equip_crispr, 'the guest gets the same Mutation-only loadout')
+  st = call('race_accept_chaos', A, m, false, true)
+  ok(st.ok && st.players.find((p) => p.user_id === A).equip_crispr && !st.players.find((p) => p.user_id === A).temp_crispr, 'a Level 12 player may bring an earned CRISPR')
   call('race_start', A, m)
   run(`update public.race_matches set start_at = now() - interval '30 seconds' where id='${m}'`)
   seen(A, m)
   seen(G, m)
-  // Immediate CRISPR on both sides neutralizes both Mutations (documented).
+  ok(call('race_arm', G, m).reason === 'not-equipped', 'the guest has no CRISPR to arm')
   call('race_arm', A, m)
-  call('race_arm', G, m)
-  const a1 = call('race_attack', A, m)
-  ok(a1.event?.kind === 'blocked', "A's Mutation is blocked by the guest's armed CRISPR")
+  const a1 = call('race_attack', G, m)
+  ok(a1.event?.kind === 'blocked', "the guest's Mutation is blocked by A's earned, armed CRISPR")
   run(`update public.race_events set created_at = now() - interval '1 minute', starts_at = now() - interval '1 minute', ends_at = now() - interval '1 minute' where match_id='${m}'`)
   seen(A, m)
   seen(G, m)
-  const a2 = call('race_attack', G, m)
-  ok(a2.event?.kind === 'blocked', "the guest's Mutation is blocked by A's armed CRISPR")
+  const a2 = call('race_attack', A, m)
+  ok(a2.event?.kind === 'mutation', "A's temporary Mutation lands on the guest (no CRISPR in the way)")
   ok(call('race_attack', A, m).reason === 'not-equipped', 'one Mutation per race: a second attack is refused')
   ok(call('race_arm', A, m).reason === 'not-equipped', 'a spent CRISPR cannot be armed again')
   const inv1 = me(A)
-  ok(inv1.inventory.mutation === inv0.inventory.mutation && inv1.inventory.crispr === inv0.inventory.crispr, 'earned inventory is unchanged by temporary charges')
+  ok(inv1.inventory.mutation === inv0.inventory.mutation && inv1.inventory.crispr === inv0.inventory.crispr - 1, 'the temporary Mutation left earned Mutations alone; the earned CRISPR that blocked was spent')
   for (let r = 0; r < 10; r++) {
     call('race_answer', A, m, r, r < 8)
     call('race_answer', G, m, r, r < 6)
@@ -357,7 +372,7 @@ console.log('[10] Chaos introductory loadout (0007): one temporary Mutation and 
   ok(j(`select count(*) from public.race_inventory where user_id='${G}'`) === 0 && j(`select count(*) from public.race_progress where user_id='${G}'`) === 0, 'the guest gets no inventory and no progress rows')
   ok(call('race_state', G, m).log.reason === 'guest', 'the guest log says guest')
   const inv2 = me(A)
-  ok(inv2.inventory.mutation === inv0.inventory.mutation && inv2.inventory.crispr === inv0.inventory.crispr && inv2.pending.mutation === inv0.pending.mutation, 'after the race, nothing temporary reached inventory')
+  ok(inv2.inventory.mutation === inv0.inventory.mutation && inv2.inventory.crispr === inv0.inventory.crispr - 1 && inv2.pending.mutation === inv0.pending.mutation, 'after the race, nothing temporary reached inventory')
 
   // A temporary charge delivered without a CRISPR in the way.
   const code2 = newCode()
@@ -390,6 +405,57 @@ console.log('[10] Chaos introductory loadout (0007): one temporary Mutation and 
   const off = call('race_accept_chaos', B, m4, false, false)
   ok(!off.players.find((p) => p.user_id === B).temp_mutation, 'with the loadout off, no temporary charges are given')
   run(`update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
+}
+
+console.log('[11] CRISPR level rewards, solo use (3 Minutes) and race link states (0009)')
+{
+  const D = uid(41)
+  const E = uid(42)
+  const G2 = uid(43)
+  run(`insert into auth.users(id) values ('${D}'),('${E}') on conflict do nothing`)
+  run(`insert into auth.users(id, is_anonymous) values ('${G2}', true) on conflict do nothing`)
+  ok(j(`select value from public.race_config where key='effect_ms'`) === 10000, 'Mutation effect is configured at 10 seconds')
+  const lv = (xp) => {
+    setXp(D, xp)
+    return j(`select public.race_player_level('${D}')`)
+  }
+  ok(lv(0) === 1 && lv(149) === 1 && lv(150) === 2 && lv(7259) === 11 && lv(7260) === 12 && lv(14639) === 15 && lv(14640) === 16, 'server level curve matches the app (Level 12 at 7260 XP, 16 at 14640)')
+  setXp(D, 7259)
+  let s = me(D)
+  ok(s.level === 11 && s.crisprUnlocked === false && s.crisprUnlockLevel === 12 && s.nextCrisprLevel === 12 && s.inventory.crispr === 0 && s.effectMs === 10000, 'Level 11: CRISPR locked, next at Level 12')
+  setXp(D, 7260)
+  s = me(D)
+  ok(s.level === 12 && s.crisprUnlocked && s.inventory.crispr === 1 && s.nextCrisprLevel === 16, 'reaching Level 12 unlocks CRISPR and grants one; next at Level 16')
+  ok(me(D).inventory.crispr === 1 && j(`select count(*) from public.race_level_grants where user_id='${D}'`) === 1, 'the Level 12 reward is paid once, however often it is checked')
+  setXp(D, 14640)
+  ok(me(D).inventory.crispr === 2, 'Level 16 grants one more (one every 4 levels)')
+  // Solo use (3 Minutes).
+  ok(call('race_use_solo', G2, 'mutation').reason === 'guest', 'guests cannot use solo powerups')
+  ok(call('race_use_solo', D, 'mutation').reason === 'no-mutation', 'no Mutation held: refused')
+  ok(call('race_use_solo', D, 'rocket').reason === 'bad-item', 'unknown item: refused')
+  call('race_grant', D, 'mutation')
+  let u = call('race_use_solo', D, 'mutation')
+  ok(u.ok && u.effectMs === 10000 && u.inventory.mutation === 0, 'solo Mutation spends one and reports 10 seconds')
+  u = call('race_use_solo', D, 'crispr')
+  ok(u.ok && u.inventory.crispr === 1, 'solo CRISPR spends one at Level 12+')
+  call('race_grant', E, 'crispr')
+  ok(call('race_use_solo', E, 'crispr').reason === 'crispr-locked' && me(E).inventory.crispr === 1, 'a CRISPR held below Level 12 cannot be used solo, and is not spent')
+  // Earned-loadout mode: the level check still applies.
+  run(`update public.race_config set value = 0 where key = 'chaos_free_loadout'`)
+  const code = newCode()
+  const m = call('race_create', E, code, 'UTC').match.id
+  call('race_join', D, code, 'UTC')
+  call('race_set_chaos', E, m, true)
+  ok(call('race_accept_chaos', E, m, false, true).reason === 'crispr-locked', 'earned-loadout mode: below Level 12 a held CRISPR cannot be equipped')
+  ok(call('race_accept_chaos', D, m, false, true).ok, 'earned-loadout mode: Level 12+ with a CRISPR can equip it')
+  run(`update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
+  // Link and code states.
+  const fcode = newCode()
+  const fm = call('race_create', D, fcode, 'UTC').match.id
+  call('race_join', E, fcode, 'UTC')
+  run(`update public.race_matches set status = 'finished' where id='${fm}'`)
+  ok(call('race_join', C, fcode, 'UTC').reason === 'race-finished', 'a finished race says so (not "no such race")')
+  ok(call('race_join', C, 'ZZZZ', 'UTC').reason === 'no-such-race', 'an unknown code says no such race')
 }
 
 run(`update public.race_config set value = 3000 where key = 'countdown_ms'`)

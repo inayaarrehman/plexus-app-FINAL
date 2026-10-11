@@ -14,7 +14,7 @@ import { buildRaceChallenge, makeJoinCode, normalizeJoinCode, isValidJoinCode, R
 import { timedBank, timedCanonicalId } from '../src/utils/timedLibrary.js'
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-const ACTIONS = new Set(['config', 'me', 'create', 'join', 'state', 'chaos', 'accept', 'start', 'answer', 'heartbeat', 'leave', 'arm', 'attack', 'rematch'])
+const ACTIONS = new Set(['config', 'me', 'create', 'join', 'state', 'chaos', 'accept', 'start', 'answer', 'heartbeat', 'leave', 'arm', 'attack', 'rematch', 'solo'])
 
 // Rounds for a code, built once per server instance.
 const roundsCache = new Map()
@@ -56,7 +56,7 @@ export async function handleRace({ token, body }, { rpc, getUser, makeCode = mak
   const guest = user.is_anonymous === true
   const a = body.action
   const matchId = body.matchId
-  if (!['config', 'me', 'create', 'join'].includes(a) && !UUID.test(String(matchId || ''))) return bad('bad-match')
+  if (!['config', 'me', 'create', 'join', 'solo'].includes(a) && !UUID.test(String(matchId || ''))) return bad('bad-match')
 
   try {
     const out = await dispatch()
@@ -74,7 +74,7 @@ export async function handleRace({ token, body }, { rpc, getUser, makeCode = mak
       case 'config':
         return { status: 200, json: { ok: true, rounds: RACE_LENGTH } }
       case 'me':
-        if (guest) return { status: 200, json: { ok: true, guest: true, inventory: { mutation: 0, crispr: 0 }, pending: { mutation: 0, crispr: 0 }, progress: null, today: null } }
+        if (guest) return { status: 200, json: { ok: true, guest: true, level: null, crisprUnlocked: false, inventory: { mutation: 0, crispr: 0 }, pending: { mutation: 0, crispr: 0 }, progress: null, today: null } }
         return fromDb(await rpc('race_me', { p_user: u, p_tz: tzOf(body) }))
       case 'create': {
         // A fresh code; retry a few times if it is already in use.
@@ -127,6 +127,13 @@ export async function handleRace({ token, body }, { rpc, getUser, makeCode = mak
         return fromDb(await rpc('race_arm', { p_user: u, p_match: matchId }))
       case 'attack':
         return fromDb(await rpc('race_attack', { p_user: u, p_match: matchId }))
+      // 3 Minutes: spend one earned power-up for its solo effect (migration
+      // 0009 race_use_solo checks the inventory and CRISPR's level unlock).
+      case 'solo': {
+        if (guest) return bad('guest', 403)
+        if (body.item !== 'mutation' && body.item !== 'crispr') return bad('bad-item')
+        return fromDb(await rpc('race_use_solo', { p_user: u, p_item: body.item }))
+      }
       default:
         return bad('bad-action')
     }

@@ -89,13 +89,27 @@ export const PUZZLE_TOOLS = ['curbside', 'lab', 'second-opinion']
 export const KIT_ORDER = ['curbside', 'lab', 'second-opinion', 'shield']
 
 // Race power-ups. Inventory, earning and spending happen on the server
-// (api/race, supabase/migrations/0006); these are the names and copy.
+// (api/race, supabase/migrations/0006 and 0009); these are the names, copy and
+// the display copies of the server settings.
+//   Mutation lasts MUTATION_MS in every mode (Race and 3 Minutes).
+//   CRISPR is a level reward: it unlocks at CRISPR_UNLOCK_LEVEL, which pays
+//   one charge, then one more every CRISPR_LEVEL_EVERY levels. Races give
+//   Mutation only. The server checks the level before CRISPR can be equipped,
+//   armed or used, so these numbers are for display.
+export const MUTATION_MS = 10000
+export const CRISPR_UNLOCK_LEVEL = 12
+export const CRISPR_LEVEL_EVERY = 4
 export const RACE_ITEMS = {
-  mutation: { name: 'Mutation', desc: 'Scrambles the letters on your opponent’s answer tiles for two seconds, then restores them.', max: 3 },
-  crispr: { name: 'CRISPR', desc: 'Arm it to block one incoming Mutation. Used only when it blocks an attack.', max: 3 },
+  mutation: { name: 'Mutation', desc: 'Scrambles the letters on your opponent’s answer tiles for 10 seconds, then restores them.', max: 3 },
+  crispr: { name: 'CRISPR', desc: `Arm it to block one incoming Mutation. Used only when it blocks an attack. Unlocks at Level ${CRISPR_UNLOCK_LEVEL}.`, max: 3, unlock: CRISPR_UNLOCK_LEVEL },
 }
-// Mirrors the server settings (race_config in migration 0006), for display.
-export const RACE_REWARDS = { mutationEveryWins: 5, crisprEveryRaces: 10, perOpponentPerDay: 3, perDay: 6 }
+// Mirrors the server settings (race_config in migrations 0006 and 0009).
+export const RACE_REWARDS = { mutationEveryWins: 5, perOpponentPerDay: 3, perDay: 6, crisprUnlockLevel: CRISPR_UNLOCK_LEVEL, crisprLevelEvery: CRISPR_LEVEL_EVERY }
+// The next level that pays a CRISPR, for a player at `level`.
+export function nextCrisprLevel(level) {
+  if (level < CRISPR_UNLOCK_LEVEL) return CRISPR_UNLOCK_LEVEL
+  return CRISPR_UNLOCK_LEVEL + (Math.floor((level - CRISPR_UNLOCK_LEVEL) / CRISPR_LEVEL_EVERY) + 1) * CRISPR_LEVEL_EVERY
+}
 
 // Tools removed in this version and what a held one converts to (1:1, the
 // owner's decision). Anything over a cap becomes a pending claim.

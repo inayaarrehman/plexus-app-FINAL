@@ -28,12 +28,16 @@ const ok = (c, m) => {
 
 sql(`set client_min_messages = warning; truncate public.race_matches, public.race_inventory, public.race_progress cascade; delete from auth.users where id in (${Object.values(USERS).map((u) => `'${u.id}'`).join(',')}); insert into auth.users(id, is_anonymous) values ${Object.values(USERS).map((u) => `('${u.id}', ${u.is_anonymous ? 'true' : 'false'})`).join(',')}; update public.race_config set value = 0 where key = 'countdown_ms'; update public.race_config set value = 0 where key = 'chaos_free_loadout';`)
 
+// B is Level 12 (CRISPR unlocked, 0009); its Level 12 reward is marked paid so counts stay simple.
+const B_ID = USERS['tok-b'].id
+sql(`insert into public.user_progress (user_id, data) values ('${B_ID}', '{"progression":{"ledger":{"t":{"xp":7260}}}}') on conflict (user_id) do update set data = excluded.data; insert into public.race_level_grants (user_id, level, item) values ('${B_ID}', 12, 'crispr') on conflict do nothing;`)
+
 console.log('[1] A verified session is required (an anonymous guest session counts)')
 ok((await call(null, { action: 'me' })).status === 401, 'no token: 401')
 ok((await call('tok-x', { action: 'me' })).status === 401, 'bad token: 401')
 {
   const gm = await call('tok-anon', { action: 'me' })
-  ok(gm.status === 200 && gm.json.guest === true && gm.json.inventory.mutation === 0, 'a guest session is accepted and has no Race inventory')
+  ok(gm.status === 200 && gm.json.guest === true && gm.json.inventory.mutation === 0 && gm.json.crisprUnlocked === false, 'a guest session is accepted, has no Race inventory and no CRISPR')
 }
 ok((await call('tok-a', { action: 'drop-tables' })).status === 400, 'unknown action refused')
 ok((await call('tok-a', { action: 'state', matchId: "1'; drop table x; --" })).json.reason === 'bad-match', 'malformed match id refused')
@@ -72,6 +76,8 @@ await call('tok-a', { action: 'join', code: c2.json.match.code })
 await call('tok-a', { action: 'chaos', matchId: m2, on: true })
 ok((await call('tok-a', { action: 'accept', matchId: m2, mutation: true })).json.reason === 'no-mutation', 'cannot equip an item you do not hold')
 sql(`select public.race_grant('${USERS['tok-a'].id}', 'mutation'); select public.race_grant('${USERS['tok-b'].id}', 'crispr');`)
+sql(`select public.race_grant('${USERS['tok-a'].id}', 'crispr')`)
+ok((await call('tok-a', { action: 'accept', matchId: m2, mutation: true, crispr: true })).json.reason === 'crispr-locked', 'below Level 12 the server refuses to equip a held CRISPR')
 await call('tok-a', { action: 'accept', matchId: m2, mutation: true })
 ok((await call('tok-a', { action: 'start', matchId: m2 })).json.reason === 'chaos-not-accepted', 'both must accept Chaos')
 await call('tok-b', { action: 'accept', matchId: m2, crispr: true })
@@ -101,8 +107,9 @@ codes = ['GSTA']
   const gid = g.json.match.id
   await call('tok-b', { action: 'join', code: 'GSTA' })
   await call('tok-b', { action: 'chaos', matchId: gid, on: true })
-  const ga = await call('tok-anon', { action: 'accept', matchId: gid, mutation: true, crispr: true })
-  ok(ga.json.players.find((p) => p.guest).temp_mutation && ga.json.players.find((p) => p.guest).temp_crispr, 'the guest receives the temporary loadout')
+  ok((await call('tok-anon', { action: 'accept', matchId: gid, mutation: true, crispr: true })).json.reason === 'crispr-locked', 'a guest cannot ask for CRISPR')
+  const ga = await call('tok-anon', { action: 'accept', matchId: gid, mutation: true })
+  ok(ga.json.players.find((p) => p.guest).temp_mutation && !ga.json.players.find((p) => p.guest).temp_crispr, 'the guest receives the temporary Mutation only (no free CRISPR)')
   const binv = (await call('tok-b', { action: 'me' })).json.inventory
   await call('tok-b', { action: 'accept', matchId: gid })
   await call('tok-b', { action: 'start', matchId: gid })
@@ -125,6 +132,21 @@ console.log('[5] Unauthorized actions')
 const c3 = await call('tok-a', { action: 'create' })
 ok((await call('tok-b', { action: 'attack', matchId: c3.json.match.id })).json.reason === 'not-in-match', 'a non-player cannot act on a match')
 ok((await call('tok-b', { action: 'answer', matchId: c3.json.match.id, round: 0, answer: 'x' })).json.reason === 'not-in-match', 'a non-player cannot answer')
+
+console.log('[6] 3 Minutes solo powerups and level info through the server')
+{
+  ok((await call('tok-anon', { action: 'solo', item: 'mutation' })).status === 403, 'guests cannot use solo powerups')
+  ok((await call('tok-a', { action: 'solo', item: 'laser' })).json.reason === 'bad-item', 'unknown item refused')
+  const meA = (await call('tok-a', { action: 'me' })).json
+  ok(meA.crisprUnlocked === false && meA.crisprUnlockLevel === 12 && meA.effectMs === 10000, 'me reports the CRISPR lock (Level 12) and the 10 s effect')
+  ok((await call('tok-a', { action: 'solo', item: 'crispr' })).json.reason === 'crispr-locked', 'a held CRISPR below Level 12 cannot be used solo')
+  sql(`select public.race_grant('${USERS['tok-a'].id}', 'mutation')`)
+  const before = (await call('tok-a', { action: 'me' })).json.inventory.mutation
+  const u = await call('tok-a', { action: 'solo', item: 'mutation' })
+  ok(u.status === 200 && u.json.effectMs === 10000 && u.json.inventory.mutation === before - 1, 'solo Mutation spends one, effect 10 s')
+  const meB = (await call('tok-b', { action: 'me' })).json
+  ok(meB.crisprUnlocked === true && meB.level === 12, 'a Level 12 player is unlocked')
+}
 
 sql(`update public.race_config set value = 3000 where key = 'countdown_ms'; update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
 console.log(`\n${failed ? `${failed} FAILED` : 'ALL RACE SERVER CHECKS PASSED'} (${passed} passed)`)

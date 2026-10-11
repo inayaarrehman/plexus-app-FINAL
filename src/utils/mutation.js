@@ -7,7 +7,7 @@
 // option's real text (what is submitted and scored, and every explanation)
 // is never touched; the tile simply shows the original again when the effect
 // ends. The same text and seed always give the same scramble, so the effect
-// is one fixed rendering for its two seconds, never a flicker.
+// is one fixed rendering for the effect's whole duration, never a flicker.
 import { makeRng, hashStringToSeed } from './puzzleAssembler.js'
 
 const LETTER = /\p{L}/u

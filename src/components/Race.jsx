@@ -6,8 +6,8 @@ import {
   normalizeJoinCode,
   isValidJoinCode,
   buildRaceChallenge,
-  raceLinkForCode,
 } from '../utils/raceEngine.js'
+import RaceInvite, { RACE_SCORING_COPY } from './RaceInvite.jsx'
 import { openLiveRace, isSupabaseConfigured } from '../lib/liveRace.js'
 import { haptics } from '../utils/haptics.js'
 import { timedCanonicalId } from '../utils/timedLibrary.js'
@@ -73,7 +73,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
   const [code, setCode] = useState(initialCode ? normalizeJoinCode(initialCode) : '')
   const [joinInput, setJoinInput] = useState(initialCode ? normalizeJoinCode(initialCode) : '')
   const [isHost, setIsHost] = useState(false)
-  const [copied, setCopied] = useState(false)
+  const [wrongTiles, setWrongTiles] = useState([])
 
   // Round run state
   const [rounds, setRounds] = useState([])
@@ -189,15 +189,6 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
     setPhase('lobby')
   }
 
-  const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(raceLinkForCode(code))
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1500)
-    } catch {
-      // clipboard blocked — the code is shown on screen to read out instead
-    }
-  }
 
   // Anyone can start; the first tap starts BOTH via the broadcast.
   const startRace = () => {
@@ -243,10 +234,11 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
     setIdx(next)
     setSelected([])
     setVerdict(null)
+    setWrongTiles([])
     lockRef.current = false
   }
 
-  const resolve = (correct, missLabel, missAnswer) => {
+  const resolve = (correct, missLabel, missAnswer, picked = []) => {
     if (lockRef.current) return
     lockRef.current = true
     const nextCorrect = correct ? correctCount + 1 : correctCount
@@ -256,6 +248,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
       haptics.correct()
     } else {
       setMisses((m) => [...m, { label: missLabel, answer: missAnswer }])
+      setWrongTiles(picked)
       triggerWrong()
     }
     // Live progress — aggregate counts only.
@@ -264,6 +257,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
       answered: idx + 1,
       finished: idx + 1 >= rounds.length,
     })
+    // About half a second to register; the race clock keeps running.
     setTimeout(() => advance(nextCorrect), 480)
   }
 
@@ -271,7 +265,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
   const answerSingle = (option) => {
     if (lockRef.current || verdict) return
     const label = round.categoryTitle || round.anchor || 'Connection'
-    resolve(!!option.correct, label, round.correctAnswer)
+    resolve(!!option.correct, label, round.correctAnswer, [option.text])
   }
 
   // rapidAssociation: toggle up to 4, then submit.
@@ -288,7 +282,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
     if (selected.length !== 4 || lockRef.current) return
     const correctSet = new Set(round.correctAnswers)
     const correct = selected.every((t) => correctSet.has(t))
-    resolve(correct, round.anchor, round.correctAnswers.join(', '))
+    resolve(correct, round.anchor, round.correctAnswers.join(', '), selected)
   }
 
   const total = rounds.length || RACE_LENGTH
@@ -307,6 +301,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
         </div>
         <h1 className="race-title">Race</h1>
         <p className="race-lede">Race a friend through the same Plexus, live.</p>
+        <p className="race-scoring">{RACE_SCORING_COPY}</p>
         <TimedXpNote />
 
         <div className="race-entry-actions">
@@ -353,13 +348,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
         </div>
         <h1 className="race-title">Race lobby</h1>
 
-        <div className="race-code-card">
-          <span className="race-code-label">Join code</span>
-          <span className="race-code-value">{code}</span>
-          <button className="race-copy-btn" onClick={copyLink}>
-            {copied ? 'Link copied' : 'Copy invite link'}
-          </button>
-        </div>
+        <RaceInvite code={code} />
 
         <div className="race-players">
           <div className="race-player">
@@ -382,6 +371,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
             : 'Live sync is off (Supabase not configured). You can run the seeded race solo; a friend with the same code gets the identical questions.'}
         </p>
 
+        <p className="race-scoring">{RACE_SCORING_COPY}</p>
         <button className="race-primary-btn" onClick={startRace}>
           {live && oppOnline ? 'Start race' : 'Start'}
         </button>
@@ -447,7 +437,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
               return (
                 <button
                   key={opt.text}
-                  className={`race-option ${isSel ? 'is-selected' : ''}`}
+                  className={`race-option ${isSel ? 'is-selected' : ''} ${wrongTiles.includes(opt.text) ? 'is-wrong-tile' : ''}`}
                   onClick={() => (isRapid ? toggle(opt.text) : answerSingle(opt))}
                   disabled={!!verdict}
                 >

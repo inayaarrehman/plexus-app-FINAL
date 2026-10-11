@@ -17,6 +17,7 @@ import HowToModal from './components/HowToModal.jsx'
 import { isSupabaseConfigured } from './lib/supabaseClient.js'
 import { onAuthChange } from './lib/auth.js'
 import { AUTH_REDIRECT, clearAuthHash } from './lib/authRedirect.js'
+import { appLink } from './utils/appUrl.js'
 import { syncProgress, pushProgress } from './lib/progressRepo.js'
 import { snapshotLocal } from './utils/progressSync.js'
 import { timedBank } from './utils/timedLibrary.js'
@@ -289,6 +290,18 @@ export default function App() {
     } catch {
       /* storage unavailable */
     }
+  }, [])
+
+  // A shared Systems result links to its system (#system/Cardiology): open
+  // that system's page, behind the same Daily gate as everything in Systems.
+  const [systemLink, setSystemLink] = useState(() => systemFromHash(window.location.hash))
+  useEffect(() => {
+    const on = () => {
+      const s = systemFromHash(window.location.hash)
+      if (s) setSystemLink(s)
+    }
+    window.addEventListener('hashchange', on)
+    return () => window.removeEventListener('hashchange', on)
   }, [])
 
   // The player's local date and time zone (utils/calendar.js), kept current
@@ -897,6 +910,23 @@ export default function App() {
     if (initRoute?.game) applyRoute(initRoute.game)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  useEffect(() => {
+    if (!systemLink) return
+    history.replaceState(history.state, '', window.location.pathname + window.location.search)
+    if (modesUnlocked) {
+      setGameCtx(null)
+      setSystemsSelected(systemLink)
+      setSystemsLanding(systemLink)
+      setView('systems')
+    } else {
+      setGameCtx(null)
+      setView('home')
+      openLockedPreview('systems')
+    }
+    setSystemLink(null)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [systemLink])
+
   // After an asked-for exit (board or 3 Minutes run) that started as browser
   // Back, finish the step back.
   const finishRequestedExit = () => setTimeout(() => history.back(), 0)
@@ -959,7 +989,7 @@ export default function App() {
           progressKey={gameCtx.progressKey}
           headerLabel={gameCtx.headerLabel}
           resultTitle={gameCtx.resultTitle}
-          shareLabel={gameCtx.mode === 'system' ? gameCtx.system : undefined}
+          shareLabel={gameCtx.mode === 'system' ? subjectLabel(gameCtx.system) : undefined}
           dailyNumber={gameCtx.dailyNumber}
           dailyStreak={gameCtx.isToday ? streak.current : 0}
           dailyPerfectStreak={gameCtx.isToday ? stats.currentPerfectStreak : 0}
@@ -981,6 +1011,7 @@ export default function App() {
           systemActions={systemActionsFor(gameCtx)}
           systemCompletion={gameCtx.systemCompletion || null}
           onPlayTimed={gameCtx.mode === 'daily' ? () => navigate('challenge') : null}
+          shareUrl={gameCtx.mode === 'system' ? appLink(`#system/${encodeURIComponent(gameCtx.system)}`) : appLink(`#challenge/${gameCtx.challengeDayNumber}`)}
           exitRequest={exitRequest}
           onRequestedExit={() => {
             endSystemBoard(gameCtx)
@@ -1183,4 +1214,17 @@ function useWideLayout() {
     return () => mq.removeEventListener?.('change', on)
   }, [])
   return wide
+}
+
+// #system/<subject> from a shared Systems result (any library subject).
+function systemFromHash(hash) {
+  const m = /^#system\/(.+)$/.exec(String(hash || ''))
+  if (!m) return null
+  let id = ''
+  try {
+    id = decodeURIComponent(m[1])
+  } catch {
+    return null
+  }
+  return LIBRARY_SUBJECTS.includes(id) ? id : null
 }

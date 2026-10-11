@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { recordSnapshot, claimTool, chooseWeeklyTool } from '../progression/store.js'
-import { KIT, PUZZLE_TOOLS, RACE_ITEMS, RACE_REWARDS, REMOVED_NAMES, COVERAGE_EVERY, levelRewards, XP, WEEKLY_GOALS_NEEDED, TIMED_QUALIFY } from '../progression/config.js'
+import { KIT, PUZZLE_TOOLS, RACE_ITEMS, RACE_REWARDS, CRISPR_UNLOCK_LEVEL, nextCrisprLevel, REMOVED_NAMES, COVERAGE_EVERY, levelRewards, XP, WEEKLY_GOALS_NEEDED, TIMED_QUALIFY } from '../progression/config.js'
 import { itemOpen, levelInfo } from '../progression/engine.js'
 import { formatDayKey } from '../utils/calendar.js'
 import { getRaceSummary } from '../lib/raceApi.js'
@@ -446,18 +446,21 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
 
           <div className="kit-section">
             <h2 className="kit-group-head">
-              Race Power-ups <span className="kit-group-sub">Chaos races only</span>
+              Race Power-ups <span className="kit-group-sub">Chaos races and 3 Minutes</span>
             </h2>
             <ul className="kit-list race-cards">
               {Object.entries(RACE_ITEMS).map(([item, def]) => {
                 const inv = race?.inventory?.[item] ?? 0
+                const lockedByLevel = item === 'crispr' && info.level < CRISPR_UNLOCK_LEVEL
                 const prog =
                   item === 'mutation'
                     ? `${(race?.progress?.qualifyingWins ?? 0) % RACE_REWARDS.mutationEveryWins}/${RACE_REWARDS.mutationEveryWins} qualifying wins to the next`
-                    : `${(race?.progress?.qualifyingRaces ?? 0) % RACE_REWARDS.crisprEveryRaces}/${RACE_REWARDS.crisprEveryRaces} qualifying races to the next`
+                    : info.level < CRISPR_UNLOCK_LEVEL
+                      ? `Unlocks at Level ${CRISPR_UNLOCK_LEVEL}`
+                      : `Next at Level ${nextCrisprLevel(info.level)}`
                 return (
-                  <li key={item} className={`race-card kit-item ${race ? '' : 'is-locked'}`}>
-                    <ToolArt item={item} locked={!race} size="sm" />
+                  <li key={item} className={`race-card kit-item ${race && !lockedByLevel ? '' : 'is-locked'}`}>
+                    <ToolArt item={item} locked={!race || lockedByLevel} size="sm" />
                     <h3 className="kit-name">{def.name}</h3>
                     <p className="kit-desc">{def.desc}</p>
                     <div className="tool-card-qty" aria-label={`${inv} of ${def.max} held`}>
@@ -467,7 +470,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
                         <span className="kit-cap"> / {def.max}</span>
                       </span>
                     </div>
-                    {race && <p className="tool-card-progress">{prog}</p>}
+                    {(race || lockedByLevel) && <p className="tool-card-progress">{prog}</p>}
                     {race && (race.pending?.[item] || 0) > 0 && <span className="kit-pending">{race.pending[item]} waiting (inventory full)</span>}
                   </li>
                 )
@@ -479,7 +482,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
                 {race === undefined
                   ? 'Loading…'
                   : race
-                    ? `Earned in qualifying races: a Mutation every ${RACE_REWARDS.mutationEveryWins} wins, a CRISPR every ${RACE_REWARDS.crisprEveryRaces} races.`
+                    ? `A Mutation for every ${RACE_REWARDS.mutationEveryWins} qualifying race wins. CRISPR is a level reward: one at Level ${CRISPR_UNLOCK_LEVEL}, then one every ${RACE_REWARDS.crisprLevelEvery} levels. Use them in Chaos races and 3 Minutes.`
                     : 'Sign in to earn and use Race power-ups.'}
               </span>
             </p>
@@ -492,7 +495,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
               <span className="kit-more-chev" aria-hidden="true" />
             </summary>
             <p className="kit-foot">
-              Caps: puzzle tools {KIT.curbside.max} each, Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Puzzle tools that arrive when you are full wait here as claims, nothing is lost. Coverage that arrives when you hold {KIT.shield.max} becomes a puzzle tool or {XP.coverageAlt} XP. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Tools can be used in Dailies only, not in Systems, 3 Minutes or Race. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
+              Caps: puzzle tools {KIT.curbside.max} each, Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Puzzle tools that arrive when you are full wait here as claims, nothing is lost. Coverage that arrives when you hold {KIT.shield.max} becomes a puzzle tool or {XP.coverageAlt} XP. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Puzzle tools can be used in Dailies only, not in Systems, 3 Minutes or Race. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
             </p>
           </details>
           {convertedList.length > 0 && (

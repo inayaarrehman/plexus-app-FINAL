@@ -6631,7 +6631,25 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 .submit-connection-tiles { border: none; margin: 0; padding: 0; min-width: 0; }
 .submit-connection-tile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 @media (max-width: 360px) { .submit-connection-tile-grid { grid-template-columns: 1fr; } }
-.submit-connection-select { width: 100%; }
+.submit-connection-select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  /* A solid fill: native option lists take their colors from the select, and a
+     see-through cream-on-transparent select made them blank in some browsers. */
+  background-color: var(--bg-elevated, #201e15);
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 40px;
+  color: var(--text);
+  color-scheme: dark;
+}
+.submit-connection-select option { background-color: var(--bg-elevated, #201e15); color: var(--text, #fbf6ee); }
+.submit-connection-select option[value=""] { color: var(--text-dim, #c9c2b4); }
+.submit-connection-select:disabled { cursor: default; opacity: 0.6; }
 
 /* ---- 3 Minutes: point feedback and scoring help ---- */
 .challenge-score-wrap { position: relative; display: inline-flex; align-items: center; gap: 8px; }
@@ -7416,13 +7434,14 @@ body.has-install-hint .app-shell {
    on wide screens. Measured against the section and the text size, so large
    text falls back to one column instead of squeezing. */
 .beyond-map { container: beyond / inline-size; }
-@container beyond (min-width: 22.5rem) {
+@container beyond (min-width: 28rem) {
   .beyond-list { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, auto); grid-auto-flow: column; }
 }
-@container beyond (min-width: 42rem) {
+@container beyond (min-width: 46rem) {
   .beyond-list { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, auto); }
 }
-.beyond-name, .beyond-count { overflow-wrap: anywhere; }
+/* Names never break mid-word; the column count above leaves room for them. */
+.beyond-name, .beyond-count { white-space: nowrap; }
 @media (min-width: 900px) {
   .systems-directory.is-wide .beyond-map { max-width: 900px; margin: 28px auto 0; }
   .systems-map-col .bodymap { margin-top: 0; }
@@ -7434,3 +7453,90 @@ body.has-install-hint .app-shell {
 .beyond-icon .glyph-node { fill: var(--room, #1d6a6a); stroke: var(--text); stroke-width: 2.2; }
 .beyond-icon .glyph-node.is-on { fill: var(--node-accent); stroke: var(--text); }
 .beyond-list { row-gap: 4px; }
+
+/* ---- Body map: smaller nodes, one line weight across organs ---- */
+.bodymap { max-width: 420px; margin-top: 14px; }
+.bm-outline { stroke: color-mix(in srgb, var(--text) 26%, transparent); stroke-width: 1.3; }
+.bm-connector polyline { stroke: color-mix(in srgb, var(--text) 38%, transparent); stroke-width: 1; }
+.bm-connector circle { fill: color-mix(in srgb, var(--text) 55%, transparent); }
+.bm-organ line { stroke: color-mix(in srgb, var(--text) 88%, transparent); stroke-width: 1.25; }
+.bm-organ circle { stroke-width: 1.1; }
+.bm-organ circle.is-lit { stroke-width: 1; }
+.bm-organ.is-hot line, .bm-organ.is-selected line { stroke-width: 1.6; }
+.bm-organ.is-selected circle:not(.is-lit) { stroke-width: 1.5; }
+.bm-label { padding: 4px 3px; }
+.bm-name { font-size: clamp(12.5px, 4.1cqi, 16px); }
+.bm-done { font-weight: 800; }
+
+/* ---- Map interactivity: one hint line, label and organ light up together ---- */
+.bm-hint { margin: 14px 0 0; text-align: center; font-size: var(--type-caption); font-weight: 600; color: var(--text-dim); }
+.bm-hint + .bodymap { margin-top: 6px; }
+.bm-label.is-hot { background: color-mix(in srgb, var(--text) 9%, transparent); }
+.bm-label.is-hot .bm-name { text-decoration: underline; text-decoration-color: var(--node-accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.bm-organ.is-hot circle:not(.is-lit) { fill: color-mix(in srgb, var(--node-accent) 55%, var(--room, #1d6a6a)); }
+.bm-label.is-pulse { animation: bm-label-pulse 300ms ease-out; }
+@keyframes bm-label-pulse { 0% { transform: translateY(-50%) scale(1); } 40% { transform: translateY(-50%) scale(0.96); } 100% { transform: translateY(-50%) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .bm-label.is-pulse { animation: none; } }
+
+/* ---- Race: a wrong answer's tiles turn red and shake for ~450ms ---- */
+.race-option.is-wrong-tile {
+  position: relative;
+  border-color: var(--node-terracotta, #bf5236);
+  border-width: 2px;
+  background: color-mix(in srgb, var(--node-terracotta, #bf5236) 26%, var(--bg));
+  animation: race-tile-shake 450ms cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+.race-option.is-wrong-tile::after {
+  content: '✕';
+  position: absolute; top: 4px; right: 8px;
+  font-size: 0.8rem; font-weight: 800; line-height: 1;
+  color: var(--node-terracotta, #bf5236);
+}
+@keyframes race-tile-shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(3px); }
+  30%, 50%, 70% { transform: translateX(-5px); }
+  40%, 60% { transform: translateX(5px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .race-option.is-wrong-tile { animation: none; }
+}
+.race-scoring { margin: 6px 0 12px; font-size: var(--type-caption); font-weight: 600; line-height: 1.45; color: var(--text-dim); }
+
+/* Mutation running on your tiles: a quiet banner with the seconds left. */
+.race-mutation-banner { display: flex; align-items: center; gap: 8px; margin: 6px 0 8px; padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--node-plum, #7a49b2) 26%, transparent); font-size: var(--type-caption); font-weight: 700; font-variant-numeric: tabular-nums; width: fit-content; }
+.race-mutation-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--node-plum, #7a49b2); box-shadow: 0 0 0 2px var(--text); }
+
+/* Race invitation: code plus three ways to share it. */
+.race-invite-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 4px; }
+.race-invite-actions .race-copy-btn { margin-top: 0; min-height: 44px; }
+.race-invite-status { margin: 2px 0 0; min-height: 1.2em; font-size: var(--type-caption); font-weight: 600; color: var(--text-dim); }
+.race-lock-note { font-weight: 600; color: var(--text-dim); }
+.race-crispr-choice.is-off { opacity: 0.8; }
+
+/* ---- 3 Minutes: powerups (Mutation and CRISPR, solo rules) ---- */
+.challenge-powerups-wrap { margin: -8px 0 10px; }
+.challenge-powerups { display: flex; flex-wrap: wrap; gap: 8px; }
+.challenge-power {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; padding: 6px 14px; border-radius: 999px;
+  border: 1.5px solid color-mix(in srgb, var(--text) 26%, transparent);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  color: var(--text); font-family: var(--font-ui); font-size: var(--type-caption); font-weight: 700;
+  cursor: pointer;
+}
+.challenge-power:hover:not(:disabled) { border-color: var(--text); }
+.challenge-power:focus-visible { outline: 2.5px solid var(--text); outline-offset: 2px; }
+.challenge-power:disabled { cursor: default; opacity: 0.55; }
+.challenge-power.is-on { opacity: 1; border-color: var(--text); }
+.challenge-power.is-mutation.is-on { background: color-mix(in srgb, var(--node-plum, #7a49b2) 34%, transparent); }
+.challenge-power.is-crispr.is-on { background: color-mix(in srgb, var(--node-peacock, #1f7a78) 36%, transparent); }
+.challenge-power-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; box-shadow: 0 0 0 2px color-mix(in srgb, var(--text) 70%, transparent); }
+.challenge-power.is-mutation .challenge-power-dot { background: var(--node-plum, #7a49b2); }
+.challenge-power.is-crispr .challenge-power-dot { background: var(--node-peacock, #1f7a78); }
+.challenge-power.is-locked .challenge-power-dot { background: transparent; }
+.challenge-power-meta { font-weight: 600; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.challenge-power.is-on .challenge-power-meta { color: var(--text); }
+.challenge-power-status { margin: 6px 0 0; min-height: 1.25em; font-size: var(--type-caption); font-weight: 600; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.challenge-power-intro { margin: 10px auto 0; max-width: 34rem; font-size: var(--type-caption); color: var(--text-dim); text-align: center; }
+.challenge-power-intro b { color: var(--text); font-weight: 700; }

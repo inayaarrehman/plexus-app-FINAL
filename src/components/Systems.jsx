@@ -211,7 +211,8 @@ function SystemPanel({ system, st, onPlay, onReplayBoard, finishedBoards, notice
 // system so either can be clicked.
 function systemLabel(name, total, solved) {
   if (total === 0) return `${name}. Coming soon.`
-  return `${name}, ${solved} of ${total} boards solved${solved >= total ? ', all solved' : ''}`
+  if (solved >= total) return `${name}, ${solved} of ${total} boards completed`
+  return `${name}, ${solved} of ${total} boards solved`
 }
 
 export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, initialSelected = null, onSelectedChange, landing = null, onOpenLanding, onCloseLanding, notice = null, onClearNotice, onPlaySystem, onReplayBoard, onBack, playNotice, onDismissPlayNotice }) {
@@ -300,6 +301,10 @@ export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, 
   }
 
   const bodyMap = (
+    <>
+    <p className="bm-hint" id="bm-hint">
+      Tap a system to explore.
+    </p>
     <BodyMap
       rows={rows}
       wide={wide}
@@ -307,6 +312,7 @@ export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, 
       onChoose={choose}
       label={(system, r) => systemLabel(subjectLabel(system), r.total, r.solved)}
     />
+    </>
   )
 
   const beyondList = (
@@ -337,8 +343,13 @@ export default function Systems({ todayKey, finishedBoards, boardAttempts = {}, 
                 <span className="beyond-text">
                   <span className="beyond-name">{name}</span>
                   <span className="beyond-count">
-                    {r.solved} of {r.total}
-                    {complete && <span className="bm-done"> · done</span>}
+                    {complete ? (
+                      <>
+                        {r.solved}/{r.total} <span className="bm-done" aria-hidden="true">✓</span>
+                      </>
+                    ) : (
+                      `${r.solved} of ${r.total}`
+                    )}
                   </span>
                 </span>
                 <svg className="beyond-chev" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false">
