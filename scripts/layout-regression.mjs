@@ -164,7 +164,8 @@ for (const big of [false, true]) {
   // Home (nav, Connection of the day actions, info button), Archive header.
   {
     const { page, ctx, errors } = await open({ big })
-    await page.click('.home-cotd-toggle')
+    // The toggle only exists when the day's explanation runs past one sentence.
+    if (await page.$('.home-cotd-toggle')) await page.click('.home-cotd-toggle')
     const info = await rect(page, '.home-reset-info')
     ok(info.w >= 44 && info.h >= 44, `${tag}: info button is a real 44px target (${info.w}x${info.h})`)
     await sweep(page, `${tag} Home`)

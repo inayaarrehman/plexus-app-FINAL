@@ -48,11 +48,21 @@
   --room-raspberry: #6b3459;
   --room-raspberry-deep: #4a2240;
   --room-raspberry-deeper: #36182f;
+  /* Royal Aubergine (Daily) and Deep Emerald (Systems), with their own
+     companions and a warm ivory that suits both. */
+  --room-aubergine: #492d58;
+  --room-aubergine-deep: #3a2347;
+  --room-aubergine-deeper: #2b1936;
+  --room-emerald: #174e45;
+  --room-emerald-deep: #103a33;
+  --room-emerald-deeper: #0b2b26;
+  --room-sage: #8fae9c; /* body outline, connectors, progress track on Emerald */
+  --warm-ivory: #f5eedd;
 
   /* Which room each screen uses. */
   --bg-home: var(--room-indigo);
-  --bg-daily: var(--room-garnet);
-  --bg-systems: var(--room-peacock);
+  --bg-daily: var(--room-aubergine);
+  --bg-systems: var(--room-emerald);
   --bg-challenge: var(--room-sapphire);
   --bg-review: var(--room-raspberry);
 
@@ -4614,22 +4624,23 @@ body.bg-home {
   --difficulty-expert: #dbcbdf;
 }
 body.env-daily {
-  --room: var(--room-garnet);
-  --room-deep: var(--room-garnet-deep);
-  --room-deeper: var(--room-garnet-deeper);
-  --room-text: #fbf6ee;
-  --room-dim: #e9dbda; /* 4.6:1 on the softened garnet */
+  --room: var(--room-aubergine);
+  --room-deep: var(--room-aubergine-deep);
+  --room-deeper: var(--room-aubergine-deeper);
+  --room-text: var(--warm-ivory); /* 10.1:1 on aubergine */
+  --room-dim: #d8cad9; /* 7.4:1 */
+  --tile-cream: var(--warm-ivory);
   --difficulty-easy: #f0d9cf;
   --difficulty-medium: #cee2de;
   --difficulty-hard: #d6deed;
   --difficulty-expert: #e5dbe9;
 }
 body.env-systems {
-  --room: var(--room-peacock);
-  --room-deep: var(--room-peacock-deep);
-  --room-deeper: var(--room-peacock-deeper);
-  --room-text: #fbf6ee;
-  --room-dim: #d5ded9;
+  --room: var(--room-emerald);
+  --room-deep: var(--room-emerald-deep);
+  --room-deeper: var(--room-emerald-deeper);
+  --room-text: var(--warm-ivory); /* 8.2:1 on emerald */
+  --room-dim: #c6d6cb; /* 6.3:1 */
   --difficulty-easy: #f0d7cb;
   --difficulty-medium: #cddfd8;
   --difficulty-hard: #d5dbe7;
@@ -7540,3 +7551,28 @@ body.has-install-hint .app-shell {
 .challenge-power-status { margin: 6px 0 0; min-height: 1.25em; font-size: var(--type-caption); font-weight: 600; color: var(--text-dim); font-variant-numeric: tabular-nums; }
 .challenge-power-intro { margin: 10px auto 0; max-width: 34rem; font-size: var(--type-caption); color: var(--text-dim); text-align: center; }
 .challenge-power-intro b { color: var(--text); font-weight: 700; }
+
+/* ---- Daily: Royal Aubergine ----------------------------------------------
+   Warm ivory text and tiles; the selected tile takes a deep plum ink so it
+   reads as "picked" against both the ivory tiles and the aubergine room;
+   buttons and borders are ivory at set strengths. Solved groups keep their
+   four jewel colours, and a wrong guess keeps its shake and terracotta. */
+body.env-daily .tile { box-shadow: 0 2px 0 rgba(20, 8, 28, 0.38); }
+/* Dark on a dark room, so the edge carries the contrast: a 2px ivory ring
+   (10:1 on aubergine) plus the existing corner dot. */
+body.env-daily .tile.tile-selected { background: #24132e; border-color: #24132e; color: var(--warm-ivory); box-shadow: 0 0 0 2px var(--warm-ivory), 0 3px 0 rgba(12, 4, 18, 0.55); }
+body.env-daily .strand { background: var(--warm-ivory); }
+body.env-daily .primary-btn:not(:disabled) { background: var(--warm-ivory); color: #2b1936; }
+body.env-daily .modal, body.env-daily .result-card { border-color: color-mix(in srgb, var(--warm-ivory) 18%, transparent); }
+
+/* ---- Systems: Deep Emerald -----------------------------------------------
+   Flat emerald, ivory text and organ nodes; muted sage for the body outline,
+   connector lines and the progress track. */
+body.env-systems .bm-outline { stroke: var(--room-sage); stroke-opacity: 0.62; stroke-width: 1.25; }
+body.env-systems .bm-connector polyline { stroke: var(--room-sage); stroke-opacity: 0.9; }
+body.env-systems .bm-connector circle { fill: var(--room-sage); }
+body.env-systems .bm-connector.is-hot polyline { stroke: var(--warm-ivory); stroke-opacity: 1; }
+body.env-systems .bm-organ line { stroke: var(--warm-ivory); }
+body.env-systems .bm-organ circle:not(.is-lit) { fill: var(--room); stroke: var(--warm-ivory); }
+body.env-systems .systems-overall-track,
+body.env-systems .mini-progress-track { background: color-mix(in srgb, var(--room-sage) 45%, transparent); }

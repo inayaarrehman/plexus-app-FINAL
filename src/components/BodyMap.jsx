@@ -18,109 +18,116 @@ import { systemAccent } from '../utils/systemAccent.js'
 // The illustrations are navigation symbols, not anatomy.
 // ---------------------------------------------------------------------
 export const MAP_W = 340
-export const MAP_H = 430
-const CX = 165 // body centre line (a little left, so right labels have room)
+export const MAP_H = 512
+const CX = 167 // body centre line
 const L_EDGE = 84 // left labels end here (text right-aligned)
-const R_EDGE = 245 // right labels start here
+const R_EDGE = 249 // right labels start here
 
 const mirror = (pts) => pts.map(([x, y]) => [2 * CX - x, y])
 const loop = (n, from = 0) => Array.from({ length: n }, (_, i) => [from + i, from + ((i + 1) % n)])
 const chain = (n, from = 0) => Array.from({ length: n - 1 }, (_, i) => [from + i, from + i + 1])
+const shift = (pts, dx, dy) => pts.map(([x, y]) => [x + dx, y + dy])
 
 // Organ symbols: nodes and the links between them, all on one grid of node
-// size and line weight. Lit nodes follow a fixed order (see litSet).
-const BRAIN_L = [[159, 20], [150, 26], [146, 37], [148, 49], [157, 56], [161, 38]]
+// size and line weight. Lit nodes follow a fixed order (see litSet). Each
+// sits where it belongs in the figure below: brain in the head, thyroid on
+// the neck, lungs and heart in the chest, kidneys in the upper abdomen, bowel
+// in the abdomen, reproductive organs in the pelvis, a knee for MSK and skin
+// on the shoulder's outline.
+const BRAIN_L = [[161, 22], [152, 28], [148, 39], [150, 51], [159, 58], [163, 40]]
 const BRAIN_LINKS = [[0, 1], [1, 2], [2, 3], [3, 4], [0, 5], [5, 2], [5, 4], [1, 5]]
-const KIDNEY_L = [[129, 192], [121, 200], [120, 212], [127, 220], [135, 214], [133, 205], [136, 197]]
-// Lungs: rounded apex, wide sloping base, a hilum on the inner edge. The
-// viewer's right lung has a notch where the heart sits; both are the same size.
-const LUNG_L = [[143, 100], [134, 107], [126, 120], [120, 136], [118, 151], [122, 163], [135, 166], [148, 161], [152, 147], [150, 125], [148, 109]]
-const LUNG_R = [[187, 100], [196, 107], [204, 120], [210, 136], [212, 151], [208, 163], [195, 166], [189, 160], [189, 147], [187, 125], [182, 109]]
+const KIDNEY_L = shift([[129, 192], [121, 200], [120, 212], [127, 220], [135, 214], [133, 205], [136, 197]], 15, 1)
+// Lungs: rounded apex, wide sloping base. The viewer's right lung has a notch
+// where the heart sits.
+const LUNG_L = [[155, 118], [146, 124], [138, 136], [133, 150], [131, 163], [135, 173], [146, 176], [156, 172], [159, 160], [158, 140], [157, 126]]
+const LUNG_R = [[179, 118], [188, 124], [196, 136], [201, 150], [203, 163], [200, 173], [195, 175], [192, 168], [191, 154], [182, 142], [178, 128]]
 
 const ORGANS = {
   Psychiatry: {
     nodes: BRAIN_L,
     links: BRAIN_LINKS,
-    targets: [[113, 6, 50, 51]],
-    anchor: [146, 37],
-    label: { side: 'L', y: 30 },
+    targets: [[113, 10, 50, 54]],
+    anchor: [148, 39],
+    label: { side: 'L', y: 39 },
   },
   Neurology: {
-    nodes: [...mirror(BRAIN_L), [CX, 64]],
+    nodes: [...mirror(BRAIN_L), [CX, 66]],
     links: [...BRAIN_LINKS, [4, 6]],
-    targets: [[168, 6, 50, 51]],
-    anchor: [184, 37],
-    label: { side: 'R', y: 30 },
+    targets: [[168, 10, 50, 54]],
+    anchor: [186, 39],
+    label: { side: 'R', y: 39 },
   },
+  // Thyroid: a small butterfly on the neck.
   Endocrine: {
-    nodes: [[158, 79], [154, 85], [159, 90], [165, 86], [172, 79], [176, 85], [171, 90]],
+    nodes: [[161, 83], [157, 89], [162, 94], [167, 90], [173, 83], [177, 89], [172, 94]],
     links: [[0, 1], [1, 2], [2, 3], [3, 6], [6, 5], [5, 4], [4, 3], [0, 3]],
-    targets: [[135, 62, 50, 54]],
-    anchor: [154, 85],
-    label: { side: 'L', y: 88 },
+    targets: [[139, 69, 50, 50]],
+    anchor: [157, 89],
+    label: { side: 'L', y: 94 },
   },
-  // Skin: a short run of nodes along the outer contour where the shoulder
-  // becomes the upper arm, with its label right beside it.
+  // Skin: nodes along the outline where the shoulder rounds into the arm.
   Dermatology: {
-    nodes: [[214, 99], [222, 102], [228, 107], [232, 114], [218, 105], [225, 110]],
+    nodes: [[208, 99], [218, 101], [226, 106], [231, 115], [214, 106], [223, 112]],
     links: [[0, 1], [1, 2], [2, 3], [0, 4], [4, 1], [4, 5], [5, 2], [5, 3]],
-    targets: [[190, 62, 50, 54]],
-    anchor: [232, 112],
-    label: { side: 'R', y: 93 },
+    targets: [[194, 69, 50, 50]],
+    anchor: [231, 115],
+    label: { side: 'R', y: 104 },
   },
   Pulmonary: {
-    nodes: [...LUNG_L, ...LUNG_R, [CX, 93], [CX, 102], [157, 110], [173, 110]],
-    links: [...loop(11), ...loop(11, 11), [22, 23], [23, 24], [23, 25], [24, 9], [25, 20]],
-    targets: [
-      [92, 123, 50, 50],
-      [202, 123, 50, 50],
-    ],
-    anchor: [118, 150],
+    nodes: [...LUNG_L, ...LUNG_R, [CX, 100], [CX, 109], [160, 115], [174, 115]],
+    links: [...loop(11), ...loop(11, 11), [22, 23], [23, 24], [23, 25], [24, 0], [25, 11]],
+    targets: [[92, 124, 50, 50]],
+    anchor: [133, 150],
     label: { side: 'L', y: 150 },
   },
-  // Heart: between the lungs at mid-chest, a little to the viewer's right.
+  // Heart: low in the chest, a little to the viewer's right, in the notch.
   Cardiology: {
-    nodes: [[161, 135], [166, 130], [171, 135], [176, 130], [181, 135], [181, 142], [171, 153], [161, 142]],
+    nodes: [[164, 153], [169, 148], [175, 153], [181, 148], [186, 153], [186, 161], [175, 173], [164, 161]],
     links: [...loop(8), [2, 6], [7, 5]],
-    targets: [[147, 123, 50, 50]],
-    anchor: [171, 153],
-    via: [186, 171],
-    label: { side: 'R', y: 203 },
+    targets: [[147, 124, 50, 50]],
+    anchor: [175, 173],
+    via: [180, 184],
+    label: { side: 'R', y: 194 },
   },
   Renal: {
     nodes: [...KIDNEY_L, ...mirror(KIDNEY_L)],
     links: [...loop(7), ...loop(7, 7)],
     targets: [
-      [100, 181, 50, 52],
-      [180, 181, 50, 52],
+      [99, 179, 50, 50],
+      [185, 179, 50, 50],
     ],
-    anchor: [120, 206],
-    label: { side: 'L', y: 206 },
+    anchor: [135, 208],
+    label: { side: 'L', y: 208 },
   },
   // Bowel: the colon framing the abdomen, small intestine winding inside.
   GI: {
-    nodes: [
-      [147, 284], [144, 266], [147, 249], [157, 242], [173, 242], [183, 249], [186, 266], [184, 282], [173, 289],
-      [155, 256], [165, 252], [175, 257], [170, 265], [160, 267], [156, 275], [166, 279], [176, 274],
-    ],
+    nodes: shift(
+      [
+        [147, 284], [144, 266], [147, 249], [157, 242], [173, 242], [183, 249], [186, 266], [184, 282], [173, 289],
+        [155, 256], [165, 252], [175, 257], [170, 265], [160, 267], [156, 275], [166, 279], [176, 274],
+      ],
+      2,
+      -12
+    ),
     links: [...chain(9), ...chain(8, 9)],
-    targets: [[139, 238, 52, 52]],
-    anchor: [186, 266],
-    label: { side: 'R', y: 264 },
+    targets: [[142, 234, 50, 50]],
+    anchor: [188, 254],
+    label: { side: 'R', y: 254 },
   },
   Reproductive: {
-    nodes: [[147, 307], [156, 304], [161, 310], [169, 310], [174, 304], [183, 307], [160, 321], [170, 321], [165, 330]],
+    nodes: shift([[147, 307], [156, 304], [161, 310], [169, 310], [174, 304], [183, 307], [160, 321], [170, 321], [165, 330]], 2, -20),
     links: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [2, 6], [3, 7], [6, 7], [6, 8], [7, 8]],
-    targets: [[139, 295, 52, 52]],
-    anchor: [183, 307],
-    label: { side: 'R', y: 322 },
+    targets: [[142, 289, 50, 50]],
+    anchor: [185, 287],
+    label: { side: 'R', y: 342 },
   },
+  // A knee joint on the viewer's left leg.
   MSK: {
-    nodes: [[136, 360], [129, 376], [143, 376], [136, 382], [129, 388], [143, 388], [136, 402]],
+    nodes: shift([[136, 360], [129, 376], [143, 376], [136, 382], [129, 388], [143, 388], [136, 402]], 9, 10),
     links: [[0, 1], [0, 2], [1, 3], [2, 3], [3, 4], [3, 5], [4, 6], [5, 6]],
-    targets: [[110, 352, 52, 52]],
-    anchor: [129, 382],
-    label: { side: 'L', y: 382 },
+    targets: [[114, 368, 50, 50]],
+    anchor: [138, 392],
+    label: { side: 'L', y: 392 },
   },
 }
 // Keyboard and screen-reader order: top of the body to the bottom.
@@ -142,23 +149,51 @@ function litSet(n, fraction) {
 
 const pct = (v, of) => `${(v / of) * 100}%`
 
-// A friendly silhouette: a head that narrows to the chin, sloping shoulders,
-// a gentle waist, hips and short legs. Drawn for these proportions, not
-// stretched. Decorative and never tappable.
+// The figure: a natural head on a short neck, gently sloping shoulders,
+// arms relaxed at the sides with simple hands beside the upper thighs, a
+// balanced chest, waist and hips, and two legs down to simple feet. One path
+// per side (mirrored), drawn at these proportions and never stretched to fit
+// the labels. Decorative and never tappable.
+const SIDE = [
+  'M 167 12',
+  'C 182 12 192 24 192 40', // crown to the widest point of the head
+  'C 192 52 188 62 180 68', // jaw
+  'C 178 72 178 76 179 80', // neck
+  'C 180 86 181 90 184 92',
+  'C 190 95 198 97 206 99', // shoulder slope
+  'C 218 101 228 106 231 116', // round of the shoulder
+  'C 235 130 236 150 237 170', // upper arm
+  'C 238 186 240 198 241 208', // elbow
+  'C 242 228 242 250 239 272', // forearm, tapering to the wrist
+  'C 241 282 243 292 242 302', // hand
+  'C 241 314 236 322 230 322',
+  'C 225 322 223 316 224 306',
+  'C 225 296 226 286 227 276', // wrist (inner)
+  'C 226 256 224 236 223 210', // forearm (inner)
+  'C 222 196 220 186 218 176', // inner elbow
+  'C 216 160 216 146 216 134', // inner upper arm to the armpit
+  'C 216 150 215 170 213 190', // chest and ribs
+  'C 211 205 208 216 209 226', // waist
+  'C 210 244 215 262 216 282', // hip
+  'C 217 300 215 322 212 342', // outer thigh
+  'C 209 360 205 376 204 392', // knee
+  'C 203 406 206 424 202 444', // calf
+  'C 199 458 196 466 194 474', // ankle
+  'C 197 482 201 489 200 496', // foot
+  'C 200 502 192 503 183 502',
+  'L 181 502',
+  'C 179 494 180 482 181 474', // heel and inner ankle
+  'C 182 460 180 438 180 418', // inner calf
+  'C 180 404 177 396 177 388', // inner knee
+  'C 176 362 175 338 172 326', // inner thigh
+  'Q 169 318 167 318', // crotch
+].join(' ')
+const mirrorPath = (d) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x, y) => `${2 * CX - Number(x)} ${y}`)
 function Outline() {
-  const m = (x) => 2 * CX - x
-  const head = 'M165 10 C 181 10 191 22 191 38 C 191 54 184 67 172 73 Q 165 77 158 73 C 146 67 139 54 139 38 C 139 22 149 10 165 10 Z'
-  const side = (f) =>
-    `M${f(156)} 74 L${f(155)} 88 C ${f(146)} 92 ${f(127)} 94 ${f(113)} 100 C ${f(103)} 104 ${f(97)} 114 ${f(95)} 128 ` +
-    `C ${f(92)} 156 ${f(91)} 184 ${f(92)} 208 Q ${f(96)} 220 ${f(102)} 210 C ${f(103)} 186 ${f(105)} 160 ${f(108)} 138 Q ${f(109)} 130 ${f(112)} 126 ` +
-    `C ${f(115)} 160 ${f(119)} 184 ${f(119)} 200 C ${f(119)} 224 ${f(112)} 252 ${f(111)} 282 C ${f(111)} 302 ${f(113)} 318 ${f(115)} 336 ` +
-    `C ${f(117)} 362 ${f(121)} 394 ${f(125)} 424`
   return (
     <g className="bm-outline" aria-hidden="true">
-      <path d={head} />
-      <path d={side((x) => x)} />
-      <path d={side(m)} />
-      <path d="M150 424 C 152 394 155 366 159 346 Q 165 336 171 346 C 175 366 178 394 180 424" />
+      <path d={SIDE} />
+      <path d={mirrorPath(SIDE)} />
     </g>
   )
 }
