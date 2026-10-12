@@ -44,7 +44,6 @@ function weekOutlookLine(rounds) {
   const o = rounds.outlook
   if (!o || rounds.complete) return null
   if (o.joinedMidWeek && !o.attainable) return 'You joined partway through this week, so this week’s reward isn’t reachable. Your first full week starts Monday. Until then, everything you play still earns XP.'
-  if (o.joinedMidWeek && !o.possible?.streak) return 'Your first full week starts Monday. You can still earn this week’s reward with the other two goals.'
   if (!o.attainable) return 'This week’s reward is out of reach now. New goals start Monday, and everything you play still earns XP.'
   return null
 }
@@ -391,7 +390,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
               {weekOutlookLine(rounds) && <p className="week-outlook" role="note">{weekOutlookLine(rounds)}</p>}
               <WeekGoals goals={rounds.goals} complete={rounds.complete} notes={weekGoalNotes(rounds)} />
               <p className="week-note">
-                The every-day goal needs each day from Monday to Sunday: that day’s Daily finished on the day, win or lose, or the day covered by Coverage. Timed sessions count when you play them to the end with at least {TIMED_QUALIFY.minAnswers} answers and {TIMED_QUALIFY.minCorrect} correct.
+                Dailies count on their day, win or lose. Timed sessions count when you play them to the end with at least {TIMED_QUALIFY.minAnswers} answers and {TIMED_QUALIFY.minCorrect} correct. A Daily solved without a tool counts even with mistakes.
               </p>
               <WeekReward rounds={rounds} choices={weeklyChoices} level={info.level} onChoose={onChoose} />
             </section>

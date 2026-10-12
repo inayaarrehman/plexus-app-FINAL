@@ -37,8 +37,10 @@ export const isNewLibraryDate = (key) => key >= NEW_DAILY_START
 // from the board itself: groups are ordered easiest to hardest by their own
 // difficulty (ties keep board order) and take levels 1 to 4, so a board with
 // two Easy groups still shows four distinct colours, and each group keeps
-// its real difficulty label. No text is added: tiles have no per-tile note
-// and there is no "remember" line unless the source row had one.
+// its real difficulty label. No text is added here: a fuller explanation
+// (`detail`) and per-tile notes (`tileNotes`) appear only when the library
+// served them after review (scripts/library/explanations.mjs); otherwise the
+// reviewed one-line explanation stands alone.
 export function buildLibraryPuzzle(ids, meta) {
   const conns = ids.map((id) => NEW_LIBRARY.connections[id])
   if (conns.length !== 4 || conns.some((c) => !c)) return null
@@ -52,6 +54,8 @@ export function buildLibraryPuzzle(ids, meta) {
     difficultyLabel: cap(c.difficulty),
     title: c.title,
     explanation: c.explanation,
+    detail: c.detail || '',
+    explanationReview: c.explanationReview || null,
     remember: '',
     connectionType: c.connectionType,
     tags: [],
@@ -59,7 +63,7 @@ export function buildLibraryPuzzle(ids, meta) {
     canonicalId: c.canonicalId,
     library: 'new',
     review: c.review,
-    items: c.tiles.map((term) => ({ term, why: '' })),
+    items: c.tiles.map((term, i) => ({ term, why: (c.tileNotes && c.tileNotes[i]) || '' })),
   }))
   return {
     id: meta.id,

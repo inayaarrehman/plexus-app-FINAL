@@ -523,6 +523,7 @@ export function toggleSavedConnection(conn) {
       title: conn.title,
       level: conn.level ?? null,
       explanation: conn.explanation || '',
+      detail: conn.detail || '',
       remember: conn.remember || '',
       items: (conn.items || []).map((it) => ({ term: it.term, why: it.why })),
       savedAt: new Date().toISOString(),

@@ -189,26 +189,27 @@ console.log('[4] Coverage: earned every 7 scheduled Dailies from this version, c
   ok(K.coverGaps({ '2026-11-01': { completed: true, won: true, completedDay: '2026-11-01' } }, '2026-11-05', new Set(), 2).length === 0, 'a gap longer than the charges held spends nothing')
 }
 
-console.log('[5] This Week: any 2 of 3 (Dailies, timed, 7-day streak), counted once, Monday reset in local time')
+console.log('[5] This Week: any 2 of 3 (Dailies, timed, a Daily without a tool), counted once, Monday reset in local time')
 {
   reset()
   at('2026-10-12T09:00:00-07:00') // Monday
   S.ensureProgression()
   const wk = E.weekOf(Date.now()).key
+  // Solved with a tool, so the tool-free goal stays open in this section.
   for (const key of ['2026-10-12', '2026-10-13']) {
     at(`${key}T12:00:00-07:00`)
-    finishDaily(key)
+    finishDaily(key, { toolsUsed: 1 })
   }
   // Systems boards no longer count toward This Week; their XP is unchanged.
   const sp = puzzle('cardiology-starter-1')
   const sys = S.recordSystemFinish({ puzzle: sp, system: 'Cardiology', won: true, guessLog: gl, boardId: 'cardiology-starter-1' })
   ok(sys.gained === 100, 'a first-try Systems solve still pays 100 XP')
   let rp = E.roundsProgress(load())
-  ok(!rp.goals.some((g) => g.id === 'systems') && rp.goals.map((g) => g.id).join() === 'dailies,timed,streak', 'goals are Dailies, timed and streak')
+  ok(!rp.goals.some((g) => g.id === 'systems') && rp.goals.map((g) => g.id).join() === 'dailies,timed,unaided', 'goals are Dailies, timed and a Daily without a tool')
   ok(rp.goals.find((g) => g.id === 'dailies').count === 2 && !rp.complete, 'two Dailies, no goal complete yet')
-  finishDaily('2026-10-14')
+  finishDaily('2026-10-14', { toolsUsed: 1 })
   rp = E.roundsProgress(load())
-  ok(rp.done === 1 && !rp.complete && !rp.paid, 'one goal done is not enough')
+  ok(rp.done === 1 && !rp.complete && !rp.paid && rp.goals.find((g) => g.id === 'unaided').count === 0, 'one goal done is not enough (Dailies solved with a tool do not count as tool-free)')
   S.recordChallengeSession({ completedAt: 'cs1', roundsCorrect: 4, actions: 6 })
   const r = S.recordRaceFinish({ raceId: 'race-1', solo: true, answered: 10, correct: 5 })
   rp = E.roundsProgress(load())

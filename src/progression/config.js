@@ -154,18 +154,18 @@ export const COVERAGE_EVERY = 7
 export const COVERAGE_OVERFLOW = true
 
 // ---- This Week ----
-// Three fixed goals; finishing any two pays the weekly reward once, Monday
-// to Monday in the player's time zone.
-//   dailies  scheduled Dailies completed this week (Coverage does not count)
+// Three fixed goals, each a different kind of play; finishing any two pays
+// the weekly reward once, Monday to Monday in the player's time zone.
+// Systems stays out of This Week.
+//   dailies  scheduled Dailies completed this week, win or lose (Coverage
+//            does not count)
 //   timed    qualifying timed sessions finished this week (TIMED_QUALIFY)
-//   streak   every day Monday to Sunday kept: that date's Daily finished on
-//            its date (win or lose, STREAK_GOAL_DAY), or the day protected by
-//            Coverage. Only this week's days count, so a streak carried in
-//            from last week cannot complete it.
+//   unaided  a scheduled Daily solved this week with no puzzle tool used
+//            (Consult, Rule Out or Second Opinion); mistakes are fine
 export const WEEKLY_GOALS = [
-  { id: 'dailies', label: 'Complete 3 Dailies', target: 3 },
-  { id: 'timed', label: 'Finish 2 timed sessions (3 Minutes or Race)', target: 2 },
-  { id: 'streak', label: 'Complete the Daily every day, Monday to Sunday', target: 7 },
+  { id: 'dailies', label: 'Complete 3 Daily Challenges', target: 3 },
+  { id: 'timed', label: 'Finish 2 timed sessions', hint: '3 Minutes or Race', target: 2 },
+  { id: 'unaided', label: 'Solve a Daily without using a tool', hint: 'No Consult, Rule Out or Second Opinion', target: 1 },
 ]
 export const WEEKLY_GOALS_NEEDED = 2
 // What keeps a day for the streak goal: 'won' (the Plexus streak rule: that

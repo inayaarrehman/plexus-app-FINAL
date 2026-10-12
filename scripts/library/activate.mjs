@@ -45,6 +45,10 @@ const decisions = readJson(P('content/library/decisions.json'), { pairs: {}, boa
 const review = readJson(P('content/library/activation-review.json'), { starterBoards: {}, dailyBoards: {} })
 const manualFlags = readJson(P('content/library/board-flags.json'), { boards: {} }).boards || {}
 const timedManifest = readJson(P('content/timed/manifest.json'))
+// Player explanations (detail + tile notes), served only when eligible; see
+// scripts/library/explanations.mjs. They never affect boards or ids.
+const explanations = readJson(P('content/library/explanations.json'), { entries: {} }).entries || {}
+const statusMapForExplanations = { ...L.DEFAULT_STATUS_MAP, ...readJson(P('content/library/status-map.json'), {}) }
 const prevLedger = flag('--fresh') ? null : readJson(LEDGER_FILE, null)
 const { default: connectionBank } = await import(P('src/data/connectionBank.js'))
 
@@ -438,6 +442,7 @@ const clientConn = (r) => {
     source: c.sources || '',
     sourceSection: c.sourceSection || '',
     version: r.version,
+    ...(L.servedExplanation(explanations[r.id], c.tiles, statusMapForExplanations) || {}),
   }
 }
 const SUBJECT_ORDER = ['Cardiology', 'Pulmonary', 'Renal', 'Neurology', 'GI', 'Endocrine', 'Heme/Onc', 'MSK', 'Reproductive', 'Psychiatry', 'Microbiology', 'Immunology', 'Dermatology', 'Pharmacology', 'Biochemistry/Genetics', 'Genetics']

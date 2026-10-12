@@ -146,6 +146,29 @@ Checks: `node scripts/library/activation-test.mjs` and `node scripts/library/act
 
 **Adding content later:** import as before, then decide how to extend; the ledger keeps every published board stable.
 
+## Player explanations (fuller explanation and one note per tile)
+
+Players see, for each solved connection, **the connection** (a fuller `detail` paragraph, or the reviewed one-line explanation when there is none) and **Explain each tile** (one or two sentences per tile: what the term means and how it fits). These live in `content/library/explanations.json`, beside the connections rather than inside them, so adding or revising them never changes a connection's content hash and never lapses a published board review. Each entry is tied to the exact four tiles it was written for; if those tiles change, the entry goes stale and stops being served.
+
+```
+node scripts/library/explanations.mjs --status
+node scripts/library/explanations.mjs export review.csv          # drafts waiting for review, as a sheet
+node scripts/library/explanations.mjs import review-returned.csv # labels stored exactly as written
+node scripts/library/activate.mjs                                # serves eligible entries only
+node scripts/library/explanations-test.mjs
+```
+
+Review sheet columns: Connection ID, Connection Title, Tile 1-4, Current Explanation, Detailed Explanation, Tile 1-4 Explanation, Verification Status, Reviewer, Notes. A row whose tiles do not match the connection's current tiles, or that has no status, is refused.
+
+What is served:
+
+| Basis | Meaning |
+|---|---|
+| `legacy-bank` | Tile notes from the earlier bank for a connection with the same four tiles and the same relationship, which players already saw before the new library. Restored with `restore-legacy`; never shown as human verified. |
+| status map | A review label the status map accepts (`AI_REVIEWED_PASS` = OpenEvidence review under the owner's workflow, never shown as human verified; `approved` and so on = human). |
+
+`DRAFT_AI_GENERATED` entries are AI-written drafts and are **never served**. `explanations-review.md` lists every entry waiting for review with its full text.
+
 ## Subjects and app systems
 
 Each upload is staged under its own subject. "Genetics" is not one of the app's system names: the app combines it with Biochemistry as "Biochemistry/Genetics". It is staged separately with its own five starter boards. At activation, either add a Genetics system to the app or merge it into Biochemistry/Genetics, which would then have ten starter boards.

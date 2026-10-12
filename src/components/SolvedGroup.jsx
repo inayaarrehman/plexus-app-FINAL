@@ -1,6 +1,7 @@
 import React from 'react'
 import { difficultyLabelOf } from './DifficultyIcon.jsx'
 import { softHyphenate } from './TileText.jsx'
+import ConnectionExplain from './ConnectionExplain.jsx'
 
 // ---------------------------------------------------------------------
 // A solved group: four concepts that have become one connection.
@@ -21,7 +22,7 @@ export default function SolvedGroup({
   onReport,
 }) {
   const detailId = `strand-detail-${category.catIndex ?? category.title}`
-  const hasExplanation = Boolean(category.explanation)
+  const hasExplanation = Boolean(category.explanation || category.detail || (category.items || []).some((it) => it.why))
   return (
     <div
       className={`strand ${forming ? 'strand-form' : ''} ${revealing ? 'is-revealing' : ''} ${found ? '' : 'is-missed-group'} ${expanded ? 'is-expanded' : ''}`}
@@ -50,7 +51,7 @@ export default function SolvedGroup({
       )}
       {expanded && (
         <div className="strand-why" id={detailId}>
-          {hasExplanation && <p className="strand-why-text">{category.explanation}</p>}
+          {hasExplanation && <ConnectionExplain category={category} className="strand-why-text" />}
           {onReport && (
             <button type="button" className="report-link" onClick={onReport}>
               Report this connection

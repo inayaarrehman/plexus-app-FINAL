@@ -15,52 +15,48 @@ const ok = (c, m) => {
 // A week: Monday 2026-10-05 to Sunday 2026-10-11.
 const wk = { key: '2026-W41', startKey: '2026-10-05', endKey: '2026-10-11' }
 const days = ['2026-10-05', '2026-10-06', '2026-10-07', '2026-10-08', '2026-10-09', '2026-10-10', '2026-10-11']
-const prog = ({ dailies = 0, timed = 0, kept = [] } = {}) => {
+const prog = ({ dailies = 0, timed = 0, unaided = 0, kept = [] } = {}) => {
   const goals = [
     { id: 'dailies', target: 3, count: Math.min(dailies, 3), done: dailies >= 3 },
     { id: 'timed', target: 2, count: Math.min(timed, 2), done: timed >= 2 },
-    { id: 'streak', target: 7, count: Math.min(kept.length, 7), done: kept.length >= 7 },
+    { id: 'unaided', target: 1, count: Math.min(unaided, 1), done: unaided >= 1 },
   ]
   const done = goals.filter((g) => g.done).length
   return { week: wk, goals, done, need: 2, complete: done >= 2, keptDays: kept }
 }
 
-// Sunday arrival, nothing played yet.
+// Sunday arrival, nothing played yet: today's Daily can still be solved
+// without a tool, so timed + unaided can still earn the reward.
 {
   const o = weekOutlook(prog(), days[6], days[6])
   ok(o.joinedMidWeek, 'Sunday arrival: joined partway through the week')
-  ok(o.possible.dailies === false && o.possible.streak === false && o.possible.timed === true, 'Sunday arrival: only the timed goal is still possible')
-  ok(o.attainable === false, 'Sunday arrival: the weekly reward is honestly out of reach')
+  ok(o.possible.dailies === false && o.possible.unaided === true && o.possible.timed === true, "Sunday arrival: Dailies is out of reach, timed and today's tool-free Daily are not")
+  ok(o.attainable === true, 'Sunday arrival: the weekly reward is still reachable')
 }
-// Sunday arrival after finishing today's Daily: still only one Daily possible.
+// Sunday arrival who already finished today's Daily with a tool.
 {
   const o = weekOutlook(prog({ dailies: 1, kept: [days[6]] }), days[6], days[6])
-  ok(o.possible.dailies === false && o.attainable === false, 'Sunday arrival who played: still out of reach (1 of 3 Dailies at most)')
+  ok(o.possible.dailies === false && o.possible.unaided === false && o.attainable === false, 'Sunday, Daily done with a tool: only timed is left, so the reward is out of reach')
 }
 // Friday arrival: 3 Dailies still possible (Fri, Sat, Sun) plus timed.
 {
   const o = weekOutlook(prog(), days[4], days[4])
-  ok(o.possible.dailies === true && o.possible.streak === false && o.attainable === true, 'Friday arrival: Dailies and timed can still earn the reward')
+  ok(o.possible.dailies === true && o.possible.unaided === true && o.attainable === true, 'Friday arrival: every goal can still be done')
 }
-// Saturday arrival: only 2 Dailies left.
+// Saturday arrival: only 2 Dailies left, but the other two goals remain.
 {
   const o = weekOutlook(prog(), days[5], days[5])
-  ok(o.possible.dailies === false && o.attainable === false, 'Saturday arrival: 2 Dailies left, reward out of reach')
+  ok(o.possible.dailies === false && o.attainable === true, 'Saturday arrival: Dailies out of reach, reward still reachable')
 }
-// A regular player on Wednesday who kept Monday and Tuesday.
+// A regular player on Wednesday.
 {
   const o = weekOutlook(prog({ dailies: 2, kept: [days[0], days[1]] }), days[2], '2026-09-01')
-  ok(!o.joinedMidWeek && o.possible.streak && o.possible.dailies && o.attainable, 'regular player on Wednesday: everything still possible')
+  ok(!o.joinedMidWeek && o.possible.unaided && o.possible.dailies && o.attainable, 'regular player on Wednesday: everything still possible')
 }
-// A regular player who missed Tuesday without Coverage.
+// Missing a day no longer removes a goal.
 {
   const o = weekOutlook(prog({ dailies: 1, kept: [days[0]] }), days[2], '2026-09-01')
-  ok(o.possible.streak === false && o.attainable === true && !o.joinedMidWeek, 'missed Tuesday: streak goal gone, reward still reachable')
-}
-// Coverage keeps the streak goal alive (a covered day is a kept day).
-{
-  const o = weekOutlook(prog({ dailies: 1, kept: [days[0], days[1]] }), days[2], '2026-09-01')
-  ok(o.possible.streak === true, 'a Coverage-protected day keeps the streak goal possible')
+  ok(o.possible.unaided === true && o.attainable === true && !o.joinedMidWeek, 'missed Tuesday: nothing is lost')
 }
 // A finished week stays complete whatever the outlook.
 {

@@ -227,12 +227,12 @@ export function mark(state, { id, kind, at = Date.now(), m }) {
 //            assisted Daily counts; Coverage never does)
 //   timed    qualifying 3 Minutes sessions or Races finished this week.
 //            Entries saved before qualification was recorded count as before.
-//   streak   days Monday to Sunday of this week that were kept: that date's
-//            Daily finished on that date (config.STREAK_GOAL_DAY: 'completed'
-//            counts wins and losses, 'won' only wins), or the date covered by
-//            Coverage. Needs all 7. Days before this Monday never count.
-// `history` is the Daily history (utils/storage); without it the streak goal
-// reads 0. Systems boards no longer count toward This Week.
+//   unaided  scheduled Dailies solved this week without a puzzle tool: the
+//            'unaided' marker written when such a Daily finishes, or a
+//            Perfect Daily (won, no mistakes, no tools) from before the
+//            marker existed; each date once
+// `history` (the Daily history) only tells the outlook which days are done.
+// Systems boards do not count toward This Week.
 export function coveredDates(state) {
   const set = new Set()
   for (const u of Object.values(state.kit.uses)) if (u.item === 'shield' && u.m?.date) set.add(u.m.date)
@@ -247,7 +247,7 @@ export function weekProgress(state, wk, history = null) {
   const counters = {
     dailies: entries.filter((e) => e.kind === 'daily').length,
     timed: entries.filter((e) => (e.kind === 'challenge' || e.kind === 'racedone') && e.m?.q !== false).length,
-    streak: kept.length,
+    unaided: new Set(entries.filter((e) => e.kind === 'unaided' || e.kind === 'perfect').map((e) => e.d)).size,
   }
   const goals = WEEKLY_GOALS.map((g) => {
     const count = Math.min(counters[g.id] || 0, g.target)
@@ -262,7 +262,8 @@ export function weekProgress(state, wk, history = null) {
 //   dailies  done, or count + Dailies still to come this week (today's too,
 //            if not finished yet) reaches the target
 //   timed    always possible while the week lasts
-//   streak   done, or every day from Monday to yesterday was kept
+//   unaided  done, or a Daily is still to come this week (today's too, if
+//            not finished yet)
 // `firstKey`: the first day this player was here (date key); a first day
 // after this week's Monday means they joined partway through the week.
 export function weekOutlook(progress, todayKey, firstKey = null) {
@@ -276,7 +277,7 @@ export function weekOutlook(progress, todayKey, firstKey = null) {
   for (const g of progress.goals) {
     if (g.done) possible[g.id] = true
     else if (g.id === 'dailies') possible[g.id] = g.count + left >= g.target
-    else if (g.id === 'streak') possible[g.id] = days.slice(0, ti).every((d) => kept.has(d))
+    else if (g.id === 'unaided') possible[g.id] = left > 0
     else possible[g.id] = true
   }
   const reachable = progress.goals.filter((g) => possible[g.id]).length >= progress.need

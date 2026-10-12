@@ -1175,7 +1175,7 @@ console.log('\n[38] Progression engine: XP, levels, streaks, This Week, Kit, mer
   assert(S.backfillIfNeeded({history:bh})===null,'backfill runs once')
   // rounds goals rotate and differ week to week
   // This Week: three fixed goals, any two pay the reward
-  assert(C.WEEKLY_GOALS.map(g=>g.id).join()==='dailies,timed,streak' && C.WEEKLY_GOALS_NEEDED===2,'three fixed weekly goals (Dailies, timed, every day), any two') && assert(C.STREAK_GOAL_DAY === 'completed', 'the every-day goal counts any finished Daily')
+  assert(C.WEEKLY_GOALS.map(g=>g.id).join()==='dailies,timed,unaided' && C.WEEKLY_GOALS_NEEDED===2,'three fixed weekly goals (Dailies, timed, a Daily without a tool), any two')
   const allNames = Object.values(C.KIT).map((k) => k.name + ' ' + k.desc).join(' ')
   assert(!/\b(Dr\.|MD|DO)\b/.test(allNames) && !allNames.includes('\u2014'), 'no credential language or em dashes in Kit names')
   // Kit opens by level; each tool is first granted at the level it unlocks

@@ -568,3 +568,58 @@ export function boardNearMisses(conns) {
   return out
 }
 
+
+// ---------------- player explanations (kept beside the connection) ----------------
+// Fuller explanations for players: a "detail" paragraph on the shared
+// connection and one short note per tile, parallel to the tiles. They live in
+// content/library/explanations.json, not inside the connection record, so
+// adding or revising them never changes a connection's content hash (which
+// would lapse published board reviews). Each entry is tied to the exact four
+// tiles it was written for; if the connection's tiles change, the entry goes
+// stale and is not served until it is reviewed again.
+//
+// What may be served:
+//   legacy-bank  notes restored from the earlier bank, which players already
+//                saw with the same four tiles (same relationship); recorded
+//                with their source, humanVerified false
+//   human / ai-review  a review label the status map accepts (the same map
+//                as connections; AI_REVIEWED_PASS is OpenEvidence review under
+//                the owner's workflow, never shown as human verified)
+// Drafts (for example DRAFT_AI_GENERATED) are never served.
+export const EXPLANATION_LIMITS = { detail: 700, tile: 360 }
+export const DRAFT_STATUS = 'DRAFT_AI_GENERATED'
+export const sameTiles = (a, b) => Array.isArray(a) && Array.isArray(b) && a.length === 4 && b.length === 4 && a.every((t, i) => String(t).trim() === String(b[i]).trim())
+export function explanationProblems(e, tiles) {
+  const p = []
+  if (!e) return ['missing']
+  if (!sameTiles(e.tiles, tiles)) p.push('written for different tiles (stale)')
+  if (e.detail != null && typeof e.detail !== 'string') p.push('detail must be text')
+  if (e.detail && e.detail.length > EXPLANATION_LIMITS.detail) p.push(`detail longer than ${EXPLANATION_LIMITS.detail} characters`)
+  if (e.tileNotes != null) {
+    if (!Array.isArray(e.tileNotes) || e.tileNotes.length !== 4) p.push('tile notes must be 4, parallel to tiles')
+    else e.tileNotes.forEach((n, i) => {
+      if (typeof n !== 'string' || !n.trim()) p.push(`tile ${i + 1} note is empty`)
+      else if (n.length > EXPLANATION_LIMITS.tile) p.push(`tile ${i + 1} note longer than ${EXPLANATION_LIMITS.tile} characters`)
+    })
+  }
+  if (!e.detail && !e.tileNotes) p.push('nothing to show')
+  return p
+}
+export function explanationEligibility(e, tiles, map = DEFAULT_STATUS_MAP) {
+  const problems = explanationProblems(e, tiles)
+  if (problems.length) return { eligible: false, state: problems.includes('written for different tiles (stale)') ? 'stale' : 'needsFix', problems }
+  if (e.provenance?.kind === 'legacy-bank') return { eligible: true, state: 'eligible', basis: 'legacy-bank', reviewer: e.reviewer || null, humanVerified: false, problems }
+  const v = verificationOf(e.status, map)
+  if (v.approved) return { eligible: true, state: v.state, basis: v.basis, reviewer: v.reviewer, humanVerified: v.humanVerified, problems }
+  return { eligible: false, state: String(e.status || '').toUpperCase() === DRAFT_STATUS ? 'draft' : v.state, problems }
+}
+// The fields added to a served connection, or null.
+export function servedExplanation(e, tiles, map) {
+  const el = explanationEligibility(e, tiles, map)
+  if (!el.eligible) return null
+  const out = {}
+  if (e.detail) out.detail = e.detail.trim()
+  if (e.tileNotes) out.tileNotes = e.tileNotes.map((n) => n.trim())
+  out.explanationReview = { basis: el.basis, reviewer: el.reviewer || null, humanVerified: !!el.humanVerified }
+  return out
+}

@@ -1,4 +1,4 @@
-// This Week (Dailies, timed, 7-day streak), the shared timed-XP budget and
+// This Week (Dailies, timed, a Daily without a tool), the shared timed-XP budget and
 // Coverage past its cap. Runs the real progression store against an
 // in-memory localStorage with a pinned time zone.
 //   node scripts/weekly-xp-test.mjs
@@ -42,102 +42,83 @@ const puzzle = (id) => ({ id, categories: [{ level: 1 }, { level: 2 }, { level: 
 const gl = [0, 1, 2, 3].map((i) => ({ correct: true, catIndexes: [i, i, i, i] }))
 // Finish `key`'s Daily at noon local (or `time`), writing Daily history the way
 // the app does before progression is recorded.
-function daily(key, { won = true, late = false, time = '12:00:00' } = {}) {
-  at(`${key}T${time}-07:00`)
+function daily(key, { won = true, late = false, time = '12:00:00', mistakes = won ? 0 : 4, tools = 0, archive = false, playedOn = null } = {}) {
+  at(`${playedOn || key}T${time}-07:00`)
   const h = history()
-  h[key] = { date: key, completed: true, won, mistakes: won ? 0 : 4, completedDay: late ? 'later' : key }
+  h[key] = { date: key, completed: true, won, mistakes, completedDay: late ? 'later' : key }
   localStorage.setItem(HISTORY_KEY, JSON.stringify(h))
-  return S.recordDailyFinish({ dateKey: key, isToday: true, puzzle: puzzle(`daily-${key}`), won, mistakes: won ? 0 : 4, guessLog: won ? gl : [], history: h })
+  return S.recordDailyFinish({ dateKey: key, isToday: !archive && !late, puzzle: puzzle(`daily-${key}`), won, mistakes, guessLog: won ? gl : [], toolsUsed: tools, history: h })
 }
 const goal = (id, now = Date.now()) => E.roundsProgress(load(), now, history()).goals.find((g) => g.id === id)
 const week = (now = Date.now()) => E.roundsProgress(load(), now, history())
 const days = (from, n) => Array.from({ length: n }, (_, i) => new Date(Date.parse(`${from}T12:00:00Z`) + i * 86400000).toISOString().slice(0, 10))
 
-console.log('[1] Every-day goal: each day Monday to Sunday kept')
+console.log('[1] The three goals are three different kinds of play')
+{
+  ok(JSON.stringify(C.WEEKLY_GOALS.map((g) => [g.id, g.label, g.target])) === JSON.stringify([['dailies', 'Complete 3 Daily Challenges', 3], ['timed', 'Finish 2 timed sessions', 2], ['unaided', 'Solve a Daily without using a tool', 1]]), 'Dailies, timed sessions, a Daily solved without a tool (no Systems, no every-day goal)')
+}
+
+console.log('[2] Solve a Daily without using a tool')
 {
   reset()
   at('2026-10-12T08:00:00-07:00')
   S.ensureProgression()
   const wk = days('2026-10-12', 7) // Mon 12 .. Sun 18
-  for (const d of wk.slice(0, 6)) daily(d)
-  ok(goal('streak').count === 6 && !goal('streak').done, 'six days kept by Saturday: 6/7, not done')
-  ok(goal('dailies').done && !week().complete, 'Dailies goal done alone does not pay')
-  const r = daily(wk[6], { won: false })
-  ok(goal('streak').done && week().paid, 'Sunday completes 7/7 even with a loss, and pays the week (Dailies + every day)')
-  ok(r.lines.some((l) => l[0] === 'This Week' && l[1] === C.XP.rounds), 'the existing 250 XP weekly reward')
+  daily(wk[0], { won: false })
+  ok(goal('unaided').count === 0 && goal('dailies').count === 1, 'a lost Daily counts for Dailies but is not solved')
+  daily(wk[1], { tools: 1, mistakes: 1 })
+  ok(goal('unaided').count === 0 && goal('dailies').count === 2, 'a Daily solved with a tool does not count')
+  ok(!week().complete, 'no goal done yet')
+  const r = daily(wk[2], { mistakes: 2 })
+  ok(goal('unaided').done && goal('dailies').done, 'a Daily solved with mistakes but no tool counts; 3 Dailies done too')
+  ok(week().paid && r.lines.some((l) => l[0] === 'This Week' && l[1] === C.XP.rounds), 'two goals pay the existing 250 XP weekly reward')
+  daily(wk[3])
+  ok(goal('unaided').count === 1, 'the goal is complete at 1 (it does not run past its target)')
 }
 
-console.log('[2] A streak carried in from last week does not complete this week')
+console.log('[3] Archive and late Dailies, Coverage and opening the app')
 {
   reset()
-  at('2026-10-05T08:00:00-07:00')
+  at('2026-09-28T08:00:00-07:00')
   S.ensureProgression()
-  for (const d of days('2026-10-05', 7)) daily(d) // full week before
-  daily('2026-10-12') // Monday of the new week
-  ok(S.streakInfo(load(), history(), '2026-10-12').current === 8, 'the streak itself is 8 days')
-  ok(goal('streak').count === 1 && !goal('streak').done, 'but this week has only 1 of 7 days')
-  const prior = E.roundsProgress(load(), Date.parse('2026-10-11T20:00:00-07:00'), history())
-  ok(prior.goals.find((g) => g.id === 'streak').done && prior.paid, 'last week completed and was paid in its own week')
-  ok(!week().paid, 'this week is unpaid')
+  for (const d of days('2026-09-28', 14)) daily(d)
+  ok(E.kitCounts(load()).shield === 2, 'two Coverage held')
+  at('2026-10-12T08:00:00-07:00')
+  ok(goal('unaided').count === 0 && goal('dailies').count === 0, 'a new week starts empty (last week never counts)')
+  daily('2026-10-01', { archive: true, playedOn: '2026-10-12' })
+  ok(goal('unaided').count === 0 && goal('dailies').count === 0, 'an Archive Daily (not on its day) counts for neither')
+  daily('2026-10-12')
+  daily('2026-10-14') // Tuesday missed; Coverage may cover it
+  ok(goal('dailies').count === 2, 'Coverage is never a Daily')
+  at('2026-10-15T09:00:00-07:00')
+  S.ensureProgression()
+  ok(goal('dailies').count === 2 && goal('unaided').count === 1, 'opening the app adds nothing')
 }
 
-console.log('[3] Lost, late and missed days')
+console.log('[4] Perfect Dailies from before the marker existed still count')
 {
   reset()
   at('2026-10-12T08:00:00-07:00')
   S.ensureProgression()
-  daily('2026-10-12')
-  daily('2026-10-13', { won: false })
-  ok(goal('streak').count === 2 && goal('dailies').count === 2, 'a lost Daily, finished on its day, keeps the day (any finished Daily counts)')
-  ok(S.streakInfo(load(), history(), '2026-10-14').current === 0, 'while the win streak on Home still ends on a loss (unchanged)')
-  daily('2026-10-14', { late: true })
-  ok(goal('streak').count === 2, 'a Daily finished after its date does not keep the day')
-  // Opening the app (no Daily finished) does nothing.
-  at('2026-10-15T09:00:00-07:00')
-  S.ensureProgression()
-  ok(goal('streak').count === 2 && goal('dailies').count === 3, 'opening the app keeps nothing')
+  const st = load()
+  st.ledger['perfect:2026-10-12'] = { xp: 25, base: 25, kind: 'perfect', at: Date.parse('2026-10-12T12:00:00-07:00'), d: '2026-10-12' }
+  save(st)
+  ok(goal('unaided').done, 'a Perfect Daily (won, no mistakes, no tools) this week completes the goal')
 }
 
-console.log('[4] Coverage protects a day for the streak goal but is not a Daily')
+console.log('[5] Outlook: what is still possible this week')
 {
   reset()
-  at('2026-09-28T08:00:00-07:00')
+  at('2026-10-12T08:00:00-07:00')
   S.ensureProgression()
-  // 14 Dailies before the week: 2 Coverage held.
-  for (const d of days('2026-09-28', 14)) daily(d)
-  ok(E.kitCounts(load()).shield === 2, 'two Coverage held')
-  const wk = days('2026-10-12', 7)
-  daily(wk[0])
-  daily(wk[1])
-  // Miss Wednesday; Thursday's Daily uses one Coverage for it.
-  const r = daily(wk[3])
-  ok(JSON.stringify(r.coverageUsed) === JSON.stringify([wk[2]]), 'Thursday covers Wednesday')
-  ok(goal('streak').count === 4 && goal('dailies').count === 3, 'Wednesday counts for the streak (4/7) but Dailies stay at 3')
-  for (const d of wk.slice(4)) daily(d)
-  ok(goal('streak').done && week().paid, 'covered week completes the streak goal')
-}
-
-console.log('[5] A missed Sunday covered on Monday pays last week, once, in last week')
-{
-  // Dailies done, no timed sessions: the week needs the streak goal.
-  reset()
-  at('2026-09-28T08:00:00-07:00')
-  S.ensureProgression()
-  for (const d of days('2026-09-28', 14)) daily(d)
-  const wk = days('2026-10-12', 7)
-  for (const d of wk.slice(0, 6)) daily(d)
-  // Dailies (6) is done; give no timed sessions, so the week needs the streak.
-  const pw = E.weekOf(Date.parse(`${wk[0]}T12:00:00-07:00`))
-  ok(!E.weekProgress(load(), pw, history()).paid, 'Saturday night: 1 goal (Dailies), unpaid')
-  const r = daily('2026-10-19') // Monday: covers Sunday the 18th
-  ok(r.coverageUsed.includes('2026-10-18'), "Monday's Daily covers Sunday")
-  const last = E.weekProgress(load(), pw, history())
-  ok(last.paid && last.goals.find((g) => g.id === 'streak').done, 'last week now has 7/7 and is paid')
-  const entry = load().ledger[`rounds:${pw.key}`]
-  ok(entry && E.inWeek(entry, pw), 'the payment is dated inside last week')
-  ok(!week().paid, 'and does not count as this week being paid')
-  daily('2026-10-20')
-  ok(Object.values(load().ledger).filter((e) => e.kind === 'rounds' && E.inWeek(e, pw)).length === 1, 'never paid twice')
+  const sun = Date.parse('2026-10-18T10:00:00-07:00')
+  const p = E.roundsProgress(load(), sun, history())
+  let o = E.weekOutlook(p, '2026-10-18')
+  ok(o.possible.unaided && o.possible.timed && !o.possible.dailies && o.attainable, "Sunday with nothing done: today's Daily can still be solved without a tool, so the reward is reachable with timed sessions")
+  at('2026-10-18T12:00:00-07:00')
+  daily('2026-10-18', { tools: 1 })
+  o = E.weekOutlook(E.roundsProgress(load(), Date.now(), history()), '2026-10-18')
+  ok(!o.possible.unaided && !o.attainable, "Sunday's Daily solved with a tool: that goal is out of reach this week")
 }
 
 console.log('[6] Time zone boundaries')
@@ -145,12 +126,10 @@ console.log('[6] Time zone boundaries')
   reset()
   at('2026-10-12T08:00:00-07:00')
   S.ensureProgression()
-  const wk = days('2026-10-12', 7)
-  for (const d of wk.slice(0, 6)) daily(d)
-  daily(wk[6], { time: '23:58:00' }) // Sunday 11:58 PM local
-  ok(goal('streak', Date.parse('2026-10-18T23:59:00-07:00')).done, 'Sunday 11:58 PM local still counts for this week')
+  daily('2026-10-18', { time: '23:58:00' }) // Sunday 11:58 PM local
+  ok(goal('unaided', Date.parse('2026-10-18T23:59:00-07:00')).done, 'Sunday 11:58 PM local still counts for this week')
   at('2026-10-19T00:01:00-07:00')
-  ok(goal('streak').count === 0 && !week().paid, 'Monday 12:01 AM starts a fresh week')
+  ok(goal('unaided').count === 0 && !week().paid, 'Monday 12:01 AM starts a fresh week')
 }
 
 console.log('[7] Timed XP: one shared daily budget (150 full, then half, cap 225)')

@@ -50,7 +50,7 @@ const MORE = [
     id: 'week',
     title: 'This Week',
     body: [
-      `Finish any 2 of 3 goals by Sunday for ${XP.rounds} XP and a tool of your choice: complete 3 Dailies, finish 2 timed sessions, or complete the Daily every day from Monday to Sunday (Coverage counts for a missed day). Goals reset on Monday.`,
+      `Finish any 2 of 3 goals by Sunday for ${XP.rounds} XP and a tool of your choice: complete 3 Daily Challenges, finish 2 timed sessions (3 Minutes or Race), or solve a Daily without using a tool. Goals reset on Monday.`,
     ],
   },
   {

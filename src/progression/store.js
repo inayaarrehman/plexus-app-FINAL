@@ -281,6 +281,8 @@ export function recordDailyFinish({ dateKey, isToday, puzzle, won, mistakes, gue
     ctx.lines.push(['Connections', conn])
     // Perfect: won with no mistakes and no tools. Restoring a mistake with
     // Second Opinion keeps the mistake on record, so it is never perfect.
+    // This Week: a Daily solved on its day with no puzzle tool (mistakes allowed).
+    if (isToday && won && toolsUsed === 0) mark(state, { id: `unaided:${dateKey}`, kind: 'unaided', at })
     if (isToday && won && mistakes === 0 && toolsUsed === 0) {
       const p = award(state, { id: `perfect:${dateKey}`, xp: XP.perfect, kind: 'perfect', at })
       ctx.gained += p

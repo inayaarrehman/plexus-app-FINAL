@@ -3,6 +3,7 @@ import { getPlayableDailyForDate, isFutureDateKey } from '../utils/dailyPuzzle.j
 import { dateKey, dayNumber } from '../utils/game.js'
 import { parseKey, daysBetween, weekdayOf } from '../utils/calendar.js'
 import { getSavedConnections, toggleSavedConnection } from '../utils/storage.js'
+import ConnectionExplain from './ConnectionExplain.jsx'
 import PuzzleSignature from './PuzzleSignature.jsx'
 
 const MONTH_NAMES = [
@@ -205,6 +206,7 @@ export default function Archive({ dailyHistory, onOpenDay, onBack, currentStreak
                 {c.items && c.items.length > 0 && (
                   <p className="saved-item-terms">{c.items.map((it) => it.term).join(' · ')}</p>
                 )}
+                <ConnectionExplain category={c} className="saved-item-explain" />
                 {c.remember && <p className="saved-item-remember">{c.remember}</p>}
               </div>
             ))}

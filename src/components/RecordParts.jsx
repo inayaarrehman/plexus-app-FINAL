@@ -348,7 +348,7 @@ export function WeekGoals({ goals, complete, notes = {} }) {
               </span>
               <span className="rounds-label">
                 <span className="rounds-label-text">{g.label}</span>
-                {notes[g.id] && <span className="rounds-note">{notes[g.id]}</span>}
+                {notes[g.id] ? <span className="rounds-note">{notes[g.id]}</span> : g.hint && <span className="rounds-note rounds-hint">{g.hint}</span>}
               </span>
               <span className="rounds-count">
                 {g.count}/{g.target}

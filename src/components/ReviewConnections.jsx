@@ -3,6 +3,7 @@ import { isConnectionSaved, toggleSavedConnection } from '../utils/storage.js'
 import { groupColor } from './GroupMotif.jsx'
 import { difficultyLabelOf } from './DifficultyIcon.jsx'
 import { reportContext } from '../utils/reportContext.js'
+import ConnectionExplain from './ConnectionExplain.jsx'
 
 const levelColor = (level) => groupColor(level)
 
@@ -46,15 +47,17 @@ export default function ReviewConnections({ puzzle, onReport, reportMode = 'dail
             </button>
             {isOpen && (
               <div className="accordion-body">
-                <p className="accordion-explanation">{cat.explanation}</p>
-                <ul className="accordion-item-list">
-                  {cat.items.map((item) => (
-                    <li key={item.term}>
-                      <strong>{item.term}</strong>
-                      {item.why && <span>{item.why}</span>}
-                    </li>
-                  ))}
-                </ul>
+                <ConnectionExplain category={cat} className="accordion-explanation" />
+                {/* Tiles without notes are still listed, so all four show. */}
+                {!cat.items.some((item) => item.why) && (
+                  <ul className="accordion-item-list">
+                    {cat.items.map((item) => (
+                      <li key={item.term}>
+                        <strong>{item.term}</strong>
+                      </li>
+                    ))}
+                  </ul>
+                )}
                 {cat.remember && (
                   <p className="remember-line">
                     <span className="remember-label">Remember this</span>

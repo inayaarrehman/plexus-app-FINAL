@@ -902,12 +902,12 @@ function ToolBar({ kit, toolState, toolsUsed, ask, setAsk, onConfirm, isDaily, c
                 aria-disabled={!st.ok}
                 aria-label={`Use ${KIT[item].name}, ${count} left${st.ok ? '' : `. ${locked ? `Unlocks at Level ${KIT[item].unlock}` : st.why}`}`}
               >
-                <span className="tool-top">
-                  <ToolArt item={item} locked={locked} size="icon" className="tool-btn-art" />
+                <ToolArt item={item} locked={locked} size="icon" className="tool-btn-art" />
+                <span className="tool-text">
                   <span className="kit-use-name">{KIT[item].name}</span>
-                  <span className="kit-use-count">×{count}</span>
+                  {!st.ok && <span className="tool-why">{st.why}</span>}
                 </span>
-                {!st.ok && <span className="tool-why">{st.why}</span>}
+                <span className="kit-use-count">×{count}</span>
               </button>
               <button
                 type="button"

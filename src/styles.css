@@ -7576,3 +7576,98 @@ body.env-systems .bm-organ line { stroke: var(--warm-ivory); }
 body.env-systems .bm-organ circle:not(.is-lit) { fill: var(--room); stroke: var(--warm-ivory); }
 body.env-systems .systems-overall-track,
 body.env-systems .mini-progress-track { background: color-mix(in srgb, var(--room-sage) 45%, transparent); }
+
+/* ---- Connection explanations: the connection, then each tile ---- */
+.cx { display: flex; flex-direction: column; gap: 12px; margin: 0 0 12px; min-width: 0; }
+.cx.strand-why-text, .cx.accordion-explanation, .cx.saved-item-explain { color: var(--text); font-size: inherit; }
+.cx.saved-item-explain { margin-top: 8px; }
+.cx-label { display: block; margin: 0 0 4px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); }
+.cx-text { margin: 0; font-size: 0.92rem; line-height: 1.5; color: var(--text); overflow-wrap: anywhere; }
+.cx-toggle {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px;
+  border: 1.5px solid color-mix(in srgb, var(--text) 32%, transparent); border-radius: 999px;
+  background: transparent; color: var(--text); font-family: var(--font-ui); font-size: 0.88rem; font-weight: 700; cursor: pointer;
+}
+.cx-toggle:hover { border-color: var(--text); }
+.cx-toggle:focus-visible { outline: 2.5px solid var(--text); outline-offset: 2px; }
+.cx-chevron { width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform 160ms ease; }
+.cx-toggle[aria-expanded='true'] .cx-chevron { transform: translateY(2px) rotate(-135deg); }
+.cx-list { margin: 10px 0 0; display: flex; flex-direction: column; gap: 8px; }
+.cx-tile { margin: 0; padding: 10px 12px; border-radius: 10px; background: color-mix(in srgb, var(--text) 6%, transparent); border-left: 3px solid var(--strand-color, color-mix(in srgb, var(--text) 35%, transparent)); min-width: 0; }
+.cx-term { margin: 0 0 3px; font-size: 0.9rem; font-weight: 700; color: var(--text); overflow-wrap: anywhere; }
+.cx-why { margin: 0; font-size: 0.88rem; line-height: 1.45; color: var(--text-dim); overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: reduce) { .cx-chevron { transition: none; } }
+
+/* ---- Daily tools: one even row per tool ----
+   Icon, then the name with its status underneath (wraps freely), then the
+   count, then the info button; every row the same height and spacing, so a
+   locked tool's "Unlocks at Level 3" never squeezes or overlaps its name. */
+.tool-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; max-width: 420px; }
+.tool-item { display: grid; grid-template-columns: minmax(0, 1fr) 44px; align-items: center; gap: 6px; width: 100%; }
+.tool-btn {
+  display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; column-gap: 12px;
+  width: 100%; min-width: 0; min-height: 52px; padding: 8px 16px 8px 12px; border-radius: 14px;
+  text-align: left; line-height: 1.25; white-space: normal;
+}
+.tool-btn .tool-btn-art { margin: 0; justify-self: center; }
+.tool-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.tool-text .kit-use-name { font-size: var(--type-secondary); font-weight: 700; overflow-wrap: anywhere; }
+.tool-text .tool-why { font-size: var(--type-caption); line-height: 1.3; overflow-wrap: anywhere; }
+.tool-btn .kit-use-count { justify-self: end; font-size: var(--type-secondary); font-weight: 700; padding-left: 4px; }
+.tool-item .tool-info-btn { justify-self: center; }
+@media (max-width: 360px) { .tool-btn { min-width: 0; padding-left: 10px; padding-right: 12px; column-gap: 10px; } }
+
+/* ---- Submit a Connection: even field groups ----
+   Each label sits close to its own field (6px) and well apart from the
+   field above (18px between groups); helper text sits between the label and
+   the field. Long titles wrap inside a growing box; the select truncates a
+   long choice with an ellipsis instead of running under its arrow. */
+.submit-connection-modal .report-form { gap: 18px; }
+.submit-connection-modal .submit-connection-lede { margin: 0 0 2px; }
+.sc-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; margin: 0; }
+.sc-field .report-label { margin: 0; }
+.submit-connection-tiles.sc-field { padding: 0; border: none; }
+.submit-connection-tiles legend.report-label { float: left; width: 100%; padding: 0; margin: 0 0 6px; }
+.submit-connection-tiles legend + .report-help { clear: both; }
+.report-help { margin: 0; font-size: var(--type-caption); line-height: 1.35; color: var(--text-dim); }
+.submit-connection-tile-grid { gap: 10px; clear: both; }
+@media (max-width: 380px) { .submit-connection-tile-grid { grid-template-columns: 1fr; } }
+.submit-connection-title { display: block; min-height: 48px; line-height: 1.35; resize: none; overflow: hidden; field-sizing: content; }
+.submit-connection-modal .report-input, .submit-connection-modal .report-text { min-width: 0; max-width: 100%; }
+.submit-connection-select { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; min-height: 48px; }
+.submit-connection-actions { margin-top: 4px; flex-wrap: wrap; gap: 10px; }
+@media (max-width: 480px) {
+  .submit-connection-actions { flex-direction: column-reverse; align-items: stretch; }
+  .submit-connection-actions > button { width: 100%; min-height: 48px; }
+}
+/* The Systems page invitation: icon and words on one line, centred. */
+.systems-suggest-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 18px; line-height: 1.2; }
+.systems-suggest-btn svg { flex: none; display: block; }
+.systems-suggest { row-gap: 12px; }
+
+/* ---- Your Tools: Race Power-ups as full rows on phones ----
+   Two narrow cards side by side squeezed each description into a thin
+   column. Below 640px each power-up is a row like the puzzle tools: art on
+   the left, name, description (wrapping freely), count and progress on the
+   right. */
+@media (max-width: 639px) {
+  .race-cards { grid-template-columns: minmax(0, 1fr); }
+  .race-card { display: grid; grid-template-columns: 84px minmax(0, 1fr); column-gap: 14px; row-gap: 3px; align-items: start; padding: 14px 16px; text-align: left; }
+  .race-card > .tool-art { grid-column: 1; grid-row: 1 / span 6; align-self: center; justify-self: center; margin: 0; }
+  .race-card > :not(.tool-art) { grid-column: 2; text-align: left; }
+  .race-card .tool-card-qty { justify-content: space-between; }
+}
+/* 3 Minutes: no empty gap under the power-up row when nothing is active. */
+.challenge-power-status:empty { min-height: 0; margin: 0; }
+.challenge-powerups-wrap { margin: -6px 0 14px; }
+.challenge-power { min-width: 0; }
+.challenge-power-name, .challenge-power-meta { white-space: nowrap; }
+
+/* ---- Chaos loadout: one comfortable row per power-up ---- */
+.race-chaos-loadout { gap: 8px; }
+.race-chaos-loadout .race-chaos-head { margin: 0 0 2px; line-height: 1.35; }
+.race-chaos-loadout label { flex-wrap: wrap; align-items: center; gap: 4px 10px; min-height: 44px; padding: 8px 12px; border: 1px solid color-mix(in srgb, currentColor 18%, transparent); border-radius: 12px; line-height: 1.3; cursor: pointer; }
+.race-chaos-loadout label input { width: 20px; height: 20px; margin: 0; flex: none; }
+.race-chaos-loadout label .race-lock-note { flex-basis: 100%; padding-left: 30px; margin: -2px 0 0; }
+.race-chaos-loadout label.is-off { cursor: default; }
+.race-chaos-loadout > button { align-self: flex-start; margin-top: 4px; }

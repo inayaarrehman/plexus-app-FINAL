@@ -1,0 +1,1518 @@
+{
+ "about": "Player explanations kept beside each connection: a fuller explanation (detail) and one note per tile, tied to the exact tiles. Served only when eligible (see scripts/library/lib.mjs). Drafts are never served.",
+ "schema": 1,
+ "entries": {
+  "PLX-BCH-008": {
+   "tiles": [
+    "Vitamin A",
+    "Vitamin D",
+    "Vitamin E",
+    "Vitamin K"
+   ],
+   "tileNotes": [
+    "Retinol: stored in the liver; deficiency causes night blindness, excess is teratogenic.",
+    "Calciferol: fat-soluble; regulates calcium and can accumulate in toxicity.",
+    "Tocopherol: an antioxidant; deficiency causes neurologic and hemolytic findings.",
+    "Required for clotting factor carboxylation; stored and fat-dependent for absorption."
+   ],
+   "status": "LEGACY_BANK",
+   "reviewer": null,
+   "provenance": {
+    "kind": "legacy-bank",
+    "source": "connectionBank:bank-ext-001",
+    "title": "Fat-soluble vitamins",
+    "note": "Tile notes players saw with these same four tiles before the new library; October 2026 AI-assisted bank review, not human verified."
+   },
+   "updatedAt": "2026-10-12T01:09:46.670Z",
+   "version": 1
+  },
+  "GI-033": {
+   "tiles": [
+    "Gilbert syndrome",
+    "Crigler-Najjar syndrome",
+    "Dubin-Johnson syndrome",
+    "Rotor syndrome"
+   ],
+   "tileNotes": [
+    "Mildly reduced UGT1A1 → benign unconjugated hyperbilirubinemia with stress/fasting.",
+    "Absent (type I) or severely reduced UGT1A1 → severe unconjugated hyperbilirubinemia.",
+    "Defective excretion (MRP2) → conjugated hyperbilirubinemia; grossly black liver.",
+    "Defective hepatic storage/excretion → conjugated hyperbilirubinemia; liver NOT black."
+   ],
+   "status": "LEGACY_BANK",
+   "reviewer": null,
+   "provenance": {
+    "kind": "legacy-bank",
+    "source": "connectionBank:bank-ext-114",
+    "title": "Inherited hyperbilirubinemia syndromes",
+    "note": "Tile notes players saw with these same four tiles before the new library; October 2026 AI-assisted bank review, not human verified."
+   },
+   "updatedAt": "2026-10-12T01:09:46.670Z",
+   "version": 1
+  },
+  "GI-043": {
+   "tiles": [
+    "Vitamin A",
+    "Vitamin D",
+    "Vitamin E",
+    "Vitamin K"
+   ],
+   "tileNotes": [
+    "Retinol: stored in the liver; deficiency causes night blindness, excess is teratogenic.",
+    "Calciferol: fat-soluble; regulates calcium and can accumulate in toxicity.",
+    "Tocopherol: an antioxidant; deficiency causes neurologic and hemolytic findings.",
+    "Required for clotting factor carboxylation; stored and fat-dependent for absorption."
+   ],
+   "status": "LEGACY_BANK",
+   "reviewer": null,
+   "provenance": {
+    "kind": "legacy-bank",
+    "source": "connectionBank:bank-ext-001",
+    "title": "Fat-soluble vitamins",
+    "note": "Tile notes players saw with these same four tiles before the new library; October 2026 AI-assisted bank review, not human verified."
+   },
+   "updatedAt": "2026-10-12T01:09:46.670Z",
+   "version": 1
+  },
+  "MSK-001": {
+   "tiles": [
+    "Supraspinatus",
+    "Infraspinatus",
+    "Teres minor",
+    "Subscapularis"
+   ],
+   "tileNotes": [
+    "Abducts the arm (first ~15°); most commonly torn and impinged.",
+    "Externally rotates the arm.",
+    "Externally rotates and adducts the arm.",
+    "Internally rotates the arm; the only one on the anterior scapula."
+   ],
+   "status": "LEGACY_BANK",
+   "reviewer": null,
+   "provenance": {
+    "kind": "legacy-bank",
+    "source": "connectionBank:bank-ext-104",
+    "title": "Rotator cuff muscles",
+    "note": "Tile notes players saw with these same four tiles before the new library; October 2026 AI-assisted bank review, not human verified."
+   },
+   "updatedAt": "2026-10-12T01:09:46.670Z",
+   "version": 1
+  },
+  "NEU-052": {
+   "tiles": [
+    "Bradykinesia",
+    "Resting tremor",
+    "Cogwheel rigidity",
+    "Postural instability"
+   ],
+   "tileNotes": [
+    "Slowed initiation and execution of movement from dopamine deficiency.",
+    "A classic 'pill-rolling' tremor that improves with movement, from dopaminergic loss.",
+    "Increased muscle tone with a ratchety quality on passive movement.",
+    "Impaired postural reflexes appear later in disease progression."
+   ],
+   "status": "LEGACY_BANK",
+   "reviewer": null,
+   "provenance": {
+    "kind": "legacy-bank",
+    "source": "connectionBank:bank-migrated-sys-neuro-0002-L1",
+    "title": "Features of Parkinson disease",
+    "note": "Tile notes players saw with these same four tiles before the new library; October 2026 AI-assisted bank review, not human verified."
+   },
+   "updatedAt": "2026-10-12T01:09:46.670Z",
+   "version": 1
+  },
+  "PSY-006": {
+   "tiles": [
+    "Delusions",
+    "Hallucinations",
+    "Disorganized speech",
+    "Disorganized behavior"
+   ],
+   "tileNotes": [
+    "Fixed false beliefs resistant to contrary evidence.",
+    "Perceptions without stimulus, most often auditory in schizophrenia.",
+    "Derailment, tangentiality, or word salad.",
+    "Catatonia or purposeless, bizarre activity."
+   ],
+   "status": "LEGACY_BANK",
+   "reviewer": null,
+   "provenance": {
+    "kind": "legacy-bank",
+    "source": "connectionBank:bank-ext-098",
+    "title": "Positive symptoms of schizophrenia",
+    "note": "Tile notes players saw with these same four tiles before the new library; October 2026 AI-assisted bank review, not human verified."
+   },
+   "updatedAt": "2026-10-12T01:09:46.670Z",
+   "version": 1
+  },
+  "PULM-001": {
+   "tiles": [
+    "Bleomycin",
+    "Amiodarone",
+    "Methotrexate",
+    "Busulfan"
+   ],
+   "tileNotes": [
+    "A chemotherapy agent with dose-related pulmonary toxicity.",
+    "An antiarrhythmic that can cause pulmonary (and hepatic/thyroid) toxicity.",
+    "An antimetabolite associated with pneumonitis and fibrosis.",
+    "An alkylating agent causing pulmonary fibrosis."
+   ],
+   "status": "LEGACY_BANK",
+   "reviewer": null,
+   "provenance": {
+    "kind": "legacy-bank",
+    "source": "connectionBank:bank-ext-062",
+    "title": "Drugs causing pulmonary fibrosis",
+    "note": "Tile notes players saw with these same four tiles before the new library; October 2026 AI-assisted bank review, not human verified."
+   },
+   "updatedAt": "2026-10-12T01:09:46.670Z",
+   "version": 1
+  },
+  "CARD-052": {
+   "tiles": [
+    "Increased heart rate",
+    "Increased contractility",
+    "Increased venous return",
+    "Reduced systemic vascular resistance"
+   ],
+   "detail": "During dynamic (aerobic) exercise such as running or cycling, sympathetic activation raises heart rate and contractility, while the skeletal muscle pump and venoconstriction increase venous return. At the same time, metabolic vasodilation in working muscle lowers systemic vascular resistance, so cardiac output rises substantially. This pattern applies to dynamic exercise and does not generalize to sustained isometric exercise.",
+   "tileNotes": [
+    "Heart rate is the number of beats per minute. In dynamic exercise it rises through reduced vagal tone and increased sympathetic stimulation of the SA node, a major contributor to the rise in cardiac output.",
+    "Contractility is the intrinsic strength of myocardial contraction independent of preload and afterload. Sympathetic beta-1 stimulation increases it during dynamic exercise, raising stroke volume.",
+    "Venous return is the flow of blood back to the right heart. Rhythmic contraction of exercising muscles squeezes veins (the muscle pump), and sympathetic venoconstriction helps, so more blood returns to fill the heart.",
+    "Systemic vascular resistance is the total resistance of the systemic arterioles to flow. In dynamic exercise, local metabolites dilate arterioles in active skeletal muscle, which lowers overall resistance despite sympathetic constriction elsewhere."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PLX-HEM-016": {
+   "tiles": [
+    "Koilonychia",
+    "Pica",
+    "Atrophic glossitis",
+    "Plummer-Vinson syndrome"
+   ],
+   "detail": "Koilonychia, pica, atrophic glossitis and Plummer-Vinson syndrome are recognized clinical clues to iron deficiency, although none must be present and many patients have only fatigue or pallor. Some are not specific: glossitis also occurs in vitamin B12 and folate deficiency. Plummer-Vinson syndrome is a syndrome that includes iron deficiency rather than a single sign of it.",
+   "tileNotes": [
+    "Koilonychia means thin, concave, spoon-shaped nails that can hold a drop of water. It is a classic, though uncommon, sign of chronic iron deficiency.",
+    "Pica is a craving to eat non-food substances such as ice (pagophagia), clay or starch. Ice craving in particular is a classic, though not universal, clue to iron deficiency.",
+    "Atrophic glossitis is a smooth, red, often sore tongue caused by loss of the papillae. It can be seen in iron deficiency but is shared with vitamin B12 and folate deficiency, so it is not specific.",
+    "Plummer-Vinson syndrome is the combination of iron deficiency anemia, upper esophageal webs and dysphagia. It contains iron deficiency as one of its components and is associated with an increased risk of esophageal squamous cell carcinoma."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "GI-009": {
+   "tiles": [
+    "Obesity",
+    "Pregnancy",
+    "Sliding hiatal hernia",
+    "Scleroderma"
+   ],
+   "detail": "Obesity, pregnancy, sliding hiatal hernia and scleroderma all predispose to gastroesophageal reflux disease, but through different mechanisms rather than one shared effect on the lower esophageal sphincter (LES). Obesity and pregnancy raise intra-abdominal pressure, a sliding hiatal hernia disrupts the gastroesophageal junction barrier, and scleroderma lowers LES tone and impairs esophageal motility.",
+   "tileNotes": [
+    "Obesity, especially central adiposity, increases intra-abdominal pressure. This pushes gastric contents against the gastroesophageal junction and favors reflux.",
+    "Pregnancy raises intra-abdominal pressure as the uterus enlarges. Heartburn is a very common complaint, particularly later in pregnancy.",
+    "A sliding hiatal hernia is displacement of the gastroesophageal junction and upper stomach through the diaphragmatic hiatus into the chest. Loss of the normal diaphragmatic support weakens the antireflux barrier.",
+    "Scleroderma (systemic sclerosis) causes smooth muscle atrophy and fibrosis of the lower esophagus. The result is low LES tone and weak peristalsis, so refluxed acid is poorly cleared."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "IMM-026": {
+   "tiles": [
+    "STAT3 mutation",
+    "Cold abscesses",
+    "Eczema",
+    "Elevated IgE"
+   ],
+   "detail": "STAT3 hyper-IgE syndrome (Job syndrome) is an autosomal dominant loss-of-function disorder that impairs Th17 cell development and neutrophil recruitment. It classically presents with eczema, markedly elevated IgE and recurrent staphylococcal abscesses that show little warmth or redness. It should be distinguished from DOCK8 deficiency, and cold abscesses are characteristic but not mandatory.",
+   "tileNotes": [
+    "STAT3 is a signaling protein downstream of several cytokine receptors. Dominant loss-of-function mutations impair Th17 differentiation and IL-17 production, weakening neutrophil-mediated defense of the skin and lungs.",
+    "Cold abscesses are collections of pus, often due to Staphylococcus aureus, that lack the usual warmth, redness and pain. They are characteristic of STAT3 hyper-IgE syndrome, though not present in every patient.",
+    "Eczema is an itchy, inflamed, scaly rash. In STAT3 hyper-IgE syndrome it often begins early in life and can become secondarily infected.",
+    "Serum IgE is typically very high in this syndrome, often far above levels seen in ordinary atopy. The elevation is a defining laboratory clue but is not specific on its own."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "DERM-007": {
+   "tiles": [
+    "Varicella",
+    "Herpes zoster",
+    "Herpes zoster ophthalmicus",
+    "Herpes zoster oticus"
+   ],
+   "detail": "Varicella zoster virus (VZV) causes primary varicella (chickenpox), then establishes latency in sensory ganglia. It can later reactivate as herpes zoster (shingles), which includes dermatomal forms with specific complications such as herpes zoster ophthalmicus and herpes zoster oticus. Recognizing these forms matters because ophthalmic and otic involvement can threaten vision, hearing and facial nerve function.",
+   "tileNotes": [
+    "Varicella (chickenpox) is the primary VZV infection, with fever and an itchy rash of vesicles in crops at different stages. Afterward the virus stays latent in sensory ganglia.",
+    "Herpes zoster (shingles) is reactivation of latent VZV, causing a painful vesicular rash in a dermatomal distribution, usually unilateral. Postherpetic neuralgia is a common complication, especially in older adults.",
+    "Herpes zoster ophthalmicus is zoster in the ophthalmic division (V1) of the trigeminal nerve. It can involve the eye (for example keratitis or uveitis); vesicles on the nasal tip (Hutchinson sign) suggest higher risk of ocular involvement.",
+    "Herpes zoster oticus (Ramsay Hunt syndrome) is VZV reactivation in the geniculate ganglion. It classically causes ear pain, vesicles in the ear canal or auricle, and ipsilateral facial nerve palsy."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "MSK-028": {
+   "tiles": [
+    "Gluteus maximus",
+    "Long head of biceps femoris",
+    "Semimembranosus",
+    "Semitendinosus"
+   ],
+   "detail": "Gluteus maximus and the three hamstrings that cross the hip (long head of biceps femoris, semimembranosus and semitendinosus) all extend the hip. The short head of biceps femoris arises from the femur, does not cross the hip, and only flexes the knee. Hip extension matters clinically for rising from a chair, climbing stairs and running.",
+   "tileNotes": [
+    "Gluteus maximus is the large superficial buttock muscle, supplied by the inferior gluteal nerve. It is the most powerful hip extensor, especially when rising from sitting or climbing stairs.",
+    "The long head of biceps femoris arises from the ischial tuberosity and is supplied by the tibial part of the sciatic nerve. Because it crosses both joints, it extends the hip and flexes the knee.",
+    "Semimembranosus is a medial hamstring arising from the ischial tuberosity and supplied by the tibial part of the sciatic nerve. It extends the hip and flexes the knee.",
+    "Semitendinosus is a medial hamstring with a long tendon that inserts on the medial tibia as part of the pes anserinus. Like the other hamstrings that cross the hip, it extends the hip and flexes the knee."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "NEPH-028": {
+   "tiles": [
+    "Diarrhea",
+    "Acetazolamide",
+    "Distal renal tubular acidosis",
+    "Proximal renal tubular acidosis"
+   ],
+   "detail": "Diarrhea, acetazolamide, distal renal tubular acidosis and proximal renal tubular acidosis can each produce a normal-anion-gap (hyperchloremic) metabolic acidosis. Bicarbonate is lost from the gut or kidney, or renal acid excretion is impaired, and chloride rises to replace it, so the anion gap stays normal. This separates them from causes of high-anion-gap acidosis such as ketoacidosis or lactic acidosis.",
+   "tileNotes": [
+    "Diarrhea causes loss of bicarbonate-rich intestinal fluid. It is one of the most common causes of normal-anion-gap metabolic acidosis.",
+    "Acetazolamide is a carbonic anhydrase inhibitor that reduces bicarbonate reabsorption in the proximal tubule. Its effect resembles proximal renal tubular acidosis, producing a hyperchloremic acidosis.",
+    "Distal renal tubular acidosis (type 1) is impaired hydrogen ion secretion by the distal nephron. Urine pH stays inappropriately high (above about 5.5), and hypokalemia and calcium phosphate kidney stones are classic associations.",
+    "Proximal renal tubular acidosis (type 2) is impaired bicarbonate reabsorption in the proximal tubule. It can occur alone or as part of Fanconi syndrome, and urine can still be acidified once serum bicarbonate falls low enough."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "NEU-003": {
+   "tiles": [
+    "Fasciculations",
+    "Muscle atrophy",
+    "Hyporeflexia",
+    "Hypotonia"
+   ],
+   "detail": "Fasciculations, muscle atrophy, hyporeflexia and hypotonia are classic signs of lower motor neuron dysfunction, localizing to the anterior horn cell, nerve root or peripheral nerve. They contrast with upper motor neuron signs such as spasticity, hyperreflexia and an extensor plantar response. Not every peripheral neuromuscular disorder produces all four.",
+   "tileNotes": [
+    "Fasciculations are brief, spontaneous, visible twitches of a group of muscle fibers supplied by one motor unit. They suggest an irritable or degenerating lower motor neuron, classically in anterior horn cell disease.",
+    "Muscle atrophy is wasting of muscle bulk. Marked atrophy follows loss of lower motor neuron innervation (denervation), unlike the milder disuse atrophy of upper motor neuron lesions.",
+    "Hyporeflexia means reduced or absent deep tendon reflexes. Damage to the lower motor neuron interrupts the efferent limb of the stretch reflex arc.",
+    "Hypotonia is reduced resistance to passive movement, giving a floppy or flaccid limb. It reflects loss of the lower motor neuron drive that normally maintains resting muscle tone."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "MICRO-025": {
+   "tiles": [
+    "CD4 count below 200 cells/uL",
+    "Progressive exertional dyspnea",
+    "Bilateral ground-glass lung opacities",
+    "TMP-SMX prophylaxis"
+   ],
+   "detail": "Pneumocystis jirovecii pneumonia is a key opportunistic infection in advanced HIV, classically when the CD4 count falls below 200 cells/uL. It typically causes subacute, progressive exertional dyspnea with bilateral ground-glass opacities on imaging. TMP-SMX is the classic agent for prophylaxis in appropriate patients, although the CD4 threshold is a teaching rule rather than the full prophylaxis algorithm.",
+   "tileNotes": [
+    "CD4 count below 200 cells/uL indicates advanced immunosuppression in HIV infection. It is the classic teaching threshold at which Pneumocystis pneumonia risk rises and prophylaxis is considered.",
+    "Progressive exertional dyspnea is shortness of breath with activity that worsens over days to weeks. In Pneumocystis pneumonia it often comes with dry cough, fever and exertional hypoxemia.",
+    "Bilateral ground-glass lung opacities are hazy areas of increased lung density through which vessels remain visible. They are the classic imaging pattern of Pneumocystis pneumonia, though early chest radiographs can be normal.",
+    "TMP-SMX (trimethoprim-sulfamethoxazole) is the preferred agent for both prophylaxis and treatment of Pneumocystis pneumonia. Prophylaxis also helps protect against toxoplasmosis."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PLX-BCH-007": {
+   "tiles": [
+    "Type I collagen",
+    "Type II collagen",
+    "Type III collagen",
+    "Type V collagen"
+   ],
+   "detail": "Types I, II, III and V are fibril-forming collagens: their triple helices assemble into cross-linked fibrils that give tissues tensile strength. This sets them apart from network-forming type IV collagen of basement membranes and anchoring type VII collagen. Mutations in fibrillar collagens underlie classic exam diseases such as osteogenesis imperfecta and Ehlers-Danlos syndromes.",
+   "tileNotes": [
+    "Type I collagen is the most abundant collagen, found in bone, skin, tendon and late wound repair. Defects in type I collagen synthesis cause osteogenesis imperfecta.",
+    "Type II collagen is the main collagen of cartilage, and is also present in the vitreous body and nucleus pulposus. It forms fibrils that resist compression in these tissues.",
+    "Type III collagen forms reticular fibers in skin, blood vessels, uterus and granulation tissue. Defects cause vascular Ehlers-Danlos syndrome, with risk of arterial and organ rupture.",
+    "Type V collagen is a minor fibrillar collagen that co-assembles with type I and helps regulate fibril formation. Mutations are a classic cause of classical Ehlers-Danlos syndrome."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "ENDO-021": {
+   "tiles": [
+    "Increased renal calcium reabsorption",
+    "Increased urinary phosphate excretion",
+    "Increased renal 1-alpha-hydroxylase activity",
+    "Increased osteoclast-mediated bone resorption"
+   ],
+   "detail": "Parathyroid hormone (PTH) raises serum calcium and lowers serum phosphate through four core actions: increased distal tubular calcium reabsorption, phosphaturia, stimulation of renal 1-alpha-hydroxylase to form calcitriol, and bone resorption. The bone effect is indirect, as PTH acts on osteoblast-lineage cells to increase RANKL, which activates osteoclasts. Sustained PTH signaling favors resorption, which explains bone loss in hyperparathyroidism.",
+   "tileNotes": [
+    "PTH increases calcium reabsorption mainly in the distal convoluted tubule. This reduces urinary calcium loss and helps raise serum calcium.",
+    "PTH inhibits sodium-phosphate cotransport in the proximal tubule, causing phosphaturia. This lowers serum phosphate, preventing calcium phosphate precipitation as calcium rises.",
+    "Renal 1-alpha-hydroxylase converts 25-hydroxyvitamin D to active 1,25-dihydroxyvitamin D (calcitriol). PTH stimulates this enzyme, and calcitriol then increases intestinal calcium absorption.",
+    "Osteoclasts are bone-resorbing cells, but they are not the direct target of PTH. PTH acts on osteoblast-lineage cells to increase RANKL, which drives osteoclast activity when PTH is sustained."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "IMM-016": {
+   "tiles": [
+    "Autosomal dominant inheritance",
+    "Increased bradykinin",
+    "Low C4",
+    "Recurrent bowel-wall edema"
+   ],
+   "detail": "Hereditary angioedema due to C1-inhibitor deficiency is an autosomal dominant disorder (SERPING1 gene) in which unchecked kallikrein activity generates excess bradykinin. Uncontrolled C1 activity consumes C4 (a useful screening clue), and attacks cause recurrent non-pitting swelling without hives, including bowel-wall edema and potentially fatal laryngeal edema. This differs from hereditary angioedema with normal C1 inhibitor, in which C4 is normal.",
+   "tileNotes": [
+    "Autosomal dominant inheritance means one abnormal copy of the gene is enough to cause disease. Hereditary C1-inhibitor deficiency follows this pattern, so a family history of unexplained swelling is a clue.",
+    "Bradykinin is a peptide that dilates vessels and increases vascular permeability. Without C1 inhibitor to restrain kallikrein, bradykinin accumulates and drives the swelling, which is why antihistamines are ineffective.",
+    "C4 is a complement protein cleaved by activated C1. Without C1 inhibitor, C4 is continuously consumed, so a low C4 level is a classic screening finding.",
+    "Edema of the intestinal wall causes episodes of severe, crampy abdominal pain, sometimes with vomiting. These attacks can mimic a surgical abdomen and are a classic presentation of this disorder."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "GI-004": {
+   "tiles": [
+    "Behcet disease",
+    "Celiac disease",
+    "Inflammatory bowel disease",
+    "Systemic lupus erythematosus"
+   ],
+   "detail": "Behcet disease, celiac disease, inflammatory bowel disease and systemic lupus erythematosus are all associated with recurrent aphthous oral ulcers. Recognizing the link can prompt a search for an underlying systemic disease in a patient with recurrent mouth ulcers. The association is not universal, and oral ulcers alone are not enough to diagnose any of these conditions.",
+   "tileNotes": [
+    "Behcet disease is a systemic vasculitis affecting vessels of varying sizes. Recurrent oral aphthous ulcers are a central feature, classically with genital ulcers and uveitis.",
+    "Celiac disease is an immune reaction to gluten that damages the small intestinal mucosa. Recurrent aphthous ulcers are a recognized extraintestinal manifestation.",
+    "Inflammatory bowel disease includes Crohn disease and ulcerative colitis. Oral aphthous ulcers are a recognized extraintestinal manifestation, seen more often with Crohn disease.",
+    "Systemic lupus erythematosus is a multisystem autoimmune disease. Oral ulcers, often painless and on the palate, are one of its classic mucocutaneous features."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "NEU-049": {
+   "tiles": [
+    "Mesolimbic pathway",
+    "Mesocortical pathway",
+    "Nigrostriatal pathway",
+    "Tuberoinfundibular pathway"
+   ],
+   "detail": "The mesolimbic, mesocortical, nigrostriatal and tuberoinfundibular pathways are the four classic dopaminergic circuits of the brain. They are associated with reward and positive psychotic symptoms, negative symptoms, movement, and prolactin inhibition, respectively. The board-relevant payoff is predicting antipsychotic effects: D2 blockade in the nigrostriatal pathway causes extrapyramidal symptoms, and in the tuberoinfundibular pathway causes hyperprolactinemia.",
+   "tileNotes": [
+    "The mesolimbic pathway runs from the ventral tegmental area to limbic structures such as the nucleus accumbens. It mediates reward, and overactivity is linked to positive symptoms such as hallucinations and delusions.",
+    "The mesocortical pathway projects from the ventral tegmental area to the prefrontal cortex. Reduced activity here is associated with negative symptoms such as flat affect and avolition.",
+    "The nigrostriatal pathway runs from the substantia nigra pars compacta to the striatum and helps control movement. It degenerates in Parkinson disease, and blocking it with antipsychotics causes extrapyramidal symptoms.",
+    "The tuberoinfundibular pathway carries dopamine from the hypothalamus to the pituitary, where dopamine inhibits prolactin release. D2 blockade here causes hyperprolactinemia, with galactorrhea, amenorrhea or gynecomastia."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PLEXUS-GEN-009": {
+   "tiles": [
+    "DNA glycosylase",
+    "AP endonuclease",
+    "DNA polymerase beta",
+    "DNA ligase"
+   ],
+   "detail": "These four enzymes carry out short-patch base excision repair (BER) in sequence: a damaged base is removed, the abasic site is cut, the one-nucleotide gap is filled, and the nick is sealed. BER corrects small lesions that do not distort the helix, such as uracil from cytosine deamination and oxidized or alkylated bases, which sets it apart from repair of bulky lesions like thymine dimers.",
+   "tileNotes": [
+    "A DNA glycosylase recognizes a specific damaged or inappropriate base (for example uracil in DNA) and cleaves its bond to the sugar. This first step leaves an apurinic/apyrimidinic (AP), or abasic, site.",
+    "AP endonuclease recognizes the abasic site left by the glycosylase and cuts the sugar-phosphate backbone there. The resulting nick gives the polymerase a place to start repair.",
+    "DNA polymerase beta is a repair polymerase that inserts the single missing nucleotide in short-patch BER. It also removes the leftover deoxyribose-phosphate remnant before the strand is sealed.",
+    "DNA ligase forms the final phosphodiester bond that seals the nick, restoring an intact strand. Ligases also act in DNA replication and in other repair pathways, so this step is not unique to BER."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "MSK-022": {
+   "tiles": [
+    "PR3-ANCA (c-ANCA)",
+    "Chronic sinusitis",
+    "Cavitating pulmonary nodules",
+    "Pauci-immune glomerulonephritis"
+   ],
+   "detail": "Granulomatosis with polyangiitis (GPA) is a necrotizing granulomatous small-vessel vasculitis that classically involves the upper airway, lungs, and kidneys, usually with PR3-ANCA. Not every patient has every feature: a minority are ANCA-negative, and renal disease or cavitation may be absent. Upper airway disease together with cavitating lung nodules helps separate GPA from the other ANCA-associated vasculitides, microscopic polyangiitis and EGPA.",
+   "tileNotes": [
+    "PR3-ANCA (c-ANCA) is an autoantibody against proteinase 3, a neutrophil granule enzyme, that gives cytoplasmic staining on immunofluorescence. It is the characteristic serology of GPA, but a negative result does not exclude the disease.",
+    "Chronic sinusitis is persistent inflammation of the paranasal sinuses. In GPA, granulomatous inflammation of the upper airway can also cause nasal crusting, ulcers, and septal destruction with saddle-nose deformity.",
+    "Cavitating pulmonary nodules are lung nodules whose centers break down into air-filled cavities. In GPA they reflect necrotizing granulomatous inflammation and can cause cough or hemoptysis, though cavitation is not seen in every patient.",
+    "Pauci-immune glomerulonephritis is glomerular inflammation with few or no immune deposits on immunofluorescence, often presenting as rapidly progressive crescentic disease. It occurs across the ANCA-associated vasculitides, so it supports but does not by itself establish GPA."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PLX-BCH-051": {
+   "tiles": [
+    "Sweet-smelling urine",
+    "Elevated branched-chain amino acids",
+    "Elevated branched-chain ketoacids",
+    "Infantile dystonia"
+   ],
+   "detail": "Maple syrup urine disease (MSUD) is an autosomal recessive defect in branched-chain alpha-ketoacid dehydrogenase, the enzyme complex that breaks down the ketoacids of leucine, isoleucine, and valine. Both the amino acids and their ketoacids accumulate, producing a sweet urine odor and neurotoxicity that often presents in the newborn period with poor feeding, vomiting, and lethargy. The specific neurologic signs vary between patients and phenotypes.",
+   "tileNotes": [
+    "Sweet-smelling urine, often compared to maple syrup or burnt sugar, is the classic clue that gives the disease its name. The odor comes from accumulated branched-chain metabolites and may also be noticed in earwax.",
+    "Elevated branched-chain amino acids (leucine, isoleucine, valine) are found on plasma amino acid analysis, and alloisoleucine is a characteristic diagnostic marker. Leucine is considered the most neurotoxic of the three.",
+    "Elevated branched-chain ketoacids are the alpha-ketoacids formed when the branched-chain amino acids are transaminated. They build up because the dehydrogenase step that should oxidize them is deficient, and they can be detected in urine.",
+    "Infantile dystonia refers to sustained involuntary muscle contractions producing abnormal postures in an infant. It is one possible neurologic manifestation of MSUD alongside lethargy, abnormal tone, and seizures, but it is not present in every case."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PLX-HEM-028": {
+   "tiles": [
+    "Increased homocysteine",
+    "Normal methylmalonic acid",
+    "Megaloblastic anemia",
+    "Hypersegmented neutrophils"
+   ],
+   "detail": "Folate is needed for thymidine synthesis and, as methyl-tetrahydrofolate, for remethylating homocysteine to methionine. Its deficiency therefore causes megaloblastic anemia with hypersegmented neutrophils and raises homocysteine, while methylmalonic acid stays normal because methylmalonyl-CoA mutase depends on vitamin B12, not folate. Elevated homocysteine with normal methylmalonic acid is the key laboratory pattern that separates folate deficiency from B12 deficiency.",
+   "tileNotes": [
+    "Homocysteine is an amino acid intermediate that methionine synthase converts back to methionine using a methyl group from folate and vitamin B12 as cofactor. It rises in both folate and B12 deficiency, so on its own it does not tell them apart.",
+    "Methylmalonic acid (MMA) accumulates when the B12-dependent enzyme methylmalonyl-CoA mutase fails. Because this reaction does not require folate, a Normal methylmalonic acid alongside high homocysteine points toward folate deficiency.",
+    "Megaloblastic anemia is a macrocytic anemia caused by impaired DNA synthesis, in which nuclear maturation lags behind cytoplasmic maturation and marrow precursors are abnormally large. It is shared by folate and B12 deficiency.",
+    "Hypersegmented neutrophils have an unusually high number of nuclear lobes, often five or more. They are a classic peripheral smear sign of a megaloblastic process and appear in both folate and B12 deficiency."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "MICRO-038": {
+   "tiles": [
+    "Onchocerciasis",
+    "Strongyloidiasis",
+    "Scabies",
+    "Pediculosis capitis"
+   ],
+   "detail": "Ivermectin acts on glutamate-gated chloride channels in invertebrate nerve and muscle, paralyzing susceptible worms and arthropods, and it has treatment roles in all four of these infections. Its role is not identical across them: route, first-line status, and alternatives differ by indication and patient. Before treating onchocerciasis, clinicians screen for Loa loa co-infection, because treating heavy Loa loa microfilaremia can cause severe reactions.",
+   "tileNotes": [
+    "Onchocerciasis (river blindness) is caused by the filarial worm Onchocerca volvulus, spread by blackfly bites, and causes itchy dermatitis, skin nodules, and eye damage. Ivermectin kills the microfilariae, after screening for Loa loa co-infection.",
+    "Strongyloidiasis is infection with Strongyloides stercoralis, whose larvae penetrate the skin and can persist for years through autoinfection. Ivermectin is the treatment of choice, which matters because corticosteroids or immunosuppression can trigger life-threatening hyperinfection.",
+    "Scabies is an intensely itchy skin infestation by the burrowing mite Sarcoptes scabiei, classically affecting finger webs and worse at night. Oral ivermectin is an option alongside topical agents such as permethrin, and is often used for crusted scabies or outbreaks.",
+    "Pediculosis capitis is head lice infestation, causing scalp itching with nits attached to hair shafts. Topical ivermectin lotion is an approved treatment, while oral ivermectin is an off-label option, and the two are not interchangeable first-line choices."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "ENDO-012": {
+   "tiles": [
+    "TSH-receptor stimulating antibodies",
+    "Exophthalmos",
+    "Pretibial myxedema",
+    "Diffuse increased radioiodine uptake"
+   ],
+   "detail": "Graves disease is an autoimmune disorder in which antibodies stimulate the TSH receptor, driving excess thyroid hormone production and a diffusely enlarged, overactive gland. Receptor-related autoimmunity also affects orbital and pretibial connective tissue, causing eye and skin changes that are specific to Graves among causes of hyperthyroidism, although not every patient develops them. Diffusely increased radioiodine uptake helps distinguish Graves from nodular disease and thyroiditis.",
+   "tileNotes": [
+    "TSH-receptor stimulating antibodies (thyroid-stimulating immunoglobulins) bind and activate the TSH receptor, mimicking TSH. They cause the hyperthyroidism of Graves disease and are a classic example of type II hypersensitivity with stimulatory antibodies.",
+    "Exophthalmos is forward protrusion of the eyes, here caused by inflammation and glycosaminoglycan deposition in orbital tissue and extraocular muscles. It is a feature of Graves orbitopathy, which not all patients have.",
+    "Pretibial myxedema is a non-pitting, thickened, sometimes orange-peel textured skin change over the shins from glycosaminoglycan deposition. It is a characteristic but relatively uncommon Graves dermopathy.",
+    "Diffuse increased radioiodine uptake means the whole gland takes up more iodine than normal on a thyroid scan, reflecting uniform antibody-driven stimulation. This contrasts with patchy uptake in toxic multinodular goiter and low uptake in thyroiditis."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "NEU-039": {
+   "tiles": [
+    "Torn bridging veins",
+    "Blood between dura and arachnoid",
+    "Crescent-shaped (concave) CT collection",
+    "Older age with cerebral atrophy"
+   ],
+   "detail": "A subdural hematoma forms when bridging veins tear and venous blood collects between the dura and arachnoid, appearing on CT as a crescent-shaped collection that can cross suture lines but not the midline. Because the bleeding is venous, it may accumulate slowly, and chronic cases can present with gradual confusion or headache. Cerebral atrophy (older age, chronic alcohol use) raises risk, as do infancy (shaking injury) and anticoagulation.",
+   "tileNotes": [
+    "Bridging veins drain blood from the brain surface across the subdural space into the dural venous sinuses. Shearing forces, even from minor trauma, can tear them and produce a subdural hematoma.",
+    "The subdural space is a potential space between the dura mater and the arachnoid mater. Blood here defines a subdural hematoma, as opposed to blood above the dura (epidural) or beneath the arachnoid (subarachnoid).",
+    "A crescent-shaped (concave) collection follows the curve of the brain surface on CT. Subdural blood can cross suture lines but is stopped at the midline by the falx; acute blood looks bright and chronic blood darker.",
+    "Cerebral atrophy, common with older age, enlarges the gap between brain and skull and stretches bridging veins, making them easier to tear. It is a risk factor rather than a requirement, since infants and anticoagulated patients are also at risk."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "GI-023": {
+   "tiles": [
+    "Penicillamine",
+    "Trientine",
+    "Zinc salts",
+    "Low-copper diet"
+   ],
+   "detail": "Wilson disease results from ATP7B mutations that impair biliary copper excretion, so copper accumulates in the liver, brain, and cornea. Each of these therapies lowers body copper burden, but by different mechanisms: chelators increase urinary excretion, zinc blocks intestinal absorption, and diet limits intake. They have different roles and are not interchangeable, nor are they all used together, and treatment is lifelong.",
+   "tileNotes": [
+    "Penicillamine is a copper chelator that binds copper and increases its excretion in urine. It is effective but has frequent adverse effects, including hypersensitivity reactions, proteinuria, and bone marrow suppression.",
+    "Trientine is another copper chelator that promotes urinary copper excretion. It is commonly used as an alternative to penicillamine, particularly when penicillamine is not tolerated.",
+    "Zinc salts induce metallothionein in intestinal cells; this protein binds dietary copper, which is then lost in stool as the cells are shed. Zinc reduces copper absorption rather than removing stored copper and is often used for maintenance.",
+    "A Low-copper diet means limiting copper-rich foods such as shellfish, organ meats, nuts, chocolate, and mushrooms. It is an adjunct that reduces intake and is not sufficient as the sole treatment."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "IMM-014": {
+   "tiles": [
+    "Mast-cell Fc receptor binding",
+    "Allergen-induced crosslinking",
+    "Type I hypersensitivity",
+    "Helminth defense"
+   ],
+   "detail": "IgE binds with high affinity to Fc epsilon receptor I on mast cells and basophils, sensitizing these cells. When a multivalent allergen later crosslinks the bound IgE, the cells degranulate within minutes, producing type I (immediate) hypersensitivity such as allergic rhinitis, asthma, or anaphylaxis. The same IgE-based system also contributes to host defense against helminths, together with eosinophils.",
+   "tileNotes": [
+    "Mast-cell Fc receptor binding refers to the Fc portion of IgE attaching to the high-affinity receptor Fc epsilon RI on mast cells and basophils. This arms the cells in advance, so IgE sits on them even without antigen present.",
+    "Allergen-induced crosslinking occurs when an allergen bridges two or more receptor-bound IgE molecules. This triggers signaling that releases preformed mediators such as histamine and starts synthesis of leukotrienes and prostaglandins.",
+    "Type I hypersensitivity is the immediate, IgE-mediated allergic reaction that requires prior sensitization and begins within minutes of re-exposure. A late-phase reaction can follow hours later as recruited inflammatory cells arrive.",
+    "Helminth defense is a physiologic role of IgE: Th2 responses, driven by IL-4, promote class switching to IgE in parasitic worm infection. IgE coating the parasite helps eosinophils target it, which is why worm infections often raise IgE and eosinophil counts."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "CARD-042": {
+   "tiles": [
+    "Varicose superficial veins",
+    "Brown medial ankle skin",
+    "Venous reflux on ultrasound",
+    "Leg swelling improved by elevation"
+   ],
+   "detail": "In chronic venous insufficiency, failed venous valves allow reflux, and the resulting sustained venous hypertension in the legs underlies each of these findings. High pressure dilates superficial veins, pushes fluid and red cells into the tissues, and produces edema and skin changes concentrated around the medial ankle. Duplex ultrasound confirms reflux, while the other findings are recognized on examination.",
+   "tileNotes": [
+    "Varicose superficial veins are dilated, tortuous veins just under the skin, typically of the legs. They develop when incompetent valves let blood pool and distend the vein wall under high pressure.",
+    "Brown medial ankle skin is hemosiderin hyperpigmentation: red cells leak from congested capillaries and their iron-containing breakdown product stains the skin. The medial ankle is also a classic site for venous ulcers.",
+    "Venous reflux on ultrasound means duplex imaging shows blood flowing backward through incompetent valves. It is a diagnostic test rather than a bedside sign, and it identifies which veins are affected.",
+    "Leg swelling improved by elevation reflects edema driven by gravity-dependent venous pressure, typically worse after standing and at day's end. Raising the leg lowers that pressure, which is why elevation and compression are core treatments."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PLX-BCH-069": {
+   "tiles": [
+    "Arginine",
+    "Proline",
+    "Histidine",
+    "Glutamine"
+   ],
+   "detail": "Arginine, proline, histidine, and glutamine are catabolized by different routes that converge on glutamate, which is then converted to alpha-ketoglutarate by deamination or transamination. Because alpha-ketoglutarate is a TCA cycle intermediate, these amino acids are glucogenic. Glutamate is the shared intermediate, and the number of steps needed to reach it differs among the four.",
+   "tileNotes": [
+    "Arginine is a basic amino acid and the precursor of nitric oxide. In the urea cycle, arginase splits it into urea and ornithine, and ornithine can be converted via glutamate semialdehyde to glutamate.",
+    "Proline is a cyclic amino acid abundant in collagen. Its catabolism opens the ring to form glutamate semialdehyde, which is then oxidized to glutamate.",
+    "Histidine has an imidazole side chain and is the precursor of histamine. Its breakdown passes through formiminoglutamate (FIGLU), which transfers a formimino group to tetrahydrofolate to yield glutamate, so FIGLU accumulates in folate deficiency.",
+    "Glutamine is the most abundant free amino acid in blood and a major carrier of nitrogen. Glutaminase removes its amide nitrogen as ammonia to form glutamate, a reaction important for renal ammonia production in acidosis."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PSY-004": {
+   "tiles": [
+    "Intrusive re-experiencing",
+    "Trauma-cue avoidance",
+    "Negative mood and cognition",
+    "Hyperarousal"
+   ],
+   "detail": "DSM-5 defines posttraumatic stress disorder by four symptom clusters following exposure to actual or threatened death, serious injury, or sexual violence: intrusion, avoidance, negative alterations in cognition and mood, and alterations in arousal and reactivity. Symptoms must last more than one month and cause distress or impairment. Similar symptoms lasting under one month suggest acute stress disorder, and ICD-11 uses a three-cluster model instead.",
+   "tileNotes": [
+    "Intrusive re-experiencing includes unwanted distressing memories, nightmares, and flashbacks in which the person feels the trauma is recurring. Intense psychological or physical reactions to reminders also belong to this cluster.",
+    "Trauma-cue avoidance is the effortful avoidance of memories, thoughts, or feelings about the trauma, or of external reminders such as people, places, and activities. It forms its own DSM-5 cluster.",
+    "Negative mood and cognition covers persistent negative beliefs about oneself or the world, distorted self-blame, ongoing fear, guilt or shame, detachment, loss of interest, and inability to feel positive emotions. Inability to recall key parts of the trauma also fits here.",
+    "Hyperarousal refers to a persistently heightened state of alertness: hypervigilance, exaggerated startle, irritability or angry outbursts, reckless behavior, and trouble with sleep or concentration. It corresponds to the arousal and reactivity cluster."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "MSK-020": {
+   "tiles": [
+    "Diaphyseal lesion",
+    "Onion-skin periosteal reaction",
+    "Small round blue cells",
+    "EWSR1-FLI1 fusion"
+   ],
+   "detail": "Ewing sarcoma is a malignant small round blue cell tumor of bone, seen mostly in children and adolescents. The classic picture combines a diaphyseal long-bone lesion, a lamellated onion-skin periosteal reaction, small round blue cell histology, and the t(11;22) EWSR1-FLI1 fusion found in most cases. None of these is specific alone: other sites and other fusion partners such as EWSR1-ERG occur, so the combination is what points to the diagnosis.",
+   "tileNotes": [
+    "The diaphysis is the shaft of a long bone. Ewing sarcoma classically arises there, unlike osteosarcoma's typical metaphyseal location, although it also occurs in the pelvis and other flat bones.",
+    "An Onion-skin periosteal reaction is layered new bone laid down by the periosteum in concentric sheets around a lesion, seen on plain radiographs. It indicates an aggressive process and can also occur with other lesions such as osteomyelitis.",
+    "Small round blue cells are sheets of uniform cells with scant cytoplasm and dark nuclei on H&E staining. This pattern is shared by tumors such as neuroblastoma, lymphoma, and rhabdomyosarcoma, and membranous CD99 staining supports Ewing sarcoma.",
+    "EWSR1-FLI1 fusion results from the t(11;22) translocation joining EWSR1 on chromosome 22 with FLI1 on chromosome 11, creating an abnormal transcription factor. It is present in most cases, while others carry different partners such as ERG."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "NEPH-024": {
+   "tiles": [
+    "PTH-related peptide",
+    "Erythropoietin",
+    "ACTH",
+    "Renin"
+   ],
+   "detail": "Renal cell carcinoma is classically associated with paraneoplastic syndromes caused by ectopic or excess hormone production. PTHrP can cause hypercalcemia and erythropoietin can cause erythrocytosis, and these are the more common associations. ACTH production causing Cushing syndrome and renin production causing hypertension are rare but recognized.",
+   "tileNotes": [
+    "PTH-related peptide (PTHrP) mimics parathyroid hormone at its receptor, increasing bone resorption and renal calcium reabsorption. Its secretion causes humoral hypercalcemia of malignancy with suppressed PTH, one of the more common RCC paraneoplastic effects.",
+    "Erythropoietin is the hormone, normally made by kidney interstitial cells in response to hypoxia, that stimulates red cell production. Secretion by RCC can cause secondary erythrocytosis with a raised hematocrit despite normal oxygenation.",
+    "ACTH (adrenocorticotropic hormone) normally comes from the pituitary and drives adrenal cortisol release. Ectopic production by RCC is rare and can cause Cushing syndrome; ectopic ACTH is more classically linked to small cell lung cancer.",
+    "Renin is the enzyme released by juxtaglomerular cells that initiates the renin-angiotensin-aldosterone system. Renin production by RCC is a rare association that can cause hypertension."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "NEU-012": {
+   "tiles": [
+    "Periventricular white matter lesions",
+    "Dawson fingers",
+    "CSF oligoclonal bands",
+    "CSF mild lymphocytic pleocytosis"
+   ],
+   "detail": "All four are supportive investigation findings in multiple sclerosis, a demyelinating disease of the central nervous system. MRI often shows periventricular white matter lesions, sometimes in the Dawson fingers pattern, while CSF may show intrathecal oligoclonal bands and a mild lymphocytic pleocytosis. A markedly raised CSF cell count argues against MS and should prompt a search for another diagnosis.",
+   "tileNotes": [
+    "These are areas of demyelination in the white matter bordering the lateral ventricles, seen as bright spots on T2/FLAIR MRI. Periventricular location is one of the classic MRI sites for MS plaques.",
+    "Dawson fingers are oval periventricular lesions oriented perpendicular to the lateral ventricles, following small medullary veins. They are a specific pattern of periventricular lesion that is highly suggestive of MS.",
+    "Oligoclonal bands are discrete IgG bands on CSF electrophoresis that are absent from matched serum, indicating antibody production within the CNS. They are a classic, though not universal, CSF finding in MS.",
+    "Pleocytosis means an increased number of white cells in the CSF. In MS it is typically mild and lymphocytic; a high cell count points toward infection or another inflammatory disorder instead."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "MICRO-027": {
+   "tiles": [
+    "Foul-smelling fatty diarrhea",
+    "Camping-water exposure",
+    "IgA deficiency",
+    "Two-nucleated trophozoites"
+   ],
+   "detail": "These are classic clues to giardiasis, infection of the small intestine by the flagellated protozoan Giardia lamblia (also called G. duodenalis or G. intestinalis). Cysts are acquired from contaminated water, trophozoites attach to the intestinal lining and cause nonbloody malabsorptive diarrhea, and IgA deficiency predisposes to infection. These features raise suspicion, but diagnosis is confirmed by stool testing such as antigen detection, microscopy or PCR.",
+   "tileNotes": [
+    "Steatorrhea is bulky, greasy, foul-smelling stool caused by fat malabsorption. Giardia interferes with small-bowel absorption, producing this nonbloody diarrhea often accompanied by bloating and flatulence.",
+    "Drinking untreated stream or lake water while camping or hiking is a classic exposure. Giardia cysts survive in cold water and resist standard chlorination, so contaminated water is a common route of infection.",
+    "Selective IgA deficiency is the most common primary immunodeficiency and reduces secretory IgA at mucosal surfaces. Affected patients are prone to Giardia infection, which may be recurrent or persistent.",
+    "Trophozoites are the active, feeding form of the parasite. Giardia trophozoites are pear-shaped and flagellated with two nuclei, giving a characteristic face-like appearance on stool or duodenal microscopy."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "CARD-024": {
+   "tiles": [
+    "Pregnancy",
+    "Systolic heart failure",
+    "Mitral regurgitation",
+    "Aortic regurgitation"
+   ],
+   "detail": "An S3 is a low-pitched early diastolic sound produced as blood rapidly fills the ventricle. It can be physiologic in pregnancy and in children and young adults, but in older patients it usually signals a dilated, volume-overloaded or systolically failing ventricle, as in systolic heart failure or significant chronic mitral or aortic regurgitation. Not every S3 means heart failure.",
+   "tileNotes": [
+    "Pregnancy increases blood volume and cardiac output, so rapid early ventricular filling can produce an S3 in a healthy woman. Here the S3 is physiologic rather than a sign of disease.",
+    "In systolic heart failure (reduced ejection fraction) the ventricle is dilated and has elevated filling pressures. An S3 in this setting is a pathologic sign of volume overload and ventricular dysfunction.",
+    "Mitral regurgitation is backflow of blood from the left ventricle into the left atrium during systole. When significant and chronic, the extra volume returning to the ventricle in early diastole can generate an S3.",
+    "In aortic regurgitation, blood leaks back from the aorta into the left ventricle during diastole. Significant chronic regurgitation volume-loads and dilates the ventricle, which can produce an S3."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PULM-021": {
+   "tiles": [
+    "Protein-rich alveolar fluid",
+    "Hyaline membranes",
+    "Reduced surfactant activity",
+    "Reduced lung compliance"
+   ],
+   "detail": "These are features of diffuse alveolar damage, the classic pathology of acute respiratory distress syndrome (ARDS). Injury to the alveolar-capillary barrier lets protein-rich fluid flood the alveoli, forming hyaline membranes, while surfactant dysfunction promotes alveolar collapse and stiff, poorly compliant lungs. Hyaline membranes are a histologic finding rather than a bedside criterion, and diffuse alveolar damage is not found in every patient who meets clinical ARDS criteria.",
+   "tileNotes": [
+    "In ARDS, damage to capillary endothelium and alveolar epithelium makes the barrier leaky, so protein-rich exudate fills the alveoli. This noncardiogenic pulmonary edema impairs gas exchange and causes hypoxemia.",
+    "Hyaline membranes are pink, glassy layers of fibrin and necrotic cell debris lining the alveolar walls on histology. They are the hallmark microscopic finding of diffuse alveolar damage, seen on biopsy or autopsy.",
+    "Surfactant, made by type II pneumocytes, lowers alveolar surface tension and prevents collapse. In ARDS, injury to type II cells and inactivation by leaked plasma proteins reduce surfactant function, favoring atelectasis.",
+    "Compliance describes how easily the lungs expand for a given pressure. Fluid-filled, collapsed alveoli make the lungs stiff in ARDS, so higher pressures are needed to ventilate them."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "DERM-008": {
+   "tiles": [
+    "HPV 16",
+    "HPV 18",
+    "HPV 31",
+    "HPV 33"
+   ],
+   "detail": "HPV 16, 18, 31 and 33 are high-risk (oncogenic) human papillomavirus types associated with cervical cancer and other anogenital and oropharyngeal cancers. Their E6 and E7 proteins inactivate the tumor suppressors p53 and Rb, respectively. All four are covered by the nonavalent vaccine, but they are not the full list of high-risk types and are not the usual cause of ordinary cutaneous warts.",
+   "tileNotes": [
+    "HPV 16 is the highest-risk HPV type and the one most often found in cervical cancer. It is also strongly linked to HPV-associated oropharyngeal squamous cell carcinoma.",
+    "HPV 18 is the second most important oncogenic type in cervical cancer. It is particularly associated with cervical adenocarcinoma, and is targeted by all HPV vaccines along with HPV 16.",
+    "HPV 31 is a high-risk type carrying a lower cancer risk than HPV 16 or 18. It is one of the additional oncogenic types covered by the nonavalent HPV vaccine.",
+    "HPV 33 is another high-risk type of intermediate oncogenic potential relative to HPV 16 and 18. Like HPV 31, it is included in the nonavalent vaccine to broaden protection against cervical cancer."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PLX-HEM-013": {
+   "tiles": [
+    "Sickled erythrocytes",
+    "Target cells",
+    "Howell-Jolly bodies",
+    "Reticulocytosis"
+   ],
+   "detail": "These findings reflect the main processes in sickle cell disease: polymerized hemoglobin S distorts red cells, chronic hemolysis drives the marrow to release reticulocytes, and repeated splenic infarction leads to functional asplenia. Some findings depend on disease stage, since Howell-Jolly bodies require loss of splenic function and the reticulocyte count falls during an aplastic crisis.",
+   "tileNotes": [
+    "Sickled erythrocytes are crescent-shaped red cells formed when deoxygenated hemoglobin S polymerizes. They are the defining smear finding and cause both hemolysis and vaso-occlusion.",
+    "Target cells are red cells with a central dark spot surrounded by a pale ring, resembling a bullseye. They are common in sickle cell disease but are not specific, also appearing in thalassemia and liver disease.",
+    "Howell-Jolly bodies are small nuclear remnants inside red cells that a working spleen normally removes. They appear once repeated infarction has caused functional asplenia (autosplenectomy).",
+    "Reticulocytes are young red cells newly released from the marrow. Chronic hemolysis keeps the count elevated, but it drops sharply during a parvovirus B19 aplastic crisis."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "GI-047": {
+   "tiles": [
+    "Profuse watery diarrhea",
+    "Hypokalemia",
+    "Achlorhydria",
+    "Weight loss"
+   ],
+   "detail": "VIPoma is a pancreatic neuroendocrine tumor that secretes vasoactive intestinal peptide (VIP), which drives intestinal fluid and electrolyte secretion. The specific triad is watery diarrhea, hypokalemia and achlorhydria (WDHA, or Verner-Morrison syndrome), while weight loss is a nonspecific accompaniment. Large-volume diarrhea that persists despite fasting points to a secretory cause such as VIPoma.",
+   "tileNotes": [
+    "VIP stimulates intestinal secretion of water and electrolytes, producing large-volume secretory diarrhea. Unlike osmotic diarrhea, it continues even when the patient is fasting.",
+    "Hypokalemia is a low serum potassium level. In VIPoma, large amounts of potassium are lost in the stool, which can cause muscle weakness and cardiac arrhythmias.",
+    "Achlorhydria is absent or very low gastric acid secretion. VIP inhibits acid production by the stomach, completing the WDHA triad (some patients have reduced rather than absent acid).",
+    "Weight loss commonly accompanies VIPoma due to fluid losses and the catabolic state of the disease. It is a nonspecific finding and does not help distinguish VIPoma from other causes of chronic diarrhea."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PLX-BCH-015": {
+   "tiles": [
+    "Von Gierke disease",
+    "Cori disease",
+    "Andersen disease",
+    "Hers disease"
+   ],
+   "detail": "Von Gierke (type I), Cori (type III), Andersen (type IV) and Hers (type VI) disease are glycogen storage diseases that affect the liver, typically with hepatomegaly. Their defects involve glucose release from the liver, glycogen debranching, glycogen branching and hepatic glycogen phosphorylase, respectively. Severity differs: fasting hypoglycemia is prominent in some, milder in others, and Cori and Andersen disease can also involve muscle.",
+   "tileNotes": [
+    "Von Gierke disease (GSD type I) is usually due to glucose-6-phosphatase deficiency, blocking the final step of hepatic glucose release. It causes severe fasting hypoglycemia, hepatomegaly, lactic acidosis, hyperuricemia and hypertriglyceridemia.",
+    "Cori disease (GSD type III) is a deficiency of debranching enzyme, so glycogen with short outer branches accumulates. It causes hepatomegaly and hypoglycemia that is generally milder than in von Gierke disease, and muscle may also be affected.",
+    "Andersen disease (GSD type IV) is a deficiency of branching enzyme, producing abnormal glycogen with few branches. In its classic form it causes hepatosplenomegaly and progressive cirrhosis in infancy; neuromuscular forms also exist.",
+    "Hers disease (GSD type VI) is a deficiency of hepatic glycogen phosphorylase, the enzyme that breaks glycogen down in the liver. It usually causes hepatomegaly with a relatively mild clinical course."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "REPRO-010": {
+   "tiles": [
+    "Anencephaly",
+    "Intestinal atresia",
+    "Maternal diabetes",
+    "Twin-twin transfusion recipient"
+   ],
+   "detail": "Polyhydramnios is an excess of amniotic fluid. Fluid volume depends on a balance between fetal urine production and fetal swallowing, so it rises when swallowing or gut passage is impaired (anencephaly, intestinal atresia) or when fetal urine output increases (maternal diabetes, the recipient twin in twin-twin transfusion syndrome). Polyhydramnios on ultrasound should prompt a search for these causes.",
+   "tileNotes": [
+    "Anencephaly is a neural tube defect in which most of the brain and skull fail to form. Affected fetuses swallow poorly, so amniotic fluid accumulates.",
+    "Intestinal atresia is a congenital blockage of the bowel lumen, with duodenal atresia (and esophageal atresia) as classic examples. Swallowed amniotic fluid cannot pass and be absorbed, leading to polyhydramnios.",
+    "Poorly controlled maternal diabetes causes fetal hyperglycemia. The fetus then develops an osmotic diuresis, producing more urine and therefore more amniotic fluid.",
+    "In twin-twin transfusion syndrome, shared placental vessels shunt blood from a donor twin to a recipient twin. The hypervolemic recipient produces excess urine and polyhydramnios, while the donor has oligohydramnios."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "MICRO-058": {
+   "tiles": [
+    "Gentamicin",
+    "Tobramycin",
+    "Amikacin",
+    "Streptomycin"
+   ],
+   "detail": "Gentamicin, tobramycin, amikacin and streptomycin are aminoglycosides, bactericidal antibiotics that bind the 30S ribosomal subunit and disrupt protein synthesis, causing mRNA misreading. Their uptake into bacteria requires oxygen-dependent transport, so they are ineffective against anaerobes. Nephrotoxicity and ototoxicity are the key class adverse effects, so drug levels and renal function are monitored.",
+   "tileNotes": [
+    "Gentamicin is a widely used aminoglycoside for serious gram-negative infections. It is also given with a beta-lactam for synergy in some gram-positive infections such as enterococcal endocarditis.",
+    "Tobramycin is an aminoglycoside with good activity against Pseudomonas aeruginosa. It is often given by inhalation to patients with cystic fibrosis.",
+    "Amikacin is an aminoglycoside that resists many of the bacterial enzymes that inactivate other aminoglycosides. It is therefore useful for resistant gram-negative organisms and some mycobacterial infections.",
+    "Streptomycin was the first aminoglycoside discovered and is used as a second-line agent for tuberculosis. It is also a classic treatment for plague and tularemia."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PLEXUS-GEN-014": {
+   "tiles": [
+    "Southern blot - DNA",
+    "Northern blot - RNA",
+    "Western blot - protein",
+    "Southwestern blot - DNA-binding proteins"
+   ],
+   "detail": "Blotting techniques separate molecules by gel electrophoresis, transfer them to a membrane and detect a specific target with a probe. Each blot is defined by what it detects: Southern blots detect DNA, Northern blots RNA, Western blots protein, and Southwestern blots proteins that bind DNA. The mnemonic SNoW DRoP pairs Southern, Northern and Western with DNA, RNA and protein.",
+   "tileNotes": [
+    "A Southern blot uses a labeled DNA probe to detect a specific DNA sequence. It can identify gene deletions, rearrangements or restriction fragment length differences.",
+    "A Northern blot detects RNA using a labeled nucleic acid probe. It is used to study gene expression by showing whether, and how much, a particular mRNA is present.",
+    "A Western blot separates proteins and identifies a specific one with a labeled antibody. It was historically used to confirm HIV infection and remains a standard research tool.",
+    "A Southwestern blot uses labeled DNA probes to find proteins that bind DNA, such as transcription factors. Despite the similar name, it detects proteins, not DNA as in a Southern blot."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "IMM-001": {
+   "tiles": [
+    "Spleen",
+    "Lymph nodes",
+    "Peyer's patches",
+    "Tonsils"
+   ],
+   "detail": "The spleen, lymph nodes, Peyer's patches and tonsils are secondary (peripheral) lymphoid tissues. Lymphocytes develop in the primary lymphoid organs, the bone marrow and thymus, and then circulate to secondary tissues, where mature lymphocytes meet antigen and mount adaptive immune responses. Each secondary tissue samples antigen from a different compartment, such as blood, lymph or mucosal surfaces.",
+   "tileNotes": [
+    "The spleen filters blood: its white pulp contains lymphocytes that respond to bloodborne antigens, and its red pulp removes old red cells. Loss of the spleen raises the risk of infection by encapsulated bacteria.",
+    "Lymph nodes filter lymph draining from tissues. B cells cluster in follicles in the cortex and T cells in the paracortex, where they encounter antigen carried in by dendritic cells.",
+    "Peyer's patches are lymphoid aggregates in the wall of the small intestine, most prominent in the ileum. M cells deliver gut antigens to underlying lymphocytes, promoting IgA responses.",
+    "Tonsils are collections of mucosa-associated lymphoid tissue in the pharynx, forming part of Waldeyer ring. They sample inhaled and ingested antigens entering through the mouth and nose."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "CARD-037": {
+   "tiles": [
+    "Ventricular arrhythmia",
+    "Papillary muscle rupture",
+    "Interventricular septal rupture",
+    "LV free wall rupture"
+   ],
+   "detail": "All four are recognized complications of myocardial infarction, but they occur on different timelines. Ventricular arrhythmias are a major cause of death early after MI, whereas the three mechanical ruptures typically present about 3 to 5 days after a transmural infarct, when necrotic tissue is weakest. A sudden new murmur, hypotension or shock in the days after an MI should raise concern for rupture.",
+   "tileNotes": [
+    "Ventricular tachycardia and ventricular fibrillation can arise from ischemic, electrically unstable myocardium. They are an important cause of sudden death, especially in the early hours after an infarct.",
+    "Rupture of a papillary muscle, most often the posteromedial one, detaches mitral valve support. The result is acute severe mitral regurgitation with pulmonary edema and a new murmur.",
+    "A rupture in the interventricular septum creates an acquired ventricular septal defect with left-to-right shunting. It typically presents with a new holosystolic murmur and heart failure or shock.",
+    "Rupture of the left ventricular free wall lets blood escape into the pericardial sac. This causes hemopericardium and cardiac tamponade, which is frequently fatal."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PLX-BCH-031": {
+   "tiles": [
+    "Arachnodactyly",
+    "Upward lens subluxation",
+    "Aortic dissection",
+    "Pectus deformity"
+   ],
+   "detail": "Marfan syndrome is an autosomal dominant connective tissue disorder caused by mutations in FBN1, which encodes fibrillin-1. Defective fibrillin weakens elastic tissue, producing classic skeletal, ocular and cardiovascular features. Lens subluxation is typically upward, unlike the downward displacement in homocystinuria, and aortic dissection is a serious possible complication rather than a requirement for diagnosis.",
+   "tileNotes": [
+    "Arachnodactyly means abnormally long, slender fingers and toes. It is part of the tall, long-limbed skeletal habitus typical of Marfan syndrome.",
+    "Lens subluxation (ectopia lentis) is partial displacement of the lens from its normal position. In Marfan syndrome it is classically upward and outward, because the fibrillin-rich zonular fibers that hold the lens are weak.",
+    "Aortic dissection is a tear in the aortic intima allowing blood to split the vessel wall. In Marfan syndrome it usually follows progressive aortic root dilation and is the major life-threatening complication.",
+    "Pectus deformity refers to a sunken (pectus excavatum) or protruding (pectus carinatum) chest wall. Both result from overgrowth of the ribs and are common skeletal features of Marfan syndrome."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "GI-003": {
+   "tiles": [
+    "Genioglossus",
+    "Hyoglossus",
+    "Styloglossus",
+    "Intrinsic tongue muscles"
+   ],
+   "detail": "The hypoglossal nerve (CN XII) supplies motor fibers to all intrinsic tongue muscles and to every extrinsic tongue muscle except palatoglossus, which is supplied by the vagus nerve via the pharyngeal plexus. A unilateral CN XII lesion classically causes the protruded tongue to deviate toward the side of the lesion, a frequently tested localizing sign.",
+   "tileNotes": [
+    "Genioglossus is the fan-shaped extrinsic muscle that protrudes the tongue. Weakness of one genioglossus from a CN XII lesion explains why the tongue deviates toward the weak side on protrusion.",
+    "Hyoglossus is an extrinsic muscle running from the hyoid bone to the side of the tongue that depresses and retracts it. Like the other extrinsic muscles except palatoglossus, it is innervated by CN XII.",
+    "Styloglossus arises from the styloid process and pulls the tongue upward and backward, for example during swallowing. It receives its motor supply from the hypoglossal nerve.",
+    "The intrinsic tongue muscles (longitudinal, transverse and vertical fibers) lie entirely within the tongue and change its shape rather than its position. All of them are supplied by CN XII."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "NEU-026": {
+   "tiles": [
+    "BPPV",
+    "Vestibular neuritis",
+    "Meniere disease",
+    "Vestibular schwannoma"
+   ],
+   "detail": "Each of these disorders involves the peripheral vestibular apparatus or CN VIII and can produce vertigo, but they differ in timing and in whether hearing is affected. Distinguishing peripheral from central causes of vertigo is a key clinical and exam skill, and the pattern of episode duration and hearing loss helps separate these peripheral causes from one another.",
+   "tileNotes": [
+    "Benign paroxysmal positional vertigo (BPPV) is caused by displaced otoconia, most often in the posterior semicircular canal. It produces brief vertigo triggered by head position changes, without hearing loss, and is diagnosed with the Dix-Hallpike maneuver.",
+    "Vestibular neuritis is inflammation of the vestibular nerve, often after a viral illness. It causes sudden, continuous vertigo lasting days with nausea and imbalance, classically with hearing preserved.",
+    "Meniere disease is thought to result from excess endolymph (endolymphatic hydrops) in the inner ear. It causes recurrent vertigo episodes lasting minutes to hours with fluctuating sensorineural hearing loss, tinnitus and aural fullness.",
+    "A vestibular schwannoma is a benign Schwann cell tumor of CN VIII at the cerebellopontine angle. It more often causes slowly progressive unilateral hearing loss, tinnitus and imbalance than acute spinning vertigo, though vertigo can occur."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "MSK-026": {
+   "tiles": [
+    "Adductor longus",
+    "Adductor brevis",
+    "Gracilis",
+    "Adductor part of adductor magnus"
+   ],
+   "detail": "The obturator nerve (L2 to L4) enters the thigh through the obturator foramen and supplies the medial compartment muscles that adduct the thigh. Adductor magnus is dually innervated: only its adductor part is obturator-supplied, while its hamstring part is supplied by the tibial division of the sciatic nerve. Obturator nerve injury classically weakens thigh adduction and reduces sensation over the medial thigh.",
+   "tileNotes": [
+    "Adductor longus is the most anterior of the adductors and forms the medial border of the femoral triangle. It adducts the thigh and is supplied by the obturator nerve.",
+    "Adductor brevis lies deep to adductor longus, and the anterior and posterior divisions of the obturator nerve pass on either side of it. It adducts the thigh and is obturator-innervated.",
+    "Gracilis is a long, thin medial thigh muscle and the only medial compartment muscle that crosses the knee, inserting as part of the pes anserinus. It adducts the thigh and helps flex the knee, with motor supply from the obturator nerve.",
+    "Adductor magnus is a large muscle with two parts: an adductor part and a hamstring part. Only the adductor part is supplied by the obturator nerve; the hamstring part receives the tibial division of the sciatic nerve."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PHARM-014": {
+   "tiles": [
+    "Sildenafil",
+    "Vardenafil",
+    "Tadalafil",
+    "Avanafil"
+   ],
+   "detail": "Sildenafil, vardenafil, tadalafil and avanafil all inhibit phosphodiesterase-5, the enzyme that breaks down cGMP. Higher cGMP levels promote smooth-muscle relaxation and vasodilation, which underlies their use in erectile dysfunction, although their approved indications are not identical. Because nitrates also raise cGMP, combining them with any PDE-5 inhibitor can cause severe hypotension, a classic contraindication.",
+   "tileNotes": [
+    "Sildenafil is a PDE-5 inhibitor used for erectile dysfunction and pulmonary arterial hypertension. Some cross-inhibition of PDE-6 in the retina explains its classic side effect of blue-tinted vision.",
+    "Vardenafil is a PDE-5 inhibitor used for erectile dysfunction. Like the rest of this class, it raises cGMP in smooth muscle and must not be combined with nitrates.",
+    "Tadalafil is the longest-acting drug of this class. Besides erectile dysfunction, it is also used for benign prostatic hyperplasia and pulmonary arterial hypertension, all through PDE-5 inhibition.",
+    "Avanafil is a newer, more PDE-5-selective inhibitor used for erectile dysfunction. It shares the same cGMP-preserving mechanism and the same nitrate contraindication."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "ENDO-020": {
+   "tiles": [
+    "Calcium kidney stones",
+    "Constipation",
+    "Bone pain",
+    "Neuropsychiatric disturbances"
+   ],
+   "detail": "Kidney stones, constipation, bone pain and neuropsychiatric symptoms are classic consequences of elevated serum calcium, summarized by the mnemonic \"stones, bones, groans and psychiatric overtones.\" How prominent they are depends on the severity and chronicity of the hypercalcemia. Primary hyperparathyroidism and malignancy are the most common underlying causes.",
+   "tileNotes": [
+    "Hypercalcemia increases the amount of calcium filtered and excreted in the urine (hypercalciuria). This favors formation of calcium-containing kidney stones, such as calcium oxalate or calcium phosphate stones.",
+    "Constipation is infrequent or difficult passage of stool. High calcium reduces neuromuscular excitability and slows gut smooth-muscle activity, giving the \"groans\" of abdominal discomfort.",
+    "Bone pain in hypercalcemia often reflects increased bone resorption, as in hyperparathyroidism (where severe cases cause osteitis fibrosa cystica) or bone involvement by malignancy. These are the \"bones\" of the mnemonic.",
+    "Neuropsychiatric disturbances range from fatigue, depression and poor concentration to confusion, and in severe hypercalcemia stupor or coma. They are the \"psychiatric overtones\" of the mnemonic."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "NEPH-030": {
+   "tiles": [
+    "Renal failure",
+    "Hypoparathyroidism",
+    "Tumor lysis syndrome",
+    "Rhabdomyolysis"
+   ],
+   "detail": "Serum phosphate rises when the kidneys cannot excrete it, when low PTH reduces urinary phosphate loss, or when large amounts of intracellular phosphate are released into the blood. Renal failure, hypoparathyroidism, tumor lysis syndrome and rhabdomyolysis illustrate these mechanisms, although the actual level depends on renal function, timing and treatment.",
+   "tileNotes": [
+    "Renal failure is loss of the kidneys' ability to filter and excrete solutes. Reduced phosphate excretion causes hyperphosphatemia, which in chronic kidney disease contributes to secondary hyperparathyroidism and bone disease.",
+    "Hypoparathyroidism is deficient parathyroid hormone (PTH) secretion, for example after neck surgery. Because PTH normally promotes renal phosphate excretion, its absence allows serum phosphate to rise.",
+    "Tumor lysis syndrome occurs when many tumor cells break down, often after starting chemotherapy for rapidly growing cancers. Released intracellular contents cause hyperphosphatemia along with hyperkalemia and hyperuricemia, and can injure the kidneys.",
+    "Rhabdomyolysis is breakdown of skeletal muscle, for example from crush injury, extreme exertion or certain drugs. Damaged muscle releases phosphate, potassium, creatine kinase and myoglobin, and the resulting kidney injury can further impair phosphate excretion."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "CARD-029": {
+   "tiles": [
+    "Irregularly spaced R waves",
+    "Absent discrete P waves",
+    "Absent jugular a waves",
+    "Pulmonary vein ostial triggers"
+   ],
+   "detail": "In atrial fibrillation, disorganized atrial electrical activity replaces coordinated atrial contraction. This explains the loss of organized atrial signals (P waves on ECG and a waves in the jugular venous pulse) and the irregular ventricular response, while ectopic foci near the pulmonary vein ostia are recognized triggers. The ECG clues assume conducted AF rather than a paced rhythm or complete heart block.",
+   "tileNotes": [
+    "R waves mark ventricular depolarization on the ECG. In atrial fibrillation, chaotic atrial impulses reach the ventricles at random, giving the classic irregularly irregular R-R intervals when AV conduction is intact.",
+    "P waves represent coordinated atrial depolarization. In atrial fibrillation, discrete P waves are absent and the baseline may show fine or coarse fibrillatory waves instead.",
+    "The a wave of the jugular venous pulse is produced by right atrial contraction. Because the atria fibrillate rather than contract effectively, the a wave disappears in atrial fibrillation.",
+    "Muscle sleeves where the pulmonary veins enter the left atrium can generate rapid ectopic impulses that trigger atrial fibrillation. This is why pulmonary vein isolation is the central strategy in catheter ablation for AF."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PLX-BCH-074": {
+   "tiles": [
+    "Fatty acyl-CoA synthetase",
+    "CPT I",
+    "Carnitine-acylcarnitine translocase",
+    "CPT II"
+   ],
+   "detail": "Long-chain fatty acids cannot cross the inner mitochondrial membrane directly. They are first activated to fatty acyl-CoA, transferred onto carnitine by CPT I, carried across the inner membrane by a translocase, and converted back to acyl-CoA in the matrix by CPT II for beta-oxidation. Short- and medium-chain fatty acids use different entry mechanisms that do not require this system.",
+   "tileNotes": [
+    "Fatty acyl-CoA synthetase activates a fatty acid by attaching coenzyme A, using ATP. It acts upstream of the carnitine shuttle, producing the fatty acyl-CoA that CPT I then uses.",
+    "CPT I (carnitine palmitoyltransferase I) sits on the outer mitochondrial membrane and transfers the fatty acyl group from CoA to carnitine. It is the rate-limiting step of fatty acid oxidation and is inhibited by malonyl-CoA, preventing simultaneous synthesis and breakdown.",
+    "Carnitine-acylcarnitine translocase is a transporter in the inner mitochondrial membrane. It moves acylcarnitine into the matrix in exchange for free carnitine moving out.",
+    "CPT II, on the matrix side of the inner membrane, transfers the acyl group back to CoA and frees carnitine for reuse. CPT II deficiency classically causes muscle pain and myoglobinuria with prolonged exercise or fasting."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "GI-014": {
+   "tiles": [
+    "Intrinsic factor deficiency",
+    "Vitamin B12 malabsorption",
+    "Atrophic gastritis",
+    "Increased gastric malignancy risk"
+   ],
+   "detail": "In autoimmune gastritis, the immune system destroys parietal cells of the gastric body and fundus. Loss of these cells removes intrinsic factor, leading to vitamin B12 malabsorption (pernicious anemia), and produces atrophic gastritis of the acid-secreting mucosa. This chronic atrophy increases, but does not guarantee, the risk of gastric adenocarcinoma and type 1 gastric carcinoid tumors.",
+   "tileNotes": [
+    "Intrinsic factor is a glycoprotein secreted by parietal cells that binds vitamin B12 and allows its uptake. Autoantibodies and parietal cell destruction cause its deficiency in pernicious anemia.",
+    "Vitamin B12 is absorbed in the terminal ileum only when bound to intrinsic factor. Without intrinsic factor, B12 malabsorption leads to megaloblastic anemia and can cause neurologic damage such as subacute combined degeneration.",
+    "Atrophic gastritis is chronic inflammation with loss of gastric glands. In the autoimmune form it targets the body and fundus while sparing the antrum, causing reduced acid production and high gastrin levels.",
+    "Chronic atrophic gastritis carries an increased risk of gastric adenocarcinoma, and high gastrin drives enterochromaffin-like cell growth that can lead to type 1 carcinoid tumors. This risk is raised but most patients do not develop cancer."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "DERM-014": {
+   "tiles": [
+    "Necrotic nasal or palatal eschar",
+    "Broad pauciseptate hyphae",
+    "Wide-angle branching",
+    "Amphotericin B"
+   ],
+   "detail": "Rhino-orbital mucormycosis is an aggressive, angioinvasive fungal infection seen especially in diabetic ketoacidosis and immunosuppression. It classically causes necrotic sinonasal or palatal tissue, and tissue shows broad, ribbon-like, pauciseptate hyphae with wide-angle branching. Amphotericin B is the standard initial antifungal, but it does not replace urgent surgical debridement and correction of the underlying condition.",
+   "tileNotes": [
+    "An eschar is a dark, dead crust of tissue. Mucorales fungi invade blood vessels and cause infarction, so a black necrotic eschar on the nasal mucosa or palate is a classic warning sign.",
+    "Mucorales hyphae are broad and ribbon-like with few or no septa (pauciseptate). This contrasts with Aspergillus, whose hyphae are narrow and regularly septate, and the broad ribbon-like shape is the more reliable clue.",
+    "Mucormycosis hyphae are classically taught to branch at wide angles, approaching 90 degrees, unlike the acute-angle branching of Aspergillus. In tissue this angle can be hard to judge, so it supports rather than secures the diagnosis.",
+    "Amphotericin B is a polyene antifungal that binds ergosterol in fungal membranes and forms pores; nephrotoxicity is its classic toxicity. It is the standard initial drug for mucormycosis, given alongside urgent surgical debridement."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "PLX-HEM-017": {
+   "tiles": [
+    "Menorrhagia",
+    "Peptic ulcer bleeding",
+    "Hookworm infection",
+    "Bleeding gastrointestinal malignancy"
+   ],
+   "detail": "Each of these conditions can cause sustained blood loss, and every milliliter of lost blood carries iron with it, so stores are gradually depleted and a microcytic, hypochromic anemia develops. Ulcers and tumors cause iron deficiency only when they bleed. Finding iron deficiency anemia should prompt a search for its source, particularly occult gastrointestinal bleeding in men and postmenopausal women.",
+   "tileNotes": [
+    "Menorrhagia is abnormally heavy or prolonged menstrual bleeding. It is a common cause of iron deficiency anemia in premenopausal women because monthly losses can exceed dietary iron intake.",
+    "Peptic ulcers are erosions in the stomach or duodenum, often due to H. pylori or NSAIDs. When they bleed, slowly or intermittently, the chronic blood loss can deplete iron stores.",
+    "Hookworms (Necator americanus and Ancylostoma duodenale) enter through the skin, often of bare feet, and attach to the small intestinal wall to feed on blood. Hookworm infection is a leading global cause of iron deficiency anemia.",
+    "Gastrointestinal cancers, such as right-sided colon cancer, can bleed slowly and silently. Unexplained iron deficiency anemia in an older adult is a classic reason to evaluate for a bleeding GI malignancy."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "NEU-047": {
+   "tiles": [
+    "Vertical (up) gaze palsy",
+    "Light-near dissociation",
+    "Convergence-retraction nystagmus",
+    "Aqueductal obstruction / hydrocephalus"
+   ],
+   "detail": "Parinaud syndrome results from a lesion of the dorsal midbrain, classically a pineal-region tumor, that disrupts pretectal eye-movement circuits including the posterior commissure and riMLF. Its eye signs include upgaze palsy, light-near dissociation and convergence-retraction nystagmus, with eyelid retraction (Collier sign) as a related finding. The same mass can compress the cerebral aqueduct and cause hydrocephalus, and hydrocephalus itself can also produce the syndrome.",
+   "tileNotes": [
+    "Vertical gaze palsy is an inability to move the eyes vertically, most characteristically upward. Damage to the vertical gaze centers of the dorsal midbrain makes upgaze palsy the hallmark sign of Parinaud syndrome.",
+    "Light-near dissociation means the pupils react poorly to light but constrict normally during near focusing (accommodation). It reflects damage to the pretectal light reflex pathway in the dorsal midbrain.",
+    "Convergence-retraction nystagmus consists of jerky convergent eye movements with backward pulling of the globes, typically on attempted upgaze. It is a characteristic sign of dorsal midbrain dysfunction.",
+    "The cerebral aqueduct connects the third and fourth ventricles and runs just beneath the dorsal midbrain. A pineal or midbrain mass can block it and cause obstructive hydrocephalus, which is a consequence of the lesion rather than an eye sign."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "ENDO-009": {
+   "tiles": [
+    "Pituitary adenoma resection",
+    "Octreotide",
+    "Pegvisomant",
+    "Cabergoline"
+   ],
+   "detail": "Acromegaly is caused by excess growth hormone, usually from a pituitary adenoma, after the growth plates have closed. Treatment aims to remove the tumor or control GH and IGF-1: transsphenoidal resection is first-line, while somatostatin analogues, dopamine agonists and GH receptor antagonists are medical options when surgery is not curative or not possible.",
+   "tileNotes": [
+    "Pituitary adenoma resection, usually via a transsphenoidal approach, removes the GH-secreting tumor. It is the first-line treatment for acromegaly and can be curative.",
+    "Octreotide is a somatostatin analogue that inhibits GH secretion from the pituitary adenoma. It is a mainstay of medical therapy, and gallstones are a well-known adverse effect.",
+    "Pegvisomant is a GH receptor antagonist that blocks GH action and lowers IGF-1 without reducing GH secretion. Treatment response is therefore monitored with IGF-1 rather than GH levels.",
+    "Cabergoline is a dopamine (D2) agonist that can modestly suppress GH secretion. It is less potent than somatostatin analogues and is used as an adjunctive option, especially in milder disease."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  },
+  "MICRO-041": {
+   "tiles": [
+    "Measles virus",
+    "Mumps virus",
+    "Parainfluenza virus",
+    "Respiratory syncytial virus"
+   ],
+   "detail": "Measles, mumps, parainfluenza and respiratory syncytial virus all carry a fusion (F) protein that merges the viral envelope with the host cell membrane. The F protein can also fuse neighboring infected cells into multinucleated giant cells (syncytia). Measles, mumps and parainfluenza belong to Paramyxoviridae, whereas RSV is now classified in Pneumoviridae.",
+   "tileNotes": [
+    "Measles virus causes fever, cough, coryza, conjunctivitis, Koplik spots and a spreading maculopapular rash. F-protein-mediated fusion produces the multinucleated giant cells (Warthin-Finkeldey cells) seen in infected tissue.",
+    "Mumps virus classically causes parotitis and can cause orchitis and aseptic meningitis. Its F protein mediates envelope fusion with host cells.",
+    "Parainfluenza virus is the classic cause of croup (laryngotracheobronchitis) in young children, with a barking cough. Like the others, it uses an F protein to fuse with host cell membranes.",
+    "Respiratory syncytial virus (RSV) is a leading cause of bronchiolitis in infants and is named for the syncytia it forms in cell culture. Its F protein is the target of the preventive monoclonal antibody palivizumab."
+   ],
+   "status": "DRAFT_AI_GENERATED",
+   "reviewer": null,
+   "provenance": {
+    "kind": "draft",
+    "draftedBy": "Claude (AI draft, 2026-10-11)",
+    "draftedAt": "2026-10-12T01:10:01.491Z"
+   },
+   "updatedAt": "2026-10-12T01:10:01.491Z",
+   "version": 1
+  }
+ }
+}
