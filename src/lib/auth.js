@@ -6,7 +6,8 @@
 // on localStorage, exactly as before. Once Supabase is configured, these back
 // the account/profile/cloud-progress features. Nothing here forces a login.
 
-import { getSupabase, isSupabaseConfigured } from './supabaseClient.js'
+import { getSupabase, getGuestSupabase, isSupabaseConfigured } from './supabaseClient.js'
+import { TERMS_VERSION, PRIVACY_VERSION } from '../legal/config.js'
 
 export { isSupabaseConfigured }
 
@@ -28,13 +29,17 @@ export async function signInWithPassword(email, password) {
   return error ? { ok: false, error: error.message } : { ok: true, user: data.user }
 }
 
-export async function signUpWithPassword(email, password, displayName) {
+// Sign-up sends the Terms and Privacy Policy versions the player agreed to
+// and acknowledged next to the button; the database records them with the
+// server's time when the account is created (migration 0012). No name is
+// asked for or derived.
+export async function signUpWithPassword(email, password) {
   const sb = await getSupabase()
   if (!sb) return { ok: false, reason: 'not-configured' }
   const { data, error } = await sb.auth.signUp({
     email,
     password,
-    options: { data: { display_name: displayName || '' } },
+    options: { data: { terms_version: TERMS_VERSION, privacy_version: PRIVACY_VERSION } },
   })
   return error ? { ok: false, error: error.message } : { ok: true, user: data.user }
 }
@@ -146,4 +151,70 @@ export async function deleteMyAccount() {
     /* the session is already invalid once the user is gone */
   }
   return { ok: true }
+}
+
+// Policy acceptance ---------------------------------------------------------
+// The latest Terms and Privacy versions this account accepted, or null.
+export async function getMyAcceptance() {
+  const sb = await getSupabase()
+  if (!sb) return null
+  try {
+    const { data: u } = await sb.auth.getUser()
+    if (!u?.user || u.user.is_anonymous) return null
+    const { data, error } = await sb.rpc('my_terms_acceptance')
+    return error ? null : data || null
+  } catch {
+    return null
+  }
+}
+// Records that the signed-in account accepted the current versions.
+export async function recordAcceptance() {
+  const sb = await getSupabase()
+  if (!sb) return { ok: false, reason: 'not-configured' }
+  try {
+    const { data, error } = await sb.rpc('record_terms_acceptance', { p_terms_version: TERMS_VERSION, p_privacy_version: PRIVACY_VERSION })
+    return error ? { ok: false, error: error.message } : data || { ok: false }
+  } catch (e) {
+    return { ok: false, error: String(e?.message || e) }
+  }
+}
+
+// Guest race ID --------------------------------------------------------------
+// A signed-out player who raced has an anonymous race ID (supabaseClient.js
+// getGuestSupabase). True when this browser holds one.
+export function hasGuestRaceId() {
+  try {
+    return !!localStorage.getItem('plexus.race.guest.v1')
+  } catch {
+    return false
+  }
+}
+// Deletes the guest race ID and its race rows on the server (the same
+// delete_my_account function, run as the guest), then forgets it here.
+// { ok } | { ok: false, reason }
+export async function deleteGuestRaceId() {
+  if (!hasGuestRaceId()) return { ok: true, none: true }
+  const sb = await getGuestSupabase()
+  if (!sb) return { ok: false, reason: 'not-configured' }
+  try {
+    const { data } = await sb.auth.getSession()
+    if (data?.session) {
+      const { error } = await sb.rpc('delete_my_account')
+      if (error && !/not signed in|JWT|jwt|user/i.test(error.message || '')) return { ok: false, reason: 'error', error: error.message }
+    }
+    try {
+      await sb.auth.signOut()
+    } catch {
+      /* already gone */
+    }
+    try {
+      localStorage.removeItem('plexus.race.guest.v1')
+      sessionStorage.removeItem('plexus.race.guestChosen.v1')
+    } catch {
+      /* ignore */
+    }
+    return { ok: true }
+  } catch (e) {
+    return { ok: false, reason: 'network', error: String(e?.message || e) }
+  }
 }

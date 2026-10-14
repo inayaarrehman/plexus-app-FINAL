@@ -2,14 +2,17 @@ import React from 'react'
 import { COPYRIGHT } from '../legal/config.js'
 
 // Quiet footer: Help & Support · Terms · Privacy · Disclaimer and the copyright line.
-export default function LegalFooter({ onNavigate, current = null, className = '' }) {
+// `newTab` opens the pages in a new tab (used inside forms and dialogs, so
+// nothing typed there is lost).
+export default function LegalFooter({ onNavigate, current = null, className = '', newTab = false }) {
   const link = (page, label) => (
     <a
-      href={`#${page}`}
+      href={newTab ? `/#${page}` : `#${page}`}
+      {...(newTab ? { target: '_blank', rel: 'noopener' } : {})}
       className={`legal-link ${current === page ? 'is-current' : ''}`}
       aria-current={current === page ? 'page' : undefined}
       onClick={(e) => {
-        if (!onNavigate) return
+        if (!onNavigate || newTab) return
         e.preventDefault()
         onNavigate(page)
       }}

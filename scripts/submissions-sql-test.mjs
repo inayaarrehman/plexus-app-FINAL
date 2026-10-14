@@ -1,4 +1,4 @@
-// Connection suggestions (migration 0008) against a real Postgres.
+// Connection suggestions (migrations 0008 and 0012) against a real Postgres.
 //   PGTEST="psql -h /tmp/pgtest -p 5544 -U postgres -d t" node scripts/submissions-sql-test.mjs
 // Needs the Supabase-like stubs from scripts/race-sql-setup.sql.
 import { execFileSync } from 'node:child_process'
@@ -24,7 +24,7 @@ const ok = (c, m) => {
 const q = (s) => (s === null ? 'null' : `'${String(s).replace(/'/g, "''")}'`)
 const arr = (a) => `array[${a.map(q).join(',')}]::text[]`
 const submit = (o, role = 'anon') => {
-  const out = as(role, `select public.submit_connection(${q(o.title)}, ${o.tiles ? arr(o.tiles) : 'null'}, ${q(o.explanation)}, ${q(o.system)}, ${q(o.source ?? null)}, ${q(o.client ?? 'client-1')}, null)`)
+  const out = as(role, `select public.submit_connection(${q(o.title)}, ${o.tiles ? arr(o.tiles) : 'null'}, ${q(o.explanation)}, ${q(o.system)}, ${q(o.source ?? null)}, ${q(o.client ?? 'client-1')}, null, ${q(o.terms === undefined ? 'sub-test' : o.terms)})`)
   try {
     return JSON.parse(out)
   } catch {
@@ -53,6 +53,8 @@ console.log('[3] Rate limit: 5 per browser per hour')
 for (let i = 0; i < 4; i++) submit({ ...good, tiles: [`x${i}a`, `x${i}b`, `x${i}c`, `x${i}d`] })
 ok(submit({ ...good, tiles: ['y1', 'y2', 'y3', 'y4'] }).reason === 'rate', 'the sixth from one browser in an hour is refused')
 ok(submit({ ...good, tiles: ['z1', 'z2', 'z3', 'z4'], client: 'client-2' }).ok === true, 'another browser can still submit')
+console.log('[3b] The submission terms must be acknowledged (0012)')
+ok(submit({ ...good, tiles: ['t1', 't2', 't3', 't4'], terms: null, client: 'client-3' }).reason === 'terms', 'without the acknowledged terms version it is refused')
 console.log('[4] The public API cannot read or write the queue')
 ok(/ERROR/.test(as('anon', `select count(*) from public.connection_submissions`)) || as('anon', `select count(*) from public.connection_submissions`) === '0', 'anon cannot read suggestions')
 ok(/ERROR/.test(as('authenticated', `insert into public.connection_submissions (title, tiles, explanation, system, fingerprint) values ('t', array['a','b','c','d'], 'xxxxxxxxxxxxxxxxxxxxxxxx', 'Cardiology', 'f')`)), 'no direct inserts')

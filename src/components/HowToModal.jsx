@@ -54,6 +54,13 @@ const MORE = [
     ],
   },
   {
+    id: 'study',
+    title: 'Study, not patient care',
+    body: [
+      'Plexus is a study game. Puzzles simplify on purpose and can leave out exceptions, so never use them for patient care. The Medical Disclaimer, Terms and Privacy Policy are linked at the bottom of Home.',
+    ],
+  },
+  {
     id: 'xp',
     title: 'XP and levels',
     body: [

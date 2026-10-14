@@ -1241,7 +1241,7 @@ console.log('\n[40] Legal: footer, disclaimers, privacy matches the code, accoun
   const L = await import('../src/legal/config.js')
   assert(L.DISCLAIMER_TEXT === 'Plexus is an educational game and is not a substitute for professional medical advice, diagnosis, treatment, or clinical judgment. Do not use Plexus to make patient-care decisions.', 'educational disclaimer word for word')
   assert(L.ACCURACY_TEXT === 'Medical information in Plexus may contain errors or become outdated. Users should verify information with authoritative clinical and educational sources.', 'accuracy statement word for word')
-  assert(L.AGE_TEXT.includes('not intended for children under 13'), 'under-13 statement')
+  assert(L.AGE_TEXT.includes('13 and older'), 'age statement (13 and older)')
   assert(L.COPYRIGHT === '© 2026 Plexus. All rights reserved.', 'copyright line')
   const legal = fs.readFileSync('src/components/Legal.jsx', 'utf8')
   const all = legal + fs.readFileSync('src/components/LegalFooter.jsx', 'utf8') + fs.readFileSync('src/legal/config.js', 'utf8') + fs.readFileSync('src/components/AuthModal.jsx', 'utf8')

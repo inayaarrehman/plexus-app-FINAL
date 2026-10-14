@@ -1,12 +1,13 @@
 import React, { useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
 import Modal from './Modal.jsx'
 import { SUBMISSION_LIMITS, SUBMISSION_SYSTEMS, submitConnection, validateSubmission, submissionsAvailable } from '../lib/submissionRepo.js'
+import PolicyLink from './PolicyLink.jsx'
 
 // "Submit a Connection": a player suggests a category of four concepts. It
 // goes to a review queue (migration 0008), never straight into the library.
 // What the player typed survives closing the dialog until it is sent.
 const DRAFT_KEY = 'plexus.connectionDraft.v1'
-const EMPTY = { title: '', tiles: ['', '', '', ''], explanation: '', system: '', source: '' }
+const EMPTY = { title: '', tiles: ['', '', '', ''], explanation: '', system: '', source: '', acknowledged: false }
 function readDraft() {
   try {
     const d = JSON.parse(sessionStorage.getItem(DRAFT_KEY) || 'null')
@@ -50,7 +51,7 @@ export default function SubmitConnectionModal({ defaultSystem = '', onClose, sub
 
   const send = async (e) => {
     e.preventDefault()
-    const problem = validateSubmission(form)
+    const problem = validateSubmission(form) || (!form.acknowledged ? { field: 'terms', message: 'Check the box to confirm the submission terms.' } : null)
     if (problem) {
       setStatus('error')
       setError(problem)
@@ -128,7 +129,10 @@ export default function SubmitConnectionModal({ defaultSystem = '', onClose, sub
           <label className="report-label" htmlFor={`${ids}-explanation`}>
             Why do these four belong together?
           </label>
-          <textarea id={`${ids}-explanation`} className="report-text" rows={4} value={form.explanation} onChange={(e) => setForm((f) => ({ ...f, explanation: e.target.value.slice(0, SUBMISSION_LIMITS.explanation) }))} maxLength={SUBMISSION_LIMITS.explanation} placeholder="The link that ties them, in a sentence or two." disabled={sending} />
+          <textarea id={`${ids}-explanation`} className="report-text" rows={4} value={form.explanation} onChange={(e) => setForm((f) => ({ ...f, explanation: e.target.value.slice(0, SUBMISSION_LIMITS.explanation) }))} maxLength={SUBMISSION_LIMITS.explanation} placeholder="The link that ties them, in your own words." disabled={sending} aria-describedby={`${ids}-own-words`} />
+          <p className="report-privacy-note" id={`${ids}-own-words`}>
+            Use your own words. Don’t paste questions or text from exams, question banks, textbooks or courses, and never include patient details.
+          </p>
 
           </div>
 
@@ -156,6 +160,18 @@ export default function SubmitConnectionModal({ defaultSystem = '', onClose, sub
 
           {/* Left empty by people; filled by bots. */}
           <input className="report-hp" type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+
+          <div className="sc-terms">
+            <p className="sc-terms-text">
+              You keep ownership of your suggestion. By sending it, you give Plexus permission to review, edit and publish it as part of Plexus. Suggestions are not credited or paid, and an accepted one can stay in Plexus if you later delete your account.
+            </p>
+            <label className="sc-terms-check" htmlFor={`${ids}-terms`}>
+              <input id={`${ids}-terms`} type="checkbox" checked={!!form.acknowledged} onChange={(e) => setForm((f) => ({ ...f, acknowledged: e.target.checked }))} disabled={sending} aria-invalid={!!err('terms')} />
+              <span>
+                I wrote this or have permission to share it, and I agree to the <PolicyLink page="terms">submission terms</PolicyLink>.
+              </span>
+            </label>
+          </div>
 
           {status === 'error' && error?.message && (
             <p className="report-error" role="alert" id={`${ids}-err`}>

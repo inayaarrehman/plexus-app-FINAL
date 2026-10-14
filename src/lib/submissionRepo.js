@@ -2,7 +2,9 @@
 // Player-suggested connections ("Submit a Connection" on Systems).
 // ---------------------------------------------------------------------
 // Sent to Supabase through the `submit_connection` database function
-// (migration 0008). The function validates every field, refuses duplicates
+// (migrations 0008 and 0012). The contributor must confirm the submission
+// terms first; the confirmed version is stored with the suggestion. The
+// function validates every field, refuses duplicates
 // (the same four concepts in any order), rate-limits, and writes to a review
 // queue nobody can read through the public API. Nothing submitted here is
 // ever served as a puzzle: a suggestion reaches the library only after a
@@ -11,6 +13,7 @@
 import { getSupabase, isSupabaseConfigured } from './supabaseClient.js'
 import { APP_VERSION } from './reportRepo.js'
 import { LIBRARY_SUBJECTS, subjectLabel } from '../utils/newLibrary.js'
+import { SUBMISSION_TERMS_VERSION } from '../legal/config.js'
 
 export const SUBMISSION_LIMITS = { title: 120, minTitle: 3, tile: 80, explanation: 1500, minExplanation: 20, source: 500 }
 export const SUBMISSION_SYSTEMS = [...LIBRARY_SUBJECTS.map((id) => ({ id, label: subjectLabel(id) })), { id: 'Other', label: 'Other or several systems' }]
@@ -76,6 +79,7 @@ const REASONS = {
   explanation: 'Add a sentence or two on why these four belong together.',
   system: 'Choose an organ system.',
   source: 'The source is too long.',
+  terms: 'Check the box to confirm the submission terms, then send again.',
 }
 
 // Resolves { ok: true } only when the database confirmed the insert.
@@ -83,6 +87,7 @@ export async function submitConnection(payload) {
   const problem = validateSubmission(payload)
   if (problem) return { ok: false, reason: 'invalid', ...problem }
   if (payload.honeypot) return { ok: false, reason: 'invalid', message: 'Could not send this suggestion.' }
+  if (!payload.acknowledged) return { ok: false, reason: 'terms', field: 'terms', message: REASONS.terms }
   const tiles = payload.tiles.map(clean)
   const print = fingerprintOf(tiles)
   if (sentPrints().includes(print)) return { ok: false, reason: 'duplicate', message: 'You’ve already suggested these four concepts.' }
@@ -102,6 +107,8 @@ export async function submitConnection(payload) {
       p_source: clean(payload.source) || null,
       p_client_id: clientId(),
       p_app_version: APP_VERSION,
+      // The submission terms the contributor confirmed (Terms, Submissions).
+      p_terms_version: SUBMISSION_TERMS_VERSION,
     })
     if (error || !data) return { ok: false, reason: 'server', message: 'Your suggestion didn’t go through. Everything you typed is still here, so try again.' }
     if (data.ok !== true) {

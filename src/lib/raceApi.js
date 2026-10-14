@@ -40,13 +40,39 @@ async function guestToken({ create = false } = {}) {
   if (!sb) return null
   try {
     const { data } = await sb.auth.getSession()
-    if (data?.session?.access_token) return data.session.access_token
+    if (data?.session?.access_token) {
+      if (!create) return data.session.access_token
+      // Starting to race: make sure the saved guest ID still exists on the
+      // server (it may have been deleted); otherwise start a new one.
+      const { data: u, error } = await sb.auth.getUser()
+      if (!error && u?.user) return data.session.access_token
+      await sb.auth.signOut({ scope: 'local' }).catch(() => {})
+    }
     if (!create || typeof sb.auth.signInAnonymously !== 'function') return null
     const { data: d2, error } = await sb.auth.signInAnonymously()
     if (error) return null
     return d2?.session?.access_token || null
   } catch {
     return null
+  }
+}
+async function forgetGuest() {
+  guestChosen = false
+  try {
+    sessionStorage.removeItem('plexus.race.guestChosen.v1')
+  } catch {
+    /* ignore */
+  }
+  try {
+    const sb = await getGuestSupabase()
+    await sb?.auth.signOut({ scope: 'local' })
+  } catch {
+    /* ignore */
+  }
+  try {
+    localStorage.removeItem('plexus.race.guest.v1')
+  } catch {
+    /* ignore */
   }
 }
 async function token() {
@@ -87,6 +113,9 @@ export async function raceCall(action, payload = {}) {
       body: JSON.stringify({ action, ...payload }),
     })
     const body = await res.json().catch(() => ({}))
+    // A guest race ID the server no longer knows (deleted, or removed by the
+    // 30-day cleanup): forget it, so the next "Race as a guest" starts fresh.
+    if (res.status === 401 && who?.guest) await forgetGuest()
     if (!res.ok || body.ok === false) return { ok: false, error: body.error || `HTTP ${res.status}`, reason: body.reason || 'server' }
     return { ok: true, ...body }
   } catch (e) {

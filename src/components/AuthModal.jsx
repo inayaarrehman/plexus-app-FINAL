@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Modal from './Modal.jsx'
-import { signInWithPassword, signUpWithPassword, signOut, getCurrentUser, deleteMyAccount, requestPasswordReset, updatePassword } from '../lib/auth.js'
+import { signInWithPassword, signUpWithPassword, signOut, getCurrentUser, deleteMyAccount, requestPasswordReset, updatePassword, hasGuestRaceId, deleteGuestRaceId } from '../lib/auth.js'
 import { clearAuthHash } from '../lib/authRedirect.js'
 import { clearDeviceData } from '../legal/deviceData.js'
 import { CONTACT_EMAIL } from '../legal/config.js'
 import LegalFooter from './LegalFooter.jsx'
+import PolicyLink from './PolicyLink.jsx'
 
 // ---------------------------------------------------------------------
 // AuthModal: optional account sign-in so a player's streak and history
@@ -14,6 +15,8 @@ import LegalFooter from './LegalFooter.jsx'
 // ---------------------------------------------------------------------
 // initialMode: 'in' | 'up' | 'forgot' | 'reset' (arrived from a reset link) |
 // 'expired' (the link was expired or already used).
+// Policy links open in a new tab so nothing typed here is lost.
+// eslint-disable-next-line no-unused-vars
 export default function AuthModal({ onClose, onAuthChanged, onOpenLegal, initialMode = 'in' }) {
   const [user, setUser] = useState(null)
   const [mode, setMode] = useState(initialMode)
@@ -163,7 +166,7 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal, initial
       if (r.ok) {
         setUser(null)
         setConfirm(null)
-        setNotice('Your account and cloud progress have been deleted. Progress saved in this browser is still here.')
+        setNotice('Your account has been deleted from Plexus, as described in the Privacy Policy. Progress saved in this browser is still here; use Clear data on this device to remove it.')
         onAuthChanged?.()
         return
       }
@@ -177,10 +180,37 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal, initial
     }
   }
 
+  const [guestId, setGuestId] = useState(() => hasGuestRaceId())
+  const doDeleteGuest = async () => {
+    setBusy(true)
+    setDataMsg('')
+    try {
+      const r = await deleteGuestRaceId()
+      if (r.ok) {
+        setGuestId(false)
+        setConfirm(null)
+        setNotice('Your guest race data has been deleted.')
+        return
+      }
+      setDataMsg(`Could not delete your guest race data right now. Try again, or email ${CONTACT_EMAIL}.`)
+    } finally {
+      setBusy(false)
+    }
+  }
+
   const doClearDevice = async () => {
     setBusy(true)
     try {
       if (user) await signOut()
+      // A guest race ID can only be deleted from the browser that holds it,
+      // so delete it on the server before forgetting it here.
+      if (hasGuestRaceId()) {
+        const g = await deleteGuestRaceId()
+        if (!g.ok) {
+          setDataMsg('Could not reach Plexus to delete your guest race data. Check your connection and try again.')
+          return
+        }
+      }
       clearDeviceData()
       window.location.reload()
     } finally {
@@ -188,19 +218,12 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal, initial
     }
   }
 
-  const openLegal = onOpenLegal
-    ? (page) => {
-        onClose?.()
-        onOpenLegal(page)
-      }
-    : null
-
   const yourData = (
     <section className="auth-data" aria-labelledby="auth-data-title">
       <h3 className="auth-data-title" id="auth-data-title">Your data</h3>
       {confirm === 'delete' ? (
         <div className="auth-confirm" role="alertdialog" aria-label="Delete account">
-          <p className="auth-sub">This permanently deletes your account, profile and cloud progress. It cannot be undone. Progress saved in this browser stays.</p>
+          <p className="auth-sub">This permanently deletes your account, profile, cloud progress, race items and your support messages, removes your email from reports you sent, and deletes suggestions not yet accepted. It cannot be undone. Progress saved in this browser stays until you clear it.</p>
           <div className="auth-confirm-row">
             <button className="auth-btn-danger" onClick={doDelete} disabled={busy}>
               {busy ? 'Deleting…' : 'Delete permanently'}
@@ -210,10 +233,22 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal, initial
             </button>
           </div>
         </div>
+      ) : confirm === 'guest' ? (
+        <div className="auth-confirm" role="alertdialog" aria-label="Delete guest race data">
+          <p className="auth-sub">This deletes the guest race ID this browser used and its races on our servers. Players you raced keep their own results. Your game progress in this browser stays.</p>
+          <div className="auth-confirm-row">
+            <button className="auth-btn-danger" onClick={doDeleteGuest} disabled={busy}>
+              {busy ? 'Deleting…' : 'Delete guest race data'}
+            </button>
+            <button className="auth-btn-secondary" onClick={() => setConfirm(null)} disabled={busy}>
+              Cancel
+            </button>
+          </div>
+        </div>
       ) : confirm === 'clear' ? (
         <div className="auth-confirm" role="alertdialog" aria-label="Clear data on this device">
           <p className="auth-sub">
-            This removes your progress, history, streaks and XP from this browser{user ? ' and signs you out. Your cloud copy is kept' : ''}. It cannot be undone.
+            This removes your progress, history, streaks and XP from this browser{user ? ' and signs you out. Your account and its cloud copy are kept' : ''}.{hasGuestRaceId() ? ' Your guest race data on our servers is deleted too.' : ''} It cannot be undone.
           </p>
           <div className="auth-confirm-row">
             <button className="auth-btn-danger" onClick={doClearDevice} disabled={busy}>
@@ -231,11 +266,19 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal, initial
               Delete account
             </button>
           )}
+          {!user && guestId && (
+            <button className="auth-link-btn" onClick={() => setConfirm('guest')} disabled={busy}>
+              Delete guest race data
+            </button>
+          )}
           <button className="auth-link-btn" onClick={() => setConfirm('clear')} disabled={busy}>
             Clear data on this device
           </button>
         </div>
       )}
+      <p className="auth-data-note">
+        Clearing this device doesn’t delete anything stored with your account. <PolicyLink page="privacy">How long data is kept</PolicyLink>
+      </p>
       {dataMsg && <p className="auth-error">{dataMsg}</p>}
     </section>
   )
@@ -258,7 +301,7 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal, initial
             {busy ? 'Signing out…' : 'Sign out'}
           </button>
           {yourData}
-          <LegalFooter onNavigate={openLegal} className="auth-legal" />
+          <LegalFooter newTab className="auth-legal" />
         </div>
       ) : mode === 'forgot' ? (
         <div className="auth-modal">
@@ -340,7 +383,12 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal, initial
           {msg && <p className="auth-error" role="alert">{msg}</p>}
           {notice && <p className="auth-notice" role="status">{notice}</p>}
 
-          <button className="auth-btn-primary" onClick={mode === 'in' ? doSignIn : doSignUp} disabled={!canSubmit}>
+          {mode === 'up' && (
+            <p className="auth-terms-note" id="auth-terms-note">
+              By creating an account, you agree to the <PolicyLink page="terms">Terms of Use</PolicyLink> and acknowledge the <PolicyLink page="privacy">Privacy Policy</PolicyLink>. Plexus is for people 13 and older.
+            </p>
+          )}
+          <button className="auth-btn-primary" onClick={mode === 'in' ? doSignIn : doSignUp} disabled={!canSubmit} aria-describedby={mode === 'up' ? 'auth-terms-note' : undefined}>
             {busy ? 'Working…' : mode === 'in' ? 'Sign in' : 'Create account'}
           </button>
           {mode === 'in' && (
@@ -360,17 +408,9 @@ export default function AuthModal({ onClose, onAuthChanged, onOpenLegal, initial
             {mode === 'in' ? 'New here? Create an account' : 'Already have an account? Sign in'}
           </button>
 
-          {mode === 'up' && (
-            <p className="auth-terms-note">
-              By creating an account you agree to the{' '}
-              <a href="#terms" onClick={(e) => { if (openLegal) { e.preventDefault(); openLegal('terms') } }}>Terms</a> and{' '}
-              <a href="#privacy" onClick={(e) => { if (openLegal) { e.preventDefault(); openLegal('privacy') } }}>Privacy</a> page and confirm you are 13 or older.
-            </p>
-          )}
-
-          <p className="auth-guest-note">You can keep playing as a guest. Your progress stays in this browser until you sign in.</p>
+          <p className="auth-guest-note">You can keep playing as a guest. Your game progress stays in this browser until you sign in.</p>
           {yourData}
-          <LegalFooter onNavigate={openLegal} className="auth-legal" />
+          <LegalFooter newTab className="auth-legal" />
         </div>
       )}
     </Modal>

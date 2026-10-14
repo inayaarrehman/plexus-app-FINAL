@@ -1,5 +1,6 @@
 import React, { useEffect, useId, useState } from 'react'
 import { REPORT_REASONS, SUPPORT_TOPICS, LIMITS, submitReport, validateReport } from '../lib/reportRepo.js'
+import PolicyLink from './PolicyLink.jsx'
 
 // One form for "Report this connection" (kind 'connection') and the Help &
 // Support message (kind 'support'). The connection's details are attached
@@ -118,10 +119,13 @@ export default function ReportForm({ kind = 'connection', context = null, onDone
         maxLength={LIMITS.description}
         placeholder={kind === 'support' ? 'How can we help?' : 'For example, which tile does not fit and why.'}
         disabled={sending}
-        aria-describedby={`${ids}-count`}
+        aria-describedby={`${ids}-count ${ids}-note`}
       />
       <p className="report-count" id={`${ids}-count`}>
         {left < 200 ? `${left} characters left` : ' '}
+      </p>
+      <p className="report-privacy-note" id={`${ids}-note`}>
+        Please don’t include patient details, other people’s personal information, confidential records, or questions copied from exams or question banks.
       </p>
 
       <label className="report-label" htmlFor={`${ids}-email`}>
@@ -137,6 +141,9 @@ export default function ReportForm({ kind = 'connection', context = null, onDone
         onChange={(e) => setEmail(e.target.value.slice(0, LIMITS.email))}
         disabled={sending}
       />
+      <p className="report-privacy-note">
+        Messages are kept as described in the <PolicyLink page="privacy">Privacy Policy</PolicyLink>, and what you send is covered by the <PolicyLink page="terms">Terms</PolicyLink>.
+      </p>
 
       {/* Left empty by people; filled by bots. */}
       <input className="report-hp" type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />

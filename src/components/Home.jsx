@@ -17,6 +17,7 @@ import { LevelLine } from './RecordParts.jsx'
 import PlexusBadge from './PlexusBadge.jsx'
 import { lastMilestoneLevel } from '../progression/config.js'
 import LegalFooter from './LegalFooter.jsx'
+import PolicyNotice from './PolicyNotice.jsx'
 import TapBloom from './TapBloom.jsx'
 
 // Each system takes one accent from the four-colour Plexus palette, cycled by
@@ -365,6 +366,8 @@ export default function Home({
         </div>
       </nav>
 
+      <PolicyNotice onOpenLegal={onOpenLegal} />
+
       {/* TODAY'S PLEXUS: the Daily as its own constellation, showing the
           player's real progress on today's board. */}
       <section className="home-hero">
@@ -534,6 +537,19 @@ export default function Home({
         </section>
       )}
 
+      <p className="home-edu-note">
+        For study only, not for patient care.{' '}
+        <a
+          href="#disclaimer"
+          onClick={(e) => {
+            if (!onOpenLegal) return
+            e.preventDefault()
+            onOpenLegal('disclaimer')
+          }}
+        >
+          Medical Disclaimer
+        </a>
+      </p>
       <LegalFooter onNavigate={onOpenLegal} className="home-legal" />
       {/* A small node bloom on taps on empty space and on the logo. Decorative. */}
       <TapBloom />

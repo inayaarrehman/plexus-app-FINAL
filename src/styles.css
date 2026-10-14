@@ -7902,3 +7902,26 @@ body.env-systems .mini-progress-track { background: color-mix(in srgb, var(--roo
 .race-earned-reveal { display: flex; align-items: center; justify-content: center; gap: 10px; }
 .week-chosen { display: flex; align-items: center; gap: 10px; margin: 10px 0 0; font-size: var(--type-secondary); }
 .tool-card-art .tool-reveal { width: 76px; height: 59px; }
+
+/* ---- Legal and privacy notices (October 2026 privacy pass) ---- */
+.legal-summary { margin: 4px 0 10px; padding: 12px 14px 4px 30px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--text) 16%, transparent); }
+.legal-body h3 { font-family: var(--font-display); font-size: 1rem; margin: 16px 0 4px; }
+.legal-version { color: var(--text-dim); font-size: var(--type-caption); }
+.policy-link { text-underline-offset: 3px; }
+.policy-notice { display: flex; align-items: center; gap: 12px; margin: 8px 0 14px; padding: 12px 14px; border-radius: 14px; border: 1px solid color-mix(in srgb, var(--text) 22%, transparent); background: color-mix(in srgb, var(--text) 7%, transparent); font-size: var(--type-caption); line-height: 1.5; }
+.policy-notice-text { margin: 0; flex: 1; min-width: 0; }
+.policy-notice-text a { color: var(--text); font-weight: 700; text-underline-offset: 3px; }
+.policy-notice-btn { flex: none; min-height: 44px; padding: 0 16px; border-radius: 22px; border: 1px solid color-mix(in srgb, var(--text) 40%, transparent); background: none; color: var(--text); font: 700 var(--type-caption) var(--font-ui); cursor: pointer; }
+@media (max-width: 420px) { .policy-notice { flex-direction: column; align-items: stretch; } .policy-notice-btn { align-self: flex-end; } }
+.home-edu-note { margin: 18px 0 0; text-align: center; font-size: var(--type-caption); color: var(--text-dim); }
+.home-edu-note a { color: inherit; font-weight: 700; text-underline-offset: 3px; }
+.report-privacy-note { margin: 2px 0 10px; font-size: var(--type-caption); color: var(--text-dim); line-height: 1.45; }
+.report-privacy-note a { color: inherit; font-weight: 700; }
+.sc-terms { margin: 4px 0 8px; padding: 12px 14px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--text) 16%, transparent); }
+.sc-terms-text { margin: 0 0 8px; font-size: var(--type-caption); color: var(--text-dim); line-height: 1.45; }
+.sc-terms-check { display: flex; align-items: flex-start; gap: 10px; font-size: var(--type-caption); font-weight: 600; line-height: 1.45; cursor: pointer; }
+.sc-terms-check input { flex: none; width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--node-peacock, #087f78); }
+.sc-terms-check a { color: inherit; font-weight: 700; }
+.auth-data-note { margin: 8px 0 0; font-size: var(--type-caption); color: var(--text-dim); }
+.auth-data-note a { color: inherit; font-weight: 700; }
+.auth-terms-note a { font-weight: 700; }

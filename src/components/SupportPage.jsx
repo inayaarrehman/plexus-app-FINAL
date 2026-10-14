@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReportForm from './ReportForm.jsx'
 import HowToModal from './HowToModal.jsx'
 import LegalFooter from './LegalFooter.jsx'
-import { SUPPORT_EMAIL } from '../legal/config.js'
+import { SUPPORT_EMAIL, CONTACT_EMAIL } from '../legal/config.js'
 
 // Help & Support: how to play, how to report a connection, and a message form
 // (saved to Supabase like reports). Shows a support email only when one is
@@ -43,9 +43,16 @@ export default function SupportPage({ onBack, onNavigate }) {
         ) : (
           <p>Send us a message here. Add your email if you’d like a reply.</p>
         )}
+        <p className="report-privacy-note">Please don’t include patient details or other people’s personal information.</p>
         <div className="support-form">
           <ReportForm key={formKey} kind="support" onDone={() => setFormKey((k) => k + 1)} />
         </div>
+
+        <h2>Your data</h2>
+        <p>
+          You can delete your account, a guest race ID or this device’s data from Account. To ask for a copy of your information, a correction, or deletion of something you sent, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. The{' '}
+          <a href="#privacy" onClick={(e) => { if (onNavigate) { e.preventDefault(); onNavigate('privacy') } }}>Privacy Policy</a> explains what is kept and for how long.
+        </p>
       </article>
       <LegalFooter onNavigate={onNavigate} current="support" />
       {howTo && <HowToModal onClose={() => setHowTo(false)} />}

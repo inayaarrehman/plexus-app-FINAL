@@ -556,8 +556,8 @@ const clientConn = (r) => {
     systems: tags,
     connectionType: c.connectionType || '',
     review: { status: r.verification.status, basis: r.verification.basis, reviewer: r.verification.reviewer || null, humanVerified: !!r.verification.humanVerified },
-    source: c.sources || '',
-    sourceSection: c.sourceSection || '',
+    // Source references stay in content/library only; they are never shipped
+    // in the app (owner's decision, October 2026).
     version: r.version,
     ...(r.revision ? { revision: { kind: r.revision.kind, summary: r.revision.changeSummary } } : {}),
     ...(L.servedExplanation(explanations[r.id], c.tiles, statusMapForExplanations) || {}),

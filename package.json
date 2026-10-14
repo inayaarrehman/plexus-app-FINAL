@@ -20,7 +20,9 @@
     "test:race-server": "node scripts/race-server-test.mjs",
     "test:ui-copy": "node scripts/ui-copy-test.mjs",
     "test:systems": "node scripts/systems-test.mjs",
-    "test:submissions-db": "node scripts/submissions-sql-test.mjs"
+    "test:submissions-db": "node scripts/submissions-sql-test.mjs",
+    "test:legal": "node scripts/legal-test.mjs",
+    "test:privacy-db": "node scripts/privacy-sql-test.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",
