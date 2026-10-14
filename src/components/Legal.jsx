@@ -99,8 +99,8 @@ function Terms() {
       </Section>
 
       <Section id="terms-content" title="Plexus content">
-        <p>Plexus, including its puzzles, explanations, design, artwork, code, name and logo, is owned by Plexus or the people who license material to us, and is protected by law. Medical facts themselves belong to no one; what is protected is how Plexus selects, arranges, writes and presents them.</p>
-        <p>You may use Plexus for your own personal, non-commercial study. Please do not copy, republish, sell or redistribute the puzzle content, except as allowed below or by law.</p>
+        <p>Plexus, including its name, logo, design, code, puzzles and explanations, is made available by Plexus for you to play. Medical facts themselves belong to no one.</p>
+        <p>You may use Plexus for your own personal, non-commercial study. Please do not copy, republish, sell or redistribute the puzzle content, or use it to build a database or a competing product, except as allowed below or by law.</p>
       </Section>
 
       <Section id="terms-sharing" title="Sharing your results">
