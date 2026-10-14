@@ -39,12 +39,12 @@ function PowerupExplainer({ free }) {
         </div>
         <div>
           <dt>CRISPR</dt>
-          <dd>Level {CRISPR_UNLOCK_LEVEL} and above. Arm it to block the next Mutation sent at you. It is used up when it blocks.</dd>
+          <dd>Level {CRISPR_UNLOCK_LEVEL} and above, after {RACE_REWARDS.crisprUnlockRaces} counted races. Arm it to block the next Mutation sent at you. It is used up when it blocks.</dd>
         </div>
       </dl>
       <p className="race-powerup-explainer-foot">
         {free
-          ? `One Mutation each, for this race only; it never uses Your Tools. CRISPR comes from levels: one at Level ${CRISPR_UNLOCK_LEVEL}, then one every ${RACE_REWARDS.crisprLevelEvery} levels.`
+          ? `One Mutation each, for this race only; it never uses Your Tools. CRISPR comes from levels (one at Level ${CRISPR_UNLOCK_LEVEL} after ${RACE_REWARDS.crisprUnlockRaces} counted races, then one every ${RACE_REWARDS.crisprLevelEvery} levels) and, rarely, from winning races.`
           : 'Each player can bring at most one of each, from items they have earned.'}
       </p>
     </div>
@@ -72,7 +72,7 @@ const REJECT = {
   'target-immune': 'Your opponent is immune for a few seconds.',
   'not-started': 'The race has not started yet.',
   'not-available': 'Chaos is off for this race.',
-  'crispr-locked': `CRISPR unlocks at Level ${CRISPR_UNLOCK_LEVEL}.`,
+  'crispr-locked': `CRISPR unlocks at Level ${CRISPR_UNLOCK_LEVEL} after ${RACE_REWARDS.crisprUnlockRaces} counted races.`,
   'no-crispr': 'You have no CRISPR left.',
 }
 const NOT_COUNTED = {
@@ -339,12 +339,14 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
   useEffect(() => {
     if (!matchId || !mine?.finished_at || recorded.current[matchId]) return
     recorded.current[matchId] = true
-    setRaceXp(recordRaceFinish({ raceId: matchId, solo: false, answered: mine.answered || 0, correct: mine.correct || 0 }))
+    setRaceXp(recordRaceFinish({ raceId: matchId, solo: false, answered: mine.answered || 0, correct: mine.correct || 0, runMs: mine.run_ms ?? null, rounds: RACE_LENGTH }))
   }, [matchId, mine?.finished_at])
   useEffect(() => {
     if (!matchId || mine?.outcome !== 'win' || recorded.current[`${matchId}:win`]) return
     recorded.current[`${matchId}:win`] = true
-    recordRaceWin({ raceId: matchId })
+    const w = recordRaceWin({ raceId: matchId })
+    // Show the win bonus in the same XP line as the finish.
+    setRaceXp((prev) => (prev && w ? { ...prev, gained: prev.gained + w.gained, lines: [...prev.lines, ...w.lines], timedNote: w.timedNote || prev.timedNote, after: w.after, levelUp: prev.levelUp || w.levelUp } : prev))
   }, [matchId, mine?.outcome])
   // Fresh reward progress once settled.
   useEffect(() => {
@@ -610,10 +612,28 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
       {prog && !guest && (
         <p className="race-note race-reward-progress">
           Mutation: {prog.qualifyingWins % RACE_REWARDS.mutationEveryWins}/{RACE_REWARDS.mutationEveryWins} qualifying wins · CRISPR:{' '}
-          {summary?.level >= CRISPR_UNLOCK_LEVEL ? `next at Level ${nextCrisprLevel(summary.level)}` : `unlocks at Level ${CRISPR_UNLOCK_LEVEL}`}
+          {summary?.crisprUnlocked
+            ? `next at Level ${nextCrisprLevel(summary.level)}, ${Math.round((summary.crisprDropChance ?? RACE_REWARDS.crisprDropChance) * 100)}% chance after each counted win`
+            : summary?.level >= CRISPR_UNLOCK_LEVEL
+              ? `unlocks after ${summary.crisprUnlockRaces ?? RACE_REWARDS.crisprUnlockRaces} counted races (${summary.countedRaces ?? 0} so far)`
+              : `unlocks at Level ${CRISPR_UNLOCK_LEVEL}`}
         </p>
       )}
-      {log?.granted?.length > 0 && <p className="race-note">Earned: {log.granted.map((g) => `${g.item === 'mutation' ? 'Mutation' : 'CRISPR'}${g.as === 'pending' ? ' (inventory full, waiting as a claim)' : ''}`).join(', ')}</p>}
+      {log?.granted?.some((g) => g.source === 'drop') && (
+        <p className="race-drop" role="status">
+          <b>Rare find: CRISPR.</b> A {Math.round((summary?.crisprDropChance ?? RACE_REWARDS.crisprDropChance) * 100)}% chance after a counted win, and this one landed.
+          {log.granted.some((g) => g.source === 'drop' && g.as === 'pending') ? ' Your CRISPR slots are full, so it waits as a claim in Your Tools.' : ' It is in Your Tools.'}
+        </p>
+      )}
+      {log?.granted?.some((g) => g.source !== 'drop') && (
+        <p className="race-note">
+          Earned:{' '}
+          {log.granted
+            .filter((g) => g.source !== 'drop')
+            .map((g) => `${g.item === 'mutation' ? 'Mutation' : 'CRISPR'}${g.as === 'pending' ? ' (inventory full, waiting as a claim)' : ''}`)
+            .join(', ')}
+        </p>
+      )}
       <div className="race-results-actions">
         {!waiting && (
           <button className="race-primary-btn" onClick={rematch} disabled={busy}>
@@ -639,7 +659,7 @@ function CrisprChoice({ mine, loadout, setLoadout }) {
       <input type="checkbox" checked={can && loadout.crispr} disabled={!can || mine?.chaos_accepted} onChange={(e) => setLoadout((l) => ({ ...l, crispr: e.target.checked }))} />
       CRISPR{' '}
       {!unlocked ? (
-        <span className="race-lock-note">(unlocks at Level {CRISPR_UNLOCK_LEVEL})</span>
+        <span className="race-lock-note">(unlocks at Level {CRISPR_UNLOCK_LEVEL} after {RACE_REWARDS.crisprUnlockRaces} counted races)</span>
       ) : !mine?.has_crispr ? (
         <span className="race-lock-note">(none held)</span>
       ) : null}

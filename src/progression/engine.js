@@ -35,8 +35,8 @@ import {
   STREAK_GOAL_DAY,
 } from './config.js'
 
-// Practice XP that the Systems taper looks at (unchanged). Timed XP is paid
-// under its own daily budget (TIMED_KINDS) and is not tapered again.
+// Practice kinds (a taper used to apply to these; it is off now, see
+// config.PRACTICE_TAPER_AFTER). Timed XP is paid under its own daily budget.
 export const PRACTICE_KINDS = new Set(['syspuzzle', 'sysconn', 'challenge', 'race'])
 export const TIMED_KINDS = new Set(['challenge', 'race'])
 
@@ -127,7 +127,8 @@ export function award(state, { id, xp, kind, at = Date.now(), m }) {
   let paid = xp
   if (TIMED_KINDS.has(kind)) {
     paid = timedPay(timedEarnedOn(state, dayKey(at)), xp)
-  } else if (PRACTICE_KINDS.has(kind)) {
+  } else if (PRACTICE_KINDS.has(kind) && Number.isFinite(PRACTICE_TAPER_AFTER)) {
+    // No taper in the current config (PRACTICE_TAPER_AFTER is Infinity).
     const before = practiceEarnedOn(state, dayKey(at))
     const full = Math.max(0, Math.min(xp, PRACTICE_TAPER_AFTER - before))
     paid = full + Math.floor((xp - full) * PRACTICE_TAPER_RATE)

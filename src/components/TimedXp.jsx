@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { timedStatus } from '../progression/store.js'
-import { TIMED_XP, TIMED_QUALIFY } from '../progression/config.js'
+import { TIMED_XP, TIMED_QUALIFY, RACE_QUALIFY, XP } from '../progression/config.js'
 
 // Timed XP (3 Minutes and Race share one daily budget, config.TIMED_XP).
 // TimedXpNote sits on the start screens and says, before a session starts,
@@ -32,7 +32,8 @@ export function TimedXpNote({ className = '' }) {
 // returned (or null when nothing was recorded).
 // XP this session added (the lines XpResult shows for this mode).
 export function timedXpGained(result, kind = '3 Minutes') {
-  return result?.lines?.filter((l) => l[0] === kind).reduce((a, l) => a + l[1], 0) || 0
+  // 'Race' and 'Race win' both count for a race.
+  return result?.lines?.filter((l) => l[0] === kind || l[0] === `${kind} win`).reduce((a, l) => a + l[1], 0) || 0
 }
 export function TimedResultLine({ result, kind = '3 Minutes' }) {
   if (!result) return null
@@ -40,7 +41,12 @@ export function TimedResultLine({ result, kind = '3 Minutes' }) {
   const counts = result.qualified === true
   let text
   if (result.qualified === false || (!counts && gained === 0)) {
-    text = `This session did not count toward This Week. A session counts when you play it to the end with at least ${TIMED_QUALIFY.minAnswers} answers and ${TIMED_QUALIFY.minCorrect} correct.`
+    text =
+      kind === 'Race'
+        ? `No XP and not counted toward This Week. A race counts when you answer every round with at least ${RACE_QUALIFY.minCorrect} correct and ${RACE_QUALIFY.minRunMs / 1000} seconds of play.`
+        : `This session did not count toward This Week. A session counts when you play it to the end with at least ${TIMED_QUALIFY.minAnswers} answers and ${TIMED_QUALIFY.minCorrect} correct.`
+  } else if (result.timedNote === 'accuracy') {
+    text = `No XP this time: correct answers earn ${XP.challengePerCorrect} XP and wrong ones take ${XP.challengePerWrong} away. It still counts toward This Week.`
   } else if (result.timedNote === 'limit') {
     text = 'No XP: today’s timed XP is used up. It still counts toward This Week.'
   } else if (result.timedNote === 'reduced') {

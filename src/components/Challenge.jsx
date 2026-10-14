@@ -20,7 +20,7 @@ import { TimedXpNote, TimedResultLine, timedXpGained } from './TimedXp.jsx'
 import Modal from './Modal.jsx'
 import ChallengeTools, { ToolsIntro } from './ChallengeTools.jsx'
 import { spendTool, toolKit } from '../progression/store.js'
-import { KIT } from '../progression/config.js'
+import { KIT, XP } from '../progression/config.js'
 import { itemOpen } from '../progression/engine.js'
 
 // The timed mode is 3 minutes (formerly 5). Kept as a single constant so
@@ -1382,7 +1382,7 @@ function ScoringInfo({ id, playing = false, onClose }) {
         </div>
         <div>
           <dt>Final</dt>
-          <dd>Your total when the 3 minutes end. It counts toward your personal best. XP is separate: 3 per correct answer, up to 60 a game, plus 15 for a new best.</dd>
+          <dd>Your total when the 3 minutes end. It counts toward your personal best. XP is separate: {XP.challengePerCorrect} per correct answer, minus {XP.challengePerWrong} per wrong one, up to {XP.challengeMax} a game, plus {XP.challengeNewBest} for a new best.</dd>
         </div>
       </dl>
       {playing && <p className="challenge-scoring-foot">The clock keeps running while this is open.</p>}

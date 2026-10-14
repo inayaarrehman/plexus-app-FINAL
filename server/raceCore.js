@@ -74,7 +74,7 @@ export async function handleRace({ token, body }, { rpc, getUser, makeCode = mak
       case 'config':
         return { status: 200, json: { ok: true, rounds: RACE_LENGTH } }
       case 'me':
-        if (guest) return { status: 200, json: { ok: true, guest: true, level: null, crisprUnlocked: false, inventory: { mutation: 0, crispr: 0 }, pending: { mutation: 0, crispr: 0 }, progress: null, today: null } }
+        if (guest) return { status: 200, json: { ok: true, guest: true, level: null, crisprUnlocked: false, countedRaces: 0, crisprDrops: 0, inventory: { mutation: 0, crispr: 0 }, pending: { mutation: 0, crispr: 0 }, progress: null, today: null } }
         return fromDb(await rpc('race_me', { p_user: u, p_tz: tzOf(body) }))
       case 'create': {
         // A fresh code; retry a few times if it is already in use.

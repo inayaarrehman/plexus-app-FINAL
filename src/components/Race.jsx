@@ -114,14 +114,15 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
     if (phase !== 'playing' && phase !== 'results') raceRunRef.current = null
     if (phase === 'results' && raceRunRef.current && !raceRecordedRef.current.finish) {
       raceRecordedRef.current.finish = true
-      setRaceXp(recordRaceFinish({ raceId: raceRunRef.current, solo: !(oppOnline || oppResult), answered: total, correct: correctCount }))
+      setRaceXp(recordRaceFinish({ raceId: raceRunRef.current, solo: !(oppOnline || oppResult), answered: total, correct: correctCount, runMs: elapsedMs, rounds: total }))
     }
   }, [phase, code, oppOnline, oppResult])
   useEffect(() => {
     if (phase !== 'results' || !raceRunRef.current || !oppResult || raceRecordedRef.current.win) return
     if (raceVerdict({ correct: correctCount, timeMs: elapsedMs }, oppResult) === 'win') {
       raceRecordedRef.current.win = true
-      recordRaceWin({ raceId: raceRunRef.current })
+      const w = recordRaceWin({ raceId: raceRunRef.current })
+      setRaceXp((prev) => (prev && w ? { ...prev, gained: prev.gained + w.gained, lines: [...prev.lines, ...w.lines], timedNote: w.timedNote || prev.timedNote, after: w.after, levelUp: prev.levelUp || w.levelUp } : prev))
     }
   }, [phase, oppResult, correctCount, elapsedMs])
 

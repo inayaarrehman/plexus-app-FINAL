@@ -137,7 +137,7 @@ console.log('[7] Timed XP: one shared daily budget (150 full, then half, cap 225
   reset()
   at('2026-10-12T09:00:00-07:00')
   S.ensureProgression()
-  const s = (n, correct = 20, answers = 22) => S.recordChallengeSession({ completedAt: `c${n}`, roundsCorrect: correct, actions: answers })
+  const s = (n, correct = 20, answers = 20) => S.recordChallengeSession({ completedAt: `c${n}`, roundsCorrect: correct, actions: answers })
   ok(E.timedXpStatus(load()).tier === 'full', 'fresh day: full XP')
   const paid = [s(1), s(2), s(3), s(4), s(5), s(6)].map((r) => r.gained)
   ok(JSON.stringify(paid) === JSON.stringify([60, 60, 45, 30, 30, 0]), 'maxed sessions pay 60, 60, 45, 30, 30, 0: ' + paid)
@@ -154,11 +154,11 @@ console.log('[7] Timed XP: one shared daily budget (150 full, then half, cap 225
   reset()
   at('2026-10-12T09:00:00-07:00')
   S.ensureProgression()
-  S.recordChallengeSession({ completedAt: 'a', roundsCorrect: 20, actions: 22 })
-  S.recordChallengeSession({ completedAt: 'b', roundsCorrect: 20, actions: 22 })
+  S.recordChallengeSession({ completedAt: 'a', roundsCorrect: 20, actions: 20 })
+  S.recordChallengeSession({ completedAt: 'b', roundsCorrect: 20, actions: 20 })
   const st = E.timedXpStatus(load())
   ok(st.tier === 'full' && st.fullLeft === 30 && st.left === 105, 'status shows what is left: ' + JSON.stringify(st))
-  S.recordChallengeSession({ completedAt: 'c', roundsCorrect: 20, actions: 22 })
+  S.recordChallengeSession({ completedAt: 'c', roundsCorrect: 20, actions: 20 })
   const st2 = E.timedXpStatus(load())
   ok(st2.tier === 'reduced' && st2.left === 60, 'reduced tier with 60 XP left at half rate')
 }
@@ -187,7 +187,7 @@ console.log('[8] Qualifying sessions')
   ok(goal('timed').count === 2, 'a qualifying race counts once')
 }
 
-console.log('[9] Systems XP is unchanged')
+console.log('[9] Systems XP by attempt, no taper')
 {
   reset()
   at('2026-10-12T09:00:00-07:00')
@@ -199,7 +199,7 @@ console.log('[9] Systems XP is unchanged')
   for (let i = 0; i < 6; i++) E.award(st, { id: `sp${i}`, xp: 100, kind: 'syspuzzle', at: Date.now() })
   save(st)
   const r3 = S.recordSystemFinish({ puzzle: puzzle('b3'), system: 'Cardiology', won: true, guessLog: gl, boardId: 'b3', attempts: 1 })
-  ok(r3.gained === 50, 'past 600 practice XP in a day, Systems still taper to half (unchanged)')
+  ok(r3.gained === 100, 'no daily taper any more: a board pays what its chip says, however much was played that day')
   ok(!goal('timed').count && !E.roundsProgress(load(), Date.now(), history()).goals.some((g) => g.id === 'systems'), 'Systems boards are not a weekly goal')
 }
 
@@ -276,7 +276,7 @@ console.log('[11] Older saves: overflow claims are settled once, nothing duplica
   save(E.mergeStates(a, b))
   S.ensureProgression()
   const m = load()
-  ok(m.kit.grants['coverage:3'].item === 'lab' && !m.ledger['coverage:3:xp'], 'after a merge only one alternative remains (the tool)')
+  ok(m.kit.grants['coverage:3'].item === 'lab' && !m.ledger['coverage:3:xp']?.xp, 'after a merge only one alternative remains (the tool; the XP entry is voided)')
 }
 
 console.log('[12] Switching rules mid-week keeps progress and claimed rewards')

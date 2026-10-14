@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from './Modal.jsx'
 import BrandMark from './BrandMark.jsx'
 import { MAX_MISTAKES } from '../utils/game.js'
-import { XP, KIT, TIMED_XP } from '../progression/config.js'
+import { XP, KIT, TIMED_XP, RACE_QUALIFY } from '../progression/config.js'
 
 // How to play. The rules fit in a few seconds: three short steps and a small
 // example drawn with demo tiles (everyday words, never a real or upcoming
@@ -42,8 +42,8 @@ const MORE = [
     id: 'coverage',
     title: 'Streaks and Coverage',
     body: [
-      'Your streak grows each day you finish the Daily. Coverage protects it through a missed day and is used automatically.',
-      `You earn one Coverage for every 7 Dailies you complete. If you already hold ${KIT.shield.max}, you get a puzzle tool instead, or 50 XP if your tools are full.`,
+      'Your streak grows each day you solve the Daily on its day. A loss or a missed day ends it; Coverage protects a missed day and is used automatically.',
+      `You earn one Coverage for every 7 Dailies you complete. If you already hold ${KIT.shield.max}, you get a puzzle tool instead, or ${XP.coverageAlt} XP if your tools are full.`,
     ],
   },
   {
@@ -57,7 +57,8 @@ const MORE = [
     id: 'xp',
     title: 'XP and levels',
     body: [
-      'Every puzzle you finish earns XP and grows My Plexus. New levels bring tools.',
+      'Every puzzle you finish earns XP and grows My Plexus. New levels bring tools, and CRISPR from Level 12.',
+      `Daily: ${XP.daily} for finishing, ${XP.dailyWin} more for solving, 5 to 20 for each group, ${XP.perfect} for a perfect solve. Archive: ${XP.archive} for a solved past Daily plus its groups. 3 Minutes: ${XP.challengePerCorrect} per correct answer, minus ${XP.challengePerWrong} per wrong one, up to ${XP.challengeMax}. Race: ${XP.raceFinish} for a finished race (every round answered, at least ${RACE_QUALIFY.minCorrect} correct), ${XP.raceWin} more for a win.`,
       `3 Minutes and Race share one daily XP limit: the first ${TIMED_XP.full} XP is full, then half rate up to ${TIMED_XP.cap} XP. After that you can keep playing for practice, and finished sessions still count toward This Week.`,
     ],
   },

@@ -2,6 +2,7 @@
 // Content epoch: clears saved puzzle progress after a library rebuild.
 // ---------------------------------------------------------------------
 // When the whole library is rebuilt (scripts/library/activate.mjs --rebuild),
+// or the progression rules are reset (PROGRESS_EPOCH below),
 // dates and board ids that were already played can now hold different
 // puzzles, so results saved against them no longer describe anything real.
 // The generated library carries an epoch label; the first time this device
@@ -16,7 +17,11 @@
 // signed-in copy is replaced by the fresh one rather than merged back.
 import NEW_LIBRARY from '../data/library/newLibrary.js'
 
-export const CONTENT_EPOCH = NEW_LIBRARY.epoch || 'launch'
+// The progression rules changed (October 2026 progression pass): XP amounts,
+// the level curve and Race rewards. Saved progress from before is cleared
+// the same way, once. Change PROGRESS_EPOCH only for a deliberate reset.
+export const PROGRESS_EPOCH = '2026-10-progression'
+export const CONTENT_EPOCH = `${NEW_LIBRARY.epoch || 'launch'}|${PROGRESS_EPOCH}`
 export const EPOCH_KEY = 'plexus.contentEpoch.v1'
 
 export const RESET_KEYS = [

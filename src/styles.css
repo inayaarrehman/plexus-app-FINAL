@@ -3646,6 +3646,18 @@ body.env-challenge .challenge-sod-actions .is-incorrect { color: #f0836a; border
   max-width: 420px;
   margin: 18px 0 0;
 }
+/* A rare CRISPR drop: one quiet highlight, no extra motion. */
+.race-drop {
+  max-width: 420px;
+  margin: 18px 0 0;
+  padding: 10px 14px;
+  border: 1.5px solid var(--node-plum, #7a49b2);
+  border-radius: 14px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+.race-drop b { color: var(--node-plum, #7a49b2); }
 
 /* Lobby */
 .race-code-card {

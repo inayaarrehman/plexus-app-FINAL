@@ -8,30 +8,60 @@
 // Progression is levels only. There are no ranks or titles.
 
 export const XP = {
-  daily: 100, // today's Daily finished
-  perfect: 25, // today's Daily, 0 mistakes, no tools used
-  archive: 50, // a past Daily from the Archive, first finish only
+  // Daily: finishing today's Daily pays `daily` win or lose (showing up is
+  // what keeps the habit), a win adds `dailyWin`, each solved group adds its
+  // connection XP, and a perfect solve adds `perfect`. A full, perfect solve
+  // still pays 175 as before; a quick deliberate loss pays 75, not 100.
+  daily: 75,
+  dailyWin: 25,
+  perfect: 25, // today's Daily, won, 0 mistakes, no tools used
+  // A past Daily from the Archive, first finish only: `archive` when it is
+  // solved, plus the groups solved. A lost Archive Daily pays only its solved
+  // groups, so losing old Dailies on purpose earns nothing.
+  archive: 40,
   connection: { 1: 5, 2: 10, 3: 15, 4: 20 }, // Easy, Medium, Hard, Expert
   systemPuzzle: 50, // legacy: a Systems puzzle solved (still used to backfill pre-progression wins)
   // Systems boards: paid once, only when the board is solved, by which attempt
-  // solved it (1st, 2nd, 3rd, 4th or later). Replaces the old 50 + group XP
-  // (a first-try solve still pays 100). See recordSystemFinish.
+  // solved it (1st, 2nd, 3rd, 4th or later). Replays pay nothing.
   systemAttempt: [100, 75, 50, 25],
-  systemComplete: 300, // every connection in a system solved (once per system)
-  challengePerCorrect: 3, // 3-Minute
+  systemComplete: 300, // every board a subject offers solved (once per subject)
+  // 3 Minutes: 3 per correct answer, minus 1 per wrong answer (never below
+  // 0), up to 60 a session, plus 15 for a new personal best. Accuracy counts,
+  // so tapping through without reading earns little.
+  challengePerCorrect: 3,
+  challengePerWrong: 1,
   challengeMax: 60,
   challengeNewBest: 15,
-  raceFinish: 20,
-  raceWin: 10,
+  // Race: a finished run that qualifies (RACE_QUALIFY) pays raceFinish, and a
+  // win adds raceWin. A race on this device with no live opponent pays raceSolo.
+  raceFinish: 25,
+  raceWin: 15,
   raceSolo: 10,
   rounds: 250, // This Week reward
   coverageAlt: 50, // Coverage earned while full, when every puzzle tool is full too
 }
 
-// Systems practice halves after this much XP (Systems, 3 Minutes and Race
-// together) in one local day. Unchanged; Dailies are never tapered.
-export const PRACTICE_TAPER_AFTER = 600
-export const PRACTICE_TAPER_RATE = 0.5
+// 3 Minutes XP for one session (see XP above).
+export function challengeXp({ correct = 0, wrong = 0, newBest = false } = {}) {
+  if (!(correct > 0)) return 0
+  const net = Math.max(0, Math.min(XP.challengeMax, correct * XP.challengePerCorrect - wrong * XP.challengePerWrong))
+  return net + (newBest && net > 0 ? XP.challengeNewBest : 0)
+}
+
+// A Race run that earns XP: every round answered, at least 3 correct, and at
+// least 20 seconds of play. These are the same per-player thresholds the
+// Race server uses for rewards (race_config min_correct and min_run_ms), so a
+// run that taps through every answer in a few seconds earns nothing.
+export const RACE_QUALIFY = { minCorrect: 3, minRunMs: 20000, rounds: 10 }
+export function raceQualifies({ answered = 0, correct = 0, runMs = null, rounds = RACE_QUALIFY.rounds } = {}) {
+  return answered >= rounds && correct >= RACE_QUALIFY.minCorrect && (runMs == null || runMs >= RACE_QUALIFY.minRunMs)
+}
+
+// No practice taper any more: Systems pays only once per board and the
+// Archive only for solved Dailies, so a daily slowdown only made the XP shown
+// on a board disagree with the XP paid. Kept as names for old imports.
+export const PRACTICE_TAPER_AFTER = Infinity
+export const PRACTICE_TAPER_RATE = 1
 
 // ---- Timed XP (3 Minutes and Race share one daily budget) ----
 // Per local day (the player's own midnight):
@@ -61,10 +91,15 @@ export const STREAK_MILESTONES = [
 ]
 
 // XP needed to go from level L to L+1. Rises gently, never ends: there is no
-// maximum level.
+// maximum level. Cost of level L = round((100 + 70n + 6n^2) / 10) * 10 with
+// n = L - 1: the first levels come a little faster than before (a first day
+// usually reaches Level 3, where Rule Out unlocks), and from about Level 10
+// on the curve matches the previous one. The Race server uses the same curve
+// (race_player_level, migration 0010).
+export const LEVEL_CURVE = { base: 100, linear: 70, square: 6 }
 export function levelCost(level) {
   const n = level - 1
-  return Math.round((150 + 60 * n + 6 * n * n) / 10) * 10
+  return Math.round((LEVEL_CURVE.base + LEVEL_CURVE.linear * n + LEVEL_CURVE.square * n * n) / 10) * 10
 }
 
 // ---- Your Tools ----
@@ -103,8 +138,23 @@ export const RACE_ITEMS = {
   mutation: { name: 'Mutation', desc: 'Scrambles the letters on your opponent’s answer tiles for 10 seconds, then restores them.', max: 3 },
   crispr: { name: 'CRISPR', desc: `Arm it to block one incoming Mutation. Used only when it blocks an attack. Unlocks at Level ${CRISPR_UNLOCK_LEVEL}.`, max: 3, unlock: CRISPR_UNLOCK_LEVEL },
 }
-// Mirrors the server settings (race_config in migrations 0006 and 0009).
-export const RACE_REWARDS = { mutationEveryWins: 5, perOpponentPerDay: 3, perDay: 6, crisprUnlockLevel: CRISPR_UNLOCK_LEVEL, crisprLevelEvery: CRISPR_LEVEL_EVERY }
+// Mirrors the server settings (race_config in migrations 0006, 0009, 0010).
+//   crisprDropChance   chance of one CRISPR after an eligible Race win: a win
+//                      in a race that counted toward Race rewards, once
+//                      CRISPR is unlocked. Rolled once per race on the server.
+//   crisprUnlockRaces  CRISPR also needs this many counted races, checked on
+//                      the server (a Race item should come from racing).
+export const RACE_REWARDS = { mutationEveryWins: 5, perOpponentPerDay: 3, perDay: 6, crisprUnlockLevel: CRISPR_UNLOCK_LEVEL, crisprLevelEvery: CRISPR_LEVEL_EVERY, crisprDropChance: 0.02, crisprUnlockRaces: 5 }
+// The next level (above `level`) with any reward, and everything it brings:
+// puzzle tools, a tool unlock, a CRISPR. Shown as "Next at Level N".
+export function nextMilestone(level) {
+  for (let L = level + 1; L < level + 50; L++) {
+    const items = levelRewards(L).map((it) => (KIT[it]?.unlock === L ? `${KIT[it].name} (new)` : `${KIT[it]?.name || it} +1`))
+    if (L >= CRISPR_UNLOCK_LEVEL && (L - CRISPR_UNLOCK_LEVEL) % CRISPR_LEVEL_EVERY === 0) items.push(L === CRISPR_UNLOCK_LEVEL ? 'CRISPR (new)' : 'CRISPR +1')
+    if (items.length) return { level: L, items }
+  }
+  return null
+}
 // The next level that pays a CRISPR, for a player at `level`.
 export function nextCrisprLevel(level) {
   if (level < CRISPR_UNLOCK_LEVEL) return CRISPR_UNLOCK_LEVEL

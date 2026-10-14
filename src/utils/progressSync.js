@@ -164,11 +164,16 @@ export function snapshotLocal() {
   }
 }
 
+// Writes a (cloud-merged) snapshot locally, merged once more with what is
+// stored now: the network round trip takes time, and anything this device
+// recorded meanwhile (a Daily finished while a sync was in flight) must not
+// be overwritten.
 export function applySnapshot(snap) {
   if (!snap) return
-  if (snap.stats) saveStats(snap.stats)
-  if (snap.dailyHistory) setDailyHistory(snap.dailyHistory)
-  if (snap.challenge) replaceChallengeStats(snap.challenge)
-  if (snap.progression) replaceProgression(snap.progression)
-  if (snap.systemsBoards) setSystemsBoards(snap.systemsBoards)
+  const cur = snapshotLocal()
+  if (snap.stats) saveStats(mergeStats(cur.stats, snap.stats))
+  if (snap.dailyHistory) setDailyHistory(mergeDailyHistory(cur.dailyHistory, snap.dailyHistory))
+  if (snap.challenge) replaceChallengeStats(mergeChallenge(cur.challenge, snap.challenge))
+  if (snap.progression) replaceProgression(mergeProgression(cur.progression, snap.progression))
+  if (snap.systemsBoards) setSystemsBoards(mergeSystemsBoards(cur.systemsBoards, snap.systemsBoards))
 }

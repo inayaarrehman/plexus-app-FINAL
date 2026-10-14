@@ -9,17 +9,20 @@ import {
   XP,
   STREAK_MILESTONES,
   levelRewards,
-  nextLevelReward,
+  nextMilestone,
   KIT,
   PUZZLE_TOOLS,
   REMOVED_TOOLS,
   STARTER_GIFT,
   COVERAGE_EVERY,
   TIMED_QUALIFY,
+  challengeXp,
+  raceQualifies,
 } from './config.js'
 import {
   emptyState,
   normalize,
+  mergeStates,
   award,
   grant,
   useItem,
@@ -54,16 +57,36 @@ export function loadProgression() {
     return emptyState()
   }
 }
+// Saving merges with what is stored right now, so two tabs that each add an
+// award between their load and their save both keep theirs (every award is
+// keyed by id, so the union can never pay twice). `replaceProgression` writes
+// as given (used after a cloud merge, which already holds both sides).
 export function saveProgression(state) {
   try {
-    localStorage.setItem(KEY, JSON.stringify(state))
+    const raw = localStorage.getItem(KEY)
+    const merged = raw ? mergeStates(state, JSON.parse(raw)) : state
+    if (raw) {
+      // Keep the caller's object in step with what was written.
+      state.ledger = merged.ledger
+      state.kit = merged.kit
+      state.seen = merged.seen
+      state.v2 = merged.v2
+      state.migrated = merged.migrated
+    }
+    localStorage.setItem(KEY, JSON.stringify(merged))
   } catch {
     // storage unavailable: progression still works for this session
   }
   return state
 }
 export function replaceProgression(state) {
-  return saveProgression(normalize(state))
+  const s = normalize(state)
+  try {
+    localStorage.setItem(KEY, JSON.stringify(s))
+  } catch {
+    // storage unavailable
+  }
+  return s
 }
 
 export function shieldedDates(state) {
@@ -173,7 +196,8 @@ function resolveCoverageOverflow(state, ctx, now = Date.now()) {
       if (kitCounts(state).shield < KIT.shield.max) state.kit.claims[id] = now
       else payCoverageAlternative(state, ctx, id, now)
     }
-    if (g.source === 'coverage-alt' && g.item !== 'coverage-xp' && state.ledger[`${id}:xp`]) delete state.ledger[`${id}:xp`]
+    // Voided rather than deleted, so a later merge with an older copy cannot bring it back.
+    if (g.source === 'coverage-alt' && g.item !== 'coverage-xp' && state.ledger[`${id}:xp`]?.xp) state.ledger[`${id}:xp`] = { ...state.ledger[`${id}:xp`], xp: 0, voided: true }
   }
 }
 
@@ -221,8 +245,9 @@ function followUps(state, ctx) {
     const rp = weekProgress(state, wk, history)
     if (!rp.complete || rp.paid) continue
     const at = wk.key === weeks[0].key ? now : Math.min(now, wk.end - 1000)
-    ctx.gained += award(state, { id: `rounds:${wk.key}`, xp: XP.rounds, kind: 'rounds', at })
-    ctx.lines.push(['This Week', XP.rounds])
+    const got = award(state, { id: `rounds:${wk.key}`, xp: XP.rounds, kind: 'rounds', at })
+    ctx.gained += got
+    ctx.lines.push(['This Week', got])
     ctx.weeklyChoice = wk.key
   }
   // Weekly or Coverage XP can itself cross a level.
@@ -264,11 +289,21 @@ export function recordDailyFinish({ dateKey, isToday, puzzle, won, mistakes, gue
     const at = ctx.at
     if (history) ctx.history = history
     if (isToday) {
-      ctx.gained += award(state, { id: `daily:${dateKey}`, xp: XP.daily, kind: 'daily', at })
-      ctx.lines.push(['Daily', XP.daily])
+      const d = award(state, { id: `daily:${dateKey}`, xp: XP.daily, kind: 'daily', at })
+      ctx.gained += d
+      ctx.lines.push(['Daily', d])
+      if (won) {
+        const w = award(state, { id: `dailywin:${dateKey}`, xp: XP.dailyWin, kind: 'dailywin', at })
+        ctx.gained += w
+        ctx.lines.push(['Solved', w])
+      }
+    } else if (won) {
+      // Archive: paid for a solved Daily only; a lost one pays its groups.
+      const a = award(state, { id: `archive:${dateKey}`, xp: XP.archive, kind: 'archive', at })
+      ctx.gained += a
+      ctx.lines.push(['Archive Daily', a])
     } else {
-      ctx.gained += award(state, { id: `archive:${dateKey}`, xp: XP.archive, kind: 'archive', at })
-      ctx.lines.push(['Archive Daily', XP.archive])
+      mark(state, { id: `archive:${dateKey}`, kind: 'archive', at })
     }
     let conn = 0
     guessLog.filter((g) => g.correct).forEach((g) => {
@@ -423,12 +458,21 @@ export function recordChallengeSession({ completedAt, roundsCorrect = 0, isNewBe
     const id = `challenge:${completedAt || at}`
     if (state.ledger[id]) return
     const answers = actions ?? roundsCorrect
+    const wrong = Math.max(0, answers - roundsCorrect)
     const q = timedQualifies({ answers, correct: roundsCorrect })
     // Nothing correct: nothing earned and nothing counted.
     if (!(roundsCorrect > 0)) return
-    const base = Math.min(XP.challengeMax, roundsCorrect * XP.challengePerCorrect) + (isNewBest ? XP.challengeNewBest : 0)
-    const paid = award(state, { id, xp: base, kind: 'challenge', at, m: { q, answers, correct: roundsCorrect } })
     ctx.qualified = q
+    const base = challengeXp({ correct: roundsCorrect, wrong, newBest: isNewBest })
+    // Correct answers but too many wrong ones to earn XP: the session still
+    // counts toward This Week when it qualifies.
+    if (!(base > 0)) {
+      if (q) mark(state, { id, kind: 'challenge', at, m: { q, answers, correct: roundsCorrect } })
+      ctx.lines.push(['3 Minutes', 0])
+      ctx.timedNote = ctx.timedNote || 'accuracy'
+      return
+    }
+    const paid = award(state, { id, xp: base, kind: 'challenge', at, m: { q, answers, correct: roundsCorrect } })
     timedLine(ctx, '3 Minutes', paid, base)
   })
 }
@@ -438,11 +482,12 @@ export function recordChallengeSession({ completedAt, roundsCorrect = 0, isNewBe
 // once per run from the shared timed budget; a win adds a small bonus when
 // the result arrives (the opponent may finish after you). A race that does
 // not qualify, or was abandoned, earns nothing and does not count.
-export function recordRaceFinish({ raceId, solo = false, answered = null, correct = null }) {
+export function recordRaceFinish({ raceId, solo = false, answered = null, correct = null, runMs = null, rounds = undefined }) {
   return run((state, ctx) => {
     const at = ctx.at
-    // Callers from before answers were passed: treat as qualifying.
-    const q = answered == null ? true : timedQualifies({ answers: answered, correct: correct || 0 })
+    // The same per-player bar the Race server uses: every round answered, at
+    // least 3 correct, at least 20 seconds of play (config.RACE_QUALIFY).
+    const q = answered != null && raceQualifies({ answered, correct: correct || 0, runMs, rounds })
     ctx.qualified = q
     if (!q) return
     mark(state, { id: `racedone:${raceId}`, kind: 'racedone', at, m: { q: true } })
@@ -455,8 +500,7 @@ export function recordRaceWin({ raceId }) {
   return run((state, ctx) => {
     if (!state.ledger[`race:${raceId}`]) return // only races that earned finish XP can earn the win bonus
     const g = award(state, { id: `race:${raceId}:win`, xp: XP.raceWin, kind: 'race', at: ctx.at })
-    ctx.gained += g
-    ctx.lines.push(['Race win', g])
+    timedLine(ctx, 'Race win', g, XP.raceWin)
   })
 }
 
@@ -547,7 +591,8 @@ export function backfillIfNeeded({ history = {}, mastery = {}, bankById = {}, sy
   for (const [key, e] of Object.entries(history)) {
     if (!e?.completed) continue
     const onTime = finishedOnDate(e, key)
-    award(state, { id: onTime ? `daily:${key}` : `archive:${key}`, xp: onTime ? XP.daily : XP.archive, kind: 'bf-daily', at })
+    if (onTime || e.won) award(state, { id: onTime ? `daily:${key}` : `archive:${key}`, xp: onTime ? XP.daily : XP.archive, kind: 'bf-daily', at })
+    if (onTime && e.won) award(state, { id: `dailywin:${key}`, xp: XP.dailyWin, kind: 'bf-daily', at })
     if (e.won) {
       // A won Daily means all four groups were solved: 5 + 10 + 15 + 20.
       award(state, { id: `bf-conn:${key}`, xp: 50, kind: 'bf-conn', at })
@@ -629,7 +674,7 @@ export function recordSnapshot({ history = {}, todayKey }) {
     pending: pendingClaims(state),
     weeklyChoices: weeklyChoicesDue(state),
     coverage: coverageProgress(state),
-    nextReward: nextLevelReward(Math.max(info.level, state.v2?.levelFrom || 1)),
+    nextReward: nextMilestone(info.level),
     converted: state.v2?.converted || {},
   }
 }

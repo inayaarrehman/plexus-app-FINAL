@@ -1,4 +1,4 @@
-// Race backend checks against a real Postgres with migrations 0003 and 0006-0009 applied.
+// Race backend checks against a real Postgres with migrations 0003 and 0006-0010 applied.
 //   PGTEST="psql -h /tmp/pgtest -p 5544 -U postgres -d t" node scripts/race-sql-test.mjs
 // The database needs Supabase-like stubs (auth.users, auth.uid(), roles anon /
 // authenticated / service_role); scripts/race-sql-setup.sql creates them.
@@ -30,12 +30,35 @@ const B = uid(2)
 const C = uid(3)
 const call = (fn, ...args) => j(`select public.${fn}(${args.map((a) => (a === null ? 'null' : typeof a === 'boolean' || typeof a === 'number' ? String(a) : `'${a}'`)).join(',')})`)
 const me = (u) => call('race_me', u, 'America/Los_Angeles')
-// Synced XP decides the level (0009): Level 12 starts at 7260 XP, Level 16 at 14640.
-const setXp = (u, xp) => run(`insert into public.user_progress (user_id, data) values ('${u}', '{"progression":{"ledger":{"t":{"xp":${xp}}}}}') on conflict (user_id) do update set data = excluded.data`)
+// Synced XP decides the level: Level 12 starts at 7260 XP, Level 16 at 14940
+// (the curve from 0010). The server trusts at most 1000 XP per entry and
+// 3000 per day (0010), so test XP is spread over past days, one entry of up
+// to 1000 per slot, and the account is made 90 days old.
+const xpLedger = (xp) => {
+  const out = {}
+  let left = xp
+  let k = 0
+  while (left > 0) {
+    const day = Math.floor(k / 3) + 1
+    const d = new Date(Date.now() - day * 86400000).toISOString().slice(0, 10)
+    out[`t${k}`] = { xp: Math.min(1000, left), d }
+    left -= 1000
+    k++
+  }
+  return out
+}
+const setXp = (u, xp) => {
+  run(`update auth.users set created_at = now() - interval '90 days' where id = '${u}'`)
+  run(`insert into public.user_progress (user_id, data) values ('${u}', '${JSON.stringify({ progression: { ledger: xpLedger(xp) } })}') on conflict (user_id) do update set data = excluded.data`)
+}
 const seen = (u, m) => run(`update public.race_participants set last_seen = now() where match_id='${m}' and user_id='${u}'`)
 
 run(`set client_min_messages = warning; truncate public.race_matches, public.race_inventory, public.race_progress cascade; delete from auth.users;`)
 run(`insert into auth.users(id) values ('${A}'),('${B}'),('${C}')`)
+// Sections 1-11 test the rules from 0006-0009, where CRISPR needed only the
+// level; section 12 turns on the counted-race requirement and the drop.
+run(`update public.race_config set value = 0 where key = 'crispr_unlock_races'`)
+run(`update public.race_config set value = 0 where key = 'crispr_drop_chance'`)
 // B is Level 12, so B may equip CRISPR. Its Level 12 reward is marked as
 // already paid so the inventory counts below stay simple (section 11 tests
 // the rewards themselves).
@@ -407,19 +430,19 @@ console.log('[10] Chaos introductory loadout (0007, 0009): one temporary Mutatio
   run(`update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
 }
 
-console.log('[11] CRISPR level rewards, solo use (3 Minutes) and race link states (0009)')
+console.log('[11] CRISPR level rewards, solo use (3 Minutes) and race link states (0009, curve from 0010)')
 {
   const D = uid(41)
   const E = uid(42)
   const G2 = uid(43)
-  run(`insert into auth.users(id) values ('${D}'),('${E}') on conflict do nothing`)
+  run(`insert into auth.users(id, created_at) values ('${D}', now() - interval '90 days'),('${E}', now() - interval '90 days') on conflict do nothing`)
   run(`insert into auth.users(id, is_anonymous) values ('${G2}', true) on conflict do nothing`)
   ok(j(`select value from public.race_config where key='effect_ms'`) === 10000, 'Mutation effect is configured at 10 seconds')
   const lv = (xp) => {
     setXp(D, xp)
     return j(`select public.race_player_level('${D}')`)
   }
-  ok(lv(0) === 1 && lv(149) === 1 && lv(150) === 2 && lv(7259) === 11 && lv(7260) === 12 && lv(14639) === 15 && lv(14640) === 16, 'server level curve matches the app (Level 12 at 7260 XP, 16 at 14640)')
+  ok(lv(0) === 1 && lv(99) === 1 && lv(100) === 2 && lv(7259) === 11 && lv(7260) === 12 && lv(14939) === 15 && lv(14940) === 16, 'server level curve matches the app (Level 2 at 100 XP, 12 at 7260, 16 at 14940)')
   setXp(D, 7259)
   let s = me(D)
   ok(s.level === 11 && s.crisprUnlocked === false && s.crisprUnlockLevel === 12 && s.nextCrisprLevel === 12 && s.inventory.crispr === 0 && s.effectMs === 10000, 'Level 11: CRISPR locked, next at Level 12')
@@ -427,7 +450,7 @@ console.log('[11] CRISPR level rewards, solo use (3 Minutes) and race link state
   s = me(D)
   ok(s.level === 12 && s.crisprUnlocked && s.inventory.crispr === 1 && s.nextCrisprLevel === 16, 'reaching Level 12 unlocks CRISPR and grants one; next at Level 16')
   ok(me(D).inventory.crispr === 1 && j(`select count(*) from public.race_level_grants where user_id='${D}'`) === 1, 'the Level 12 reward is paid once, however often it is checked')
-  setXp(D, 14640)
+  setXp(D, 14940)
   ok(me(D).inventory.crispr === 2, 'Level 16 grants one more (one every 4 levels)')
   // Solo use (3 Minutes).
   ok(call('race_use_solo', G2, 'mutation').reason === 'guest', 'guests cannot use solo powerups')
@@ -458,6 +481,135 @@ console.log('[11] CRISPR level rewards, solo use (3 Minutes) and race link state
   ok(call('race_join', C, 'ZZZZ', 'UTC').reason === 'no-such-race', 'an unknown code says no such race')
 }
 
+console.log('[12] Trusted level, CRISPR unlock by counted races, and the CRISPR drop (0010)')
+{
+  run(`update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
+  run(`update public.race_config set value = 5 where key = 'crispr_unlock_races'`)
+  const F = uid(51)
+  const H = uid(52)
+  const K = uid(53)
+  const N = uid(54)
+  const G3 = uid(55)
+  run(`insert into auth.users(id, created_at) values ('${F}', now() - interval '90 days'),('${H}', now() - interval '90 days'),('${K}', now() - interval '90 days'),('${N}', now() - interval '2 days') on conflict do nothing`)
+  run(`insert into auth.users(id, is_anonymous) values ('${G3}', true) on conflict do nothing`)
+  const lvOf = (u) => j(`select public.race_player_level('${u}')`)
+  const xpOf = (u) => Number(j(`select public.race_trusted_xp('${u}')`))
+  const putLedger = (u, ledger) => run(`insert into public.user_progress (user_id, data) values ('${u}', '${JSON.stringify({ progression: { ledger } })}') on conflict (user_id) do update set data = excluded.data`)
+  const day = (n) => new Date(Date.now() - n * 86400000).toISOString().slice(0, 10)
+  // Trusted XP: a hand-edited save cannot buy a level.
+  putLedger(N, { a: { xp: 1000000, d: day(0) } })
+  ok(xpOf(N) === 1000, 'one huge entry counts as at most 1000 XP')
+  putLedger(N, { a: { xp: 900, d: day(0) }, b: { xp: 900, d: day(0) }, c: { xp: 900, d: day(0) }, e: { xp: 900, d: day(0) } })
+  ok(xpOf(N) === 3000, 'one day counts as at most 3000 XP')
+  putLedger(N, { a: { xp: 500, d: day(-5) }, b: { xp: 500, d: day(30) }, c: { xp: 500, d: day(1) } })
+  ok(xpOf(N) === 500, 'entries dated in the future or before the account existed are ignored')
+  putLedger(N, { a: { xp: 500, at: Date.now() - 86400000 } })
+  ok(xpOf(N) === 500, 'older entries without a stored date use their timestamp')
+  // Unlock needs Level 12 AND 5 counted races.
+  setXp(F, 7260)
+  setXp(H, 7260)
+  setXp(K, 7260)
+  run(`update public.race_config set value = 0.02 where key = 'crispr_drop_chance'`)
+  let s = me(F)
+  ok(s.level === 12 && s.crisprUnlocked === false && s.countedRaces === 0 && s.crisprUnlockRaces === 5 && s.inventory.crispr === 0, 'Level 12 with no counted races: CRISPR still locked, no level charge yet')
+  ok(Math.abs(s.crisprDropChance - 0.02) < 1e-9, 'the drop chance is reported as 2%')
+  const roll = (m, u) => j(`select to_jsonb(l) from public.race_reward_log l where match_id='${m}' and user_id='${u}'`)
+  // Four counted races: F wins each, but CRISPR is not unlocked yet, so no roll.
+  const early = []
+  for (let i = 0; i < 4; i++) early.push(playMatch(F, i % 2 ? H : K, { aCorrect: 8, bCorrect: 5 }))
+  ok(early.every((m) => roll(m, F).counted && roll(m, F).crispr_roll === null), 'wins before the unlock are counted but not rolled')
+  ok(me(F).countedRaces === 4 && !me(F).crisprUnlocked, 'four counted races: still locked')
+  // Fifth counted race unlocks; with the chance set to 1 the win drops one.
+  run(`update public.race_config set value = 1 where key = 'crispr_drop_chance'`)
+  const m5 = playMatch(F, H, { aCorrect: 8, bCorrect: 5 })
+  let r = roll(m5, F)
+  ok(r.counted && r.crispr_roll !== null && r.crispr_drop === true && r.granted.some((g) => g.item === 'crispr' && g.source === 'drop' && g.as === 'granted'), 'the race that reaches 5 counted races unlocks CRISPR and its win is rolled (drop recorded with the grant)')
+  ok(roll(m5, H).crispr_roll === null && roll(m5, H).crispr_drop === false, 'the loser is never rolled')
+  s = me(F)
+  ok(s.crisprUnlocked && s.inventory.crispr === 2 && s.crisprDrops === 1, 'inventory shows the drop plus the Level 12 charge (paid once unlocked)')
+  ok(call('race_state', F, m5).log.granted.some((g) => g.source === 'drop'), 'the results screen can read the drop from the match state')
+  // Idempotent: settling or rewarding again never rolls again.
+  const before = me(F).inventory.crispr
+  run(`select public.race_try_settle('${m5}')`)
+  run(`select public.race_reward('${m5}', '${F}', '${H}', 'win', true, false, 'UTC', now())`)
+  call('race_heartbeat', F, m5)
+  call('race_state', F, m5)
+  ok(me(F).inventory.crispr === before && j(`select count(*) from public.race_reward_log where match_id='${m5}' and user_id='${F}'`) === 1, 'retries, refreshes and repeated settlement do not roll again')
+  // Not eligible: tie, a loss, an uncounted race, an abandoned race, a guest opponent.
+  const tie = playMatch(F, H, { aCorrect: 6, bCorrect: 6, runMs: 60000 })
+  run(`update public.race_participants set run_ms = 60000 where match_id = '${tie}'`)
+  ok(roll(tie, F).outcome === 'tie' ? roll(tie, F).crispr_roll === null : true, 'a tie is not rolled')
+  const loss = playMatch(F, K, { aCorrect: 3, bCorrect: 9 })
+  ok(roll(loss, F).outcome === 'lose' && roll(loss, F).crispr_roll === null, 'a loss is not rolled')
+  const weak = playMatch(F, K, { aCorrect: 8, bCorrect: 2 })
+  ok(!roll(weak, F).qualified && roll(weak, F).crispr_roll === null, 'a win that did not qualify (opponent under 3 correct) is not rolled')
+  const quick = playMatch(F, K, { aCorrect: 8, bCorrect: 5, runMs: 5000 })
+  ok(!roll(quick, F).qualified && roll(quick, F).crispr_roll === null, 'a win in a run under 20 seconds is not rolled')
+  // Uncounted: past the per-opponent limit for the day.
+  run(`update public.race_config set value = 1 where key = 'per_opponent_per_day'`)
+  const capped = playMatch(F, H, { aCorrect: 8, bCorrect: 5 })
+  ok(roll(capped, F).counted === false && roll(capped, F).crispr_roll === null, 'a win past the daily limits (not counted) is not rolled')
+  run(`update public.race_config set value = 3 where key = 'per_opponent_per_day'`)
+  // Abandoned: the opponent leaves.
+  {
+    const code = newCode()
+    const m = call('race_create', F, code, 'UTC').match.id
+    call('race_join', K, code, 'UTC')
+    call('race_start', F, m)
+    for (let i = 0; i < 10; i++) call('race_answer', F, m, i, true)
+    call('race_leave', K, m)
+    ok(roll(m, F) && !roll(m, F).qualified && roll(m, F).crispr_roll === null, 'an opponent who leaves (forfeit) gives no roll')
+  }
+  // Guest opponent.
+  {
+    const code = newCode()
+    const m = call('race_create', F, code, 'UTC').match.id
+    call('race_join', G3, code, 'UTC', true)
+    call('race_start', F, m)
+    run(`update public.race_matches set start_at = now() - interval '60 seconds' where id='${m}'`)
+    for (let i = 0; i < 10; i++) {
+      call('race_answer', F, m, i, true)
+      call('race_answer', G3, m, i, i < 5)
+    }
+    ok(roll(m, F).crispr_roll === null, 'a win against a guest is not rolled')
+  }
+  // A roll that misses is recorded and grants nothing.
+  run(`update public.race_config set value = 0 where key = 'crispr_drop_chance'`)
+  run(`update public.race_config set value = 100 where key = 'per_day'`)
+  run(`update public.race_config set value = 100 where key = 'per_opponent_per_day'`)
+  const miss = playMatch(F, K, { aCorrect: 8, bCorrect: 5 })
+  r = roll(miss, F)
+  ok(r.counted && r.crispr_roll !== null && r.crispr_drop === false && !r.granted.some((g) => g.item === 'crispr'), 'a roll that misses is still recorded, with nothing granted')
+  // Cap: a drop while holding 3 waits as a pending claim.
+  run(`update public.race_config set value = 1 where key = 'crispr_drop_chance'`)
+  run(`update public.race_inventory set qty = 3 where user_id = '${F}' and item = 'crispr'`)
+  const full = playMatch(F, H, { aCorrect: 8, bCorrect: 5 })
+  ok(roll(full, F).granted.some((g) => g.item === 'crispr' && g.as === 'pending') && me(F).inventory.crispr === 3 && me(F).pending.crispr === 1, 'at the cap, a dropped CRISPR waits as a pending claim')
+  // Probability: 3000 eligible wins at 2% (settlement run directly in SQL).
+  run(`update public.race_config set value = 0.02 where key = 'crispr_drop_chance'`)
+  run(`update public.race_config set value = 100000 where key = 'per_day'`)
+  run(`update public.race_config set value = 100000 where key = 'per_opponent_per_day'`)
+  const n = 3000
+  const drops = j(`do $$
+    declare i int; m uuid;
+    begin
+      for i in 1..${n} loop
+        insert into public.race_matches (code, status, created_by, start_at) values ('P' || i, 'active', '${F}', now() - interval '60 seconds') returning id into m;
+        insert into public.race_participants (match_id, user_id, seat, answered, correct, finished_at, run_ms) values (m, '${F}', 1, 10, 8, now(), 60000), (m, '${H}', 2, 10, 5, now(), 60000);
+        perform public.race_try_settle(m);
+        update public.race_matches set status = 'finished' where id = m;
+      end loop;
+    end $$; select count(*) filter (where crispr_drop) from public.race_reward_log where user_id = '${F}' and crispr_roll is not null and match_id in (select id from public.race_matches where code like 'P%')`)
+  const sd = Math.sqrt(n * 0.02 * 0.98)
+  console.log(`    drop check: ${drops} CRISPR in ${n} eligible wins (${((100 * drops) / n).toFixed(2)}%)`)
+  ok(Math.abs(drops - n * 0.02) < 4.5 * sd, `drop rate over ${n} eligible wins is consistent with 2% (${drops} drops, expected ${n * 0.02})`)
+  ok(j(`select count(*) from public.race_reward_log where user_id = '${F}' and match_id in (select id from public.race_matches where code like 'P%') and crispr_roll is null`) === 0, 'every one of those wins was rolled exactly once')
+  run(`delete from public.race_matches where code like 'P%'`)
+  run(`update public.race_config set value = 6 where key = 'per_day'`)
+  run(`update public.race_config set value = 3 where key = 'per_opponent_per_day'`)
+}
+
 run(`update public.race_config set value = 3000 where key = 'countdown_ms'`)
+run(`update public.race_config set value = 5 where key = 'crispr_unlock_races'; update public.race_config set value = 0.02 where key = 'crispr_drop_chance'`)
 console.log(`\n${failed ? `${failed} FAILED` : 'ALL RACE BACKEND CHECKS PASSED'} (${passed} passed)`)
 process.exit(failed ? 1 : 0)

@@ -1132,13 +1132,13 @@ console.log('\n[38] Progression engine: XP, levels, streaks, This Week, Kit, mer
   const store = _store
   // levels
   const li=E.levelInfo(6520); assert(li.level===11&&li.toNext===740,'level 11 at 6520')
-  assert(E.levelInfo(19690).level===18&&E.levelInfo(51150).level===26,'level curve unchanged'); assert(E.levelInfo(10_000_000).level>60,'no maximum level')
+  assert(E.levelInfo(20200).level===18&&E.levelInfo(20199).level===17&&E.levelInfo(52900).level===26,'level curve (October 2026: 100 + 70n + 6n^2)'); assert(E.levelInfo(10_000_000).level>60,'no maximum level')
   assert(!('stage' in li)&&!('milestone' in li)&&C.STAGES===undefined&&C.MILESTONES===undefined,'no ranks or rank milestones in the model')
   // idempotent + taper
   let s=E.emptyState(); const at=new Date(2026,9,5,12).getTime()
   assert(E.award(s,{id:'a',xp:100,kind:'daily',at})===100 && E.award(s,{id:'a',xp:100,kind:'daily',at})===0,'idempotent')
   let p=0; for(let i=0;i<14;i++) p+=E.award(s,{id:'sp'+i,xp:50,kind:'syspuzzle',at})
-  assert(p===600+Math.floor(100*0.5),'taper after 600 practice: '+p)
+  assert(p===700,'no practice taper: '+p)
   assert(E.award(s,{id:'next',xp:50,kind:'syspuzzle',at:at+86400000})===50,'taper resets next day')
   // streak
   const h={'2026-10-01':{completed:true,won:true,completedAt:'2026-10-01T15:00:00'},'2026-10-02':{completed:true,won:true,completedAt:'2026-10-02T15:00:00'},'2026-10-04':{completed:true,won:true,completedAt:'2026-10-04T15:00:00'}}
@@ -1171,7 +1171,7 @@ console.log('\n[38] Progression engine: XP, levels, streaks, This Week, Kit, mer
   const bh={'2026-09-01':{completed:true,won:true,mistakes:0,completedAt:'2026-09-01T10:00:00'},'2026-09-02':{completed:true,won:false,mistakes:4,completedAt:'2026-09-02T10:00:00'},'2026-08-01':{completed:true,won:true,mistakes:1,completedAt:'2026-09-03T10:00:00'}}
   const bf=S.backfillIfNeeded({history:bh,mastery:{c1:{timesSolved:2}},bankById:{c1:{difficulty:'hard'}},systems:[],challenge:{history:[{completedAt:'x',roundsCorrect:10}],personalBest:500},systemWins:3})
   const tot=E.totalXp(S.loadProgression())
-  assert(tot===(100+50+25)+(100)+(50+50)+30+150+30+15,'backfill total '+tot)
+  assert(tot===(75+25+50+25)+(75)+(40+50)+30+150+30+15,'backfill total '+tot)
   assert(S.backfillIfNeeded({history:bh})===null,'backfill runs once')
   // rounds goals rotate and differ week to week
   // This Week: three fixed goals, any two pay the reward
@@ -1284,10 +1284,10 @@ console.log('\n[41] Home and My Plexus: economy unchanged, previews faithful, co
   const C = await import('../src/progression/config.js')
   const E = await import('../src/progression/engine.js')
   // XP values and level thresholds are exactly what they were.
-  assert(JSON.stringify(C.XP) === JSON.stringify({ daily: 100, perfect: 25, archive: 50, connection: { 1: 5, 2: 10, 3: 15, 4: 20 }, systemPuzzle: 50, systemAttempt: [100, 75, 50, 25], systemComplete: 300, challengePerCorrect: 3, challengeMax: 60, challengeNewBest: 15, raceFinish: 20, raceWin: 10, raceSolo: 10, rounds: 250, coverageAlt: 50 }) && JSON.stringify(C.TIMED_XP) === JSON.stringify({ full: 150, cap: 225, rate: 0.5 }), 'XP values as designed (Systems by attempt 100/75/50/25; timed budget 150 full, cap 225)')
+  assert(JSON.stringify(C.XP) === JSON.stringify({ daily: 75, dailyWin: 25, perfect: 25, archive: 40, connection: { 1: 5, 2: 10, 3: 15, 4: 20 }, systemPuzzle: 50, systemAttempt: [100, 75, 50, 25], systemComplete: 300, challengePerCorrect: 3, challengePerWrong: 1, challengeMax: 60, challengeNewBest: 15, raceFinish: 25, raceWin: 15, raceSolo: 10, rounds: 250, coverageAlt: 50 }) && JSON.stringify(C.TIMED_XP) === JSON.stringify({ full: 150, cap: 225, rate: 0.5 }), 'XP values as designed (October 2026 progression pass)')
   const costs = Array.from({ length: 12 }, (_, i) => C.levelCost(i + 1)).join(',')
-  assert(costs === '150,220,290,380,490,600,730,860,1010,1180,1350,1540', 'level thresholds unchanged (' + costs + ')')
-  assert(E.levelInfo(149).level === 1 && E.levelInfo(150).level === 2 && E.levelInfo(370).level === 3, 'level boundaries land where they did')
+  assert(costs === '100,180,260,360,480,600,740,880,1040,1220,1400,1600', 'level thresholds (' + costs + ')')
+  assert(E.levelInfo(99).level === 1 && E.levelInfo(100).level === 2 && E.levelInfo(280).level === 3, 'level boundaries')
   assert([2,3,4,5,6,7,8,9].map(L=>C.levelRewards(L).join()||'-').join(' ') === 'curbside lab - second-opinion curbside lab second-opinion curbside', 'Your Tools level schedule')
   // Connection of the day preview: first sentence + rest is always the exact
   // explanation, the preview ends at a sentence end, and no em dashes.

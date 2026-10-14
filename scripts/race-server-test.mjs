@@ -30,7 +30,12 @@ sql(`set client_min_messages = warning; truncate public.race_matches, public.rac
 
 // B is Level 12 (CRISPR unlocked, 0009); its Level 12 reward is marked paid so counts stay simple.
 const B_ID = USERS['tok-b'].id
-sql(`insert into public.user_progress (user_id, data) values ('${B_ID}', '{"progression":{"ledger":{"t":{"xp":7260}}}}') on conflict (user_id) do update set data = excluded.data; insert into public.race_level_grants (user_id, level, item) values ('${B_ID}', 12, 'crispr') on conflict do nothing;`)
+// Level 12 from synced XP the server trusts (0010: dated entries of at most
+// 1000 XP, at most 3000 a day, not before the account existed). The
+// counted-race part of the CRISPR unlock is tested in race-sql-test.mjs.
+const pastDay = (n) => new Date(Date.now() - n * 86400000).toISOString().slice(0, 10)
+const ledger = Object.fromEntries(Array.from({ length: 8 }, (_, i) => [`t${i}`, { xp: i < 7 ? 1000 : 260, d: pastDay(Math.floor(i / 3) + 1) }]))
+sql(`update auth.users set created_at = now() - interval '90 days' where id = '${B_ID}'; update public.race_config set value = 0 where key = 'crispr_unlock_races'; insert into public.user_progress (user_id, data) values ('${B_ID}', '${JSON.stringify({ progression: { ledger } })}') on conflict (user_id) do update set data = excluded.data; insert into public.race_level_grants (user_id, level, item) values ('${B_ID}', 12, 'crispr') on conflict do nothing;`)
 
 console.log('[1] A verified session is required (an anonymous guest session counts)')
 ok((await call(null, { action: 'me' })).status === 401, 'no token: 401')
@@ -143,5 +148,6 @@ console.log('[6] Level info through the server; Race power-ups are Race only')
 }
 
 sql(`update public.race_config set value = 3000 where key = 'countdown_ms'; update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
+sql(`update public.race_config set value = 5 where key = 'crispr_unlock_races'; update public.race_config set value = 0.02 where key = 'crispr_drop_chance'`)
 console.log(`\n${failed ? `${failed} FAILED` : 'ALL RACE SERVER CHECKS PASSED'} (${passed} passed)`)
 process.exit(failed ? 1 : 0)

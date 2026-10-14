@@ -1,5 +1,5 @@
 import React from 'react'
-import { KIT, PUZZLE_TOOLS, nextLevelReward } from '../progression/config.js'
+import { KIT, PUZZLE_TOOLS, nextMilestone } from '../progression/config.js'
 import { formatDayKey } from '../utils/calendar.js'
 import { LevelLine, ToolArt, fmt } from './RecordParts.jsx'
 
@@ -18,7 +18,7 @@ export default function XpResult({ result, onOpenRecord }) {
     if (i >= 0) held.splice(i, 1)
   }
   const items = countGrants(held)
-  const next = nextLevelReward(after.level)
+  const next = nextMilestone(after.level)
 
   if (!(gained > 0) && items.length === 0 && coverageUsed.length === 0 && pending.length === 0 && coverageAlt.length === 0) return null
 
@@ -28,11 +28,12 @@ export default function XpResult({ result, onOpenRecord }) {
       {lines.length > 0 && <p className="xp-lines">{lines.map(([label, xp]) => `${label} ${fmt(xp)}`).join(' · ')}</p>}
       <LevelLine info={after} width={200} height={20} className="xp-line" />
       <p className="xp-level">
-        <b>Level {after.level}</b> · {fmt(after.toNext)} XP to Level {after.level + 1}
+        <b>Level {after.level}</b>
+        {levelUp ? ' reached' : ''} · {fmt(after.toNext)} XP to Level {after.level + 1}
       </p>
       {next && (
         <p className="xp-next">
-          Next reward at Level {next.level} · {next.items.map((it) => `${KIT[it]?.name || it} +1`).join(' · ')}
+          Next reward at Level {next.level} · {next.items.join(' · ')}
         </p>
       )}
       {coverageUsed.length > 0 && (

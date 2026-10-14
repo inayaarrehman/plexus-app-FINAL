@@ -329,7 +329,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
               </div>
               {nextReward && !preview && (
                 <p className="record-next sr-only">
-                  Next reward: Level {nextReward.level} · {rewardLabel(nextReward.items)}
+                  Next reward: Level {nextReward.level} · {nextReward.items.join(' · ')}
                 </p>
               )}
             </div>
@@ -450,13 +450,19 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
             <ul className="kit-list race-cards">
               {Object.entries(RACE_ITEMS).map(([item, def]) => {
                 const inv = race?.inventory?.[item] ?? 0
-                const lockedByLevel = item === 'crispr' && info.level < CRISPR_UNLOCK_LEVEL
+                // CRISPR unlock: the level and counted races, both judged on the
+                // server (race.crisprUnlocked); the level shown here is this device's.
+                const racesNeeded = race?.crisprUnlockRaces ?? RACE_REWARDS.crisprUnlockRaces
+                const racesDone = race?.countedRaces ?? 0
+                const lockedByLevel = item === 'crispr' && (race ? !race.crisprUnlocked : info.level < CRISPR_UNLOCK_LEVEL)
                 const prog =
                   item === 'mutation'
                     ? `${(race?.progress?.qualifyingWins ?? 0) % RACE_REWARDS.mutationEveryWins}/${RACE_REWARDS.mutationEveryWins} qualifying wins to the next`
                     : info.level < CRISPR_UNLOCK_LEVEL
-                      ? `Unlocks at Level ${CRISPR_UNLOCK_LEVEL}`
-                      : `Next at Level ${nextCrisprLevel(info.level)}`
+                      ? `Unlocks at Level ${CRISPR_UNLOCK_LEVEL}${racesNeeded ? ` after ${racesNeeded} counted races` : ''}`
+                      : lockedByLevel && racesDone < racesNeeded
+                        ? `Unlocks after ${racesNeeded} counted races (${racesDone} so far)`
+                        : `Next at Level ${nextCrisprLevel(info.level)}, or a ${Math.round((race?.crisprDropChance ?? RACE_REWARDS.crisprDropChance) * 100)}% chance after any counted race win`
                 return (
                   <li key={item} className={`race-card kit-item ${race && !lockedByLevel ? '' : 'is-locked'}`}>
                     <ToolArt item={item} locked={!race || lockedByLevel} size="sm" />
@@ -481,7 +487,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
                 {race === undefined
                   ? 'Loading…'
                   : race
-                    ? `A Mutation for every ${RACE_REWARDS.mutationEveryWins} qualifying race wins. CRISPR is a level reward: one at Level ${CRISPR_UNLOCK_LEVEL}, then one every ${RACE_REWARDS.crisprLevelEvery} levels. Use them in Chaos races.`
+                    ? `A Mutation for every ${RACE_REWARDS.mutationEveryWins} qualifying race wins. CRISPR unlocks at Level ${CRISPR_UNLOCK_LEVEL} once ${RACE_REWARDS.crisprUnlockRaces} races have counted: one then, one every ${RACE_REWARDS.crisprLevelEvery} levels, and a rare ${Math.round(RACE_REWARDS.crisprDropChance * 100)}% chance after each counted race win. Use them in Chaos races.`
                     : 'Sign in to earn and use Race power-ups.'}
               </span>
             </p>
