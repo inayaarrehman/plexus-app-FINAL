@@ -133,19 +133,13 @@ const c3 = await call('tok-a', { action: 'create' })
 ok((await call('tok-b', { action: 'attack', matchId: c3.json.match.id })).json.reason === 'not-in-match', 'a non-player cannot act on a match')
 ok((await call('tok-b', { action: 'answer', matchId: c3.json.match.id, round: 0, answer: 'x' })).json.reason === 'not-in-match', 'a non-player cannot answer')
 
-console.log('[6] 3 Minutes solo powerups and level info through the server')
+console.log('[6] Level info through the server; Race power-ups are Race only')
 {
-  ok((await call('tok-anon', { action: 'solo', item: 'mutation' })).status === 403, 'guests cannot use solo powerups')
-  ok((await call('tok-a', { action: 'solo', item: 'laser' })).json.reason === 'bad-item', 'unknown item refused')
   const meA = (await call('tok-a', { action: 'me' })).json
   ok(meA.crisprUnlocked === false && meA.crisprUnlockLevel === 12 && meA.effectMs === 10000, 'me reports the CRISPR lock (Level 12) and the 10 s effect')
-  ok((await call('tok-a', { action: 'solo', item: 'crispr' })).json.reason === 'crispr-locked', 'a held CRISPR below Level 12 cannot be used solo')
-  sql(`select public.race_grant('${USERS['tok-a'].id}', 'mutation')`)
-  const before = (await call('tok-a', { action: 'me' })).json.inventory.mutation
-  const u = await call('tok-a', { action: 'solo', item: 'mutation' })
-  ok(u.status === 200 && u.json.effectMs === 10000 && u.json.inventory.mutation === before - 1, 'solo Mutation spends one, effect 10 s')
   const meB = (await call('tok-b', { action: 'me' })).json
   ok(meB.crisprUnlocked === true && meB.level === 12, 'a Level 12 player is unlocked')
+  ok((await call('tok-a', { action: 'solo', item: 'mutation' })).status === 400, 'there is no solo (3 Minutes) use of Race power-ups')
 }
 
 sql(`update public.race_config set value = 3000 where key = 'countdown_ms'; update public.race_config set value = 1 where key = 'chaos_free_loadout'`)

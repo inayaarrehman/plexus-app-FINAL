@@ -91,7 +91,7 @@ export const KIT_ORDER = ['curbside', 'lab', 'second-opinion', 'shield']
 // Race power-ups. Inventory, earning and spending happen on the server
 // (api/race, supabase/migrations/0006 and 0009); these are the names, copy and
 // the display copies of the server settings.
-//   Mutation lasts MUTATION_MS in every mode (Race and 3 Minutes).
+//   Mutation lasts MUTATION_MS. Race power-ups are used in Chaos races only.
 //   CRISPR is a level reward: it unlocks at CRISPR_UNLOCK_LEVEL, which pays
 //   one charge, then one more every CRISPR_LEVEL_EVERY levels. Races give
 //   Mutation only. The server checks the level before CRISPR can be equipped,

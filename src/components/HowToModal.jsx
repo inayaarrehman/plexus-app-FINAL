@@ -35,7 +35,7 @@ const MORE = [
     title: 'Tools',
     body: [
       'Consult highlights two tiles that belong together. Rule Out finds the odd tile in a “one away” guess. Second Opinion gives back one mistake.',
-      'Tools work in Dailies only, one per Daily. A Daily solved with a tool shows “Solved with assistance.” You earn tools from levels, This Week and Coverage.',
+      'Tools work in Dailies and 3 Minutes: one per Daily, one per 3 Minutes session. A Daily solved with a tool shows “Solved with assistance.” You earn tools from levels, This Week and Coverage. Race has its own power-ups, Mutation and CRISPR, for Chaos races only.',
     ],
   },
   {

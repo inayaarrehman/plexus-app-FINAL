@@ -96,7 +96,7 @@ console.log('[2] One tool per attempt; locked or empty tools spend nothing')
   ok(S.spendTool('curbside', 'daily-2026-10-12:4', { mode: 'daily' }) && S.spendTool('curbside', 'daily-2026-10-12:5', { mode: 'daily' }), 'a replay (new attempt id) can use a tool again, spending it')
 }
 
-console.log('[2b] Tools are for Dailies only: Systems, timed modes and stale routes spend nothing')
+console.log('[2b] Tools are for Dailies and 3 Minutes: Systems, Race and stale routes spend nothing')
 {
   reset()
   at('2026-10-12T10:00:00-07:00')
@@ -108,12 +108,15 @@ console.log('[2b] Tools are for Dailies only: Systems, timed modes and stale rou
   ok(S.spendTool('curbside', 'sys-cardiology-1:1', { mode: 'system' }) === false, 'a Systems board cannot use a tool')
   ok(S.spendTool('curbside', 'daily-2026-10-12:7', { mode: 'system' }) === false, 'a Systems caller with a Daily-looking id is refused')
   ok(S.spendTool('curbside', 'sys-cardiology-1:2', { mode: 'daily' }) === false, 'a non-Daily attempt id claiming Daily is refused')
-  ok(S.spendTool('curbside', 'challenge:1', { mode: 'challenge' }) === false && S.spendTool('curbside', 'race:abc', { mode: 'race' }) === false, '3 Minutes and Race cannot use a tool')
+  ok(S.spendTool('curbside', 'race:abc', { mode: 'race' }) === false, 'Race cannot use a puzzle tool (it has its own power-ups)')
+  ok(S.spendTool('curbside', 'daily-2026-10-12:6', { mode: 'challenge' }) === false && S.spendTool('curbside', 'challenge:abc', { mode: 'challenge' }) === false, 'a 3 Minutes caller must use a 3 Minutes session id')
   ok(S.spendTool('curbside', 'daily-2026-10-12:8') === false, 'a caller that does not say Daily is refused')
   ok(S.spendTool('curbside', 'daily-2026-10-11:1', { mode: 'archive' }) === false, 'an Archive board cannot use a tool')
   ok(E.kitCounts(load()).curbside === held && Object.keys(load().kit.uses).length === 0, 'nothing was consumed by any refused use')
   ok(S.spendTool('curbside', 'daily-2026-10-12:9', { mode: 'daily' }) === true && E.kitCounts(load()).curbside === held - 1, 'tools earned outside Dailies still work in a Daily')
-  ok(S.toolsAllowedIn('daily') && !S.toolsAllowedIn('system') && !S.toolsAllowedIn('archive') && !S.toolsAllowedIn('challenge') && !S.toolsAllowedIn('race'), 'only Daily boards show tools')
+  ok(S.spendTool('curbside', 'challenge:1760300000000', { mode: 'challenge' }) === true && E.kitCounts(load()).curbside === held - 2, 'a 3 Minutes session spends from the same inventory')
+  ok(S.spendTool('curbside', 'challenge:1760300000000', { mode: 'challenge' }) === false, 'one tool per 3 Minutes session')
+  ok(S.toolsAllowedIn('daily') && S.toolsAllowedIn('challenge') && !S.toolsAllowedIn('system') && !S.toolsAllowedIn('archive') && !S.toolsAllowedIn('race'), 'tools show in Dailies and 3 Minutes only')
 }
 
 console.log('[3] Perfect, assisted solves and first-completion credit')

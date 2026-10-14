@@ -400,7 +400,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
         <section className="record-kit" aria-label="Your Tools">
           <div className="kit-section">
             <h2 className="kit-group-head">
-              Puzzle Tools <span className="kit-group-sub">Dailies only · one per Daily</span>
+              Puzzle Tools <span className="kit-group-sub">Dailies and 3 Minutes · one per Daily or session</span>
             </h2>
             <ul className="kit-list tool-cards">
               {PUZZLE_TOOLS.map((item) => (
@@ -445,7 +445,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
 
           <div className="kit-section">
             <h2 className="kit-group-head">
-              Race Power-ups <span className="kit-group-sub">Chaos races and 3 Minutes</span>
+              Race Power-ups <span className="kit-group-sub">Chaos races only</span>
             </h2>
             <ul className="kit-list race-cards">
               {Object.entries(RACE_ITEMS).map(([item, def]) => {
@@ -481,7 +481,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
                 {race === undefined
                   ? 'Loading…'
                   : race
-                    ? `A Mutation for every ${RACE_REWARDS.mutationEveryWins} qualifying race wins. CRISPR is a level reward: one at Level ${CRISPR_UNLOCK_LEVEL}, then one every ${RACE_REWARDS.crisprLevelEvery} levels. Use them in Chaos races and 3 Minutes.`
+                    ? `A Mutation for every ${RACE_REWARDS.mutationEveryWins} qualifying race wins. CRISPR is a level reward: one at Level ${CRISPR_UNLOCK_LEVEL}, then one every ${RACE_REWARDS.crisprLevelEvery} levels. Use them in Chaos races.`
                     : 'Sign in to earn and use Race power-ups.'}
               </span>
             </p>
@@ -494,7 +494,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
               <span className="kit-more-chev" aria-hidden="true" />
             </summary>
             <p className="kit-foot">
-              Caps: puzzle tools {KIT.curbside.max} each, Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Puzzle tools that arrive when you are full wait here as claims, nothing is lost. Coverage that arrives when you hold {KIT.shield.max} becomes a puzzle tool or {XP.coverageAlt} XP. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Puzzle tools can be used in Dailies only, not in Systems, 3 Minutes or Race. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
+              Caps: puzzle tools {KIT.curbside.max} each, Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Puzzle tools that arrive when you are full wait here as claims, nothing is lost. Coverage that arrives when you hold {KIT.shield.max} becomes a puzzle tool or {XP.coverageAlt} XP. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Puzzle tools can be used in Dailies and 3 Minutes (one per Daily, one per 3 Minutes session), not in Systems or Race. Race power-ups are for Chaos races only. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
             </p>
           </details>
           {convertedList.length > 0 && (

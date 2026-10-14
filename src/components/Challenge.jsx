@@ -18,11 +18,10 @@ import TileText from './TileText.jsx'
 import { recordChallengeSession } from '../progression/store.js'
 import { TimedXpNote, TimedResultLine, timedXpGained } from './TimedXp.jsx'
 import Modal from './Modal.jsx'
-import ChallengePowerups, { PowerupIntro, MUTATION_SECONDS } from './ChallengePowerups.jsx'
-import { raceCall, getRaceSummary } from '../lib/raceApi.js'
-import { isSupabaseConfigured } from '../lib/supabaseClient.js'
-import { scrambleLabel } from '../utils/mutation.js'
-import { MUTATION_MS } from '../progression/config.js'
+import ChallengeTools, { ToolsIntro } from './ChallengeTools.jsx'
+import { spendTool, toolKit } from '../progression/store.js'
+import { KIT } from '../progression/config.js'
+import { itemOpen } from '../progression/engine.js'
 
 // The timed mode is 3 minutes (formerly 5). Kept as a single constant so
 // there are no other "five minute" assumptions hiding in the component.
@@ -64,18 +63,18 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
   const [matches, setMatches] = useState({}) // Match the Link: concept -> label
   const [chainOrder, setChainOrder] = useState([]) // Chain: ordered step texts
 
-  // Powerups (see ChallengePowerups.jsx for the solo rules). The refs are
-  // what scoring reads, so an effect ends exactly on time even if a render
-  // is late; the state drives what is drawn.
-  const [power, setPower] = useState({ loaded: false, summary: null })
-  const [mutation, setMutation] = useState(null) // { endsAt, seed } | null
-  const mutationRef = useRef(null)
-  const [crisprArmed, setCrisprArmed] = useState(false)
-  const crisprRef = useRef(false)
-  const [powerUsed, setPowerUsed] = useState({ mutation: false, crispr: false })
-  const [powerBusy, setPowerBusy] = useState(false)
-  const [powerNote, setPowerNote] = useState('')
-  const powerNoteTimer = useRef(null)
+  // Puzzle tools (see ChallengeTools.jsx): one per session, from the same
+  // inventory as the Daily. Consult and Rule Out act on the current round
+  // only; Second Opinion undoes the most recent wrong answer's penalty.
+  const [kit, setKit] = useState(() => toolKit())
+  const [toolUsed, setToolUsed] = useState(null) // item id once a tool is used this session
+  const [resultTool, setResultTool] = useState(null) // shown on the results screen
+  const [consultMarks, setConsultMarks] = useState([]) // texts highlighted by Consult (this round)
+  const [ruledOut, setRuledOut] = useState(null) // text crossed out by Rule Out (this round)
+  const [toolNote, setToolNote] = useState('')
+  const toolNoteTimer = useRef(null)
+  const attemptRef = useRef(null)
+  const missRef = useRef(null) // { refund, streak } for the latest answer, when it was wrong
 
   const [timeLeftMs, setTimeLeftMs] = useState(DURATION_MS)
   const [score, setScore] = useState(0)
@@ -102,73 +101,84 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
   }
   const [comboStreak, setComboStreak] = useState(0)
 
-  const refreshPower = () => {
-    if (!isSupabaseConfigured()) {
-      setPower({ loaded: true, summary: null })
+  const flashToolNote = (text, ms = 3600) => {
+    clearTimeout(toolNoteTimer.current)
+    setToolNote(text)
+    toolNoteTimer.current = setTimeout(() => setToolNote(''), ms)
+  }
+  // What a tool would do in the current round, or null when it does not fit.
+  const toolEffect = (item, r = round) => {
+    if (!r) return null
+    if (item === 'curbside') {
+      if (r.type === 'rapidAssociation') return { marks: r.correctAnswers.filter((t) => !selected.includes(t)).slice(0, 2) }
+      if (r.type === 'linkTwo') return { marks: r.correctAnswers.slice(0, 1) }
+      if (r.type === 'miniConnections') return { marks: r.tiles.filter((t) => t.groupId === 'a').slice(0, 2).map((t) => t.text) }
+      if (r.type === 'split') return { marks: r.tiles.filter((t) => t.group === 'a').slice(0, 2).map((t) => t.text) }
+      return null
+    }
+    if (item === 'lab') {
+      const pickWrong = (opts, isRight) => {
+        const wrong = (opts || []).filter((o) => !isRight(o) && !selected.includes(o.text))
+        return wrong.length ? { out: wrong[0].text } : null
+      }
+      if (['rapidAssociation', 'linkTwo', 'completeConnection', 'commonLink', 'completeTheChain', 'impostor'].includes(r.type)) return pickWrong(r.options, (o) => o.correct)
+      if (r.type === 'doubleAgent') return pickWrong(r.options, (o) => o.both)
+      return null
+    }
+    if (item === 'second-opinion') return missRef.current && missRef.current.refund > 0 ? { ...missRef.current } : null
+    return null
+  }
+  const toolState = (item) => {
+    const def = KIT[item]
+    if (phase !== 'playing') return { ok: false, why: 'During a session' }
+    if (!itemOpen(item, kit.level)) return { ok: false, why: `Unlocks at Level ${def.unlock}` }
+    if (toolUsed) return { ok: false, why: 'One tool per session' }
+    if (!(kit.counts[item] > 0)) return { ok: false, why: 'None left' }
+    if (lockRef.current && item !== 'second-opinion') return { ok: false, why: 'Wait for the next round' }
+    if (!toolEffect(item)) return { ok: false, why: item === 'second-opinion' ? 'Right after a wrong answer' : 'Not for this round' }
+    return { ok: true }
+  }
+  const useTool = (item) => {
+    const effect = toolEffect(item)
+    if (!effect || !toolState(item).ok) return
+    if (!spendTool(item, attemptRef.current, { mode: 'challenge' })) {
+      setKit(toolKit())
+      flashToolNote('That tool could not be used just now. Nothing was spent.')
       return
     }
-    getRaceSummary().then((s) => setPower({ loaded: true, summary: s && !s.guest ? s : null }))
-  }
-  useEffect(() => {
-    refreshPower()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-  const flashPowerNote = (text) => {
-    clearTimeout(powerNoteTimer.current)
-    setPowerNote(text)
-    powerNoteTimer.current = setTimeout(() => setPowerNote(''), 3200)
-  }
-  const clearPowerups = () => {
-    mutationRef.current = null
-    setMutation(null)
-    crisprRef.current = false
-    setCrisprArmed(false)
-    setPowerBusy(false)
-    clearTimeout(powerNoteTimer.current)
-    setPowerNote('')
-  }
-  const mutationLive = () => !!mutationRef.current && Date.now() < mutationRef.current.endsAt
-  const setInventory = (inventory) => inventory && setPower((p) => (p.summary ? { ...p, summary: { ...p.summary, inventory } } : p))
-  const activateMutation = async () => {
-    if (powerBusy || powerUsed.mutation || mutationLive() || phase !== 'playing') return
-    setPowerBusy(true)
-    const r = await raceCall('solo', { item: 'mutation' })
-    setPowerBusy(false)
-    if (!r.ok) {
-      flashPowerNote(r.reason === 'no-mutation' ? 'No Mutation left. Win Chaos races to earn more.' : 'That powerup could not be used just now.')
-      refreshPower()
-      return
+    setToolUsed(item)
+    setKit(toolKit())
+    haptics.select?.()
+    if (item === 'curbside') {
+      setConsultMarks(effect.marks)
+      flashToolNote(effect.marks.length > 1 ? 'Consult: the highlighted answers belong together.' : 'Consult: the highlighted answer is one of the two.', 6000)
+    } else if (item === 'lab') {
+      setRuledOut(effect.out)
+      flashToolNote('Rule Out: the crossed-out choice is wrong.', 6000)
+    } else {
+      missRef.current = null
+      addPoints(effect.refund)
+      setComboStreak(effect.streak)
+      flashToolNote('Second Opinion: the points from your last miss are back and your streak is restored.')
     }
-    setInventory(r.inventory)
-    setPowerUsed((u) => ({ ...u, mutation: true }))
-    if (endAtRef.current && Date.now() >= endAtRef.current) return
-    const m = { endsAt: Date.now() + (Number(r.effectMs) || MUTATION_MS), seed: Math.floor(Math.random() * 2 ** 31) }
-    mutationRef.current = m
-    setMutation(m)
   }
-  const armCrispr = () => {
-    const s = power.summary
-    if (powerBusy || powerUsed.crispr || crisprRef.current || !s?.crisprUnlocked || !(s.inventory?.crispr > 0) || phase !== 'playing') return
-    crisprRef.current = true
-    setCrisprArmed(true)
+  const resetTools = () => {
+    clearTimeout(toolNoteTimer.current)
+    setToolNote('')
+    setConsultMarks([])
+    setRuledOut(null)
+    missRef.current = null
   }
-  // A wrong answer: an armed CRISPR forgives it (no penalty, streak kept) and
-  // is spent now; otherwise the normal penalty. Returns true when forgiven.
+  // A wrong answer: the normal penalty, remembered so Second Opinion can undo it.
   const penalizeWrong = () => {
-    if (crisprRef.current) {
-      crisprRef.current = false
-      setCrisprArmed(false)
-      setPowerUsed((u) => ({ ...u, crispr: true }))
-      flashPowerNote('CRISPR blocked that miss: no points off, streak kept.')
-      raceCall('solo', { item: 'crispr' }).then((r) => (r.ok ? setInventory(r.inventory) : refreshPower()))
-      return true
-    }
-    addPoints(WRONG_PENALTY)
+    const before = comboStreak
+    const delta = addPoints(WRONG_PENALTY)
     setComboStreak(0)
-    return false
+    missRef.current = { refund: -delta, streak: before }
   }
-  // What an answer tile shows: scrambled while Mutation is on (display only).
-  const tileText = (t) => (mutation ? scrambleLabel(t, mutation.seed) : t)
+  // Tool marks on the current round: Consult highlights, Rule Out crosses out.
+  const tileMark = (text) => (consultMarks.includes(text) ? 'tile-curbside' : ruledOut === text ? 'tile-ruled-out' : '')
+  const choiceMark = (text) => (consultMarks.includes(text) ? 'is-consulted' : ruledOut === text ? 'is-ruled-out' : '')
   const [highestMultiplier, setHighestMultiplier] = useState(1)
   const [totalActions, setTotalActions] = useState(0)
   const [correctActions, setCorrectActions] = useState(0)
@@ -246,6 +256,8 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     setActiveConcept(null)
     setMatches({})
     setChainOrder([])
+    setConsultMarks([])
+    setRuledOut(null)
     setAnswerNote(null)
     roundStartRef.current = Date.now()
     lockRef.current = false
@@ -269,9 +281,11 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     setIsNewBest(false)
     setShowReviewMisses(false)
     setMistakes([])
-    clearPowerups()
-    setPowerUsed({ mutation: false, crispr: false })
-    refreshPower()
+    resetTools()
+    setToolUsed(null)
+    setResultTool(null)
+    setKit(toolKit())
+    attemptRef.current = `challenge:${Date.now()}`
     endAtRef.current = Date.now() + DURATION_MS
     setTimeLeftMs(DURATION_MS)
     setPhase('playing')
@@ -304,10 +318,6 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     if (phase !== 'playing') return undefined
     timerRef.current = setInterval(() => {
       const remaining = endAtRef.current - Date.now()
-      if (mutationRef.current && Date.now() >= mutationRef.current.endsAt) {
-        mutationRef.current = null
-        setMutation(null)
-      }
       if (remaining <= 0) {
         clearInterval(timerRef.current)
         setTimeLeftMs(0)
@@ -324,7 +334,8 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
   useEffect(() => {
     finishRef.current = () => {
       setPhase('results')
-      clearPowerups()
+      setResultTool(toolUsed)
+      resetTools()
       const missEntries = Object.keys(misses)
       if (missEntries.length > 0) {
         recordWeakSpots(missEntries.map((tag) => ({ tag, solved: false })))
@@ -358,7 +369,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
   useEffect(() => () => {
     clearInterval(timerRef.current)
     clearTimeout(shakeTimer.current)
-    clearTimeout(powerNoteTimer.current)
+    clearTimeout(toolNoteTimer.current)
   }, [])
 
   useEffect(() => {
@@ -378,7 +389,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     clearInterval(timerRef.current)
     finishRef.current = () => {}
     lockRef.current = true
-    clearPowerups()
+    resetTools()
     setRound(null)
     setActivating(false)
     setPhase('intro')
@@ -392,7 +403,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
 
   const applyCorrect = (basePoints, responseMs, systems) => {
     const multiplier = getMultiplier(comboStreak)
-    const points = computeActionPoints({ correct: true, basePoints, multiplier, responseMs }) * (mutationLive() ? 2 : 1)
+    const points = computeActionPoints({ correct: true, basePoints, multiplier, responseMs })
     addPoints(points)
     setCorrectActions((n) => n + 1)
     setComboStreak((n) => n + 1)
@@ -434,6 +445,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
   }
 
   const finishAction = (correct) => {
+    missRef.current = null // a new answer: Second Opinion only undoes the latest one
     setTotalActions((n) => n + 1)
     const responseMs = Date.now() - (roundStartRef.current || Date.now())
     setResponseTimes((arr) => [...arr, responseMs])
@@ -455,7 +467,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
       const bonus = speedBonus(responseMs)
       const pointsFirstGroup = Math.round((BASE_POINTS.miniConnections + bonus) * multiplier)
       const pointsSecondGroup = Math.round(BASE_POINTS.miniConnections * multiplier)
-      addPoints((pointsFirstGroup + pointsSecondGroup) * (mutationLive() ? 2 : 1))
+      addPoints(pointsFirstGroup + pointsSecondGroup)
       setCorrectActions((n) => n + 1)
       setComboStreak((n) => n + 1)
       setHighestMultiplier((m) => Math.max(m, multiplier))
@@ -698,7 +710,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
             <p className="challenge-start-note">The timer starts when you tap Start.</p>
             {personalBest > 0 && <p className="challenge-best">Personal best: {personalBest.toLocaleString()}</p>}
             <TimedXpNote />
-            <PowerupIntro summary={power.summary} loaded={power.loaded} />
+            <ToolsIntro kit={kit} />
           </section>
         </div>
       </div>
@@ -738,6 +750,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
             <p className="challenge-best">Personal best: {personalBest.toLocaleString()}</p>
           )}
           <TimedResultLine result={xpResult} kind="3 Minutes" />
+          {resultTool && <p className="challenge-results-tool">Played with {KIT[resultTool].name}.</p>}
         </section>
 
         <div className="challenge-results-actions">
@@ -844,7 +857,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
         </span>
       </div>
       {showScoring && <ScoringInfo id="challenge-scoring" playing onClose={() => setShowScoring(false)} />}
-      <ChallengePowerups summary={power.summary} loaded={power.loaded} now={Date.now()} mutation={mutation} crisprArmed={crisprArmed} used={powerUsed} busy={powerBusy} note={powerNote} onMutation={activateMutation} onCrispr={armCrispr} />
+      <ChallengeTools kit={kit} toolState={toolState} used={toolUsed} note={toolNote} onUse={useTool} />
 
       <p className="challenge-instruction">{INSTRUCTIONS[round.type]}</p>
       {answerNote && feedback === 'incorrect' && (
@@ -864,15 +877,14 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
               return (
                 <button
                   key={text}
-                  className={`tile ${isSelected ? 'tile-selected' : ''} ${feedback === 'incorrect' && isSelected ? 'tile-shake' : ''} ${
+                  className={`tile ${tileMark(text)} ${isSelected ? 'tile-selected' : ''} ${feedback === 'incorrect' && isSelected ? 'tile-shake' : ''} ${
                     feedback === 'incorrect' && round.type === 'rapidAssociation' && t.correct ? 'tile-answer' : ''
                   }`}
                   onClick={() => handleToggle(text)}
-                  disabled={!!feedback}
+                  disabled={!!feedback || ruledOut === text}
                   data-term={text}
-                  aria-label={mutation ? text : undefined}
                 >
-                  <TileText>{tileText(text)}</TileText>
+                  <TileText>{(text)}</TileText>
                 </button>
               )
             })}
@@ -892,14 +904,13 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
             {round.options.map((o) => (
               <button
                 key={o.text}
-                className={`challenge-choice ${
+                className={`challenge-choice ${choiceMark(o.text)} ${
                   feedback && o.text === resolvedOption ? (o.correct ? 'is-correct' : 'is-incorrect') : ''
                 } ${feedback === 'incorrect' && o.correct ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick(o)}
-                disabled={!!feedback}
-                aria-label={mutation ? o.text : undefined}
+                disabled={!!feedback || ruledOut === o.text}
               >
-                {tileText(o.text)}
+                {(o.text)}
               </button>
             ))}
           </div>
@@ -920,14 +931,13 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
             {round.options.map((o) => (
               <button
                 key={o.text}
-                className={`challenge-choice ${
+                className={`challenge-choice ${choiceMark(o.text)} ${
                   feedback && o.text === resolvedOption ? (o.correct ? 'is-correct' : 'is-incorrect') : ''
                 } ${feedback === 'incorrect' && o.correct ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick(o)}
-                disabled={!!feedback}
-                aria-label={mutation ? o.text : undefined}
+                disabled={!!feedback || ruledOut === o.text}
               >
-                {tileText(o.text)}
+                {(o.text)}
               </button>
             ))}
           </div>
@@ -947,14 +957,13 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
             {round.options.map((o) => (
               <button
                 key={o.text}
-                className={`challenge-choice ${
+                className={`challenge-choice ${choiceMark(o.text)} ${
                   feedback && o.text === resolvedOption ? (o.both ? 'is-correct' : 'is-incorrect') : ''
                 } ${feedback === 'incorrect' && o.both ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick({ ...o, correct: o.both })}
-                disabled={!!feedback}
-                aria-label={mutation ? o.text : undefined}
+                disabled={!!feedback || ruledOut === o.text}
               >
-                {tileText(o.text)}
+                {(o.text)}
               </button>
             ))}
           </div>
@@ -978,14 +987,13 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
             {round.options.map((o) => (
               <button
                 key={o.text}
-                className={`challenge-choice ${
+                className={`challenge-choice ${choiceMark(o.text)} ${
                   feedback && o.text === resolvedOption ? (o.correct ? 'is-correct' : 'is-incorrect') : ''
                 } ${feedback === 'incorrect' && o.correct ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick(o)}
-                disabled={!!feedback}
-                aria-label={mutation ? o.text : undefined}
+                disabled={!!feedback || ruledOut === o.text}
               >
-                {tileText(o.text)}
+                {(o.text)}
               </button>
             ))}
           </div>
@@ -1002,15 +1010,14 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
               return (
                 <button
                   key={o.text}
-                  className={`tile ${isSel ? 'tile-selected' : ''} ${feedback === 'incorrect' && isSel ? 'tile-shake' : ''} ${
+                  className={`tile ${tileMark(o.text)} ${isSel ? 'tile-selected' : ''} ${feedback === 'incorrect' && isSel ? 'tile-shake' : ''} ${
                     feedback === 'incorrect' && o.correct ? 'tile-answer' : ''
                   }`}
                   onClick={() => handleToggle(o.text, 2)}
-                  disabled={!!feedback}
+                  disabled={!!feedback || ruledOut === o.text}
                   data-term={o.text}
-                  aria-label={mutation ? o.text : undefined}
                 >
-                  <TileText>{tileText(o.text)}</TileText>
+                  <TileText>{(o.text)}</TileText>
                 </button>
               )
             })}
@@ -1030,14 +1037,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
           <div className="challenge-sod-pair">
             {round.pair.map((c) => (
               <span className="challenge-sod-concept" key={c}>
-                {mutation ? (
-                  <>
-                    <span aria-hidden="true">{tileText(c)}</span>
-                    <span className="sr-only">{c}</span>
-                  </>
-                ) : (
-                  c
-                )}
+                {c}
               </span>
             ))}
           </div>
@@ -1074,15 +1074,14 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
               return (
                 <button
                   key={t.text}
-                  className={`tile challenge-split-tile ${g ? 'assigned-' + g : ''} ${
+                  className={`tile challenge-split-tile ${tileMark(t.text)} ${g ? 'assigned-' + g : ''} ${
                     feedback ? (g === t.group ? 'is-correct' : 'is-incorrect') : ''
                   }`}
                   onClick={() => cycleTile(t.text)}
                   disabled={!!feedback}
                   data-term={t.text}
-                  aria-label={mutation ? t.text : undefined}
                 >
-                  <TileText>{tileText(t.text)}</TileText>
+                  <TileText>{(t.text)}</TileText>
                   {g && <span className={`challenge-split-badge ${g}`}>{g === 'a' ? 'A' : 'B'}</span>}
                 </button>
               )
@@ -1107,10 +1106,9 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                 className={`challenge-match-concept ${activeConcept === c ? 'active' : ''} ${matches[c] ? 'assigned' : ''}`}
                 onClick={() => !feedback && setActiveConcept(c)}
                 disabled={!!feedback}
-                aria-label={mutation ? `${c}${matches[c] ? `, ${matches[c]}` : ''}` : undefined}
               >
-                <span className="challenge-match-concept-text">{tileText(c)}</span>
-                {matches[c] && <span className="challenge-match-assigned">{tileText(matches[c])}</span>}
+                <span className="challenge-match-concept-text">{(c)}</span>
+                {matches[c] && <span className="challenge-match-assigned">{(matches[c])}</span>}
               </button>
             ))}
           </div>
@@ -1121,9 +1119,8 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                 className="challenge-match-label"
                 onClick={() => assignMatch(l)}
                 disabled={!!feedback || !activeConcept}
-                aria-label={mutation ? l : undefined}
               >
-                {tileText(l)}
+                {(l)}
               </button>
             ))}
           </div>
@@ -1149,10 +1146,9 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                   className={`challenge-chain-step-btn ${pos >= 0 ? 'placed' : ''}`}
                   onClick={() => placeChainStep(s)}
                   disabled={!!feedback}
-                  aria-label={mutation ? `${pos >= 0 ? `${pos + 1}. ` : ''}${s}` : undefined}
                 >
                   {pos >= 0 && <span className="challenge-chain-num">{pos + 1}</span>}
-                  {tileText(s)}
+                  {(s)}
                 </button>
               )
             })}
@@ -1350,8 +1346,8 @@ function ScoringInfo({ id, playing = false, onClose }) {
           <dd>{Math.abs(WRONG_PENALTY)} points off and the streak resets. Speed and streak don’t change the penalty.</dd>
         </div>
         <div>
-          <dt>Powerups</dt>
-          <dd>An active Mutation doubles the points for correct answers in its {MUTATION_SECONDS} seconds. An armed CRISPR cancels the penalty for one wrong answer and keeps your streak.</dd>
+          <dt>Tools</dt>
+          <dd>One per session. Second Opinion, used right after a wrong answer, gives back the points it cost and restores your streak. Consult and Rule Out don’t change points.</dd>
         </div>
         <div>
           <dt>Floor</dt>

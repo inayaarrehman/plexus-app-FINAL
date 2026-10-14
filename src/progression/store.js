@@ -467,18 +467,24 @@ export function recordRaceWin({ raceId }) {
 // another route cannot use a tool outside a Daily: the caller must say the
 // board is a Daily, and the attempt must be a Daily attempt
 // ('daily-YYYY-MM-DD:<start>').
-export const TOOL_MODES = ['daily']
+// Puzzle tools work in Dailies and in 3 Minutes (one per Daily, one per
+// 3 Minutes session). Systems and Race never use them; Race has its own
+// power-ups (Mutation and CRISPR).
+export const TOOL_MODES = ['daily', 'challenge']
 const DAILY_ATTEMPT = /^daily-\d{4}-\d{2}-\d{2}:/
+const CHALLENGE_ATTEMPT = /^challenge:\d+$/
+const ATTEMPT_OK = { daily: DAILY_ATTEMPT, challenge: CHALLENGE_ATTEMPT }
 export function toolsAllowedIn(mode) {
   return TOOL_MODES.includes(mode)
 }
-// One tool per board attempt: the use id is the attempt id, so a second
-// spend in the same attempt (another tab, a double tap, a refresh) is
-// refused. Returns false (nothing spent) when the board is not a Daily, the
-// tool is locked or empty, or this attempt already used a tool.
+// One tool per attempt (a Daily board, or a 3 Minutes session): the use id
+// is the attempt id, so a second spend in the same attempt (another tab, a
+// double tap, a refresh) is refused. Returns false (nothing spent) when the
+// mode does not allow tools, the tool is locked or empty, or this attempt
+// already used a tool.
 export function spendTool(item, attemptId, m = {}) {
   if (!PUZZLE_TOOLS.includes(item) || !attemptId) return false
-  if (!toolsAllowedIn(m.mode) || !DAILY_ATTEMPT.test(String(attemptId))) return false
+  if (!toolsAllowedIn(m.mode) || !ATTEMPT_OK[m.mode].test(String(attemptId))) return false
   const state = loadProgression()
   ensureV2(state)
   const info = levelInfo(totalXp(state))
@@ -626,4 +632,10 @@ export function recordSnapshot({ history = {}, todayKey }) {
     nextReward: nextLevelReward(Math.max(info.level, state.v2?.levelFrom || 1)),
     converted: state.v2?.converted || {},
   }
+}
+
+// Tool balances and level for the board and 3 Minutes, read fresh.
+export function toolKit() {
+  const st = ensureProgression() // includes the starter gift on a brand-new save
+  return { counts: kitCounts(st), level: levelInfo(totalXp(st)).level }
 }

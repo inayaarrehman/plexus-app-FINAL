@@ -7671,3 +7671,13 @@ body.env-systems .mini-progress-track { background: color-mix(in srgb, var(--roo
 .race-chaos-loadout label .race-lock-note { flex-basis: 100%; padding-left: 30px; margin: -2px 0 0; }
 .race-chaos-loadout label.is-off { cursor: default; }
 .race-chaos-loadout > button { align-self: flex-start; margin-top: 4px; }
+
+/* ---- 3 Minutes: puzzle tools ---- */
+.challenge-tool { gap: 8px; padding-left: 10px; }
+.challenge-tool .challenge-tool-art { flex: none; }
+.challenge-tool.is-locked .challenge-tool-art { opacity: 0.6; }
+.challenge-tool .challenge-power-name { white-space: nowrap; }
+/* Consult: the highlighted answer(s); Rule Out: the crossed-out choice. */
+.challenge-choice.is-consulted { box-shadow: inset 3px 0 0 var(--node-peacock); padding-left: 12px; background: color-mix(in srgb, var(--node-peacock) 14%, transparent); }
+.challenge-choice.is-ruled-out { text-decoration: line-through; text-decoration-thickness: 2px; opacity: 0.5; cursor: default; }
+.challenge-results-tool { margin: 6px 0 0; font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
