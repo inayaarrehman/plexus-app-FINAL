@@ -16,6 +16,7 @@ import { haptics } from '../utils/haptics.js'
 import { timedCanonicalId } from '../utils/timedLibrary.js'
 import TileText from './TileText.jsx'
 import { recordChallengeSession } from '../progression/store.js'
+import { RewardMoments } from './XpResult.jsx'
 import { TimedXpNote, TimedResultLine, timedXpGained } from './TimedXp.jsx'
 import Modal from './Modal.jsx'
 import ChallengeTools, { ToolsIntro } from './ChallengeTools.jsx'
@@ -777,6 +778,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
             <p className="challenge-best">Personal best: {personalBest.toLocaleString()}</p>
           )}
           <TimedResultLine result={xpResult} kind="3 Minutes" />
+          <RewardMoments result={xpResult} />
           {resultTool && <p className="challenge-results-tool">Played with {KIT[resultTool].name}.</p>}
         </section>
 

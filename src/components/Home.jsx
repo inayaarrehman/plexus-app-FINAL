@@ -14,6 +14,8 @@ import { formatDayKey } from '../utils/calendar.js'
 import { nextPuzzleInfo } from '../utils/resetCountdown.js'
 import { reportContext } from '../utils/reportContext.js'
 import { LevelLine } from './RecordParts.jsx'
+import PlexusBadge from './PlexusBadge.jsx'
+import { lastMilestoneLevel } from '../progression/config.js'
 import LegalFooter from './LegalFooter.jsx'
 import TapBloom from './TapBloom.jsx'
 
@@ -504,6 +506,7 @@ export default function Home({
             onClick={() => onOpenRecord()}
             aria-label={`My Plexus: level ${record.info.level}, ${record.info.toNext} XP to level ${record.info.level + 1}`}
           >
+            {lastMilestoneLevel(record.info.level) && <PlexusBadge level={lastMilestoneLevel(record.info.level)} size={30} decorative />}
             <span className="home-progress-text">
               <b>Level {record.info.level}</b> · {record.info.toNext.toLocaleString('en-US')} XP to Level {record.info.level + 1}
             </span>

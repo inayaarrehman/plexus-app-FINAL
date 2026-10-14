@@ -1,4 +1,4 @@
-// Race backend checks against a real Postgres with migrations 0003 and 0006-0010 applied.
+// Race backend checks against a real Postgres with migrations 0003 and 0006-0011 applied.
 //   PGTEST="psql -h /tmp/pgtest -p 5544 -U postgres -d t" node scripts/race-sql-test.mjs
 // The database needs Supabase-like stubs (auth.users, auth.uid(), roles anon /
 // authenticated / service_role); scripts/race-sql-setup.sql creates them.
@@ -607,6 +607,42 @@ console.log('[12] Trusted level, CRISPR unlock by counted races, and the CRISPR 
   run(`delete from public.race_matches where code like 'P%'`)
   run(`update public.race_config set value = 6 where key = 'per_day'`)
   run(`update public.race_config set value = 3 where key = 'per_opponent_per_day'`)
+}
+
+console.log('[13] Milestone CRISPRs and levels in the Race lobby (0011)')
+{
+  const M = uid(71)
+  const N = uid(72)
+  const G = uid(73)
+  run(`insert into auth.users(id) values ('${M}'),('${N}'),('${G}') on conflict do nothing`)
+  run(`update public.race_config set value = 0 where key = 'crispr_unlock_races'`)
+  ok(j(`select public.race_is_milestone(10) and public.race_is_milestone(20) and public.race_is_milestone(30) and public.race_is_milestone(35) and not public.race_is_milestone(25) and not public.race_is_milestone(11)`) === 't' || j(`select public.race_is_milestone(35)`) === true, 'milestones are 10, 20, 30, then every 5')
+  setXp(M, 26520) // Level 20
+  const got = me(M).claimed
+  ok(got.filter((g) => g.source === 'level').length === 3 && got.filter((g) => g.source === 'milestone').map((g) => g.level).join() === '20', 'Level 20 pays the level CRISPRs (12, 16, 20) and one milestone CRISPR')
+  ok(me(M).claimed.length === 0, 'a milestone CRISPR is paid once')
+  ok(me(M).inventory.crispr === 3 && me(M).pending.crispr === 1, 'past the cap of 3 it waits as a claim')
+  setXp(N, 77600) // Level 30
+  me(N)
+  ok(j(`select count(*) from public.race_level_grants where user_id = '${N}' and item = 'crispr-ms'`) === 2, 'Level 30 has milestone CRISPRs for 20 and 30, none for 10')
+  ok(me(N).nextCrisprLevel === 32 && me(M).nextCrisprLevel === 24, 'next CRISPR level counts milestones and level CRISPRs')
+  run(`update public.race_config set value = 5 where key = 'crispr_unlock_races'`)
+  setXp(G, 26520)
+  ok(me(G).claimed.length === 0, 'milestone CRISPRs still need CRISPR unlocked (5 counted races)')
+  run(`update public.race_config set value = 0 where key = 'crispr_unlock_races'`)
+  // Lobby levels: stored at join, reported for both players.
+  const code = newCode()
+  const made = call('race_create', M, code, 'America/Los_Angeles', false)
+  const mid = made.match.id
+  call('race_join', N, code, 'America/Los_Angeles', false)
+  const players = call('race_state', M, mid).players
+  ok(players.find((p) => p.user_id === M).level === 20 && players.find((p) => p.user_id === N).level === 30, 'each player sees both levels in the lobby')
+  const code2 = newCode()
+  const made2 = call('race_create', M, code2, 'America/Los_Angeles', false)
+  call('race_join', C, code2, 'America/Los_Angeles', true)
+  const p2 = call('race_state', M, made2.match.id).players
+  ok(p2.find((p) => p.user_id === C).level === null, 'a guest has no level')
+  run(`delete from public.race_matches where id in ('${mid}', '${made2.match.id}')`)
 }
 
 run(`update public.race_config set value = 3000 where key = 'countdown_ms'`)

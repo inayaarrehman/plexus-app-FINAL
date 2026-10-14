@@ -33,6 +33,7 @@ import {
   WEEKLY_GOALS,
   WEEKLY_GOALS_NEEDED,
   STREAK_GOAL_DAY,
+  toolCap,
 } from './config.js'
 
 // Practice kinds (a taper used to apply to these; it is off now, see
@@ -167,9 +168,19 @@ export function itemOpen(item, level) {
 // pending grant counts once it is claimed (kit.claims), which is only allowed
 // while the player is under the cap. Everything is keyed by id, so a grant,
 // claim or use can never happen twice, on one device or after a sync.
+// A tool's limit for this save: puzzle tools gain one per milestone reached.
+export function capOf(state, item) {
+  return toolCap(item, levelInfo(totalXp(state)).level)
+}
+export function kitCaps(state) {
+  const level = levelInfo(totalXp(state)).level
+  const c = {}
+  for (const k of Object.keys(KIT)) c[k] = toolCap(k, level)
+  return c
+}
 export function grant(state, { id, item, qty = 1, source, at = Date.now() }) {
   if (!id || state.kit.grants[id] || !KIT[item]) return false
-  const cap = KIT[item].max
+  const cap = capOf(state, item)
   const pending = !!(cap && kitCounts(state)[item] + qty > cap)
   state.kit.grants[id] = { item, qty, source, at, ...(pending ? { pending: true } : {}) }
   return pending ? 'pending' : 'granted'
@@ -202,7 +213,7 @@ export function pendingClaims(state) {
 }
 export function claimPending(state, item, at = Date.now()) {
   const list = pendingClaims(state)[item] || []
-  const cap = KIT[item]?.max
+  const cap = KIT[item] ? capOf(state, item) : undefined
   if (!list.length) return false
   if (cap && kitCounts(state)[item] + (list[0].qty || 1) > cap) return false
   state.kit.claims[list[0].id] = at

@@ -1,7 +1,7 @@
 -- =====================================================================
 -- Plexus: prelaunch reset of Race rewards and synced progress (2026-10-14)
 -- =====================================================================
--- PRELAUNCH ONLY. Run once in the Supabase SQL editor, AFTER migration 0010,
+-- PRELAUNCH ONLY. Run once in the Supabase SQL editor, AFTER migrations 0010 and 0011,
 -- while you are the only player. It resets every account, not just one.
 --
 -- 1. Backup (the restorable checkpoint): copies every affected table into

@@ -1,6 +1,6 @@
 # Plexus progression (October 2026)
 
-Every number below lives in `src/progression/config.js` (app) and `race_config` (Race server, migrations 0006, 0009, 0010). Change it there; nothing else needs to move.
+Every number below lives in `src/progression/config.js` (app) and `race_config` (Race server, migrations 0006, 0009, 0010, 0011). Change it there; nothing else needs to move.
 
 ## XP by mode
 
@@ -29,7 +29,22 @@ Cost of level L = round((100 + 70n + 6n²) / 10) × 10, n = L − 1. No maximum.
 | 12 | 7,260 | Consult +1, CRISPR unlocks (also needs 5 counted races) |
 | 16, 20, 24 … | 14,940, 26,520, 42,780 … | CRISPR +1 (plus that level's tool) |
 
-Never more than two levels without a reward. Tools cap at 5 each; extras wait as claims.
+Never more than two levels without a reward. Puzzle tools start with a limit of 5 each; extras wait as claims.
+
+## Milestones
+
+Level 10, 20 and 30, then every 5 levels (35, 40, 45 ...). Each milestone:
+
+* grows the player's badge (a plexus drawn from the level number: more branches each time, the endings link into a web from Level 30, a second ring from Level 40);
+* gives one Consult, one Rule Out and one Second Opinion (`ms:<level>:<tool>`, paid once);
+* raises every puzzle tool's limit by one, with no maximum (5, then 6 at Level 10, 7 at 20, 8 at 30 ...). Coverage stays at 2, Race items at 3;
+* from Level 20, one CRISPR, paid by the Race server once CRISPR is unlocked (migration 0011, `race_level_grants` item `crispr-ms`). A milestone on a CRISPR level (20, 40 ...) pays both. None at Level 10, which comes before the unlock.
+
+Where it shows: the badge sits in the level ring on My Plexus, beside the level on Home, and on both player cards in the Race lobby (the opponent's level comes from the server, stored when they join). Crossing a milestone plays the Milestone reached moment once per device (tap to skip; reduced motion shows it still).
+
+## Tool arrivals
+
+Each tool has its own short animation, played where it is earned: the result card (level tools, Coverage), the Milestone reached list, the weekly choice, a claim in Your Tools, the Race results (Mutation, the CRISPR rare find) and the Race cards in Your Tools (level and milestone CRISPRs). Each plays once; several play in turn.
 
 ## Race power-ups
 
@@ -57,6 +72,6 @@ The simulator models assumed players (see `PROFILES` in the script). It is not p
 
 ## Run order for this update
 
-1. Supabase SQL editor: migrations 0005, 0008, 0009 if not run yet, then `0010_progression_crispr_drop.sql`.
+1. Supabase SQL editor: migrations 0005, 0008, 0009 if not run yet, then `0010_progression_crispr_drop.sql`, then `0011_milestones_race_levels.sql`.
 2. Prelaunch only: `supabase/reset/2026-10-14-prelaunch-progression-reset.sql` (backs up, then clears test races, Race items and the cloud copy of progress).
 3. Deploy. Each device clears its saved progress once on first load (progress epoch).

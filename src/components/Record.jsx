@@ -1,12 +1,14 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { recordSnapshot, claimTool, chooseWeeklyTool } from '../progression/store.js'
-import { KIT, PUZZLE_TOOLS, RACE_ITEMS, RACE_REWARDS, CRISPR_UNLOCK_LEVEL, nextCrisprLevel, REMOVED_NAMES, COVERAGE_EVERY, levelRewards, XP, WEEKLY_GOALS_NEEDED, TIMED_QUALIFY } from '../progression/config.js'
+import { KIT, PUZZLE_TOOLS, RACE_ITEMS, RACE_REWARDS, CRISPR_UNLOCK_LEVEL, nextCrisprLevel, REMOVED_NAMES, COVERAGE_EVERY, levelRewards, XP, WEEKLY_GOALS_NEEDED, TIMED_QUALIFY, levelCost, MILESTONE_CRISPR_FROM } from '../progression/config.js'
 import { itemOpen, levelInfo } from '../progression/engine.js'
 import { formatDayKey } from '../utils/calendar.js'
 import { getRaceSummary } from '../lib/raceApi.js'
 import { PlexusGrowth, WeekGoals, ToolArt, Pips, fmt } from './RecordParts.jsx'
 import InfoIcon from './InfoIcon.jsx'
 import { useGrowthAnimation, readSeenXp, writeSeenXp } from './useGrowthAnimation.js'
+import PlexusBadge from './PlexusBadge.jsx'
+import ToolReveal from './ToolReveal.jsx'
 
 // My Plexus (internally "Record"): the player's own Plexus, growing as they
 // level up. The level leads, then total XP and the XP still needed for the
@@ -57,7 +59,7 @@ function weekGoalNotes(rounds) {
   return notes
 }
 
-function WeekReward({ rounds, choices, level, onChoose }) {
+function WeekReward({ rounds, choices, level, onChoose, chosen = null }) {
   const resetKey = rounds.week.endKey
   const reset = formatDayKey(resetKey, { weekday: 'long', month: 'short', day: 'numeric' })
   const state = !rounds.complete ? 'pending' : rounds.paid ? 'earned' : 'due'
@@ -91,6 +93,14 @@ function WeekReward({ rounds, choices, level, onChoose }) {
             })}
           </div>
         </div>
+      )}
+      {chosen && (
+        <p className="week-chosen" role="status">
+          <ToolReveal key={chosen.n} item={chosen.item} width={56} />
+          <span>
+            <b>{KIT[chosen.item].name} +1</b> added to Your Tools
+          </span>
+        </p>
       )}
       <p className="rounds-foot">
         {state === 'pending' ? '' : 'Added to your XP. '}
@@ -127,23 +137,23 @@ function LockIcon() {
 
 // One tool, as a card: its drawing, what it does, how many you hold of the
 // cap (as nodes and as a number) or what unlocks it, and any claims waiting.
-function ToolCard({ item, def, count, open, pending = [], onClaim, art = {}, children }) {
+function ToolCard({ item, def, count, cap = def.max, open, pending = [], onClaim, art = {}, reveal = null, children }) {
   const waiting = pending.length
-  const full = def.max && count >= def.max
+  const full = cap && count >= cap
   return (
     <li className={`tool-card kit-item ${open ? '' : 'is-locked'} ${count > 0 && open ? 'has-some' : ''}`}>
       <span className="tool-card-art">
-        <ToolArt item={item} locked={!open} {...art} />
+        {reveal ? <ToolReveal key={reveal} item={item} width={76} /> : <ToolArt item={item} locked={!open} {...art} />}
       </span>
       <div className="tool-card-body kit-text">
         <h3 className="kit-name">{def.name}</h3>
         <p className="kit-desc">{def.desc}</p>
         {open ? (
-          <div className="tool-card-qty" aria-label={`${count} of ${def.max} held`}>
-            <Pips value={count} max={def.max} />
+          <div className="tool-card-qty" aria-label={`${count} of ${cap} held`}>
+            <Pips value={count} max={cap} />
             <span className="kit-count">
               {count}
-              <span className="kit-cap"> / {def.max}</span>
+              <span className="kit-cap"> / {cap}</span>
             </span>
           </div>
         ) : (
@@ -168,9 +178,86 @@ function ToolCard({ item, def, count, open, pending = [], onClaim, art = {}, chi
 }
 
 const EARN = {
-  curbside: 'Earned: one to start, Level 2, every third level from 6, and This Week.',
-  lab: 'Earned: Level 3, every third level from 7, and This Week.',
-  'second-opinion': 'Earned: Level 5, every third level from 8, and This Week.',
+  curbside: 'Earned: one to start, Level 2, every third level from 6, every milestone, and This Week.',
+  lab: 'Earned: Level 3, every third level from 7, every milestone, and This Week.',
+  'second-opinion': 'Earned: Level 5, every third level from 8, every milestone, and This Week.',
+}
+
+// The level ring on My Plexus: progress to the next level drawn round the
+// latest milestone badge (or the first one, in outline, before Level 10).
+const RING_C = 2 * Math.PI * 82
+function LevelRing({ level, pct, milestones }) {
+  const last = milestones?.last
+  const next = milestones?.next
+  return (
+    <div className="mp-ring">
+      <svg className="mp-ring-track" width="176" height="176" viewBox="0 0 176 176" role="progressbar" aria-labelledby="lvl-progress-label" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
+        <circle className="mp-ring-bg" cx="88" cy="88" r="82" />
+        <circle className="mp-ring-fill" cx="88" cy="88" r="82" transform="rotate(-90 88 88)" style={{ strokeDasharray: `${((RING_C * pct) / 100).toFixed(1)} ${RING_C.toFixed(1)}` }} />
+      </svg>
+      {last ? (
+        <PlexusBadge level={last} size={128} label={`Level ${last} milestone badge, your latest`} />
+      ) : (
+        <PlexusBadge level={next} size={128} state="locked" label={`First milestone badge at Level ${next}`} />
+      )}
+      <span className="sr-only">Level {level}</span>
+    </div>
+  )
+}
+
+// Milestones: every badge earned, the next one filling as XP comes in, and
+// the two after it in outline. Under them, what the next one brings.
+function MilestonesCard({ milestones, xp, caps }) {
+  if (!milestones) return null
+  const { reached, next, after, rewards } = milestones
+  const prevAt = reached.length ? reached[reached.length - 1] : 0
+  const startXp = prevAt ? levelStartXp(prevAt) : 0
+  const nextXp = levelStartXp(next)
+  const progress = nextXp > startXp ? Math.max(0, Math.min(1, (xp - startXp) / (nextXp - startXp))) : 0
+  const toGo = Math.max(0, nextXp - xp)
+  const bring = ['One of each tool']
+  bring.push(`room for ${(caps?.curbside || 0) + 1} of each`)
+  if (rewards?.crispr) bring.push('1 CRISPR for Race')
+  return (
+    <section className="mp-milestones" aria-labelledby="mp-ms-head">
+      <div className="mp-ms-head">
+        <h2 className="record-section" id="mp-ms-head">
+          Milestones
+        </h2>
+        <span className="mp-ms-count">{reached.length ? `${reached.length} earned` : 'First one at Level 10'}</span>
+      </div>
+      <ul className="mp-ms-row">
+        {reached.map((l) => (
+          <li key={l}>
+            <PlexusBadge level={l} size={56} />
+            Earned
+          </li>
+        ))}
+        <li className="is-next">
+          <PlexusBadge level={next} size={56} state="next" progress={progress} />
+          Next
+        </li>
+        {after.map((l) => (
+          <li key={l}>
+            <PlexusBadge level={l} size={56} state="locked" />
+            Ahead
+          </li>
+        ))}
+      </ul>
+      <p className="mp-ms-next">
+        <b>Level {next} milestone</b>
+        <span>{bring.join(', ')}.</span>
+        <span>
+          <b>{fmt(toGo)} XP</b> to go
+        </span>
+      </p>
+    </section>
+  )
+}
+function levelStartXp(level) {
+  let total = 0
+  for (let L = 1; L < level; L++) total += levelCost(L)
+  return total
 }
 
 export default function Record({ history, todayKey, stats, onBack, systemsBoards = null, initialTab = 'record', initialSection = null, preview = null }) {
@@ -238,12 +325,14 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
   const netRef = useRef(null)
   const wide = useWide(netRef)
   const refresh = () => setTick((t) => t + 1)
+  // A claimed or chosen tool plays its arrival once, where it lands.
+  const [arrived, setArrived] = useState(null)
   const onClaim = (item) => {
-    claimTool(item)
+    if (claimTool(item)) setArrived((a) => ({ item, where: 'card', n: (a?.n || 0) + 1 }))
     refresh()
   }
   const onChoose = (weekKey, item) => {
-    chooseWeeklyTool(weekKey, item)
+    if (chooseWeeklyTool(weekKey, item)) setArrived((a) => ({ item, where: 'week', n: (a?.n || 0) + 1 }))
     refresh()
   }
   const convertedList = Object.entries(converted || {}).filter(([, n]) => n > 0)
@@ -271,7 +360,8 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
 
       {tab === 'record' ? (
         <div className="record-main">
-          <section className="record-hero mp-hero" aria-label="Level">
+          <section className="record-hero mp-hero mp-ring-hero" aria-label="Level">
+            <LevelRing level={heroLevel} pct={pct} milestones={snap.milestones} />
             <h1 className="record-level" key={heroLevel}>Level {heroLevel}</h1>
             <p className="mp-total">
               <b>{fmt(target)}</b> total XP
@@ -324,9 +414,6 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
                   <b>{fmt(live.intoLevel)}</b> / {fmt(live.cost)} XP
                 </span>
               </span>
-              <div className="record-progress-track" role="progressbar" aria-labelledby="lvl-progress-label" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
-                <span className={`record-progress-fill ${barFrom !== pct ? 'is-growing' : ''}`} key={`${runKey}-${pct}`} style={{ width: `${pct}%`, '--bar-from': `${barFrom}%` }} />
-              </div>
               {nextReward && !preview && (
                 <p className="record-next sr-only">
                   Next reward: Level {nextReward.level} · {nextReward.items.join(' · ')}
@@ -336,6 +423,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
           </div>
 
           <div className="record-side">
+            <MilestonesCard milestones={snap.milestones} xp={snap.xp} caps={snap.caps} />
             <section className="mp-stats" aria-labelledby="mp-stats-head">
               <h2 className="record-section mp-stats-head" id="mp-stats-head">
                 Your stats
@@ -392,7 +480,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
               <p className="week-note">
                 Dailies count on their day, win or lose. Timed sessions count when you play them to the end with at least {TIMED_QUALIFY.minAnswers} answers and {TIMED_QUALIFY.minCorrect} correct. A Daily solved without a tool counts even with mistakes.
               </p>
-              <WeekReward rounds={rounds} choices={weeklyChoices} level={info.level} onChoose={onChoose} />
+              <WeekReward rounds={rounds} choices={weeklyChoices} level={info.level} onChoose={onChoose} chosen={arrived?.where === 'week' ? arrived : null} />
             </section>
           </div>
         </div>
@@ -404,7 +492,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
             </h2>
             <ul className="kit-list tool-cards">
               {PUZZLE_TOOLS.map((item) => (
-                <ToolCard key={item} item={item} def={KIT[item]} count={counts[item]} open={itemOpen(item, info.level)} pending={pending[item] || []} onClaim={onClaim} />
+                <ToolCard key={item} item={item} def={KIT[item]} count={counts[item]} cap={snap.caps?.[item]} open={itemOpen(item, info.level)} pending={pending[item] || []} onClaim={onClaim} reveal={arrived?.where === 'card' && arrived.item === item ? arrived.n : null} />
               ))}
             </ul>
             <details className="kit-more">
@@ -465,8 +553,13 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
                         : `Next at Level ${nextCrisprLevel(info.level)}, or a ${Math.round((race?.crisprDropChance ?? RACE_REWARDS.crisprDropChance) * 100)}% chance after any counted race win`
                 return (
                   <li key={item} className={`race-card kit-item ${race && !lockedByLevel ? '' : 'is-locked'}`}>
-                    <ToolArt item={item} locked={!race || lockedByLevel} size="sm" />
+                    {race?.claimed?.some((c) => c.item === item) ? <ToolReveal item={item} width={56} delay={0.3} /> : <ToolArt item={item} locked={!race || lockedByLevel} size="sm" />}
                     <h3 className="kit-name">{def.name}</h3>
+                    {race?.claimed?.some((c) => c.item === item) && (
+                      <p className="tool-card-progress" role="status">
+                        +{race.claimed.filter((c) => c.item === item).length} from {[...new Set(race.claimed.filter((c) => c.item === item).map((c) => (c.source === 'milestone' ? `the Level ${c.level} milestone` : `Level ${c.level}`)))].join(' and ')}
+                      </p>
+                    )}
                     <p className="kit-desc">{def.desc}</p>
                     <div className="tool-card-qty" aria-label={`${inv} of ${def.max} held`}>
                       <Pips value={inv} max={def.max} />
@@ -487,7 +580,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
                 {race === undefined
                   ? 'Loading…'
                   : race
-                    ? `A Mutation for every ${RACE_REWARDS.mutationEveryWins} qualifying race wins. CRISPR unlocks at Level ${CRISPR_UNLOCK_LEVEL} once ${RACE_REWARDS.crisprUnlockRaces} races have counted: one then, one every ${RACE_REWARDS.crisprLevelEvery} levels, and a rare ${Math.round(RACE_REWARDS.crisprDropChance * 100)}% chance after each counted race win. Use them in Chaos races.`
+                    ? `A Mutation for every ${RACE_REWARDS.mutationEveryWins} qualifying race wins. CRISPR unlocks at Level ${CRISPR_UNLOCK_LEVEL} once ${RACE_REWARDS.crisprUnlockRaces} races have counted: one then, one every ${RACE_REWARDS.crisprLevelEvery} levels, one at every milestone from Level ${MILESTONE_CRISPR_FROM}, and a rare ${Math.round(RACE_REWARDS.crisprDropChance * 100)}% chance after each counted race win. Use them in Chaos races.`
                     : 'Sign in to earn and use Race power-ups.'}
               </span>
             </p>
@@ -500,7 +593,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
               <span className="kit-more-chev" aria-hidden="true" />
             </summary>
             <p className="kit-foot">
-              Caps: puzzle tools {KIT.curbside.max} each, Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Puzzle tools that arrive when you are full wait here as claims, nothing is lost. Coverage that arrives when you hold {KIT.shield.max} becomes a puzzle tool or {XP.coverageAlt} XP. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Puzzle tools can be used in Dailies and 3 Minutes (one per Daily, one per 3 Minutes session), not in Systems or Race. Race power-ups are for Chaos races only. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
+              Caps: puzzle tools {snap.caps?.curbside ?? KIT.curbside.max} each (one more at every milestone), Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Puzzle tools that arrive when you are full wait here as claims, nothing is lost. Coverage that arrives when you hold {KIT.shield.max} becomes a puzzle tool or {XP.coverageAlt} XP. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Puzzle tools can be used in Dailies and 3 Minutes (one per Daily, one per 3 Minutes session), not in Systems or Race. Race power-ups are for Chaos races only. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
             </p>
           </details>
           {convertedList.length > 0 && (

@@ -65,7 +65,8 @@ console.log('[1] New player: starter Consult once, level schedule, unlocks')
   ok(byLevel['6'] === 'curbside' && byLevel['7'] === 'lab' && byLevel['8'] === 'second-opinion' && byLevel['9'] === 'curbside', 'from Level 6 one tool per level, cycling')
   ok(lvl >= 15, `reached level ${lvl}`)
   const c = E.kitCounts(load())
-  ok(c.curbside === 5, `Consult capped at 5 (held ${c.curbside})`)
+  const cap = E.capOf(load(), 'curbside')
+  ok(cap === 6 && c.curbside === cap, `Consult capped at its limit, 6 after the Level 10 milestone (held ${c.curbside})`)
   const pend = E.pendingClaims(load())
   ok((pend.curbside || []).length >= 1, 'awards past the cap wait as pending claims')
   // Unlocks.
@@ -73,7 +74,7 @@ console.log('[1] New player: starter Consult once, level schedule, unlocks')
   // Claim: refused at cap, allowed after spending.
   ok(S.claimTool('curbside') === false, 'a pending claim cannot be taken in at the cap')
   ok(S.spendTool('curbside', 'daily-2026-10-12:1', { mode: 'daily' }) === true, 'spend a Consult')
-  ok(S.claimTool('curbside') === true && E.kitCounts(load()).curbside === 5, 'after spending, a pending claim fills the slot')
+  ok(S.claimTool('curbside') === true && E.kitCounts(load()).curbside === cap, 'after spending, a pending claim fills the slot')
 }
 
 console.log('[2] One tool per attempt; locked or empty tools spend nothing')

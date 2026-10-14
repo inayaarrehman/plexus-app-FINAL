@@ -18,6 +18,10 @@ import {
   TIMED_QUALIFY,
   challengeXp,
   raceQualifies,
+  milestoneRewards,
+  milestoneList,
+  nextMilestoneLevel,
+  lastMilestoneLevel,
 } from './config.js'
 import {
   emptyState,
@@ -42,6 +46,8 @@ import {
   weekOf,
   localDayKey,
   entryDay,
+  capOf,
+  kitCaps,
 } from './engine.js'
 import { currentStreak, longestStreak, coverGaps, isStreakDay, finishedOnDate, addDays as addDayKey } from './streak.js'
 import { weekdayOf, weekOfKey, dayKey } from '../utils/calendar.js'
@@ -159,7 +165,7 @@ export function ensureV2(state, now = Date.now(), ctx = null) {
 function overflowTool(state) {
   const level = levelInfo(totalXp(state)).level
   const counts = kitCounts(state)
-  const open = PUZZLE_TOOLS.filter((it) => itemOpen(it, level) && counts[it] < KIT[it].max)
+  const open = PUZZLE_TOOLS.filter((it) => itemOpen(it, level) && counts[it] < capOf(state, it))
   if (!open.length) return null
   return open.reduce((best, it) => (counts[it] < counts[best] ? it : best), open[0])
 }
@@ -210,6 +216,19 @@ function payLevels(state, ctx, now) {
       if (r && ctx.grants) ctx.grants.push(item)
       if (r === 'pending' && ctx.pending) ctx.pending.push(item)
     })
+    // Milestone: one of each puzzle tool, keyed by level so it pays once.
+    // The higher limits come from the level itself (toolCap), so they are
+    // already in place for these grants.
+    const ms = milestoneRewards(L)
+    if (ms) {
+      const got = []
+      for (const item of ms.tools) {
+        const r = grant(state, { id: `ms:${L}:${item}`, item, source: 'milestone', at: now })
+        if (r) got.push({ item, as: r })
+        if (r === 'pending' && ctx.pending) ctx.pending.push(item)
+      }
+      if (got.length && ctx.milestones) ctx.milestones.push({ level: L, tools: got, crispr: ms.crispr, capStep: ms.capStep })
+    }
   }
   return info
 }
@@ -257,7 +276,7 @@ function followUps(state, ctx) {
 function run(fn) {
   const state = loadProgression()
   const before = levelInfo(totalXp(state))
-  const ctx = { gained: 0, lines: [], grants: [], pending: [], at: Date.now() }
+  const ctx = { gained: 0, lines: [], grants: [], pending: [], milestones: [], at: Date.now() }
   fn(state, ctx)
   followUps(state, ctx)
   const after = levelInfo(totalXp(state))
@@ -271,6 +290,9 @@ function run(fn) {
     coverageUsed: ctx.shieldUsed || [],
     coverageAlt: ctx.coverageAlt || [],
     weeklyChoice: ctx.weeklyChoice || null,
+    milestones: ctx.milestones,
+    caps: kitCaps(state),
+    counts: kitCounts(state),
     timedNote: ctx.timedNote || null,
     qualified: ctx.qualified ?? null,
     attemptNumber: ctx.attemptNumber ?? null,
@@ -675,6 +697,14 @@ export function recordSnapshot({ history = {}, todayKey }) {
     weeklyChoices: weeklyChoicesDue(state),
     coverage: coverageProgress(state),
     nextReward: nextMilestone(info.level),
+    caps: kitCaps(state),
+    milestones: {
+      reached: milestoneList(info.level),
+      last: lastMilestoneLevel(info.level),
+      next: nextMilestoneLevel(info.level),
+      after: [nextMilestoneLevel(info.level, 1), nextMilestoneLevel(info.level, 2)],
+      rewards: milestoneRewards(nextMilestoneLevel(info.level)),
+    },
     converted: state.v2?.converted || {},
   }
 }
@@ -682,5 +712,5 @@ export function recordSnapshot({ history = {}, todayKey }) {
 // Tool balances and level for the board and 3 Minutes, read fresh.
 export function toolKit() {
   const st = ensureProgression() // includes the starter gift on a brand-new save
-  return { counts: kitCounts(st), level: levelInfo(totalXp(st)).level }
+  return { counts: kitCounts(st), caps: kitCaps(st), level: levelInfo(totalXp(st)).level }
 }

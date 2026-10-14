@@ -14,6 +14,7 @@ import { timedCanonicalId } from '../utils/timedLibrary.js'
 import { recordRaceFinish, recordRaceWin } from '../progression/store.js'
 import { raceCall, hasAccountSession } from '../lib/raceApi.js'
 import ServerRace from './ServerRace.jsx'
+import { RewardMoments } from './XpResult.jsx'
 import { TimedXpNote, TimedResultLine } from './TimedXp.jsx'
 
 // ---------------------------------------------------------------------
@@ -122,7 +123,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
     if (raceVerdict({ correct: correctCount, timeMs: elapsedMs }, oppResult) === 'win') {
       raceRecordedRef.current.win = true
       const w = recordRaceWin({ raceId: raceRunRef.current })
-      setRaceXp((prev) => (prev && w ? { ...prev, gained: prev.gained + w.gained, lines: [...prev.lines, ...w.lines], timedNote: w.timedNote || prev.timedNote, after: w.after, levelUp: prev.levelUp || w.levelUp } : prev))
+      setRaceXp((prev) => (prev && w ? { ...prev, gained: prev.gained + w.gained, lines: [...prev.lines, ...w.lines], timedNote: w.timedNote || prev.timedNote, after: w.after, levelUp: prev.levelUp || w.levelUp, grants: [...(prev.grants || []), ...(w.grants || [])], pending: [...(prev.pending || []), ...(w.pending || [])], milestones: [...(prev.milestones || []), ...(w.milestones || [])], counts: w.counts || prev.counts, caps: w.caps || prev.caps } : prev))
     }
   }, [phase, oppResult, correctCount, elapsedMs])
 
@@ -468,6 +469,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
       <div className="race race-results">
         <h1 className="race-title">Race complete</h1>
         <TimedResultLine result={raceXp} kind="Race" />
+          <RewardMoments result={raceXp} />
 
         {verdictResult && (
           <div className={`race-outcome race-outcome-${verdictResult}`}>

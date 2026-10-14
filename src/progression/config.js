@@ -145,20 +145,82 @@ export const RACE_ITEMS = {
 //   crisprUnlockRaces  CRISPR also needs this many counted races, checked on
 //                      the server (a Race item should come from racing).
 export const RACE_REWARDS = { mutationEveryWins: 5, perOpponentPerDay: 3, perDay: 6, crisprUnlockLevel: CRISPR_UNLOCK_LEVEL, crisprLevelEvery: CRISPR_LEVEL_EVERY, crisprDropChance: 0.02, crisprUnlockRaces: 5 }
+// ---- Milestones ----
+// Level 10, 20 and 30, then every 5 levels (35, 40, 45 ...). Each milestone:
+//   a growing-plexus badge (see PlexusBadge.jsx),
+//   one of each puzzle tool (Consult, Rule Out, Second Opinion),
+//   +1 to every puzzle tool's limit, with no maximum,
+//   one CRISPR from Level 20 on (paid by the Race server, migration 0011,
+//   once CRISPR is unlocked; not at Level 10, which comes before the unlock).
+// The server mirrors these numbers (race_is_milestone, race_config keys
+// milestone_every_after and milestone_crispr_from).
+export const MILESTONE_LEVELS = [10, 20, 30]
+export const MILESTONE_EVERY_AFTER = 5
+export const MILESTONE_CRISPR_FROM = 20
+export const MILESTONE_CAP_STEP = 1
+export function isMilestone(level) {
+  const last = MILESTONE_LEVELS[MILESTONE_LEVELS.length - 1]
+  return MILESTONE_LEVELS.includes(level) || (level > last && (level - last) % MILESTONE_EVERY_AFTER === 0)
+}
+// How many milestones a player at `level` has reached (0 below Level 10).
+export function milestonesReached(level) {
+  const last = MILESTONE_LEVELS[MILESTONE_LEVELS.length - 1]
+  const fixed = MILESTONE_LEVELS.filter((l) => l <= level).length
+  return fixed + (level > last ? Math.floor((level - last) / MILESTONE_EVERY_AFTER) : 0)
+}
+// The milestone levels up to `level`, oldest first.
+export function milestoneList(level) {
+  const out = []
+  for (let L = MILESTONE_LEVELS[0]; L <= level; L++) if (isMilestone(L)) out.push(L)
+  return out
+}
+// The next milestone level above `level`, and the one `n` after it.
+export function nextMilestoneLevel(level, n = 0) {
+  let found = -1
+  for (let L = level + 1; ; L++) {
+    if (isMilestone(L) && ++found === n) return L
+  }
+}
+// The latest milestone reached, or null below Level 10.
+export function lastMilestoneLevel(level) {
+  const list = milestoneList(level)
+  return list.length ? list[list.length - 1] : null
+}
+// What a milestone pays. `tools` are added to Your Tools by the app;
+// `crispr` is paid by the Race server.
+export function milestoneRewards(level) {
+  if (!isMilestone(level)) return null
+  return { tools: [...PUZZLE_TOOLS], capStep: MILESTONE_CAP_STEP, crispr: level >= MILESTONE_CRISPR_FROM ? 1 : 0 }
+}
+// A puzzle tool's limit at `level`: its base limit plus one per milestone.
+// Coverage and Race items keep their own limits.
+export function toolCap(item, level) {
+  const base = KIT[item]?.max
+  if (!base) return base
+  return PUZZLE_TOOLS.includes(item) ? base + milestonesReached(level) * MILESTONE_CAP_STEP : base
+}
+
 // The next level (above `level`) with any reward, and everything it brings:
 // puzzle tools, a tool unlock, a CRISPR. Shown as "Next at Level N".
 export function nextMilestone(level) {
   for (let L = level + 1; L < level + 50; L++) {
     const items = levelRewards(L).map((it) => (KIT[it]?.unlock === L ? `${KIT[it].name} (new)` : `${KIT[it]?.name || it} +1`))
     if (L >= CRISPR_UNLOCK_LEVEL && (L - CRISPR_UNLOCK_LEVEL) % CRISPR_LEVEL_EVERY === 0) items.push(L === CRISPR_UNLOCK_LEVEL ? 'CRISPR (new)' : 'CRISPR +1')
-    if (items.length) return { level: L, items }
+    const ms = milestoneRewards(L)
+    if (ms) {
+      items.push('Milestone: one of each tool', 'Tool limit +1')
+      if (ms.crispr) items.push('Milestone CRISPR')
+    }
+    if (items.length) return { level: L, items, milestone: !!ms }
   }
   return null
 }
 // The next level that pays a CRISPR, for a player at `level`.
 export function nextCrisprLevel(level) {
-  if (level < CRISPR_UNLOCK_LEVEL) return CRISPR_UNLOCK_LEVEL
-  return CRISPR_UNLOCK_LEVEL + (Math.floor((level - CRISPR_UNLOCK_LEVEL) / CRISPR_LEVEL_EVERY) + 1) * CRISPR_LEVEL_EVERY
+  const fromLevels = level < CRISPR_UNLOCK_LEVEL ? CRISPR_UNLOCK_LEVEL : CRISPR_UNLOCK_LEVEL + (Math.floor((level - CRISPR_UNLOCK_LEVEL) / CRISPR_LEVEL_EVERY) + 1) * CRISPR_LEVEL_EVERY
+  let ms = nextMilestoneLevel(level)
+  while (ms < MILESTONE_CRISPR_FROM) ms = nextMilestoneLevel(ms)
+  return Math.min(fromLevels, ms)
 }
 
 // Tools removed in this version and what a held one converts to (1:1, the

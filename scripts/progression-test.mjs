@@ -192,5 +192,34 @@ console.log('[9] Cloud saves from two devices at once never overwrite each other
   ok(results.every((r) => r.ok) && led['x:a'] && led['x:b'] && led['x:c'], 'three simultaneous saves all land in the cloud copy')
 }
 
+console.log('[10] Milestones: 10, 20, 30, then every 5')
+{
+  ok([10, 20, 30, 35, 40, 45].every(C.isMilestone) && ![9, 11, 25, 31, 36].some(C.isMilestone), 'milestone levels are 10, 20, 30, then every 5')
+  ok(JSON.stringify(C.milestoneList(47)) === '[10,20,30,35,40,45]' && C.nextMilestoneLevel(23) === 30 && C.nextMilestoneLevel(30) === 35 && C.lastMilestoneLevel(9) === null, 'list, next and last milestone')
+  ok(C.toolCap('curbside', 9) === 5 && C.toolCap('lab', 10) === 6 && C.toolCap('second-opinion', 35) === 9 && C.toolCap('shield', 50) === C.KIT.shield.max, 'puzzle tool limits rise by one per milestone, no maximum; Coverage stays')
+  ok(C.milestoneRewards(10).crispr === 0 && C.milestoneRewards(20).crispr === 1 && C.milestoneRewards(11) === null, 'no CRISPR at Level 10, one from Level 20')
+  ok(C.nextMilestone(9).items.includes('Milestone: one of each tool') && C.nextMilestone(19).items.includes('Milestone CRISPR'), 'next reward names the milestone')
+  ok(C.nextCrisprLevel(17) === 20 && C.nextCrisprLevel(20) === 24, 'next CRISPR counts milestone CRISPRs')
+  reset()
+  const st = S.loadProgression()
+  E.award(st, { id: 'test:xp', xp: 4600, kind: 'test', at: now - 86400000 })
+  S.saveProgression(st)
+  const r = daily('2026-10-20', { won: true })
+  const ms = r.milestones.find((m) => m.level === 10)
+  ok(r.after.level === 10 && ms && ms.tools.length === 3 && ms.tools.every((t) => t.as === 'granted'), 'crossing Level 10 pays the bundle: one of each puzzle tool')
+  ok(r.caps.curbside === 6 && r.caps.shield === C.KIT.shield.max, 'limits are 6 at Level 10')
+  const counts = E.kitCounts(S.loadProgression())
+  ok(counts.curbside <= 6 && Object.keys(S.loadProgression().kit.grants).filter((k) => k.startsWith('ms:10:')).length === 3, 'bundle grants are keyed by level')
+  ok(daily('2026-10-21', { won: true }).milestones.length === 0, 'a milestone pays once')
+  // Two tabs both crossing Level 10 still pay it once.
+  reset()
+  const base = S.loadProgression()
+  E.award(base, { id: 'test:xp', xp: 4600, kind: 'test', at: now - 86400000 })
+  S.saveProgression(base)
+  daily('2026-10-20', { won: true })
+  const again = S.loadProgression()
+  ok(Object.keys(again.kit.grants).filter((k) => k.startsWith('ms:')).length === 3, 'the merged save keeps exactly one bundle')
+}
+
 console.log(failed ? `\n${failed} FAILED (${passed} passed)` : `\nALL PROGRESSION CHECKS PASSED (${passed} passed)`)
 process.exit(failed ? 1 : 0)

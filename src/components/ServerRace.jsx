@@ -5,9 +5,12 @@ import { timedCanonicalId } from '../utils/timedLibrary.js'
 import { raceCall, subscribeMatch, getRaceSummary, startGuestRacing, isGuestRacing } from '../lib/raceApi.js'
 import { scrambleLabel, activeEffect } from '../utils/mutation.js'
 import { haptics } from '../utils/haptics.js'
-import { recordRaceFinish, recordRaceWin } from '../progression/store.js'
-import { RACE_REWARDS, MUTATION_MS, CRISPR_UNLOCK_LEVEL, nextCrisprLevel } from '../progression/config.js'
+import { recordRaceFinish, recordRaceWin, toolKit } from '../progression/store.js'
+import { RACE_REWARDS, MUTATION_MS, CRISPR_UNLOCK_LEVEL, nextCrisprLevel, lastMilestoneLevel } from '../progression/config.js'
+import PlexusBadge from './PlexusBadge.jsx'
+import ToolReveal from './ToolReveal.jsx'
 import RaceInvite, { RACE_SCORING_COPY, raceJoinError } from './RaceInvite.jsx'
+import { RewardMoments } from './XpResult.jsx'
 import { TimedXpNote, TimedResultLine } from './TimedXp.jsx'
 
 // ---------------------------------------------------------------------
@@ -85,6 +88,14 @@ const NOT_COUNTED = {
   'opponent-guest': 'Your opponent raced as a guest, so this race didn’t count toward Race rewards.',
 }
 
+// A player's latest milestone badge in the lobby; an empty ring before
+// Level 10, for guests, or while the level is unknown.
+function PlayerBadge({ level }) {
+  const ms = level ? lastMilestoneLevel(level) : null
+  if (!ms) return <span className="race-badge-empty" aria-hidden="true" />
+  return <PlexusBadge level={ms} size={44} label={`Level ${ms} milestone badge`} />
+}
+
 export default function ServerRace({ bank, initialCode = '', onExit, account = true, onFallback }) {
   const [view, setView] = useState('entry') // entry | lobby | race | results
   const [joinInput, setJoinInput] = useState(initialCode ? normalizeJoinCode(initialCode) : '')
@@ -101,6 +112,14 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
   const [summary, setSummary] = useState(null)
   const [tick, setTick] = useState(0)
   const [me, setMe] = useState(null)
+  // This device's own level (what My Plexus shows), for the lobby card.
+  const [myLevel] = useState(() => {
+    try {
+      return toolKit().level
+    } catch {
+      return null
+    }
+  })
   const lockRef = useRef(false)
   const noticeTimer = useRef(null)
   const seenEvents = useRef(new Set())
@@ -346,7 +365,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
     recorded.current[`${matchId}:win`] = true
     const w = recordRaceWin({ raceId: matchId })
     // Show the win bonus in the same XP line as the finish.
-    setRaceXp((prev) => (prev && w ? { ...prev, gained: prev.gained + w.gained, lines: [...prev.lines, ...w.lines], timedNote: w.timedNote || prev.timedNote, after: w.after, levelUp: prev.levelUp || w.levelUp } : prev))
+    setRaceXp((prev) => (prev && w ? { ...prev, gained: prev.gained + w.gained, lines: [...prev.lines, ...w.lines], timedNote: w.timedNote || prev.timedNote, after: w.after, levelUp: prev.levelUp || w.levelUp, grants: [...(prev.grants || []), ...(w.grants || [])], pending: [...(prev.pending || []), ...(w.pending || [])], milestones: [...(prev.milestones || []), ...(w.milestones || [])], counts: w.counts || prev.counts, caps: w.caps || prev.caps } : prev))
   }, [matchId, mine?.outcome])
   // Fresh reward progress once settled.
   useEffect(() => {
@@ -412,14 +431,26 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
         <RaceInvite code={code} />
         <div className="race-players">
           <div className="race-player">
-            <span className="race-player-name">You{guest ? ' (guest)' : ''}</span>
-            <span className="race-player-status is-ready">{chaos ? (mine?.chaos_accepted ? `Chaos accepted · ${loadoutText(mine)}` : 'Chaos not accepted yet') : 'Ready'}</span>
+            <div className="race-player-head">
+              <PlayerBadge level={guest ? null : myLevel} />
+              <div className="race-player-text">
+                <span className="race-player-name">You{guest ? ' (guest)' : ''}</span>
+                {!guest && myLevel ? <span className="race-player-level">Level {myLevel}</span> : null}
+                <span className="race-player-status is-ready">{chaos ? (mine?.chaos_accepted ? `Chaos accepted · ${loadoutText(mine)}` : 'Chaos not accepted yet') : 'Ready'}</span>
+              </div>
+            </div>
           </div>
           <div className="race-player">
-            <span className="race-player-name">Opponent{opp?.guest ? ' (guest)' : ''}</span>
-            <span className={`race-player-status ${opp ? 'is-ready' : 'is-offline'}`}>
-              {!opp ? 'Waiting to join…' : chaos ? (opp.chaos_accepted ? `Chaos accepted · ${loadoutText(opp)}` : 'Chaos not accepted yet') : 'In the lobby'}
-            </span>
+            <div className="race-player-head">
+              <PlayerBadge level={opp && !opp.guest ? opp.level : null} />
+              <div className="race-player-text">
+                <span className="race-player-name">Opponent{opp?.guest ? ' (guest)' : ''}</span>
+                {opp && !opp.guest && opp.level ? <span className="race-player-level">Level {opp.level}</span> : null}
+                <span className={`race-player-status ${opp ? 'is-ready' : 'is-offline'}`}>
+                  {!opp ? 'Waiting to join…' : chaos ? (opp.chaos_accepted ? `Chaos accepted · ${loadoutText(opp)}` : 'Chaos not accepted yet') : 'In the lobby'}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -586,6 +617,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
       {header}
       <h1 className="race-title">{waiting ? 'Finished' : 'Race complete'}</h1>
       <TimedResultLine result={raceXp} kind="Race" />
+          <RewardMoments result={raceXp} />
       {outcome && outcome !== 'abandoned' && (
         <div className={`race-outcome race-outcome-${outcome}`}>{outcome === 'win' ? 'You win!' : outcome === 'lose' ? 'You lost' : 'It’s a tie'}</div>
       )}
@@ -620,13 +652,17 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
         </p>
       )}
       {log?.granted?.some((g) => g.source === 'drop') && (
-        <p className="race-drop" role="status">
-          <b>Rare find: CRISPR.</b> A {Math.round((summary?.crisprDropChance ?? RACE_REWARDS.crisprDropChance) * 100)}% chance after a counted win, and this one landed.
-          {log.granted.some((g) => g.source === 'drop' && g.as === 'pending') ? ' Your CRISPR slots are full, so it waits as a claim in Your Tools.' : ' It is in Your Tools.'}
-        </p>
+        <div className="race-drop has-reveal" role="status">
+          <ToolReveal item="crispr" width={144} delay={0.5} />
+          <p>
+            <b>Rare find: CRISPR.</b> A {Math.round((summary?.crisprDropChance ?? RACE_REWARDS.crisprDropChance) * 100)}% chance after a counted win, and this one landed.
+            {log.granted.some((g) => g.source === 'drop' && g.as === 'pending') ? ' Your CRISPR slots are full, so it waits as a claim in Your Tools.' : ' It is in Your Tools.'}
+          </p>
+        </div>
       )}
       {log?.granted?.some((g) => g.source !== 'drop') && (
-        <p className="race-note">
+        <p className="race-note race-earned-reveal">
+          {log.granted.some((g) => g.source !== 'drop' && g.item === 'mutation') && <ToolReveal item="mutation" width={56} delay={0.3} />}
           Earned:{' '}
           {log.granted
             .filter((g) => g.source !== 'drop')

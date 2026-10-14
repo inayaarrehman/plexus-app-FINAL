@@ -58,6 +58,7 @@ const MORE = [
     title: 'XP and levels',
     body: [
       'Every puzzle you finish earns XP and grows My Plexus. New levels bring tools, and CRISPR from Level 12.',
+      'Milestones come at Level 10, 20 and 30, then every 5 levels. Each one grows your badge, gives one of each puzzle tool and room to hold one more of each. From Level 20 it also brings a CRISPR for Race.',
       `Daily: ${XP.daily} for finishing, ${XP.dailyWin} more for solving, 5 to 20 for each group, ${XP.perfect} for a perfect solve. Archive: ${XP.archive} for a solved past Daily plus its groups. 3 Minutes: ${XP.challengePerCorrect} per correct answer, minus ${XP.challengePerWrong} per wrong one, up to ${XP.challengeMax}. Race: ${XP.raceFinish} for a finished race (every round answered, at least ${RACE_QUALIFY.minCorrect} correct), ${XP.raceWin} more for a win.`,
       `3 Minutes and Race share one daily XP limit: the first ${TIMED_XP.full} XP is full, then half rate up to ${TIMED_XP.cap} XP. After that you can keep playing for practice, and finished sessions still count toward This Week.`,
     ],
