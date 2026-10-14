@@ -25,8 +25,13 @@ const reset = () => {
   for (const k of Object.keys(store)) delete store[k]
   S.ensureProgression()
 }
-const TODAY = '2026-10-20'
 const SUBJ = 'Cardiology'
+// A date before this subject's first expansion board is released, so the
+// queue is exactly its five starter boards (the rebuild moves release days).
+const { default: NEW_LIBRARY } = await import('../src/data/library/newLibrary.js')
+const firstMore = Math.min(...NEW_LIBRARY.expansionBoards.filter((b) => b.subject === SUBJ).map((b) => b.releaseDay), 9999)
+const { addDays } = await import('../src/progression/streak.js')
+const TODAY = firstMore > 10 ? addDays(NEW_LIBRARY.dailyStart, Math.min(10, firstMore - 1)) : NEW_LIBRARY.dailyStart
 const boards = systemsBoardsFor(SUBJ, TODAY)
 const puzzleOf = (b) => ({ id: b.id, categories: [{ level: 1 }, { level: 2 }, { level: 3 }, { level: 4 }] })
 const allGroups = [0, 1, 2, 3].map((ci) => ({ correct: true, catIndexes: [ci, ci, ci, ci] }))

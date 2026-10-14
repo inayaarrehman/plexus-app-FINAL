@@ -7,13 +7,50 @@
 //   • confirmed equivalents of new-library connections (removed for good)
 //   • entries with an unresolved overlap against active new-library content
 //     (excluded until that pair is decided)
+// with the October 2026 overlays applied on top:
+//   • checked revisions (title, tiles, explanation, tile notes)
+//   • checked near-miss lists: wrong answers that gave themselves away by
+//     format, or that actually belonged, are out; checked replacements in
+//   • difficulty metadata: audience recognition (1-5) and tile kinds, used
+//     to pace rounds and to pick look-alike wrong answers
 // It never reads the new library and nothing here falls back to it. The bank
 // is a static module, so two Race players with the same code always build
-// from the identical list.
+// from the identical list, and so does the server that scores the race.
 import connectionBank from '../data/connectionBank.js'
-import { TIMED_EXCLUSIONS, TIMED_CANONICAL } from '../data/library/timedLibrary.js'
+import * as TL from '../data/library/timedLibrary.js'
 
-export const timedBank = connectionBank.filter((c) => !TIMED_EXCLUSIONS[c.id])
+const { TIMED_EXCLUSIONS, TIMED_CANONICAL } = TL
+const TIMED_REVISIONS = TL.TIMED_REVISIONS || {}
+const TIMED_NEAR_MISSES = TL.TIMED_NEAR_MISSES || {}
+export const TIMED_META = TL.TIMED_META || {}
+export const TIMED_EPOCH = TL.CONTENT_EPOCH || 'launch'
+
+// Difficulty tier from recognition: 0 approachable, 1 moderate, 2 challenging.
+export const recognitionTier = (rec) => (rec == null ? 1 : rec <= 1 ? 0 : rec === 2 ? 1 : 2)
+
+function overlay(c) {
+  const rev = TIMED_REVISIONS[c.id]
+  const near = TIMED_NEAR_MISSES[c.id]
+  const meta = TIMED_META[c.id]
+  if (!rev && !near && !meta) return c
+  const next = { ...c }
+  if (rev) {
+    next.title = rev.title
+    next.tiles = rev.tiles.slice()
+    next.explanation = rev.explanation
+    if (rev.tileExplanations) next.tileExplanations = rev.tileExplanations.slice()
+    next.review = { ...(c.review || {}), ...rev.review }
+  }
+  if (near) next.nearMisses = near
+  if (meta) {
+    next.recognition = meta.rec
+    next.tileKinds = meta.kinds
+    next.tier = recognitionTier(meta.rec)
+  }
+  return next
+}
+
+export const timedBank = connectionBank.filter((c) => !TIMED_EXCLUSIONS[c.id]).map(overlay)
 
 export const isTimedExcluded = (id) => !!TIMED_EXCLUSIONS[id]
 

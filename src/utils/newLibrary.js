@@ -16,6 +16,9 @@ import { dayIndex } from './calendar.js'
 import { dayNumber } from './game.js'
 
 export const NEW_DAILY_START = NEW_LIBRARY.dailyStart
+// Changes when the whole library is rebuilt (scripts/library/activate.mjs
+// --rebuild); saved puzzle progress from an earlier epoch is cleared.
+export const CONTENT_EPOCH = NEW_LIBRARY.epoch || 'launch'
 export const LIBRARY_SUBJECTS = NEW_LIBRARY.subjects
 
 // Display names. "Biochemistry/Genetics" keeps its id (player progress is keyed
@@ -41,17 +44,25 @@ export const isNewLibraryDate = (key) => key >= NEW_DAILY_START
 // (`detail`) and per-tile notes (`tileNotes`) appear only when the library
 // served them after review (scripts/library/explanations.mjs); otherwise the
 // reviewed one-line explanation stands alone.
+// Boards built since the October 2026 rebuild carry `levels`: the board's own
+// easiest-to-hardest order and each group's estimated difficulty on that
+// board (audience recognition adjusted for how the other groups compete with
+// it). Older boards fall back to each connection's own label.
 export function buildLibraryPuzzle(ids, meta) {
   const conns = ids.map((id) => NEW_LIBRARY.connections[id])
   if (conns.length !== 4 || conns.some((c) => !c)) return null
-  const ordered = conns
-    .map((c, i) => ({ c, i }))
-    .sort((a, b) => (TIER[a.c.difficulty] ?? 9) - (TIER[b.c.difficulty] ?? 9) || a.i - b.i)
-    .map((x) => x.c)
+  const levels = Array.isArray(meta.levels) && meta.levels.length === 4 && meta.levels.every((l) => ids.includes(l.id)) ? meta.levels : null
+  const tierOn = (c) => (levels ? levels.find((l) => l.id === c.id).tier : c.difficulty)
+  const ordered = levels
+    ? levels.map((l) => NEW_LIBRARY.connections[l.id])
+    : conns
+        .map((c, i) => ({ c, i }))
+        .sort((a, b) => (TIER[a.c.difficulty] ?? 9) - (TIER[b.c.difficulty] ?? 9) || a.i - b.i)
+        .map((x) => x.c)
   const categories = ordered.map((c, i) => ({
     level: i + 1,
-    difficulty: c.difficulty,
-    difficultyLabel: cap(c.difficulty),
+    difficulty: tierOn(c),
+    difficultyLabel: cap(tierOn(c)),
     title: c.title,
     explanation: c.explanation,
     detail: c.detail || '',
@@ -102,6 +113,7 @@ export function getNewDailyPuzzle(key) {
     date: key,
     title: 'Daily Plexus',
     boardId: slot.board.id,
+    levels: slot.board.levels,
   })
   if (puzzle) puzzle.cycle = slot.cycle
   return puzzle
@@ -131,6 +143,7 @@ export function systemsBoardPuzzle(board, index) {
     type: 'system',
     title: subjectLabel(board.subject),
     boardId: board.id,
+    levels: board.levels,
   })
 }
 

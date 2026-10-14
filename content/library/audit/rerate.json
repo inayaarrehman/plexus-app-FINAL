@@ -1,0 +1,5965 @@
+{
+ "about": "Fresh recognition ratings for revised connections (2026-10-13), by a pass that did not write the revisions. Replaces the pre-revision audit entry for these ids.",
+ "reviewer": "Claude (AI)",
+ "entries": {
+  "PLX-BCH-008": {
+   "id": "PLX-BCH-008",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "vitamin A toxicity",
+     "retinoids"
+    ],
+    [
+     "vitamin D",
+     "rickets"
+    ],
+    [
+     "antioxidant",
+     "hemolytic anemia"
+    ],
+    [
+     "vitamin K",
+     "coagulation factors"
+    ]
+   ],
+   "issues": [],
+   "note": "Chemical names add one step but the A/D/E/K set is a well-known list once retinol and tocopherol are recognized.",
+   "revision": null
+  },
+  "PLX-BCH-011": {
+   "id": "PLX-BCH-011",
+   "recognition": 3,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "electron transport chain",
+     "cyanide poisoning"
+    ],
+    [
+     "albinism",
+     "melanin synthesis"
+    ],
+    [
+     "collagen cross-linking",
+     "Ehlers-Danlos"
+    ],
+    [
+     "ALS",
+     "antioxidant defense"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires recalling a cofactor for each enzyme; lysyl oxidase and tyrosinase point toward copper/Menkes for prepared students.",
+   "revision": null
+  },
+  "PLX-BCH-022": {
+   "id": "PLX-BCH-022",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "disease",
+    "disease",
+    "finding"
+   ],
+   "facets": [
+    [
+     "cystic fibrosis",
+     "post-infectious lung damage"
+    ],
+    [
+     "cystic fibrosis",
+     "allergic rhinitis"
+    ],
+    [
+     "children",
+     "eustachian tube dysfunction"
+    ],
+    [
+     "cystic fibrosis",
+     "varicocele"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Must separate from cystic fibrosis, which shares bronchiectasis, sinusitis and male infertility; players may expect situs inversus.",
+   "revision": null
+  },
+  "PLX-BCH-024": {
+   "id": "PLX-BCH-024",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "molecule",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "hyperacusis"
+    ],
+    [
+     "Sandhoff disease"
+    ],
+    [
+     "Niemann-Pick disease",
+     "central retinal artery occlusion"
+    ],
+    [
+     "lysosomal storage"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "GM2 ganglioside plus cherry-red macula and onion-skin lysosomes identify Tay-Sachs immediately.",
+   "revision": null
+  },
+  "PLX-BCH-026": {
+   "id": "PLX-BCH-026",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "aplastic anemia",
+     "leukemia"
+    ],
+    [
+     "sickle cell disease"
+    ],
+    [
+     "steroid use",
+     "sickle cell disease"
+    ],
+    [
+     "myelofibrosis",
+     "Niemann-Pick disease"
+    ]
+   ],
+   "issues": [],
+   "note": "Bone crises with AVN and hepatosplenomegaly is the well-known Gaucher pattern.",
+   "revision": null
+  },
+  "PLX-BCH-028": {
+   "id": "PLX-BCH-028",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "lab",
+    "molecule",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "lysosomal storage"
+    ],
+    [
+     "sphingolipids"
+    ],
+    [
+     "Krabbe disease",
+     "adrenoleukodystrophy"
+    ],
+    [
+     "cerebellar lesion",
+     "Friedreich ataxia"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Arylsulfatase A deficiency names the disease outright.",
+   "revision": null
+  },
+  "PLX-BCH-029": {
+   "id": "PLX-BCH-029",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "platelet disorders",
+     "vitamin C deficiency"
+    ],
+    [
+     "cutis laxa"
+    ],
+    [
+     "acne scarring"
+    ],
+    [
+     "scurvy",
+     "diabetes mellitus"
+    ]
+   ],
+   "issues": [],
+   "note": "Hyperextensible skin with atrophic scars is the textbook EDS picture.",
+   "revision": null
+  },
+  "PLX-BCH-030": {
+   "id": "PLX-BCH-030",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "lab",
+    "lab"
+   ],
+   "facets": [
+    [
+     "Down syndrome",
+     "Prader-Willi syndrome"
+    ],
+    [
+     "albinism",
+     "vitiligo"
+    ],
+    [
+     "Wilson disease"
+    ],
+    [
+     "Wilson disease"
+    ]
+   ],
+   "issues": [],
+   "note": "Low copper and ceruloplasmin suggest Wilson disease; hypotonia and hypopigmentation in an infant are needed to land on Menkes.",
+   "revision": null
+  },
+  "PLX-BCH-032": {
+   "id": "PLX-BCH-032",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "Wernicke encephalopathy",
+     "beriberi"
+    ],
+    [
+     "angular cheilitis",
+     "FAD"
+    ],
+    [
+     "pellagra",
+     "lipid-lowering"
+    ],
+    [
+     "coenzyme A"
+    ]
+   ],
+   "issues": [],
+   "note": "Four B vitamins; recalling the PDH cofactor mnemonic is quick, though plain 'B vitamins' is an easy surface guess.",
+   "revision": null
+  },
+  "PLX-BCH-034": {
+   "id": "PLX-BCH-034",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "counterregulatory hormones",
+     "pancreatic alpha cells"
+    ],
+    [
+     "Cushing syndrome",
+     "stress response"
+    ],
+    [
+     "pheochromocytoma",
+     "anaphylaxis"
+    ],
+    [
+     "hyperthyroidism",
+     "basal metabolic rate"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Looks like the counterregulatory hormones, so players may expect growth hormone; thyroid hormone distinguishes the PEPCK framing.",
+   "revision": null
+  },
+  "PLX-BCH-051": {
+   "id": "PLX-BCH-051",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "lab",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "diabetic ketoacidosis"
+    ],
+    [
+     "branched-chain ketoacid dehydrogenase"
+    ],
+    [
+     "DKA in children",
+     "hyponatremia"
+    ],
+    [
+     "kernicterus",
+     "Wilson disease"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Sweet-smelling urine with elevated branched-chain amino acids is pathognomonic for MSUD.",
+   "revision": null
+  },
+  "PLX-BCH-054": {
+   "id": "PLX-BCH-054",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "lab"
+   ],
+   "facets": [
+    [
+     "myelodysplastic syndrome",
+     "lead poisoning"
+    ],
+    [
+     "lead poisoning",
+     "thalassemia"
+    ],
+    [
+     "iron deficiency",
+     "thalassemia"
+    ],
+    [
+     "hemochromatosis"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Ringed sideroblasts gives it away; microcytosis fits hereditary forms, whereas acquired sideroblastic anemia is often normo- or macrocytic.",
+   "revision": null
+  },
+  "PLX-BCH-055": {
+   "id": "PLX-BCH-055",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "risk",
+    "risk"
+   ],
+   "facets": [
+    [
+     "CYP450 inducers",
+     "status epilepticus"
+    ],
+    [
+     "CYP450 inducers",
+     "gingival hyperplasia"
+    ],
+    [
+     "CYP450 inducers",
+     "cirrhosis"
+    ],
+    [
+     "CYP450 induction",
+     "lung cancer"
+    ]
+   ],
+   "issues": [],
+   "note": "All four are classic CYP450 inducers, so players must decide between the inducer group and porphyria precipitants.",
+   "revision": null
+  },
+  "PLX-BCH-057": {
+   "id": "PLX-BCH-057",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "retinitis pigmentosa"
+    ],
+    [
+     "xerophthalmia"
+    ],
+    [
+     "keratosis pilaris"
+    ],
+    [
+     "measles"
+    ]
+   ],
+   "issues": [],
+   "note": "Night blindness and Bitot spots point straight to vitamin A.",
+   "revision": null
+  },
+  "PLX-BCH-059": {
+   "id": "PLX-BCH-059",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "Paget disease",
+     "Blount disease"
+    ],
+    [
+     "scurvy"
+    ],
+    [
+     "osteogenesis imperfecta"
+    ],
+    [
+     "hypothyroidism",
+     "Down syndrome"
+    ]
+   ],
+   "issues": [],
+   "note": "Rachitic rosary and bowed legs are the classic rickets set.",
+   "revision": null
+  },
+  "PLX-BCH-060": {
+   "id": "PLX-BCH-060",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "alcohol use disorder"
+    ],
+    [
+     "alcohol use disorder"
+    ],
+    [
+     "diabetes mellitus",
+     "vitamin B12 deficiency"
+    ],
+    [
+     "AV fistula",
+     "thyrotoxicosis"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Wernicke and Korsakoff instantly signal thiamine deficiency.",
+   "revision": null
+  },
+  "PLX-BCH-061": {
+   "id": "PLX-BCH-061",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "risk",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "pellagra"
+    ],
+    [
+     "isoniazid",
+     "sideroblastic anemia"
+    ],
+    [
+     "neutral amino acid transport"
+    ],
+    [
+     "serotonin",
+     "tricuspid regurgitation"
+    ]
+   ],
+   "issues": [],
+   "note": "Hartnup disease and carcinoid syndrome together immediately suggest tryptophan/niacin.",
+   "revision": null
+  },
+  "PLX-BCH-063": {
+   "id": "PLX-BCH-063",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "lab",
+    "finding",
+    "disease"
+   ],
+   "facets": [
+    [
+     "folate deficiency"
+    ],
+    [
+     "folate deficiency",
+     "homocystinuria"
+    ],
+    [
+     "folate deficiency"
+    ],
+    [
+     "copper deficiency",
+     "nitrous oxide"
+    ]
+   ],
+   "issues": [],
+   "note": "Three tiles also fit folate deficiency; subacute combined degeneration is the deciding tile, but most students find it quickly.",
+   "revision": null
+  },
+  "PLX-BCH-064": {
+   "id": "PLX-BCH-064",
+   "recognition": 4,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "ACE inhibitors",
+     "bradykinin"
+    ],
+    [
+     "acetazolamide",
+     "bicarbonate"
+    ],
+    [
+     "bone disease",
+     "cholestasis"
+    ],
+    [
+     "fomepizole",
+     "disulfiram"
+    ]
+   ],
+   "issues": [],
+   "note": "Each enzyme is better known for another association; recalling zinc as the shared cofactor takes real retrieval.",
+   "revision": null
+  },
+  "PLX-BCH-079": {
+   "id": "PLX-BCH-079",
+   "recognition": 3,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "X-linked",
+     "angiokeratomas"
+    ],
+    [
+     "Ashkenazi Jewish",
+     "glucocerebrosidase"
+    ],
+    [
+     "mucopolysaccharidosis",
+     "corneal clouding"
+    ],
+    [
+     "glycogen storage",
+     "cardiomegaly"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Lysosomal storage disease is the obvious link; the ERT framing is less obvious and other diseases (e.g. Hunter, Niemann-Pick B) also have ERT.",
+   "revision": null
+  },
+  "CARD-008": {
+   "id": "CARD-008",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "bleomycin",
+     "busulfan"
+    ],
+    [
+     "tetracyclines",
+     "sulfonamides"
+    ],
+    [
+     "acetaminophen"
+    ],
+    [
+     "argyria",
+     "minocycline"
+    ]
+   ],
+   "issues": [],
+   "note": "Pulmonary fibrosis plus blue-gray skin is the well-known amiodarone pattern.",
+   "revision": null
+  },
+  "CARD-014": {
+   "id": "CARD-014",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "risk",
+    "process",
+    "risk",
+    "finding"
+   ],
+   "facets": [
+    [
+     "panic disorder"
+    ],
+    [
+     "pheochromocytoma"
+    ],
+    [
+     "osteoporosis",
+     "coronary disease risk"
+    ],
+    [
+     "MINOCA",
+     "vasospastic angina"
+    ]
+   ],
+   "issues": [],
+   "note": "Emotional stress in a postmenopausal woman with clean coronaries is classic Takotsubo.",
+   "revision": null
+  },
+  "CARD-016": {
+   "id": "CARD-016",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "organism",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "alcohol",
+     "myocarditis"
+    ],
+    [
+     "Trypanosoma cruzi"
+    ],
+    [
+     "achalasia"
+    ],
+    [
+     "Hirschsprung disease",
+     "toxic megacolon"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Megaesophagus, megacolon and a reduviid vector make Chagas instant.",
+   "revision": null
+  },
+  "CARD-018": {
+   "id": "CARD-018",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "renal artery stenosis"
+    ],
+    [
+     "aortoiliac occlusion"
+    ],
+    [
+     "neurofibromatosis"
+    ],
+    [
+     "peripheral artery disease",
+     "spinal stenosis"
+    ]
+   ],
+   "issues": [],
+   "note": "Rib notching with arm-leg pressure discrepancy is classic coarctation.",
+   "revision": null
+  },
+  "CARD-019": {
+   "id": "CARD-019",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "heart failure"
+    ],
+    [
+     "coronary artery disease"
+    ],
+    [
+     "hypertrophic cardiomyopathy",
+     "arrhythmia"
+    ],
+    [
+     "pulsus parvus et tardus"
+    ]
+   ],
+   "issues": [],
+   "note": "The SAD triad plus pulsus parvus is a widely memorized set.",
+   "revision": null
+  },
+  "CARD-020": {
+   "id": "CARD-020",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "hyperthyroidism",
+     "arteriovenous fistula"
+    ],
+    [
+     "water-hammer pulse"
+    ],
+    [
+     "head bobbing"
+    ],
+    [
+     "pulmonic regurgitation"
+    ]
+   ],
+   "issues": [],
+   "note": "Eponymous peripheral signs and the diastolic decrescendo murmur quickly identify aortic regurgitation.",
+   "revision": null
+  },
+  "CARD-021": {
+   "id": "CARD-021",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "hyperthyroidism",
+     "stroke"
+    ],
+    [
+     "short PR interval"
+    ],
+    [
+     "Austin Flint murmur"
+    ],
+    [
+     "mitral regurgitation"
+    ]
+   ],
+   "issues": [],
+   "note": "An apical diastolic rumble with loud S1, LA enlargement and atrial fibrillation is the standard mitral stenosis set.",
+   "revision": null
+  },
+  "CARD-022": {
+   "id": "CARD-022",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "disease",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "VSD",
+     "tricuspid regurgitation"
+    ],
+    [
+     "Marfan syndrome"
+    ],
+    [
+     "MI complications"
+    ],
+    [
+     "tricuspid regurgitation"
+    ]
+   ],
+   "issues": [],
+   "note": "Papillary muscle rupture pulls toward MI complications; players must recognize the MR theme across finding and cause.",
+   "revision": null
+  },
+  "CARD-028": {
+   "id": "CARD-028",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "process",
+    "anatomy",
+    "procedure",
+    "finding"
+   ],
+   "facets": [
+    [
+     "fetal circulation"
+    ],
+    [
+     "congenitally corrected TGA"
+    ],
+    [
+     "prostaglandin E1"
+    ],
+    [
+     "boot-shaped heart"
+    ]
+   ],
+   "issues": [],
+   "note": "Egg-on-string radiograph identifies TGA immediately for most students.",
+   "revision": null
+  },
+  "CARD-034": {
+   "id": "CARD-034",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "pericardial effusion"
+    ],
+    [
+     "right heart failure"
+    ],
+    [
+     "obesity",
+     "pericardial effusion"
+    ],
+    [
+     "asthma exacerbation",
+     "constrictive pericarditis"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Beck triad elements plus pulsus paradoxus are an instantly recognized tamponade set.",
+   "revision": null
+  },
+  "CARD-035": {
+   "id": "CARD-035",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "risk",
+    "procedure"
+   ],
+   "facets": [
+    [
+     "Marfan syndrome",
+     "Stanford A"
+    ],
+    [
+     "MI complications"
+    ],
+    [
+     "tension pneumothorax"
+    ],
+    [
+     "postpericardiotomy syndrome"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires reasoning that each causes bleeding into the pericardium rather than serous effusion.",
+   "revision": null
+  },
+  "CARD-036": {
+   "id": "CARD-036",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "organism",
+    "disease",
+    "disease",
+    "procedure"
+   ],
+   "facets": [
+    [
+     "hand-foot-mouth disease",
+     "myocarditis"
+    ],
+    [
+     "dialysis",
+     "platelet dysfunction"
+    ],
+    [
+     "post-MI"
+    ],
+    [
+     "radiation fibrosis",
+     "constrictive pericarditis"
+    ]
+   ],
+   "issues": [],
+   "note": "Uremia and Dressler syndrome are a well-known pericarditis cause set.",
+   "revision": null
+  },
+  "CARD-037": {
+   "id": "CARD-037",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "disease",
+    "disease",
+    "finding"
+   ],
+   "facets": [
+    [
+     "sudden cardiac death"
+    ],
+    [
+     "mitral regurgitation"
+    ],
+    [
+     "VSD"
+    ],
+    [
+     "stroke",
+     "LV aneurysm"
+    ]
+   ],
+   "issues": [],
+   "note": "Rupture and mural thrombus tiles make the post-MI complication theme quick.",
+   "revision": null
+  },
+  "CARD-040": {
+   "id": "CARD-040",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "sympathomimetic toxicity",
+     "MI in young adults"
+    ],
+    [
+     "pyrimidine analog",
+     "colorectal cancer"
+    ],
+    [
+     "migraine",
+     "serotonin syndrome"
+    ],
+    [
+     "ergotism",
+     "postpartum hemorrhage"
+    ]
+   ],
+   "issues": [],
+   "note": "Each drug is known for other uses; linking them requires recalling vasoconstrictive coronary effects.",
+   "revision": null
+  },
+  "CARD-042": {
+   "id": "CARD-042",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "pregnancy"
+    ],
+    [
+     "stasis dermatitis"
+    ],
+    [
+     "DVT"
+    ],
+    [
+     "heart failure",
+     "lymphedema"
+    ]
+   ],
+   "issues": [],
+   "note": "Varicose veins and hemosiderin staining make venous insufficiency obvious.",
+   "revision": null
+  },
+  "DERM-006": {
+   "id": "DERM-006",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "hand-foot-mouth disease"
+    ],
+    [
+     "HSV-2",
+     "healthcare workers"
+    ],
+    [
+     "acanthamoeba keratitis"
+    ],
+    [
+     "HSV encephalitis",
+     "acyclovir"
+    ]
+   ],
+   "issues": [],
+   "note": "Herpetic whitlow and dendritic keratitis immediately point to herpes simplex.",
+   "revision": null
+  },
+  "DERM-007": {
+   "id": "DERM-007",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "chickenpox vaccine"
+    ],
+    [
+     "postherpetic neuralgia"
+    ],
+    [
+     "Hutchinson sign"
+    ],
+    [
+     "facial nerve palsy"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "imprecise"
+   ],
+   "note": "All four are named VZV syndromes, and herpes zoster ophthalmicus and Ramsay Hunt are themselves forms of shingles, so the tiles overlap.",
+   "revision": null
+  },
+  "DERM-019": {
+   "id": "DERM-019",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "drug",
+    "finding",
+    "lab",
+    "process"
+   ],
+   "facets": [
+    [
+     "SJS/TEN",
+     "HLA-B*1502"
+    ],
+    [
+     "viral exanthem",
+     "drug eruption"
+    ],
+    [
+     "parasitic infection",
+     "allergy"
+    ],
+    [
+     "roseola"
+    ]
+   ],
+   "issues": [],
+   "note": "Mixed tile types and shared links to SJS/TEN and viral exanthems require discriminating the DRESS pattern.",
+   "revision": null
+  },
+  "DERM-029": {
+   "id": "DERM-029",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "seborrheic dermatitis"
+    ],
+    [],
+    [
+     "alopecia areata",
+     "psoriatic arthritis"
+    ],
+    [
+     "lichen planus",
+     "vitiligo"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Silvery plaques and Auspitz sign are instant psoriasis clues.",
+   "revision": null
+  },
+  "ENDO-011": {
+   "id": "ENDO-011",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "beta blockers",
+     "performance anxiety"
+    ],
+    [
+     "pregnancy first trimester",
+     "agranulocytosis"
+    ],
+    [
+     "adrenal insufficiency"
+    ],
+    [
+     "radiation emergency",
+     "Wolff-Chaikoff effect"
+    ]
+   ],
+   "issues": [],
+   "note": "PTU plus potassium iodide makes thyroid storm treatment quick to spot.",
+   "revision": null
+  },
+  "ENDO-020": {
+   "id": "ENDO-020",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "hyperoxaluria",
+     "Crohn disease"
+    ],
+    [
+     "opioids",
+     "hypothyroidism"
+    ],
+    [
+     "multiple myeloma",
+     "metastases"
+    ],
+    [
+     "delirium"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Stones, bones, groans and psychiatric overtones is a classic mnemonic list.",
+   "revision": null
+  },
+  "ENDO-021": {
+   "id": "ENDO-021",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "process",
+    "change",
+    "molecule",
+    "process"
+   ],
+   "facets": [
+    [
+     "thiazides"
+    ],
+    [
+     "FGF23"
+    ],
+    [
+     "vitamin D activation",
+     "sarcoidosis"
+    ],
+    [
+     "RANKL",
+     "denosumab"
+    ]
+   ],
+   "issues": [],
+   "note": "Standard PTH actions taught as a set; phosphaturia and 1-alpha-hydroxylase together point to PTH.",
+   "revision": null
+  },
+  "ENDO-034": {
+   "id": "ENDO-034",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "lab",
+    "lab",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "metyrapone test"
+    ],
+    [
+     "21-hydroxylase deficiency",
+     "PCOS"
+    ],
+    [
+     "primary hyperaldosteronism",
+     "17-alpha-hydroxylase deficiency"
+    ],
+    [
+     "primary hyperaldosteronism",
+     "diuretics"
+    ]
+   ],
+   "issues": [],
+   "note": "Hypertension with hypokalemia suggests 17-hydroxylase deficiency or hyperaldosteronism; elevated androgens and 11-deoxycortisol are needed to decide.",
+   "revision": null
+  },
+  "ENDO-041": {
+   "id": "ENDO-041",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "disulfiram-like reaction"
+    ],
+    [
+     "SIADH",
+     "disulfiram-like reaction"
+    ],
+    [
+     "hypoglycemia"
+    ],
+    [
+     "hypoglycemia",
+     "gestational diabetes"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "alternate-member-risk"
+   ],
+   "note": "Four well-known sulfonylureas, a straightforward drug-class list; glimepiride fits equally.",
+   "revision": null
+  },
+  "ENDO-042": {
+   "id": "ENDO-042",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "lactic acidosis",
+     "PCOS"
+    ],
+    [
+     "SGLT2 inhibitors",
+     "heart failure"
+    ],
+    [
+     "GLP-1 agonists",
+     "Gila monster"
+    ],
+    [
+     "GLP-1 agonists",
+     "obesity"
+    ]
+   ],
+   "issues": [],
+   "note": "Four diabetes drugs; players must exclude weight-gaining or neutral agents rather than simply group antidiabetics.",
+   "revision": null
+  },
+  "GI-004": {
+   "id": "GI-004",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "uveitis",
+     "pathergy"
+    ],
+    [
+     "dermatitis herpetiformis"
+    ],
+    [
+     "extraintestinal manifestations"
+    ],
+    [
+     "malar rash",
+     "ANA"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "These diseases share many links (autoimmunity, GI disease), so the oral-ulcer theme takes thought; reactive arthritis or HIV could also be expected.",
+   "revision": null
+  },
+  "GI-013": {
+   "id": "GI-013",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "procedure",
+    "organism"
+   ],
+   "facets": [
+    [
+     "autoimmune gastritis",
+     "intrinsic factor"
+    ],
+    [
+     "chronic pancreatitis",
+     "steatorrhea"
+    ],
+    [
+     "bile acid malabsorption",
+     "Crohn disease"
+    ],
+    [
+     "raw fish"
+    ]
+   ],
+   "issues": [],
+   "note": "Pernicious anemia and Diphyllobothrium latum make B12 deficiency obvious.",
+   "revision": null
+  },
+  "GI-025": {
+   "id": "GI-025",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "CPPD"
+    ],
+    [
+     "bronze diabetes"
+    ],
+    [
+     "restrictive cardiomyopathy"
+    ],
+    [
+     "Klinefelter syndrome"
+    ]
+   ],
+   "issues": [],
+   "note": "MCP arthropathy with diabetes and cardiomyopathy is the classic hemochromatosis set.",
+   "revision": null
+  },
+  "GI-029": {
+   "id": "GI-029",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "heart failure",
+     "nephrotic syndrome"
+    ],
+    [
+     "hemorrhoids"
+    ],
+    [
+     "IVC obstruction"
+    ],
+    [
+     "mononucleosis",
+     "hemolytic anemia"
+    ]
+   ],
+   "issues": [],
+   "note": "Caput medusae with ascites and splenomegaly identifies portal hypertension quickly.",
+   "revision": null
+  },
+  "GI-031": {
+   "id": "GI-031",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "drug",
+    "change"
+   ],
+   "facets": [
+    [
+     "stress-induced jaundice"
+    ],
+    [
+     "kernicterus",
+     "phototherapy"
+    ],
+    [
+     "protease inhibitors",
+     "nephrolithiasis"
+    ],
+    [
+     "breastfeeding"
+    ]
+   ],
+   "issues": [],
+   "note": "Atazanavir requires knowing its UGT1A1 inhibition; the others share the conjugation-defect mechanism.",
+   "revision": null
+  },
+  "GI-032": {
+   "id": "GI-032",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "change",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "UGT1A1 immaturity"
+    ],
+    [
+     "breastfeeding"
+    ],
+    [
+     "breastfeeding jaundice"
+    ],
+    [
+     "Rh incompatibility",
+     "ABO incompatibility"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "too-obvious"
+   ],
+   "note": "Three tiles end in 'jaundice', which reveals the neonatal jaundice group without reasoning.",
+   "revision": null
+  },
+  "GI-040": {
+   "id": "GI-040",
+   "recognition": 3,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "NRTIs",
+     "peripheral neuropathy"
+    ],
+    [
+     "TPMT",
+     "thiopurines"
+    ],
+    [
+     "hyperglycemia",
+     "hypercalcemia"
+    ],
+    [
+     "neural tube defects",
+     "hepatotoxicity"
+    ]
+   ],
+   "issues": [],
+   "note": "Diverse drug classes linked only by recalling pancreatitis as an adverse effect.",
+   "revision": null
+  },
+  "GI-041": {
+   "id": "GI-041",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "finding",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "chronic pancreatitis"
+    ],
+    [
+     "hypoparathyroidism",
+     "massive transfusion"
+    ],
+    [
+     "sepsis"
+    ],
+    [
+     "sepsis",
+     "obstetric complications"
+    ]
+   ],
+   "issues": [],
+   "note": "Pseudocyst gives the pancreatitis theme away; hypocalcemia confirms.",
+   "revision": null
+  },
+  "GI-053": {
+   "id": "GI-053",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "lab",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "Usher syndrome",
+     "vitamin A deficiency"
+    ],
+    [
+     "hypobetalipoproteinemia"
+    ],
+    [
+     "liver disease",
+     "McLeod syndrome"
+    ],
+    [
+     "celiac disease"
+    ]
+   ],
+   "issues": [],
+   "note": "Acanthocytes with reduced ApoB lipoproteins identify abetalipoproteinemia.",
+   "revision": null
+  },
+  "GI-054": {
+   "id": "GI-054",
+   "recognition": 3,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "rule of 2s",
+     "GI bleeding"
+    ],
+    [
+     "palpable purpura",
+     "IgA nephropathy"
+    ],
+    [
+     "Peutz-Jeghers syndrome",
+     "colorectal cancer"
+    ],
+    [
+     "viral gastroenteritis",
+     "adenovirus"
+    ]
+   ],
+   "issues": [],
+   "note": "Each tile has a stronger alternate association; the lead-point link needs recall of intussusception causes.",
+   "revision": null
+  },
+  "GI-059": {
+   "id": "GI-059",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "ankylosing spondylitis"
+    ],
+    [
+     "sarcoidosis",
+     "HLA-B27"
+    ],
+    [
+     "sarcoidosis",
+     "streptococcal infection"
+    ],
+    [
+     "neutrophilic dermatoses"
+    ]
+   ],
+   "issues": [],
+   "note": "Erythema nodosum with pyoderma gangrenosum and uveitis is the standard IBD extraintestinal list.",
+   "revision": null
+  },
+  "GI-060": {
+   "id": "GI-060",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "disease",
+    "other"
+   ],
+   "facets": [
+    [
+     "viral infection",
+     "Peyer patches"
+    ],
+    [
+     "diverticulitis"
+    ],
+    [
+     "carcinoid syndrome",
+     "serotonin"
+    ],
+    [
+     "aspiration",
+     "bezoar"
+    ]
+   ],
+   "issues": [],
+   "note": "Fecalith and lymphoid hyperplasia quickly suggest appendicitis causes.",
+   "revision": null
+  },
+  "GI-061": {
+   "id": "GI-061",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "process",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "DiGeorge syndrome",
+     "neuroblastoma"
+    ],
+    [],
+    [
+     "cystic fibrosis",
+     "meconium ileus"
+    ],
+    [
+     "toxic megacolon"
+    ]
+   ],
+   "issues": [],
+   "note": "Delayed meconium with explosive stool after rectal exam is classic Hirschsprung.",
+   "revision": null
+  },
+  "GI-064": {
+   "id": "GI-064",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "antacids",
+     "hypermagnesemia"
+    ],
+    [
+     "sugar alcohols"
+    ],
+    [
+     "bowel preparation"
+    ],
+    [
+     "hepatic encephalopathy"
+    ]
+   ],
+   "issues": [],
+   "note": "Common laxatives; lactulose and PEG together signal osmotic agents.",
+   "revision": null
+  },
+  "PLEXUS-GEN-002": {
+   "id": "PLEXUS-GEN-002",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "diarrhea",
+     "colorectal cancer"
+    ],
+    [
+     "ovarian cancer"
+    ],
+    [
+     "testicular cancer",
+     "secondary AML"
+    ],
+    [
+     "anthracycline cardiotoxicity"
+    ]
+   ],
+   "issues": [],
+   "note": "Two '-tecan' drugs plus etoposide quickly suggest topoisomerase inhibitors; doxorubicin is the less obvious member.",
+   "revision": null
+  },
+  "PLEXUS-GEN-007": {
+   "id": "PLEXUS-GEN-007",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "lab",
+    "disease",
+    "finding",
+    "lab"
+   ],
+   "facets": [
+    [
+     "OTC deficiency"
+    ],
+    [
+     "vitamin B12 deficiency",
+     "folate deficiency"
+    ],
+    [
+     "many pediatric disorders"
+    ],
+    [
+     "urea cycle disorders"
+    ]
+   ],
+   "issues": [],
+   "note": "Orotic aciduria with normal ammonia is the classic distinction from OTC deficiency, which is well taught.",
+   "revision": null
+  },
+  "PLEXUS-GEN-010": {
+   "id": "PLEXUS-GEN-010",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "lab"
+   ],
+   "facets": [
+    [
+     "Friedreich ataxia",
+     "cerebellar lesion"
+    ],
+    [
+     "DNA repair defects"
+    ],
+    [
+     "immunodeficiency",
+     "cystic fibrosis"
+    ],
+    [
+     "hepatocellular carcinoma",
+     "yolk sac tumor"
+    ]
+   ],
+   "issues": [],
+   "note": "Ataxia with radiation hypersensitivity and elevated AFP identifies ataxia-telangiectasia.",
+   "revision": null
+  },
+  "PLEXUS-GEN-015": {
+   "id": "PLEXUS-GEN-015",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "disease"
+   ],
+   "facets": [
+    [
+     "cafe-au-lait macules",
+     "Legius syndrome"
+    ],
+    [],
+    [
+     "schwannoma"
+    ],
+    [
+     "MEN2",
+     "VHL"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Lisch nodules and neurofibromas are pathognomonic NF1 clues.",
+   "revision": null
+  },
+  "PLEXUS-GEN-016": {
+   "id": "PLEXUS-GEN-016",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "obesity"
+    ],
+    [
+     "Turner syndrome"
+    ],
+    [
+     "Klinefelter syndrome",
+     "Kallmann syndrome"
+    ],
+    [
+     "Down syndrome",
+     "spinal muscular atrophy"
+    ]
+   ],
+   "issues": [],
+   "note": "Hyperphagia with hypotonia and hypogonadism points quickly to Prader-Willi.",
+   "revision": null
+  },
+  "PLX-HEM-003": {
+   "id": "PLX-HEM-003",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "bradykinin",
+     "hereditary angioedema"
+    ],
+    [
+     "bradykinin",
+     "contact activation"
+    ],
+    [
+     "hemophilia B",
+     "vitamin K-dependent factors"
+    ],
+    [
+     "hemophilia A",
+     "von Willebrand factor"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Factors IX and VIII point straight to the aPTT arm; prekallikrein and HMWK need a moment, and players may expect factors XI or XII.",
+   "revision": null
+  },
+  "PLX-HEM-006": {
+   "id": "PLX-HEM-006",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "risk"
+   ],
+   "facets": [
+    [
+     "malaria radical cure",
+     "P. vivax hypnozoites"
+    ],
+    [
+     "sulfa allergy",
+     "SJS"
+    ],
+    [
+     "UTI",
+     "pulmonary fibrosis"
+    ],
+    [
+     "sepsis",
+     "fever"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Primaquine plus sulfonamides is the classic G6PD trigger list; fava beans and dapsone are equally expected members.",
+   "revision": null
+  },
+  "PLX-HEM-010": {
+   "id": "PLX-HEM-010",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "lab",
+    "lab",
+    "lab",
+    "lab"
+   ],
+   "facets": [
+    [
+     "tumor lysis",
+     "MI"
+    ],
+    [
+     "Gilbert syndrome",
+     "neonatal jaundice"
+    ],
+    [
+     "haptoglobin genotype"
+    ],
+    [
+     "blood loss recovery",
+     "B12 replacement"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "LDH, haptoglobin and reticulocytes are the textbook hemolysis panel and are recognized instantly.",
+   "revision": null
+  },
+  "PLX-HEM-011": {
+   "id": "PLX-HEM-011",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "ADAMTS13",
+     "pentad"
+    ],
+    [
+     "preeclampsia",
+     "pregnancy"
+    ],
+    [
+     "sepsis",
+     "APL"
+    ],
+    [
+     "aortic stenosis",
+     "valve replacement"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "A well-known MAHA list; HUS is the obvious missing member that players may expect.",
+   "revision": null
+  },
+  "PLX-HEM-013": {
+   "id": "PLX-HEM-013",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "HbS"
+    ],
+    [
+     "thalassemia",
+     "liver disease"
+    ],
+    [
+     "asplenia",
+     "splenectomy"
+    ],
+    [
+     "reticulocytosis",
+     "hemolysis"
+    ]
+   ],
+   "issues": [
+    "title-leak",
+    "too-obvious"
+   ],
+   "note": "\"Sickled erythrocytes\" names the disease outright, so the other three are sorted around it instantly.",
+   "revision": null
+  },
+  "PLX-HEM-019": {
+   "id": "PLX-HEM-019",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "radial nerve palsy",
+     "Saturday night palsy"
+    ],
+    [
+     "porphyria",
+     "biliary colic"
+    ],
+    [
+     "gingival line"
+    ],
+    [
+     "dementia",
+     "hypothyroidism"
+    ]
+   ],
+   "issues": [],
+   "note": "Burton line is a near-giveaway, but wrist drop and colic need the lead link recalled; cognitive impairment is generic.",
+   "revision": null
+  },
+  "PLX-HEM-020": {
+   "id": "PLX-HEM-020",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "process",
+    "finding",
+    "finding",
+    "lab"
+   ],
+   "facets": [
+    [
+     "porphyria",
+     "heme synthesis"
+    ],
+    [
+     "sideroblastic anemia",
+     "alcohol",
+     "B6 deficiency"
+    ],
+    [
+     "thalassemia"
+    ],
+    [
+     "iron deficiency"
+    ]
+   ],
+   "issues": [],
+   "note": "Basophilic stippling and ALA dehydratase are classic lead clues; ringed sideroblasts and ZPP also suggest other sideroblastic or iron disorders.",
+   "revision": null
+  },
+  "PLX-HEM-024": {
+   "id": "PLX-HEM-024",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "lab",
+    "disease",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "hydroxyurea",
+     "sickle cell disease",
+     "HPFH"
+    ],
+    [
+     "hereditary hemochromatosis"
+    ],
+    [
+     "HbC",
+     "liver disease",
+     "asplenia"
+    ],
+    [
+     "crew-cut skull",
+     "chipmunk facies"
+    ]
+   ],
+   "issues": [],
+   "note": "Transfusional iron overload and marrow expansion point quickly to thalassemia major, though HbF and target cells overlap with sickle cell disease.",
+   "revision": null
+  },
+  "PLX-HEM-036": {
+   "id": "PLX-HEM-036",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "lab",
+    "lab",
+    "lab",
+    "lab"
+   ],
+   "facets": [
+    [
+     "intrinsic pathway defects"
+    ],
+    [
+     "platelet dysfunction",
+     "aspirin"
+    ],
+    [
+     "Bernard-Soulier syndrome"
+    ],
+    [
+     "hemophilia",
+     "heparin"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Ristocetin cofactor activity gives it away; the hedged \"Possibly\" tile reads oddly and stands out from the other three.",
+   "revision": null
+  },
+  "PLX-HEM-041": {
+   "id": "PLX-HEM-041",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "anatomy",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "germ cells",
+     "embryology"
+    ],
+    [
+     "hepatitis",
+     "cirrhosis"
+    ],
+    [
+     "asplenia",
+     "splenomegaly"
+    ],
+    [
+     "marrow transplant",
+     "myelofibrosis"
+    ]
+   ],
+   "issues": [
+    "series",
+    "too-obvious"
+   ],
+   "note": "The yolk sac-liver-spleen-marrow sequence is a classic mnemonic set and is recognized instantly.",
+   "revision": null
+  },
+  "PLX-HEM-045": {
+   "id": "PLX-HEM-045",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "AML",
+     "cerebellar toxicity"
+    ],
+    [
+     "pancreatic cancer"
+    ],
+    [
+     "thymidylate synthase",
+     "colorectal cancer"
+    ],
+    [
+     "MDS",
+     "hypomethylating agent"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "alternate-member-risk"
+   ],
+   "note": "Cytarabine, gemcitabine and azacitidine share a \"-cit-\" look; capecitabine is an equally expected member.",
+   "revision": null
+  },
+  "PLX-HEM-052": {
+   "id": "PLX-HEM-052",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "lab",
+    "lab",
+    "finding"
+   ],
+   "facets": [
+    [
+     "myelofibrosis",
+     "portal hypertension"
+    ],
+    [
+     "myeloproliferative neoplasms"
+    ],
+    [
+     "leukemoid reaction"
+    ],
+    [
+     "infection",
+     "leukemoid reaction"
+    ]
+   ],
+   "issues": [],
+   "note": "Low LAP and basophilia are classic CML tells, though left shift and splenomegaly need discrimination from leukemoid reactions.",
+   "revision": null
+  },
+  "PLX-HEM-053": {
+   "id": "PLX-HEM-053",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "disease",
+    "finding",
+    "drug"
+   ],
+   "facets": [
+    [
+     "PML-RARA"
+    ],
+    [
+     "sepsis",
+     "obstetric complications"
+    ],
+    [
+     "AML"
+    ],
+    [
+     "vitamin A",
+     "differentiation syndrome"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "t(15;17) and ATRA responsiveness are instant APL identifiers.",
+   "revision": null
+  },
+  "PLX-HEM-054": {
+   "id": "PLX-HEM-054",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "risk",
+    "lab",
+    "process"
+   ],
+   "facets": [
+    [
+     "owl-eye cells"
+    ],
+    [
+     "IBD",
+     "Hodgkin"
+    ],
+    [
+     "anaplastic large cell lymphoma",
+     "brentuximab"
+    ],
+    [
+     "lymph node staging"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Reed-Sternberg cells name the disease outright.",
+   "revision": null
+  },
+  "PLX-HEM-055": {
+   "id": "PLX-HEM-055",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "finding",
+    "finding",
+    "organism"
+   ],
+   "facets": [
+    [
+     "t(8;14)",
+     "double-hit lymphoma"
+    ],
+    [
+     "tingible body macrophages"
+    ],
+    [
+     "Africa",
+     "malaria"
+    ],
+    [
+     "mononucleosis",
+     "nasopharyngeal carcinoma"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Starry-sky histology and endemic jaw involvement are instant Burkitt identifiers.",
+   "revision": null
+  },
+  "PLX-HEM-056": {
+   "id": "PLX-HEM-056",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "lab",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "melanoma",
+     "papillary thyroid cancer"
+    ],
+    [
+     "hairy cell leukemia"
+    ],
+    [
+     "aplastic anemia",
+     "marrow failure"
+    ],
+    [
+     "myelofibrosis"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "TRAP positivity is a one-word giveaway for hairy cell leukemia.",
+   "revision": null
+  },
+  "PLX-HEM-057": {
+   "id": "PLX-HEM-057",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "lab",
+    "finding",
+    "disease",
+    "process"
+   ],
+   "facets": [
+    [
+     "mantle cell lymphoma"
+    ],
+    [
+     "viral infection",
+     "pertussis"
+    ],
+    [
+     "SLE",
+     "warm antibodies"
+    ],
+    [
+     "DLBCL"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Richter transformation is CLL-specific and gives the group away, although CD5 also suggests mantle cell lymphoma.",
+   "revision": null
+  },
+  "PLX-HEM-061": {
+   "id": "PLX-HEM-061",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "lab",
+    "disease",
+    "disease",
+    "lab"
+   ],
+   "facets": [
+    [
+     "multiple myeloma"
+    ],
+    [
+     "multiple myeloma",
+     "AKI"
+    ],
+    [
+     "macroglossia",
+     "nephrotic syndrome"
+    ],
+    [
+     "MGUS",
+     "free light chains"
+    ]
+   ],
+   "issues": [],
+   "note": "Bence Jones and cast nephropathy point immediately to myeloma; the light-chain framing adds little extra reasoning.",
+   "revision": null
+  },
+  "PLX-HEM-063": {
+   "id": "PLX-HEM-063",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "lab",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "essential thrombocythemia",
+     "burning feet"
+    ],
+    [
+     "CKD",
+     "anemia of CKD"
+    ],
+    [
+     "myeloproliferative neoplasms"
+    ],
+    [
+     "myeloproliferative neoplasms"
+    ]
+   ],
+   "issues": [],
+   "note": "Aquagenic pruritus with low EPO is a classic PV pair; erythromelalgia also suggests essential thrombocythemia.",
+   "revision": null
+  },
+  "PLX-HEM-064": {
+   "id": "PLX-HEM-064",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "process",
+    "finding"
+   ],
+   "facets": [
+    [
+     "thalassemia",
+     "marrow infiltration"
+    ],
+    [
+     "marrow infiltration",
+     "metastatic cancer"
+    ],
+    [
+     "thalassemia",
+     "sickle cell disease"
+    ],
+    [
+     "CML",
+     "malaria",
+     "Gaucher disease"
+    ]
+   ],
+   "issues": [],
+   "note": "Dacrocytes plus leukoerythroblastosis is the textbook myelofibrosis picture, though massive splenomegaly also suggests CML.",
+   "revision": null
+  },
+  "IMM-002": {
+   "id": "IMM-002",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "lab"
+   ],
+   "facets": [
+    [
+     "umbilical granuloma"
+    ],
+    [
+     "neutropenia"
+    ],
+    [
+     "diabetes",
+     "vitamin C deficiency"
+    ],
+    [
+     "infection",
+     "corticosteroids"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Delayed umbilical cord separation is an instant LAD identifier.",
+   "revision": null
+  },
+  "IMM-006": {
+   "id": "IMM-006",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "process",
+    "molecule",
+    "process",
+    "other"
+   ],
+   "facets": [
+    [
+     "cytotoxic T cells"
+    ],
+    [
+     "multiple myeloma",
+     "dialysis amyloidosis"
+    ],
+    [
+     "proteasome",
+     "TAP"
+    ],
+    []
+   ],
+   "issues": [],
+   "note": "CD8 and beta-2 microglobulin point straight to MHC class I; the main challenge is separating it from a class II group.",
+   "revision": null
+  },
+  "IMM-007": {
+   "id": "IMM-007",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "process",
+    "molecule",
+    "molecule",
+    "process"
+   ],
+   "facets": [
+    [
+     "helper T cells"
+    ],
+    [
+     "CLIP"
+    ],
+    [
+     "HLA disease associations",
+     "celiac disease"
+    ],
+    [
+     "endosome",
+     "APCs"
+    ]
+   ],
+   "issues": [],
+   "note": "The HLA-DP/DQ/DR tile and CD4 identify class II quickly; the challenge is separating it from a class I group.",
+   "revision": null
+  },
+  "IMM-009": {
+   "id": "IMM-009",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "CAR-T therapy",
+     "B-cell marker"
+    ],
+    [
+     "EBV receptor",
+     "complement receptor"
+    ],
+    [
+     "class switching"
+    ],
+    [
+     "antigen presentation",
+     "CD4 T cells"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "CD19 and CD21 signal B cells; CD20 and surface IgM are equally expected members.",
+   "revision": null
+  },
+  "IMM-020": {
+   "id": "IMM-020",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "travel medicine"
+    ],
+    [
+     "oral Sabin vaccine"
+    ],
+    [
+     "recombinant vaccine",
+     "healthcare workers"
+    ],
+    [
+     "cervical cancer prevention"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "alternate-member-risk"
+   ],
+   "note": "All four end in \"vaccine\", so the group is easy to spot; separating non-live from live vaccines takes some recall, and injected influenza or rabies vaccines fit equally well.",
+   "revision": null
+  },
+  "IMM-022": {
+   "id": "IMM-022",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "lab",
+    "lab",
+    "finding"
+   ],
+   "facets": [
+    [
+     "enterovirus",
+     "CVID"
+    ],
+    [
+     "BTK"
+    ],
+    [
+     "CVID",
+     "SCID"
+    ],
+    [
+     "lymphoid hypoplasia"
+    ]
+   ],
+   "issues": [],
+   "note": "Absent B cells with enteroviral infection is a classic XLA picture, though reduced immunoglobulins alone fits other humoral deficiencies.",
+   "revision": null
+  },
+  "IMM-024": {
+   "id": "IMM-024",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "lab",
+    "disease",
+    "lab",
+    "disease"
+   ],
+   "facets": [
+    [
+     "CVID"
+    ],
+    [
+     "CVID",
+     "travel diarrhea"
+    ],
+    [
+     "celiac disease"
+    ],
+    [
+     "blood transfusion"
+    ]
+   ],
+   "issues": [
+    "title-leak",
+    "too-obvious"
+   ],
+   "note": "\"IgA\" appears in two tiles, and anaphylactic transfusion reactions give the diagnosis away.",
+   "revision": null
+  },
+  "IMM-025": {
+   "id": "IMM-025",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "process",
+    "lab",
+    "lab"
+   ],
+   "facets": [
+    [
+     "HIV",
+     "AIDS-defining illness"
+    ],
+    [
+     "AID deficiency"
+    ],
+    [
+     "Waldenstrom macroglobulinemia"
+    ],
+    [
+     "CVID"
+    ]
+   ],
+   "issues": [
+    "title-leak"
+   ],
+   "note": "High IgM with low switched isotypes points directly to hyper-IgM syndrome; Pneumocystis adds the T-cell link.",
+   "revision": null
+  },
+  "IMM-026": {
+   "id": "IMM-026",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "disease",
+    "lab"
+   ],
+   "facets": [
+    [
+     "dental development"
+    ],
+    [
+     "tuberculosis",
+     "Staphylococcus aureus"
+    ],
+    [
+     "atopic dermatitis",
+     "Wiskott-Aldrich syndrome"
+    ],
+    [
+     "atopy",
+     "parasitic infection"
+    ]
+   ],
+   "issues": [
+    "title-leak",
+    "too-obvious"
+   ],
+   "note": "Retained primary teeth and cold abscesses are the FATED mnemonic and give Job syndrome away instantly.",
+   "revision": null
+  },
+  "IMM-027": {
+   "id": "IMM-027",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "lab",
+    "finding",
+    "lab",
+    "finding"
+   ],
+   "facets": [
+    [
+     "IgA nephropathy"
+    ],
+    [
+     "hyper-IgE syndrome",
+     "atopic dermatitis"
+    ],
+    [
+     "ITP",
+     "heparin"
+    ],
+    [
+     "Bernard-Soulier syndrome"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Eczema, infections and small platelets form the WATER triad and are recognized instantly; two tiles both describe platelets.",
+   "revision": null
+  },
+  "IMM-030": {
+   "id": "IMM-030",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "antitoxin",
+     "chimeric antibodies"
+    ],
+    [
+     "vaccination",
+     "tetanus booster"
+    ],
+    [
+     "impetigo",
+     "pharyngitis"
+    ],
+    [
+     "SLE",
+     "anti-dsDNA"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Serum sickness and the Arthus reaction are the textbook type III examples, and \"immune-complex\" in a tile states the mechanism.",
+   "revision": null
+  },
+  "IMM-035": {
+   "id": "IMM-035",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "risk",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "ABO incompatibility",
+     "sensitization"
+    ],
+    [
+     "transfusion reaction"
+    ],
+    [
+     "TTP",
+     "DIC"
+    ],
+    [
+     "malignant hypertension",
+     "PAN"
+    ]
+   ],
+   "issues": [],
+   "note": "Onset within minutes points straight to hyperacute rejection; the vascular lesions need discrimination from vasculitis or TMA.",
+   "revision": null
+  },
+  "IMM-040": {
+   "id": "IMM-040",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "Crohn disease",
+     "TB reactivation"
+    ],
+    [
+     "rheumatoid arthritis"
+    ],
+    [
+     "fusion protein",
+     "TNF receptor decoy"
+    ],
+    [
+     "pregnancy",
+     "PEGylated"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "too-obvious",
+    "alternate-member-risk"
+   ],
+   "note": "Infliximab and adalimumab are the archetypal anti-TNF drugs; three share \"-mab\", and golimumab fits equally.",
+   "revision": null
+  },
+  "MICRO-014": {
+   "id": "MICRO-014",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "risk",
+    "lab",
+    "disease",
+    "lab"
+   ],
+   "facets": [
+    [
+     "air conditioning",
+     "hot tubs"
+    ],
+    [
+     "SIADH",
+     "small cell carcinoma"
+    ],
+    [
+     "atypical pneumonia"
+    ],
+    [
+     "Legionella"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Growth on BCYE agar identifies Legionella instantly.",
+   "revision": null
+  },
+  "MICRO-016": {
+   "id": "MICRO-016",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "Cogan syndrome",
+     "herpes simplex"
+    ],
+    [
+     "Paget disease of bone",
+     "yaws"
+    ],
+    [
+     "GPA",
+     "relapsing polychondritis",
+     "cocaine use"
+    ],
+    [
+     "congenital rubella",
+     "CMV",
+     "aminoglycosides"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Saber shins and the Hutchinson triad members point to congenital syphilis, but saddle nose and deafness overlap with GPA and congenital rubella; Hutchinson teeth is the expected missing member.",
+   "revision": null
+  },
+  "MICRO-021": {
+   "id": "MICRO-021",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "lab",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "mucormycosis",
+     "fungal pneumonia"
+    ],
+    [
+     "fungal biomarker"
+    ],
+    [
+     "TB",
+     "lung cancer"
+    ],
+    [
+     "TB",
+     "GPA",
+     "septic emboli"
+    ]
+   ],
+   "issues": [],
+   "note": "Halo sign and galactomannan are well-known Aspergillus clues; the cavitating nodule and hemoptysis tiles overlap with TB and GPA.",
+   "revision": null
+  },
+  "MICRO-035": {
+   "id": "MICRO-035",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "organism",
+    "organism",
+    "organism",
+    "organism"
+   ],
+   "facets": [
+    [
+     "neurocysticercosis",
+     "pork"
+    ],
+    [
+     "sushi",
+     "raw fish"
+    ],
+    [
+     "pork",
+     "myositis"
+    ],
+    [
+     "vitamin B12 deficiency",
+     "fish tapeworm"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Players must reason about larval transmission from food, and Taenia saginata or Clonorchis would fit equally; T. solium can also cause cysticercosis by egg ingestion, which may give some players pause.",
+   "revision": null
+  },
+  "MICRO-036": {
+   "id": "MICRO-036",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "risk",
+    "finding",
+    "finding",
+    "disease"
+   ],
+   "facets": [
+    [
+     "sheep farming"
+    ],
+    [
+     "liver abscess"
+    ],
+    [
+     "porcelain gallbladder"
+    ],
+    [
+     "bee sting",
+     "drug allergy"
+    ]
+   ],
+   "issues": [],
+   "note": "Dog-sheep transmission and daughter cysts point to Echinococcus quickly.",
+   "revision": null
+  },
+  "MICRO-045": {
+   "id": "MICRO-045",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "MYC",
+     "starry sky"
+    ],
+    [
+     "transplant immunosuppression"
+    ],
+    [
+     "Southeast Asia",
+     "salted fish"
+    ],
+    [
+     "HIV",
+     "toxoplasmosis"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Endemic Burkitt and nasopharyngeal carcinoma are the classic EBV cancers; Hodgkin lymphoma is an expected member that is missing.",
+   "revision": null
+  },
+  "MICRO-048": {
+   "id": "MICRO-048",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "prematurity",
+     "indomethacin"
+    ],
+    [
+     "congenital syphilis"
+    ],
+    [
+     "CMV",
+     "aminoglycosides"
+    ],
+    [
+     "CMV",
+     "neuroblastoma",
+     "extramedullary hematopoiesis"
+    ]
+   ],
+   "issues": [],
+   "note": "PDA, salt-and-pepper retinopathy and deafness are the familiar rubella findings, though the blueberry-muffin rash and deafness overlap with CMV.",
+   "revision": null
+  },
+  "MICRO-053": {
+   "id": "MICRO-053",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "fat embolism"
+    ],
+    [
+     "SLE"
+    ],
+    [
+     "leukemia",
+     "anemia"
+    ],
+    [
+     "trauma",
+     "vasculitis"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "alternate-member-risk"
+   ],
+   "note": "Osler nodes, Roth spots and splinter hemorrhages are the classic endocarditis set; Janeway lesions are the expected member that is missing.",
+   "revision": null
+  },
+  "MSK-004": {
+   "id": "MSK-004",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "hypercalcemia",
+     "hyponatremia"
+    ],
+    [
+     "tuberculosis",
+     "hepatotoxicity"
+    ],
+    [
+     "Reye syndrome",
+     "antiplatelet"
+    ],
+    [
+     "flushing",
+     "dyslipidemia"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "A classic urate-raising drug list; loop diuretics and cyclosporine are equally expected members.",
+   "revision": null
+  },
+  "MSK-011": {
+   "id": "MSK-011",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "heart failure",
+     "pregnancy hypertension"
+    ],
+    [
+     "acne",
+     "skin pigmentation"
+    ],
+    [
+     "tuberculosis",
+     "B6 deficiency"
+    ],
+    [
+     "pregnancy hypertension",
+     "hemolytic anemia"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Hydralazine and isoniazid are classic drug-induced lupus causes; procainamide is the most expected member and is missing.",
+   "revision": null
+  },
+  "MSK-013": {
+   "id": "MSK-013",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "disease",
+    "finding"
+   ],
+   "facets": [
+    [
+     "dry eye"
+    ],
+    [
+     "anticholinergic drugs",
+     "radiation"
+    ],
+    [
+     "amphotericin B",
+     "kidney stones"
+    ],
+    [
+     "MALT lymphoma"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Dry eyes plus dry mouth is recognized as Sjogren syndrome instantly.",
+   "revision": null
+  },
+  "MSK-017": {
+   "id": "MSK-017",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "lab"
+   ],
+   "facets": [
+    [
+     "dermatomyositis"
+    ],
+    [
+     "primary Raynaud",
+     "SLE"
+    ],
+    [
+     "diffuse scleroderma"
+    ],
+    [
+     "CREST"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Four letters of the CREST mnemonic plus anti-centromere are recognized instantly.",
+   "revision": null
+  },
+  "MSK-018": {
+   "id": "MSK-018",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "lab",
+    "lab"
+   ],
+   "facets": [
+    [
+     "lymphoma",
+     "TB"
+    ],
+    [
+     "Crohn disease",
+     "berylliosis"
+    ],
+    [
+     "hyperparathyroidism",
+     "malignancy"
+    ],
+    [
+     "hypersensitivity pneumonitis"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Bilateral hilar lymphadenopathy with noncaseating granulomas is the instant sarcoidosis pairing.",
+   "revision": null
+  },
+  "MSK-021": {
+   "id": "MSK-021",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "migraine"
+    ],
+    [
+     "TMJ disorder"
+    ],
+    [
+     "amaurosis fugax",
+     "carotid stenosis"
+    ],
+    [
+     "herpes zoster"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Jaw claudication with temporal headache identifies giant cell arteritis instantly.",
+   "revision": null
+  },
+  "MSK-022": {
+   "id": "MSK-022",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "disease",
+    "finding",
+    "disease"
+   ],
+   "facets": [
+    [
+     "congenital syphilis",
+     "relapsing polychondritis",
+     "cocaine use"
+    ],
+    [
+     "allergic rhinitis",
+     "cystic fibrosis"
+    ],
+    [
+     "TB",
+     "septic emboli",
+     "aspergillosis"
+    ],
+    [
+     "microscopic polyangiitis",
+     "EGPA"
+    ]
+   ],
+   "issues": [],
+   "note": "Upper airway, lung and kidney together form the classic GPA triad, though each tile alone is less specific.",
+   "revision": null
+  },
+  "NEPH-004": {
+   "id": "NEPH-004",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "hypertension",
+     "hypercalcemia"
+    ],
+    [
+     "hypertension"
+    ],
+    [
+     "hypertension",
+     "ALLHAT"
+    ],
+    [
+     "diuretic resistance",
+     "loop diuretics"
+    ]
+   ],
+   "issues": [],
+   "note": "Hydrochlorothiazide gives the class away, though indapamide and metolazone require recall that they are thiazide-like.",
+   "revision": null
+  },
+  "NEPH-007": {
+   "id": "NEPH-007",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "lab",
+    "finding",
+    "lab"
+   ],
+   "facets": [
+    [
+     "antithrombin deficiency",
+     "malignancy"
+    ],
+    [
+     "cirrhosis",
+     "malnutrition"
+    ],
+    [
+     "heart failure",
+     "cirrhosis"
+    ],
+    [
+     "hypothyroidism",
+     "familial dyslipidemia"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Hypoalbuminemia, edema and hyperlipidemia are the defining nephrotic features and are recognized instantly.",
+   "revision": null
+  },
+  "NEPH-012": {
+   "id": "NEPH-012",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "lab",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "MPGN",
+     "lupus nephritis"
+    ],
+    [
+     "membranous nephropathy"
+    ],
+    [
+     "lupus nephritis",
+     "MPGN"
+    ],
+    [
+     "rhabdomyolysis",
+     "nephritic syndrome"
+    ]
+   ],
+   "issues": [],
+   "note": "Subepithelial humps are a near-giveaway, though low C3 and granular staining also fit lupus nephritis and MPGN.",
+   "revision": null
+  },
+  "NEPH-018": {
+   "id": "NEPH-018",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "drug",
+    "disease"
+   ],
+   "facets": [
+    [
+     "vaso-occlusive crisis",
+     "hemolytic anemia"
+    ],
+    [
+     "hydronephrosis",
+     "kidney stones"
+    ],
+    [
+     "analgesic nephropathy",
+     "peptic ulcer"
+    ],
+    [
+     "diabetic nephropathy",
+     "neuropathy"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Sickle cell, analgesics and diabetes make up the classic papillary necrosis mnemonic; acute pyelonephritis is an equally expected member.",
+   "revision": null
+  },
+  "NEPH-021": {
+   "id": "NEPH-021",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "lab",
+    "lab",
+    "lab",
+    "lab"
+   ],
+   "facets": [
+    [
+     "GI bleeding",
+     "corticosteroids"
+    ],
+    [
+     "normal urine",
+     "dehydration"
+    ],
+    [
+     "contrast nephropathy",
+     "hepatorenal syndrome"
+    ],
+    [
+     "SIADH"
+    ]
+   ],
+   "issues": [
+    "shared-stem"
+   ],
+   "note": "Three tiles share a numeric above/below threshold format that marks them as a set, and FENa below 1% gives prerenal away.",
+   "revision": null
+  },
+  "NEPH-028": {
+   "id": "NEPH-028",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "drug",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "hypokalemia",
+     "secretory diarrhea"
+    ],
+    [
+     "glaucoma",
+     "altitude sickness"
+    ],
+    [
+     "kidney stones",
+     "Sjogren syndrome"
+    ],
+    [
+     "pancreatitis"
+    ]
+   ],
+   "issues": [],
+   "note": "Diarrhea, acetazolamide and RTA are standard normal anion gap acidosis causes from the HARDASS mnemonic.",
+   "revision": null
+  },
+  "NEPH-031": {
+   "id": "NEPH-031",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "nodular glomerulosclerosis"
+    ],
+    [
+     "IgA nephropathy"
+    ],
+    [
+     "Alport syndrome",
+     "membranous nephropathy"
+    ],
+    [
+     "hypertensive nephrosclerosis"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Kimmelstiel-Wilson nodules identify diabetic nephropathy instantly.",
+   "revision": null
+  },
+  "NEU-002": {
+   "id": "NEU-002",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "hyperthyroidism",
+     "hypocalcemia"
+    ],
+    [
+     "cerebral palsy",
+     "multiple sclerosis"
+    ],
+    [
+     "stroke"
+    ],
+    [
+     "Babinski sign",
+     "infants"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "alternate-member-risk"
+   ],
+   "note": "Hyperreflexia, spasticity and an extensor plantar response are the textbook UMN signs; clonus is an equally expected member.",
+   "revision": null
+  },
+  "NEU-003": {
+   "id": "NEU-003",
+   "recognition": 1,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "ALS",
+     "benign fasciculations"
+    ],
+    [
+     "disuse",
+     "cachexia"
+    ],
+    [
+     "hypothyroidism",
+     "Guillain-Barre syndrome"
+    ],
+    [
+     "denervation"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Fasciculations, atrophy and hyporeflexia are the textbook LMN signs; the only challenge is separating them from a UMN group.",
+   "revision": null
+  },
+  "NEU-006": {
+   "id": "NEU-006",
+   "recognition": 3,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "anatomy",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "Brown-Sequard syndrome",
+     "pyramidal decussation"
+    ],
+    [
+     "dorsal column",
+     "proprioception"
+    ],
+    [
+     "internuclear ophthalmoplegia",
+     "multiple sclerosis"
+    ],
+    [
+     "tongue deviation",
+     "medial medullary syndrome"
+    ]
+   ],
+   "issues": [
+    "title-leak",
+    "alternate-member-risk"
+   ],
+   "note": "Needs rule-of-4 recall across brainstem levels; \"medial\" appears in two tiles, and the abducens or oculomotor nuclei would fit equally.",
+   "revision": null
+  },
+  "NEU-008": {
+   "id": "NEU-008",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "anatomy",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "homunculus",
+     "precentral gyrus"
+    ],
+    [
+     "akinetic mutism"
+    ],
+    [
+     "conjugate gaze deviation",
+     "saccades"
+    ],
+    [
+     "expressive aphasia",
+     "MCA stroke"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Broca area and primary motor cortex make the frontal lobe link quick; prefrontal cortex is an equally expected member.",
+   "revision": null
+  },
+  "NEU-012": {
+   "id": "NEU-012",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "lab",
+    "finding",
+    "lab",
+    "lab"
+   ],
+   "facets": [
+    [
+     "optic neuritis"
+    ],
+    [
+     "periventricular lesions"
+    ],
+    [
+     "SSPE",
+     "neurosyphilis"
+    ],
+    [
+     "viral meningitis"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Oligoclonal bands and Dawson fingers identify MS instantly.",
+   "revision": null
+  },
+  "NEU-018": {
+   "id": "NEU-018",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "Horner syndrome",
+     "myasthenia gravis"
+    ],
+    [
+     "uncal herniation",
+     "PComm aneurysm"
+    ],
+    [
+     "internuclear ophthalmoplegia"
+    ],
+    [
+     "presbyopia",
+     "anticholinergic drugs"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Ptosis, a dilated pupil and \"down and out\" eye movement are the textbook CN III palsy findings.",
+   "revision": null
+  },
+  "NEU-023": {
+   "id": "NEU-023",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "anatomy",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "homonymous hemianopia"
+    ],
+    [
+     "thalamus"
+    ],
+    [
+     "temporal lobe",
+     "pie in the sky"
+    ],
+    [
+     "PCA stroke",
+     "macular sparing"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "These are standard visual-pathway stations behind the chiasm; the parietal (dorsal) optic radiation is an equally expected member.",
+   "revision": null
+  },
+  "NEU-024": {
+   "id": "NEU-024",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "finding"
+   ],
+   "facets": [
+    [
+     "ear hygiene"
+    ],
+    [
+     "Streptococcus pneumoniae",
+     "children"
+    ],
+    [
+     "stapes",
+     "pregnancy"
+    ],
+    [
+     "barotrauma",
+     "otitis media"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "These are standard conductive hearing loss causes; cholesteatoma is an equally expected member.",
+   "revision": null
+  },
+  "NEU-026": {
+   "id": "NEU-026",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "Dix-Hallpike",
+     "Epley maneuver"
+    ],
+    [
+     "viral infection",
+     "HINTS exam"
+    ],
+    [
+     "endolymphatic hydrops",
+     "tinnitus"
+    ],
+    [
+     "hearing loss",
+     "viral infection"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "BPPV, vestibular neuritis and Meniere disease are the textbook peripheral vertigo list.",
+   "revision": null
+  },
+  "NEU-027": {
+   "id": "NEU-027",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "process",
+    "finding",
+    "procedure",
+    "procedure"
+   ],
+   "facets": [
+    [
+     "Meniere disease",
+     "vestibular physiology"
+    ],
+    [
+     "superior oblique",
+     "central vertigo"
+    ],
+    [
+     "vestibular neuritis"
+    ],
+    [
+     "vertigo treatment"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Dix-Hallpike plus Epley names BPPV instantly.",
+   "revision": null
+  },
+  "NEU-029": {
+   "id": "NEU-029",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "lab",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "Alexander disease"
+    ],
+    [
+     "astrocytoma",
+     "glioblastoma",
+     "ependymoma"
+    ],
+    [
+     "hemangioblastoma",
+     "medulloblastoma"
+    ],
+    [
+     "astrocytoma"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Rosenthal fibers with a cystic cerebellar mass is a classic giveaway.",
+   "revision": null
+  },
+  "NEU-033": {
+   "id": "NEU-033",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "disease",
+    "lab",
+    "organism"
+   ],
+   "facets": [
+    [
+     "glioblastoma",
+     "toxoplasmosis"
+    ],
+    [
+     "non-Hodgkin lymphoma"
+    ],
+    [
+     "rituximab",
+     "B cells"
+    ],
+    [
+     "infectious mononucleosis",
+     "Burkitt lymphoma",
+     "nasopharyngeal carcinoma"
+    ]
+   ],
+   "issues": [],
+   "note": "EBV plus DLBCL plus CD20 points to PCNSL with little thought.",
+   "revision": null
+  },
+  "NEU-036": {
+   "id": "NEU-036",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "nucleus ambiguus",
+     "vagus nerve"
+    ],
+    [
+     "spinal trigeminal nucleus"
+    ],
+    [
+     "spinothalamic tract",
+     "Brown-Sequard"
+    ],
+    [
+     "Pancoast tumor",
+     "carotid dissection"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "too-obvious"
+   ],
+   "note": "Crossed pain-temperature loss with ipsilateral/contralateral wording signals Wallenberg at once.",
+   "revision": null
+  },
+  "NEU-038": {
+   "id": "NEU-038",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "middle meningeal artery"
+    ],
+    [],
+    [
+     "subdural hematoma"
+    ],
+    [
+     "head trauma"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Skull-dura location and lucid interval give epidural hematoma away.",
+   "revision": null
+  },
+  "NEU-039": {
+   "id": "NEU-039",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "risk"
+   ],
+   "facets": [
+    [
+     "shaken baby"
+    ],
+    [],
+    [
+     "epidural hematoma"
+    ],
+    [
+     "dementia",
+     "alcohol use disorder"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Bridging veins and dura-arachnoid location are textbook subdural.",
+   "revision": null
+  },
+  "NEU-040": {
+   "id": "NEU-040",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "lab"
+   ],
+   "facets": [
+    [
+     "nimodipine"
+    ],
+    [
+     "meningitis"
+    ],
+    [
+     "head CT"
+    ],
+    [
+     "lumbar puncture"
+    ]
+   ],
+   "issues": [],
+   "note": "Xanthochromia and vasospasm point to SAH quickly; meningismus adds mild ambiguity with meningitis.",
+   "revision": null
+  },
+  "NEU-047": {
+   "id": "NEU-047",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "disease"
+   ],
+   "facets": [
+    [
+     "progressive supranuclear palsy"
+    ],
+    [
+     "Argyll Robertson pupil",
+     "neurosyphilis"
+    ],
+    [
+     "pineal germinoma"
+    ],
+    [
+     "aqueductal stenosis",
+     "pineal tumor"
+    ]
+   ],
+   "issues": [],
+   "note": "Vertical gaze palsy and convergence-retraction nystagmus are well-known Parinaud clues.",
+   "revision": null
+  },
+  "NEU-049": {
+   "id": "NEU-049",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "anatomy",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "reward",
+     "positive symptoms"
+    ],
+    [
+     "negative symptoms"
+    ],
+    [
+     "Parkinson disease",
+     "EPS"
+    ],
+    [
+     "hyperprolactinemia"
+    ]
+   ],
+   "issues": [
+    "series",
+    "too-obvious"
+   ],
+   "note": "The four dopamine pathways are a memorized set; tile format alone sorts them.",
+   "revision": null
+  },
+  "NEU-050": {
+   "id": "NEU-050",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "disease"
+   ],
+   "facets": [
+    [
+     "Down syndrome"
+    ],
+    [
+     "tauopathy",
+     "CTE"
+    ],
+    [
+     "hippocampus"
+    ],
+    [
+     "lobar hemorrhage"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Plaques and tangles name Alzheimer instantly.",
+   "revision": null
+  },
+  "NEU-056": {
+   "id": "NEU-056",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "pseudodementia"
+    ],
+    [
+     "myxedema",
+     "amiodarone"
+    ],
+    [
+     "tabes dorsalis",
+     "Argyll Robertson pupil"
+    ],
+    [
+     "subacute combined degeneration",
+     "pernicious anemia"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Classic reversible-dementia workup list; normal pressure hydrocephalus and thiamine deficiency fit equally well.",
+   "revision": null
+  },
+  "NEU-061": {
+   "id": "NEU-061",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "ethosuximide",
+     "3 Hz spike-wave"
+    ],
+    [
+     "status epilepticus"
+    ],
+    [
+     "juvenile myoclonic epilepsy",
+     "CJD"
+    ],
+    [
+     "Lennox-Gastaut"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Recognizable seizure types; tonic and clonic seizures also qualify, so the set is one choice among several.",
+   "revision": null
+  },
+  "PHARM-004": {
+   "id": "PHARM-004",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "memory",
+     "CNS"
+    ],
+    [
+     "bladder",
+     "bronchoconstriction"
+    ],
+    [
+     "vasoconstriction",
+     "BPH"
+    ],
+    [
+     "allergy",
+     "antihistamines"
+    ]
+   ],
+   "issues": [
+    "series",
+    "too-obvious"
+   ],
+   "note": "The HAVe 1 M&M mnemonic makes the Gq set instant; V1 is an alternate member.",
+   "revision": null
+  },
+  "PHARM-005": {
+   "id": "PHARM-005",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "heart",
+     "dobutamine"
+    ],
+    [
+     "bronchodilation",
+     "albuterol"
+    ],
+    [
+     "fenoldopam",
+     "dopamine"
+    ],
+    [
+     "nephrogenic DI",
+     "desmopressin"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Must separate Gs from Gq/Gi receptors; H2 is an equally common Gs member.",
+   "revision": null
+  },
+  "PSY-007": {
+   "id": "PSY-007",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "obstructive sleep apnea"
+    ],
+    [],
+    [
+     "sleep physiology"
+    ],
+    [
+     "sleep onset"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Cataplexy plus hypnagogic hallucinations gives narcolepsy at once.",
+   "revision": null
+  },
+  "PSY-009": {
+   "id": "PSY-009",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "hypothyroidism"
+    ],
+    [
+     "pregnancy",
+     "Sheehan syndrome",
+     "PCOS"
+    ],
+    [
+     "menopause",
+     "glucocorticoids"
+    ],
+    [
+     "hypothyroidism",
+     "athletes",
+     "beta-blockers"
+    ]
+   ],
+   "issues": [],
+   "note": "Lanugo anchors anorexia; other tiles are broadly associated but the set is quickly recognized.",
+   "revision": null
+  },
+  "PSY-012": {
+   "id": "PSY-012",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "QT prolongation"
+    ],
+    [
+     "anticholinergic effects",
+     "pregnancy"
+    ],
+    [],
+    [
+     "long half-life"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Four familiar SSRIs; any student sorts these instantly.",
+   "revision": null
+  },
+  "PSY-014": {
+   "id": "PSY-014",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "migraine prophylaxis",
+     "neuropathic pain"
+    ],
+    [
+     "insomnia",
+     "pruritus"
+    ],
+    [
+     "enuresis"
+    ],
+    [
+     "OCD"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "too-obvious"
+   ],
+   "note": "Familiar TCA names, two sharing -ipramine, make this immediate.",
+   "revision": null
+  },
+  "PSY-021": {
+   "id": "PSY-021",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "demeclocycline"
+    ],
+    [
+     "Hashimoto thyroiditis",
+     "amiodarone"
+    ],
+    [
+     "Parkinson disease",
+     "essential tremor"
+    ],
+    [
+     "hyperparathyroidism",
+     "malignancy"
+    ]
+   ],
+   "issues": [],
+   "note": "Nephrogenic DI plus hypothyroidism cues lithium quickly.",
+   "revision": null
+  },
+  "PSY-023": {
+   "id": "PSY-023",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "lab",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "rhabdomyolysis",
+     "myocardial infarction"
+    ],
+    [
+     "Parkinson disease"
+    ],
+    [
+     "delirium"
+    ],
+    [
+     "serotonin syndrome",
+     "dysautonomia"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Lead-pipe rigidity cues NMS over serotonin syndrome; hyperthermia, a cardinal feature, is the expected missing member.",
+   "revision": null
+  },
+  "REPRO-001": {
+   "id": "REPRO-001",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "anatomy",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "epididymitis",
+     "sperm maturation"
+    ],
+    [
+     "vaginal cyst"
+    ],
+    [
+     "seminal fluid",
+     "fructose"
+    ],
+    [
+     "prostate"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Familiar Wolffian derivatives (SEED mnemonic); vas deferens is the expected alternate.",
+   "revision": null
+  },
+  "REPRO-002": {
+   "id": "REPRO-002",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "cell_tissue",
+    "cell_tissue",
+    "cell_tissue",
+    "cell_tissue"
+   ],
+   "facets": [
+    [
+     "melanoma",
+     "vitiligo"
+    ],
+    [
+     "pheochromocytoma"
+    ],
+    [
+     "Hirschsprung disease"
+    ],
+    [
+     "dentin"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Recognized neural crest list; 'Peripheral neurons' is broad since somatic motor neurons are not neural crest-derived.",
+   "revision": null
+  },
+  "REPRO-013": {
+   "id": "REPRO-013",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "risk",
+    "risk",
+    "disease",
+    "risk"
+   ],
+   "facets": [
+    [
+     "vasoconstriction",
+     "MI"
+    ],
+    [
+     "placenta previa",
+     "many diseases"
+    ],
+    [
+     "HELLP",
+     "eclampsia"
+    ],
+    [
+     "splenic rupture"
+    ]
+   ],
+   "issues": [],
+   "note": "Cocaine plus trauma plus preeclampsia points to abruption quickly.",
+   "revision": null
+  },
+  "REPRO-015": {
+   "id": "REPRO-015",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "risk",
+    "risk",
+    "disease"
+   ],
+   "facets": [
+    [
+     "insulin resistance",
+     "hirsutism"
+    ],
+    [
+     "many diseases"
+    ],
+    [
+     "breast cancer"
+    ],
+    [
+     "Call-Exner bodies",
+     "precocious puberty"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires recognizing the shared unopposed-estrogen mechanism across varied tiles.",
+   "revision": null
+  },
+  "REPRO-023": {
+   "id": "REPRO-023",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "triptans"
+    ],
+    [
+     "anticoagulation"
+    ],
+    [
+     "atrial fibrillation"
+    ],
+    [
+     "statins"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Must separate Category 4 from lesser categories; smoking age 35+ and breast cancer also fit.",
+   "revision": null
+  },
+  "REPRO-024": {
+   "id": "REPRO-024",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "epididymitis"
+    ],
+    [
+     "bell-clapper deformity"
+    ],
+    [
+     "epididymitis"
+    ],
+    [
+     "ultrasound"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Absent cremasteric reflex with high-riding testis is classic torsion.",
+   "revision": null
+  },
+  "PULM-001": {
+   "id": "PULM-001",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "Hodgkin lymphoma"
+    ],
+    [
+     "thyroid dysfunction",
+     "arrhythmia"
+    ],
+    [
+     "UTI",
+     "hemolysis in G6PD"
+    ],
+    [
+     "CML",
+     "conditioning regimen"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Classic pulmonary-toxicity drug list; methotrexate is an equally common member.",
+   "revision": null
+  },
+  "PULM-008": {
+   "id": "PULM-008",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "change",
+    "change",
+    "change",
+    "change"
+   ],
+   "facets": [
+    [
+     "metabolic acidosis"
+    ],
+    [
+     "fever"
+    ],
+    [
+     "COPD"
+    ],
+    [
+     "glycolysis",
+     "high altitude"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "CADET mnemonic set; discriminating right vs left needs only direction recall.",
+   "revision": null
+  },
+  "PULM-009": {
+   "id": "PULM-009",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "change",
+    "change",
+    "change",
+    "change"
+   ],
+   "facets": [
+    [
+     "vomiting"
+    ],
+    [
+     "drowning"
+    ],
+    [
+     "hyperventilation"
+    ],
+    [
+     "pregnancy"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Mirrors the right-shift set; carbon monoxide and decreased 2,3-BPG fit equally well.",
+   "revision": null
+  },
+  "PULM-013": {
+   "id": "PULM-013",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "alpha-1 antitrypsin"
+    ],
+    [
+     "smoking"
+    ],
+    [
+     "eosinophils"
+    ],
+    [
+     "CFTR",
+     "pancreatic insufficiency"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "alternate-member-risk"
+   ],
+   "note": "The standard obstructive list; bronchiectasis is an expected alternate.",
+   "revision": null
+  },
+  "PULM-016": {
+   "id": "PULM-016",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "TB",
+     "lung abscess"
+    ],
+    [
+     "skin SCC"
+    ],
+    [
+     "small cell carcinoma"
+    ],
+    [
+     "malignancy",
+     "hyperparathyroidism"
+    ]
+   ],
+   "issues": [],
+   "note": "Intercellular bridges and PTHrP point to squamous carcinoma; central mass requires separating from small cell.",
+   "revision": null
+  },
+  "PULM-017": {
+   "id": "PULM-017",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "disease",
+    "disease",
+    "finding"
+   ],
+   "facets": [
+    [],
+    [
+     "pleural effusion"
+    ],
+    [
+     "smoking"
+    ],
+    [
+     "IPF",
+     "pneumoconiosis"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Pleural plaques plus mesothelioma give asbestos immediately.",
+   "revision": null
+  },
+  "bank-easy-02": {
+   "id": "bank-easy-02",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "beta-blocker",
+     "antiarrhythmic"
+    ],
+    [
+     "CYP3A4 inhibition"
+    ],
+    [
+     "tendon rupture"
+    ],
+    [
+     "chemotherapy nausea"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Familiar QT drugs; haloperidol, methadone and class IA agents fit equally.",
+   "revision": null
+  },
+  "bank-easy-13": {
+   "id": "bank-easy-13",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "drug",
+    "lab",
+    "lab"
+   ],
+   "facets": [
+    [
+     "cholecystitis"
+    ],
+    [
+     "TPMT",
+     "transplant"
+    ],
+    [
+     "xanthomas"
+    ],
+    [
+     "hyperparathyroidism"
+    ]
+   ],
+   "issues": [],
+   "note": "Gallstones plus hypertriglyceridemia point to pancreatitis quickly.",
+   "revision": null
+  },
+  "bank-easy-15": {
+   "id": "bank-easy-15",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "boot-shaped heart"
+    ],
+    [
+     "egg on a string",
+     "diabetic mother"
+    ],
+    [],
+    [
+     "ductal dependence"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "alternate-member-risk"
+   ],
+   "note": "Classic cyanotic CHD list; truncus arteriosus and tricuspid atresia fit equally. Duplicate of bank-migrated-sys-mixed-0003-L1.",
+   "revision": null
+  },
+  "bank-medium-03": {
+   "id": "bank-medium-03",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "clonidine"
+    ],
+    [
+     "heart",
+     "vagal"
+    ],
+    [
+     "morphine"
+    ],
+    [
+     "octreotide"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "alternate-member-risk"
+   ],
+   "note": "Separating Gi from Gq/Gs needs recall; every tile ends in 'receptor' unlike other receptor sets, and D2 is an expected alternate.",
+   "revision": null
+  },
+  "bank-medium-04": {
+   "id": "bank-medium-04",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "anatomy",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "carotid dissection"
+    ],
+    [
+     "oculomotor palsy"
+    ],
+    [
+     "maxillary"
+    ],
+    [
+     "abducens palsy"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Cavernous sinus contents are a memorized list; CN tiles signal it.",
+   "revision": null
+  },
+  "bank-medium-13": {
+   "id": "bank-medium-13",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "strongyloides"
+    ],
+    [
+     "eosinophils"
+    ],
+    [
+     "DRESS"
+    ],
+    [
+     "ANCA"
+    ]
+   ],
+   "issues": [],
+   "note": "EGPA plus helminths points to eosinophilia quickly.",
+   "revision": null
+  },
+  "bank-hard-07": {
+   "id": "bank-hard-07",
+   "recognition": 3,
+   "reasoning": "recall",
+   "tileTypes": [
+    "other",
+    "other",
+    "other",
+    "other"
+   ],
+   "facets": [
+    [
+     "scleroderma"
+    ],
+    [
+     "psoriasis"
+    ],
+    [
+     "multiple sclerosis"
+    ],
+    [
+     "dawn phenomenon"
+    ]
+   ],
+   "issues": [],
+   "note": "Wordplay link across unrelated topics needs a moment to notice the shared word.",
+   "revision": null
+  },
+  "bank-hard-11": {
+   "id": "bank-hard-11",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "cell_tissue",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "glia"
+    ],
+    [
+     "Burkitt lymphoma"
+    ],
+    [
+     "focal nodular hyperplasia",
+     "radial scar"
+    ],
+    [
+     "sarcoidosis"
+    ]
+   ],
+   "issues": [
+    "shared-stem"
+   ],
+   "note": "Astro/aster stems plus starry and stellate reveal the star theme fast.",
+   "revision": null
+  },
+  "bank-expert-03": {
+   "id": "bank-expert-03",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "adrenal insufficiency"
+    ],
+    [
+     "hyperthyroidism"
+    ],
+    [
+     "testicular atrophy"
+    ],
+    [
+     "VTE"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires thinking through negative feedback suppression across axes.",
+   "revision": null
+  },
+  "bank-expert-05": {
+   "id": "bank-expert-05",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "dwarfism",
+     "IGF-1"
+    ],
+    [
+     "Albright osteodystrophy"
+    ],
+    [
+     "XY female"
+    ],
+    [
+     "lithium"
+    ]
+   ],
+   "issues": [],
+   "note": "Must reason that each is hormone resistance with compensatory high levels.",
+   "revision": null
+  },
+  "bank-migrated-sys-mixed-0003-L1": {
+   "id": "bank-migrated-sys-mixed-0003-L1",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "boot-shaped heart"
+    ],
+    [
+     "egg on a string",
+     "diabetic mother"
+    ],
+    [],
+    [
+     "ductal dependence"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "alternate-member-risk"
+   ],
+   "note": "Duplicate of bank-easy-15; classic cyanotic CHD list.",
+   "revision": null
+  },
+  "bank-migrated-sys-pulm-0002-L2": {
+   "id": "bank-migrated-sys-pulm-0002-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "empyema"
+    ],
+    [
+     "pleural effusion"
+    ],
+    [
+     "lipase"
+    ],
+    [
+     "granulomas"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Familiar exudate causes; pulmonary embolism and rheumatoid arthritis fit equally.",
+   "revision": null
+  },
+  "bank-migrated-sys-renal-0001-L1": {
+   "id": "bank-migrated-sys-renal-0001-L1",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "fomepizole",
+     "optic nerve"
+    ],
+    [
+     "insulin"
+    ],
+    [
+     "dialysis"
+    ],
+    [
+     "nitroprusside",
+     "smoke inhalation"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "MUDPILES mnemonic makes this instant.",
+   "revision": null
+  },
+  "bank-migrated-sys-renal-0002-L4": {
+   "id": "bank-migrated-sys-renal-0002-L4",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "anti-GBM disease"
+    ],
+    [
+     "membranous nephropathy"
+    ],
+    [
+     "IgA nephropathy"
+    ],
+    [
+     "MPGN"
+    ]
+   ],
+   "issues": [],
+   "note": "Recognizable glomerular biopsy findings; must match each to disease.",
+   "revision": null
+  },
+  "bank-migrated-sys-renal-0003-L2": {
+   "id": "bank-migrated-sys-renal-0003-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "lab",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "gout"
+    ],
+    [
+     "refractory hypokalemia"
+    ],
+    [
+     "asthma"
+    ],
+    [
+     "hyperkalemia treatment"
+    ]
+   ],
+   "issues": [],
+   "note": "Insulin and albuterol cue potassium shifting quickly.",
+   "revision": null
+  },
+  "bank-migrated-sys-renal-0003-L4": {
+   "id": "bank-migrated-sys-renal-0003-L4",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "procedure"
+   ],
+   "facets": [
+    [
+     "nephrogenic DI"
+    ],
+    [
+     "SIADH"
+    ],
+    [
+     "central DI"
+    ],
+    [
+     "SIADH"
+    ]
+   ],
+   "issues": [
+    "shared-stem"
+   ],
+   "note": "Two tiles share the 'urine despite serum osmolality' format, signaling an ADH-disorder set.",
+   "revision": null
+  },
+  "bank-migrated-sys-neuro-0001-L2": {
+   "id": "bank-migrated-sys-neuro-0001-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "parasagittal meningioma"
+    ],
+    [
+     "NPH",
+     "cauda equina"
+    ],
+    [
+     "frontal lobe"
+    ],
+    [
+     "frontal lobe"
+    ]
+   ],
+   "issues": [],
+   "note": "Leg weakness with incontinence cues ACA stroke quickly.",
+   "revision": null
+  },
+  "bank-migrated-sys-neuro-0001-L4": {
+   "id": "bank-migrated-sys-neuro-0001-L4",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "finding",
+    "disease"
+   ],
+   "facets": [
+    [
+     "basilar artery"
+    ],
+    [
+     "PICA"
+    ],
+    [
+     "multiple sclerosis"
+    ],
+    [
+     "AICA"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "alternate-member-risk"
+   ],
+   "note": "Three tiles end in 'syndrome'; Weber and medial medullary syndromes fit equally.",
+   "revision": null
+  },
+  "bank-migrated-sys-neuro-0002-L2": {
+   "id": "bank-migrated-sys-neuro-0002-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "finding",
+    "disease"
+   ],
+   "facets": [
+    [
+     "CAG repeat"
+    ],
+    [
+     "Jones criteria"
+    ],
+    [
+     "Parkinson disease"
+    ],
+    [
+     "antiphospholipid"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Huntington plus rheumatic fever cue chorea quickly; Wilson disease fits equally.",
+   "revision": null
+  },
+  "bank-migrated-sys-pharm-0002-L2": {
+   "id": "bank-migrated-sys-pharm-0002-L2",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "5-alpha reductase"
+    ],
+    [
+     "MEN2"
+    ],
+    [
+     "autonomic failure"
+    ],
+    [
+     "vasodilators"
+    ]
+   ],
+   "issues": [],
+   "note": "BPH and pheochromocytoma point to alpha blockers with brief thought.",
+   "revision": null
+  },
+  "bank-ext-007": {
+   "id": "bank-ext-007",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "IBS"
+    ],
+    [
+     "asthma"
+    ],
+    [
+     "shock"
+    ],
+    [
+     "ACE inhibitors",
+     "C1 esterase deficiency"
+    ]
+   ],
+   "issues": [],
+   "note": "Bronchospasm plus angioedema plus hypotension gives anaphylaxis quickly.",
+   "revision": null
+  },
+  "bank-ext-008": {
+   "id": "bank-ext-008",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [],
+    [
+     "thumb"
+    ],
+    [],
+    [
+     "spondylosis"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Heberden nodes and osteophytes name OA at once.",
+   "revision": null
+  },
+  "bank-ext-021": {
+   "id": "bank-ext-021",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "risk",
+    "disease",
+    "finding",
+    "disease"
+   ],
+   "facets": [
+    [
+     "many diseases"
+    ],
+    [
+     "many diseases"
+    ],
+    [
+     "narcolepsy"
+    ],
+    [
+     "stroke"
+    ]
+   ],
+   "issues": [],
+   "note": "Obesity plus daytime somnolence cue OSA quickly.",
+   "revision": null
+  },
+  "bank-ext-025": {
+   "id": "bank-ext-025",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "menopause"
+    ],
+    [
+     "metabolic syndrome"
+    ],
+    [
+     "pregnancy"
+    ],
+    [
+     "polymyositis"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Purple striae plus central obesity is instant Cushing.",
+   "revision": null
+  },
+  "bank-ext-027": {
+   "id": "bank-ext-027",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "GI bleed"
+    ],
+    [
+     "target cells"
+    ],
+    [
+     "hepcidin"
+    ],
+    [
+     "basophilic stippling"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "alternate-member-risk"
+   ],
+   "note": "The TICS list is instant; sideroblastic anemia is the expected alternate.",
+   "revision": null
+  },
+  "bank-ext-037": {
+   "id": "bank-ext-037",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "renal cysts"
+    ],
+    [
+     "joint hypermobility"
+    ],
+    [
+     "renal artery stenosis"
+    ],
+    [
+     "rib notching"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "ADPKD and coarctation cue berry aneurysms; Marfan syndrome is a commonly expected alternate.",
+   "revision": null
+  },
+  "bank-ext-084": {
+   "id": "bank-ext-084",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "c-ANCA"
+    ],
+    [
+     "p-ANCA"
+    ],
+    [
+     "asthma",
+     "eosinophilia"
+    ],
+    [
+     "RPGN"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "too-obvious"
+   ],
+   "note": "Two polyangiitis tiles plus Churg-Strauss make ANCA vasculitis instant.",
+   "revision": null
+  },
+  "bank-ext-090": {
+   "id": "bank-ext-090",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "procedure",
+    "procedure",
+    "procedure",
+    "procedure"
+   ],
+   "facets": [
+    [
+     "STI prevention"
+    ],
+    [
+     "toxic shock syndrome"
+    ],
+    [
+     "UTI"
+    ],
+    []
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Condom, diaphragm and cap are obvious barrier methods.",
+   "revision": null
+  },
+  "bank-ext-096": {
+   "id": "bank-ext-096",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "lab",
+    "lab",
+    "finding"
+   ],
+   "facets": [
+    [
+     "TTP",
+     "HUS"
+    ],
+    [
+     "hepatitis"
+    ],
+    [
+     "ITP",
+     "DIC"
+    ],
+    [
+     "cholecystitis"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Tiles spell out the HELLP acronym directly.",
+   "revision": null
+  },
+  "bank-ext-101": {
+   "id": "bank-ext-101",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "nephrogenic DI"
+    ],
+    [
+     "hepatotoxicity",
+     "neural tube defects"
+    ],
+    [
+     "SIADH",
+     "HLA-B*1502"
+    ],
+    [
+     "agranulocytosis"
+    ]
+   ],
+   "issues": [],
+   "note": "Familiar monitored psychiatric drugs; clozapine and lithium cue the link.",
+   "revision": null
+  },
+  "bank-ext-112": {
+   "id": "bank-ext-112",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "pearly papule"
+    ],
+    [
+     "actinic keratosis"
+    ],
+    [
+     "ABCDE"
+    ],
+    [
+     "polyomavirus"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Major skin cancers are an instantly recognized set.",
+   "revision": null
+  }
+ }
+}

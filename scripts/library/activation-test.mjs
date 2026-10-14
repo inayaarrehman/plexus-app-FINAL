@@ -116,7 +116,7 @@ section('[3] Systems: fixed starter boards, reserved connections, expansion wait
     }
   // Caught up.
   const subj = NL.LIBRARY_SUBJECTS[0]
-  const all = Object.fromEntries(NL.systemsBoardsFor(subj, START).map((b) => [b.id, { finishedAt: 'x' }]))
+  const all = Object.fromEntries(NL.systemsBoardsFor(subj, START).map((b) => [b.id, { finishedAt: 'x', won: true }]))
   ok(NL.subjectProgress(subj, START, all).next === null, 'a player who finished every available board has no next board')
   ok(NL.CAUGHT_UP_COPY === 'You’re caught up! Check back for more puzzles soon.', 'caught-up copy matches the requested text')
 }
@@ -127,7 +127,9 @@ section('[4] Held, duplicate and unreviewed content cannot be served')
     const activeLike = r.verification.approved && !r.problems.length && !r.heldFor.length && !r.duplicateOf && ['daily', 'systemsStarter'].includes(r.pool)
     if (!activeLike) ok(!served.has(r.id), `${r.id} (${r.pool}, ${r.verification.state}) is not served`)
   }
-  ok(Object.values(NEW_LIBRARY.connections).every((c) => !c.review.humanVerified && /^AI_REVIEWED_/.test(c.review.status)), 'served rows keep their AI review label; none marked human verified')
+  // Rows revised in the October 2026 difficulty work carry the independent
+  // AI check label instead of the OpenEvidence one; never human verified.
+  ok(Object.values(NEW_LIBRARY.connections).every((c) => !c.review.humanVerified && (/^AI_REVIEWED_/.test(c.review.status) || (c.review.status === 'AI_REVISION_CHECKED' && c.review.basis === 'ai-revision-check' && c.revision))), 'served rows keep their AI review label (or the AI revision-check label on revised rows); none marked human verified')
   for (const id of Object.keys(ledger.timedExclusions)) ok(!timedIds.has(id), `excluded timed entry ${id} is not in the timed library`)
 }
 

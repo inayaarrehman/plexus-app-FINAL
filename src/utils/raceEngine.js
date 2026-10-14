@@ -17,6 +17,7 @@
 
 import { composeNextRound, roundRelationships } from './challengeEngine.js'
 import { seededRng } from './puzzleAssembler.js'
+import { RACE_TIER_CURVE } from './timedPacing.js'
 
 // Only single-screen round types are used in Race so both clients render the
 // identical set simply and deterministically.
@@ -55,6 +56,9 @@ export function isValidJoinCode(code) {
 // Uses composeNextRound so the set still varies format/system/concept across
 // rounds while staying fully reproducible, and never repeats a relationship
 // (by canonical id) within one race. `bank` must be the timed library.
+// Every race follows the same difficulty curve (RACE_TIER_CURVE): both
+// players get the identical rounds, options and order, and every race has
+// the same shape, so a harder generator gives neither player an edge.
 export function buildRaceChallenge(bank, { code, length = RACE_LENGTH, canonicalOf } = {}) {
   const seed = `race:${normalizeJoinCode(code)}`
   const rng = seededRng(seed)
@@ -64,7 +68,8 @@ export function buildRaceChallenge(bank, { code, length = RACE_LENGTH, canonical
   let guard = 0
   while (rounds.length < length && guard < length * 8) {
     guard++
-    const round = composeNextRound(bank, { rng, roundTypes: RACE_ROUND_TYPES, recent, used, canonicalOf })
+    const tier = RACE_TIER_CURVE[rounds.length % RACE_TIER_CURVE.length]
+    const round = composeNextRound(bank, { rng, roundTypes: RACE_ROUND_TYPES, recent, used, canonicalOf, tier })
     if (!round) break
     rounds.push(round)
     roundRelationships(round, bank, canonicalOf).forEach((id) => used.add(id))

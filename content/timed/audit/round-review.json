@@ -1,0 +1,3368 @@
+{
+ "about": "AI fairness review (Claude, 2026-10-13) of samples of generated 3 Minutes rounds. Round 1 sampled every format; later rounds re-sampled the formats changed after a failure. Fixes made after each round are in src/utils/timedPacing.js and challengeModesPlus.js.",
+ "rounds": {
+  "tr": "first pass",
+  "tr2": "after Double Agent, Match the Link and Mini fixes",
+  "tr3": "after word-overlap and wordplay rules",
+  "tr4": "after open-ended pairing rule"
+ },
+ "summary": {
+  "tr:rapidAssociation": {
+   "pass": 26,
+   "fail": 0,
+   "shortcut": 1
+  },
+  "tr:impostor": {
+   "pass": 26,
+   "fail": 0,
+   "shortcut": 1
+  },
+  "tr:completeConnection": {
+   "pass": 26,
+   "fail": 0,
+   "shortcut": 0
+  },
+  "tr:commonLink": {
+   "pass": 26,
+   "fail": 0,
+   "shortcut": 7
+  },
+  "tr:miniConnections": {
+   "pass": 21,
+   "fail": 5,
+   "shortcut": 9
+  },
+  "tr:linkTwo": {
+   "pass": 26,
+   "fail": 0,
+   "shortcut": 0
+  },
+  "tr:sameOrDifferent": {
+   "pass": 26,
+   "fail": 0,
+   "shortcut": 0
+  },
+  "tr:matchTheLink": {
+   "pass": 21,
+   "fail": 5,
+   "shortcut": 0
+  },
+  "tr:doubleAgent": {
+   "pass": 12,
+   "fail": 14,
+   "shortcut": 0
+  },
+  "tr:split": {
+   "pass": 10,
+   "fail": 0,
+   "shortcut": 0
+  },
+  "tr:completeTheChain": {
+   "pass": 10,
+   "fail": 0,
+   "shortcut": 3
+  },
+  "tr2:miniConnections": {
+   "pass": 24,
+   "fail": 2,
+   "shortcut": 4
+  },
+  "tr2:matchTheLink": {
+   "pass": 22,
+   "fail": 4,
+   "shortcut": 0
+  },
+  "tr2:doubleAgent": {
+   "pass": 26,
+   "fail": 0,
+   "shortcut": 0
+  },
+  "tr2:commonLink": {
+   "pass": 26,
+   "fail": 0,
+   "shortcut": 1
+  },
+  "tr3:miniConnections": {
+   "pass": 24,
+   "fail": 2,
+   "shortcut": 9
+  },
+  "tr3:matchTheLink": {
+   "pass": 25,
+   "fail": 1,
+   "shortcut": 4
+  },
+  "tr3:commonLink": {
+   "pass": 26,
+   "fail": 0,
+   "shortcut": 2
+  },
+  "tr4:miniConnections": {
+   "pass": 25,
+   "fail": 1,
+   "shortcut": 0
+  }
+ },
+ "items": [
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "Pass on content; shortcut: Intended options all phrased 'Drug + verb (causing/avoiding/treating)'; all wrong options are bare toxicity noun phrases.",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "rapidAssociation",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "Pass on content; shortcut: 'Neurogenic shock' visibly names a different shock type than the group title.",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "impostor",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeConnection",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "fail",
+   "problem": "Pulmonary embolism also lowers DLCO, and pulmonary fibrosis/emphysema also raise the A-a gradient; the groups overlap",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "fail",
+   "problem": "Sarcoidosis is classically upper-lobe predominant, and silicosis/CWP/PLCH are restrictive diseases; tiles fit both groups",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "fail",
+   "problem": "A COPD exacerbation also raises the A-a gradient (V/Q mismatch), so it fits both groups",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "fail",
+   "problem": "Hyperventilation (respiratory alkalosis) lowers ionized calcium, a textbook cause of symptomatic hypocalcemia, so it fits both groups",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "fail",
+   "problem": "Pulmonary embolism also lowers DLCO, and pulmonary fibrosis/emphysema also raise the A-a gradient; the groups overlap",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "linkTwo",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "sameOrDifferent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "fail",
+   "problem": "'Pulmonary fibrosis' and 'Idiopathic pulmonary fibrosis' both fit 'Causes of a low DLCO' and 'Restrictive lung diseases'; the two are interchangeable, so neither assignment can be told apart",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "fail",
+   "problem": "Renal failure is also a textbook cause of hypocalcemia (CKD), so it matches two labels",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "fail",
+   "problem": "Carbamazepine also belongs to 'Drugs requiring therapeutic drug monitoring', so it matches two labels",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "fail",
+   "problem": "Cyclosporine also fits 'Drugs requiring therapeutic drug monitoring' (trough levels standard)",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "fail",
+   "problem": "Potassium-sparing diuretics also a classic cause of hyperkalemia; diabetic nephropathy also causes hyperkalemia (type 4 RTA)",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "Sarcoidosis also fits: granulomatous hypercalcemia and sarcoid pleural effusion is exudative",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "Pauci-immune crescentic GN is ANCA-associated (renal-limited) with crescents by definition; EGPA also ANCA+ and can cause crescentic GN",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "SLE (lupus nephritis, low C3/C4) and cryoglobulinemia (MPGN, low C4) are also nephritic and hypocomplementemic",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "Tuberculosis also fits: granulomatous hypercalcemia and classic exudative effusion",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "Hypertrophic cardiomyopathy also fits: systolic murmur and diastolic dysfunction raises LA pressure/PCWP",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "Group A is a measurement but options are diseases (ill-posed); emphysema/COPD equally fit (low DLCO, FEV1/DLCO fall with severity)",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "Bartter syndrome and vomiting both cause metabolic alkalosis and hypokalemia",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "SLE and membranoproliferative GN are also nephritic and hypocomplementemic",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "Pneumonia also raises A-a gradient and causes respiratory alkalosis (hyperventilation)",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "Group A ill-posed (measurement vs diseases); emphysema/COPD equally fit low DLCO and worsening measurements",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "Alcohol use / chronic alcohol use cause both peripheral neuropathy and macrocytosis; near-duplicate options",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "Idiopathic pulmonary fibrosis is also restrictive and lower-lobe predominant",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "Group A ill-posed (measurement vs diseases); COPD equally fits low DLCO/worsening measurement",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "fail",
+   "problem": "Chronic alcohol use (and hypothyroidism) also cause both peripheral neuropathy and macrocytosis",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "split",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "split",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "split",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "split",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "split",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "split",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "split",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "split",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "split",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "split",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeTheChain",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeTheChain",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "completeTheChain",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeTheChain",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "completeTheChain",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeTheChain",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeTheChain",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeTheChain",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr",
+   "type": "completeTheChain",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr",
+   "type": "completeTheChain",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "fail",
+   "problem": "'Hypotension' is a textbook alpha-blocker effect and near-duplicates 'Orthostatic hypotension'; reflex tachycardia also occurs in anaphylaxis, so swap of Hypotension/Orthostatic hypotension is defensible",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "fail",
+   "problem": "'Hypercalcemia of malignancy' reads as a cause of hypercalcemia alongside 'Malignancy' (near-duplicate tiles; tile fits both groups)",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "shortcut: star words (Aster/Stell/Star) pickable from wording",
+   "shortcut": true
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "shortcut: star words pickable from wording; AV block tiles share format",
+   "shortcut": true
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "shortcut: star words pickable from wording",
+   "shortcut": true
+  },
+  {
+   "round": "tr2",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "shortcut: lowercase 'Portal ___' tiles give the group away by format",
+   "shortcut": true
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "fail",
+   "problem": "Obesity hypoventilation syndrome is also a textbook (extrapulmonary) restrictive lung disease (First Aid lists morbid obesity); only elimination resolves it",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "fail",
+   "problem": "Mumps is also a textbook cause of acute pancreatitis (GET SMASHED); only elimination via azathioprine resolves it",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "fail",
+   "problem": "'Increased temperature' also fits the anticholinergic toxidrome (hyperthermia, 'hot as a hare'); concept matches two labels, resolved only by elimination via 'Flushed skin'.",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "fail",
+   "problem": "Label 'A measurement that falls as the disease gets worse' is unspecified and also fits Bronchospasm (FEV1/peak flow falls); Systolic heart failure is also a textbook torsades risk factor. Answer unique only by elimination.",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "groupA and groupB are the same category (duplicate wording); answer is unique but round is degenerate",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "doubleAgent",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr2",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "fail",
+   "problem": "COPD exacerbation also causes a high A-a gradient (V/Q mismatch), so it fits both groups.",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "fail",
+   "problem": "Systolic heart failure is a standard association of obstructive sleep apnea, so it fits both groups.",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "fail",
+   "problem": "Lead poisoning is a textbook cause of peripheral neuropathy (wrist drop), and chronic alcohol use causes sideroblastic (microcytic) anemia, so swapping those two gives a second complete matching.",
+   "shortcut": false,
+   "uniqueMatching": false
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "matchTheLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false,
+   "uniqueMatching": true
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": true
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr3",
+   "type": "commonLink",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "fail",
+   "problem": "Toxoplasma gondii and all TORCH viruses (rubella, HSV, CMV) are also obligate intracellular organisms, so the obligate intracellular group has more than four valid members",
+   "shortcut": false
+  },
+  {
+   "round": "tr4",
+   "type": "miniConnections",
+   "verdict": "pass",
+   "problem": "",
+   "shortcut": false
+  }
+ ]
+}

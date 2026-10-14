@@ -1,0 +1,1141 @@
+{
+ "about": "Fairness review of the boards that were live before the rebuild (pre-difficulty content), using the same brief as the new boards. For comparison only.",
+ "reviewer": "Claude (AI board review), 2026-10-13",
+ "boards": [
+  {
+   "key": "ENDO-037+MICRO-067+NEU-031+PLX-BCH-041",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-052+GI-009+IMM-026+PLX-HEM-016",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-007+MSK-028+NEPH-028+NEU-003",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-021+IMM-016+MICRO-025+PLX-BCH-007",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-004+MSK-022+NEU-049+PLEXUS-GEN-009",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-012+MICRO-038+PLX-BCH-051+PLX-HEM-028",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-042+GI-023+IMM-014+NEU-039",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MSK-020+NEPH-024+PLX-BCH-069+PSY-004",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-024+MICRO-027+NEU-012+PULM-021",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-008+GI-047+PLX-BCH-015+PLX-HEM-013",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "IMM-001+MICRO-058+PLEXUS-GEN-014+REPRO-010",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-037+GI-003+NEU-026+PLX-BCH-031",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-020+MSK-026+NEPH-030+PHARM-014",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "CARD-029+DERM-014+GI-014+PLX-BCH-074",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-009+MICRO-041+NEU-047+PLX-HEM-017",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-006+NEPH-010+PLEXUS-GEN-011+PLX-BCH-066",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-028+DERM-021+MICRO-062+NEU-059",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-005+GI-020+IMM-031+PLX-BCH-045",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-044+MICRO-001+NEU-006+PLX-HEM-060",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-048+MSK-003+PLEXUS-GEN-029+PLX-BCH-079",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-051+ENDO-026+IMM-023+NEU-035",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "DERM-006+GI-066+MICRO-032+PLX-HEM-058",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-006+MSK-005+NEPH-003+PLX-BCH-068",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-031+GI-062+MICRO-009+NEU-027",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PLX-BCH-011+PLX-HEM-035+PULM-001+REPRO-023",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-063+IMM-027+MICRO-068+PSY-022",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-011+MSK-034+NEU-016+PLX-BCH-013",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-038+GI-044+MICRO-031+PLX-HEM-030",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-009+DERM-026+MICRO-069+PLX-BCH-029",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "ENDO-017+GI-057+NEU-022+PLX-HEM-064",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-020+DERM-018+MICRO-026+PLX-BCH-059",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "NEPH-009+PLEXUS-GEN-019+PLX-HEM-004+PSY-009",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "IMM-025+MICRO-055+NEU-033+PLX-BCH-014",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-001+MSK-004+PLX-HEM-037+REPRO-025",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-035+DERM-027+NEU-054+PLX-BCH-056",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-022+GI-035+PLX-BCH-024+PLX-HEM-043",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MICRO-002+MSK-024+NEU-002+PLEXUS-GEN-004",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-048+ENDO-028+GI-017+PLX-BCH-032",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "GI-049+IMM-035+NEU-001+PLX-BCH-039",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-040+DERM-001+ENDO-042+MICRO-048",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "IMM-003+NEU-043+PLX-BCH-003+PLX-HEM-053",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-036+ENDO-024+GI-056+MICRO-022",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "CARD-018+NEU-023+PLX-BCH-076+PLX-HEM-063",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-033+MICRO-015+NEU-030+PLX-HEM-011",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-027+MICRO-051+PLX-BCH-049+PLX-HEM-003",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-003+ENDO-002+GI-059+NEU-050",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "IMM-024+MICRO-016+PLX-BCH-008+PLX-HEM-054",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-021+GI-005+NEU-005+PLX-BCH-060",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-003+GI-042+MICRO-040+PLX-BCH-052",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-018+GI-054+NEU-038+PLX-BCH-002",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-014+GI-041+NEU-041+PLX-BCH-043",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-031+ENDO-038+NEU-055+PLX-HEM-052",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-009+GI-015+MICRO-061+PLX-BCH-057",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-032+ENDO-022+NEU-008+PLX-HEM-048",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MICRO-005+MSK-002+PLEXUS-GEN-002+PLX-BCH-036",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-036+ENDO-027+GI-013+IMM-007",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MICRO-020+PLX-BCH-018+PLX-BCH-061+PLX-HEM-020",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-010+MICRO-054+PLX-BCH-020+PLX-HEM-036",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "IMM-002+MICRO-044+PLX-BCH-026+PLX-HEM-061",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-023+GI-008+MSK-010+PLX-BCH-047",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-052+MICRO-013+NEU-058+PLX-BCH-033",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "CARD-011+MICRO-035+PLX-BCH-065+PLX-HEM-009",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-060+IMM-018+PLX-BCH-072+PLX-HEM-040",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-040+MICRO-010+MSK-011+NEU-034",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-028+IMM-037+PLX-BCH-021+PLX-HEM-045",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-001+MICRO-047+PLX-BCH-006+PLX-HEM-047",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "GI-065+MICRO-050+PLX-BCH-063+PLX-HEM-024",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MICRO-053+NEU-014+PLX-BCH-019+PLX-HEM-034",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-050+MICRO-056+NEU-028+PLX-BCH-035",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MICRO-008+NEU-032+PLX-BCH-054+PLX-HEM-055",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-029+MICRO-033+PLX-BCH-078+PLX-HEM-019",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-013+GI-018+PLX-BCH-004+PLX-HEM-062",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-024+MSK-021+PLEXUS-GEN-012+PLX-BCH-067",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-019+GI-032+MICRO-021+PLX-HEM-010",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "GI-016+MICRO-034+NEU-020+PLX-BCH-042",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-026+NEU-056+PHARM-011+PLX-BCH-037",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "CARD-004+GI-031+MICRO-014+PLX-BCH-038",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-045+PLX-BCH-022+PLX-HEM-050+PULM-019",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MICRO-036+PLEXUS-GEN-032+PLX-BCH-062+PLX-HEM-032",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-019+GI-053+PLX-BCH-001+PLX-HEM-005",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-030+MICRO-060+PLX-BCH-016+PLX-HEM-057",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-064+MSK-017+NEU-024+PLX-BCH-012",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-039+MICRO-070+NEU-057+PLX-BCH-010",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "IMM-028+MICRO-063+NEU-017+PLX-BCH-027",
+   "kind": "daily",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-002+CARD-007+CARD-041+CARD-043",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-001+CARD-012+CARD-019+CARD-049",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-008+CARD-033+CARD-045+CARD-054",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-010+CARD-025+CARD-034+CARD-046",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "CARD-005+CARD-016+CARD-030+CARD-047",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PULM-005+PULM-006+PULM-009+PULM-020",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PULM-004+PULM-007+PULM-016+PULM-018",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "PULM-003+PULM-008+PULM-010+PULM-012",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "PULM-002+PULM-011+PULM-013+PULM-017",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "NEPH-002+NEPH-016+NEPH-021+NEPH-031",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "NEPH-005+NEPH-008+NEPH-012+NEPH-025",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "NEPH-001+NEPH-004+NEPH-019+NEPH-023",
+   "kind": "starter",
+   "verdict": "fail",
+   "problems": [
+    "'Hydrochlorothiazide', 'Chlorothiazide', 'Chlorthalidone' and 'Metolazone' (Thiazide and thiazide-like diuretics) also fit 'Medications that can cause acute interstitial nephritis' - diuretics (sulfonamide-derived) are a textbook AIN cause (First Aid 'Pee' = diuretics)"
+   ],
+   "competition": "some"
+  },
+  {
+   "key": "NEPH-007+NEPH-011+NEPH-018+NEPH-020",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "NEPH-013+NEPH-017+NEPH-026+NEPH-027",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "NEU-004+NEU-036+NEU-045+NEU-061",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "NEU-013+NEU-025+NEU-046+NEU-052",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "NEU-011+NEU-021+NEU-029+NEU-053",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "NEU-015+NEU-018+NEU-060+NEU-062",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "NEU-007+NEU-009+NEU-040+NEU-051",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "GI-002+GI-028+GI-040+GI-055",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-019+GI-029+GI-046+GI-058",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-022+GI-027+GI-038+GI-061",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-007+GI-030+GI-036+GI-037",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "GI-025+GI-034+GI-039+GI-051",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-007+ENDO-013+ENDO-032+ENDO-033",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "ENDO-006+ENDO-010+ENDO-016+ENDO-034",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "ENDO-008+ENDO-015+ENDO-035+ENDO-039",
+   "kind": "starter",
+   "verdict": "fail",
+   "problems": [
+    "'Macroglossia' (Classic findings in congenital hypothyroidism) also fits 'Morphologic clues to acromegaly' - macroglossia is a textbook acromegaly feature"
+   ],
+   "competition": "some"
+  },
+  {
+   "key": "ENDO-025+ENDO-029+ENDO-036+ENDO-041",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "ENDO-003+ENDO-011+ENDO-014+ENDO-023",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PLX-HEM-023+PLX-HEM-033+PLX-HEM-049+PLX-HEM-065",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PLX-HEM-038+PLX-HEM-041+PLX-HEM-051+PLX-HEM-056",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "PLX-HEM-007+PLX-HEM-025+PLX-HEM-039+PLX-HEM-044",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PLX-HEM-001+PLX-HEM-006+PLX-HEM-014+PLX-HEM-021",
+   "kind": "starter",
+   "verdict": "fail",
+   "problems": [
+    "'Isoniazid' (Acquired sideroblastic-anemia exposures) also fits 'Oxidative triggers in G6PD deficiency' - INH is in the standard G6PD oxidant-drug list (sulfonamides, primaquine, nitrofurantoin, INH, dapsone)"
+   ],
+   "competition": "some"
+  },
+  {
+   "key": "PLX-HEM-008+PLX-HEM-018+PLX-HEM-027+PLX-HEM-059",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MSK-009+MSK-032+MSK-036+MSK-040",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "MSK-013+MSK-019+MSK-023+MSK-033",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MSK-001+MSK-012+MSK-029+MSK-041",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MSK-025+MSK-030+MSK-037+MSK-038",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MSK-007+MSK-015+MSK-018+MSK-035",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "REPRO-009+REPRO-014+REPRO-020+REPRO-021",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "REPRO-012+REPRO-018+REPRO-019+REPRO-024",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "REPRO-002+REPRO-005+REPRO-008+REPRO-022",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "REPRO-011+REPRO-013+REPRO-016+REPRO-017",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "REPRO-001+REPRO-004+REPRO-007+REPRO-015",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PSY-002+PSY-016+PSY-020+PSY-021",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PSY-003+PSY-013+PSY-015+PSY-019",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PSY-007+PSY-017+PSY-018+PSY-025",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PSY-005+PSY-008+PSY-010+PSY-014",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PSY-001+PSY-006+PSY-012+PSY-023",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MICRO-003+MICRO-039+MICRO-046+MICRO-052",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MICRO-017+MICRO-028+MICRO-057+MICRO-065",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MICRO-006+MICRO-019+MICRO-030+MICRO-059",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MICRO-012+MICRO-037+MICRO-049+MICRO-066",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "MICRO-004+MICRO-018+MICRO-042+MICRO-045",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "IMM-022+IMM-029+IMM-034+IMM-038",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "IMM-004+IMM-005+IMM-009+IMM-021",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "IMM-011+IMM-020+IMM-036+IMM-040",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "IMM-006+IMM-008+IMM-013+IMM-019",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "IMM-010+IMM-015+IMM-030+IMM-039",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-013+DERM-015+DERM-023+DERM-031",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "DERM-020+DERM-025+DERM-033+DERM-035",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-005+DERM-017+DERM-024+DERM-037",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-002+DERM-012+DERM-022+DERM-032",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "DERM-010+DERM-016+DERM-030+DERM-038",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PHARM-004+PHARM-010+PHARM-017+PHARM-019",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "PHARM-001+PHARM-003+PHARM-006+PHARM-009",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "PHARM-002+PHARM-005+PHARM-008+PHARM-013",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  },
+  {
+   "key": "PLX-BCH-028+PLX-BCH-058+PLX-BCH-071+PLX-BCH-073",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PLX-BCH-005+PLX-BCH-025+PLX-BCH-046+PLX-BCH-064",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PLX-BCH-030+PLX-BCH-034+PLX-BCH-040+PLX-BCH-075",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PLX-BCH-017+PLX-BCH-023+PLX-BCH-048+PLX-BCH-055",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PLX-BCH-044+PLX-BCH-050+PLX-BCH-070+PLX-BCH-077",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PLEXUS-GEN-007+PLEXUS-GEN-015+PLEXUS-GEN-026+PLEXUS-GEN-028",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PLEXUS-GEN-017+PLEXUS-GEN-021+PLEXUS-GEN-031+PLEXUS-GEN-033",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PLEXUS-GEN-013+PLEXUS-GEN-020+PLEXUS-GEN-022+PLEXUS-GEN-024",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "low"
+  },
+  {
+   "key": "PLEXUS-GEN-001+PLEXUS-GEN-016+PLEXUS-GEN-018+PLEXUS-GEN-030",
+   "kind": "starter",
+   "verdict": "fail",
+   "problems": [
+    "'Hypotonia' (Prader-Willi syndrome associations) also fits 'Down syndrome congenital associations'; neonatal hypotonia is a classic, near-universal congenital finding in trisomy 21, resolvable only by counting"
+   ],
+   "competition": "some"
+  },
+  {
+   "key": "PLEXUS-GEN-008+PLEXUS-GEN-010+PLEXUS-GEN-023+PLEXUS-GEN-027",
+   "kind": "starter",
+   "verdict": "pass",
+   "problems": [],
+   "competition": "some"
+  }
+ ]
+}

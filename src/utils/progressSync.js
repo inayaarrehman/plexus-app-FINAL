@@ -25,6 +25,7 @@ import {
 } from './storage.js'
 import { mergeStates as mergeProgression } from '../progression/engine.js'
 import { loadProgression, replaceProgression } from '../progression/store.js'
+import { CONTENT_EPOCH } from './contentEpoch.js'
 
 const SNAPSHOT_VERSION = 1
 
@@ -140,6 +141,7 @@ export function mergeSystemsBoards(a = {}, b = {}) {
 export function mergeSnapshots(a = {}, b = {}) {
   return {
     version: SNAPSHOT_VERSION,
+    epoch: CONTENT_EPOCH,
     stats: mergeStats(a.stats, b.stats),
     dailyHistory: mergeDailyHistory(a.dailyHistory, b.dailyHistory),
     challenge: mergeChallenge(a.challenge, b.challenge),
@@ -153,6 +155,7 @@ export function mergeSnapshots(a = {}, b = {}) {
 export function snapshotLocal() {
   return {
     version: SNAPSHOT_VERSION,
+    epoch: CONTENT_EPOCH,
     stats: loadStats(),
     dailyHistory: getDailyHistory(),
     challenge: getChallengeStats(),

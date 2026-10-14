@@ -28,6 +28,8 @@
 
 import { categoriesCompatible, normalizeTile, shuffleWith } from './puzzleAssembler.js'
 import { NEW_BUILDERS, validateModeRound, COGNITIVE_TASK, assessModes, isWordplay, nearMissesOf } from './challengeModesPlus.js'
+import { drawTier, pickAnchor, pickLookAlike, pickImpostor, pickTitleDistractors, miniPairScore, tierOf } from './timedPacing.js'
+import { answerShortcuts, boardSurface } from './surfaceSignals.js'
 
 export { COGNITIVE_TASK, assessModes, isWordplay }
 
@@ -165,14 +167,39 @@ function pickDistractors(bank, anchor, count, rng, opts) {
 // another type rather than ever showing a broken round.
 // ---------------------------------------------------------------------
 
-function buildMiniConnectionsRound(bank, rng) {
-  const verified = verifiedCategories(bank)
+// Every builder takes (bank, rng, opts): opts.tier is the target difficulty
+// tier (0-2, from the format's mix or the Race curve) and opts.avoid the
+// category ids served recently on this device. Builders pick wrong answers
+// that read like the right ones and reject rounds a wording pattern alone
+// would solve (src/utils/timedPacing.js, surfaceSignals.js).
+const tierFor = (type, rng, opts) => (opts && opts.tier != null ? opts.tier : drawTier(type, rng))
+
+function buildMiniConnectionsRound(bank, rng, opts = {}) {
+  // Wordplay groups ("Portal ___", star words) are fine among four groups on
+  // a Daily board, but with only two groups their shared word is the answer.
+  const verified = verifiedCategories(bank).filter((c) => !isWordplay(c))
   if (verified.length < 2) return null
-  for (let attempt = 0; attempt < 30; attempt++) {
-    const a = verified[Math.floor(rng() * verified.length)]
-    const b = verified[Math.floor(rng() * verified.length)]
-    if (a.id === b.id) continue
-    if (!categoriesCompatible([a, b])) continue
+  const tier = tierFor('miniConnections', rng, opts)
+  for (let attempt = 0; attempt < 12; attempt++) {
+    const a = pickAnchor(verified, rng, { tier, avoid: opts.avoid })
+    if (!a) return null
+    // Best partner among a sample: same tile kind or subject, no isolating
+    // wording, tempting near-miss overlap.
+    const scored = []
+    for (const c of shuffleWith(verified, rng).slice(0, 60)) {
+      if (c.id === a.id || !categoriesCompatible([a, c])) continue
+      const sc = miniPairScore(a, c)
+      if (sc > -Infinity) scored.push({ c, sc })
+    }
+    if (!scored.length) continue
+    // Any partner close to the best, at random, so pairs keep varying.
+    // The partner should not be harder than the anchor, so the round plays
+    // at the tier that was drawn for it.
+    const capped = scored.filter((x) => tierOf(x.c) <= tierOf(a))
+    const pool = capped.length ? capped : scored
+    const top = Math.max(...pool.map((x) => x.sc))
+    const close = pool.filter((x) => x.sc >= top - 1.5)
+    const b = close[Math.floor(rng() * close.length)].c
     const tiles = shuffleWith(
       [
         ...a.tiles.map((text) => ({ text, groupId: 'a' })),
@@ -185,9 +212,10 @@ function buildMiniConnectionsRound(bank, rng) {
       prompt: 'Find two groups of four.',
       tiles,
       groups: {
-        a: { categoryId: a.id, title: a.title, tag: a.title, explanation: a.explanation },
-        b: { categoryId: b.id, title: b.title, tag: b.title, explanation: b.explanation },
+        a: { categoryId: a.id, title: a.title, tag: a.title, explanation: a.explanation, tileExplanations: a.tileExplanations || null },
+        b: { categoryId: b.id, title: b.title, tag: b.title, explanation: b.explanation, tileExplanations: b.tileExplanations || null },
       },
+      tier: Math.max(tierOf(a), tierOf(b)),
       conceptTags: [a.title, b.title],
       systems: [...new Set([...a.systems, ...b.systems])],
     }
@@ -195,13 +223,13 @@ function buildMiniConnectionsRound(bank, rng) {
   return null
 }
 
-function buildImpostorRound(bank, rng) {
+function buildImpostorRound(bank, rng, opts = {}) {
   const pool = quizCategories(bank, 1)
   if (pool.length === 0) return null
-  const anchor = pool[Math.floor(rng() * pool.length)]
-  const near = pickNearMisses(anchor, 1, rng)
-  if (!near) return null
-  const [impostor] = near
+  const anchor = pickAnchor(pool, rng, { tier: tierFor('impostor', rng, opts), avoid: opts.avoid })
+  const pick = pickImpostor(nearMissesOf(anchor), anchor.tiles, rng)
+  if (!pick) return null
+  const impostor = pick.impostor
   const options = shuffleWith(
     [...anchor.tiles.map((text) => ({ text, correct: false })), { text: impostor.text, correct: true }],
     rng
@@ -214,17 +242,19 @@ function buildImpostorRound(bank, rng) {
     options,
     correctAnswer: impostor.text,
     explanation: `The other four are ${anchor.title}. ${impostor.text}: ${impostor.why}`,
+    tier: tierOf(anchor),
     conceptTags: [anchor.title],
     systems: anchor.systems,
   }
 }
 
-function buildRapidAssociationRound(bank, rng) {
+function buildRapidAssociationRound(bank, rng, opts = {}) {
   const pool = quizCategories(bank, 4)
   if (pool.length === 0) return null
-  const anchor = pool[Math.floor(rng() * pool.length)]
-  const near = pickNearMisses(anchor, 4, rng)
-  if (!near) return null
+  const anchor = pickAnchor(pool, rng, { tier: tierFor('rapidAssociation', rng, opts), avoid: opts.avoid })
+  const pick = pickLookAlike(nearMissesOf(anchor), anchor.tiles, 4, rng)
+  if (!pick) return null
+  const near = pick.list
   const options = shuffleWith(
     [...anchor.tiles.map((text) => ({ text, correct: true })), ...near.map((n) => ({ text: n.text, correct: false, why: n.why }))],
     rng
@@ -237,20 +267,24 @@ function buildRapidAssociationRound(bank, rng) {
     options,
     correctAnswers: anchor.tiles.slice(),
     explanation: anchor.explanation,
+    tier: tierOf(anchor),
     conceptTags: [anchor.title],
     systems: anchor.systems,
   }
 }
 
-function buildCompleteConnectionRound(bank, rng) {
+function buildCompleteConnectionRound(bank, rng, opts = {}) {
   const pool = quizCategories(bank, 3)
   if (pool.length === 0) return null
-  const anchor = pool[Math.floor(rng() * pool.length)]
+  const anchor = pickAnchor(pool, rng, { tier: tierFor('completeConnection', rng, opts), avoid: opts.avoid })
   const shownIndex = Math.floor(rng() * anchor.tiles.length)
   const missing = anchor.tiles[shownIndex]
   const shown = anchor.tiles.filter((_, i) => i !== shownIndex)
-  const near = pickNearMisses(anchor, 3, rng)
-  if (!near) return null
+  // Wrong answers that read like the shown three, so the missing one is not
+  // the only option that matches their wording.
+  const pick = pickLookAlike(nearMissesOf(anchor), [missing, ...shown], 3, rng)
+  if (!pick) return null
+  const near = pick.list
   const options = shuffleWith(
     [{ text: missing, correct: true }, ...near.map((n) => ({ text: n.text, correct: false, why: n.why }))],
     rng
@@ -264,6 +298,7 @@ function buildCompleteConnectionRound(bank, rng) {
     options,
     correctAnswer: missing,
     explanation: `${anchor.title}. ${anchor.explanation || ''}`.trim(),
+    tier: tierOf(anchor),
     conceptTags: [anchor.title],
     systems: anchor.systems,
   }
@@ -271,27 +306,36 @@ function buildCompleteConnectionRound(bank, rng) {
 
 // The reverse of Rapid Association: four tiles are shown, the player picks
 // the category title that links them from a set of plausible alternatives.
-function buildCommonLinkRound(bank, rng) {
+function buildCommonLinkRound(bank, rng, opts = {}) {
   const pool = verifiedCategories(bank).filter((c) => !isWordplay(c))
   if (pool.length === 0) return null
-  const anchor = pool[Math.floor(rng() * pool.length)]
-  const distractorTitles = pickDistractors(bank, anchor, 3, rng, { useTitles: true })
-  if (distractorTitles.length < 3) return null
-  const options = shuffleWith(
-    [{ text: anchor.title, correct: true }, ...distractorTitles.map((text) => ({ text, correct: false }))],
-    rng
-  )
-  return {
-    type: 'commonLink',
-    prompt: 'What links these?',
-    shown: anchor.tiles.slice(),
-    categoryId: anchor.id,
-    options,
-    correctAnswer: anchor.title,
-    explanation: anchor.explanation,
-    conceptTags: [anchor.title],
-    systems: anchor.systems,
+  const tier = tierFor('commonLink', rng, opts)
+  for (let attempt = 0; attempt < 6; attempt++) {
+    const anchor = pickAnchor(pool, rng, { tier, avoid: opts.avoid })
+    const { titles, leakAlone } = pickTitleDistractors(pool, anchor, 3, rng)
+    if (titles.length < 3) continue
+    // A title word repeated in the tiles that no other option shares gives
+    // the answer away; try another anchor.
+    if (leakAlone && attempt < 5) continue
+    const options = shuffleWith(
+      [{ text: anchor.title, correct: true }, ...titles.map((text) => ({ text, correct: false }))],
+      rng
+    )
+    return {
+      type: 'commonLink',
+      prompt: 'What links these?',
+      shown: anchor.tiles.slice(),
+      categoryId: anchor.id,
+      options,
+      correctAnswer: anchor.title,
+      explanation: anchor.explanation,
+      tileExplanations: anchor.tileExplanations || null,
+      tier: tierOf(anchor),
+      conceptTags: [anchor.title],
+      systems: anchor.systems,
+    }
   }
+  return null
 }
 
 const BUILDERS = {
@@ -320,7 +364,11 @@ function bankIndex(bank) {
 const lower = (s) => String(s).toLowerCase()
 const uniqueTexts = (opts) => new Set(opts.map((o) => lower(o.text))).size === opts.length
 
-export function validateRound(round, bank) {
+// `strictShortcuts` (default on) rejects rounds a wording pattern alone would
+// solve; generateRound relaxes it only on its last tries for a format, so a
+// category whose tiles share a medically necessary stem ("-mab") can still
+// appear when its look-alike near misses cannot hide it.
+export function validateRound(round, bank, { strictShortcuts = true } = {}) {
   if (!round) return { valid: false, reason: 'no round' }
   // Expanded modes carry their own strict validation.
   if (round.type in NEW_BUILDERS) return validateModeRound(round, bank)
@@ -337,6 +385,10 @@ export function validateRound(round, bank) {
     if (round.tiles.length !== 8) return { valid: false, reason: 'mini: expected 8 tiles' }
     const distinct = new Set(round.tiles.map((t) => lower(t.text))).size === 8
     if (!distinct) return { valid: false, reason: 'mini: duplicate tile across groups' }
+    if (strictShortcuts) {
+      const surf = boardSurface([a.tiles, b.tiles])
+      if (surf.isolated.some((x) => x.length)) return { valid: false, reason: 'mini: a group is marked out by its wording' }
+    }
     return { valid: true }
   }
 
@@ -349,6 +401,8 @@ export function validateRound(round, bank) {
     if (anchor && anchor.tiles.map(lower).includes(lower(round.correctAnswer))) {
       return { valid: false, reason: 'impostor: distractor is genuinely a member (ambiguous)' }
     }
+    if (strictShortcuts && anchor && answerShortcuts(anchor.tiles, [round.correctAnswer]).length)
+      return { valid: false, reason: 'impostor: the impostor stands out by wording' }
     return { valid: true }
   }
 
@@ -360,6 +414,8 @@ export function validateRound(round, bank) {
     const correctSet = new Set((round.correctAnswers || []).map(lower))
     const distractorAlsoCorrect = round.options.some((o) => !o.correct && correctSet.has(lower(o.text)))
     if (distractorAlsoCorrect) return { valid: false, reason: 'rapid: a distractor is also a correct association (ambiguous)' }
+    if (strictShortcuts && answerShortcuts(round.options.filter((o) => o.correct).map((o) => o.text), round.options.filter((o) => !o.correct).map((o) => o.text)).length)
+      return { valid: false, reason: 'rapid: the right answers share wording the wrong ones lack' }
     return { valid: true }
   }
 
@@ -371,6 +427,8 @@ export function validateRound(round, bank) {
     if ((round.shown || []).map(lower).includes(lower(round.correctAnswer))) {
       return { valid: false, reason: 'complete: answer already shown' }
     }
+    if (strictShortcuts && answerShortcuts([round.correctAnswer, ...(round.shown || [])], round.options.filter((o) => !o.correct).map((o) => o.text)).length)
+      return { valid: false, reason: 'complete: only the answer matches the wording of the shown tiles' }
     return { valid: true }
   }
 
@@ -389,19 +447,30 @@ export function validateRound(round, bank) {
 // required modes (default includes the optional 5th, Common Link).
 // `avoidType` (usually the previous round's type) is skipped on the first
 // attempt for variety, but every type is tried before giving up.
-export function generateRound(bank, { rng = Math.random, roundTypes = ROUND_TYPES, avoidType = null } = {}) {
-  const ordered = shuffleWith(roundTypes, rng)
+// Formats with only a handful of distinct rounds (curated chains, Split
+// pairs) come up less often so they do not repeat within a few sessions.
+export const TYPE_WEIGHT = { chain: 0.4, completeTheChain: 0.6, split: 0.7 }
+function weightedOrder(types, rng) {
+  return types
+    .map((t) => ({ t, k: Math.pow(rng(), 1 / (TYPE_WEIGHT[t] || 1)) }))
+    .sort((a, b) => b.k - a.k)
+    .map((x) => x.t)
+}
+
+export function generateRound(bank, { rng = Math.random, roundTypes = ROUND_TYPES, avoidType = null, tier = null, avoid = null } = {}) {
+  const ordered = weightedOrder(roundTypes, rng)
   const tryOrder = avoidType ? [...ordered.filter((t) => t !== avoidType), avoidType] : ordered
   for (const type of tryOrder) {
     const builder = BUILDERS[type]
     if (!builder) continue
     // Try a few times per type: a builder may produce an ambiguous round
     // (rejected by validateRound) that a re-roll fixes, before we fall
-    // through to another type.
+    // through to another type. The last two tries accept a medically
+    // necessary shared stem.
     for (let k = 0; k < 6; k++) {
-      const round = builder(bank, rng)
+      const round = builder(bank, rng, { tier, avoid })
       if (!round) break
-      const check = validateRound(round, bank)
+      const check = validateRound(round, bank, { strictShortcuts: k < 4 })
       if (check.valid) {
         round.roundValidationStatus = 'valid'
         return round
@@ -460,7 +529,7 @@ export function roundRelationships(round, bank, canonicalOf = (id) => id) {
 // is a hard rule: a round about any of them is never returned. When no fresh
 // valid round can be found the composer returns null and the caller ends or
 // shortens the session rather than repeat a relationship.
-export function composeNextRound(bank, { rng = Math.random, roundTypes = ROUND_TYPES, recent = [], used = null, canonicalOf } = {}) {
+export function composeNextRound(bank, { rng = Math.random, roundTypes = ROUND_TYPES, recent = [], used = null, canonicalOf, tier = null, avoid = null } = {}) {
   const lastType = recent[0]?.type || null
   const lastTask = recent[0]?.type ? COGNITIVE_TASK[recent[0].type] : null
   const recentSystems = new Set(recent.slice(0, 2).flatMap((r) => r.systems || []))
@@ -470,7 +539,7 @@ export function composeNextRound(bank, { rng = Math.random, roundTypes = ROUND_T
   let best = null
   const attempts = used && used.size ? 40 : 10
   for (let attempt = 0; attempt < attempts; attempt++) {
-    const round = generateRound(bank, { rng, roundTypes, avoidType: lastType })
+    const round = generateRound(bank, { rng, roundTypes, avoidType: lastType, tier, avoid })
     if (!round || !fresh(round)) continue
     let penalty = 0
     if ((round.systems || []).some((s) => recentSystems.has(s))) penalty += 2
@@ -480,11 +549,13 @@ export function composeNextRound(bank, { rng = Math.random, roundTypes = ROUND_T
     // same cognitive task (e.g. Which Connection then Match the Link) don't
     // run back-to-back (Section 32).
     if (lastTask && COGNITIVE_TASK[round.type] === lastTask) penalty += 3
+    // A requested tier (the Race curve) should hold when it can.
+    if (tier != null && round.tier != null && round.tier !== tier) penalty += 2
     if (penalty === 0) return round
     if (!best || penalty < best.penalty) best = { round, penalty }
   }
   if (best) return best.round
-  const fallback = generateRound(bank, { rng, roundTypes, avoidType: lastType })
+  const fallback = generateRound(bank, { rng, roundTypes, avoidType: lastType, tier, avoid })
   return fallback && fresh(fallback) ? fallback : null
 }
 

@@ -9,9 +9,10 @@
 // only if validateModeRound passes it — ambiguous rounds are rejected, never
 // fudged. Cognitive-task tags let the session composer vary the KIND of
 // thinking, not just the mode.
-import connectionBank from '../data/connectionBank.js'
 import chainBank from '../data/chainBank.js'
 import { normalizeTile, shuffleWith } from './puzzleAssembler.js'
+import { drawTier, pickAnchor, pickLookAlike, tierOf, blockedPair, VAGUE_LABELS } from './timedPacing.js'
+import { titleLeak, answerShortcuts } from './surfaceSignals.js'
 
 // Which kind of thinking each mode demands (Section 32).
 export const COGNITIVE_TASK = {
@@ -37,6 +38,17 @@ export const SPLIT_PAIRS = [
   ['Obstructive lung diseases', 'Restrictive lung diseases'],
   ['Systolic murmurs', 'Diastolic murmurs'],
   ['Gs-coupled receptors (increased cAMP)', 'Gq-coupled receptors'],
+  // Added October 2026 (only two of the four above were still in the timed
+  // library, so Split kept repeating). Each is a textbook two-way split
+  // whose current tiles sit clearly on one side.
+  ['Causes of a transudative pleural effusion', 'Causes of an exudative pleural effusion'],
+  ['Upper lobe predominant lung disease', 'Lower lobe predominant lung disease'],
+  ['Causes of hypokalemia', 'Causes of hyperkalemia'],
+  ['Causes of hypercalcemia', 'Causes of hypocalcemia'],
+  ['Causes of respiratory acidosis', 'Causes of respiratory alkalosis'],
+  ['Autosomal dominant conditions', 'Autosomal recessive conditions'],
+  ['Causes of a low DLCO', 'Causes of an increased DLCO'],
+  ['Causes of anion gap metabolic acidosis', 'Causes of metabolic alkalosis'],
 ]
 
 // ---- Verified content index (memoized by bank reference) ----
@@ -96,9 +108,11 @@ function exclusiveTiles(idx, ownerTitle, otherTitle) {
 // ---------------------------------------------------------------------
 
 // SPLIT — two labelled buckets, eight concepts, sort four into each.
-export function buildSplit(bank, rng) {
+export function buildSplit(bank, rng, opts = {}) {
   const idx = index(bank)
-  const pairs = shuffleWith(SPLIT_PAIRS, rng)
+  // Pairs served recently on this device go last.
+  const recent = (ta) => (opts.avoid && idx.byTitle.get(ta) && opts.avoid.has(idx.byTitle.get(ta).id) ? 1 : 0)
+  const pairs = shuffleWith(SPLIT_PAIRS, rng).sort((x, y) => recent(x[0]) - recent(y[0]))
   for (const [ta, tb] of pairs) {
     const a = idx.byTitle.get(ta)
     const b = idx.byTitle.get(tb)
@@ -115,30 +129,49 @@ export function buildSplit(bank, rng) {
       tiles: shuffleWith(tiles, rng),
       systems: [...new Set([...(a.systems || []), ...(b.systems || [])])],
       conceptTags: [ta, tb],
-      explanation: `${ta} vs ${tb}.`,
+      explanation: [a.explanation && `${ta}: ${a.explanation}`, b.explanation && `${tb}: ${b.explanation}`].filter(Boolean).join(' ') || `${ta} vs ${tb}.`,
     }
   }
   return null
 }
 
 // MATCH THE LINK — four concepts, four labels, one clean match each.
-export function buildMatchTheLink(bank, rng) {
+export function buildMatchTheLink(bank, rng, opts = {}) {
   const idx = index(bank)
+  const usable = idx.cats.filter((c) => !isWordplay(c) && !VAGUE_LABELS.has(c.title))
+  const tier = opts.tier != null ? opts.tier : drawTier('matchTheLink', rng)
   for (let attempt = 0; attempt < 40; attempt++) {
-    const chosen = sample(idx.cats.filter((c) => !isWordplay(c)), 4, rng)
-    if (chosen.length < 4) return null
+    // Four labels from one subject where possible, sharing a tile kind, so a
+    // concept cannot be matched just by noticing it is the only drug or the
+    // only cardiology item.
+    const first = pickAnchor(usable, rng, { tier, avoid: opts.avoid })
+    if (!first) return null
+    // Four labels from four different systems: labels from one system, or
+    // two labels about the same idea, claimed each other's concepts when
+    // generated rounds were reviewed.
+    const chosen = [first]
+    for (const c of shuffleWith(usable, rng)) {
+      if (chosen.length >= 4) break
+      if (chosen.some((x) => x.id === c.id || blockedPair(x, c) || (x.systems || []).some((s) => (c.systems || []).includes(s)))) continue
+      chosen.push(c)
+    }
+    if (chosen.length < 4) continue
     const labels = chosen.map((c) => c.title)
     const concepts = []
     let ok = true
     for (const c of chosen) {
-      const tile = pick(c.tiles, rng)
-      // The concept must match ONLY its own label among the four shown.
       const others = labels.filter((t) => t !== c.title)
-      if (others.some((t) => belongsTo(idx, tile, t))) {
+      // Only a concept listed under exactly one category in the whole timed
+      // library (a concept listed under two is the kind that fits two
+      // labels), and not one that repeats a word of its own label.
+      const clean = c.tiles.filter((t) => titlesOf(idx, t).size === 1 && !titleLeak(c.title, [t]).length && !others.some((o) => belongsTo(idx, t, o)))
+      const tile = clean.length ? pick(clean, rng) : null
+      if (!tile) {
         ok = false
         break
       }
-      concepts.push({ text: tile, label: c.title })
+      const note = c.tileExplanations && c.tileExplanations[c.tiles.indexOf(tile)]
+      concepts.push({ text: tile, label: c.title, note })
     }
     if (!ok) continue
     const answer = {}
@@ -151,6 +184,8 @@ export function buildMatchTheLink(bank, rng) {
       concepts: shuffleWith(concepts.map((p) => p.text), rng),
       labels: shuffleWith(labels, rng),
       answer,
+      explanation: concepts.map((p) => `${p.text} → ${p.label}${p.note ? `: ${p.note}` : '.'}`).join(' '),
+      tier: tierOf(first),
       systems: [...new Set(chosen.flatMap((c) => c.systems || []))],
       conceptTags: labels,
     }
@@ -159,28 +194,40 @@ export function buildMatchTheLink(bank, rng) {
 }
 
 // DOUBLE AGENT — one concept that belongs to BOTH displayed connections.
-export function buildDoubleAgent(bank, rng) {
+export function buildDoubleAgent(bank, rng, opts = {}) {
   const idx = index(bank)
   // Concepts that genuinely appear in >=2 distinct verified categories.
   const duals = [...idx.tileTitles.entries()].filter(([, titles]) => titles.size >= 2)
   if (duals.length === 0) return null
   for (const [normText, titleSet] of shuffleWith(duals, rng)) {
-    const titles = shuffleWith([...titleSet].filter((t) => idx.quiz.some((c) => c.title === t)), rng)
+    const titles = shuffleWith([...titleSet].filter((t) => !VAGUE_LABELS.has(t) && idx.quiz.some((c) => c.title === t)), rng)
     if (titles.length < 2) continue
     const [A, B] = titles
     // The intended dual concept's original (display) text.
     const a = idx.byTitle.get(A)
     const dualDisplay = a.tiles.find((t) => normalizeTile(t) === normText)
     if (!dualDisplay) continue
-    // Distractors: some A-only, some B-only, some neither — NONE dual.
-    const aOnly = exclusiveTiles(idx, A, B).filter((t) => normalizeTile(t) !== normText)
-    const bOnly = exclusiveTiles(idx, B, A).filter((t) => normalizeTile(t) !== normText)
-    // "Neither" option: a curated near miss of one of the two groups.
-    const neither = [...nearMissesOf(idx.byTitle.get(A)), ...nearMissesOf(idx.byTitle.get(B))]
-      .map((n) => n.text)
-      .filter((t) => !belongsTo(idx, t, A) && !belongsTo(idx, t, B))
-    const distractors = [...sample(aOnly, 2, rng), ...sample(bOnly, 2, rng), ...sample(neither, 1, rng)]
-      .filter(Boolean)
+    // Distractors must be known NOT to belong to at least one of the two
+    // groups, so none can secretly belong to both: a tile of one group that
+    // the other group lists as a checked near miss, or a checked near miss of
+    // either group. (Tiles that merely are not listed under the other group
+    // were often members in fact; review of generated rounds caught that.)
+    const nmA = nearMissesOf(idx.byTitle.get(A)).map((n) => n.text)
+    const nmB = nearMissesOf(idx.byTitle.get(B)).map((n) => n.text)
+    const inNm = (list, t) => list.some((x) => normalizeTile(x) === normalizeTile(t))
+    const aOnly = exclusiveTiles(idx, A, B).filter((t) => normalizeTile(t) !== normText && inNm(nmB, t))
+    const bOnly = exclusiveTiles(idx, B, A).filter((t) => normalizeTile(t) !== normText && inNm(nmA, t))
+    const neither = [...nmA, ...nmB].filter((t) => normalizeTile(t) !== normText && !belongsTo(idx, t, A) && !belongsTo(idx, t, B))
+    const pool = [...new Set([...aOnly, ...bOnly])]
+    const distractors = []
+    const seenD = new Set()
+    for (const t of [...shuffleWith(pool, rng), ...shuffleWith(neither, rng)]) {
+      const k = normalizeTile(t)
+      if (seenD.has(k)) continue
+      seenD.add(k)
+      distractors.push(t)
+      if (distractors.length >= 4) break
+    }
     if (distractors.length < 4) continue
     const options = shuffleWith(
       [{ text: dualDisplay, both: true }, ...distractors.map((text) => ({ text, both: false }))],
@@ -203,24 +250,28 @@ export function buildDoubleAgent(bank, rng) {
 
 // LINK TWO — exactly two of the shown concepts belong to the named group.
 // The other four are that group's curated near misses.
-export function buildLinkTwo(bank, rng) {
+export function buildLinkTwo(bank, rng, opts = {}) {
   const idx = index(bank)
   if (idx.quiz.length === 0) return null
+  const tier = opts.tier != null ? opts.tier : drawTier('linkTwo', rng)
   for (let attempt = 0; attempt < 20; attempt++) {
-    const target = pick(idx.quiz, rng)
+    const target = pickAnchor(idx.quiz, rng, { tier, avoid: opts.avoid })
     const correct = sample(target.tiles, 2, rng)
-    const near = sample(nearMissesOf(target), 4, rng)
-    if (correct.length < 2 || near.length < 4) continue
+    const pickNm = pickLookAlike(nearMissesOf(target), correct, 4, rng)
+    if (correct.length < 2 || !pickNm) continue
+    const near = pickNm.list
     const options = shuffleWith(
       [...correct.map((text) => ({ text, correct: true })), ...near.map((n) => ({ text: n.text, correct: false, why: n.why }))],
       rng
     )
     return {
       type: 'linkTwo',
+      categoryId: target.id,
       prompt: target.title,
       anchorLabel: target.title,
       options,
       correctAnswers: correct,
+      tier: tierOf(target),
       systems: target.systems || [],
       conceptTags: [target.title],
       explanation: target.explanation,
@@ -233,34 +284,40 @@ export function buildLinkTwo(bank, rng) {
 // named, two concepts are shown, and the player says whether BOTH belong.
 // "No" rounds pair a real member with one of the group's curated near misses,
 // so the answer never depends on an unstated relationship.
-export function buildSameOrDifferent(bank, rng) {
+export function buildSameOrDifferent(bank, rng, opts = {}) {
   const idx = index(bank)
   if (idx.quiz.length === 0) return null
-  const c = pick(idx.quiz, rng)
+  const c = pickAnchor(idx.quiz, rng, { tier: opts.tier != null ? opts.tier : drawTier('sameOrDifferent', rng), avoid: opts.avoid })
   if (rng() < 0.5) {
     const [t1, t2] = sample(c.tiles, 2, rng)
     if (!t1 || !t2) return null
     return {
       type: 'sameOrDifferent',
+      categoryId: c.id,
       prompt: c.title,
       anchorLabel: c.title,
       pair: [t1, t2],
       answer: 'same',
+      tier: tierOf(c),
       systems: c.systems || [],
       conceptTags: [c.title],
       explanation: `${t1} and ${t2} both belong to ${c.title}.`,
     }
   }
   const member = pick(c.tiles, rng)
-  const nm = pick(nearMissesOf(c), rng)
+  // The outsider should read like the member, not differ by format.
+  const nmPick = member ? pickLookAlike(nearMissesOf(c), [member], 1, rng) : null
+  const nm = nmPick && nmPick.list[0]
   if (!member || !nm) return null
   return {
     type: 'sameOrDifferent',
+    categoryId: c.id,
     prompt: c.title,
     anchorLabel: c.title,
     pair: shuffleWith([member, nm.text], rng),
     answer: 'different',
     outsider: nm.text,
+    tier: tierOf(c),
     systems: c.systems || [],
     conceptTags: [c.title],
     explanation: `${nm.text} does not belong: ${nm.why}`,
@@ -373,6 +430,8 @@ export function validateModeRound(round, bank) {
       if (o.correct) continue
       if (belongsTo(idx, o.text, round.anchorLabel)) return { valid: false, reason: 'linkTwo: a distractor is a real member' }
     }
+    if (answerShortcuts(round.options.filter((o) => o.correct).map((o) => o.text), round.options.filter((o) => !o.correct).map((o) => o.text)).length)
+      return { valid: false, reason: 'linkTwo: the two answers share wording the others lack' }
     return { valid: true }
   }
 

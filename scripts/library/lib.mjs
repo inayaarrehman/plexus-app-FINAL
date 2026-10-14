@@ -585,7 +585,15 @@ export function boardNearMisses(conns) {
 //   human / ai-review  a review label the status map accepts (the same map
 //                as connections; AI_REVIEWED_PASS is OpenEvidence review under
 //                the owner's workflow, never shown as human verified)
-// Drafts (for example DRAFT_AI_GENERATED) are never served.
+//   ai-check     a draft or revision text that a separate AI pass checked
+//                and passed (October 2026 difficulty work: every revised
+//                connection needs an updated explanation). Served with
+//                basis ai-check, humanVerified false; an OpenEvidence import
+//                replaces it. Set AI_CHECKED_EXPLANATIONS_SERVED to false to
+//                hold these back again.
+// Unchecked drafts (DRAFT_AI_GENERATED) are never served.
+export const AI_CHECKED_EXPLANATIONS_SERVED = true
+export const AI_CHECK_STATUS = 'AI_CHECKED'
 export const EXPLANATION_LIMITS = { detail: 700, tile: 360 }
 export const DRAFT_STATUS = 'DRAFT_AI_GENERATED'
 export const sameTiles = (a, b) => Array.isArray(a) && Array.isArray(b) && a.length === 4 && b.length === 4 && a.every((t, i) => String(t).trim() === String(b[i]).trim())
@@ -609,6 +617,8 @@ export function explanationEligibility(e, tiles, map = DEFAULT_STATUS_MAP) {
   const problems = explanationProblems(e, tiles)
   if (problems.length) return { eligible: false, state: problems.includes('written for different tiles (stale)') ? 'stale' : 'needsFix', problems }
   if (e.provenance?.kind === 'legacy-bank') return { eligible: true, state: 'eligible', basis: 'legacy-bank', reviewer: e.reviewer || null, humanVerified: false, problems }
+  if (e.provenance?.kind === 'ai-check' && String(e.status || '').toUpperCase() === AI_CHECK_STATUS && e.check?.verdict === 'pass')
+    return AI_CHECKED_EXPLANATIONS_SERVED ? { eligible: true, state: 'eligible', basis: 'ai-check', reviewer: e.check.by || null, humanVerified: false, problems } : { eligible: false, state: 'ai-checked (held)', problems }
   const v = verificationOf(e.status, map)
   if (v.approved) return { eligible: true, state: v.state, basis: v.basis, reviewer: v.reviewer, humanVerified: v.humanVerified, problems }
   return { eligible: false, state: String(e.status || '').toUpperCase() === DRAFT_STATUS ? 'draft' : v.state, problems }

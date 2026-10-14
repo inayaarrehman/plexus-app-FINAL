@@ -1,0 +1,1276 @@
+{
+ "about": "Applied revisions to timed categories (3 Minutes and Race) from the 2026-10-13 difficulty work. AI checked, not human verified.",
+ "entries": {
+  "bank-easy-02": {
+   "kind": "membership",
+   "original": {
+    "title": "QT-prolonging drugs",
+    "tiles": [
+     "Sotalol",
+     "Macrolides",
+     "Fluoroquinolones",
+     "Antipsychotics"
+    ],
+    "explanation": "Each is a well-recognized cause of QT prolongation, raising the risk of torsades de pointes."
+   },
+   "revised": {
+    "title": "QT-prolonging drugs",
+    "tiles": [
+     "Sotalol",
+     "Macrolides",
+     "Fluoroquinolones",
+     "Ondansetron"
+    ],
+    "explanation": "Each prolongs the QT interval, mainly by blocking cardiac potassium channels, raising the risk of torsades de pointes."
+   },
+   "detail": "Drug-induced QT prolongation usually comes from blockade of the delayed rectifier potassium current (hERG/IKr), which slows ventricular repolarization. Classic offenders include class IA and III antiarrhythmics, macrolide and fluoroquinolone antibiotics, antipsychotics, antidepressants, azole antifungals, and antiemetics such as ondansetron. Risk rises with hypokalemia, hypomagnesemia, and use of several QT-prolonging drugs together.",
+   "tileNotes": [
+    "A beta blocker with class III antiarrhythmic activity that blocks potassium channels and directly prolongs repolarization.",
+    "Macrolide antibiotics such as erythromycin and azithromycin block the delayed rectifier potassium current and prolong the QT interval.",
+    "Fluoroquinolones such as levofloxacin and moxifloxacin prolong the QT interval, especially with other risk factors.",
+    "A 5-HT3 antagonist antiemetic that causes dose-related QT prolongation, a standard warning especially with IV dosing."
+   ],
+   "changeSummary": "Replaced Antipsychotics with Ondansetron.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Ondansetron is a standard QT-prolonging drug and replacing the broad Antipsychotics class adds reasoning."
+   }
+  },
+  "bank-easy-13": {
+   "kind": "membership",
+   "original": {
+    "title": "Causes of acute pancreatitis",
+    "tiles": [
+     "Gallstones",
+     "Alcohol use",
+     "Hypertriglyceridemia",
+     "Hypercalcemia"
+    ],
+    "explanation": "Each is a well-established trigger of acinar cell injury and premature enzyme activation in the pancreas."
+   },
+   "revised": {
+    "title": "Causes of acute pancreatitis",
+    "tiles": [
+     "Gallstones",
+     "Azathioprine",
+     "Hypertriglyceridemia",
+     "Hypercalcemia"
+    ],
+    "explanation": "Each is an established cause of acute pancreatitis through acinar cell injury and premature activation of pancreatic enzymes."
+   },
+   "detail": "Gallstones and alcohol are the two most common causes, followed by metabolic causes (hypertriglyceridemia, hypercalcemia), drugs, ERCP, trauma, and infections such as mumps. Azathioprine is one of the best-established drug causes, usually within the first weeks of therapy. Drug-induced pancreatitis is a diagnosis to consider once gallstones and alcohol are excluded.",
+   "tileNotes": [
+    "The most common cause: a stone obstructing the ampulla triggers pancreatitis.",
+    "A thiopurine immunosuppressant that is a well-documented drug cause of acute pancreatitis, typically early in treatment.",
+    "Severe elevation (often above 1000 mg/dL) directly injures acinar cells.",
+    "Elevated calcium can activate trypsinogen prematurely within the pancreas."
+   ],
+   "changeSummary": "Replaced Alcohol use with Azathioprine.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Azathioprine is a classic drug cause of acute pancreatitis; set remains fair even without alcohol."
+   }
+  },
+  "bank-easy-15": {
+   "kind": "membership",
+   "original": {
+    "title": "Cyanotic congenital heart disease",
+    "tiles": [
+     "Tetralogy of Fallot",
+     "Transposition of the great arteries",
+     "Truncus arteriosus",
+     "Tricuspid atresia"
+    ],
+    "explanation": "Each allows deoxygenated blood to reach the systemic circulation, causing cyanosis from birth or early infancy."
+   },
+   "revised": {
+    "title": "Cyanotic congenital heart disease",
+    "tiles": [
+     "Tetralogy of Fallot",
+     "Transposition of the great arteries",
+     "Hypoplastic left heart syndrome",
+     "Pulmonary atresia"
+    ],
+    "explanation": "Each lets deoxygenated blood reach the systemic circulation, through right-to-left shunting, mixing, or parallel circuits, causing cyanosis in the newborn period or early infancy."
+   },
+   "detail": "Cyanotic lesions send deoxygenated blood to the body. They include the classic 5 Ts (tetralogy, transposition, truncus, tricuspid atresia, total anomalous pulmonary venous return) and others such as pulmonary atresia and hypoplastic left heart syndrome, all targets of newborn pulse oximetry screening for critical congenital heart disease. Left-to-right shunts such as VSD, ASD, and PDA are acyanotic unless Eisenmenger syndrome develops.",
+   "tileNotes": [
+    "Right-to-left shunting through a VSD, worsened by right ventricular outflow obstruction; the most common cyanotic lesion after infancy.",
+    "The aorta and pulmonary artery are switched, so the systemic and pulmonary circuits run in parallel; survival depends on mixing.",
+    "An underdeveloped left heart cannot support the systemic circulation, so systemic flow depends on the ductus, with obligatory mixing of pulmonary venous and systemic venous blood.",
+    "No outflow from the right ventricle to the pulmonary artery, so pulmonary blood flow depends on the ductus and systemic venous blood shunts right to left."
+   ],
+   "changeSummary": "Replaced Truncus arteriosus and Tricuspid atresia with Hypoplastic left heart syndrome and Pulmonary atresia to break the all-T pattern.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "HLHS and pulmonary atresia are critical cyanotic lesions; explanation adjusted because TOF cyanosis often appears after the newborn period."
+   }
+  },
+  "bank-medium-03": {
+   "kind": "membership",
+   "original": {
+    "title": "Gi-coupled receptors",
+    "tiles": [
+     "α2 receptor",
+     "M2 receptor",
+     "D2 receptor",
+     "Somatostatin receptor"
+    ],
+    "explanation": "Each couples to Gi, inhibiting adenylyl cyclase and lowering intracellular cAMP."
+   },
+   "revised": {
+    "title": "Gi-coupled receptors",
+    "tiles": [
+     "α2 receptor",
+     "M2 receptor",
+     "μ-opioid receptor",
+     "Somatostatin receptor"
+    ],
+    "explanation": "Each couples to Gi, inhibiting adenylyl cyclase and lowering intracellular cAMP."
+   },
+   "detail": "Gi-coupled receptors include α2, M2, D2, and many peptide receptors such as opioid and somatostatin receptors. They oppose Gs signaling (β1, β2, D1, H2, V2), which raises cAMP. Opioid receptors also open potassium channels and close presynaptic calcium channels through their G protein subunits, reducing neurotransmitter release.",
+   "tileNotes": [
+    "Presynaptic autoreceptor that inhibits further norepinephrine release via Gi.",
+    "Slows heart rate via Gi in the SA and AV nodes.",
+    "The main target of morphine and other opioids; couples to Gi/o to lower cAMP, open potassium channels, and reduce neurotransmitter release.",
+    "Broadly inhibits hormone release throughout the gut and endocrine system via Gi."
+   ],
+   "changeSummary": "Replaced D2 receptor with μ-opioid receptor to weaken the '2' pattern.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Mu-opioid receptor is a correct Gi/o-coupled receptor and the detail is accurate; gain is modest but real."
+   }
+  },
+  "bank-medium-04": {
+   "kind": "membership",
+   "original": {
+    "title": "Structures traversing the cavernous sinus",
+    "tiles": [
+     "CN III",
+     "CN IV",
+     "CN V1",
+     "CN VI"
+    ],
+    "explanation": "All four pass through the cavernous sinus region, though not identically: CN III, IV, and V1 (along with V2) run in the lateral wall, while CN VI runs freely through the sinus itself alongside the internal carotid artery. This is why CN VI is often the first nerve affected in cavernous sinus pathology."
+   },
+   "revised": {
+    "title": "Structures traversing the cavernous sinus",
+    "tiles": [
+     "Internal carotid artery",
+     "CN III",
+     "CN V2",
+     "CN VI"
+    ],
+    "explanation": "Each passes through the cavernous sinus, either in its lateral wall (CN III, IV, V1, V2) or through the sinus itself (internal carotid artery and CN VI)."
+   },
+   "detail": "The cavernous sinus contains the internal carotid artery with its sympathetic plexus and CN VI in its body, while CN III, CN IV, V1, and V2 run in the lateral wall. Because CN VI lies free next to the carotid, it is often affected first by cavernous sinus thrombosis or a carotid aneurysm. The mandibular division (V3) does not enter the sinus; it exits the skull through the foramen ovale.",
+   "tileNotes": [
+    "Its cavernous segment runs through the body of the sinus, which is why a carotid-cavernous fistula causes a pulsatile, proptotic eye.",
+    "Runs in the lateral wall of the cavernous sinus, the most superior of the wall nerves.",
+    "The maxillary division of the trigeminal nerve runs in the lowest part of the lateral wall before exiting through the foramen rotundum.",
+    "Runs through the body of the sinus beside the internal carotid artery, making it the most vulnerable to compression."
+   ],
+   "changeSummary": "Replaced CN IV and CN V1 with the internal carotid artery and CN V2 to break the cranial nerve number series.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "ICA, CN III, V2 and VI all traverse the cavernous sinus per First Aid; breaking the CN number series adds reasoning."
+   }
+  },
+  "bank-medium-13": {
+   "kind": "wording",
+   "original": {
+    "title": "Causes of eosinophilia",
+    "tiles": [
+     "Parasitic infection",
+     "Asthma",
+     "Drug hypersensitivity reaction",
+     "Eosinophilic granulomatosis with polyangiitis"
+    ],
+    "explanation": "Each is a classic trigger of peripheral eosinophilia, spanning infectious, allergic, drug-related, and autoimmune causes."
+   },
+   "revised": {
+    "title": "Causes of eosinophilia",
+    "tiles": [
+     "Helminth infection",
+     "Asthma",
+     "Drug hypersensitivity reaction",
+     "Eosinophilic granulomatosis with polyangiitis"
+    ],
+    "explanation": "Each is a classic cause of peripheral eosinophilia, spanning infectious, allergic, drug-related, and autoimmune causes."
+   },
+   "detail": "Eosinophils are recruited by IL-5 and type 2 inflammation. Tissue-invasive helminths are the classic infectious cause, while most protozoa (Giardia, malaria) do not cause eosinophilia. Other causes include allergic disease and asthma, drug reactions such as DRESS, vasculitis (EGPA), adrenal insufficiency, and neoplasms such as Hodgkin lymphoma.",
+   "tileNotes": [
+    "Tissue-invasive worms such as Strongyloides and hookworm classically trigger a marked eosinophilic response.",
+    "Type 2 (allergic) airway inflammation drives eosinophil recruitment.",
+    "A hypersensitivity reaction to a drug can trigger eosinophilia, sometimes with rash and organ involvement (DRESS).",
+    "A small-vessel vasculitis with asthma, eosinophilia, and granulomatous inflammation."
+   ],
+   "changeSummary": "Changed 'Parasitic infection' to 'Helminth infection', since protozoa typically do not cause eosinophilia.",
+   "source": "Plexus timed bank",
+   "cosmetic": true,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Helminth infection is the accurate, standard term since most protozoa do not cause eosinophilia; this is an accuracy fix, not cosmetic."
+   }
+  },
+  "bank-hard-07": {
+   "kind": "membership",
+   "original": {
+    "title": "___ phenomenon",
+    "tiles": [
+     "Raynaud",
+     "Koebner",
+     "Arthus",
+     "Somogyi"
+    ],
+    "explanation": "Each eponym is followed by \"phenomenon,\" describing unrelated vascular, dermatologic, immunologic, or endocrine findings."
+   },
+   "revised": {
+    "title": "___ phenomenon",
+    "tiles": [
+     "Raynaud",
+     "Koebner",
+     "Uhthoff",
+     "Somogyi"
+    ],
+    "explanation": "Each eponym is conventionally followed by \"phenomenon,\" describing unrelated vascular, dermatologic, neurologic, or endocrine findings."
+   },
+   "detail": "The link is the shared word, not a shared mechanism. Raynaud phenomenon is digital vasospasm, Koebner phenomenon is lesions at sites of trauma, Uhthoff phenomenon is heat-induced worsening of demyelinating symptoms, and Somogyi phenomenon is rebound morning hyperglycemia. A look-alike is Arthus, which is usually called the Arthus reaction.",
+   "tileNotes": [
+    "Raynaud phenomenon: episodic digital vasospasm triggered by cold or stress.",
+    "Koebner phenomenon: new skin lesions at sites of trauma, seen in psoriasis and lichen planus.",
+    "Uhthoff phenomenon: temporary worsening of neurologic symptoms, such as blurred vision, with heat or exercise in multiple sclerosis.",
+    "Somogyi phenomenon: rebound morning hyperglycemia after nocturnal hypoglycemia, a board classic even though CGM data suggest it is rare."
+   ],
+   "changeSummary": "Replaced Arthus (usually called a reaction) with Uhthoff.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Uhthoff phenomenon is a standard eponym and avoids the Arthus reaction naming problem; minor wording fix to the explanation."
+   }
+  },
+  "bank-hard-11": {
+   "kind": "membership",
+   "original": {
+    "title": "Star-related medical terminology",
+    "tiles": [
+     "Stellate cells",
+     "Starry-sky appearance",
+     "Stellate scar",
+     "Stellate ganglion"
+    ],
+    "explanation": "Each term uses \"star\"-rooted language (stellate/starry) to describe a completely different structure or finding."
+   },
+   "revised": {
+    "title": "Star-related medical terminology",
+    "tiles": [
+     "Astrocytes",
+     "Starry-sky appearance",
+     "Stellate scar",
+     "Asteroid bodies"
+    ],
+    "explanation": "Each term is named for a star or star shape (astro-, aster-, stellate, starry) and describes a completely different structure or finding."
+   },
+   "detail": "The link is the star image, from the Greek astron and Latin stella. Astrocytes are star-shaped glial cells, asteroid bodies are star-shaped inclusions in giant cells, a stellate scar radiates from a central point, and the starry-sky pattern is scattered pale macrophages among dark tumor cells. The terms come from neurology, pulmonary and granulomatous pathology, liver and breast pathology, and hematopathology.",
+   "tileNotes": [
+    "Star-shaped glial cells of the CNS that support neurons and form glial scars; they stain for GFAP.",
+    "Starry-sky appearance: pale tingible-body macrophages scattered among dark lymphoma cells, classic for Burkitt lymphoma.",
+    "A central star-shaped scar seen in focal nodular hyperplasia (and fibrolamellar HCC) of the liver and radial scars of the breast.",
+    "Star-shaped inclusions within multinucleated giant cells of granulomas, classically described in sarcoidosis."
+   ],
+   "changeSummary": "Replaced Stellate cells and Stellate ganglion with Astrocytes and Asteroid bodies to remove the repeated 'Stellate' stem.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Astrocytes and asteroid bodies are genuine star-named terms and remove the repeated 'Stellate' stem; notes are accurate."
+   }
+  },
+  "bank-expert-03": {
+   "kind": "title",
+   "original": {
+    "title": "Excess hormone that suppresses its own upstream signal",
+    "tiles": [
+     "Exogenous corticosteroids",
+     "Levothyroxine overreplacement",
+     "Anabolic steroid use",
+     "Estrogen-containing oral contraceptives"
+    ],
+    "explanation": "Each floods the body with an end-organ hormone (or its analog), which negative-feedback-suppresses the pituitary/hypothalamic signal that would normally drive its own production."
+   },
+   "revised": {
+    "title": "Exogenous hormone that suppresses its own upstream signal",
+    "tiles": [
+     "Glucocorticoid therapy",
+     "Levothyroxine overreplacement",
+     "Anabolic steroid use",
+     "Estrogen-containing oral contraceptives"
+    ],
+    "explanation": "Each supplies an end-organ hormone (or its analog) from outside the body, which suppresses the hypothalamic or pituitary signal that would normally drive its own production."
+   },
+   "detail": "Negative feedback means that a high end-organ hormone level turns down its releasing and trophic hormones. When the hormone is given exogenously, the axis shuts down: ACTH with glucocorticoids, TSH with levothyroxine, and LH and FSH with androgens or estrogen. The clinical results include adrenal insufficiency on abrupt steroid withdrawal, low TSH, testicular atrophy and infertility, and ovulation suppression. Endogenous oversecretion (Graves disease, a cortisol-secreting adenoma) uses the same feedback but is not exogenous.",
+   "tileNotes": [
+    "Long-term exogenous glucocorticoids suppress CRH and ACTH, causing adrenal atrophy and risking adrenal insufficiency on withdrawal.",
+    "Excess thyroid hormone suppresses TSH, the classic cause of a low TSH with a normal gland.",
+    "Exogenous testosterone suppresses GnRH-driven LH and FSH, shutting down endogenous testosterone and sperm production.",
+    "Exogenous estrogen (with progestin) suppresses GnRH-driven FSH and LH, the basis of hormonal contraception."
+   ],
+   "changeSummary": "Added 'Exogenous' to the title and renamed 'Exogenous corticosteroids' to 'Glucocorticoid therapy' so the title word is not repeated in a tile.",
+   "source": "Plexus timed bank",
+   "cosmetic": true,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "cosmetic"
+   }
+  },
+  "bank-expert-05": {
+   "kind": "membership",
+   "original": {
+    "title": "Hormone runs high because the target tissue is resistant",
+    "tiles": [
+     "Insulin resistance",
+     "Pseudohypoparathyroidism",
+     "Androgen insensitivity syndrome",
+     "Nephrogenic diabetes insipidus"
+    ],
+    "explanation": "In each, a hormone level is high not from a primary oversecreting gland but because its target tissue fails to respond, so feedback keeps pushing secretion up."
+   },
+   "revised": {
+    "title": "Hormone runs high because the target tissue is resistant",
+    "tiles": [
+     "Laron syndrome",
+     "Pseudohypoparathyroidism",
+     "Androgen insensitivity syndrome",
+     "Nephrogenic diabetes insipidus"
+    ],
+    "explanation": "In each, a hormone level is high not from a primary oversecreting gland but because its target tissue fails to respond, so feedback keeps pushing secretion up."
+   },
+   "detail": "End-organ resistance produces a picture of hormone deficiency with a high, not low, hormone level. In Laron syndrome GH is high but IGF-1 is low; in pseudohypoparathyroidism PTH is high with low calcium; in androgen insensitivity LH and testosterone are high; and in nephrogenic DI ADH is high with dilute urine. In true deficiency (GH deficiency, hypoparathyroidism, central DI) the hormone itself is low.",
+   "tileNotes": [
+    "A defective GH receptor causes short stature with high GH but low IGF-1.",
+    "End-organ (renal) resistance to PTH keeps PTH high despite low calcium.",
+    "Defective androgen receptors blunt feedback, so LH and testosterone run high despite a female phenotype.",
+    "The kidney does not respond to ADH, so ADH levels rise as the body tries and fails to concentrate urine."
+   ],
+   "changeSummary": "Replaced Insulin resistance with Laron syndrome to remove the title word from the tiles.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Laron syndrome (GH receptor defect, high GH, low IGF-1) is a correct end-organ resistance example and removes the title-word giveaway."
+   }
+  },
+  "bank-migrated-sys-mixed-0003-L1": {
+   "kind": "membership",
+   "original": {
+    "title": "Cyanotic congenital heart defects",
+    "tiles": [
+     "Tetralogy of Fallot",
+     "Transposition of the great arteries",
+     "Truncus arteriosus",
+     "Tricuspid atresia"
+    ],
+    "explanation": "Each lets deoxygenated blood reach the systemic circulation, through right-to-left shunting, mixing, or parallel circuits, causing cyanosis."
+   },
+   "revised": {
+    "title": "Cyanotic congenital heart defects",
+    "tiles": [
+     "Tetralogy of Fallot",
+     "Transposition of the great arteries",
+     "Hypoplastic left heart syndrome",
+     "Pulmonary atresia"
+    ],
+    "explanation": "Each lets deoxygenated blood reach the systemic circulation, through right-to-left shunting, mixing, or parallel circuits, causing cyanosis."
+   },
+   "detail": "Cyanotic lesions send deoxygenated blood to the body. They include the classic 5 Ts (tetralogy, transposition, truncus, tricuspid atresia, total anomalous pulmonary venous return) and others such as pulmonary atresia and hypoplastic left heart syndrome, all targets of newborn pulse oximetry screening for critical congenital heart disease. Left-to-right shunts such as VSD, ASD, and PDA are acyanotic unless Eisenmenger syndrome develops.",
+   "tileNotes": [
+    "The most common cyanotic defect after infancy: right-to-left flow across a VSD due to right ventricular outflow obstruction.",
+    "The aorta and pulmonary artery are swapped, creating two parallel circuits that depend on mixing.",
+    "An underdeveloped left heart cannot support the systemic circulation, so systemic flow depends on the ductus, with obligatory mixing of oxygenated and deoxygenated blood.",
+    "The pulmonary valve is atretic (closed), so pulmonary blood flow depends on the ductus and systemic venous blood shunts right to left."
+   ],
+   "changeSummary": "Replaced Truncus arteriosus and Tricuspid atresia with Hypoplastic left heart syndrome and Pulmonary atresia to break the all-T pattern.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Same sound replacement as bank-easy-15 with an explanation that makes no newborn timing claim; notes are accurate (note it now duplicates bank-easy-15's tiles)."
+   }
+  },
+  "bank-migrated-sys-pulm-0002-L2": {
+   "kind": "membership",
+   "original": {
+    "title": "Causes of an exudative pleural effusion",
+    "tiles": [
+     "Parapneumonic effusion",
+     "Malignancy",
+     "Pulmonary embolism",
+     "Tuberculosis"
+    ],
+    "explanation": "Each directly injures or invades the pleura or lung, increasing capillary permeability and protein-rich fluid leakage."
+   },
+   "revised": {
+    "title": "Causes of an exudative pleural effusion",
+    "tiles": [
+     "Parapneumonic effusion",
+     "Malignancy",
+     "Acute pancreatitis",
+     "Tuberculosis"
+    ],
+    "explanation": "Each inflames or invades the pleura, increasing capillary permeability and producing a protein-rich exudate."
+   },
+   "detail": "Exudates meet Light's criteria (high pleural fluid protein or LDH relative to serum) and come from local pleural inflammation or invasion, or from impaired lymphatic drainage. Transudates come from altered hydrostatic or oncotic pressure, as in heart failure, cirrhosis, and nephrotic syndrome. Acute pancreatitis causes a typically left-sided exudate with high pleural fluid amylase.",
+   "tileNotes": [
+    "Adjacent lung infection inflames the pleura, leaking protein-rich fluid.",
+    "Tumor invasion of the pleura and blocked lymphatic drainage produce an exudate.",
+    "Enzyme-rich inflammation crosses the diaphragm, causing a usually left-sided exudate with high pleural fluid amylase.",
+    "Pleural infection provokes an exudative, lymphocyte-rich effusion with high adenosine deaminase."
+   ],
+   "changeSummary": "Replaced Pulmonary embolism, which sometimes produces a transudate, with Acute pancreatitis.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Pancreatitis reliably gives a left-sided high-amylase exudate, which removes the PE transudate exception."
+   }
+  },
+  "bank-migrated-sys-renal-0001-L1": {
+   "kind": "membership",
+   "original": {
+    "title": "Causes of anion gap metabolic acidosis",
+    "tiles": [
+     "Methanol",
+     "Diabetic ketoacidosis",
+     "Uremia",
+     "Lactic acidosis"
+    ],
+    "explanation": "Each generates an unmeasured acid that consumes bicarbonate, widening the anion gap."
+   },
+   "revised": {
+    "title": "Causes of anion gap metabolic acidosis",
+    "tiles": [
+     "Methanol",
+     "Diabetic ketoacidosis",
+     "Uremia",
+     "Cyanide poisoning"
+    ],
+    "explanation": "Each generates an unmeasured acid that consumes bicarbonate, widening the anion gap."
+   },
+   "detail": "A high anion gap means an unmeasured anion has accumulated, as in the MUDPILES causes: methanol, uremia, DKA, propylene glycol, iron and isoniazid, lactic acidosis, ethylene glycol, and salicylates. Cyanide causes lactic acidosis by blocking cytochrome c oxidase, forcing anaerobic metabolism. Normal anion gap acidosis, by contrast, comes from bicarbonate loss (diarrhea, renal tubular acidosis).",
+   "tileNotes": [
+    "Metabolized to formic acid, an unmeasured acid.",
+    "Ketoacids accumulate as unmeasured acids.",
+    "Retained organic acids, sulfates, and phosphates widen the gap in renal failure.",
+    "Blocks cytochrome c oxidase in the electron transport chain, forcing anaerobic metabolism and causing a high anion gap lactic acidosis."
+   ],
+   "changeSummary": "Replaced Lactic acidosis with Cyanide poisoning.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Cyanide causes high anion gap lactic acidosis (the C in CAT MUDPILES), and the swap requires a reasoning step."
+   }
+  },
+  "bank-migrated-sys-renal-0002-L4": {
+   "kind": "title",
+   "original": {
+    "title": "Matches a microscopy pattern to its disease",
+    "tiles": [
+     "Linear IgG deposition",
+     "'Spike and dome' pattern",
+     "Mesangial IgA deposits",
+     "'Tram-track' basement membrane"
+    ],
+    "explanation": "Each glomerular disease has a signature microscopy or immunofluorescence pattern that essentially IS the diagnosis under the microscope."
+   },
+   "revised": {
+    "title": "Classic glomerular biopsy patterns",
+    "tiles": [
+     "Linear IgG deposition",
+     "'Spike and dome' pattern",
+     "Mesangial IgA deposits",
+     "'Tram-track' basement membrane"
+    ],
+    "explanation": "Each is a signature renal biopsy finding (on immunofluorescence, light, or electron microscopy) that points to a specific glomerular disease."
+   },
+   "detail": "Glomerular diseases are diagnosed on biopsy by combining light microscopy, immunofluorescence, and electron microscopy. Linear IgG marks anti-GBM disease, spike and dome marks membranous nephropathy, mesangial IgA marks IgA nephropathy, and tram-track marks membranoproliferative GN. Serologies such as ANCA, anti-PLA2R, and anti-GBM antibodies support these diagnoses but are blood tests, not biopsy patterns.",
+   "tileNotes": [
+    "Antibodies bind uniformly along the glomerular basement membrane in anti-GBM (Goodpasture) disease.",
+    "Subepithelial immune deposits with basement membrane spikes create this appearance in membranous nephropathy.",
+    "IgA deposits in the mesangium define IgA nephropathy (Berger disease), also seen in IgA vasculitis.",
+    "GBM splitting from mesangial interposition and subendothelial deposits in membranoproliferative GN."
+   ],
+   "changeSummary": "Changed the title from 'Matches a microscopy pattern to its disease' to 'Classic glomerular biopsy patterns'.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "The new title is clearer and accurate for all four biopsy findings; mainly a clarity improvement over awkward original wording."
+   }
+  },
+  "bank-migrated-sys-renal-0003-L2": {
+   "kind": "membership",
+   "original": {
+    "title": "Causes of hypokalemia",
+    "tiles": [
+     "Loop or thiazide diuretics",
+     "Vomiting",
+     "Primary hyperaldosteronism",
+     "Insulin therapy"
+    ],
+    "explanation": "Each either drives renal/GI potassium loss or shifts potassium into cells."
+   },
+   "revised": {
+    "title": "Causes of hypokalemia",
+    "tiles": [
+     "Loop or thiazide diuretics",
+     "Hypomagnesemia",
+     "Albuterol",
+     "Insulin therapy"
+    ],
+    "explanation": "Each lowers serum potassium, either by increasing renal potassium loss or by shifting potassium into cells."
+   },
+   "detail": "Hypokalemia comes from intracellular shift (insulin, beta-2 agonists, alkalosis), renal loss (diuretics, hyperaldosteronism, hypomagnesemia), or GI loss. Low magnesium releases the block on ROMK channels in the collecting duct, causing renal potassium wasting that will not correct until magnesium is replaced. Beta-2 agonists and insulin both stimulate the Na+/K+-ATPase to move potassium into cells.",
+   "tileNotes": [
+    "Increased distal sodium delivery and secondary aldosterone drive renal potassium wasting.",
+    "Low intracellular magnesium removes the normal inhibition of ROMK channels, increasing renal potassium secretion; potassium stays low until magnesium is repleted.",
+    "A beta-2 agonist that stimulates the Na+/K+-ATPase and shifts potassium into cells.",
+    "Insulin stimulates the Na+/K+-ATPase and drives potassium into cells."
+   ],
+   "changeSummary": "Replaced Vomiting and Primary hyperaldosteronism with Hypomagnesemia and Albuterol to remove the overlap with metabolic alkalosis.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Hypomagnesemia and albuterol are textbook causes of hypokalemia and the ROMK and Na+/K+-ATPase notes are correct."
+   }
+  },
+  "bank-migrated-sys-renal-0003-L4": {
+   "kind": "title",
+   "original": {
+    "title": "Diabetes insipidus vs SIADH",
+    "tiles": [
+     "Dilute urine despite high serum osmolality",
+     "Concentrated urine despite low serum osmolality",
+     "Responds to desmopressin",
+     "Improves with free water restriction"
+    ],
+    "explanation": "DI and SIADH are opposite water-balance disorders, and each finding here maps to exactly one of them."
+   },
+   "revised": {
+    "title": "Central diabetes insipidus vs SIADH",
+    "tiles": [
+     "Dilute urine despite high serum osmolality",
+     "Concentrated urine despite low serum osmolality",
+     "Responds to desmopressin",
+     "Improves with free water restriction"
+    ],
+    "explanation": "Central DI and SIADH are opposite disorders of ADH secretion, and each finding here maps to exactly one of them."
+   },
+   "detail": "In central DI the posterior pituitary releases too little ADH, so the kidney cannot concentrate urine and serum osmolality rises; desmopressin replaces the missing hormone. In SIADH excess ADH concentrates urine and causes dilutional hyponatremia, which improves with fluid restriction. Nephrogenic DI also produces dilute urine with high serum osmolality but does not respond to desmopressin, which is why the title specifies central DI.",
+   "tileNotes": [
+    "Deficient ADH secretion means the kidney cannot concentrate urine, which is central diabetes insipidus.",
+    "Excess ADH action inappropriately concentrates urine, which is SIADH.",
+    "Central DI improves because the missing ADH is being replaced.",
+    "Reducing water intake corrects the dilutional hyponatremia of SIADH."
+   ],
+   "changeSummary": "Specified central diabetes insipidus in the title, since nephrogenic DI does not respond to desmopressin.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Specifying central DI correctly fixes the desmopressin tile; tileNote 1 softened since central DI can be partial."
+   }
+  },
+  "bank-migrated-sys-neuro-0001-L2": {
+   "kind": "membership",
+   "original": {
+    "title": "Signs of an anterior cerebral artery stroke",
+    "tiles": [
+     "Contralateral leg weakness, face/arm-sparing",
+     "Urinary incontinence",
+     "Personality/behavioral changes",
+     "Gait apraxia"
+    ],
+    "explanation": "The ACA supplies the medial frontal and parietal cortex: leg motor cortex and frontal lobe structures governing behavior and continence."
+   },
+   "revised": {
+    "title": "Signs of an anterior cerebral artery stroke",
+    "tiles": [
+     "Contralateral leg weakness, face/arm-sparing",
+     "Urinary incontinence",
+     "Personality/behavioral changes",
+     "Abulia"
+    ],
+    "explanation": "The ACA supplies the medial frontal and parietal cortex: the leg motor area and the frontal structures governing behavior, initiative, and continence."
+   },
+   "detail": "ACA infarcts cause contralateral leg weakness and sensory loss with relative sparing of the face and arm, which are supplied by the MCA. Medial frontal involvement causes urinary incontinence, abulia (lack of initiative), and personality change. Gait apraxia with incontinence instead suggests normal pressure hydrocephalus, and aphasia or face/arm weakness suggests the MCA.",
+   "tileNotes": [
+    "The ACA supplies the medial motor cortex representing the leg.",
+    "Medial frontal lobe involvement disrupts cortical inhibition of the bladder.",
+    "Frontal lobe territory governs behavior and executive function.",
+    "Loss of will and spontaneity (slowed, reduced speech and action) from medial frontal and cingulate damage, a classic ACA finding."
+   ],
+   "changeSummary": "Replaced Gait apraxia, which points to normal pressure hydrocephalus, with Abulia.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Abulia is a classic medial frontal ACA sign and removes the NPH-pointing gait apraxia tile."
+   }
+  },
+  "bank-migrated-sys-neuro-0001-L4": {
+   "kind": "wording",
+   "original": {
+    "title": "Named brainstem syndromes",
+    "tiles": [
+     "Locked-in syndrome",
+     "Lateral medullary (Wallenberg) syndrome",
+     "Internuclear ophthalmoplegia",
+     "Lateral pontine/cerebellar syndrome"
+    ],
+    "explanation": "Brainstem lesions produce very specific, often 'crossed' findings. The exact combination of cranial nerve and long-tract signs pinpoints the level of the lesion."
+   },
+   "revised": {
+    "title": "Named brainstem syndromes",
+    "tiles": [
+     "Locked-in syndrome",
+     "Lateral medullary (Wallenberg) syndrome",
+     "Internuclear ophthalmoplegia",
+     "Lateral pontine syndrome"
+    ],
+    "explanation": "Brainstem lesions produce very specific, often crossed findings, and the combination of cranial nerve and long-tract signs pinpoints the level of the lesion."
+   },
+   "detail": "Each syndrome reflects a specific vascular territory or tract. Locked-in syndrome is a ventral pontine (basilar) lesion, lateral medullary syndrome is PICA territory, lateral pontine syndrome is AICA territory, and internuclear ophthalmoplegia is a lesion of the medial longitudinal fasciculus. Lateral pontine and lateral medullary syndromes look alike (vertigo, ataxia, crossed sensory loss), but facial paralysis and hearing loss point to the pons, while dysphagia and hoarseness point to the medulla.",
+   "tileNotes": [
+    "A ventral pontine (basilar artery) lesion spares consciousness but severs nearly all motor output except vertical gaze and blinking.",
+    "PICA territory: crossed pain and temperature loss, dysphagia, hoarseness, vertigo, ipsilateral Horner syndrome, and ataxia.",
+    "A lesion in the medial longitudinal fasciculus disconnects the two eyes' horizontal gaze coordination.",
+    "AICA territory: ipsilateral facial paralysis, hearing loss, vertigo, and ataxia with crossed sensory loss."
+   ],
+   "changeSummary": "Changed the nonstandard 'Lateral pontine/cerebellar syndrome' to the standard 'Lateral pontine syndrome'.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Lateral pontine syndrome is the standard term with the same meaning, and the AICA vs PICA notes are correct."
+   }
+  },
+  "bank-migrated-sys-neuro-0002-L2": {
+   "kind": "membership",
+   "original": {
+    "title": "Causes of chorea",
+    "tiles": [
+     "Huntington disease",
+     "Sydenham chorea",
+     "Levodopa-induced dyskinesia",
+     "Systemic lupus erythematosus"
+    ],
+    "explanation": "Each involves basal ganglia dysfunction (structural, autoimmune, or drug-induced) producing involuntary, dance-like movements."
+   },
+   "revised": {
+    "title": "Causes of chorea",
+    "tiles": [
+     "Huntington disease",
+     "Acute rheumatic fever",
+     "Levodopa-induced dyskinesia",
+     "Systemic lupus erythematosus"
+    ],
+    "explanation": "Each causes basal ganglia dysfunction (degenerative, autoimmune, or drug-induced) that produces involuntary, irregular, dance-like movements."
+   },
+   "detail": "Chorea reflects reduced indirect-pathway output or excess dopaminergic activity in the striatum. Causes include Huntington disease, Sydenham chorea in acute rheumatic fever, dopaminergic drugs, SLE and antiphospholipid syndrome, Wilson disease, and pregnancy (chorea gravidarum). Sydenham chorea is a major Jones criterion and may appear months after the streptococcal infection.",
+   "tileNotes": [
+    "CAG repeat expansion causes striatal neurodegeneration and chorea.",
+    "Sydenham chorea, a major Jones criterion, results from post-streptococcal antibodies that cross-react with basal ganglia neurons.",
+    "Long-term dopaminergic therapy can itself produce chorea-like movements.",
+    "Antiphospholipid or other autoantibodies can affect the basal ganglia."
+   ],
+   "changeSummary": "Replaced Sydenham chorea with Acute rheumatic fever to remove the title word.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Acute rheumatic fever causes Sydenham chorea, so the tile is correct and requires one more reasoning step."
+   }
+  },
+  "bank-migrated-sys-pharm-0002-L2": {
+   "kind": "membership",
+   "original": {
+    "title": "Alpha blockade: uses and effects",
+    "tiles": [
+     "Benign prostatic hyperplasia",
+     "Hypertensive emergency (phentolamine)",
+     "Orthostatic hypotension",
+     "Reflex tachycardia"
+    ],
+    "explanation": "Blocking alpha-1 receptors relaxes smooth muscle (vasculature and prostate) but also removes vasoconstrictive tone, causing predictable side effects."
+   },
+   "revised": {
+    "title": "Alpha blockade: uses and effects",
+    "tiles": [
+     "Benign prostatic hyperplasia",
+     "Pheochromocytoma",
+     "Orthostatic hypotension",
+     "Reflex tachycardia"
+    ],
+    "explanation": "Alpha-1 blockade relaxes smooth muscle in the vasculature and prostate, which gives its uses, but also removes vasoconstrictive tone, which gives its predictable side effects."
+   },
+   "detail": "Selective alpha-1 blockers (tamsulosin, terazosin, prazosin) treat BPH, while nonselective blockers treat catecholamine excess: phenoxybenzamine before pheochromocytoma surgery and phentolamine for catecholamine crises. Loss of vascular tone causes first-dose orthostatic hypotension and baroreceptor-mediated reflex tachycardia, which is worse with nonselective agents because alpha-2 blockade increases norepinephrine release.",
+   "tileNotes": [
+    "Relaxes prostatic and bladder neck smooth muscle, easing urinary flow.",
+    "Irreversible alpha blockade with phenoxybenzamine is given before surgery to prevent a hypertensive crisis from released catecholamines; a beta blocker is added only after alpha blockade.",
+    "Loss of vasoconstrictive tone on standing drops blood pressure.",
+    "Vasodilation triggers baroreceptor-mediated compensatory tachycardia."
+   ],
+   "changeSummary": "Replaced 'Hypertensive emergency (phentolamine)' with Pheochromocytoma.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Pheochromocytoma is a classic alpha-blockade indication and the phenoxybenzamine-before-beta-blocker note is correct."
+   }
+  },
+  "bank-ext-007": {
+   "kind": "membership",
+   "original": {
+    "title": "Features of anaphylaxis",
+    "tiles": [
+     "Urticaria",
+     "Bronchospasm",
+     "Hypotension",
+     "Angioedema"
+    ],
+    "explanation": "Mast cell and basophil degranulation (classically IgE-mediated, type I) releases histamine and other mediators, producing these systemic findings."
+   },
+   "revised": {
+    "title": "Features of anaphylaxis",
+    "tiles": [
+     "Crampy abdominal pain",
+     "Bronchospasm",
+     "Hypotension",
+     "Angioedema"
+    ],
+    "explanation": "Mast cell and basophil degranulation (classically IgE-mediated, type I) releases histamine and other mediators, producing these systemic findings."
+   },
+   "detail": "After exposure to a likely allergen, anaphylaxis is diagnosed clinically by the rapid onset of two or more of: skin or mucosal involvement, respiratory compromise, hypotension, or persistent GI symptoms; hypotension alone suffices after a known allergen. Mediators cause vasodilation, capillary leak, and smooth muscle contraction in the airways and gut. Skin findings are absent in a minority of cases, so GI symptoms and hypotension matter for diagnosis. Treatment is intramuscular epinephrine.",
+   "tileNotes": [
+    "Smooth muscle contraction in the gut causes crampy pain and vomiting; persistent GI symptoms are a diagnostic criterion.",
+    "Smooth muscle constriction of the airways causes wheezing.",
+    "Vasodilation and capillary leak drop blood pressure (distributive shock).",
+    "Deep dermal or mucosal swelling, dangerous when it involves the airway."
+   ],
+   "changeSummary": "Replaced Urticaria with Crampy abdominal pain.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "GI symptoms are a standard anaphylaxis feature; detail corrected because diagnosis needs two or more organ systems, not any one."
+   }
+  },
+  "bank-ext-008": {
+   "kind": "membership",
+   "original": {
+    "title": "Features of osteoarthritis",
+    "tiles": [
+     "Heberden nodes",
+     "Bouchard nodes",
+     "Joint space narrowing",
+     "Osteophytes"
+    ],
+    "explanation": "Non-inflammatory \"wear-and-tear\" cartilage loss produces these clinical and radiographic findings."
+   },
+   "revised": {
+    "title": "Features of osteoarthritis",
+    "tiles": [
+     "Heberden nodes",
+     "First CMC joint involvement",
+     "Subchondral sclerosis",
+     "Osteophytes"
+    ],
+    "explanation": "Non-inflammatory cartilage degeneration produces these characteristic joint distributions and radiographic findings."
+   },
+   "detail": "Osteoarthritis affects the DIP and PIP joints, the base of the thumb (first CMC), and weight-bearing joints, while sparing the MCP joints and wrists that RA favors. Radiographs show asymmetric joint space narrowing, osteophytes, subchondral sclerosis, and subchondral cysts. RA instead shows periarticular osteopenia and marginal erosions.",
+   "tileNotes": [
+    "Bony enlargement of the distal interphalangeal joints.",
+    "Arthritis at the base of the thumb is a classic osteoarthritis site, whereas RA favors the MCP joints and wrist.",
+    "Dense, thickened bone beneath worn cartilage, a classic osteoarthritis radiographic sign.",
+    "Reactive bony outgrowths at joint margins."
+   ],
+   "changeSummary": "Replaced Bouchard nodes and Joint space narrowing with First CMC joint involvement and Subchondral sclerosis.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "First CMC involvement and subchondral sclerosis are classic OA features and the set now requires distinguishing OA from RA."
+   }
+  },
+  "bank-ext-021": {
+   "kind": "membership",
+   "original": {
+    "title": "Associations of obstructive sleep apnea",
+    "tiles": [
+     "Obesity",
+     "Systemic hypertension",
+     "Daytime somnolence",
+     "Loud snoring"
+    ],
+    "explanation": "Repetitive upper-airway collapse during sleep produces these clinical features and cardiovascular risk."
+   },
+   "revised": {
+    "title": "Associations of obstructive sleep apnea",
+    "tiles": [
+     "Obesity",
+     "Systemic hypertension",
+     "Daytime somnolence",
+     "Atrial fibrillation"
+    ],
+    "explanation": "Repetitive upper-airway collapse during sleep produces these clinical features and cardiovascular consequences."
+   },
+   "detail": "Obesity is the main risk factor for OSA. Recurrent hypoxia, sympathetic surges, and intrathoracic pressure swings promote systemic hypertension, pulmonary hypertension, and arrhythmias, especially atrial fibrillation. Fragmented sleep causes daytime somnolence. Untreated OSA lowers the success of AF rhythm control, so screening for OSA is reasonable in patients with AF.",
+   "tileNotes": [
+    "The leading risk factor via airway soft-tissue loading.",
+    "Recurrent hypoxia and sympathetic surges drive resistant hypertension.",
+    "Fragmented sleep causes excessive daytime sleepiness.",
+    "Hypoxia, sympathetic surges, and atrial stretch from negative intrathoracic pressure promote atrial fibrillation."
+   ],
+   "changeSummary": "Replaced Loud snoring with Atrial fibrillation.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "AF is a well-established OSA association; detail softened because guidelines call OSA screening in AF reasonable rather than mandatory."
+   }
+  },
+  "bank-ext-025": {
+   "kind": "membership",
+   "original": {
+    "title": "Features of Cushing syndrome",
+    "tiles": [
+     "Moon facies",
+     "Central obesity",
+     "Purple abdominal striae",
+     "Proximal muscle weakness"
+    ],
+    "explanation": "Chronic cortisol excess drives fat redistribution, protein catabolism and skin thinning."
+   },
+   "revised": {
+    "title": "Features of Cushing syndrome",
+    "tiles": [
+     "Osteoporosis",
+     "Central obesity",
+     "Purple abdominal striae",
+     "Proximal muscle weakness"
+    ],
+    "explanation": "Chronic cortisol excess drives fat redistribution, protein catabolism, bone loss, and skin thinning."
+   },
+   "detail": "Cortisol excess causes central obesity, moon facies, a dorsocervical fat pad, wide purple striae, easy bruising, proximal myopathy, hypertension, hyperglycemia, and osteoporosis. Cortisol suppresses osteoblast function and calcium absorption, so fragility fractures can be a presenting sign. Proximal weakness, purple striae, and easy bruising best distinguish Cushing syndrome from simple obesity.",
+   "tileNotes": [
+    "Cortisol inhibits osteoblasts and intestinal calcium absorption, causing bone loss and fragility fractures.",
+    "Truncal fat deposition with thin extremities.",
+    "Thinned skin over stretched, catabolized tissue.",
+    "Cortisol-driven proteolysis weakens proximal muscles."
+   ],
+   "changeSummary": "Replaced Moon facies with Osteoporosis.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Osteoporosis is a textbook Cushing feature and the mechanism note is correct."
+   }
+  },
+  "bank-ext-027": {
+   "kind": "membership",
+   "original": {
+    "title": "Causes of microcytic anemia",
+    "tiles": [
+     "Iron deficiency",
+     "Thalassemia",
+     "Anemia of chronic disease",
+     "Sideroblastic anemia"
+    ],
+    "explanation": "Each impairs hemoglobin production, producing small (low-MCV) red cells."
+   },
+   "revised": {
+    "title": "Causes of microcytic anemia",
+    "tiles": [
+     "Iron deficiency",
+     "Thalassemia",
+     "Anemia of chronic disease",
+     "Lead poisoning"
+    ],
+    "explanation": "Each impairs hemoglobin production (heme or globin synthesis), producing small, low-MCV red cells."
+   },
+   "detail": "Microcytic anemia results from impaired heme or globin synthesis: iron deficiency, thalassemia, anemia of chronic disease, lead poisoning, and sideroblastic anemia. Lead inhibits ferrochelatase and ALA dehydratase, blocking heme synthesis, and causes basophilic stippling. Macrocytic causes such as B12 or folate deficiency instead impair DNA synthesis.",
+   "tileNotes": [
+    "Insufficient iron for heme synthesis; the most common cause.",
+    "Reduced globin chain synthesis.",
+    "Hepcidin-driven iron sequestration limits erythropoiesis (often normocytic, can be microcytic).",
+    "Lead inhibits ferrochelatase and ALA dehydratase, blocking heme synthesis; basophilic stippling is characteristic."
+   ],
+   "changeSummary": "Replaced Sideroblastic anemia with Lead poisoning.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Lead poisoning is a First Aid microcytic cause and the ferrochelatase and ALA dehydratase note is correct."
+   }
+  },
+  "bank-ext-037": {
+   "kind": "membership",
+   "original": {
+    "title": "Conditions associated with berry aneurysms",
+    "tiles": [
+     "Autosomal dominant polycystic kidney disease",
+     "Ehlers-Danlos syndrome",
+     "Marfan syndrome",
+     "Coarctation of the aorta"
+    ],
+    "explanation": "Each predisposes to saccular (berry) aneurysms of the circle of Willis and subarachnoid hemorrhage."
+   },
+   "revised": {
+    "title": "Conditions associated with berry aneurysms",
+    "tiles": [
+     "ADPKD",
+     "Ehlers-Danlos syndrome",
+     "Fibromuscular dysplasia",
+     "Coarctation of the aorta"
+    ],
+    "explanation": "Each predisposes to saccular (berry) aneurysms of the circle of Willis and subarachnoid hemorrhage."
+   },
+   "detail": "Berry aneurysms form at arterial branch points in the circle of Willis, most often the anterior communicating artery. Inherited and acquired arterial wall diseases raise the risk: ADPKD, vascular Ehlers-Danlos syndrome, fibromuscular dysplasia, and coarctation of the aorta. Smoking and hypertension are the main modifiable risks. Charcot-Bouchard microaneurysms, by contrast, are small aneurysms of deep penetrating arteries in chronic hypertension.",
+   "tileNotes": [
+    "Autosomal dominant polycystic kidney disease is the classic association; high-risk patients are screened.",
+    "Especially the vascular type, where defective type III collagen weakens arterial walls.",
+    "A nonatherosclerotic arteriopathy (classically renal and carotid, string-of-beads) with a well-established higher rate of intracranial aneurysms.",
+    "Associated with berry aneurysms (and a bicuspid aortic valve)."
+   ],
+   "changeSummary": "Replaced Marfan syndrome, whose association is debated, with Fibromuscular dysplasia, and shortened tile 1 to the standard abbreviation ADPKD for timed play.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Fibromuscular dysplasia has a well-established intracranial aneurysm association, replacing the debated Marfan link; ADPKD abbreviation keeps meaning."
+   }
+  },
+  "bank-ext-084": {
+   "kind": "wording",
+   "original": {
+    "title": "ANCA-associated vasculitides",
+    "tiles": [
+     "Granulomatosis with polyangiitis",
+     "Microscopic polyangiitis",
+     "Eosinophilic granulomatosis with polyangiitis",
+     "Pauci-immune crescentic glomerulonephritis"
+    ],
+    "explanation": "Each is a small-vessel vasculitis associated with ANCA and little/no immune-complex deposition (pauci-immune)."
+   },
+   "revised": {
+    "title": "ANCA-associated vasculitides",
+    "tiles": [
+     "Granulomatosis with polyangiitis",
+     "Microscopic polyangiitis",
+     "Churg-Strauss syndrome",
+     "Pauci-immune crescentic glomerulonephritis"
+    ],
+    "explanation": "Each is a small-vessel vasculitis classified with the ANCA-associated vasculitides, with little or no immune-complex deposition (pauci-immune)."
+   },
+   "detail": "The ANCA-associated vasculitides are granulomatosis with polyangiitis, microscopic polyangiitis, eosinophilic granulomatosis with polyangiitis (Churg-Strauss syndrome), and renal-limited pauci-immune crescentic GN. They differ from immune-complex vasculitis (IgA vasculitis, cryoglobulinemia) and anti-GBM disease by the absence of significant immune deposits on immunofluorescence.",
+   "tileNotes": [
+    "c-ANCA/anti-PR3; upper airway, lung, and kidney involvement.",
+    "p-ANCA/anti-MPO; kidney and lung without granulomas.",
+    "The eponym for eosinophilic granulomatosis with polyangiitis: asthma, eosinophilia, and granulomas; p-ANCA is positive in only a minority.",
+    "Renal-limited ANCA vasculitis: glomerular crescents with few or no immune deposits."
+   ],
+   "changeSummary": "Changed 'Eosinophilic granulomatosis with polyangiitis' to its eponym 'Churg-Strauss syndrome' to break the triple 'polyangiitis' stem.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Churg-Strauss syndrome is the standard eponym with identical meaning and breaks the triple polyangiitis stem."
+   }
+  },
+  "bank-ext-090": {
+   "kind": "membership",
+   "original": {
+    "title": "Barrier methods of contraception",
+    "tiles": [
+     "Male condom",
+     "Female condom",
+     "Diaphragm",
+     "Cervical cap"
+    ],
+    "explanation": "Each physically blocks sperm from reaching the egg rather than acting hormonally, the defining feature of barrier contraception."
+   },
+   "revised": {
+    "title": "Barrier methods of contraception",
+    "tiles": [
+     "Male condom",
+     "Contraceptive sponge",
+     "Diaphragm",
+     "Cervical cap"
+    ],
+    "explanation": "Each physically blocks sperm from reaching the egg rather than acting hormonally, the defining feature of barrier contraception."
+   },
+   "detail": "Barrier methods include male and female condoms, the diaphragm, the cervical cap, and the contraceptive sponge, usually combined with spermicide. They work only at the time of intercourse and have higher typical-use failure rates than hormonal methods or IUDs. Only condoms reliably reduce STI transmission.",
+   "tileNotes": [
+    "A sheath worn on the penis; also reduces STI transmission.",
+    "A spermicide-containing foam sponge placed against the cervix that blocks and inactivates sperm.",
+    "A dome placed over the cervix, used with spermicide.",
+    "A smaller cap fitted snugly over the cervix, used with spermicide."
+   ],
+   "changeSummary": "Replaced Female condom with Contraceptive sponge.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "The contraceptive sponge is a standard barrier method and the notes are accurate."
+   }
+  },
+  "bank-ext-096": {
+   "kind": "wording",
+   "original": {
+    "title": "Features of HELLP syndrome",
+    "tiles": [
+     "Hemolysis",
+     "Elevated liver enzymes",
+     "Low platelets",
+     "Right upper quadrant pain"
+    ],
+    "explanation": "HELLP is a severe variant of preeclampsia; its name is its triad of lab findings, and RUQ pain reflects the hepatic involvement."
+   },
+   "revised": {
+    "title": "Features of HELLP syndrome",
+    "tiles": [
+     "Microangiopathic hemolysis",
+     "Elevated transaminases",
+     "Thrombocytopenia",
+     "Right upper quadrant pain"
+    ],
+    "explanation": "HELLP is a severe variant of preeclampsia defined by hemolysis, elevated liver enzymes, and low platelets, and RUQ pain reflects the hepatic involvement."
+   },
+   "detail": "HELLP syndrome involves endothelial injury with microangiopathic hemolysis (schistocytes, high LDH, low haptoglobin), hepatocellular injury, and platelet consumption. RUQ or epigastric pain comes from liver swelling stretching the capsule and can precede hepatic hematoma or rupture. Definitive treatment is delivery. TTP and HUS also cause microangiopathic hemolysis and thrombocytopenia but are not tied to pregnancy-related liver injury.",
+   "tileNotes": [
+    "Red cells fragment in damaged small vessels: schistocytes, high LDH, low haptoglobin.",
+    "Hepatic involvement raises AST and ALT.",
+    "Platelet consumption produces a low platelet count.",
+    "Hepatic swelling or ischemia causes RUQ or epigastric pain."
+   ],
+   "changeSummary": "Reworded the first three tiles to standard terms ('Microangiopathic hemolysis', 'Elevated transaminases', 'Thrombocytopenia') so they no longer spell the acronym.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "The standard terms keep each tile's meaning and remove the acronym giveaway; notes are accurate."
+   }
+  },
+  "bank-ext-101": {
+   "kind": "title",
+   "original": {
+    "title": "Psychiatric drugs needing serum or lab monitoring",
+    "tiles": [
+     "Lithium",
+     "Valproate",
+     "Carbamazepine",
+     "Clozapine"
+    ],
+    "explanation": "Each has a narrow therapeutic window or a serious dose-independent toxicity, so safe use requires ongoing blood monitoring."
+   },
+   "revised": {
+    "title": "Psychiatric drugs needing drug levels or blood counts",
+    "tiles": [
+     "Lithium",
+     "Valproate",
+     "Carbamazepine",
+     "Clozapine"
+    ],
+    "explanation": "Each needs routine serum drug levels or blood count monitoring because of a narrow therapeutic window or a serious hematologic toxicity."
+   },
+   "detail": "Lithium, valproate, and carbamazepine are monitored with serum drug levels, and carbamazepine and valproate also need blood counts (agranulocytosis and aplastic anemia, thrombocytopenia). Clozapine requires scheduled absolute neutrophil counts because of agranulocytosis. Other second-generation antipsychotics need metabolic monitoring (glucose, lipids, weight) but not levels or blood counts.",
+   "tileNotes": [
+    "Narrow therapeutic index; monitor levels plus renal and thyroid function.",
+    "Monitor drug levels, liver enzymes, and platelets (also teratogenic).",
+    "Monitor levels and CBC (risk of agranulocytosis and aplastic anemia); induces its own metabolism.",
+    "Requires scheduled absolute neutrophil counts due to risk of agranulocytosis."
+   ],
+   "changeSummary": "Narrowed the title from 'serum or lab monitoring' to 'drug levels or blood counts'.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Narrowed title now excludes metabolic monitoring of other antipsychotics, and all four tiles fit exactly."
+   }
+  },
+  "bank-ext-112": {
+   "kind": "title",
+   "original": {
+    "title": "Skin cancers",
+    "tiles": [
+     "Basal cell carcinoma",
+     "Squamous cell carcinoma",
+     "Melanoma",
+     "Merkel cell carcinoma"
+    ],
+    "explanation": "All are skin malignancies linked to UV exposure, ranging from the most common and indolent (BCC) to the most aggressive (melanoma, Merkel cell). Merkel cell carcinoma is also driven by a polyomavirus."
+   },
+   "revised": {
+    "title": "UV-associated skin cancers",
+    "tiles": [
+     "Basal cell carcinoma",
+     "Squamous cell carcinoma",
+     "Melanoma",
+     "Merkel cell carcinoma"
+    ],
+    "explanation": "Each is a skin malignancy for which ultraviolet exposure is a major risk factor, ranging from the most common and indolent (BCC) to aggressive tumors (melanoma, Merkel cell)."
+   },
+   "detail": "Ultraviolet light damages keratinocyte and melanocyte DNA, forming pyrimidine dimers, and is the main risk factor for BCC, SCC, and melanoma. Merkel cell carcinoma is linked to both UV damage and Merkel cell polyomavirus and is more common in immunosuppressed patients. Kaposi sarcoma (HHV-8), mycosis fungoides (cutaneous T-cell lymphoma), and dermatofibrosarcoma protuberans are skin cancers that are not UV-driven.",
+   "tileNotes": [
+    "Most common; pearly papule with rolled borders and telangiectasias; rarely metastasizes.",
+    "Ulcerated or scaly lesion that can arise from actinic keratosis; can metastasize.",
+    "Pigmented lesion (ABCDE); prognosis by Breslow depth; high metastatic potential.",
+    "Rare, aggressive neuroendocrine tumor linked to UV damage and Merkel cell polyomavirus."
+   ],
+   "changeSummary": "Added 'UV-associated' to the title.",
+   "source": "Plexus timed bank",
+   "cosmetic": false,
+   "review": {
+    "status": "AI_REVISION_CHECKED",
+    "basis": "ai-revision-check",
+    "reviewer": "Claude (AI), two independent passes: finalize, then a separate check",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "UV is a major risk factor for all four, and the narrower title excludes non-UV skin cancers such as Kaposi sarcoma."
+   }
+  }
+ }
+}

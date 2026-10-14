@@ -11,6 +11,7 @@
 
 import { getSupabase, isSupabaseConfigured } from './supabaseClient.js'
 import { snapshotLocal, applySnapshot, mergeSnapshots } from '../utils/progressSync.js'
+import { snapshotInEpoch } from '../utils/contentEpoch.js'
 
 export { isSupabaseConfigured }
 
@@ -65,7 +66,10 @@ export async function syncProgress() {
     cloud = null
   }
 
-  const merged = mergeSnapshots(local, cloud || {})
+  // A cloud save from before a library rebuild (another content epoch) is
+  // set aside: its dates and board ids now point at different puzzles. The
+  // local, already-reset progress replaces it.
+  const merged = mergeSnapshots(local, snapshotInEpoch(cloud) ? cloud : {})
   applySnapshot(merged)
   await pushProgress(merged)
   return merged

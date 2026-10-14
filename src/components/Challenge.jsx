@@ -47,6 +47,30 @@ function topEntry(counts) {
   return entries[0][0]
 }
 
+// Recently served timed categories (this device only; a convenience, not
+// state that must persist). Used by the round builders as a soft avoid list.
+const TIMED_RECENT_KEY = 'plexus.timedRecent.v1'
+const TIMED_RECENT_MAX = 60
+function readTimedRecent() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(TIMED_RECENT_KEY) || '[]')
+    return new Set(Array.isArray(raw) ? raw : [])
+  } catch {
+    return new Set()
+  }
+}
+function rememberTimedRound(r) {
+  try {
+    const ids = [r.categoryId, r.groups?.a?.categoryId, r.groups?.b?.categoryId].filter(Boolean)
+    if (!ids.length) return
+    const prev = JSON.parse(localStorage.getItem(TIMED_RECENT_KEY) || '[]')
+    const next = [...ids, ...(Array.isArray(prev) ? prev : []).filter((x) => !ids.includes(x))].slice(0, TIMED_RECENT_MAX)
+    localStorage.setItem(TIMED_RECENT_KEY, JSON.stringify(next))
+  } catch {
+    /* storage unavailable */
+  }
+}
+
 export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0, onRequestedExit = null }) {
   const [phase, setPhase] = useState('intro') // 'intro' | 'playing' | 'results'
   const [xpResult, setXpResult] = useState(null) // what this session earned (progression)
@@ -240,13 +264,16 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
   const recentRef = useRef([])
   // Relationships already served this session (canonical ids): never repeated.
   const usedRef = useRef(new Set())
+  // Categories served in recent sessions on this device are picked last, so
+  // back-to-back sessions do not keep meeting the same groups.
   const nextRound = () => {
-    const r = composeNextRound(bank, { roundTypes: ROUND_TYPES, recent: recentRef.current, used: usedRef.current, canonicalOf: timedCanonicalId })
+    const r = composeNextRound(bank, { roundTypes: ROUND_TYPES, recent: recentRef.current, used: usedRef.current, canonicalOf: timedCanonicalId, avoid: readTimedRecent() })
     if (!r) {
       finishRef.current()
       return
     }
     roundRelationships(r, bank, timedCanonicalId).forEach((id) => usedRef.current.add(id))
+    rememberTimedRound(r)
     recentRef.current = [{ type: r.type, systems: r.systems, conceptTags: r.conceptTags }, ...recentRef.current].slice(0, 3)
     setRound(r)
     setSelected([])

@@ -1,0 +1,725 @@
+{
+ "about": "Wording-only edits to titles and explanations (tiles and membership unchanged), applied at activation after revisions.json. Original text is kept here.",
+ "entries": {
+  "CARD-004": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Beta-1 selective blockers",
+    "explanation": "These agents preferentially antagonize beta-1 receptors. The source links renal beta-1 blockade to reduced renin release."
+   },
+   "title": "Beta-1 selective blockers",
+   "explanation": "These agents preferentially antagonize beta-1 receptors. Blocking renal beta-1 receptors also reduces renin release.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-005": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Non-antiarrhythmic drugs that can prolong QT",
+    "explanation": "The source lists all four as potential acquired QT-prolonging exposures, which can increase torsades risk."
+   },
+   "title": "Non-antiarrhythmic drugs that can prolong QT",
+   "explanation": "All four can cause acquired QT prolongation, which can increase torsades risk.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-009": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Important adverse effects of ACE inhibitors",
+    "explanation": "These are source-listed adverse effects or pregnancy-related hazards of ACE inhibition."
+   },
+   "title": "Important adverse effects of ACE inhibitors",
+   "explanation": "These are recognized adverse effects or pregnancy-related hazards of ACE inhibition.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-010": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Metabolic adverse effects of thiazides",
+    "explanation": "The source lists hypokalemia, hyponatremia, hyperuricemia and hyperglycemia among thiazide-associated adverse effects."
+   },
+   "title": "Metabolic adverse effects of thiazides",
+   "explanation": "Hypokalemia, hyponatremia, hyperuricemia and hyperglycemia are recognized thiazide-associated adverse effects.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-011": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Causes of dilated cardiomyopathy",
+    "explanation": "The source links these toxic, infectious and nutritional causes to ventricular dilation and systolic dysfunction."
+   },
+   "title": "Recognized causes of dilated cardiomyopathy",
+   "explanation": "These toxic, infectious and nutritional causes can lead to ventricular dilation and systolic dysfunction.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-012": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Conditions that can produce restrictive cardiomyopathy",
+    "explanation": "These are grouped in the source as infiltrative or radiation-related causes of impaired ventricular filling."
+   },
+   "title": "Conditions that can produce restrictive cardiomyopathy",
+   "explanation": "These infiltrative or radiation-related causes impair ventricular filling.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-024": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Settings in which an S3 may be heard",
+    "explanation": "The source lists a physiologic S3 in pregnancy and pathologic S3 associations in volume-loaded or systolically failing ventricles."
+   },
+   "title": "Settings in which an S3 may be heard",
+   "explanation": "An S3 can be physiologic in pregnancy and pathologic in volume-loaded or systolically failing ventricles.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-025": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Conditions associated with an S4",
+    "explanation": "Atrial contraction into a less compliant ventricle can produce S4 in these source-listed conditions."
+   },
+   "title": "Conditions associated with an S4",
+   "explanation": "Atrial contraction into a less compliant ventricle can produce an S4 in each of these conditions.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-027": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Classic patent ductus arteriosus clues",
+    "explanation": "The source links persistent ductal patency to this murmur, runoff physiology and pharmacologic closure in selected premature infants."
+   },
+   "title": "Classic patent ductus arteriosus clues",
+   "explanation": "Persistent ductal patency explains this murmur and runoff physiology, and indomethacin can close the duct in selected premature infants.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-029": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Atrial fibrillation clues",
+    "explanation": "Uncoordinated atrial activity explains absent organized atrial signals, irregular ventricular timing and the source-described pulmonary vein trigger sites."
+   },
+   "title": "Atrial fibrillation clues",
+   "explanation": "Uncoordinated atrial activity explains absent organized atrial signals and irregular ventricular timing. Triggers often arise near the pulmonary vein ostia.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-030": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Typical atrial flutter associations",
+    "explanation": "These source-described features link typical right atrial macro-reentrant flutter to its atrial waveform, common conduction ratio and ablation target."
+   },
+   "title": "Typical atrial flutter associations",
+   "explanation": "Typical flutter is a right atrial macro-reentrant rhythm with a sawtooth waveform, common 2:1 conduction and the cavotricuspid isthmus as its ablation target.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-031": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Wolff-Parkinson-White pre-excitation clues",
+    "explanation": "An accessory atrioventricular pathway causes early ventricular activation and the source-listed sinus-rhythm pre-excitation pattern."
+   },
+   "title": "Wolff-Parkinson-White pre-excitation clues",
+   "explanation": "An accessory atrioventricular pathway causes early ventricular activation and the classic pre-excitation pattern in sinus rhythm.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-033": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Constrictive pericarditis clues",
+    "explanation": "The source links impaired filling from a rigid pericardium to these findings, including accelerated early venous emptying before filling is abruptly limited."
+   },
+   "title": "Constrictive pericarditis clues",
+   "explanation": "A rigid pericardium impairs filling and produces these findings, including rapid early venous emptying before filling is abruptly limited.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-038": {
+   "appliesTo": "library",
+   "original": {
+    "title": "ECG leads viewing the lateral wall",
+    "explanation": "These are grouped in the source as lateral-wall leads used in infarct localization."
+   },
+   "title": "ECG leads viewing the lateral wall",
+   "explanation": "Changes in these leads localize infarction to the lateral wall.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-039": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Precordial leads spanning the anterior-septal territory",
+    "explanation": "The source groups V1-V4 under anterior infarct localization, with V1-V2 more septal and V3-V4 more anterior/apical."
+   },
+   "title": "Precordial leads spanning the anterior-septal territory",
+   "explanation": "V1 through V4 localize anterior infarction, with V1 and V2 more septal and V3 and V4 more anterior or apical.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-041": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Signals recruiting smooth muscle cells into atheroma",
+    "explanation": "The source lists these signals in recruitment of vascular smooth muscle cells to the intima during atherosclerotic plaque development."
+   },
+   "title": "Signals recruiting smooth muscle cells into atheroma",
+   "explanation": "These signals help recruit vascular smooth muscle cells into the intima as atherosclerotic plaque develops.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-043": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Peripheral arterial disease clues",
+    "explanation": "These source-described findings indicate impaired lower-limb arterial perfusion."
+   },
+   "title": "Peripheral arterial disease clues",
+   "explanation": "These classic findings indicate impaired lower-limb arterial perfusion.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-044": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Endocrine causes of secondary hypertension",
+    "explanation": "The source lists these endocrine disorders as underlying causes of secondary hypertension through different hormonal mechanisms."
+   },
+   "title": "Endocrine causes of secondary hypertension",
+   "explanation": "Each of these endocrine disorders can cause secondary hypertension through a different hormonal mechanism.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-045": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Causes of hypovolemic shock",
+    "explanation": "These source-listed causes can reduce effective circulating volume through blood or fluid losses."
+   },
+   "title": "Causes of hypovolemic shock",
+   "explanation": "Each reduces effective circulating volume through blood or fluid loss.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-046": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Major components of the cardiac conduction pathway",
+    "explanation": "These source-listed structures initiate, delay and distribute the impulse through the heart. Bundle branches are intermediate components as well."
+   },
+   "title": "Major components of the cardiac conduction pathway",
+   "explanation": "These structures initiate, delay and distribute the impulse through the heart. The bundle branches are also intermediate components.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-047": {
+   "appliesTo": "library",
+   "original": {
+    "title": "The four phases of a ventricular pressure-volume loop",
+    "explanation": "These are the four source-listed phases of a ventricular pressure-volume loop under normal valve function."
+   },
+   "title": "The four phases of a ventricular pressure-volume loop",
+   "explanation": "These are the four phases of a ventricular pressure-volume loop with normal valve function.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-048": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Physiologic actions of angiotensin II",
+    "explanation": "The source connects angiotensin II to increased vascular resistance and volume retention through these direct and endocrine actions."
+   },
+   "title": "Physiologic actions of angiotensin II",
+   "explanation": "Through these direct and endocrine actions, angiotensin II raises vascular resistance and promotes volume retention.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-049": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Components of Gq-mediated vascular signaling",
+    "explanation": "The source describes PLC generating IP3 and DAG, with DAG activating PKC in the vascular Gq pathway."
+   },
+   "title": "Components of Gq-mediated vascular signaling",
+   "explanation": "In the vascular Gq pathway, PLC generates IP3 and DAG, and DAG activates PKC.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-050": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Second pharyngeal arch cartilage derivatives",
+    "explanation": "The source groups these under Reichert cartilage derivatives of the second pharyngeal arch."
+   },
+   "title": "Second pharyngeal arch cartilage derivatives",
+   "explanation": "These derive from Reichert cartilage of the second pharyngeal arch.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-051": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Cardiovascular adaptations to endurance training",
+    "explanation": "The source lists these as cardiovascular adaptations contributing to improved athletic oxygen delivery and exercise performance."
+   },
+   "title": "Cardiovascular adaptations to endurance training",
+   "explanation": "These adaptations contribute to better oxygen delivery and exercise performance.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-052": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Typical changes during dynamic exercise",
+    "explanation": "The source describes sympathetic cardiac stimulation and enhanced venous return alongside vasodilation in active skeletal muscle."
+   },
+   "title": "Typical changes during dynamic exercise",
+   "explanation": "Sympathetic cardiac stimulation and enhanced venous return occur alongside vasodilation in active skeletal muscle.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-053": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Aortic diseases that can lead to aortic regurgitation",
+    "explanation": "The source links these conditions to aortic dilation or structural disruption that can impair aortic valve closure."
+   },
+   "title": "Aortic diseases that can lead to aortic regurgitation",
+   "explanation": "These conditions dilate or disrupt the aortic root and can impair aortic valve closure.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "CARD-054": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Agents associated with cardiomyopathic LV dysfunction",
+    "explanation": "The source identifies these anticancer agents and alcohol as exposures associated with cardiomyopathy or cardiotoxic ventricular dysfunction."
+   },
+   "title": "Agents associated with cardiomyopathic LV dysfunction",
+   "explanation": "These anticancer agents and chronic alcohol use are recognized causes of cardiomyopathy or cardiotoxic ventricular dysfunction.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "DERM-008": {
+   "appliesTo": "library",
+   "original": {
+    "title": "High-risk oncogenic HPV types",
+    "explanation": "The source lists these HPV types among those associated with cervical cancer risk. The set is not an exhaustive list of high-risk HPV types."
+   },
+   "title": "High-risk oncogenic HPV types",
+   "explanation": "These HPV types are associated with cervical cancer risk. They are not an exhaustive list of high-risk types.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "DERM-013": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Sporotrichosis clues",
+    "explanation": "The source connects vegetation-related inoculation, spread along lymphatics, cigar-shaped fungal forms, and itraconazole therapy with sporotrichosis."
+   },
+   "title": "Sporotrichosis clues",
+   "explanation": "Inoculation from vegetation, spread along lymphatics, cigar-shaped yeast and itraconazole therapy all point to sporotrichosis.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "DERM-014": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Rhino-orbital mucormycosis clues",
+    "explanation": "The source links destructive sinonasal disease with broad fungal hyphae, wide-angle branching, and amphotericin B treatment in mucormycosis."
+   },
+   "title": "Rhino-orbital mucormycosis clues",
+   "explanation": "Destructive sinonasal disease, broad hyphae with wide-angle branching and amphotericin B treatment all point to mucormycosis.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "DERM-018": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Infectious associations of erythema nodosum",
+    "explanation": "The source lists these infections among triggers or associations of erythema nodosum, an inflammatory process affecting subcutaneous fat. The association does not mean each infection always causes nodules."
+   },
+   "title": "Infectious associations of erythema nodosum",
+   "explanation": "These infections are recognized triggers of erythema nodosum, an inflammatory process affecting subcutaneous fat. The association does not mean each infection always causes nodules.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "DERM-020": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Allergic contact dermatitis mechanism",
+    "explanation": "The source presents allergic contact dermatitis as a delayed, T-cell-mediated response involving antigen presentation, inflammatory signaling, and intercellular epidermal edema."
+   },
+   "title": "Allergic contact dermatitis mechanism",
+   "explanation": "Allergic contact dermatitis is a delayed, T-cell-mediated response involving antigen presentation, inflammatory signaling and intercellular epidermal edema.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "DERM-021": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Atopic dermatitis biology",
+    "explanation": "The source associates atopic dermatitis with barrier impairment and type 2 immune features. Elevated IgE and filaggrin dysfunction are associated features rather than universal requirements."
+   },
+   "title": "Atopic dermatitis biology",
+   "explanation": "Atopic dermatitis involves barrier impairment and type 2 immune features. Elevated IgE and filaggrin dysfunction are associated features rather than universal requirements.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "DERM-023": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Hidradenitis suppurativa clues",
+    "explanation": "Hidradenitis suppurativa can cause recurrent painful lesions in body folds with tunnels and scarring. The source includes adalimumab as a treatment option."
+   },
+   "title": "Hidradenitis suppurativa clues",
+   "explanation": "Hidradenitis suppurativa causes recurrent painful lesions in body folds with tunnels and scarring. Adalimumab is an approved treatment.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "DERM-030": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Risk settings for cutaneous squamous cell carcinoma",
+    "explanation": "The source identifies these settings as associated with cutaneous SCC. Chronic wounds and burn scars represent persistent local injury contexts; exposure and immune status provide additional risk pathways."
+   },
+   "title": "Risk settings for cutaneous squamous cell carcinoma",
+   "explanation": "Each setting is associated with cutaneous SCC. Chronic wounds and burn scars reflect persistent local injury; arsenic exposure and immune status add other risk pathways.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "DERM-032": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Keratoacanthoma clues",
+    "explanation": "The source describes keratoacanthoma as a rapidly enlarging dome-shaped lesion with a keratin-filled center that may regress."
+   },
+   "title": "Keratoacanthoma clues",
+   "explanation": "Keratoacanthoma is a rapidly enlarging dome-shaped lesion with a keratin-filled center that may regress.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "DERM-038": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Seborrheic keratosis clues",
+    "explanation": "The source describes seborrheic keratoses as benign, often pigmented lesions with an adherent appearance that become more common with age. Abrupt eruption of numerous lesions is described as the Leser-Trelat sign."
+   },
+   "title": "Seborrheic keratosis clues",
+   "explanation": "Seborrheic keratoses are benign, often pigmented lesions with an adherent appearance that become more common with age. Abrupt eruption of numerous lesions, classically linked to internal malignancy, is the Leser-Trelat sign.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "ENDO-010": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Drugs that reduce peripheral T4-to-T3 conversion",
+    "explanation": "The source lists PTU, beta blockers, glucocorticoids and amiodarone as inhibitors of peripheral thyroid hormone conversion. Propranolol is the beta blocker named elsewhere in the thyroid section."
+   },
+   "title": "Drugs that reduce peripheral T4-to-T3 conversion",
+   "explanation": "PTU, propranolol, glucocorticoids and amiodarone each inhibit peripheral conversion of T4 to the more active T3. For propranolol the effect is mainly seen at high doses.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "ENDO-022": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Malabsorptive settings that predispose to vitamin D deficiency",
+    "explanation": "The source lists these settings as causes of impaired vitamin D absorption and deficiency. Risk depends on disease severity, anatomy and treatment."
+   },
+   "title": "Malabsorptive settings that predispose to vitamin D deficiency",
+   "explanation": "Each can impair vitamin D absorption and cause deficiency. Risk depends on disease severity, anatomy and treatment.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "ENDO-025": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Clues to familial hypocalciuric hypercalcemia",
+    "explanation": "The source CaSR-associated form shifts calcium sensing in the parathyroids and kidneys, causing inherited hypercalcemia with relatively low urinary calcium."
+   },
+   "title": "Clues to familial hypocalciuric hypercalcemia",
+   "explanation": "Loss-of-function CaSR variants shift calcium sensing in the parathyroids and kidneys, causing inherited hypercalcemia with relatively low urinary calcium.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "ENDO-029": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Hereditary syndromes associated with pheochromocytoma",
+    "explanation": "The source lists all four syndromes as hereditary associations of pheochromocytoma, an adrenal chromaffin-cell tumor."
+   },
+   "title": "Hereditary syndromes associated with pheochromocytoma",
+   "explanation": "All four syndromes predispose to pheochromocytoma, an adrenal chromaffin-cell tumor.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "ENDO-031": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Recessive enzyme defects affecting sex-steroid synthesis or activation",
+    "explanation": "The source groups these inherited enzyme defects when evaluating differences in sex development and describes each as autosomal recessive. They affect androgen synthesis or androgen activation."
+   },
+   "title": "Recessive enzyme defects affecting sex-steroid synthesis or activation",
+   "explanation": "Each is an autosomal recessive defect considered in differences of sex development. They affect androgen synthesis or androgen activation.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "ENDO-039": {
+   "appliesTo": "library",
+   "original": {
+    "title": "Precipitants shared by DKA and HHS",
+    "explanation": "The source lists infection, lack of diabetes medication, MI and pancreatitis as triggers of both hyperglycemic crises. The insulin-omission tile refers to patients prescribed insulin."
+   },
+   "title": "Precipitants shared by DKA and HHS",
+   "explanation": "Infection, missed diabetes medication, MI and pancreatitis can trigger either hyperglycemic crisis. The insulin-omission tile refers to patients prescribed insulin.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  },
+  "MICRO-014": {
+   "appliesTo": "revision",
+   "original": {
+    "title": "Diagnostic clues for Legionnaires disease",
+    "explanation": "Each is a classic clue to Legionella pneumophila pneumonia: its environmental source, typical clinical and laboratory features, and its culture medium."
+   },
+   "title": "Diagnostic clues for Legionnaires disease",
+   "explanation": "Each is a classic clue to Legionella pneumophila pneumonia: its environmental reservoir, typical clinical and laboratory features, and its culture medium.",
+   "review": {
+    "basis": "copy-edit",
+    "reviewer": "Claude (AI) edit, checked by a separate AI pass",
+    "checkedAt": "2026-10-13",
+    "humanVerified": false,
+    "note": "Removes references to the source document from player-facing text; tiles and membership unchanged."
+   }
+  }
+ }
+}

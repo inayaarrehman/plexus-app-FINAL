@@ -1,0 +1,5900 @@
+{
+ "about": "Independent AI check (2026-10-13) of draft detail and tile notes for active connections. pass = accurate as written or with the fixes shown. Not human verified; OpenEvidence import still overrides.",
+ "reviewer": "Claude (AI), independent of the drafting pass",
+ "entries": {
+  "PLX-BCH-001": {
+   "id": "PLX-BCH-001",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pyruvate dehydrogenase",
+    "Alpha-ketoglutarate dehydrogenase",
+    "Transketolase",
+    "Branched-chain ketoacid dehydrogenase"
+   ]
+  },
+  "PLX-BCH-002": {
+   "id": "PLX-BCH-002",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Factor II",
+    "Factor VII",
+    "Factor IX",
+    "Factor X"
+   ]
+  },
+  "PLX-BCH-003": {
+   "id": "PLX-BCH-003",
+   "verdict": "pass",
+   "problems": [
+    "Detail called thiol drugs 'cystine-binding'; reworded to the accurate mechanism (form more soluble mixed disulfides)."
+   ],
+   "fixes": {
+    "detail": "Cystinuria is an autosomal recessive defect in a renal tubular and intestinal transporter shared by cystine, ornithine, lysine and arginine, remembered as COLA. All four are lost in the urine, but only cystine is poorly soluble, so it precipitates as hexagonal crystals and forms recurrent kidney stones. Treatment focuses on high fluid intake, urinary alkalinization and thiol drugs such as tiopronin or penicillamine that make cystine more soluble."
+   },
+   "checkedTiles": [
+    "Cystine",
+    "Ornithine",
+    "Lysine",
+    "Arginine"
+   ]
+  },
+  "PLX-BCH-004": {
+   "id": "PLX-BCH-004",
+   "verdict": "pass",
+   "problems": [
+    "Detail ended with exam filler; replaced with the cofactor for each enzyme.",
+    "Tile 2 'first committed substrate of gluconeogenesis' was imprecise; reworded."
+   ],
+   "fixes": {
+    "detail": "Pyruvate sits at a metabolic crossroads, and its fate depends on cellular energy state and oxygen availability. Pyruvate dehydrogenase makes acetyl-CoA irreversibly, pyruvate carboxylase makes oxaloacetate for gluconeogenesis or TCA replenishment, lactate dehydrogenase makes lactate to regenerate NAD+, and alanine aminotransferase makes alanine to carry nitrogen. Each enzyme has its own cofactor: TPP and others for PDH, biotin for pyruvate carboxylase, NADH for LDH and B6 for ALT.",
+    "tileNotes": [
+     "Acetyl-CoA is the two-carbon unit that enters the TCA cycle or fatty acid synthesis. Pyruvate dehydrogenase forms it from pyruvate in an irreversible reaction.",
+     "Oxaloacetate is a four-carbon TCA cycle intermediate and the first intermediate of gluconeogenesis from pyruvate. Pyruvate carboxylase, a biotin-dependent mitochondrial enzyme, forms it from pyruvate.",
+     "Lactate is produced from pyruvate by lactate dehydrogenase, regenerating NAD+ so glycolysis can continue without oxygen. Red blood cells and hypoxic tissues rely on this route.",
+     "Alanine is formed when alanine aminotransferase (ALT) transfers an amino group to pyruvate, a B6-dependent reaction. In the Cahill cycle alanine carries nitrogen from muscle to the liver."
+    ]
+   },
+   "checkedTiles": [
+    "Acetyl-CoA",
+    "Oxaloacetate",
+    "Lactate",
+    "Alanine"
+   ]
+  },
+  "PLX-BCH-005": {
+   "id": "PLX-BCH-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pyruvate carboxylase",
+    "PEP carboxykinase",
+    "Fructose-1,6-bisphosphatase",
+    "Glucose-6-phosphatase"
+   ]
+  },
+  "PLX-BCH-006": {
+   "id": "PLX-BCH-006",
+   "verdict": "pass",
+   "problems": [
+    "Kidney tile note did not explain why the kidney is vulnerable (low sorbitol dehydrogenase); added."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "The lens is the transparent structure that focuses light onto the retina. Sorbitol accumulation in lens cells causes osmotic swelling and contributes to diabetic cataracts.",
+     "The retina is the light-sensing tissue at the back of the eye. Sorbitol trapping in retinal cells is one proposed contributor to diabetic retinopathy.",
+     "The kidneys have low sorbitol dehydrogenase activity, so sorbitol made by aldose reductase builds up during sustained hyperglycemia. This osmotic stress is one of several factors in diabetic nephropathy.",
+     "Schwann cells form myelin around peripheral nerve axons. Sorbitol buildup in these cells is thought to contribute to diabetic peripheral neuropathy."
+    ]
+   },
+   "checkedTiles": [
+    "Lens",
+    "Retina",
+    "Kidneys",
+    "Schwann cells"
+   ]
+  },
+  "PLX-BCH-007": {
+   "id": "PLX-BCH-007",
+   "verdict": "pass",
+   "problems": [
+    "Tile 2 said type II fibrils resist compression; compressive resistance comes from proteoglycans, fibrils give tensile strength."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Type I collagen is the most abundant collagen, found in bone, skin, tendon and late wound repair. Defects in type I collagen synthesis cause osteogenesis imperfecta.",
+     "Type II collagen is the main collagen of cartilage, and is also present in the vitreous body and nucleus pulposus. It forms thin fibrils that give these tissues tensile strength.",
+     "Type III collagen forms reticular fibers in skin, blood vessels, uterus and granulation tissue. Defects cause vascular Ehlers-Danlos syndrome, with risk of arterial and organ rupture.",
+     "Type V collagen is a minor fibrillar collagen that co-assembles with type I and helps regulate fibril formation. Mutations are a classic cause of classical Ehlers-Danlos syndrome."
+    ]
+   },
+   "checkedTiles": [
+    "Type I collagen",
+    "Type II collagen",
+    "Type III collagen",
+    "Type V collagen"
+   ]
+  },
+  "PLX-BCH-010": {
+   "id": "PLX-BCH-010",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Mebendazole",
+    "Griseofulvin",
+    "Colchicine",
+    "Vincristine"
+   ]
+  },
+  "PLX-BCH-012": {
+   "id": "PLX-BCH-012",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Glutathione reductase",
+    "HMG-CoA reductase",
+    "Fatty acid synthase",
+    "NADPH oxidase"
+   ]
+  },
+  "PLX-BCH-013": {
+   "id": "PLX-BCH-013",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Folate deficiency",
+    "Vitamin B12 deficiency",
+    "Cystathionine beta-synthase deficiency",
+    "MTHFR deficiency"
+   ]
+  },
+  "PLX-BCH-014": {
+   "id": "PLX-BCH-014",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "OTC deficiency",
+    "CPS I deficiency",
+    "Arginase deficiency",
+    "NAGS deficiency"
+   ]
+  },
+  "PLX-BCH-015": {
+   "id": "PLX-BCH-015",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Von Gierke disease",
+    "Cori disease",
+    "Andersen disease",
+    "Hers disease"
+   ]
+  },
+  "PLX-BCH-016": {
+   "id": "PLX-BCH-016",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "GABA",
+    "Histamine",
+    "Dopamine",
+    "Serotonin"
+   ]
+  },
+  "PLX-BCH-017": {
+   "id": "PLX-BCH-017",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Corkscrew hairs",
+    "Perifollicular hemorrhage",
+    "Gingival bleeding",
+    "Poor wound healing"
+   ]
+  },
+  "PLX-BCH-018": {
+   "id": "PLX-BCH-018",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Minimal-trauma fractures",
+    "Blue sclerae",
+    "Opalescent teeth",
+    "Progressive hearing loss"
+   ]
+  },
+  "PLX-BCH-019": {
+   "id": "PLX-BCH-019",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Abdominal pain",
+    "Polyneuropathy",
+    "Psychiatric disturbances",
+    "Port-wine standing urine"
+   ]
+  },
+  "PLX-BCH-020": {
+   "id": "PLX-BCH-020",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Iron overload",
+    "Alcohol use",
+    "Hepatitis C",
+    "Smoking"
+   ]
+  },
+  "PLX-BCH-021": {
+   "id": "PLX-BCH-021",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Cytokeratin",
+    "Vimentin",
+    "Desmin",
+    "GFAP"
+   ]
+  },
+  "PLX-BCH-023": {
+   "id": "PLX-BCH-023",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Elevated serum lysosomal enzymes",
+    "Lysosomal inclusion bodies",
+    "Normal/near-normal urinary glycosaminoglycans",
+    "Coarse facial features"
+   ]
+  },
+  "PLX-BCH-025": {
+   "id": "PLX-BCH-025",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Angiokeratomas",
+    "Hypohidrosis",
+    "Neuropathic pain",
+    "Progressive renal failure"
+   ]
+  },
+  "PLX-BCH-027": {
+   "id": "PLX-BCH-027",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Galactocerebrosidase deficiency",
+    "Psychosine accumulation",
+    "Globoid cells",
+    "Optic atrophy"
+   ]
+  },
+  "PLX-BCH-031": {
+   "id": "PLX-BCH-031",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Arachnodactyly",
+    "Upward lens subluxation",
+    "Aortic dissection",
+    "Pectus deformity"
+   ]
+  },
+  "PLX-BCH-033": {
+   "id": "PLX-BCH-033",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Lactate",
+    "Alanine",
+    "Glycerol",
+    "Propionyl-CoA"
+   ]
+  },
+  "PLX-BCH-035": {
+   "id": "PLX-BCH-035",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Methionine",
+    "Valine",
+    "Isoleucine",
+    "Threonine"
+   ]
+  },
+  "PLX-BCH-036": {
+   "id": "PLX-BCH-036",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Creatine synthesis",
+    "Epinephrine synthesis",
+    "Phosphatidylcholine synthesis",
+    "DNA methylation"
+   ]
+  },
+  "PLX-BCH-037": {
+   "id": "PLX-BCH-037",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Marfanoid habitus",
+    "Downward lens subluxation",
+    "Thromboembolism",
+    "Intellectual disability"
+   ]
+  },
+  "PLX-BCH-038": {
+   "id": "PLX-BCH-038",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Staphylococcus aureus",
+    "Serratia",
+    "Nocardia",
+    "Aspergillus"
+   ]
+  },
+  "PLX-BCH-039": {
+   "id": "PLX-BCH-039",
+   "verdict": "pass",
+   "problems": [
+    "Tile 4 dangling modifier made glycerol-3-phosphate synthesis read as 'the earliest form of alcoholic liver disease'; restructured."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Lactic acidosis is acid buildup from excess lactate. A high NADH ratio drives lactate dehydrogenase toward lactate formation, contributing to acidosis after heavy ethanol intake.",
+     "Hypoglycemia is low blood glucose. Excess NADH diverts pyruvate and oxaloacetate away from gluconeogenesis, so drinkers with depleted glycogen, as in fasting, are at particular risk.",
+     "Alcoholic ketoacidosis is an anion gap metabolic acidosis with elevated ketones, especially beta-hydroxybutyrate, often after a binge with poor intake. The NADH excess favors beta-hydroxybutyrate over acetoacetate.",
+     "Hepatic steatosis (fatty liver), the earliest form of alcoholic liver disease, is accumulation of triglyceride in hepatocytes. Excess NADH inhibits fatty acid oxidation and promotes fatty acid and glycerol-3-phosphate synthesis."
+    ]
+   },
+   "checkedTiles": [
+    "Lactic acidosis",
+    "Hypoglycemia",
+    "Alcoholic ketoacidosis",
+    "Hepatic steatosis"
+   ]
+  },
+  "PLX-BCH-040": {
+   "id": "PLX-BCH-040",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pompe disease",
+    "Cori disease",
+    "Andersen disease",
+    "McArdle disease"
+   ]
+  },
+  "PLX-BCH-041": {
+   "id": "PLX-BCH-041",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Severe fasting hypoglycemia",
+    "Elevated lactate",
+    "Hypertriglyceridemia",
+    "Hyperuricemia"
+   ]
+  },
+  "PLX-BCH-042": {
+   "id": "PLX-BCH-042",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Macroglossia",
+    "Hypertrophic cardiomyopathy",
+    "Proximal myopathy",
+    "Glycogen-filled lysosomes"
+   ]
+  },
+  "PLX-BCH-043": {
+   "id": "PLX-BCH-043",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Second-wind phenomenon",
+    "Exercise-induced myoglobinuria",
+    "Flat exercise lactate response",
+    "Normal blood glucose"
+   ]
+  },
+  "PLX-BCH-044": {
+   "id": "PLX-BCH-044",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Heart",
+    "Brain",
+    "Skeletal muscle",
+    "Renal cortex"
+   ]
+  },
+  "PLX-BCH-045": {
+   "id": "PLX-BCH-045",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Eruptive xanthomas",
+    "Recurrent pancreatitis",
+    "Hepatosplenomegaly",
+    "Creamy plasma supernatant"
+   ]
+  },
+  "PLX-BCH-046": {
+   "id": "PLX-BCH-046",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Achilles tendon xanthomas",
+    "Corneal arcus",
+    "Early atherosclerosis",
+    "Elevated LDL"
+   ]
+  },
+  "PLX-BCH-047": {
+   "id": "PLX-BCH-047",
+   "verdict": "pass",
+   "problems": [
+    "Tile 3 'favoring neutral residues' imprecise; carboxypeptidase A prefers aromatic and bulky hydrophobic residues."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Chymotrypsinogen is the inactive precursor of chymotrypsin, an endopeptidase that cleaves peptide bonds next to aromatic amino acids. Trypsin cleavage in the duodenal lumen converts it to its active form.",
+     "Proelastase is the zymogen form of elastase, a pancreatic endopeptidase that can digest elastin and other proteins. Like the other pancreatic protease precursors, it is switched on by trypsin.",
+     "Procarboxypeptidase A is the precursor of carboxypeptidase A, a zinc-containing exopeptidase that removes C-terminal amino acids, favoring aromatic and bulky hydrophobic residues. It becomes active only after trypsin cleaves it.",
+     "A distinct enzyme from the A form, procarboxypeptidase B gives rise to carboxypeptidase B, which removes C-terminal basic residues such as lysine and arginine. Trypsin is also responsible for its activation."
+    ]
+   },
+   "checkedTiles": [
+    "Chymotrypsinogen",
+    "Proelastase",
+    "Procarboxypeptidase A",
+    "Procarboxypeptidase B"
+   ]
+  },
+  "PLX-BCH-048": {
+   "id": "PLX-BCH-048",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Dopamine",
+    "Norepinephrine",
+    "Epinephrine",
+    "Melanin"
+   ]
+  },
+  "PLX-BCH-049": {
+   "id": "PLX-BCH-049",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Musty odor",
+    "Fair complexion",
+    "Seizures",
+    "Eczema"
+   ]
+  },
+  "PLX-BCH-050": {
+   "id": "PLX-BCH-050",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ochronosis",
+    "Black urine after standing",
+    "Elevated homogentisate",
+    "Arthritis"
+   ]
+  },
+  "PLX-BCH-052": {
+   "id": "PLX-BCH-052",
+   "verdict": "pass",
+   "problems": [
+    "Detail called thiol drugs 'cystine-binding'; reworded."
+   ],
+   "fixes": {
+    "detail": "Cystinuria is an autosomal recessive defect in the renal tubular (and intestinal) transporter for cystine and the dibasic amino acids. Poorly soluble cystine is lost into the urine, where it crystallizes and forms stones, often beginning in childhood. Hexagonal crystals and increased urinary cystine are the strongest diagnostic anchors, while the nitroprusside screening test supports the diagnosis. Management relies on hydration, urine alkalinization and thiol drugs such as tiopronin that make cystine more soluble."
+   },
+   "checkedTiles": [
+    "Hexagonal urinary crystals",
+    "Recurrent nephrolithiasis",
+    "Increased urinary cystine",
+    "Positive cyanide-nitroprusside test"
+   ]
+  },
+  "PLX-BCH-056": {
+   "id": "PLX-BCH-056",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Photosensitive fragile blisters",
+    "Hypertrichosis",
+    "Hyperpigmentation",
+    "Pink urine fluorescence"
+   ]
+  },
+  "PLX-BCH-058": {
+   "id": "PLX-BCH-058",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Alopecia",
+    "Hepatotoxicity",
+    "Arthralgia",
+    "Intracranial hypertension"
+   ]
+  },
+  "PLX-BCH-062": {
+   "id": "PLX-BCH-062",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Peripheral neuropathy",
+    "Seizures",
+    "Sideroblastic anemia",
+    "Angular cheilitis"
+   ]
+  },
+  "PLX-BCH-065": {
+   "id": "PLX-BCH-065",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Poor wound healing",
+    "Alopecia",
+    "Diarrhea",
+    "Dysgeusia"
+   ]
+  },
+  "PLX-BCH-066": {
+   "id": "PLX-BCH-066",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Serine",
+    "Threonine",
+    "Asparagine",
+    "Glutamine"
+   ]
+  },
+  "PLX-BCH-067": {
+   "id": "PLX-BCH-067",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Isoleucine",
+    "Phenylalanine",
+    "Tyrosine",
+    "Tryptophan"
+   ]
+  },
+  "PLX-BCH-068": {
+   "id": "PLX-BCH-068",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Alanine",
+    "Glycine",
+    "Serine",
+    "Cysteine"
+   ]
+  },
+  "PLX-BCH-069": {
+   "id": "PLX-BCH-069",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Arginine",
+    "Proline",
+    "Histidine",
+    "Glutamine"
+   ]
+  },
+  "PLX-BCH-070": {
+   "id": "PLX-BCH-070",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Very-long-chain fatty acid beta-oxidation",
+    "Branched-chain fatty acid alpha-oxidation",
+    "Hydrogen peroxide detoxification",
+    "Plasmalogen synthesis"
+   ]
+  },
+  "PLX-BCH-071": {
+   "id": "PLX-BCH-071",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Primary structure",
+    "Secondary structure",
+    "Tertiary structure",
+    "Quaternary structure"
+   ]
+  },
+  "PLX-BCH-072": {
+   "id": "PLX-BCH-072",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Alanine aminotransferase",
+    "Aspartate aminotransferase",
+    "ALA synthase",
+    "Glycogen phosphorylase"
+   ]
+  },
+  "PLX-BCH-073": {
+   "id": "PLX-BCH-073",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Epinephrine",
+    "Norepinephrine",
+    "ANP",
+    "BNP"
+   ]
+  },
+  "PLX-BCH-074": {
+   "id": "PLX-BCH-074",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Fatty acyl-CoA synthetase",
+    "CPT I",
+    "Carnitine-acylcarnitine translocase",
+    "CPT II"
+   ]
+  },
+  "PLX-BCH-075": {
+   "id": "PLX-BCH-075",
+   "verdict": "pass",
+   "problems": [
+    "Tile 4 said the enzyme uses NADH without noting it uses NAD+ in the reverse (utilization) direction."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Thiolase condenses two acetyl-CoA molecules into acetoacetyl-CoA, the first step of ketogenesis. It also acts in ketone body utilization in peripheral tissues.",
+     "Mitochondrial HMG-CoA synthase adds acetyl-CoA to acetoacetyl-CoA to form HMG-CoA and is the key regulated step of ketogenesis. A separate cytosolic isoform supplies HMG-CoA for cholesterol synthesis.",
+     "HMG-CoA lyase cleaves HMG-CoA into acetoacetate and acetyl-CoA. Its inherited deficiency impairs ketone production and causes hypoketotic hypoglycemia.",
+     "Beta-hydroxybutyrate dehydrogenase interconverts acetoacetate and beta-hydroxybutyrate, using NADH in the liver and NAD+ in tissues that oxidize ketones. It participates in both ketone formation and ketone use."
+    ]
+   },
+   "checkedTiles": [
+    "Thiolase",
+    "Mitochondrial HMG-CoA synthase",
+    "HMG-CoA lyase",
+    "Beta-hydroxybutyrate dehydrogenase"
+   ]
+  },
+  "PLX-BCH-076": {
+   "id": "PLX-BCH-076",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Neutral aminoaciduria",
+    "Reduced tryptophan availability",
+    "Pellagra-like dermatitis",
+    "Cerebellar ataxia"
+   ]
+  },
+  "PLX-BCH-077": {
+   "id": "PLX-BCH-077",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Oculogyric crises",
+    "Hypotonia",
+    "Autonomic dysfunction",
+    "Developmental delay"
+   ]
+  },
+  "PLX-BCH-078": {
+   "id": "PLX-BCH-078",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Hyperammonemia",
+    "Elevated orotic acid",
+    "Low citrulline",
+    "Low BUN"
+   ]
+  },
+  "CARD-001": {
+   "id": "CARD-001",
+   "verdict": "pass",
+   "problems": [
+    "Detail ended with 'frequent exam topic' filler; replaced with substantive content."
+   ],
+   "fixes": {
+    "detail": "Tetralogy of Fallot results from anterosuperior displacement of the infundibular septum, which produces all four defects together. The severity of right ventricular outflow obstruction largely determines how much deoxygenated blood shunts right to left across the VSD, and therefore how cyanotic the child is. It is the most common cyanotic congenital heart lesion, and squatting relieves hypercyanotic spells by raising systemic vascular resistance."
+   },
+   "checkedTiles": [
+    "Pulmonary outflow stenosis",
+    "Aorta overriding the septum",
+    "Ventricular septal defect",
+    "Right ventricular hypertrophy"
+   ]
+  },
+  "CARD-002": {
+   "id": "CARD-002",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Thiamine deficiency",
+    "Severe anemia",
+    "Hyperthyroidism",
+    "Arteriovenous fistula"
+   ]
+  },
+  "CARD-003": {
+   "id": "CARD-003",
+   "verdict": "pass",
+   "problems": [
+    "Tile 1 called nifedipine itself short-acting; only the immediate-release form is. Reworded."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Nifedipine is the prototype dihydropyridine. In its short-acting immediate-release form, potent arteriolar dilation can provoke reflex tachycardia and hypotension, so that form is avoided in many cardiac settings.",
+     "Nicardipine is a dihydropyridine often given intravenously for blood pressure control. Like others in its class, it lowers arterial resistance rather than slowing the AV node.",
+     "Felodipine is a vascular-selective dihydropyridine used for hypertension. Grapefruit juice inhibits its metabolism and raises blood levels, a classic drug interaction example.",
+     "Amlodipine is a long-acting dihydropyridine widely used for hypertension and stable angina. Dose-related ankle edema from arteriolar dilation is a common, well-known side effect."
+    ]
+   },
+   "checkedTiles": [
+    "Nifedipine",
+    "Nicardipine",
+    "Felodipine",
+    "Amlodipine"
+   ]
+  },
+  "CARD-004": {
+   "id": "CARD-004",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Metoprolol",
+    "Nebivolol",
+    "Esmolol",
+    "Atenolol"
+   ]
+  },
+  "CARD-005": {
+   "id": "CARD-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Haloperidol",
+    "Ziprasidone",
+    "Ondansetron",
+    "Methadone"
+   ]
+  },
+  "CARD-006": {
+   "id": "CARD-006",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Quinidine",
+    "Procainamide",
+    "Disopyramide",
+    "Sotalol"
+   ]
+  },
+  "CARD-007": {
+   "id": "CARD-007",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Verapamil",
+    "Diltiazem",
+    "Metoprolol",
+    "Digoxin"
+   ]
+  },
+  "CARD-009": {
+   "id": "CARD-009",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Dry cough",
+    "Angioedema",
+    "Hyperkalemia",
+    "Fetal toxicity"
+   ]
+  },
+  "CARD-010": {
+   "id": "CARD-010",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Low potassium",
+    "Low sodium",
+    "High uric acid",
+    "High blood glucose"
+   ]
+  },
+  "CARD-011": {
+   "id": "CARD-011",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Chronic heavy alcohol use",
+    "Doxorubicin exposure",
+    "Chagas disease",
+    "Selenium deficiency"
+   ]
+  },
+  "CARD-012": {
+   "id": "CARD-012",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Cardiac amyloidosis",
+    "Hemochromatosis",
+    "Cardiac sarcoidosis",
+    "Chest irradiation"
+   ]
+  },
+  "CARD-013": {
+   "id": "CARD-013",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Asymmetric septal thickening",
+    "Dynamic LV outflow obstruction",
+    "Myocyte disorganization",
+    "Murmur louder with Valsalva strain"
+   ]
+  },
+  "CARD-023": {
+   "id": "CARD-023",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Lower sternal holosystolic murmur",
+    "Murmur louder on inspiration",
+    "Raised jugular venous pressure",
+    "Tricuspid infection in injection drug use"
+   ]
+  },
+  "CARD-024": {
+   "id": "CARD-024",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pregnancy",
+    "Systolic heart failure",
+    "Mitral regurgitation",
+    "Aortic regurgitation"
+   ]
+  },
+  "CARD-025": {
+   "id": "CARD-025",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Chronic hypertension",
+    "Aortic stenosis",
+    "Diastolic heart failure",
+    "Hypertrophic obstructive cardiomyopathy"
+   ]
+  },
+  "CARD-027": {
+   "id": "CARD-027",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Continuous infraclavicular murmur",
+    "Wide pulse pressure",
+    "Aorta-to-pulmonary artery flow",
+    "Indomethacin-induced ductal closure"
+   ]
+  },
+  "CARD-029": {
+   "id": "CARD-029",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Irregularly spaced R waves",
+    "Absent discrete P waves",
+    "Absent jugular a waves",
+    "Pulmonary vein ostial triggers"
+   ]
+  },
+  "CARD-030": {
+   "id": "CARD-030",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Sawtooth atrial activity",
+    "Right atrial re-entry",
+    "Common 2-to-1 AV conduction",
+    "Cavotricuspid isthmus ablation"
+   ]
+  },
+  "CARD-031": {
+   "id": "CARD-031",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Bundle of Kent",
+    "Short PR interval",
+    "Slurred initial QRS upstroke",
+    "Broad QRS in sinus rhythm"
+   ]
+  },
+  "CARD-032": {
+   "id": "CARD-032",
+   "verdict": "pass",
+   "problems": [
+    "Detail says treatment 'differs completely', mild overstatement."
+   ],
+   "fixes": {
+    "detail": "Acute pericarditis is inflammation of the pericardium, often viral or idiopathic. It classically causes sharp pleuritic chest pain relieved by sitting up and leaning forward, a scratchy friction rub, diffuse ST elevation and PR depression on ECG. Not every patient shows every feature, and early repolarization can mimic the ST changes. Distinguishing it from myocardial infarction is key, as treatment differs."
+   },
+   "checkedTiles": [
+    "Pain relieved by leaning forward",
+    "Pericardial friction rub",
+    "Diffuse ST elevation",
+    "PR segment depression"
+   ]
+  },
+  "CARD-033": {
+   "id": "CARD-033",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pericardial knock",
+    "Kussmaul sign",
+    "Calcified pericardium",
+    "Rapid jugular y descent"
+   ]
+  },
+  "CARD-038": {
+   "id": "CARD-038",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Lead I",
+    "Lead aVL",
+    "Lead V5",
+    "Lead V6"
+   ]
+  },
+  "CARD-039": {
+   "id": "CARD-039",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Lead V1",
+    "Lead V2",
+    "Lead V3",
+    "Lead V4"
+   ]
+  },
+  "CARD-041": {
+   "id": "CARD-041",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "PDGF",
+    "FGF",
+    "Endothelin-1",
+    "Interleukin-1"
+   ]
+  },
+  "CARD-043": {
+   "id": "CARD-043",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Exertional calf claudication",
+    "Reduced distal foot pulses",
+    "Loss of distal leg hair",
+    "Ankle-brachial index below 0.9"
+   ]
+  },
+  "CARD-044": {
+   "id": "CARD-044",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Cushing syndrome",
+    "Hyperaldosteronism",
+    "Pheochromocytoma",
+    "Hyperthyroidism"
+   ]
+  },
+  "CARD-045": {
+   "id": "CARD-045",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Traumatic hemorrhage",
+    "Upper gastrointestinal bleeding",
+    "Severe diarrhea",
+    "Major burn injury"
+   ]
+  },
+  "CARD-046": {
+   "id": "CARD-046",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Sinoatrial node",
+    "Atrioventricular node",
+    "Bundle of His",
+    "Purkinje network"
+   ]
+  },
+  "CARD-047": {
+   "id": "CARD-047",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Isovolumetric contraction",
+    "Ventricular ejection",
+    "Isovolumetric relaxation",
+    "Ventricular filling"
+   ]
+  },
+  "CARD-048": {
+   "id": "CARD-048",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Arteriolar constriction",
+    "Increased sodium reabsorption",
+    "Aldosterone release",
+    "Vasopressin release"
+   ]
+  },
+  "CARD-049": {
+   "id": "CARD-049",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Phospholipase C",
+    "Inositol trisphosphate",
+    "Diacylglycerol",
+    "Protein kinase C"
+   ]
+  },
+  "CARD-050": {
+   "id": "CARD-050",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Stapes",
+    "Styloid process",
+    "Stylohyoid ligament",
+    "Lesser horn of hyoid"
+   ]
+  },
+  "CARD-051": {
+   "id": "CARD-051",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Larger stroke volume",
+    "Higher maximal oxygen uptake",
+    "Expanded plasma volume",
+    "Lower resting heart rate"
+   ]
+  },
+  "CARD-052": {
+   "id": "CARD-052",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Increased heart rate",
+    "Increased contractility",
+    "Increased venous return",
+    "Reduced systemic vascular resistance"
+   ]
+  },
+  "CARD-054": {
+   "id": "CARD-054",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Doxorubicin",
+    "Daunorubicin",
+    "Trastuzumab",
+    "Chronic heavy alcohol exposure"
+   ]
+  },
+  "DERM-001": {
+   "id": "DERM-001",
+   "verdict": "pass",
+   "problems": [
+    "States Merkel cells give rise to Merkel cell carcinoma; the tumor's cell of origin is uncertain and probably not the mature Merkel cell."
+   ],
+   "fixes": {
+    "detail": "Keratinocytes, melanocytes, Langerhans cells and Merkel cells all reside in the epidermis but perform distinct functions: structural barrier, pigment production, antigen presentation and touch sensation. They also have different embryologic origins, so they are linked by location rather than lineage. Each population is linked to characteristic diseases, such as melanoma arising from melanocytes.",
+    "tileNotes": [
+     "Keratinocytes are the most abundant epidermal cells. They produce keratin, mature as they move upward through the epidermal layers, and form the protective barrier.",
+     "Melanocytes are neural crest-derived cells in the basal layer that make melanin. They transfer pigment to surrounding keratinocytes, protecting against ultraviolet damage.",
+     "Langerhans cells are dendritic antigen-presenting cells in the epidermis. They capture antigens and migrate to lymph nodes, and contain Birbeck granules on electron microscopy.",
+     "Merkel cells are found in the basal layer and act as mechanoreceptors for light touch. They are associated with sensory nerve endings and lend their name to Merkel cell carcinoma, a neuroendocrine skin cancer."
+    ]
+   },
+   "checkedTiles": [
+    "Keratinocytes",
+    "Melanocytes",
+    "Langerhans cells",
+    "Merkel cells"
+   ]
+  },
+  "DERM-002": {
+   "id": "DERM-002",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Tight junctions",
+    "Adherens junctions",
+    "Desmosomes",
+    "Gap junctions"
+   ]
+  },
+  "DERM-003": {
+   "id": "DERM-003",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Sandpaper-textured rash",
+    "Pastia lines",
+    "Circumoral pallor",
+    "Strawberry tongue"
+   ]
+  },
+  "DERM-005": {
+   "id": "DERM-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pain out of proportion",
+    "Crepitus",
+    "Bullae",
+    "Violaceous skin"
+   ]
+  },
+  "DERM-008": {
+   "id": "DERM-008",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "HPV 16",
+    "HPV 18",
+    "HPV 31",
+    "HPV 33"
+   ]
+  },
+  "DERM-009": {
+   "id": "DERM-009",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Verruca vulgaris",
+    "Verruca plana",
+    "Verruca plantaris",
+    "Condylomata acuminata"
+   ]
+  },
+  "DERM-010": {
+   "id": "DERM-010",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Oral thrush",
+    "Candidal esophagitis",
+    "Vulvovaginal candidiasis",
+    "Candidal intertrigo"
+   ]
+  },
+  "DERM-011": {
+   "id": "DERM-011",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Tinea corporis",
+    "Tinea capitis",
+    "Tinea pedis",
+    "Tinea manuum"
+   ]
+  },
+  "DERM-012": {
+   "id": "DERM-012",
+   "verdict": "pass",
+   "problems": [
+    "Malassezia tile note implies the hyphal form is why it is not a dermatophyte (non sequitur)."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Malassezia is a lipophilic yeast that normally lives on skin rich in sebum. Overgrowth with a shift to its hyphal form causes tinea versicolor. Because it is a yeast, not a dermatophyte, it is not grouped with tinea corporis or pedis.",
+     "KOH preparation dissolves keratin so fungi can be seen; in tinea versicolor it shows short hyphae mixed with clusters of round yeast. This combination is nicknamed spaghetti and meatballs.",
+     "Patches in tinea versicolor can be hypopigmented or hyperpigmented, with fine scale, usually on the chest, back and shoulders. Lighter patches often stand out after tanning because affected skin does not tan normally.",
+     "Selenium sulfide shampoo is a topical antifungal applied to affected skin and rinsed off. It is a standard treatment for tinea versicolor, alongside topical azoles."
+    ]
+   },
+   "checkedTiles": [
+    "Malassezia",
+    "Spaghetti-and-meatballs KOH",
+    "Hypopigmented or hyperpigmented patches",
+    "Selenium sulfide shampoo"
+   ]
+  },
+  "DERM-013": {
+   "id": "DERM-013",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Rose-thorn inoculation",
+    "Ascending lymphangitic nodules",
+    "Cigar-shaped yeast",
+    "Itraconazole"
+   ]
+  },
+  "DERM-014": {
+   "id": "DERM-014",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Necrotic nasal or palatal eschar",
+    "Broad pauciseptate hyphae",
+    "Wide-angle branching",
+    "Amphotericin B"
+   ]
+  },
+  "DERM-015": {
+   "id": "DERM-015",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Flaccid bullae",
+    "Oral erosions",
+    "Acantholysis",
+    "Intercellular IgG network"
+   ]
+  },
+  "DERM-016": {
+   "id": "DERM-016",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Tense bullae",
+    "Negative Nikolsky sign",
+    "Subepidermal split",
+    "Linear IgG and C3"
+   ]
+  },
+  "DERM-017": {
+   "id": "DERM-017",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Celiac disease",
+    "Pruritic extensor vesicles",
+    "Granular papillary IgA",
+    "Dapsone"
+   ]
+  },
+  "DERM-018": {
+   "id": "DERM-018",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Coccidioidomycosis",
+    "Histoplasmosis",
+    "Tuberculosis",
+    "Streptococcal infection"
+   ]
+  },
+  "DERM-020": {
+   "id": "DERM-020",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Langerhans antigen presentation",
+    "T-cell activation",
+    "Interferon-gamma signaling",
+    "Epidermal spongiosis"
+   ]
+  },
+  "DERM-021": {
+   "id": "DERM-021",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Filaggrin barrier dysfunction",
+    "Th2-predominant inflammation",
+    "IL-4 and IL-13",
+    "Elevated IgE"
+   ]
+  },
+  "DERM-022": {
+   "id": "DERM-022",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pilosebaceous plugging",
+    "Increased sebum",
+    "Impaired keratinocyte shedding",
+    "Cutibacterium acnes"
+   ]
+  },
+  "DERM-023": {
+   "id": "DERM-023",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Painful intertriginous nodules",
+    "Draining sinus tracts",
+    "Chronic scarring",
+    "Adalimumab"
+   ]
+  },
+  "DERM-024": {
+   "id": "DERM-024",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Heat exposure",
+    "Spicy foods",
+    "Alcohol",
+    "Emotional stress"
+   ]
+  },
+  "DERM-025": {
+   "id": "DERM-025",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Facial flushing",
+    "Persistent facial erythema",
+    "Ocular involvement",
+    "Rhinophyma"
+   ]
+  },
+  "DERM-026": {
+   "id": "DERM-026",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Wickham striae",
+    "Saw-tooth rete ridges",
+    "Hypergranulosis",
+    "Hepatitis C association"
+   ]
+  },
+  "DERM-027": {
+   "id": "DERM-027",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Herald patch",
+    "Collarette scale",
+    "Christmas-tree distribution",
+    "Prodromal illness"
+   ]
+  },
+  "DERM-028": {
+   "id": "DERM-028",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Parakeratosis",
+    "Acanthosis",
+    "Munro microabscesses",
+    "Reduced granular layer"
+   ]
+  },
+  "DERM-030": {
+   "id": "DERM-030",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Chronic wounds",
+    "Burn scars",
+    "Arsenic exposure",
+    "Immunosuppression"
+   ]
+  },
+  "DERM-031": {
+   "id": "DERM-031",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pearly skin lesion",
+    "Surface telangiectasias",
+    "Peripheral nuclear palisading",
+    "Slow local growth"
+   ]
+  },
+  "DERM-032": {
+   "id": "DERM-032",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Dome-shaped lesion",
+    "Central keratin plug",
+    "Rapid growth over weeks",
+    "Possible spontaneous regression"
+   ]
+  },
+  "DERM-033": {
+   "id": "DERM-033",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Superficial spreading melanoma",
+    "Nodular melanoma",
+    "Lentigo maligna melanoma",
+    "Acral lentiginous melanoma"
+   ]
+  },
+  "DERM-035": {
+   "id": "DERM-035",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Bartonella infection",
+    "Bright red vascular papules",
+    "Warthin-Starry stain",
+    "Neutrophilic infiltrate"
+   ]
+  },
+  "DERM-036": {
+   "id": "DERM-036",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "HHV-8",
+    "Violaceous plaques or nodules",
+    "Perivascular spindle cells",
+    "HIV-associated immunosuppression"
+   ]
+  },
+  "DERM-037": {
+   "id": "DERM-037",
+   "verdict": "pass",
+   "problems": [
+    "Velvety plaques note attributes 'texture' to hyperkeratosis rather than melanin, confusing texture with color."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "The lesions are velvety, brown to black, thickened plaques that feel soft and may have skin tags nearby. The velvety texture comes from papillomatosis, and the dark color mainly reflects hyperkeratosis rather than a large increase in melanin.",
+     "Acanthosis nigricans favors intertriginous areas such as the back of the neck, axillae and groin. These sites are where it is usually first noticed.",
+     "Insulin resistance is the most common association, as high insulin levels stimulate growth factor receptors in the skin. It often appears with obesity, prediabetes or polycystic ovary syndrome.",
+     "Malignant acanthosis nigricans is rare and classically linked to gastric adenocarcinoma. Abrupt, widespread onset or mucosal involvement should prompt a search for cancer, but most cases are benign."
+    ]
+   },
+   "checkedTiles": [
+    "Velvety dark plaques",
+    "Intertriginous distribution",
+    "Insulin resistance",
+    "Possible gastrointestinal malignancy"
+   ]
+  },
+  "DERM-038": {
+   "id": "DERM-038",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Stuck-on appearance",
+    "Greasy pigmented surface",
+    "Increasing frequency with age",
+    "Leser-Trelat sign"
+   ]
+  },
+  "ENDO-001": {
+   "id": "ENDO-001",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "TRH",
+    "GnRH",
+    "CRH",
+    "GHRH"
+   ]
+  },
+  "ENDO-002": {
+   "id": "ENDO-002",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "TSH",
+    "ACTH",
+    "FSH",
+    "LH"
+   ]
+  },
+  "ENDO-003": {
+   "id": "ENDO-003",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Small cell lung carcinoma",
+    "Cyclophosphamide",
+    "SSRIs",
+    "Carbamazepine"
+   ]
+  },
+  "ENDO-005": {
+   "id": "ENDO-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Traumatic brain injury",
+    "Subarachnoid hemorrhage",
+    "Meningitis",
+    "Langerhans cell histiocytosis"
+   ]
+  },
+  "ENDO-006": {
+   "id": "ENDO-006",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Risperidone",
+    "Haloperidol",
+    "Fluphenazine",
+    "Metoclopramide"
+   ]
+  },
+  "ENDO-007": {
+   "id": "ENDO-007",
+   "verdict": "pass",
+   "problems": [
+    "Craniopharyngioma described as 'most common in children'; incidence is bimodal (children and older adults)."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Sheehan syndrome is ischemic necrosis of the pituitary after severe postpartum hemorrhage, since the gland enlarges in pregnancy. Failure to lactate is a classic early clue.",
+     "Empty sella syndrome is a sella turcica that appears filled with CSF, with a flattened pituitary. It is often incidental with normal function, but it can be associated with pituitary hormone deficiency.",
+     "Pituitary apoplexy is sudden hemorrhage or infarction of the pituitary, usually within an existing adenoma. It presents with sudden headache, visual loss and ophthalmoplegia, and acute adrenal insufficiency is the key danger.",
+     "Craniopharyngioma is a benign suprasellar tumor from Rathke pouch remnants, with peaks in childhood and later adulthood. It can compress the pituitary and optic chiasm, and calcification on imaging is a classic clue."
+    ]
+   },
+   "checkedTiles": [
+    "Sheehan syndrome",
+    "Empty sella syndrome",
+    "Pituitary apoplexy",
+    "Craniopharyngioma"
+   ]
+  },
+  "ENDO-008": {
+   "id": "ENDO-008",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Frontal bossing",
+    "Mandibular enlargement",
+    "Widened interdental spaces",
+    "Enlarged hands and feet"
+   ]
+  },
+  "ENDO-009": {
+   "id": "ENDO-009",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pituitary adenoma resection",
+    "Octreotide",
+    "Pegvisomant",
+    "Cabergoline"
+   ]
+  },
+  "ENDO-010": {
+   "id": "ENDO-010",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Propylthiouracil",
+    "Propranolol",
+    "Glucocorticoids",
+    "Amiodarone"
+   ]
+  },
+  "ENDO-012": {
+   "id": "ENDO-012",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "TSH-receptor stimulating antibodies",
+    "Exophthalmos",
+    "Pretibial myxedema",
+    "Diffuse increased radioiodine uptake"
+   ]
+  },
+  "ENDO-013": {
+   "id": "ENDO-013",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Anti-TPO antibodies",
+    "Anti-thyroglobulin antibodies",
+    "Hurthle cells",
+    "Lymphoid follicles with germinal centers"
+   ]
+  },
+  "ENDO-014": {
+   "id": "ENDO-014",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Painful tender thyroid",
+    "Recent viral-like illness",
+    "Elevated ESR",
+    "Multinucleated giant cells"
+   ]
+  },
+  "ENDO-015": {
+   "id": "ENDO-015",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Macroglossia",
+    "Umbilical protrusion",
+    "Hoarse cry",
+    "Hypotonia"
+   ]
+  },
+  "ENDO-016": {
+   "id": "ENDO-016",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Orphan Annie eye nuclei",
+    "Psammoma bodies",
+    "BRAF mutations",
+    "RET/PTC rearrangements"
+   ]
+  },
+  "ENDO-017": {
+   "id": "ENDO-017",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Capsular invasion",
+    "Vascular invasion",
+    "Hematogenous dissemination",
+    "PAX8-PPAR-gamma translocation"
+   ]
+  },
+  "ENDO-018": {
+   "id": "ENDO-018",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Parafollicular C cells",
+    "Calcitonin",
+    "Amyloid stroma",
+    "RET mutations"
+   ]
+  },
+  "ENDO-019": {
+   "id": "ENDO-019",
+   "verdict": "pass",
+   "problems": [
+    "Detail mentions 'two classic bedside signs' without naming them, which reads as a garbled list."
+   ],
+   "fixes": {
+    "detail": "Calcium stabilizes nerve membranes by raising the threshold for depolarization, so low ionized calcium makes nerves and muscles hyperexcitable. This produces perioral and fingertip tingling, muscle cramps, tetany and the Chvostek and Trousseau signs, and in severe cases seizures, laryngospasm or arrhythmias. Hypoparathyroidism, such as after thyroid surgery, is one important cause among several."
+   },
+   "checkedTiles": [
+    "Chvostek sign",
+    "Trousseau sign",
+    "Tetany",
+    "Seizures"
+   ]
+  },
+  "ENDO-022": {
+   "id": "ENDO-022",
+   "verdict": "pass",
+   "problems": [
+    "Gastric bypass note says food is rerouted past the stomach; Roux-en-Y bypasses most of the stomach plus the duodenum and proximal jejunum."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Celiac disease is an immune reaction to gluten that damages small intestinal villi, especially in the proximal bowel. The resulting malabsorption can cause vitamin D and calcium deficiency and reduced bone density.",
+     "Cystic fibrosis is a genetic CFTR disorder that commonly causes pancreatic insufficiency. Without pancreatic enzymes, fat and fat-soluble vitamins, including vitamin D, are poorly absorbed.",
+     "Inflammatory bowel disease includes Crohn disease and ulcerative colitis. Crohn disease involving the small bowel or prior resection raises the risk of vitamin D deficiency, although not every patient is affected.",
+     "Gastric bypass is bariatric surgery that reroutes food past most of the stomach, the duodenum and part of the jejunum. Reduced absorptive surface predisposes to vitamin D and calcium deficiency, so long-term supplementation is standard."
+    ]
+   },
+   "checkedTiles": [
+    "Celiac disease",
+    "Cystic fibrosis",
+    "Inflammatory bowel disease",
+    "Gastric bypass"
+   ]
+  },
+  "ENDO-023": {
+   "id": "ENDO-023",
+   "verdict": "pass",
+   "problems": [
+    "PTH note says any non-suppressed PTH with hypercalcemia points to parathyroid disease; FHH is the main mimic and should be acknowledged."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "PTH is typically elevated in primary hyperparathyroidism, or at least inappropriately normal for the high calcium. A non-suppressed PTH with hypercalcemia points to parathyroid-driven disease, with familial hypocalciuric hypercalcemia as the main mimic.",
+     "Elevated serum calcium is the usual presenting finding, often discovered incidentally on routine tests. When symptomatic, it can cause kidney stones, bone pain, abdominal symptoms and neuropsychiatric changes.",
+     "PTH reduces phosphate reabsorption in the proximal tubule, increasing urinary phosphate loss. As a result, serum phosphate tends to be low or low-normal in primary hyperparathyroidism.",
+     "Alkaline phosphatase is an enzyme released during bone formation and reflects bone turnover. It can rise when PTH excess causes significant bone disease, but it is often normal in mild disease."
+    ]
+   },
+   "checkedTiles": [
+    "Elevated PTH",
+    "Elevated serum calcium",
+    "Low serum phosphate",
+    "Elevated alkaline phosphatase"
+   ]
+  },
+  "ENDO-024": {
+   "id": "ENDO-024",
+   "verdict": "pass",
+   "problems": [
+    "Detail says high FGF23 stimulates the parathyroids to secrete PTH; FGF23 directly suppresses PTH and contributes mainly by lowering calcitriol."
+   ],
+   "fixes": {
+    "detail": "In chronic kidney disease, failing kidneys excrete less phosphate and make less calcitriol (active vitamin D), and rising FGF23 suppresses calcitriol further. Phosphate retention and reduced calcitriol lower calcium absorption and stimulate the parathyroids to secrete more PTH. Values vary with CKD stage and treatment, and over time this drives renal osteodystrophy and vascular calcification."
+   },
+   "checkedTiles": [
+    "Elevated PTH",
+    "Phosphate retention",
+    "Reduced calcitriol",
+    "Low or low-normal serum calcium"
+   ]
+  },
+  "ENDO-025": {
+   "id": "ENDO-025",
+   "verdict": "pass",
+   "problems": [],
+   "connectionConcern": "Explanation text is garbled ('The source CaSR-associated form ...') and should be reworded; medical content is fine.",
+   "checkedTiles": [
+    "CaSR loss of function",
+    "Autosomal dominant inheritance",
+    "Hypercalcemia",
+    "Low urinary calcium"
+   ]
+  },
+  "ENDO-026": {
+   "id": "ENDO-026",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Elevated ACTH",
+    "Low cortisol",
+    "Low aldosterone",
+    "Hyperkalemia"
+   ]
+  },
+  "ENDO-027": {
+   "id": "ENDO-027",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Purple striae",
+    "Thin skin",
+    "Central adiposity",
+    "Dorsocervical fat pad"
+   ]
+  },
+  "ENDO-028": {
+   "id": "ENDO-028",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Congestive heart failure",
+    "Liver failure",
+    "Reninoma",
+    "Renal artery stenosis"
+   ]
+  },
+  "ENDO-029": {
+   "id": "ENDO-029",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Neurofibromatosis type 1",
+    "Von Hippel-Lindau syndrome",
+    "MEN2A",
+    "MEN2B"
+   ]
+  },
+  "ENDO-030": {
+   "id": "ENDO-030",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "MYCN amplification",
+    "Elevated urinary VMA",
+    "Elevated urinary HVA",
+    "Homer Wright rosettes"
+   ]
+  },
+  "ENDO-031": {
+   "id": "ENDO-031",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "21-hydroxylase deficiency",
+    "17-alpha-hydroxylase deficiency",
+    "11-beta-hydroxylase deficiency",
+    "5-alpha-reductase deficiency"
+   ]
+  },
+  "ENDO-032": {
+   "id": "ENDO-032",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Elevated 17-hydroxyprogesterone",
+    "Elevated renin",
+    "Hyperkalemia",
+    "Hyponatremia"
+   ]
+  },
+  "ENDO-033": {
+   "id": "ENDO-033",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Elevated 11-deoxycorticosterone",
+    "Reduced androgens",
+    "Hypertension",
+    "Hypokalemia"
+   ]
+  },
+  "ENDO-035": {
+   "id": "ENDO-035",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Reduced DHT",
+    "Elevated testosterone-to-DHT ratio",
+    "Male internal reproductive structures",
+    "Virilization at puberty"
+   ]
+  },
+  "ENDO-036": {
+   "id": "ENDO-036",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Glycogen synthesis",
+    "Lipid synthesis",
+    "Protein synthesis",
+    "GLUT4 translocation"
+   ]
+  },
+  "ENDO-037": {
+   "id": "ENDO-037",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Celiac disease",
+    "Autoimmune primary adrenal insufficiency",
+    "Hashimoto thyroiditis",
+    "Type 1 diabetes mellitus"
+   ]
+  },
+  "ENDO-038": {
+   "id": "ENDO-038",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Glomerular basement membrane thickening",
+    "Glomerulosclerosis",
+    "Afferent arteriolar hyalinosis",
+    "Efferent arteriolar hyalinosis"
+   ]
+  },
+  "ENDO-039": {
+   "id": "ENDO-039",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Infection",
+    "Insulin omission",
+    "Myocardial infarction",
+    "Pancreatitis"
+   ]
+  },
+  "ENDO-040": {
+   "id": "ENDO-040",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Kussmaul respirations",
+    "Fruity breath",
+    "Ketonemia",
+    "Anion gap metabolic acidosis"
+   ]
+  },
+  "GI-001": {
+   "id": "GI-001",
+   "verdict": "pass",
+   "problems": [
+    "Detail implies all four organs are linked to celiac trunk supply; the thoracic esophagus is supplied by aortic and other branches, and only abdominal foregut structures are mainly celiac."
+   ],
+   "fixes": {
+    "detail": "The embryonic gut tube is divided into foregut, midgut and hindgut, each with its own main arterial supply. The esophagus, stomach, liver and pancreas arise from the foregut, with their epithelial and parenchymal tissue derived from endoderm. Abdominal foregut structures are supplied mainly by the celiac trunk and refer pain to the epigastrium; the spleen, though celiac-supplied, is mesodermal and not a foregut derivative."
+   },
+   "checkedTiles": [
+    "Esophagus",
+    "Stomach",
+    "Liver",
+    "Pancreas"
+   ]
+  },
+  "GI-002": {
+   "id": "GI-002",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Masseter",
+    "Temporalis",
+    "Medial pterygoid",
+    "Lateral pterygoid"
+   ]
+  },
+  "GI-003": {
+   "id": "GI-003",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Genioglossus",
+    "Hyoglossus",
+    "Styloglossus",
+    "Intrinsic tongue muscles"
+   ]
+  },
+  "GI-005": {
+   "id": "GI-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Phenytoin",
+    "Cyclosporine",
+    "Calcium channel blockers",
+    "Acute myeloid leukemia"
+   ]
+  },
+  "GI-006": {
+   "id": "GI-006",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Acromegaly",
+    "Hypothyroidism",
+    "Amyloidosis",
+    "Beckwith-Wiedemann syndrome"
+   ]
+  },
+  "GI-007": {
+   "id": "GI-007",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Bisphosphonates",
+    "Tetracyclines",
+    "Ferrous sulfate",
+    "Potassium chloride"
+   ]
+  },
+  "GI-008": {
+   "id": "GI-008",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Loss of inhibitory myenteric neurons",
+    "Impaired LES relaxation",
+    "Bird-beak narrowing",
+    "Dysphagia to solids and liquids"
+   ]
+  },
+  "GI-009": {
+   "id": "GI-009",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Obesity",
+    "Pregnancy",
+    "Sliding hiatal hernia",
+    "Scleroderma"
+   ]
+  },
+  "GI-010": {
+   "id": "GI-010",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Esophageal web",
+    "Schatzki ring",
+    "Esophageal stricture",
+    "Esophageal carcinoma"
+   ]
+  },
+  "GI-014": {
+   "id": "GI-014",
+   "verdict": "pass",
+   "problems": [
+    "B12 note says absorption occurs 'only' when bound to intrinsic factor; a small fraction is absorbed passively (basis of high-dose oral therapy)."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Intrinsic factor is a glycoprotein secreted by parietal cells that binds vitamin B12 and allows its uptake. Autoantibodies and parietal cell destruction cause its deficiency in pernicious anemia.",
+     "Vitamin B12 is absorbed mainly in the terminal ileum after binding intrinsic factor. Without intrinsic factor, B12 malabsorption leads to megaloblastic anemia and can cause neurologic damage such as subacute combined degeneration.",
+     "Atrophic gastritis is chronic inflammation with loss of gastric glands. In the autoimmune form it targets the body and fundus while sparing the antrum, causing reduced acid production and high gastrin levels.",
+     "Chronic atrophic gastritis carries an increased risk of gastric adenocarcinoma, and high gastrin drives enterochromaffin-like cell growth that can lead to type 1 carcinoid tumors. This risk is raised but most patients do not develop cancer."
+    ]
+   },
+   "checkedTiles": [
+    "Intrinsic factor deficiency",
+    "Vitamin B12 malabsorption",
+    "Atrophic gastritis",
+    "Increased gastric malignancy risk"
+   ]
+  },
+  "GI-015": {
+   "id": "GI-015",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Foveolar hyperplasia",
+    "Enlarged gastric folds",
+    "Protein-losing gastropathy",
+    "Hypoalbuminemia"
+   ]
+  },
+  "GI-016": {
+   "id": "GI-016",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Marked hypergastrinemia",
+    "Excess gastric acid secretion",
+    "Refractory peptic ulcers",
+    "MEN1 association"
+   ]
+  },
+  "GI-017": {
+   "id": "GI-017",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pantoprazole",
+    "Omeprazole",
+    "Lansoprazole",
+    "Esomeprazole"
+   ]
+  },
+  "GI-018": {
+   "id": "GI-018",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Iron",
+    "Calcium",
+    "Magnesium",
+    "Vitamin B12"
+   ]
+  },
+  "GI-019": {
+   "id": "GI-019",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "CYP450 inhibition",
+    "Antiandrogen effects",
+    "CNS effects",
+    "Creatinine rise without true GFR loss"
+   ]
+  },
+  "GI-020": {
+   "id": "GI-020",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ischemic hepatitis",
+    "Acetaminophen toxicity",
+    "Alcohol-related hepatic injury",
+    "Halothane hepatotoxicity"
+   ]
+  },
+  "GI-022": {
+   "id": "GI-022",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "ATP7B mutation",
+    "Low ceruloplasmin",
+    "Increased urinary copper",
+    "Kayser-Fleischer rings"
+   ]
+  },
+  "GI-023": {
+   "id": "GI-023",
+   "verdict": "pass",
+   "problems": [
+    "Capitalization error in low-copper diet note ('A Low-copper diet')."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Penicillamine is a copper chelator that binds copper and increases its excretion in urine. It is effective but has frequent adverse effects, including hypersensitivity reactions, proteinuria, and bone marrow suppression.",
+     "Trientine is another copper chelator that promotes urinary copper excretion. It is commonly used as an alternative to penicillamine, particularly when penicillamine is not tolerated.",
+     "Zinc salts induce metallothionein in intestinal cells; this protein binds dietary copper, which is then lost in stool as the cells are shed. Zinc reduces copper absorption rather than removing stored copper and is often used for maintenance.",
+     "A low-copper diet means limiting copper-rich foods such as shellfish, organ meats, nuts, chocolate, and mushrooms. It is an adjunct that reduces intake and is not sufficient as the sole treatment."
+    ]
+   },
+   "checkedTiles": [
+    "Penicillamine",
+    "Trientine",
+    "Zinc salts",
+    "Low-copper diet"
+   ]
+  },
+  "GI-024": {
+   "id": "GI-024",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Increased serum iron",
+    "Increased ferritin",
+    "Increased transferrin saturation",
+    "Reduced TIBC"
+   ]
+  },
+  "GI-026": {
+   "id": "GI-026",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Therapeutic phlebotomy",
+    "Deferoxamine",
+    "Deferasirox",
+    "Deferiprone"
+   ]
+  },
+  "GI-027": {
+   "id": "GI-027",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Prolonged PT/INR",
+    "Low albumin",
+    "Hypoglycemia",
+    "Hyperammonemia"
+   ]
+  },
+  "GI-028": {
+   "id": "GI-028",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Gynecomastia",
+    "Spider angiomas",
+    "Palmar erythema",
+    "Hypogonadism"
+   ]
+  },
+  "GI-030": {
+   "id": "GI-030",
+   "verdict": "pass",
+   "problems": [
+    "Detail says HVPG is raised in posthepatic disease; HVPG is reliably raised in sinusoidal disease, while posthepatic causes can give a normal gradient or be unmeasurable, so the claim was removed."
+   ],
+   "fixes": {
+    "detail": "Portal hypertension is classified by where resistance to flow occurs: prehepatic, intrahepatic or posthepatic. Portal vein thrombosis is prehepatic, cirrhosis causes sinusoidal intrahepatic obstruction, schistosomiasis causes presinusoidal intrahepatic obstruction, and Budd-Chiari syndrome blocks hepatic venous outflow. The site matters for diagnosis because the hepatic venous pressure gradient is normal in prehepatic and presinusoidal causes but raised in sinusoidal disease such as cirrhosis."
+   },
+   "checkedTiles": [
+    "Portal vein thrombosis",
+    "Cirrhosis",
+    "Schistosomiasis",
+    "Budd-Chiari syndrome"
+   ]
+  },
+  "GI-034": {
+   "id": "GI-034",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Obesity",
+    "Estrogen exposure",
+    "Fibrate use",
+    "Rapid weight loss"
+   ]
+  },
+  "GI-035": {
+   "id": "GI-035",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Jaundice",
+    "Dark urine",
+    "Pale stools",
+    "Pruritus"
+   ]
+  },
+  "GI-036": {
+   "id": "GI-036",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Murphy sign",
+    "Gallbladder wall thickening",
+    "Pericholecystic fluid",
+    "HIDA nonvisualization of the gallbladder"
+   ]
+  },
+  "GI-037": {
+   "id": "GI-037",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ulcerative colitis",
+    "Atypical p-ANCA",
+    "Beaded bile ducts",
+    "Onion-skin periductal fibrosis"
+   ]
+  },
+  "GI-038": {
+   "id": "GI-038",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Antimitochondrial antibodies",
+    "Small intrahepatic bile duct destruction",
+    "Portal-tract (florid duct) granulomas",
+    "Xanthelasma"
+   ]
+  },
+  "GI-039": {
+   "id": "GI-039",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Hypertriglyceridemia",
+    "Hypercalcemia",
+    "Mumps infection",
+    "ERCP"
+   ]
+  },
+  "GI-042": {
+   "id": "GI-042",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pancreatic calcifications",
+    "Pancreatic parenchymal atrophy",
+    "Low fecal elastase",
+    "Preserved (normal) D-xylose absorption"
+   ]
+  },
+  "GI-044": {
+   "id": "GI-044",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Obstructive jaundice",
+    "Courvoisier sign",
+    "Double-duct sign",
+    "Superficial migratory thrombophlebitis"
+   ]
+  },
+  "GI-045": {
+   "id": "GI-045",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Insulinoma",
+    "Glucagonoma",
+    "VIPoma",
+    "Somatostatinoma"
+   ]
+  },
+  "GI-046": {
+   "id": "GI-046",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Necrolytic migratory erythema",
+    "Diabetes mellitus",
+    "Weight loss",
+    "Venous thrombosis"
+   ]
+  },
+  "GI-047": {
+   "id": "GI-047",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Profuse watery diarrhea",
+    "Hypokalemia",
+    "Achlorhydria",
+    "Weight loss"
+   ]
+  },
+  "GI-048": {
+   "id": "GI-048",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Diabetes mellitus",
+    "Cholelithiasis",
+    "Steatorrhea",
+    "Weight loss"
+   ]
+  },
+  "GI-049": {
+   "id": "GI-049",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Goblet cells",
+    "Paneth cells",
+    "Stem cells",
+    "Enteroendocrine cells"
+   ]
+  },
+  "GI-051": {
+   "id": "GI-051",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Anti-tissue transglutaminase IgA",
+    "Villous atrophy",
+    "Crypt hyperplasia",
+    "Increased intraepithelial lymphocytes"
+   ]
+  },
+  "GI-052": {
+   "id": "GI-052",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Migratory arthralgias",
+    "Culture-negative endocarditis",
+    "Lymphadenopathy",
+    "Neurologic dysfunction"
+   ]
+  },
+  "GI-055": {
+   "id": "GI-055",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Intermittent colicky abdominal pain",
+    "Sausage-shaped abdominal mass",
+    "Currant-jelly stool",
+    "Target (bull's-eye) sign on ultrasound"
+   ]
+  },
+  "GI-056": {
+   "id": "GI-056",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Flushing",
+    "Watery diarrhea",
+    "Bronchospasm",
+    "Right-sided valvular fibrosis"
+   ]
+  },
+  "GI-057": {
+   "id": "GI-057",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Skip lesions",
+    "Creeping fat",
+    "Noncaseating granulomas",
+    "Fistulas"
+   ]
+  },
+  "GI-058": {
+   "id": "GI-058",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Continuous rectal-to-proximal inflammation",
+    "Crypt abscesses",
+    "Inflammatory pseudopolyps",
+    "Lead-pipe colon"
+   ]
+  },
+  "GI-062": {
+   "id": "GI-062",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Lynch syndrome",
+    "Familial adenomatous polyposis",
+    "Peutz-Jeghers syndrome",
+    "Juvenile polyposis syndrome"
+   ]
+  },
+  "GI-063": {
+   "id": "GI-063",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Osteomas",
+    "Desmoid tumors",
+    "Epidermoid cysts",
+    "Dental abnormalities"
+   ]
+  },
+  "GI-065": {
+   "id": "GI-065",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ondansetron",
+    "Granisetron",
+    "Dolasetron",
+    "Palonosetron"
+   ]
+  },
+  "GI-066": {
+   "id": "GI-066",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Patent processus vaginalis",
+    "Lateral to inferior epigastric vessels",
+    "Entry through the deep (internal) inguinal ring",
+    "Communicating hydrocele association"
+   ]
+  },
+  "PLEXUS-GEN-001": {
+   "id": "PLEXUS-GEN-001",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "H2A",
+    "H2B",
+    "H3",
+    "H4"
+   ]
+  },
+  "PLEXUS-GEN-004": {
+   "id": "PLEXUS-GEN-004",
+   "verdict": "pass",
+   "problems": [
+    "Friedreich ataxia note says 'often with cardiomyopathy and diabetes'; diabetes affects a minority."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Fragile X syndrome is caused by a CGG repeat expansion in the FMR1 gene on the X chromosome, leading to gene silencing by methylation. It is the most common inherited cause of intellectual disability.",
+     "Friedreich ataxia is an autosomal recessive disorder caused by a GAA repeat expansion in the FXN gene, reducing frataxin production. It causes progressive ataxia, often with hypertrophic cardiomyopathy and sometimes diabetes.",
+     "Huntington disease is an autosomal dominant disorder caused by a CAG repeat expansion in the HTT gene, producing an abnormal polyglutamine protein. It causes chorea, psychiatric symptoms and dementia.",
+     "Myotonic dystrophy type 1 is an autosomal dominant disorder caused by a CTG repeat expansion in the DMPK gene. It causes myotonia, distal weakness and multisystem features; type 2 involves a different (CCTG) repeat."
+    ]
+   },
+   "checkedTiles": [
+    "Fragile X syndrome",
+    "Friedreich ataxia",
+    "Huntington disease",
+    "Myotonic dystrophy type 1"
+   ]
+  },
+  "PLEXUS-GEN-008": {
+   "id": "PLEXUS-GEN-008",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Marked sunlight intolerance",
+    "Actinic keratoses",
+    "Skin cancers",
+    "Corneal scarring/opacity"
+   ]
+  },
+  "PLEXUS-GEN-009": {
+   "id": "PLEXUS-GEN-009",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "DNA glycosylase",
+    "AP endonuclease",
+    "DNA polymerase beta",
+    "DNA ligase"
+   ]
+  },
+  "PLEXUS-GEN-011": {
+   "id": "PLEXUS-GEN-011",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Bone marrow failure",
+    "Skeletal abnormalities",
+    "Cafe-au-lait macules",
+    "Acute myeloid leukemia risk"
+   ]
+  },
+  "PLEXUS-GEN-012": {
+   "id": "PLEXUS-GEN-012",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Short stature",
+    "Long narrow face",
+    "Photosensitive facial (butterfly) telangiectatic erythema",
+    "Markedly increased cancer risk"
+   ]
+  },
+  "PLEXUS-GEN-013": {
+   "id": "PLEXUS-GEN-013",
+   "verdict": "pass",
+   "problems": [
+    "Last sentence of detail is filler and does not explain the components."
+   ],
+   "fixes": {
+    "detail": "The polymerase chain reaction amplifies a specific DNA segment through repeated cycles of denaturation, primer annealing and extension. Its core reagents are a DNA template, a pair of primers flanking the target, a thermostable DNA polymerase such as Taq, and dNTPs, with buffer and magnesium ions also required. The primers set which segment is copied, and the heat-stable polymerase survives the repeated high-temperature denaturation steps."
+   },
+   "checkedTiles": [
+    "DNA template",
+    "Two flanking primers",
+    "Taq polymerase",
+    "Deoxynucleotide triphosphates"
+   ]
+  },
+  "PLEXUS-GEN-014": {
+   "id": "PLEXUS-GEN-014",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Southern blot - DNA",
+    "Northern blot - RNA",
+    "Western blot - protein",
+    "Southwestern blot - DNA-binding proteins"
+   ]
+  },
+  "PLEXUS-GEN-017": {
+   "id": "PLEXUS-GEN-017",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Frequent inappropriate laughter",
+    "Seizures",
+    "Ataxia",
+    "Intellectual disability"
+   ]
+  },
+  "PLEXUS-GEN-018": {
+   "id": "PLEXUS-GEN-018",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pancreatic insufficiency",
+    "Fat-soluble vitamin deficiency",
+    "Meconium ileus",
+    "Biliary cirrhosis"
+   ]
+  },
+  "PLEXUS-GEN-019": {
+   "id": "PLEXUS-GEN-019",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Recurrent pulmonary infections",
+    "Thick airway secretions",
+    "Nasal polyps",
+    "Digital clubbing"
+   ]
+  },
+  "PLEXUS-GEN-020": {
+   "id": "PLEXUS-GEN-020",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Dactylitis",
+    "Acute chest syndrome",
+    "Avascular necrosis",
+    "Stroke"
+   ]
+  },
+  "PLEXUS-GEN-021": {
+   "id": "PLEXUS-GEN-021",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Parvovirus B19 aplastic crisis",
+    "Functional autosplenectomy",
+    "Salmonella osteomyelitis",
+    "Renal papillary necrosis"
+   ]
+  },
+  "PLEXUS-GEN-022": {
+   "id": "PLEXUS-GEN-022",
+   "verdict": "pass",
+   "problems": [
+    "Calf pseudohypertrophy tile note does not link the finding to Duchenne dystrophy."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Gowers sign is the use of the hands to push off the thighs when rising from the floor, compensating for weak hip and thigh muscles. It indicates proximal lower limb weakness and is classic in Duchenne dystrophy, but not specific to it.",
+     "Calf pseudohypertrophy is calf enlargement caused by replacement of muscle with fat and fibrous tissue rather than true muscle growth. In Duchenne dystrophy the calves look bulky despite being weak, a classic early exam finding.",
+     "A waddling gait is a side-to-side swaying walk caused by weakness of the hip girdle muscles, especially the gluteus medius. It reflects the proximal pattern of weakness in Duchenne dystrophy.",
+     "Weakness beginning before age 5 is typical of Duchenne dystrophy, often noticed as delayed walking, frequent falls or difficulty climbing stairs. This early onset helps separate it from Becker dystrophy."
+    ]
+   },
+   "checkedTiles": [
+    "Gowers sign",
+    "Calf pseudohypertrophy",
+    "Waddling gait",
+    "Weakness beginning before age 5"
+   ]
+  },
+  "PLEXUS-GEN-023": {
+   "id": "PLEXUS-GEN-023",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Cataracts",
+    "Early (frontal) balding",
+    "Testicular atrophy",
+    "Cardiac arrhythmias"
+   ]
+  },
+  "PLEXUS-GEN-024": {
+   "id": "PLEXUS-GEN-024",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Macroorchidism",
+    "Long face",
+    "Prominent jaw",
+    "Large protruding ears"
+   ]
+  },
+  "PLEXUS-GEN-026": {
+   "id": "PLEXUS-GEN-026",
+   "verdict": "pass",
+   "problems": [
+    "Detail says 'several spinal tracts' without naming the three tracts in the tiles; made precise."
+   ],
+   "fixes": {
+    "detail": "Friedreich ataxia is an autosomal recessive GAA trinucleotide repeat disorder of the FXN gene that reduces frataxin, a mitochondrial protein involved in iron handling. Degeneration affects sensory neurons in the dorsal root ganglia and three spinal pathways: the dorsal columns, spinocerebellar tracts and lateral corticospinal tracts. The picture therefore mixes sensory ganglia with spinal cord tracts, giving a combined sensory, cerebellar and upper motor neuron syndrome, often with hypertrophic cardiomyopathy and diabetes."
+   },
+   "checkedTiles": [
+    "Lateral corticospinal tracts",
+    "Spinocerebellar tracts",
+    "Dorsal columns",
+    "Dorsal root ganglia"
+   ]
+  },
+  "PLEXUS-GEN-027": {
+   "id": "PLEXUS-GEN-027",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Depression",
+    "Aggressive behavior",
+    "Early chorea",
+    "Late hypokinesia"
+   ]
+  },
+  "PLEXUS-GEN-028": {
+   "id": "PLEXUS-GEN-028",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Holoprosencephaly",
+    "Cleft lip or palate",
+    "Polydactyly",
+    "Scalp aplasia cutis"
+   ]
+  },
+  "PLEXUS-GEN-029": {
+   "id": "PLEXUS-GEN-029",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Prominent occiput",
+    "Clenched hands with overlapping fingers",
+    "Rocker-bottom feet",
+    "Low-set ears"
+   ]
+  },
+  "PLEXUS-GEN-030": {
+   "id": "PLEXUS-GEN-030",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Duodenal atresia",
+    "Hirschsprung disease",
+    "Atrioventricular septal defect",
+    "Atlantoaxial instability"
+   ]
+  },
+  "PLEXUS-GEN-031": {
+   "id": "PLEXUS-GEN-031",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Flat facial profile",
+    "Single transverse palmar crease",
+    "Epicanthal folds",
+    "Brushfield spots"
+   ]
+  },
+  "PLEXUS-GEN-032": {
+   "id": "PLEXUS-GEN-032",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "High-pitched cat-like cry",
+    "Microcephaly",
+    "Low birth weight",
+    "Ventricular septal defect"
+   ]
+  },
+  "PLEXUS-GEN-033": {
+   "id": "PLEXUS-GEN-033",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Supravalvular aortic stenosis",
+    "Renal artery stenosis",
+    "Hypercalcemia",
+    "Elastin (ELN) gene deletion"
+   ]
+  },
+  "PLX-HEM-001": {
+   "id": "PLX-HEM-001",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Clopidogrel",
+    "Prasugrel",
+    "Ticagrelor",
+    "Ticlopidine"
+   ]
+  },
+  "PLX-HEM-004": {
+   "id": "PLX-HEM-004",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Mycoplasma pneumoniae infection",
+    "Epstein-Barr virus infection",
+    "Waldenstrom macroglobulinemia",
+    "Chronic lymphocytic leukemia"
+   ]
+  },
+  "PLX-HEM-005": {
+   "id": "PLX-HEM-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Penicillin",
+    "Cephalosporins",
+    "Rifampin",
+    "Methyldopa"
+   ]
+  },
+  "PLX-HEM-007": {
+   "id": "PLX-HEM-007",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Heinz bodies",
+    "Bite cells",
+    "Episodic oxidative hemolysis",
+    "X-linked recessive inheritance"
+   ]
+  },
+  "PLX-HEM-008": {
+   "id": "PLX-HEM-008",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Spherocytes",
+    "Increased MCHC",
+    "Increased osmotic fragility",
+    "Negative direct antiglobulin test"
+   ]
+  },
+  "PLX-HEM-009": {
+   "id": "PLX-HEM-009",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Acquired PIGA mutation",
+    "Loss of CD55 and CD59",
+    "Complement-mediated hemolysis",
+    "Unusual-site venous thrombosis"
+   ]
+  },
+  "PLX-HEM-014": {
+   "id": "PLX-HEM-014",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Reduced red-cell ATP",
+    "Echinocytes",
+    "Autosomal recessive inheritance",
+    "Extravascular hemolysis"
+   ]
+  },
+  "PLX-HEM-016": {
+   "id": "PLX-HEM-016",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Koilonychia",
+    "Pica",
+    "Atrophic glossitis",
+    "Plummer-Vinson syndrome"
+   ]
+  },
+  "PLX-HEM-017": {
+   "id": "PLX-HEM-017",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Menorrhagia",
+    "Peptic ulcer bleeding",
+    "Hookworm infection",
+    "Bleeding gastrointestinal malignancy"
+   ]
+  },
+  "PLX-HEM-018": {
+   "id": "PLX-HEM-018",
+   "verdict": "pass",
+   "problems": [
+    "Low serum iron note attributes low iron to sequestration while also saying it occurs in iron deficiency, where the cause is depletion; clarified."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Increased hepcidin is the central driver of anemia of inflammation. This liver hormone blocks ferroportin, reducing iron absorption and release from macrophages.",
+     "In anemia of inflammation, low serum iron results from iron being sequestered in macrophages and enterocytes rather than circulating. Serum iron is also low in iron deficiency, where stores are depleted, so it does not separate the two on its own.",
+     "Low TIBC (total iron-binding capacity) reflects reduced transferrin during inflammation. In iron deficiency TIBC is typically high, making this a key distinguishing feature.",
+     "Preserved or increased ferritin indicates retained iron stores, and ferritin also rises as an acute phase reactant. Coexisting iron deficiency can bring it down into the normal range."
+    ]
+   },
+   "checkedTiles": [
+    "Increased hepcidin",
+    "Low serum iron",
+    "Low TIBC",
+    "Preserved or increased ferritin"
+   ]
+  },
+  "PLX-HEM-021": {
+   "id": "PLX-HEM-021",
+   "verdict": "pass",
+   "problems": [
+    "Isoniazid tile note does not state the link to sideroblastic anemia."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Alcohol is a common acquired cause of sideroblastic anemia. It is thought to act through toxic effects on mitochondrial heme synthesis in erythroid precursors.",
+     "Isoniazid is an antituberculous drug that antagonizes vitamin B6, the cofactor for ALA synthase, the first step of heme synthesis. This impairs heme production and can cause sideroblastic anemia; pyridoxine is co-prescribed to prevent B6-related toxicity.",
+     "Chloramphenicol is a broad-spectrum antibiotic that inhibits bacterial protein synthesis and can impair mitochondrial protein synthesis. It causes dose-related marrow suppression with ringed sideroblasts.",
+     "Linezolid is an oxazolidinone antibiotic used for resistant gram-positive infections. Prolonged courses can cause myelosuppression, including sideroblastic anemia, through effects on mitochondrial protein synthesis."
+    ]
+   },
+   "checkedTiles": [
+    "Alcohol",
+    "Isoniazid",
+    "Chloramphenicol",
+    "Linezolid"
+   ]
+  },
+  "PLX-HEM-023": {
+   "id": "PLX-HEM-023",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Silent carrier",
+    "Two-gene alpha-thalassemia trait",
+    "Hemoglobin H disease",
+    "Hemoglobin Bart hydrops fetalis"
+   ]
+  },
+  "PLX-HEM-025": {
+   "id": "PLX-HEM-025",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pernicious anemia",
+    "Gastrectomy",
+    "Terminal ileal resection",
+    "Pancreatic insufficiency"
+   ]
+  },
+  "PLX-HEM-027": {
+   "id": "PLX-HEM-027",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pregnancy",
+    "Chronic alcohol use",
+    "Poor dietary intake",
+    "Phenytoin use"
+   ]
+  },
+  "PLX-HEM-028": {
+   "id": "PLX-HEM-028",
+   "verdict": "pass",
+   "problems": [
+    "Stray capital letter ('a Normal methylmalonic acid') in tile note 2."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Homocysteine is an amino acid intermediate that methionine synthase converts back to methionine using a methyl group from folate and vitamin B12 as cofactor. It rises in both folate and B12 deficiency, so on its own it does not tell them apart.",
+     "Methylmalonic acid (MMA) accumulates when the B12-dependent enzyme methylmalonyl-CoA mutase fails. Because this reaction does not require folate, a normal methylmalonic acid alongside high homocysteine points toward folate deficiency.",
+     "Megaloblastic anemia is a macrocytic anemia caused by impaired DNA synthesis, in which nuclear maturation lags behind cytoplasmic maturation and marrow precursors are abnormally large. It is shared by folate and B12 deficiency.",
+     "Hypersegmented neutrophils have an unusually high number of nuclear lobes, often five or more. They are a classic peripheral smear sign of a megaloblastic process and appear in both folate and B12 deficiency."
+    ]
+   },
+   "checkedTiles": [
+    "Increased homocysteine",
+    "Normal methylmalonic acid",
+    "Megaloblastic anemia",
+    "Hypersegmented neutrophils"
+   ]
+  },
+  "PLX-HEM-030": {
+   "id": "PLX-HEM-030",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Infantile macrocytic anemia",
+    "Reticulocytopenia",
+    "Triphalangeal thumbs",
+    "Increased HbF"
+   ]
+  },
+  "PLX-HEM-032": {
+   "id": "PLX-HEM-032",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Bernard-Soulier syndrome",
+    "Glanzmann thrombasthenia",
+    "Immune thrombocytopenia",
+    "Von Willebrand disease"
+   ]
+  },
+  "PLX-HEM-033": {
+   "id": "PLX-HEM-033",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Glucocorticoids",
+    "IV immunoglobulin",
+    "Rituximab",
+    "Thrombopoietin-receptor agonists"
+   ]
+  },
+  "PLX-HEM-034": {
+   "id": "PLX-HEM-034",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Severely reduced ADAMTS13 activity",
+    "Large vWF multimers",
+    "Schistocytes",
+    "Thrombocytopenia"
+   ]
+  },
+  "PLX-HEM-035": {
+   "id": "PLX-HEM-035",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Preceding bloody diarrhea",
+    "Microangiopathic hemolytic anemia",
+    "Thrombocytopenia",
+    "Acute kidney injury"
+   ]
+  },
+  "PLX-HEM-037": {
+   "id": "PLX-HEM-037",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Antithrombin deficiency",
+    "Factor V Leiden",
+    "Prothrombin G20210A mutation",
+    "Protein C deficiency"
+   ]
+  },
+  "PLX-HEM-038": {
+   "id": "PLX-HEM-038",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Lupus anticoagulant",
+    "Anticardiolipin antibodies",
+    "Anti-beta2-glycoprotein I antibodies",
+    "False-positive nontreponemal syphilis test"
+   ]
+  },
+  "PLX-HEM-039": {
+   "id": "PLX-HEM-039",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Vitamin K deficiency",
+    "Warfarin therapy",
+    "Liver synthetic dysfunction",
+    "Disseminated intravascular coagulation"
+   ]
+  },
+  "PLX-HEM-040": {
+   "id": "PLX-HEM-040",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Thrombocytopenia",
+    "Prolonged PT and aPTT",
+    "Low fibrinogen",
+    "Increased D-dimer"
+   ]
+  },
+  "PLX-HEM-043": {
+   "id": "PLX-HEM-043",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Papillary thyroid carcinoma",
+    "Meningioma",
+    "Serous papillary ovarian carcinoma",
+    "Mesothelioma"
+   ]
+  },
+  "PLX-HEM-044": {
+   "id": "PLX-HEM-044",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Azathioprine",
+    "6-Mercaptopurine",
+    "Cladribine",
+    "Fludarabine"
+   ]
+  },
+  "PLX-HEM-047": {
+   "id": "PLX-HEM-047",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pembrolizumab",
+    "Nivolumab",
+    "Atezolizumab",
+    "Durvalumab"
+   ]
+  },
+  "PLX-HEM-048": {
+   "id": "PLX-HEM-048",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Busulfan",
+    "Cyclophosphamide",
+    "Ifosfamide",
+    "Cisplatin"
+   ]
+  },
+  "PLX-HEM-049": {
+   "id": "PLX-HEM-049",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Mesna",
+    "Dexrazoxane",
+    "Amifostine",
+    "Leucovorin"
+   ]
+  },
+  "PLX-HEM-050": {
+   "id": "PLX-HEM-050",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "BCR-ABL1",
+    "BRAF",
+    "JAK2",
+    "HER2"
+   ]
+  },
+  "PLX-HEM-051": {
+   "id": "PLX-HEM-051",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Burkitt lymphoma",
+    "Follicular lymphoma",
+    "Mantle cell lymphoma",
+    "Gastric MALT lymphoma"
+   ]
+  },
+  "PLX-HEM-058": {
+   "id": "PLX-HEM-058",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Erythroderma",
+    "Cerebriform lymphocyte nuclei",
+    "Circulating malignant CD4 T cells",
+    "Lymphadenopathy"
+   ]
+  },
+  "PLX-HEM-059": {
+   "id": "PLX-HEM-059",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "HTLV-1 infection",
+    "Hypercalcemia",
+    "Lytic bone lesions",
+    "Generalized skin lesions"
+   ]
+  },
+  "PLX-HEM-060": {
+   "id": "PLX-HEM-060",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Hypercalcemia",
+    "Renal impairment",
+    "Anemia",
+    "Osteolytic bone lesions"
+   ]
+  },
+  "PLX-HEM-062": {
+   "id": "PLX-HEM-062",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Monoclonal IgM",
+    "Hyperviscosity",
+    "Peripheral neuropathy",
+    "Cold agglutinins"
+   ]
+  },
+  "PLX-HEM-065": {
+   "id": "PLX-HEM-065",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Hyperkalemia",
+    "Hyperphosphatemia",
+    "Hyperuricemia",
+    "Hypocalcemia"
+   ]
+  },
+  "IMM-001": {
+   "id": "IMM-001",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Spleen",
+    "Lymph nodes",
+    "Peyer's patches",
+    "Tonsils"
+   ]
+  },
+  "IMM-003": {
+   "id": "IMM-003",
+   "verdict": "pass",
+   "problems": [
+    "Tile notes are sentence fragments and three of four do not tie the tile to Chediak-Higashi syndrome."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Partial albinism is incomplete loss of pigment in the skin, hair and eyes, often with silvery hair. In Chediak-Higashi syndrome it results from abnormal packaging and transfer of melanin granules.",
+     "Giant cytoplasmic granules are large abnormal granules seen in neutrophils and other cells on a blood smear. They form from faulty lysosome fusion and are the classic laboratory clue to Chediak-Higashi syndrome.",
+     "Peripheral neuropathy is damage to peripheral nerves causing weakness or sensory loss. It is part of the progressive neurologic dysfunction recognized in Chediak-Higashi syndrome.",
+     "LYST encodes the lysosomal trafficking regulator protein. Loss-of-function mutations in both copies disrupt vesicle trafficking and cause Chediak-Higashi syndrome, which is autosomal recessive."
+    ]
+   },
+   "checkedTiles": [
+    "Partial albinism",
+    "Giant cytoplasmic granules",
+    "Peripheral neuropathy",
+    "LYST mutation"
+   ]
+  },
+  "IMM-004": {
+   "id": "IMM-004",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "FGF",
+    "VEGF",
+    "TGF-beta",
+    "PDGF"
+   ]
+  },
+  "IMM-005": {
+   "id": "IMM-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "IL-4",
+    "IL-5",
+    "IL-10",
+    "IL-13"
+   ]
+  },
+  "IMM-008": {
+   "id": "IMM-008",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "CD25 expression",
+    "FOXP3",
+    "IL-10 secretion",
+    "TGF-beta secretion"
+   ]
+  },
+  "IMM-010": {
+   "id": "IMM-010",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Protein antigen",
+    "MHC class II presentation",
+    "CD40-CD40L interaction",
+    "Helper T-cell involvement"
+   ]
+  },
+  "IMM-011": {
+   "id": "IMM-011",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Placental antibody transfer",
+    "Opsonization",
+    "Classical complement activation",
+    "Predominant serum immunoglobulin"
+   ]
+  },
+  "IMM-013": {
+   "id": "IMM-013",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Secreted pentamer",
+    "J-chain linkage",
+    "Early primary antibody response",
+    "Efficient complement activation"
+   ]
+  },
+  "IMM-014": {
+   "id": "IMM-014",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Mast-cell Fc receptor binding",
+    "Allergen-induced crosslinking",
+    "Type I hypersensitivity",
+    "Helminth defense"
+   ]
+  },
+  "IMM-015": {
+   "id": "IMM-015",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "C6",
+    "C7",
+    "C8",
+    "C9"
+   ]
+  },
+  "IMM-016": {
+   "id": "IMM-016",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Autosomal dominant inheritance",
+    "Increased bradykinin",
+    "Low C4",
+    "Recurrent bowel-wall edema"
+   ]
+  },
+  "IMM-018": {
+   "id": "IMM-018",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "MMR vaccine",
+    "Varicella vaccine",
+    "Rotavirus vaccine",
+    "Yellow fever vaccine"
+   ]
+  },
+  "IMM-019": {
+   "id": "IMM-019",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Acellular pertussis vaccine",
+    "Hepatitis B vaccine",
+    "HPV vaccine",
+    "Tetanus toxoid vaccine"
+   ]
+  },
+  "IMM-021": {
+   "id": "IMM-021",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Low T-cell receptor excision circles",
+    "Absent thymic shadow",
+    "Profound T-cell lymphopenia",
+    "Infantile opportunistic infections"
+   ]
+  },
+  "IMM-023": {
+   "id": "IMM-023",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Thymic hypoplasia",
+    "T-cell deficiency",
+    "Low PTH",
+    "Hypocalcemia"
+   ]
+  },
+  "IMM-028": {
+   "id": "IMM-028",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "BTK-related agammaglobulinemia",
+    "CD40L-deficient hyper-IgM syndrome",
+    "Wiskott-Aldrich syndrome",
+    "FOXP3-related IPEX"
+   ]
+  },
+  "IMM-029": {
+   "id": "IMM-029",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Autoimmune hemolytic anemia",
+    "Immune thrombocytopenia",
+    "Acute hemolytic transfusion reaction",
+    "Hemolytic disease of the fetus and newborn"
+   ]
+  },
+  "IMM-031": {
+   "id": "IMM-031",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Nickel allergic contact dermatitis",
+    "Poison ivy dermatitis",
+    "Tuberculin skin-test reaction",
+    "Candida delayed skin-test reaction"
+   ]
+  },
+  "IMM-034": {
+   "id": "IMM-034",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Noncardiogenic pulmonary edema",
+    "Pulmonary neutrophil activation",
+    "Increased pulmonary vascular permeability",
+    "New lung infiltrates after transfusion"
+   ]
+  },
+  "IMM-036": {
+   "id": "IMM-036",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Graft arteriosclerosis",
+    "Interstitial fibrosis",
+    "Vascular smooth-muscle proliferation",
+    "Graft tissue atrophy"
+   ]
+  },
+  "IMM-037": {
+   "id": "IMM-037",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Donor T-cell attack on host",
+    "Maculopapular rash",
+    "Diarrhea",
+    "Jaundice"
+   ]
+  },
+  "IMM-038": {
+   "id": "IMM-038",
+   "verdict": "pass",
+   "problems": [
+    "Detail ended with exam-focused filler sentence; replaced."
+   ],
+   "fixes": {
+    "detail": "IL-2 drives proliferation of activated T cells, so blocking its production or its signal is a central strategy in transplant immunosuppression. Calcineurin inhibitors stop IL-2 transcription, sirolimus blocks mTOR downstream of the IL-2 receptor, and basiliximab binds CD25, the receptor's alpha chain. Each drug acts at a different step and has a distinct toxicity profile."
+   },
+   "checkedTiles": [
+    "Cyclosporine",
+    "Tacrolimus",
+    "Sirolimus",
+    "Basiliximab"
+   ]
+  },
+  "IMM-039": {
+   "id": "IMM-039",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Osteoporosis",
+    "Hyperglycemia",
+    "Iatrogenic Cushing syndrome",
+    "Femoral-head osteonecrosis"
+   ]
+  },
+  "MICRO-001": {
+   "id": "MICRO-001",
+   "verdict": "pass",
+   "problems": [
+    "Detail ended with exam-focused filler clause; removed."
+   ],
+   "fixes": {
+    "detail": "Raising intracellular cAMP is a common bacterial toxin strategy, but the route differs. Cholera toxin and ETEC heat-labile toxin ADP-ribosylate Gs to lock it on, pertussis toxin ADP-ribosylates Gi to disable it, and anthrax edema factor is itself an adenylate cyclase. In the gut, high cAMP drives chloride secretion and watery diarrhea."
+   },
+   "checkedTiles": [
+    "Cholera toxin",
+    "ETEC heat-labile toxin",
+    "Pertussis toxin",
+    "Anthrax edema factor"
+   ]
+  },
+  "MICRO-002": {
+   "id": "MICRO-002",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Diphtheria toxin",
+    "Pseudomonas exotoxin A",
+    "Shiga toxin (Shigella dysenteriae)",
+    "Shiga-like toxin / Stx (EHEC)"
+   ]
+  },
+  "MICRO-003": {
+   "id": "MICRO-003",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Diphtheria toxin",
+    "Cholera toxin",
+    "Streptococcal pyrogenic exotoxin A (SpeA)",
+    "Shiga-like toxin"
+   ]
+  },
+  "MICRO-004": {
+   "id": "MICRO-004",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Streptococcus pneumoniae",
+    "Haemophilus influenzae",
+    "Neisseria meningitidis",
+    "Neisseria gonorrhoeae"
+   ]
+  },
+  "MICRO-005": {
+   "id": "MICRO-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Clostridium tetani",
+    "Clostridium botulinum",
+    "Clostridium perfringens",
+    "Clostridioides difficile"
+   ]
+  },
+  "MICRO-006": {
+   "id": "MICRO-006",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Proteus mirabilis",
+    "Klebsiella pneumoniae",
+    "Helicobacter pylori",
+    "Staphylococcus saprophyticus"
+   ]
+  },
+  "MICRO-008": {
+   "id": "MICRO-008",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Coxiella burnetii",
+    "Bartonella species",
+    "Brucella species",
+    "Haemophilus species (HACEK)"
+   ]
+  },
+  "MICRO-009": {
+   "id": "MICRO-009",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Mycoplasma pneumoniae",
+    "Chlamydia pneumoniae",
+    "Chlamydia psittaci",
+    "Legionella pneumophila"
+   ]
+  },
+  "MICRO-010": {
+   "id": "MICRO-010",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Listeria monocytogenes",
+    "Brucella species",
+    "Campylobacter jejuni",
+    "Yersinia enterocolitica"
+   ]
+  },
+  "MICRO-012": {
+   "id": "MICRO-012",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Trismus",
+    "Risus sardonicus",
+    "Opisthotonos",
+    "Painful muscle spasms"
+   ]
+  },
+  "MICRO-013": {
+   "id": "MICRO-013",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Descending flaccid paralysis",
+    "Hyporeflexia",
+    "Mydriasis",
+    "Xerostomia"
+   ]
+  },
+  "MICRO-015": {
+   "id": "MICRO-015",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Hot-tub folliculitis",
+    "Malignant otitis externa",
+    "Contact-lens corneal ulcer",
+    "Puncture-wound osteomyelitis"
+   ]
+  },
+  "MICRO-017": {
+   "id": "MICRO-017",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Thin homogeneous discharge",
+    "Vaginal pH above 4.5",
+    "Clue cells",
+    "Positive amine whiff test"
+   ]
+  },
+  "MICRO-018": {
+   "id": "MICRO-018",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Histoplasma capsulatum",
+    "Blastomyces dermatitidis",
+    "Coccidioides species",
+    "Paracoccidioides species"
+   ]
+  },
+  "MICRO-019": {
+   "id": "MICRO-019",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Histoplasma capsulatum",
+    "Blastomyces dermatitidis",
+    "Paracoccidioides species",
+    "Sporothrix schenckii"
+   ]
+  },
+  "MICRO-020": {
+   "id": "MICRO-020",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "India-ink capsule halo",
+    "Mucicarmine-positive capsule",
+    "Positive cryptococcal antigen",
+    "Soap-bubble brain pseudocysts"
+   ]
+  },
+  "MICRO-022": {
+   "id": "MICRO-022",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Asthma exacerbations",
+    "Elevated IgE",
+    "Eosinophilia",
+    "Bronchiectasis"
+   ]
+  },
+  "MICRO-025": {
+   "id": "MICRO-025",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "CD4 count below 200 cells/uL",
+    "Progressive exertional dyspnea",
+    "Bilateral ground-glass lung opacities",
+    "TMP-SMX prophylaxis"
+   ]
+  },
+  "MICRO-026": {
+   "id": "MICRO-026",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Flask-shaped colonic ulcers",
+    "Trophozoites containing erythrocytes",
+    "Right-lobe liver abscess",
+    "Anchovy-paste abscess material"
+   ]
+  },
+  "MICRO-027": {
+   "id": "MICRO-027",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Foul-smelling fatty diarrhea",
+    "Camping-water exposure",
+    "IgA deficiency",
+    "Two-nucleated trophozoites"
+   ]
+  },
+  "MICRO-028": {
+   "id": "MICRO-028",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Acid-fast stool oocysts",
+    "Waterborne oocyst ingestion",
+    "Chronic watery diarrhea in advanced HIV",
+    "Immune restoration with ART"
+   ]
+  },
+  "MICRO-030": {
+   "id": "MICRO-030",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Plasmodium falciparum",
+    "Plasmodium vivax",
+    "Plasmodium ovale",
+    "Plasmodium malariae"
+   ]
+  },
+  "MICRO-031": {
+   "id": "MICRO-031",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ixodes tick exposure",
+    "Maltese-cross erythrocyte forms",
+    "Hemolytic anemia",
+    "Severe infection in asplenia"
+   ]
+  },
+  "MICRO-032": {
+   "id": "MICRO-032",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Sandfly exposure",
+    "Amastigotes in macrophages",
+    "Hepatosplenomegaly",
+    "Pancytopenia"
+   ]
+  },
+  "MICRO-033": {
+   "id": "MICRO-033",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ascaris lumbricoides",
+    "Strongyloides stercoralis",
+    "Ancylostoma duodenale",
+    "Necator americanus"
+   ]
+  },
+  "MICRO-034": {
+   "id": "MICRO-034",
+   "verdict": "pass",
+   "problems": [
+    "Detail ended with exam-focused filler sentence; replaced with a factual contrast."
+   ],
+   "fixes": {
+    "detail": "These nematodes are acquired by swallowing infective eggs, typically from contaminated hands, soil or food. Enterobius, Ascaris and Trichuris mature into adult worms in the human intestine, whereas Toxocara larvae cannot complete development in humans and wander through tissues. By contrast, Strongyloides and the hookworms enter as larvae that penetrate the skin."
+   },
+   "checkedTiles": [
+    "Enterobius vermicularis",
+    "Ascaris lumbricoides",
+    "Trichuris trichiura",
+    "Toxocara species"
+   ]
+  },
+  "MICRO-037": {
+   "id": "MICRO-037",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Schistosomiasis",
+    "Intestinal taeniasis",
+    "Clonorchiasis",
+    "Diphyllobothriasis"
+   ]
+  },
+  "MICRO-038": {
+   "id": "MICRO-038",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Onchocerciasis",
+    "Strongyloidiasis",
+    "Scabies",
+    "Pediculosis capitis"
+   ]
+  },
+  "MICRO-039": {
+   "id": "MICRO-039",
+   "verdict": "pass",
+   "problems": [
+    "Detail implied daytime biting and urban habitat cause transmission ('so'); reworded."
+   ],
+   "fixes": {
+    "detail": "Aedes mosquitoes, especially Aedes aegypti, bite during the day, thrive in urban settings and transmit several important arboviruses. Dengue, yellow fever and Zika are flaviviruses, while chikungunya is an alphavirus (togavirus). Other routes exist, including sexual and vertical Zika transmission and sylvatic yellow fever cycles, so Aedes is a shared route rather than an exclusive one."
+   },
+   "checkedTiles": [
+    "Dengue virus",
+    "Yellow fever virus",
+    "Zika virus",
+    "Chikungunya virus"
+   ]
+  },
+  "MICRO-040": {
+   "id": "MICRO-040",
+   "verdict": "pass",
+   "problems": [
+    "Tile 1 implied all orthomyxoviruses have 8 segments (influenza C and D have 7); reworded."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Orthomyxoviruses include the influenza viruses; influenza A and B have 8 negative-sense RNA segments. Reassortment of hemagglutinin and neuraminidase segments in influenza A causes antigenic shift and new pandemic strains.",
+     "Arenaviruses, such as lymphocytic choriomeningitis virus and Lassa virus, have 2 ambisense RNA segments. They are rodent-borne, and some cause hemorrhagic fever.",
+     "The order Bunyavirales (formerly the family Bunyaviridae) includes hantaviruses and Crimean-Congo hemorrhagic fever virus. Traditional bunyavirus groups have 3 negative-sense or ambisense RNA segments.",
+     "Rotavirus is a reovirus with 11 segments of double-stranded RNA. It is a major cause of severe watery diarrhea in infants and young children, and oral vaccines are available."
+    ]
+   },
+   "checkedTiles": [
+    "Orthomyxoviruses",
+    "Arenaviruses",
+    "Bunyavirales (formerly Bunyaviridae) groups",
+    "Rotavirus"
+   ]
+  },
+  "MICRO-041": {
+   "id": "MICRO-041",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Measles virus",
+    "Mumps virus",
+    "Parainfluenza virus",
+    "Respiratory syncytial virus"
+   ]
+  },
+  "MICRO-042": {
+   "id": "MICRO-042",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Parvovirus B19",
+    "Adenovirus",
+    "Human papillomavirus",
+    "Polyomaviruses"
+   ]
+  },
+  "MICRO-044": {
+   "id": "MICRO-044",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Cervix",
+    "Anus",
+    "Penis",
+    "Oropharynx"
+   ]
+  },
+  "MICRO-046": {
+   "id": "MICRO-046",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Retinitis",
+    "Esophagitis with linear ulcers",
+    "Colitis with bleeding",
+    "Pneumonitis after transplantation"
+   ]
+  },
+  "MICRO-047": {
+   "id": "MICRO-047",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Periventricular calcifications",
+    "Sensorineural hearing loss",
+    "Microcephaly",
+    "Chorioretinitis"
+   ]
+  },
+  "MICRO-049": {
+   "id": "MICRO-049",
+   "verdict": "pass",
+   "problems": [
+    "Tile 2 called knees small joints; reworded."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Erythema infectiosum (fifth disease) is a childhood rash with bright red slapped cheeks followed by a lacy rash on the limbs. Children are usually no longer contagious once the rash appears.",
+     "Adults, especially women, can develop symmetric pain and swelling of the hands, wrists, knees and ankles. This immune-mediated arthropathy can mimic early rheumatoid arthritis and is usually self-limited.",
+     "Transient aplastic crisis is a sudden drop in hemoglobin with very low reticulocytes. It occurs in people with high red cell turnover, such as sickle cell disease or hereditary spherocytosis, when B19 halts erythropoiesis.",
+     "Hydrops fetalis is abnormal fluid accumulation in two or more fetal compartments. Maternal B19 infection can cross the placenta and cause severe fetal anemia, heart failure and hydrops, though not in every case."
+    ]
+   },
+   "checkedTiles": [
+    "Erythema infectiosum",
+    "Adult polyarthropathy",
+    "Transient aplastic crisis",
+    "Hydrops fetalis"
+   ]
+  },
+  "MICRO-050": {
+   "id": "MICRO-050",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Mixed cryoglobulinemia",
+    "Membranoproliferative glomerulonephritis",
+    "Porphyria cutanea tarda",
+    "Lichen planus"
+   ]
+  },
+  "MICRO-051": {
+   "id": "MICRO-051",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Orchitis",
+    "Pancreatitis",
+    "Aseptic meningitis",
+    "Sensorineural hearing loss"
+   ]
+  },
+  "MICRO-052": {
+   "id": "MICRO-052",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Smallpox",
+    "Cowpox",
+    "Mpox",
+    "Molluscum contagiosum"
+   ]
+  },
+  "MICRO-054": {
+   "id": "MICRO-054",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Nafcillin",
+    "Oxacillin",
+    "Dicloxacillin",
+    "Methicillin"
+   ]
+  },
+  "MICRO-055": {
+   "id": "MICRO-055",
+   "verdict": "pass",
+   "problems": [
+    "Exam-focused filler wording in detail; reworded."
+   ],
+   "fixes": {
+    "detail": "Carbapenems are broad-spectrum beta-lactams that bind penicillin-binding proteins and block peptidoglycan crosslinking, and they are stable against many beta-lactamases, including ESBLs. They are often reserved for serious or multidrug-resistant infections. Two key distinctions: imipenem is co-administered with cilastatin, and ertapenem lacks reliable activity against Pseudomonas."
+   },
+   "checkedTiles": [
+    "Meropenem",
+    "Imipenem",
+    "Ertapenem",
+    "Doripenem"
+   ]
+  },
+  "MICRO-056": {
+   "id": "MICRO-056",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ceftriaxone",
+    "Cefotaxime",
+    "Ceftazidime",
+    "Cefixime"
+   ]
+  },
+  "MICRO-057": {
+   "id": "MICRO-057",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Macrolides",
+    "Clindamycin",
+    "Linezolid",
+    "Chloramphenicol"
+   ]
+  },
+  "MICRO-058": {
+   "id": "MICRO-058",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Gentamicin",
+    "Tobramycin",
+    "Amikacin",
+    "Streptomycin"
+   ]
+  },
+  "MICRO-059": {
+   "id": "MICRO-059",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Doxycycline",
+    "Tetracycline",
+    "Minocycline",
+    "Demeclocycline"
+   ]
+  },
+  "MICRO-060": {
+   "id": "MICRO-060",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ciprofloxacin",
+    "Levofloxacin",
+    "Moxifloxacin",
+    "Ofloxacin"
+   ]
+  },
+  "MICRO-061": {
+   "id": "MICRO-061",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Rifampin",
+    "Rifabutin",
+    "Rifapentine",
+    "Rifaximin"
+   ]
+  },
+  "MICRO-062": {
+   "id": "MICRO-062",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Rifampin",
+    "Isoniazid",
+    "Pyrazinamide",
+    "Ethambutol"
+   ]
+  },
+  "MICRO-063": {
+   "id": "MICRO-063",
+   "verdict": "pass",
+   "problems": [
+    "Exam-focused filler wording in detail; reworded."
+   ],
+   "fixes": {
+    "detail": "These triazoles inhibit fungal lanosterol 14-alpha-demethylase (CYP51), blocking conversion of lanosterol to ergosterol, the main sterol of fungal cell membranes. Many also inhibit human CYP enzymes to varying degrees, so drug interactions are common. Spectrum, pharmacokinetics and toxicity differ by agent, and isavuconazole is an additional member of the class."
+   },
+   "checkedTiles": [
+    "Fluconazole",
+    "Itraconazole",
+    "Voriconazole",
+    "Posaconazole"
+   ]
+  },
+  "MICRO-065": {
+   "id": "MICRO-065",
+   "verdict": "pass",
+   "problems": [
+    "Stated elvitegravir boosting is only with cobicistat; ritonavir boosting also used historically. Softened to 'typically/usually'."
+   ],
+   "fixes": {
+    "detail": "Integrase strand-transfer inhibitors block HIV integrase from inserting viral DNA into the host chromosome, a step required for stable infection of the cell. They are used as part of combination antiretroviral regimens, not as monotherapy. Elvitegravir requires pharmacokinetic boosting, typically with cobicistat, whereas the others do not, and as a class they are chelated by antacids and other polyvalent cations.",
+    "tileNotes": [
+     "Bictegravir is a second-generation INSTI given in a fixed-dose combination with two NRTIs as a single daily tablet. It does not require a pharmacokinetic booster.",
+     "Dolutegravir is a second-generation INSTI with a relatively high barrier to resistance, used in many first-line regimens. Like other INSTIs, it should be separated from antacids and supplements containing polyvalent cations.",
+     "Elvitegravir is an INSTI that must be pharmacokinetically boosted, usually with cobicistat, to reach adequate levels. The booster adds CYP3A-mediated drug interactions not seen with unboosted INSTIs.",
+     "Raltegravir was the first INSTI approved. It is unboosted and has been associated with creatine kinase elevation and myopathy in some patients."
+    ]
+   },
+   "checkedTiles": [
+    "Bictegravir",
+    "Dolutegravir",
+    "Elvitegravir",
+    "Raltegravir"
+   ]
+  },
+  "MICRO-066": {
+   "id": "MICRO-066",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Efavirenz",
+    "Nevirapine",
+    "Doravirine",
+    "Rilpivirine"
+   ]
+  },
+  "MICRO-067": {
+   "id": "MICRO-067",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Abacavir",
+    "Lamivudine",
+    "Emtricitabine",
+    "Zidovudine"
+   ]
+  },
+  "MICRO-068": {
+   "id": "MICRO-068",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Atazanavir",
+    "Lopinavir",
+    "Indinavir",
+    "Ritonavir"
+   ]
+  },
+  "MICRO-069": {
+   "id": "MICRO-069",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ledipasvir",
+    "Velpatasvir",
+    "Pibrentasvir",
+    "Elbasvir"
+   ]
+  },
+  "MICRO-070": {
+   "id": "MICRO-070",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Glecaprevir",
+    "Grazoprevir",
+    "Simeprevir",
+    "Paritaprevir"
+   ]
+  },
+  "MSK-002": {
+   "id": "MSK-002",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ankylosing spondylitis",
+    "Psoriatic arthritis",
+    "Reactive arthritis",
+    "IBD-associated (enteropathic) spondyloarthritis"
+   ]
+  },
+  "MSK-003": {
+   "id": "MSK-003",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Campylobacter",
+    "Salmonella",
+    "Shigella",
+    "Yersinia"
+   ]
+  },
+  "MSK-005": {
+   "id": "MSK-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Nonuniform (asymmetric) joint-space loss",
+    "Subchondral sclerosis",
+    "Marginal osteophytes",
+    "Subchondral cysts"
+   ]
+  },
+  "MSK-007": {
+   "id": "MSK-007",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Recurrent fractures",
+    "Cranial nerve compression",
+    "Pancytopenia",
+    "Extramedullary hematopoiesis"
+   ]
+  },
+  "MSK-009": {
+   "id": "MSK-009",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Increasing hat size",
+    "Hearing impairment",
+    "High-output heart failure",
+    "Osteosarcoma"
+   ]
+  },
+  "MSK-010": {
+   "id": "MSK-010",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Methotrexate",
+    "Hydroxychloroquine",
+    "Sulfasalazine",
+    "Leflunomide"
+   ]
+  },
+  "MSK-012": {
+   "id": "MSK-012",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Congenital AV block",
+    "Periorbital/annular rash",
+    "Cytopenias",
+    "Transaminitis"
+   ]
+  },
+  "MSK-015": {
+   "id": "MSK-015",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Heliotrope rash",
+    "Gottron papules",
+    "Shawl sign",
+    "V-sign rash"
+   ]
+  },
+  "MSK-019": {
+   "id": "MSK-019",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Paget disease of bone",
+    "Prior bone irradiation",
+    "Hereditary retinoblastoma",
+    "Li-Fraumeni syndrome"
+   ]
+  },
+  "MSK-020": {
+   "id": "MSK-020",
+   "verdict": "pass",
+   "problems": [
+    "Tile note 2 capitalizes 'Onion-skin' mid-sentence."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "The diaphysis is the shaft of a long bone. Ewing sarcoma classically arises there, unlike osteosarcoma's typical metaphyseal location, although it also occurs in the pelvis and other flat bones.",
+     "An onion-skin periosteal reaction is layered new bone laid down by the periosteum in concentric sheets around a lesion, seen on plain radiographs. It indicates an aggressive process and can also occur with other lesions such as osteomyelitis.",
+     "Small round blue cells are sheets of uniform cells with scant cytoplasm and dark nuclei on H&E staining. This pattern is shared by tumors such as neuroblastoma, lymphoma, and rhabdomyosarcoma, and membranous CD99 staining supports Ewing sarcoma.",
+     "EWSR1-FLI1 fusion results from the t(11;22) translocation joining EWSR1 on chromosome 22 with FLI1 on chromosome 11, creating an abnormal transcription factor. It is present in most cases, while others carry different partners such as ERG."
+    ]
+   },
+   "checkedTiles": [
+    "Diaphyseal lesion",
+    "Onion-skin periosteal reaction",
+    "Small round blue cells",
+    "EWSR1-FLI1 fusion"
+   ]
+  },
+  "MSK-023": {
+   "id": "MSK-023",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Palpable purpura",
+    "Arthralgia",
+    "Colicky abdominal pain",
+    "Hematuria"
+   ]
+  },
+  "MSK-024": {
+   "id": "MSK-024",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Systemic sclerosis",
+    "Systemic lupus erythematosus",
+    "Mixed connective tissue disease",
+    "Sjogren syndrome"
+   ]
+  },
+  "MSK-025": {
+   "id": "MSK-025",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Hook of hamate fracture",
+    "Medial epicondyle fracture",
+    "Guyon canal compression",
+    "Cubital tunnel compression"
+   ]
+  },
+  "MSK-026": {
+   "id": "MSK-026",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Adductor longus",
+    "Adductor brevis",
+    "Gracilis",
+    "Adductor part of adductor magnus"
+   ]
+  },
+  "MSK-028": {
+   "id": "MSK-028",
+   "verdict": "pass",
+   "problems": [
+    "Detail says the short head of biceps femoris 'only flexes the knee'; it also laterally rotates the flexed knee. Reworded to 'acts only at the knee'."
+   ],
+   "fixes": {
+    "detail": "Gluteus maximus and the three hamstrings that cross the hip (long head of biceps femoris, semimembranosus and semitendinosus) all extend the hip. The short head of biceps femoris arises from the femur, does not cross the hip, and acts only at the knee. Hip extension matters clinically for rising from a chair, climbing stairs and running."
+   },
+   "checkedTiles": [
+    "Gluteus maximus",
+    "Long head of biceps femoris",
+    "Semimembranosus",
+    "Semitendinosus"
+   ]
+  },
+  "MSK-029": {
+   "id": "MSK-029",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Rectus femoris",
+    "Vastus medialis",
+    "Vastus lateralis",
+    "Vastus intermedius"
+   ]
+  },
+  "MSK-030": {
+   "id": "MSK-030",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Anterior cruciate ligament",
+    "Posterior cruciate ligament",
+    "Medial collateral ligament",
+    "Lateral collateral ligament"
+   ]
+  },
+  "MSK-032": {
+   "id": "MSK-032",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Glucocorticoid exposure",
+    "Heavy alcohol use",
+    "Gaucher disease",
+    "Decompression sickness"
+   ]
+  },
+  "MSK-033": {
+   "id": "MSK-033",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Fracture",
+    "Burn edema",
+    "Reperfusion injury",
+    "Envenomation"
+   ]
+  },
+  "MSK-034": {
+   "id": "MSK-034",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Posterior edge or tip of lateral malleolus",
+    "Posterior edge or tip of medial malleolus",
+    "Base of the fifth metatarsal",
+    "Navicular"
+   ]
+  },
+  "MSK-035": {
+   "id": "MSK-035",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Tension (superolateral) side of the femoral neck",
+    "Anterior tibial cortex",
+    "Talus",
+    "Proximal fifth metatarsal"
+   ]
+  },
+  "MSK-036": {
+   "id": "MSK-036",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ibuprofen",
+    "Naproxen",
+    "Indomethacin",
+    "Diclofenac"
+   ]
+  },
+  "MSK-037": {
+   "id": "MSK-037",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Allopurinol",
+    "Febuxostat",
+    "Probenecid",
+    "Pegloticase"
+   ]
+  },
+  "MSK-038": {
+   "id": "MSK-038",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Alendronate",
+    "Ibandronate",
+    "Risedronate",
+    "Zoledronic acid"
+   ]
+  },
+  "MSK-040": {
+   "id": "MSK-040",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Prostaglandin E2 (PGE2)",
+    "Prostaglandin F2-alpha (PGF2-alpha)",
+    "Prostacyclin (PGI2)",
+    "Thromboxane A2 (TXA2)"
+   ]
+  },
+  "MSK-041": {
+   "id": "MSK-041",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Hypercapnia",
+    "Lactic acidosis",
+    "Hyperkalemia",
+    "Rhabdomyolysis"
+   ]
+  },
+  "NEPH-001": {
+   "id": "NEPH-001",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Collecting ducts",
+    "Renal calyces",
+    "Renal pelvis",
+    "Ureters"
+   ]
+  },
+  "NEPH-002": {
+   "id": "NEPH-002",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Glomeruli",
+    "Proximal convoluted tubules",
+    "Loops of Henle",
+    "Distal convoluted tubules"
+   ]
+  },
+  "NEPH-003": {
+   "id": "NEPH-003",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Furosemide",
+    "Torsemide",
+    "Bumetanide",
+    "Ethacrynic acid"
+   ]
+  },
+  "NEPH-005": {
+   "id": "NEPH-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Spironolactone",
+    "Eplerenone",
+    "Amiloride",
+    "Triamterene"
+   ]
+  },
+  "NEPH-008": {
+   "id": "NEPH-008",
+   "verdict": "pass",
+   "problems": [
+    "Final sentence of detail has a confusing appositive linking 'the diagnosis' to 'the leading cause of nephrotic syndrome in children'."
+   ],
+   "fixes": {
+    "detail": "Minimal change disease is named for its nearly normal appearance on light microscopy, with no immune deposits on immunofluorescence. Electron microscopy reveals diffuse podocyte foot-process effacement, and proteinuria tends to be selective for albumin, especially in children. Effacement alone is nonspecific (it also occurs in FSGS), so the combined pattern points to the diagnosis. Minimal change disease is the leading cause of nephrotic syndrome in children."
+   },
+   "checkedTiles": [
+    "Normal glomeruli on light microscopy",
+    "Podocyte foot-process effacement",
+    "Negative immune-deposit immunofluorescence",
+    "Albumin-predominant proteinuria"
+   ]
+  },
+  "NEPH-009": {
+   "id": "NEPH-009",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "HIV infection",
+    "Heroin exposure",
+    "Interferon therapy",
+    "Sickle cell disease"
+   ]
+  },
+  "NEPH-010": {
+   "id": "NEPH-010",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Hepatitis B infection",
+    "Systemic lupus erythematosus",
+    "Solid malignancy",
+    "Penicillamine exposure"
+   ]
+  },
+  "NEPH-011": {
+   "id": "NEPH-011",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Anti-PLA2R antibodies",
+    "Thickened glomerular basement membrane",
+    "Subepithelial immune deposits",
+    "Granular capillary-loop staining"
+   ]
+  },
+  "NEPH-013": {
+   "id": "NEPH-013",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Persistent hematuria",
+    "Sensorineural hearing loss",
+    "Anterior lenticonus",
+    "Basket-weave basement membrane"
+   ]
+  },
+  "NEPH-016": {
+   "id": "NEPH-016",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Urease-producing urinary infection",
+    "Alkaline urine",
+    "Coffin-lid crystals",
+    "Staghorn calculus"
+   ]
+  },
+  "NEPH-017": {
+   "id": "NEPH-017",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ethylene glycol poisoning",
+    "Excess vitamin C intake",
+    "Fat malabsorption",
+    "Hypocitraturia"
+   ]
+  },
+  "NEPH-019": {
+   "id": "NEPH-019",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "NSAIDs",
+    "Penicillins",
+    "Proton pump inhibitors",
+    "Rifampin"
+   ]
+  },
+  "NEPH-020": {
+   "id": "NEPH-020",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Aminoglycosides",
+    "Cisplatin",
+    "Amphotericin B",
+    "Myoglobin"
+   ]
+  },
+  "NEPH-023": {
+   "id": "NEPH-023",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Hepatic cysts",
+    "Intracranial aneurysms",
+    "Mitral valve prolapse",
+    "Colonic diverticulosis"
+   ]
+  },
+  "NEPH-024": {
+   "id": "NEPH-024",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "PTH-related peptide",
+    "Erythropoietin",
+    "ACTH",
+    "Renin"
+   ]
+  },
+  "NEPH-025": {
+   "id": "NEPH-025",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Tobacco smoking",
+    "Aromatic amines",
+    "Cyclophosphamide",
+    "Phenacetin"
+   ]
+  },
+  "NEPH-026": {
+   "id": "NEPH-026",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Glaucoma",
+    "Altitude sickness",
+    "Idiopathic intracranial hypertension",
+    "Metabolic alkalosis"
+   ]
+  },
+  "NEPH-027": {
+   "id": "NEPH-027",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Coughing",
+    "Sneezing",
+    "Laughing",
+    "Heavy lifting"
+   ]
+  },
+  "NEPH-030": {
+   "id": "NEPH-030",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Renal failure",
+    "Hypoparathyroidism",
+    "Tumor lysis syndrome",
+    "Rhabdomyolysis"
+   ]
+  },
+  "NEU-001": {
+   "id": "NEU-001",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Meissner corpuscle",
+    "Pacinian corpuscle",
+    "Merkel disc",
+    "Ruffini ending"
+   ]
+  },
+  "NEU-004": {
+   "id": "NEU-004",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Reticulospinal tract",
+    "Rubrospinal tract",
+    "Tectospinal tract",
+    "Vestibulospinal tract"
+   ]
+  },
+  "NEU-005": {
+   "id": "NEU-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Oculomotor nerve",
+    "Trochlear nerve",
+    "Abducens nerve",
+    "Hypoglossal nerve"
+   ]
+  },
+  "NEU-007": {
+   "id": "NEU-007",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Spinothalamic tract",
+    "Spinal trigeminal nucleus",
+    "Descending sympathetic fibers",
+    "Spinocerebellar pathways"
+   ]
+  },
+  "NEU-009": {
+   "id": "NEU-009",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ipsilateral weakness below lesion",
+    "Ipsilateral vibration/proprioception loss below lesion",
+    "Contralateral pain-temperature loss below lesion",
+    "Ipsilateral LMN signs at the lesion level"
+   ]
+  },
+  "NEU-011": {
+   "id": "NEU-011",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Optic neuritis",
+    "Internuclear ophthalmoplegia",
+    "Uhthoff phenomenon",
+    "Lhermitte sign"
+   ]
+  },
+  "NEU-013": {
+   "id": "NEU-013",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "JC virus reactivation",
+    "Oligodendrocyte destruction",
+    "Natalizumab exposure",
+    "Nonenhancing white matter lesions"
+   ]
+  },
+  "NEU-014": {
+   "id": "NEU-014",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "GABA (GABA-A receptor)",
+    "Glycine",
+    "Benzodiazepines",
+    "Barbiturates"
+   ]
+  },
+  "NEU-015": {
+   "id": "NEU-015",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Edrophonium",
+    "Physostigmine",
+    "Pyridostigmine",
+    "Donepezil"
+   ]
+  },
+  "NEU-016": {
+   "id": "NEU-016",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ptosis",
+    "Diplopia",
+    "Dysphagia",
+    "Dysarthria"
+   ]
+  },
+  "NEU-017": {
+   "id": "NEU-017",
+   "verdict": "pass",
+   "problems": [
+    "Tile note 2 repeats 'brief/briefly' awkwardly."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "P/Q-type voltage-gated calcium channels on the motor nerve terminal let calcium in to trigger acetylcholine release. Autoantibodies against them are the cause of LEMS.",
+     "Brief exercise lets calcium build up in the nerve terminal, boosting acetylcholine release. Strength and reflexes therefore transiently improve, a feature called facilitation.",
+     "Tendon reflexes are typically reduced or absent in LEMS because acetylcholine release is impaired. They may briefly return after a short muscle contraction.",
+     "Small cell lung carcinoma is a neuroendocrine lung cancer strongly linked to smoking. It is the most common tumor associated with paraneoplastic LEMS, though not every patient has cancer."
+    ]
+   },
+   "checkedTiles": [
+    "Presynaptic P/Q-type VGCC antibodies",
+    "Strength/reflexes improve with brief exercise",
+    "Reduced tendon reflexes",
+    "Small cell lung carcinoma"
+   ]
+  },
+  "NEU-020": {
+   "id": "NEU-020",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Impaired eye closure (facial weakness)",
+    "Loss of anterior two-thirds tongue taste",
+    "Hyperacusis",
+    "Reduced lacrimation"
+   ]
+  },
+  "NEU-021": {
+   "id": "NEU-021",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Loss of posterior one-third tongue taste",
+    "Reduced pharyngeal sensation",
+    "Impaired afferent limb of gag reflex",
+    "Stylopharyngeus weakness"
+   ]
+  },
+  "NEU-022": {
+   "id": "NEU-022",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Hoarseness",
+    "Dysphagia",
+    "Reduced efferent (motor) gag response",
+    "Uvula deviates away from the lesion"
+   ]
+  },
+  "NEU-025": {
+   "id": "NEU-025",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Noise-induced cochlear injury",
+    "Vestibular schwannoma",
+    "Presbycusis",
+    "Meniere disease"
+   ]
+  },
+  "NEU-028": {
+   "id": "NEU-028",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Small round blue cells",
+    "Homer-Wright rosettes",
+    "Cerebellar tumor",
+    "CSF (drop) metastases"
+   ]
+  },
+  "NEU-030": {
+   "id": "NEU-030",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Suprasellar location",
+    "Rathke pouch remnants",
+    "Wet keratin",
+    "Cystic calcified lesion"
+   ]
+  },
+  "NEU-031": {
+   "id": "NEU-031",
+   "verdict": "pass",
+   "problems": [
+    "Tile note 2 ties microvascular proliferation only to 'high-grade gliomas' without linking it to glioblastoma."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Pseudopalisading necrosis is a zone of necrosis bordered by tumor cells lined up like a fence. It is a hallmark histologic feature of glioblastoma.",
+     "Microvascular proliferation is the growth of abnormal, multilayered small vessels, often forming glomeruloid tufts. It reflects intense angiogenesis and, with pseudopalisading necrosis, is a defining histologic feature of glioblastoma.",
+     "A butterfly glioma is a tumor that crosses the corpus callosum into both hemispheres. This appearance is characteristic of glioblastoma, though not seen in every case.",
+     "EGFR is a growth factor receptor gene often amplified or overexpressed in glioblastoma. These alterations are characteristic of many cases but not present in all."
+    ]
+   },
+   "checkedTiles": [
+    "Pseudopalisading necrosis",
+    "Microvascular (endothelial) proliferation",
+    "Corpus callosum-crossing (butterfly) mass",
+    "EGFR amplification/overexpression"
+   ]
+  },
+  "NEU-032": {
+   "id": "NEU-032",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Arachnoid (meningothelial) cell origin",
+    "Extra-axial mass",
+    "Cellular whorls",
+    "Psammoma bodies"
+   ]
+  },
+  "NEU-034": {
+   "id": "NEU-034",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "In-situ thrombosis",
+    "Arterial embolism",
+    "Small-vessel (lacunar) occlusion",
+    "Systemic hypoperfusion"
+   ]
+  },
+  "NEU-035": {
+   "id": "NEU-035",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Broca area",
+    "Wernicke area",
+    "Angular gyrus",
+    "Lateral primary motor cortex (face/arm)"
+   ]
+  },
+  "NEU-041": {
+   "id": "NEU-041",
+   "verdict": "pass",
+   "problems": [
+    "Tile note 2 has a dangling modifier (the condition, not the movements, 'appears slow and irregular')."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Dysmetria is inaccuracy in judging the distance or range of a movement, so the limb overshoots or falls short of a target. It is tested with finger-to-nose or heel-to-shin maneuvers and suggests ipsilateral cerebellar hemisphere dysfunction.",
+     "Dysdiadochokinesia is impaired ability to perform rapid alternating movements, such as quickly flipping the hand palm-up and palm-down, which become slow and irregular. It is a limb sign of cerebellar hemisphere dysfunction.",
+     "An intention tremor is an oscillation that appears or worsens as a limb approaches a target, unlike a resting tremor. It reflects cerebellar dysfunction, typically on the same side as the lesion.",
+     "Truncal ataxia is unsteadiness of the trunk when sitting or standing, often with a wide-based gait. It points toward a midline (vermis) cerebellar lesion rather than a hemispheric one."
+    ]
+   },
+   "checkedTiles": [
+    "Dysmetria",
+    "Dysdiadochokinesia",
+    "Intention tremor",
+    "Truncal ataxia"
+   ]
+  },
+  "NEU-043": {
+   "id": "NEU-043",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "GAA trinucleotide repeat expansion",
+    "Frataxin deficiency",
+    "Hypertrophic cardiomyopathy",
+    "Diabetes mellitus"
+   ]
+  },
+  "NEU-045": {
+   "id": "NEU-045",
+   "verdict": "pass",
+   "problems": [
+    "Tile note 2 refers to 'this set point' with no antecedent."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Appetite regulation is the control of hunger and satiety. Hypothalamic nuclei, including the arcuate, ventromedial and lateral areas, respond to signals such as leptin and ghrelin to govern feeding behavior.",
+     "Body temperature regulation keeps core temperature within a narrow range. The anterior and posterior hypothalamus coordinate heat loss and heat conservation, and the hypothalamic temperature set point is raised during fever.",
+     "A circadian rhythm is the roughly 24-hour cycle of sleep, wakefulness and hormone release. The suprachiasmatic nucleus of the hypothalamus acts as the master clock, entrained by light input from the retina.",
+     "Growth is controlled neuroendocrinologically by hypothalamic hormones acting on the anterior pituitary. GHRH stimulates and somatostatin inhibits growth hormone release, while the pituitary itself secretes GH."
+    ]
+   },
+   "checkedTiles": [
+    "Appetite regulation",
+    "Body temperature regulation",
+    "Circadian rhythm",
+    "Neuroendocrine control of growth"
+   ]
+  },
+  "NEU-046": {
+   "id": "NEU-046",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Anosmia",
+    "Impaired GnRH neuron migration",
+    "Low gonadotropins (LH/FSH)",
+    "Delayed or absent puberty"
+   ]
+  },
+  "NEU-051": {
+   "id": "NEU-051",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Donepezil",
+    "Rivastigmine",
+    "Galantamine",
+    "Memantine"
+   ]
+  },
+  "NEU-053": {
+   "id": "NEU-053",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Levodopa (with carbidopa)",
+    "Dopamine agonists",
+    "COMT inhibitors",
+    "MAO-B inhibitors"
+   ]
+  },
+  "NEU-054": {
+   "id": "NEU-054",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Fluctuating cognition",
+    "Recurrent visual hallucinations",
+    "Parkinsonism",
+    "Antipsychotic (neuroleptic) sensitivity"
+   ]
+  },
+  "NEU-055": {
+   "id": "NEU-055",
+   "verdict": "pass",
+   "problems": [
+    "Detail argued periodic sharp waves are 'not specific' because they are less common in variant CJD, which is a non sequitur."
+   ],
+   "fixes": {
+    "detail": "Sporadic Creutzfeldt-Jakob disease is a prion disease in which misfolded prion protein induces normal protein to misfold, causing neuronal loss. It classically presents as a dementia progressing over weeks to months, accompanied by myoclonus, with spongiform (vacuolated) change in the cortex at autopsy. Periodic sharp-wave EEG complexes support the diagnosis in appropriate subtypes, but they are not seen in every patient, are less common in variant CJD, and are not entirely specific."
+   },
+   "checkedTiles": [
+    "Rapidly progressive dementia",
+    "Myoclonus",
+    "Spongiform change",
+    "Periodic sharp-wave EEG complexes"
+   ]
+  },
+  "NEU-057": {
+   "id": "NEU-057",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pulsating headache",
+    "Unilateral head pain",
+    "Photophobia",
+    "Nausea or vomiting"
+   ]
+  },
+  "NEU-058": {
+   "id": "NEU-058",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Lacrimation",
+    "Rhinorrhea",
+    "Nasal congestion",
+    "Miosis (partial Horner)"
+   ]
+  },
+  "NEU-059": {
+   "id": "NEU-059",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Papilledema",
+    "Pulsatile tinnitus",
+    "Abducens (CN VI) palsy",
+    "Elevated CSF opening pressure"
+   ]
+  },
+  "NEU-060": {
+   "id": "NEU-060",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Brief staring/awareness lapse",
+    "Immediate recovery (no postictal state)",
+    "3-Hz generalized spike-and-wave EEG",
+    "Ethosuximide"
+   ]
+  },
+  "NEU-062": {
+   "id": "NEU-062",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Gray-white matter junction",
+    "Corpus callosum",
+    "Axonal retraction bulbs",
+    "Rotational acceleration-deceleration injury"
+   ]
+  },
+  "PHARM-001": {
+   "id": "PHARM-001",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Glucuronidation",
+    "Acetylation",
+    "Sulfation",
+    "Methylation"
+   ]
+  },
+  "PHARM-002": {
+   "id": "PHARM-002",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Rifampin",
+    "Phenobarbital",
+    "Carbamazepine",
+    "Phenytoin"
+   ]
+  },
+  "PHARM-003": {
+   "id": "PHARM-003",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Cimetidine",
+    "Amiodarone",
+    "Clarithromycin",
+    "Ritonavir"
+   ]
+  },
+  "PHARM-006": {
+   "id": "PHARM-006",
+   "verdict": "pass",
+   "problems": [
+    "Bethanechol note used 'but' oddly before 'little nicotinic activity'; reworded."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Pilocarpine is a natural alkaloid and direct muscarinic agonist. It treats dry mouth in Sjogren syndrome and after head and neck radiation, and it constricts the pupil, which is useful in some forms of glaucoma.",
+     "Cevimeline is a direct muscarinic agonist with activity at M1 and M3 receptors. It is used to increase salivation and relieve dry mouth in Sjogren syndrome.",
+     "Bethanechol is a choline ester that directly stimulates muscarinic receptors and resists cholinesterase. It has little nicotinic activity and is used for nonobstructive urinary retention and GI atony.",
+     "Methacholine is a choline ester and direct muscarinic agonist. It is inhaled in bronchoprovocation testing, where an exaggerated bronchoconstrictive response supports a diagnosis of asthma."
+    ]
+   },
+   "checkedTiles": [
+    "Pilocarpine",
+    "Cevimeline",
+    "Bethanechol",
+    "Methacholine"
+   ]
+  },
+  "PHARM-008": {
+   "id": "PHARM-008",
+   "verdict": "pass",
+   "problems": [
+    "Bronchospasm note overstated bronchospasm and secretions as 'the main cause of death'; respiratory failure in organophosphate poisoning also reflects nicotinic weakness and central depression."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Miosis is constriction of the pupil caused by contraction of the iris sphincter muscle. Muscarinic stimulation produces pinpoint pupils in organophosphate poisoning, though opioid toxicity can also cause them.",
+     "Lacrimation is excess tear production driven by muscarinic stimulation of lacrimal glands. It reflects the widespread increase in glandular secretions in cholinergic toxicity.",
+     "Bronchospasm is constriction of airway smooth muscle via M3 receptors, often accompanied by profuse bronchial secretions. Together these are a major cause of respiratory failure in organophosphate poisoning and the key target for atropine.",
+     "Diarrhea results from muscarinic stimulation of gut motility and secretion. It is part of the classic gastrointestinal picture of cholinergic excess, along with cramping and vomiting."
+    ]
+   },
+   "checkedTiles": [
+    "Miosis",
+    "Lacrimation",
+    "Bronchospasm",
+    "Diarrhea"
+   ]
+  },
+  "PHARM-009": {
+   "id": "PHARM-009",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Mydriasis",
+    "Dry skin",
+    "Urinary retention",
+    "Tachycardia"
+   ]
+  },
+  "PHARM-010": {
+   "id": "PHARM-010",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Clonidine",
+    "Guanfacine",
+    "Dexmedetomidine",
+    "Tizanidine"
+   ]
+  },
+  "PHARM-011": {
+   "id": "PHARM-011",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Prazosin",
+    "Terazosin",
+    "Doxazosin",
+    "Tamsulosin"
+   ]
+  },
+  "PHARM-013": {
+   "id": "PHARM-013",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Nadolol",
+    "Propranolol",
+    "Timolol",
+    "Sotalol"
+   ]
+  },
+  "PHARM-014": {
+   "id": "PHARM-014",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Sildenafil",
+    "Vardenafil",
+    "Tadalafil",
+    "Avanafil"
+   ]
+  },
+  "PHARM-017": {
+   "id": "PHARM-017",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Dobutamine",
+    "Isoproterenol",
+    "Epinephrine",
+    "Norepinephrine"
+   ]
+  },
+  "PHARM-019": {
+   "id": "PHARM-019",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Lead",
+    "Mercury",
+    "Arsenic",
+    "Iron"
+   ]
+  },
+  "PSY-001": {
+   "id": "PSY-001",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Suppression",
+    "Altruism",
+    "Sublimation",
+    "Humor"
+   ]
+  },
+  "PSY-002": {
+   "id": "PSY-002",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Positive reinforcement",
+    "Negative reinforcement",
+    "Positive punishment",
+    "Negative punishment"
+   ]
+  },
+  "PSY-003": {
+   "id": "PSY-003",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Antisocial personality disorder",
+    "Borderline personality disorder",
+    "Histrionic personality disorder",
+    "Narcissistic personality disorder"
+   ]
+  },
+  "PSY-004": {
+   "id": "PSY-004",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Intrusive re-experiencing",
+    "Trauma-cue avoidance",
+    "Negative mood and cognition",
+    "Hyperarousal"
+   ]
+  },
+  "PSY-005": {
+   "id": "PSY-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Mood reactivity",
+    "Increased appetite",
+    "Hypersomnia",
+    "Leaden paralysis"
+   ]
+  },
+  "PSY-008": {
+   "id": "PSY-008",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Dental enamel erosion",
+    "Parotid enlargement",
+    "Dorsal hand calluses (Russell sign)",
+    "Hypokalemic metabolic alkalosis"
+   ]
+  },
+  "PSY-010": {
+   "id": "PSY-010",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Yawning",
+    "Lacrimation",
+    "Rhinorrhea",
+    "Diarrhea"
+   ]
+  },
+  "PSY-013": {
+   "id": "PSY-013",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Venlafaxine",
+    "Desvenlafaxine",
+    "Duloxetine",
+    "Levomilnacipran"
+   ]
+  },
+  "PSY-015": {
+   "id": "PSY-015",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Alprazolam",
+    "Midazolam",
+    "Diazepam",
+    "Chlordiazepoxide"
+   ]
+  },
+  "PSY-016": {
+   "id": "PSY-016",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Phenobarbital",
+    "Thiopental",
+    "Pentobarbital",
+    "Secobarbital"
+   ]
+  },
+  "PSY-017": {
+   "id": "PSY-017",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Morphine",
+    "Fentanyl",
+    "Hydromorphone",
+    "Methadone"
+   ]
+  },
+  "PSY-018": {
+   "id": "PSY-018",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Haloperidol",
+    "Fluphenazine",
+    "Trifluoperazine",
+    "Pimozide"
+   ]
+  },
+  "PSY-019": {
+   "id": "PSY-019",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Acute dystonia",
+    "Drug-induced parkinsonism",
+    "Akathisia",
+    "Tardive dyskinesia"
+   ]
+  },
+  "PSY-020": {
+   "id": "PSY-020",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Torticollis",
+    "Facial grimacing",
+    "Oculogyric crisis",
+    "Laryngeal spasm"
+   ]
+  },
+  "PSY-022": {
+   "id": "PSY-022",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Linezolid",
+    "Tramadol",
+    "Meperidine",
+    "MDMA"
+   ]
+  },
+  "PSY-025": {
+   "id": "PSY-025",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Visible clocks",
+    "Visible calendars",
+    "Protected sleep time",
+    "Familiar visitors"
+   ]
+  },
+  "REPRO-004": {
+   "id": "REPRO-004",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Bicuspid aortic valve",
+    "Aortic coarctation",
+    "Horseshoe kidney",
+    "Cystic hygroma"
+   ]
+  },
+  "REPRO-005": {
+   "id": "REPRO-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "46,XY karyotype",
+    "Absent uterus",
+    "Scant pubic hair",
+    "Developed breasts"
+   ]
+  },
+  "REPRO-007": {
+   "id": "REPRO-007",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Multiple gestation",
+    "Hydatidiform mole",
+    "Choriocarcinoma",
+    "Trisomy 21 pregnancy"
+   ]
+  },
+  "REPRO-008": {
+   "id": "REPRO-008",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Cardiac output",
+    "Heart rate",
+    "Stroke volume",
+    "Preload"
+   ]
+  },
+  "REPRO-009": {
+   "id": "REPRO-009",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Renal agenesis",
+    "Posterior urethral valves",
+    "Autosomal recessive polycystic kidney disease",
+    "Fetal ACE inhibitor exposure"
+   ]
+  },
+  "REPRO-010": {
+   "id": "REPRO-010",
+   "verdict": "pass",
+   "problems": [
+    "Intestinal atresia note listed esophageal atresia as an example of intestinal atresia; reworded."
+   ],
+   "fixes": {
+    "tileNotes": [
+     "Anencephaly is a neural tube defect in which most of the brain and skull fail to form. Affected fetuses swallow poorly, so amniotic fluid accumulates.",
+     "Intestinal atresia is a congenital blockage of the bowel lumen, with duodenal atresia as the classic example; esophageal atresia acts the same way. Swallowed amniotic fluid cannot pass and be absorbed, leading to polyhydramnios.",
+     "Poorly controlled maternal diabetes causes fetal hyperglycemia. The fetus then develops an osmotic diuresis, producing more urine and therefore more amniotic fluid.",
+     "In twin-twin transfusion syndrome, shared placental vessels shunt blood from a donor twin to a recipient twin. The hypervolemic recipient produces excess urine and polyhydramnios, while the donor has oligohydramnios."
+    ]
+   },
+   "checkedTiles": [
+    "Anencephaly",
+    "Intestinal atresia",
+    "Maternal diabetes",
+    "Twin-twin transfusion recipient"
+   ]
+  },
+  "REPRO-011": {
+   "id": "REPRO-011",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Uterine atony",
+    "Genital tract trauma",
+    "Retained placental tissue",
+    "Coagulation disorder"
+   ]
+  },
+  "REPRO-012": {
+   "id": "REPRO-012",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Labetalol",
+    "Nifedipine",
+    "Methyldopa",
+    "Hydralazine"
+   ]
+  },
+  "REPRO-014": {
+   "id": "REPRO-014",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Absent p57 staining",
+    "Paternal-only (androgenetic) nuclear genome",
+    "Diffuse villous swelling",
+    "Circumferential trophoblast proliferation"
+   ]
+  },
+  "REPRO-016": {
+   "id": "REPRO-016",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Cyclic pelvic pain",
+    "Dyspareunia",
+    "Dyschezia",
+    "Infertility"
+   ]
+  },
+  "REPRO-017": {
+   "id": "REPRO-017",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Mature cystic teratoma",
+    "Immature teratoma",
+    "Dysgerminoma",
+    "Yolk sac tumor"
+   ]
+  },
+  "REPRO-018": {
+   "id": "REPRO-018",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Ovarian fibroma",
+    "Thecoma",
+    "Granulosa cell tumor",
+    "Sertoli-Leydig cell tumor"
+   ]
+  },
+  "REPRO-019": {
+   "id": "REPRO-019",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Multiparity",
+    "Breastfeeding",
+    "Oral contraceptive use",
+    "Tubal ligation"
+   ]
+  },
+  "REPRO-020": {
+   "id": "REPRO-020",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Spironolactone",
+    "Finasteride",
+    "Ketoconazole",
+    "Cimetidine"
+   ]
+  },
+  "REPRO-021": {
+   "id": "REPRO-021",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Leuprolide",
+    "Goserelin",
+    "Nafarelin",
+    "Histrelin"
+   ]
+  },
+  "REPRO-022": {
+   "id": "REPRO-022",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Levonorgestrel",
+    "Medroxyprogesterone",
+    "Etonogestrel",
+    "Norethindrone"
+   ]
+  },
+  "REPRO-025": {
+   "id": "REPRO-025",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Chlamydia trachomatis",
+    "Neisseria gonorrhoeae",
+    "Escherichia coli",
+    "Pseudomonas aeruginosa"
+   ]
+  },
+  "PULM-002": {
+   "id": "PULM-002",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "SIADH",
+    "Ectopic ACTH syndrome",
+    "Lambert-Eaton syndrome",
+    "Subacute cerebellar degeneration"
+   ]
+  },
+  "PULM-003": {
+   "id": "PULM-003",
+   "verdict": "pass",
+   "problems": [
+    "Detail gave carcinoid and LCNEC staining as the reason markers are not uniformly positive; that only explains nonspecificity. Reworded."
+   ],
+   "fixes": {
+    "detail": "Small cell carcinoma shows neuroendocrine differentiation, and immunohistochemistry helps confirm it. Chromogranin, synaptophysin and CD56 form the standard tissue staining panel, while neuron-specific enolase is mainly a serum marker with poor specificity on tissue. None of these markers is specific to small cell carcinoma, since carcinoid tumors and large cell neuroendocrine carcinoma also stain, and none is uniformly positive."
+   },
+   "checkedTiles": [
+    "Chromogranin",
+    "Synaptophysin",
+    "Neuron-specific enolase",
+    "CD56"
+   ]
+  },
+  "PULM-004": {
+   "id": "PULM-004",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Congestion",
+    "Red hepatization",
+    "Gray hepatization",
+    "Resolution"
+   ]
+  },
+  "PULM-005": {
+   "id": "PULM-005",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Coal workers pneumoconiosis",
+    "Silicosis",
+    "Berylliosis",
+    "Asbestosis"
+   ]
+  },
+  "PULM-006": {
+   "id": "PULM-006",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Poliomyelitis",
+    "Amyotrophic lateral sclerosis",
+    "Myasthenia gravis",
+    "Guillain-Barre syndrome"
+   ]
+  },
+  "PULM-007": {
+   "id": "PULM-007",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Pulmonary fibrosis",
+    "ARDS",
+    "Neonatal respiratory distress syndrome",
+    "Pulmonary edema"
+   ]
+  },
+  "PULM-010": {
+   "id": "PULM-010",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Low inspired oxygen",
+    "Alveolar hypoventilation",
+    "Diffusion impairment",
+    "Ventilation-perfusion mismatch"
+   ]
+  },
+  "PULM-011": {
+   "id": "PULM-011",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Anemia",
+    "Carbon monoxide poisoning",
+    "Methemoglobinemia",
+    "Cyanide poisoning"
+   ]
+  },
+  "PULM-012": {
+   "id": "PULM-012",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Sepsis",
+    "Acute pancreatitis",
+    "Pneumonia",
+    "Gastric acid aspiration"
+   ]
+  },
+  "PULM-018": {
+   "id": "PULM-018",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Increased tactile fremitus",
+    "Dull percussion",
+    "Bronchial breath sounds over peripheral lung",
+    "Crackles"
+   ]
+  },
+  "PULM-019": {
+   "id": "PULM-019",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Dull percussion",
+    "Reduced breath sounds",
+    "Reduced tactile fremitus",
+    "Contralateral tracheal shift with a large effusion"
+   ]
+  },
+  "PULM-020": {
+   "id": "PULM-020",
+   "verdict": "pass",
+   "problems": [
+    "Detail last sentence was a comma splice; reworded for clarity."
+   ],
+   "fixes": {
+    "detail": "Tension pneumothorax develops when air enters the pleural space but cannot escape, building pressure that collapses the lung and impairs venous return. This produces obstructive shock with hypotension and distended neck veins, along with hyperresonance and diminished breath sounds on the affected side. It is a clinical diagnosis requiring immediate decompression. Not every sign is present, and tracheal deviation is often late or absent."
+   },
+   "checkedTiles": [
+    "Unilateral hyperresonance",
+    "Markedly reduced ipsilateral breath sounds",
+    "Contralateral tracheal shift",
+    "Hypotension with elevated JVP"
+   ]
+  },
+  "PULM-021": {
+   "id": "PULM-021",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Protein-rich alveolar fluid",
+    "Hyaline membranes",
+    "Reduced surfactant activity",
+    "Reduced lung compliance"
+   ]
+  },
+  "CARD-053": {
+   "id": "CARD-053",
+   "verdict": "pass",
+   "problems": [
+    "Detail overstated that disease sparing the ascending aorta does not cause AR; softened to usually, since dissections can extend retrograde."
+   ],
+   "fixes": {
+    "detail": "Each condition causes aortic regurgitation by stretching or tearing the aortic root, not by damaging the valve leaflets first. When the root and annulus widen, or a tear disrupts the commissures that hold the cusps, otherwise normal leaflets fail to close in diastole. This separates them from primary leaflet causes such as bicuspid valve, rheumatic disease, and endocarditis. Location matters: disease that spares the ascending aorta, such as an abdominal aortic aneurysm or a distal type B dissection, usually does not cause AR.",
+    "tileNotes": [
+     "A tear in the aortic intima that lets blood split the media. A type A (ascending) dissection can extend into the root, strip support from the commissures, and let a cusp prolapse, producing a new diastolic murmur.",
+     "Dilation of the thoracic aorta, often from cystic medial degeneration, hypertension, or connective tissue disease. When the ascending aorta and root widen, the annulus stretches and the cusps can no longer meet.",
+     "Fibrillin-1 (FBN1) defects in Marfan syndrome weaken the aortic media, with dilation classically at the sinuses of Valsalva. The enlarging root pulls the cusps apart, and it can also progress to dissection.",
+     "Syphilitic aortitis causes endarteritis of the vasa vasorum, ischemic loss of the media, and a tree-bark intima. The resulting ascending aortic aneurysm dilates the root and causes AR."
+    ]
+   },
+   "checkedTiles": [
+    "Aortic dissection",
+    "Thoracic aortic aneurysm",
+    "Marfan-related aortic dilation",
+    "Tertiary syphilis"
+   ],
+   "draft": {
+    "detail": "Each condition causes aortic regurgitation by stretching or tearing the aortic root, not by damaging the valve leaflets first. When the root and annulus widen, or a tear disrupts the commissures that hold the cusps, otherwise normal leaflets fail to close in diastole. This separates them from primary leaflet causes such as bicuspid valve, rheumatic disease, and endocarditis. Location matters: disease that spares the ascending aorta, such as an abdominal aortic aneurysm or a distal type B dissection, does not cause AR.",
+    "tileNotes": [
+     "A tear in the aortic intima that lets blood split the media. A type A (ascending) dissection can extend into the root, strip support from the commissures, and let a cusp prolapse, producing a new diastolic murmur.",
+     "Dilation of the thoracic aorta, often from cystic medial degeneration, hypertension, or connective tissue disease. When the ascending aorta and root widen, the annulus stretches and the cusps can no longer meet.",
+     "Fibrillin-1 (FBN1) defects in Marfan syndrome weaken the aortic media, with dilation classically at the sinuses of Valsalva. The enlarging root pulls the cusps apart, and it can also progress to dissection.",
+     "Syphilitic aortitis causes endarteritis of the vasa vasorum, ischemic loss of the media, and a tree-bark intima. The resulting ascending aortic aneurysm dilates the root and causes AR."
+    ]
+   }
+  },
+  "DERM-004": {
+   "id": "DERM-004",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Exfoliative toxin",
+    "Desmoglein 1 cleavage",
+    "Positive Nikolsky sign",
+    "Mucosal sparing"
+   ],
+   "draft": {
+    "detail": "Staphylococcal scalded skin syndrome is a toxin-mediated blistering disease, usually in infants and young children, in which circulating exfoliative toxin cleaves desmoglein 1 and splits the epidermis high in the stratum granulosum. The superficial split gives widespread fragile skin with a positive Nikolsky sign, while mucosa is spared. Toxic epidermal necrolysis instead causes full-thickness necrosis with mucosal involvement, and pemphigus vulgaris is autoimmune against desmoglein 3 with oral lesions. Bullous impetigo shares the same toxin and split but stays localized.",
+    "tileNotes": [
+     "Staphylococcus aureus exfoliative toxins A and B are serine proteases released at a distant focus of infection. They spread through the blood, which is why the skin peeling is widespread even though the skin itself is often sterile.",
+     "The toxin cuts desmoglein 1, the main adhesion protein in the upper epidermis. Losing it separates cells within the stratum granulosum, so blisters are very superficial and heal without scarring.",
+     "Gentle lateral pressure shears off the upper epidermis because the toxin has broken cell to cell adhesion throughout the skin. A generalized positive Nikolsky sign distinguishes SSSS from localized bullous impetigo.",
+     "Mucosa relies mainly on desmoglein 3, which the toxin does not cleave, so the mouth and eyes are spared. Mucosal involvement points instead toward toxic epidermal necrolysis or pemphigus vulgaris."
+    ]
+   }
+  },
+  "GI-033": {
+   "id": "GI-033",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Gilbert syndrome",
+    "Crigler-Najjar syndrome",
+    "Dubin-Johnson syndrome",
+    "Rotor syndrome"
+   ],
+   "draft": {
+    "detail": "All four are inherited defects in how the liver processes bilirubin, but they fall into two pairs. Gilbert and Crigler-Najjar reduce conjugation by UGT1A1 and cause unconjugated (indirect) hyperbilirubinemia. Dubin-Johnson and Rotor impair storage or excretion of already conjugated bilirubin and cause conjugated (direct) hyperbilirubinemia. They differ from acquired causes such as hemolysis, hepatitis, or biliary obstruction, and not all are benign: Crigler-Najjar type I can cause kernicterus.",
+    "tileNotes": [
+     "Mildly reduced UGT1A1 activity, usually from a promoter variant, causes benign unconjugated hyperbilirubinemia. Jaundice appears with fasting, stress, illness, or exertion, and liver tests are otherwise normal.",
+     "UGT1A1 activity is absent in type I or severely reduced in type II, causing marked unconjugated hyperbilirubinemia. Type I presents in newborns, risks kernicterus, and needs phototherapy or liver transplant; type II responds to phenobarbital.",
+     "A defect in MRP2 (ABCC2), the canalicular pump, blocks excretion of conjugated bilirubin into bile, causing benign conjugated hyperbilirubinemia. Retained pigment makes the liver grossly black.",
+     "Impaired hepatic uptake and storage of conjugated bilirubin causes mild, benign conjugated hyperbilirubinemia. It resembles Dubin-Johnson but is milder and the liver is not black."
+    ]
+   }
+  },
+  "MSK-001": {
+   "id": "MSK-001",
+   "verdict": "pass",
+   "problems": [],
+   "checkedTiles": [
+    "Supraspinatus",
+    "Infraspinatus",
+    "Teres minor",
+    "Subscapularis"
+   ],
+   "draft": {
+    "detail": "The rotator cuff is the four muscles remembered as SITS that run from the scapula to the humeral head and hold it in the shallow glenoid while the arm moves. Supraspinatus, infraspinatus, and teres minor insert on the greater tubercle, and subscapularis inserts on the lesser tubercle. Teres major, deltoid, and latissimus dorsi also move the shoulder but are not cuff muscles because they do not form this stabilizing sleeve around the joint capsule.",
+    "tileNotes": [
+     "Runs above the scapular spine to the greater tubercle and initiates abduction for about the first 15 degrees. Innervated by the suprascapular nerve, it is the most commonly impinged and torn cuff muscle (empty can test).",
+     "Sits below the scapular spine and inserts on the greater tubercle, where it is the main external rotator of the arm. It is innervated by the suprascapular nerve and is often injured in pitchers.",
+     "A small muscle along the lateral scapular border that inserts on the greater tubercle and externally rotates and adducts the arm. It is innervated by the axillary nerve, unlike its look-alike teres major, which is not a cuff muscle.",
+     "The only cuff muscle on the anterior scapula, inserting on the lesser tubercle to internally rotate and adduct the arm. It is innervated by the upper and lower subscapular nerves."
+    ]
+   }
+  },
+  "MSK-006": {
+   "id": "MSK-006",
+   "verdict": "pass",
+   "problems": [
+    "Tile note 2 described birefringence as bending light faintly, which is imprecise; reworded to faint brightness under polarized light."
+   ],
+   "fixes": {
+    "detail": "These findings point to calcium pyrophosphate (CPP) deposition, which causes pseudogout, most often in the knee or wrist of older adults. Synovial fluid shows rhomboid crystals that are weakly positively birefringent and look blue when parallel to the compensator. Gout is the look-alike: monosodium urate crystals are needle-shaped, strongly negatively birefringent, and yellow when parallel. Chondrocalcinosis supports CPPD but is not required. CPPD is associated with hemochromatosis, hyperparathyroidism, and hypomagnesemia.",
+    "tileNotes": [
+     "CPP crystals are short, blunt, rhomboid or rod shapes in synovial fluid, often inside neutrophils. Gout crystals, by contrast, are long and needle-shaped.",
+     "Under polarized light CPP crystals appear only faintly bright, and their birefringence is positive, so they look blue when parallel to the compensator. Urate crystals in gout are brightly and negatively birefringent.",
+     "Calcification of cartilage seen on x-ray, classically in the knee menisci or the wrist triangular fibrocartilage. It supports CPPD but can be absent in acute pseudogout and also occurs without symptoms.",
+     "The visible result of positive birefringence under a red compensator: CPP crystals look blue when their long axis is parallel to the slow axis and yellow when perpendicular. Urate crystals show the reverse."
+    ]
+   },
+   "checkedTiles": [
+    "Rhomboid crystals",
+    "Weak positive birefringence",
+    "Chondrocalcinosis",
+    "Blue when aligned parallel to the compensator"
+   ],
+   "draft": {
+    "detail": "These findings point to calcium pyrophosphate (CPP) deposition, which causes pseudogout, most often in the knee or wrist of older adults. Synovial fluid shows rhomboid crystals that are weakly positively birefringent and look blue when parallel to the compensator. Gout is the look-alike: monosodium urate crystals are needle-shaped, strongly negatively birefringent, and yellow when parallel. Chondrocalcinosis supports CPPD but is not required. CPPD is associated with hemochromatosis, hyperparathyroidism, and hypomagnesemia.",
+    "tileNotes": [
+     "CPP crystals are short, blunt, rhomboid or rod shapes in synovial fluid, often inside neutrophils. Gout crystals, by contrast, are long and needle-shaped.",
+     "Under polarized light CPP crystals bend light only faintly, and the sign of their birefringence is positive. Urate crystals in gout are brightly and negatively birefringent.",
+     "Calcification of cartilage seen on x-ray, classically in the knee menisci or the wrist triangular fibrocartilage. It supports CPPD but can be absent in acute pseudogout and also occurs without symptoms.",
+     "The visible result of positive birefringence under a red compensator: CPP crystals look blue when their long axis is parallel to the slow axis and yellow when perpendicular. Urate crystals show the reverse."
+    ]
+   }
+  },
+  "NEU-052": {
+   "id": "NEU-052",
+   "verdict": "pass",
+   "problems": [
+    "Tile note 3 stated the tremor-on-rigidity origin of cogwheeling as fact; it is a classic explanation, so hedged."
+   ],
+   "fixes": {
+    "detail": "These are the cardinal motor signs of Parkinson disease (TRAP), caused by loss of dopaminergic neurons in the substantia nigra pars compacta with alpha-synuclein Lewy bodies. Bradykinesia is required for diagnosis, plus rest tremor or rigidity, and postural instability usually comes later. The tremor occurs at rest, unlike the action tremor of essential tremor or the intention tremor of cerebellar disease. Prominent falls early in the course suggest atypical parkinsonism such as progressive supranuclear palsy.",
+    "tileNotes": [
+     "Slowness and progressive decrease in size and speed of movement, seen as small handwriting, reduced facial expression, and a shuffling gait. It is the core required feature and reflects reduced dopamine in the basal ganglia.",
+     "A 4 to 6 Hz pill-rolling tremor, usually starting on one side, that is present at rest and lessens with voluntary movement. It may be absent in the akinetic-rigid form of the disease.",
+     "Increased tone through the full range of passive movement with a ratchet-like catch, classically explained as rest tremor superimposed on rigidity. It is not velocity-dependent, unlike the spasticity of upper motor neuron lesions.",
+     "Loss of postural reflexes that leads to falls and a stooped, festinating gait. It usually appears later in Parkinson disease, so early falls suggest another parkinsonian syndrome."
+    ]
+   },
+   "checkedTiles": [
+    "Bradykinesia",
+    "Resting tremor",
+    "Cogwheel rigidity",
+    "Postural instability"
+   ],
+   "draft": {
+    "detail": "These are the cardinal motor signs of Parkinson disease (TRAP), caused by loss of dopaminergic neurons in the substantia nigra pars compacta with alpha-synuclein Lewy bodies. Bradykinesia is required for diagnosis, plus rest tremor or rigidity, and postural instability usually comes later. The tremor occurs at rest, unlike the action tremor of essential tremor or the intention tremor of cerebellar disease. Prominent falls early in the course suggest atypical parkinsonism such as progressive supranuclear palsy.",
+    "tileNotes": [
+     "Slowness and progressive decrease in size and speed of movement, seen as small handwriting, reduced facial expression, and a shuffling gait. It is the core required feature and reflects reduced dopamine in the basal ganglia.",
+     "A 4 to 6 Hz pill-rolling tremor, usually starting on one side, that is present at rest and lessens with voluntary movement. It may be absent in the akinetic-rigid form of the disease.",
+     "Increased tone through the full range of passive movement with a ratchet-like catch, from rest tremor superimposed on rigidity. It is not velocity-dependent, unlike the spasticity of upper motor neuron lesions.",
+     "Loss of postural reflexes that leads to falls and a stooped, festinating gait. It usually appears later in Parkinson disease, so early falls suggest another parkinsonian syndrome."
+    ]
+   }
+  },
+  "PSY-006": {
+   "id": "PSY-006",
+   "verdict": "pass",
+   "problems": [
+    "Tile note 4 listed catatonia as an example of disorganized behavior; DSM-5 groups them but catatonia is distinct and not clearly a positive symptom, so removed."
+   ],
+   "fixes": {
+    "detail": "Positive symptoms are experiences added to normal function: false beliefs, false perceptions, and disorganized speech or behavior. Negative symptoms are losses of normal function, such as flat affect, alogia, avolition, and anhedonia. Schizophrenia requires at least two core symptoms for one month, one of them delusions, hallucinations, or disorganized speech, with six months of disturbance. These positive symptoms are not specific to schizophrenia and also occur in brief psychotic, schizophreniform, schizoaffective, and substance-induced psychotic disorders.",
+    "tileNotes": [
+     "Fixed false beliefs held despite clear contrary evidence and not explained by culture, such as persecutory or referential ideas. They add a belief that should not be there, making them a positive symptom.",
+     "Perceptions without an external stimulus, most often auditory voices in schizophrenia. Visual or tactile hallucinations raise concern for substance use or a medical cause.",
+     "Speech that reflects disordered thinking, such as derailment, tangentiality, or incoherent word salad. It is one of the three symptoms at least one of which must be present for schizophrenia.",
+     "Grossly disorganized behavior, such as unpredictable agitation, bizarre dress or actions, or purposeless activity. It reflects added abnormal behavior rather than the loss of drive seen in negative symptoms."
+    ]
+   },
+   "checkedTiles": [
+    "Delusions",
+    "Hallucinations",
+    "Disorganized speech",
+    "Disorganized behavior"
+   ],
+   "draft": {
+    "detail": "Positive symptoms are experiences added to normal function: false beliefs, false perceptions, and disorganized speech or behavior. Negative symptoms are losses of normal function, such as flat affect, alogia, avolition, and anhedonia. Schizophrenia requires at least two core symptoms for one month, one of them delusions, hallucinations, or disorganized speech, with six months of disturbance. These positive symptoms are not specific to schizophrenia and also occur in brief psychotic, schizophreniform, schizoaffective, and substance-induced psychotic disorders.",
+    "tileNotes": [
+     "Fixed false beliefs held despite clear contrary evidence and not explained by culture, such as persecutory or referential ideas. They add a belief that should not be there, making them a positive symptom.",
+     "Perceptions without an external stimulus, most often auditory voices in schizophrenia. Visual or tactile hallucinations raise concern for substance use or a medical cause.",
+     "Speech that reflects disordered thinking, such as derailment, tangentiality, or incoherent word salad. It is one of the three symptoms at least one of which must be present for schizophrenia.",
+     "Grossly disorganized behavior, such as unpredictable agitation, bizarre or purposeless activity, or catatonia. It reflects added abnormal behavior rather than the loss of drive seen in negative symptoms."
+    ]
+   }
+  }
+ }
+}

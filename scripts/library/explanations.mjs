@@ -39,7 +39,14 @@ const store = readJson(FILE, {
   schema: 1,
   entries: {},
 })
-const tilesOf = (id) => state.records[id]?.content?.tiles || null
+// Tiles as served: a checked revision (content/library/revisions.json)
+// replaces the row's tiles while it still matches the row it revised.
+const revisionsFile = readJson(path.join(DIR, 'revisions.json'), { entries: {} }).entries || {}
+const tilesOf = (id) => {
+  const raw = state.records[id]?.content?.tiles || null
+  const rv = revisionsFile[id]
+  return rv && raw && L.sameTiles(raw, rv.original.tiles) ? rv.revised.tiles : raw
+}
 
 function put(id, next, reason) {
   const prev = store.entries[id]
@@ -90,7 +97,32 @@ const pick = (row, ...names) => {
 const cmd = args.find((a) => !a.startsWith('--') && !Object.values({ by: flag('--by'), ids: flag('--ids'), st: flag('--state') }).includes(a))
 const log = []
 
-if (cmd === 'restore-legacy') {
+if (cmd === 'apply-checks') {
+  // Independent AI checks (October 2026): revised connections get their
+  // checked explanation; drafts that passed the check become AI_CHECKED
+  // (fixes applied). Entries already reviewed by OpenEvidence or a person,
+  // and legacy notes, are left alone.
+  const checks = readJson(path.join(DIR, 'audit/explanation-check.json'), { entries: {} })
+  const tally = { revision: 0, draft: 0, skipped: 0 }
+  const reviewedElsewhere = (e) => e && e.provenance?.kind !== 'draft' && e.provenance?.kind !== 'ai-check' && e.status !== L.DRAFT_STATUS
+  for (const [id, rv] of Object.entries(revisionsFile)) {
+    if (!state.records[id]) continue
+    if (!L.sameTiles(tilesOf(id), rv.revised.tiles)) { tally.skipped++; continue }
+    const r = put(id, { tiles: rv.revised.tiles.slice(), detail: rv.detail, tileNotes: rv.tileNotes, status: L.AI_CHECK_STATUS, reviewer: null, provenance: { kind: 'ai-check', source: 'revision', draftedBy: 'Claude (AI), finalize pass' }, check: { verdict: 'pass', by: rv.review.reviewer, at: rv.review.checkedAt, note: rv.review.note || '' }, updatedAt: now }, 'connection revised (difficulty work); explanation rewritten and checked')
+    if (r !== 'unchanged') tally.revision++
+  }
+  for (const [id, ck] of Object.entries(checks.entries || {})) {
+    const e = store.entries[id]
+    if (!e || revisionsFile[id] || reviewedElsewhere(e)) { tally.skipped++; continue }
+    if (ck.verdict !== 'pass' || !L.sameTiles(e.tiles, ck.checkedTiles) || !L.sameTiles(e.tiles, tilesOf(id))) { tally.skipped++; continue }
+    const detail = ck.fixes?.detail || e.detail
+    const tileNotes = ck.fixes?.tileNotes || e.tileNotes
+    const r = put(id, { tiles: e.tiles.slice(), detail, tileNotes, status: L.AI_CHECK_STATUS, reviewer: null, provenance: { kind: 'ai-check', source: 'draft', draftedBy: e.provenance?.draftedBy || null }, check: { verdict: 'pass', by: checks.reviewer, at: '2026-10-13', fixed: !!ck.fixes }, updatedAt: now }, 'draft passed an independent AI check')
+    if (r !== 'unchanged') tally.draft++
+  }
+  if (!DRY) fs.writeFileSync(FILE, JSON.stringify(store, null, 1) + '\n')
+  console.log(JSON.stringify(tally))
+} else if (cmd === 'restore-legacy') {
   // Earlier bank connections with tile notes, after content corrections.
   const bank = (await import(path.join(ROOT, 'src/data/connectionBank.js'))).default
   const norm = (t) => String(t).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
@@ -199,14 +231,14 @@ const lines = []
 const served = []
 for (const [id, e] of Object.entries(store.entries).sort()) {
   const r = state.records[id]
-  const el = L.explanationEligibility(e, r?.content?.tiles, statusMap)
+  const el = L.explanationEligibility(e, tilesOf(id), statusMap)
   counts[el.state] = (counts[el.state] || 0) + 1
   if (el.eligible) served.push(id)
   else {
     lines.push(`### ${id}: ${r?.content?.title || '(missing connection)'}`, `State: **${el.state}**${el.problems.length ? ` (${el.problems.join('; ')})` : ''} · status \`${e.status}\``, '')
     if (r) lines.push(`Current explanation: ${r.content.explanation}`, '')
     if (e.detail) lines.push(`**Detail (draft):** ${e.detail}`, '')
-    if (e.tileNotes) (r?.content?.tiles || e.tiles).forEach((t, i) => lines.push(`- **${t}:** ${e.tileNotes[i] || ''}`))
+    if (e.tileNotes) (tilesOf(id) || e.tiles).forEach((t, i) => lines.push(`- **${t}:** ${e.tileNotes[i] || ''}`))
     if (e.reviewNotes) lines.push('', `Reviewer notes: ${e.reviewNotes}`)
     lines.push('')
   }

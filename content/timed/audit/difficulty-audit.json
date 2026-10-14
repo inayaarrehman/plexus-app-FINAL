@@ -1,0 +1,8554 @@
+{
+ "about": "AI content audit of the timed bank (2026-10-13), incl. near-miss review.",
+ "reviewer": "Claude agents (AI), not human verified",
+ "entries": {
+  "bank-easy-01": {
+   "id": "bank-easy-01",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "Beck triad",
+     "pulsus paradoxus"
+    ],
+    [
+     "Kussmaul sign",
+     "pericardial knock"
+    ],
+    [
+     "cor pulmonale",
+     "pulmonary hypertension"
+    ],
+    [
+     "rheumatic heart disease",
+     "carcinoid syndrome"
+    ]
+   ],
+   "issues": [],
+   "note": "Well-known right-sided filling causes; tamponade plus constrictive pericarditis make the link quick but it is accurate.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Inferior vena cava obstruction",
+      "why": "Causes lower-body edema but the jugular veins drain via the SVC, so JVP is not raised"
+     },
+     {
+      "text": "Cirrhosis with ascites",
+      "why": "Edema and ascites come from portal hypertension and low albumin; JVP is normal or low"
+     },
+     {
+      "text": "Nephrotic syndrome",
+      "why": "Edema from hypoalbuminemia without raised central venous pressure"
+     }
+    ]
+   }
+  },
+  "bank-easy-02": {
+   "id": "bank-easy-02",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "class III antiarrhythmic",
+     "beta-blocker"
+    ],
+    [
+     "CYP3A4 inhibition",
+     "atypical pneumonia"
+    ],
+    [
+     "tendon rupture",
+     "CYP inhibition"
+    ],
+    [
+     "extrapyramidal symptoms",
+     "hyperprolactinemia"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Macrolides, fluoroquinolones and antipsychotics together are the textbook QT list and are recognised instantly.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Sotalol",
+     "Macrolides",
+     "Fluoroquinolones",
+     "Ondansetron"
+    ],
+    "why": "Antipsychotics is the most reflexive QT member; ondansetron is a well-established, commonly tested QT-prolonging drug that requires recall.",
+    "changes": "Replace Antipsychotics with Ondansetron"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Atenolol",
+      "why": "A beta-blocker without sotalol's class III potassium-channel block, so it does not prolong QT"
+     },
+     {
+      "text": "Doxycycline",
+      "why": "A tetracycline antibiotic not associated with QT prolongation"
+     },
+     {
+      "text": "Mexiletine",
+      "why": "A class IB antiarrhythmic that shortens rather than prolongs the QT interval"
+     }
+    ]
+   }
+  },
+  "bank-easy-03": {
+   "id": "bank-easy-03",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "finding"
+   ],
+   "facets": [
+    [
+     "hilar lymphadenopathy",
+     "hypercalcemia"
+    ],
+    [
+     "skip lesions",
+     "transmural inflammation"
+    ],
+    [
+     "aerospace industry",
+     "pneumoconiosis"
+    ],
+    [
+     "suture material",
+     "talc"
+    ]
+   ],
+   "issues": [],
+   "note": "Sarcoidosis and Crohn disease are the stock noncaseating examples, so the link comes quickly.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Granulomatosis with polyangiitis",
+      "why": "Forms necrotizing granulomas with vasculitis, not noncaseating granulomas"
+     },
+     {
+      "text": "Cat-scratch disease",
+      "why": "Produces stellate necrotizing (suppurative) granulomas"
+     },
+     {
+      "text": "Silicosis",
+      "why": "Forms fibrotic silicotic nodules rather than the noncaseating granulomas of berylliosis"
+     }
+    ]
+   }
+  },
+  "bank-easy-06": {
+   "id": "bank-easy-06",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "smoking",
+     "hypertrophic osteoarthropathy"
+    ],
+    [
+     "CFTR",
+     "pancreatic insufficiency"
+    ],
+    [
+     "chronic cough",
+     "Kartagener syndrome"
+    ],
+    [
+     "tetralogy of Fallot",
+     "polycythemia"
+    ]
+   ],
+   "issues": [],
+   "note": "Classic clubbing causes; quick for most students.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Community-acquired pneumonia",
+      "why": "An acute infection; clubbing needs chronic suppuration such as abscess or bronchiectasis"
+     },
+     {
+      "text": "Pulmonary embolism",
+      "why": "An acute vascular event that does not cause clubbing"
+     }
+    ]
+   }
+  },
+  "bank-easy-07": {
+   "id": "bank-easy-07",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "drug"
+   ],
+   "facets": [
+    [
+     "parathyroid adenoma",
+     "kidney stones"
+    ],
+    [
+     "PTHrP",
+     "bone metastases"
+    ],
+    [
+     "noncaseating granulomas",
+     "hilar lymphadenopathy"
+    ],
+    [
+     "hypokalemia",
+     "hyperuricemia"
+    ]
+   ],
+   "issues": [],
+   "note": "Primary hyperparathyroidism and malignancy are the two leading causes and give the link away quickly.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Secondary hyperparathyroidism",
+      "why": "PTH rises in response to low or low-normal calcium, as in CKD, so calcium is not high"
+     },
+     {
+      "text": "Medullary thyroid carcinoma",
+      "why": "Secretes calcitonin, yet serum calcium stays normal"
+     },
+     {
+      "text": "Tumor lysis syndrome",
+      "why": "Phosphate release precipitates calcium, causing hypocalcemia"
+     }
+    ]
+   }
+  },
+  "bank-easy-08": {
+   "id": "bank-easy-08",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "drug",
+    "disease",
+    "finding",
+    "drug"
+   ],
+   "facets": [
+    [
+     "metabolic alkalosis",
+     "ototoxicity"
+    ],
+    [
+     "Conn syndrome",
+     "hypertension"
+    ],
+    [
+     "non-anion-gap acidosis",
+     "cholera"
+    ],
+    [
+     "hyperkalemia treatment",
+     "hypoglycemia"
+    ]
+   ],
+   "issues": [],
+   "note": "Standard hypokalemia causes; insulin adds a small shift-mechanism step.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Amiloride",
+      "why": "A potassium-sparing ENaC blocker that raises serum potassium"
+     },
+     {
+      "text": "Trimethoprim",
+      "why": "Blocks ENaC like amiloride and causes hyperkalemia"
+     },
+     {
+      "text": "Succinylcholine",
+      "why": "Depolarization releases potassium from muscle, causing hyperkalemia"
+     },
+     {
+      "text": "Digoxin toxicity",
+      "why": "Na+/K+-ATPase inhibition causes hyperkalemia"
+     }
+    ]
+   }
+  },
+  "bank-easy-09": {
+   "id": "bank-easy-09",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "children",
+     "podocyte effacement"
+    ],
+    [
+     "HIV",
+     "heroin use",
+     "African ancestry"
+    ],
+    [
+     "PLA2R antibodies",
+     "subepithelial deposits"
+    ],
+    [
+     "Kimmelstiel-Wilson nodules"
+    ]
+   ],
+   "issues": [],
+   "note": "Core nephrotic list from Step 1 review; recognised quickly.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "IgA nephropathy",
+      "why": "Usually presents with episodic hematuria, a nephritic pattern"
+     },
+     {
+      "text": "Alport syndrome",
+      "why": "Type IV collagen defect causing hematuria, a nephritic pattern, with deafness"
+     },
+     {
+      "text": "Granulomatosis with polyangiitis",
+      "why": "Causes pauci-immune crescentic, nephritic-pattern glomerulonephritis"
+     }
+    ]
+   }
+  },
+  "bank-easy-10": {
+   "id": "bank-easy-10",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "low C3",
+     "group A strep"
+    ],
+    [
+     "synpharyngitic hematuria",
+     "IgA vasculitis"
+    ],
+    [
+     "crescents",
+     "anti-GBM disease"
+    ],
+    [
+     "type IV collagen",
+     "sensorineural deafness"
+    ]
+   ],
+   "issues": [],
+   "note": "Core nephritic list; recognised quickly.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Focal segmental glomerulosclerosis",
+      "why": "A podocytopathy presenting with nephrotic syndrome"
+     },
+     {
+      "text": "Diabetic nephropathy",
+      "why": "Causes progressive proteinuria in a nephrotic pattern, not an active nephritic sediment"
+     },
+     {
+      "text": "Acute interstitial nephritis",
+      "why": "A tubulointerstitial process with WBC casts, not glomerular inflammation"
+     }
+    ]
+   }
+  },
+  "bank-easy-11": {
+   "id": "bank-easy-11",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "honeycombing",
+     "usual interstitial pneumonia"
+    ],
+    [
+     "hilar lymphadenopathy",
+     "noncaseating granulomas"
+    ],
+    [
+     "upper lobes",
+     "eggshell calcification",
+     "tuberculosis"
+    ],
+    [
+     "pleural plaques",
+     "mesothelioma"
+    ]
+   ],
+   "issues": [],
+   "note": "Three classic interstitial lung diseases plus IPF; the restrictive link is quick.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Bronchiectasis",
+      "why": "Permanent airway dilation that produces an obstructive pattern"
+     },
+     {
+      "text": "Alpha-1 antitrypsin deficiency",
+      "why": "Causes panacinar emphysema, an obstructive disease"
+     },
+     {
+      "text": "Cystic fibrosis",
+      "why": "Mucus plugging and bronchiectasis give an obstructive pattern"
+     }
+    ]
+   }
+  },
+  "bank-easy-13": {
+   "id": "bank-easy-13",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "risk",
+    "disease",
+    "finding"
+   ],
+   "facets": [
+    [
+     "cholecystitis",
+     "choledocholithiasis"
+    ],
+    [
+     "cirrhosis",
+     "Wernicke encephalopathy"
+    ],
+    [
+     "eruptive xanthomas",
+     "lipoprotein lipase deficiency"
+    ],
+    [
+     "hyperparathyroidism",
+     "malignancy"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Gallstones and alcohol are the two causes every student names first, so the group sorts instantly.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Gallstones",
+     "Azathioprine",
+     "Hypertriglyceridemia",
+     "Hypercalcemia"
+    ],
+    "why": "Alcohol use is the most reflexive member; azathioprine is a well-documented, commonly tested drug cause of acute pancreatitis.",
+    "changes": "Replace Alcohol use with Azathioprine"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hemochromatosis",
+      "why": "Pancreatic iron deposition causes diabetes, not acute pancreatitis"
+     },
+     {
+      "text": "Primary biliary cholangitis",
+      "why": "A cholestatic autoimmune liver disease that is not a cause of acute pancreatitis"
+     },
+     {
+      "text": "Hyperuricemia",
+      "why": "A metabolic abnormality like hypertriglyceridemia but not a recognised trigger of pancreatitis"
+     }
+    ]
+   }
+  },
+  "bank-easy-15": {
+   "id": "bank-easy-15",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "boot-shaped heart",
+     "tet spells"
+    ],
+    [
+     "egg on a string",
+     "prostaglandin E1"
+    ],
+    [
+     "DiGeorge syndrome",
+     "single great vessel"
+    ],
+    [
+     "single ventricle"
+    ]
+   ],
+   "issues": [
+    "series",
+    "shared-stem",
+    "too-obvious"
+   ],
+   "note": "All four tiles start with T and come straight from the '5 Ts' mnemonic, so they sort with no reasoning.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Tetralogy of Fallot",
+     "Transposition of the great arteries",
+     "Hypoplastic left heart syndrome",
+     "Pulmonary atresia"
+    ],
+    "why": "Breaks the all-T pattern from the mnemonic; hypoplastic left heart syndrome and pulmonary atresia are both standard, unambiguously cyanotic lesions.",
+    "changes": "Replace Truncus arteriosus with Hypoplastic left heart syndrome and Tricuspid atresia with Pulmonary atresia"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Endocardial cushion defect",
+      "why": "An acyanotic left-to-right shunt (AV canal), classically seen in Down syndrome"
+     },
+     {
+      "text": "Bicuspid aortic valve",
+      "why": "An acyanotic lesion that leads to aortic stenosis later in life"
+     },
+     {
+      "text": "Isolated pulmonic stenosis",
+      "why": "An obstructive lesion that is acyanotic without an associated shunt"
+     }
+    ]
+   }
+  },
+  "bank-medium-03": {
+   "id": "bank-medium-03",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "clonidine",
+     "presynaptic inhibition"
+    ],
+    [
+     "bradycardia",
+     "atropine"
+    ],
+    [
+     "antipsychotics",
+     "prolactin"
+    ],
+    [
+     "octreotide",
+     "acromegaly"
+    ]
+   ],
+   "issues": [
+    "series",
+    "shared-stem"
+   ],
+   "note": "Three tiles end in '2', matching the 'MAD 2s' mnemonic, so the group sorts by format; the near misses (D1, H2, V2) partly counter this.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "α2 receptor",
+     "M2 receptor",
+     "μ-opioid receptor",
+     "Somatostatin receptor"
+    ],
+    "why": "Reduces the '2' pattern; the μ-opioid receptor is a certain, high-yield Gi-coupled receptor.",
+    "changes": "Replace D2 receptor with μ-opioid receptor"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "β1 receptor",
+      "why": "Couples to Gs, raising cAMP"
+     },
+     {
+      "text": "α1 receptor",
+      "why": "Couples to Gq, raising IP3 and calcium"
+     },
+     {
+      "text": "H1 receptor",
+      "why": "Couples to Gq, raising IP3 and calcium"
+     },
+     {
+      "text": "V1 receptor",
+      "why": "Couples to Gq, unlike Gs-coupled V2"
+     }
+    ]
+   }
+  },
+  "bank-medium-04": {
+   "id": "bank-medium-04",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "anatomy",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "blown pupil",
+     "PCOM aneurysm"
+    ],
+    [
+     "superior oblique",
+     "vertical diplopia"
+    ],
+    [
+     "corneal reflex",
+     "shingles"
+    ],
+    [
+     "lateral rectus",
+     "raised intracranial pressure"
+    ]
+   ],
+   "issues": [
+    "series",
+    "too-obvious",
+    "alternate-member-risk"
+   ],
+   "note": "A numbered cranial nerve series from a memorised list; CN V2 and the internal carotid also traverse the sinus but are omitted.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Internal carotid artery",
+     "CN III",
+     "CN V2",
+     "CN VI"
+    ],
+    "why": "Breaks the pure CN-number series and adds the commonly forgotten but certain contents (ICA, V2).",
+    "changes": "Replace CN IV with Internal carotid artery and CN V1 with CN V2"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Ophthalmic artery",
+      "why": "Arises from the internal carotid after it leaves the sinus and enters the orbit via the optic canal"
+     },
+     {
+      "text": "Middle meningeal artery",
+      "why": "Enters the skull through foramen spinosum, lateral to the sinus"
+     },
+     {
+      "text": "Optic chiasm",
+      "why": "Lies above the sella, superomedial to the cavernous sinus, not within it"
+     }
+    ]
+   }
+  },
+  "bank-medium-05": {
+   "id": "bank-medium-05",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "anatomy",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "facial pulse",
+     "angular artery"
+    ],
+    [
+     "tongue"
+    ],
+    [
+     "middle meningeal artery",
+     "epistaxis"
+    ],
+    [
+     "thyroidectomy",
+     "superior laryngeal nerve"
+    ]
+   ],
+   "issues": [
+    "shared-stem"
+   ],
+   "note": "Memorised mnemonic list; all tiles end in 'artery', but so do the near misses, so it does not give the group away.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Thyroid ima artery",
+      "why": "An inconstant vessel arising from the brachiocephalic trunk or aortic arch"
+     },
+     {
+      "text": "Transverse cervical artery",
+      "why": "A branch of the thyrocervical trunk of the subclavian"
+     },
+     {
+      "text": "Supraorbital artery",
+      "why": "A branch of the ophthalmic artery, from the internal carotid system"
+     }
+    ]
+   }
+  },
+  "bank-medium-07": {
+   "id": "bank-medium-07",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "cell_tissue",
+    "cell_tissue",
+    "cell_tissue",
+    "cell_tissue"
+   ],
+   "facets": [
+    [
+     "parafollicular cells",
+     "thyroglobulin"
+    ],
+    [
+     "liver"
+    ],
+    [
+     "pancreatic islets",
+     "exocrine acini"
+    ],
+    [
+     "ciliated pseudostratified epithelium"
+    ]
+   ],
+   "issues": [],
+   "note": "Needs embryology recall and discrimination (thyroid follicular vs parafollicular, spleen vs foregut organs).",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Thyroid parafollicular (C) cells",
+      "why": "Derived from neural crest, unlike endodermal follicular cells"
+     },
+     {
+      "text": "Adrenal medulla",
+      "why": "Derived from neural crest"
+     },
+     {
+      "text": "Parotid gland epithelium",
+      "why": "Derived from surface ectoderm, unlike the endodermal submandibular and sublingual glands"
+     }
+    ]
+   }
+  },
+  "bank-medium-08": {
+   "id": "bank-medium-08",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "syncope",
+     "Williams syndrome"
+    ],
+    [
+     "axillary radiation",
+     "mitral valve prolapse"
+    ],
+    [
+     "IV drug use",
+     "endocarditis"
+    ],
+    [
+     "sudden cardiac death",
+     "Valsalva"
+    ]
+   ],
+   "issues": [],
+   "note": "Core murmur timing; quick for most once paired with the diastolic group.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Pulmonic regurgitation",
+      "why": "An early diastolic decrescendo murmur, often from pulmonary hypertension"
+     },
+     {
+      "text": "Constrictive pericarditis",
+      "why": "Produces a diastolic pericardial knock, not a systolic murmur"
+     },
+     {
+      "text": "Acute pericarditis",
+      "why": "Produces a friction rub, not a valvular systolic murmur"
+     }
+    ]
+   }
+  },
+  "bank-medium-09": {
+   "id": "bank-medium-09",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "bounding pulses",
+     "wide pulse pressure"
+    ],
+    [
+     "pulmonary hypertension",
+     "Graham Steell murmur"
+    ],
+    [
+     "rheumatic heart disease",
+     "opening snap"
+    ],
+    [
+     "rheumatic heart disease",
+     "carcinoid syndrome"
+    ]
+   ],
+   "issues": [
+    "series"
+   ],
+   "note": "The complete set of semilunar regurgitation plus AV stenosis lesions, so the group is systematic; the near misses use the same format, which helps.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hypertrophic cardiomyopathy",
+      "why": "A systolic crescendo-decrescendo murmur that increases with Valsalva"
+     },
+     {
+      "text": "Mitral valve prolapse",
+      "why": "A midsystolic click followed by a late systolic murmur"
+     },
+     {
+      "text": "Tricuspid regurgitation",
+      "why": "A holosystolic murmur that increases with inspiration"
+     }
+    ]
+   }
+  },
+  "bank-medium-10": {
+   "id": "bank-medium-10",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "other"
+   ],
+   "facets": [
+    [
+     "bounding pulses",
+     "Marfan syndrome"
+    ],
+    [
+     "machine-like murmur",
+     "congenital rubella"
+    ],
+    [
+     "Graves disease",
+     "atrial fibrillation"
+    ],
+    [
+     "cardiac output",
+     "stroke volume"
+    ]
+   ],
+   "issues": [],
+   "note": "Aortic regurgitation and PDA point quickly to bounding pulses; exercise requires a moment of physiology.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hypothyroidism",
+      "why": "Raises peripheral resistance, causing diastolic hypertension and a narrowed pulse pressure"
+     },
+     {
+      "text": "Mitral stenosis",
+      "why": "Limits LV filling and stroke volume, so pulse pressure is not widened"
+     },
+     {
+      "text": "Constrictive pericarditis",
+      "why": "Restricted filling lowers stroke volume and narrows pulse pressure"
+     }
+    ]
+   }
+  },
+  "bank-medium-11": {
+   "id": "bank-medium-11",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "Beck triad",
+     "electrical alternans"
+    ],
+    [
+     "status asthmaticus",
+     "peak flow"
+    ],
+    [
+     "tracheal deviation",
+     "trauma"
+    ],
+    [
+     "right heart strain",
+     "S1Q3T3"
+    ]
+   ],
+   "issues": [],
+   "note": "Tamponade gives it away, but the other three need reasoning about intrathoracic pressure swings.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Atrial fibrillation",
+      "why": "Produces an irregularly irregular pulse, not a respiratory drop in systolic pressure"
+     },
+     {
+      "text": "Coarctation of the aorta",
+      "why": "Causes radiofemoral delay and arm-leg pressure differences, not pulsus paradoxus"
+     }
+    ]
+   }
+  },
+  "bank-medium-12": {
+   "id": "bank-medium-12",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "anti-dsDNA",
+     "malar rash"
+    ],
+    [
+     "group A strep",
+     "subepithelial humps"
+    ],
+    [
+     "tram-track appearance",
+     "hepatitis C"
+    ],
+    [
+     "hepatitis C",
+     "palpable purpura"
+    ]
+   ],
+   "issues": [],
+   "note": "Standard low-complement list; recognised quickly.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "IgA vasculitis (Henoch-Schönlein purpura)",
+      "why": "IgA immune complexes with normal serum complement"
+     },
+     {
+      "text": "Microscopic polyangiitis",
+      "why": "A pauci-immune ANCA vasculitis with normal complement"
+     },
+     {
+      "text": "Membranous nephropathy",
+      "why": "Subepithelial immune deposits but serum complement is typically normal"
+     }
+    ]
+   }
+  },
+  "bank-medium-13": {
+   "id": "bank-medium-13",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "helminths",
+     "IgE"
+    ],
+    [
+     "IgE",
+     "Charcot-Leyden crystals"
+    ],
+    [
+     "DRESS syndrome",
+     "interstitial nephritis"
+    ],
+    [
+     "p-ANCA",
+     "asthma"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Quick recall; 'Parasitic infection' is loose because protozoa such as Giardia and malaria typically do not cause eosinophilia.",
+   "revision": {
+    "kind": "wording",
+    "tiles": [
+     "Helminth infection",
+     "Asthma",
+     "Drug hypersensitivity reaction",
+     "Eosinophilic granulomatosis with polyangiitis"
+    ],
+    "why": "Eosinophilia is a feature of helminths, not protozoa; the standard term is more accurate.",
+    "changes": "Parasitic infection -> Helminth infection"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Giardiasis",
+      "why": "A protozoan infection that does not cause eosinophilia"
+     },
+     {
+      "text": "Malaria",
+      "why": "A protozoan infection that typically does not cause eosinophilia"
+     },
+     {
+      "text": "Cushing syndrome",
+      "why": "Excess cortisol causes eosinopenia"
+     }
+    ]
+   }
+  },
+  "bank-medium-14": {
+   "id": "bank-medium-14",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "finding",
+    "drug",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "pyloric stenosis",
+     "bulimia"
+    ],
+    [
+     "hypokalemia",
+     "ototoxicity"
+    ],
+    [
+     "Conn syndrome",
+     "hypertension"
+    ],
+    [
+     "NKCC2",
+     "loop-diuretic mimic"
+    ]
+   ],
+   "issues": [],
+   "note": "Standard metabolic alkalosis causes; vomiting and diuretics make it quick.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hyperventilation",
+      "why": "Causes respiratory alkalosis, not metabolic alkalosis"
+     },
+     {
+      "text": "Distal (type 1) RTA",
+      "why": "Impaired H+ secretion causes a non-anion-gap metabolic acidosis"
+     },
+     {
+      "text": "Salicylate toxicity",
+      "why": "Causes respiratory alkalosis plus anion-gap metabolic acidosis, not metabolic alkalosis"
+     }
+    ]
+   }
+  },
+  "bank-medium-15": {
+   "id": "bank-medium-15",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "drug",
+    "drug",
+    "disease"
+   ],
+   "facets": [
+    [
+     "Kimmelstiel-Wilson nodules",
+     "microalbuminuria"
+    ],
+    [
+     "dry cough",
+     "angioedema"
+    ],
+    [
+     "peptic ulcer",
+     "interstitial nephritis"
+    ],
+    [
+     "hyperpigmentation",
+     "Addison disease"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires linking each to hypoaldosteronism or aldosterone resistance; good mechanism group.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Lithium",
+      "why": "Causes nephrogenic diabetes insipidus and can cause distal (type 1) RTA, not type 4"
+     },
+     {
+      "text": "Multiple myeloma",
+      "why": "Light chains cause proximal tubular damage and Fanconi syndrome (type 2 RTA)"
+     },
+     {
+      "text": "Acetazolamide",
+      "why": "Carbonic anhydrase inhibition causes proximal bicarbonate wasting, not hyperkalemic type 4 RTA"
+     }
+    ]
+   }
+  },
+  "bank-hard-01": {
+   "id": "bank-hard-01",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "Parkinson disease",
+     "dementia with Lewy bodies"
+    ],
+    [
+     "G6PD deficiency",
+     "bite cells"
+    ],
+    [
+     "asplenia",
+     "sickle cell disease"
+    ],
+    [
+     "papillary thyroid carcinoma",
+     "meningioma"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Each name is strongly tied to 'body', but many other eponymous bodies exist (Mallory, Councilman, Negri), which suits a wordplay round.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Auer",
+      "why": "Auer rods, not bodies, in acute myeloid leukemia"
+     },
+     {
+      "text": "Charcot-Leyden",
+      "why": "Charcot-Leyden crystals, not bodies, from eosinophils"
+     },
+     {
+      "text": "Reed-Sternberg",
+      "why": "Reed-Sternberg cells, not bodies, in Hodgkin lymphoma"
+     },
+     {
+      "text": "Curschmann",
+      "why": "Curschmann spirals, not bodies, in asthma"
+     }
+    ]
+   }
+  },
+  "bank-hard-02": {
+   "id": "bank-hard-02",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "Virchow node",
+     "thrombosis"
+    ],
+    [
+     "ascending cholangitis",
+     "Charcot joint"
+    ],
+    [
+     "cardiac tamponade"
+    ],
+    [
+     "insulinoma",
+     "Whipple disease"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Beck and Charcot triads are well known; Virchow and Whipple deliberately overlap with node and disease eponyms.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Kussmaul",
+      "why": "Kussmaul sign and Kussmaul breathing, not a triad"
+     },
+     {
+      "text": "Courvoisier",
+      "why": "Courvoisier sign (palpable nontender gallbladder), not a triad"
+     },
+     {
+      "text": "Cullen",
+      "why": "Cullen sign (periumbilical bruising), not a triad"
+     }
+    ]
+   }
+  },
+  "bank-hard-03": {
+   "id": "bank-hard-03",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "infective endocarditis",
+     "Osler-Weber-Rendu"
+    ],
+    [
+     "osteoarthritis",
+     "DIP joints"
+    ],
+    [
+     "osteoarthritis",
+     "PIP joints"
+    ],
+    [
+     "gastric cancer",
+     "Virchow triad"
+    ]
+   ],
+   "issues": [],
+   "note": "Heberden and Bouchard are a fixed pair, so the group is quick once one is spotted.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Janeway",
+      "why": "Janeway lesions (painless palmar macules), not nodes, in endocarditis"
+     },
+     {
+      "text": "Gottron",
+      "why": "Gottron papules, not nodes, in dermatomyositis"
+     },
+     {
+      "text": "Roth",
+      "why": "Roth spots, not nodes, in endocarditis"
+     }
+    ]
+   }
+  },
+  "bank-hard-04": {
+   "id": "bank-hard-04",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "infective endocarditis"
+    ],
+    [
+     "measles"
+    ],
+    [
+     "vitamin A deficiency"
+    ],
+    [
+     "Down syndrome"
+    ]
+   ],
+   "issues": [],
+   "note": "Well-known eponymous spots; quick for most.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Janeway",
+      "why": "Janeway lesions, not spots, in endocarditis"
+     },
+     {
+      "text": "Lisch",
+      "why": "Lisch nodules (iris hamartomas), not spots, in NF1"
+     },
+     {
+      "text": "Kayser-Fleischer",
+      "why": "Kayser-Fleischer rings, not spots, in Wilson disease"
+     },
+     {
+      "text": "Osler",
+      "why": "Osler nodes, not spots, in endocarditis"
+     }
+    ]
+   }
+  },
+  "bank-hard-05": {
+   "id": "bank-hard-05",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "interstitial edema",
+     "heart failure"
+    ],
+    [
+     "scarlet fever"
+    ],
+    [
+     "nail growth arrest",
+     "systemic illness"
+    ],
+    [
+     "mosaicism",
+     "dermatology"
+    ]
+   ],
+   "issues": [],
+   "note": "'Kerley B' almost spells out 'lines'; the others need more thought.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Wickham",
+      "why": "Wickham striae, not lines, in lichen planus"
+     },
+     {
+      "text": "Terry",
+      "why": "Terry nails, not lines, in cirrhosis"
+     },
+     {
+      "text": "Lindsay",
+      "why": "Lindsay (half-and-half) nails, not lines, in chronic kidney disease"
+     }
+    ]
+   }
+  },
+  "bank-hard-06": {
+   "id": "bank-hard-06",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "acute cholecystitis"
+    ],
+    [
+     "meningitis",
+     "Brudzinski sign"
+    ],
+    [
+     "upper motor neuron lesion"
+    ],
+    [
+     "hypocalcemia",
+     "migratory thrombophlebitis"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Very well-known signs, though dozens of other eponymous signs exist, so the group relies on excluding other eponym categories.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Argyll Robertson",
+      "why": "Argyll Robertson pupil, not sign, in neurosyphilis"
+     },
+     {
+      "text": "Austin Flint",
+      "why": "Austin Flint murmur, not sign, in aortic regurgitation"
+     },
+     {
+      "text": "Janeway",
+      "why": "Janeway lesions, not sign, in endocarditis"
+     }
+    ]
+   }
+  },
+  "bank-hard-07": {
+   "id": "bank-hard-07",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "process",
+    "process"
+   ],
+   "facets": [
+    [
+     "scleroderma",
+     "CREST"
+    ],
+    [
+     "psoriasis",
+     "lichen planus"
+    ],
+    [
+     "type III hypersensitivity"
+    ],
+    [
+     "rebound hyperglycemia",
+     "dawn phenomenon"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Arthus is standardly called the Arthus reaction, so it fits 'phenomenon' less cleanly than the others.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Raynaud",
+     "Koebner",
+     "Uhthoff",
+     "Somogyi"
+    ],
+    "why": "Uhthoff phenomenon (heat-induced worsening in MS) is a certain, standard 'phenomenon' eponym, unlike the usual 'Arthus reaction'.",
+    "changes": "Replace Arthus with Uhthoff"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Auspitz",
+      "why": "Auspitz sign (pinpoint bleeding on scale removal), not phenomenon, in psoriasis"
+     },
+     {
+      "text": "Gowers",
+      "why": "Gowers sign (using hands to rise from the floor), not phenomenon, in Duchenne muscular dystrophy"
+     },
+     {
+      "text": "Nikolsky",
+      "why": "Nikolsky sign, not phenomenon, in pemphigus vulgaris"
+     }
+    ]
+   }
+  },
+  "bank-hard-08": {
+   "id": "bank-hard-08",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "disease",
+    "anatomy",
+    "process"
+   ],
+   "facets": [
+    [
+     "hepatic portal system",
+     "superior mesenteric vein"
+    ],
+    [
+     "cirrhosis",
+     "varices"
+    ],
+    [
+     "Virchow triad",
+     "Charcot triad"
+    ],
+    [
+     "hypophyseal portal system",
+     "enterohepatic circulation"
+    ]
+   ],
+   "issues": [],
+   "note": "'Vein', 'hypertension' and 'triad' converge on 'portal' quickly; 'triad' usefully overlaps with the eponymous-triad group.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "artery",
+      "why": "The liver's arterial supply is the hepatic artery; there is no 'portal artery'"
+     },
+     {
+      "text": "sinusoid",
+      "why": "Hepatic sinusoids receive portal blood, but 'portal sinusoid' is not a standard term"
+     }
+    ]
+   }
+  },
+  "bank-hard-11": {
+   "id": "bank-hard-11",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "cell_tissue",
+    "finding",
+    "finding",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "Ito cells",
+     "liver fibrosis",
+     "vitamin A storage"
+    ],
+    [
+     "Burkitt lymphoma"
+    ],
+    [
+     "focal nodular hyperplasia",
+     "renal oncocytoma"
+    ],
+    [
+     "Horner syndrome",
+     "Pancoast tumor"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "title-leak",
+    "too-obvious"
+   ],
+   "note": "Three tiles start with 'Stellate' and one with 'Starry', so the group sorts with no medical knowledge.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Astrocytes",
+     "Starry-sky appearance",
+     "Stellate scar",
+     "Asteroid bodies"
+    ],
+    "why": "Keeps the star theme (astro- means star) but removes the repeated 'Stellate' stem; asteroid bodies (star-shaped inclusions in sarcoid giant cells) and astrocytes are standard, certain terms.",
+    "changes": "Replace Stellate cells with Astrocytes and Stellate ganglion with Asteroid bodies"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Moon facies",
+      "why": "Named after the moon, not a star, in Cushing syndrome"
+     },
+     {
+      "text": "Sunburst periosteal reaction",
+      "why": "Named after the sun, not a star, in osteosarcoma"
+     },
+     {
+      "text": "Glomerular crescents",
+      "why": "Named for the crescent moon shape, not a star, in RPGN"
+     }
+    ]
+   }
+  },
+  "bank-expert-01": {
+   "id": "bank-expert-01",
+   "recognition": 1,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "process",
+    "disease",
+    "disease",
+    "finding"
+   ],
+   "facets": [
+    [
+     "respiratory alkalosis",
+     "panic attack"
+    ],
+    [
+     "hypercalcemia",
+     "kidney stones"
+    ],
+    [
+     "hypokalemia",
+     "hypertension"
+    ],
+    [
+     "insulinoma",
+     "sulfonylureas"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "title-leak",
+    "too-obvious",
+    "imprecise",
+    "alternate-member-risk"
+   ],
+   "note": "All tiles start with 'Hyper-' while the paired group all start with 'Hypo-', so players sort by prefix alone; also nearly every hyper- state lowers some value (e.g., hyperthyroidism lowers TSH), so membership is not unique.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": []
+   }
+  },
+  "bank-expert-02": {
+   "id": "bank-expert-02",
+   "recognition": 1,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "process",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "respiratory acidosis",
+     "opioid overdose"
+    ],
+    [
+     "type 4 RTA",
+     "hyperkalemia"
+    ],
+    [
+     "Hashimoto thyroiditis",
+     "high TSH"
+    ],
+    [
+     "hypocalcemia",
+     "thyroidectomy"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "title-leak",
+    "too-obvious",
+    "imprecise",
+    "alternate-member-risk"
+   ],
+   "note": "All tiles start with 'Hypo-', so the group sorts by prefix alone; nearly every hypo- state raises some value (e.g., primary adrenal insufficiency raises ACTH), so membership is not unique.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": []
+   }
+  },
+  "bank-expert-03": {
+   "id": "bank-expert-03",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "adrenal suppression",
+     "iatrogenic Cushing syndrome"
+    ],
+    [
+     "atrial fibrillation",
+     "osteoporosis"
+    ],
+    [
+     "testicular atrophy",
+     "erythrocytosis"
+    ],
+    [
+     "venous thromboembolism",
+     "hepatic adenoma"
+    ]
+   ],
+   "issues": [
+    "imprecise",
+    "alternate-member-risk"
+   ],
+   "note": "Good feedback reasoning, but the title also fits endogenous excess (Graves disease, cortisol-secreting adenoma) while all tiles are exogenous.",
+   "revision": {
+    "kind": "title",
+    "title": "Exogenous hormone that suppresses its own upstream signal",
+    "why": "All four members are exogenous; the narrower title excludes endogenous hormone-excess diseases that would otherwise also fit.",
+    "changes": "Add 'Exogenous' to the title"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Clomiphene",
+      "why": "Blocks hypothalamic estrogen feedback, so LH and FSH rise rather than fall"
+     },
+     {
+      "text": "Methimazole",
+      "why": "Blocks thyroid hormone synthesis, so TSH rises rather than being suppressed"
+     },
+     {
+      "text": "Ketoconazole",
+      "why": "Inhibits steroid synthesis, so ACTH rises rather than being suppressed"
+     },
+     {
+      "text": "Continuous leuprolide",
+      "why": "An upstream GnRH agonist that suppresses downstream LH/FSH by receptor downregulation, not a downstream hormone feeding back"
+     }
+    ]
+   }
+  },
+  "bank-expert-05": {
+   "id": "bank-expert-05",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "process",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "type 2 diabetes",
+     "acanthosis nigricans",
+     "metabolic syndrome"
+    ],
+    [
+     "Albright hereditary osteodystrophy",
+     "hypocalcemia"
+    ],
+    [
+     "XY karyotype",
+     "undescended testes"
+    ],
+    [
+     "lithium",
+     "demeclocycline"
+    ]
+   ],
+   "issues": [
+    "title-leak"
+   ],
+   "note": "'Insulin resistance' repeats the title's 'resistant'; the other three need recognising end-organ resistance.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Laron syndrome",
+     "Pseudohypoparathyroidism",
+     "Androgen insensitivity syndrome",
+     "Nephrogenic diabetes insipidus"
+    ],
+    "why": "Removes the title leak; Laron syndrome (GH receptor defect with high GH and low IGF-1) is a certain, Step 1-tested example of hormone resistance.",
+    "changes": "Replace Insulin resistance with Laron syndrome"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Pseudopseudohypoparathyroidism",
+      "why": "Shares the Albright phenotype but has normal PTH and normal end-organ response"
+     },
+     {
+      "text": "Primary adrenal insufficiency",
+      "why": "ACTH is high because cortisol output fails, not because tissues resist ACTH"
+     },
+     {
+      "text": "Primary hypothyroidism",
+      "why": "TSH is high because the gland fails, not because of TSH resistance"
+     }
+    ]
+   }
+  },
+  "bank-expert-06": {
+   "id": "bank-expert-06",
+   "recognition": 4,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "GFR",
+     "anemia",
+     "hyperkalemia"
+    ],
+    [
+     "ejection fraction",
+     "BNP"
+    ],
+    [
+     "FEV1",
+     "smoking"
+    ],
+    [
+     "DLCO",
+     "honeycombing"
+    ]
+   ],
+   "issues": [
+    "imprecise",
+    "alternate-member-risk"
+   ],
+   "note": "Strong cross-system idea, but many diseases have some value that falls (e.g., hemoglobin and albumin fall in multiple myeloma), so the title needs narrowing to severity-defining organ-function measures (GFR, EF, FEV1, FVC/DLCO).",
+   "revision": {
+    "kind": "title",
+    "title": "Severity staged by a falling organ-function measure",
+    "why": "Each member's severity is formally staged by a falling functional measure (GFR, EF, FEV1, FVC/DLCO); the current title also admits diseases like multiple myeloma.",
+    "changes": "Narrow the title to staging by an organ-function measure"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [
+     1
+    ],
+    "replacements": [
+     {
+      "text": "Gout",
+      "why": "Tracked by serum urate, which rises with disease"
+     },
+     {
+      "text": "Obesity",
+      "why": "Graded by BMI, which rises as disease worsens"
+     },
+     {
+      "text": "Hypertrophic cardiomyopathy",
+      "why": "Graded by wall thickness and outflow gradient, which rise; ejection fraction is typically preserved"
+     }
+    ]
+   }
+  },
+  "bank-neuro-01": {
+   "id": "bank-neuro-01",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "risk",
+    "drug"
+   ],
+   "facets": [
+    [
+     "retinopathy",
+     "nephropathy"
+    ],
+    [
+     "subacute combined degeneration",
+     "pernicious anemia"
+    ],
+    [
+     "Wernicke encephalopathy",
+     "cirrhosis"
+    ],
+    [
+     "vinca alkaloids",
+     "microtubules"
+    ]
+   ],
+   "issues": [],
+   "note": "Classic neuropathy causes; vincristine adds a pharmacology step but the group is quick.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Lambert-Eaton syndrome",
+      "why": "A presynaptic neuromuscular junction disorder, not peripheral nerve damage"
+     },
+     {
+      "text": "Doxorubicin",
+      "why": "A chemotherapy agent known for cardiotoxicity, not neuropathy like vincristine"
+     },
+     {
+      "text": "Botulism",
+      "why": "Blocks acetylcholine release at the neuromuscular junction, without nerve damage"
+     }
+    ]
+   }
+  },
+  "bank-neuro-02": {
+   "id": "bank-neuro-02",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "PCOM aneurysm",
+     "diabetes"
+    ],
+    [
+     "head trauma",
+     "vertical diplopia"
+    ],
+    [
+     "raised intracranial pressure",
+     "lateral rectus"
+    ],
+    [
+     "Pancoast tumor",
+     "carotid dissection"
+    ]
+   ],
+   "issues": [
+    "series",
+    "shared-stem"
+   ],
+   "note": "CN III/IV/VI palsy is a numbered series with a repeated 'palsy' stem; the mimic near misses are strong.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "CN III palsy",
+     "Internuclear ophthalmoplegia",
+     "CN VI palsy",
+     "Horner syndrome"
+    ],
+    "why": "Breaks the CN III/IV/VI series; internuclear ophthalmoplegia (MLF lesion) is a certain, high-yield lesion localised on eye exam.",
+    "changes": "Replace CN IV palsy with Internuclear ophthalmoplegia"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Botulism",
+      "why": "Ptosis and ophthalmoplegia from blocked acetylcholine release at the neuromuscular junction, not a nerve lesion"
+     },
+     {
+      "text": "Physiologic anisocoria",
+      "why": "A benign pupil asymmetry with no ptosis and no neural lesion, unlike Horner syndrome"
+     }
+    ]
+   }
+  },
+  "bank-neuro-03": {
+   "id": "bank-neuro-03",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "hemisection",
+     "penetrating trauma"
+    ],
+    [
+     "vitamin B12 deficiency",
+     "dorsal columns"
+    ],
+    [
+     "aortic surgery",
+     "dorsal column sparing"
+    ],
+    [
+     "Chiari malformation",
+     "cape-like sensory loss"
+    ]
+   ],
+   "issues": [],
+   "note": "Standard cord syndromes; quick for most, with good look-alike near misses.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Medial medullary syndrome",
+      "why": "A brainstem stroke of the anterior spinal artery territory in the medulla, not the cord"
+     },
+     {
+      "text": "Chronic inflammatory demyelinating polyneuropathy",
+      "why": "A chronic peripheral demyelinating neuropathy, not a cord lesion"
+     },
+     {
+      "text": "Lumbar radiculopathy",
+      "why": "Compression of a single nerve root, outside the spinal cord"
+     }
+    ]
+   }
+  },
+  "bank-neuro-04": {
+   "id": "bank-neuro-04",
+   "recognition": 4,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "intention tremor",
+     "dysdiadochokinesia"
+    ],
+    [
+     "tabes dorsalis",
+     "B12 deficiency"
+    ],
+    [
+     "PICA stroke",
+     "dysphagia"
+    ],
+    [
+     "fasciculations",
+     "polio"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires tracing each pathway's decussation; the shared word 'lesion' also appears in near misses so it does not sort.",
+   "revision": null,
+   "timedFit": "long",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Medial medullary hemiparesis",
+      "why": "Pyramid is damaged above the decussation, so weakness is contralateral"
+     },
+     {
+      "text": "Optic tract lesion",
+      "why": "Causes a contralateral homonymous hemianopia"
+     },
+     {
+      "text": "Weber syndrome hemiparesis",
+      "why": "Midbrain cerebral peduncle lesion above the decussation gives contralateral weakness"
+     },
+     {
+      "text": "Thalamic stroke sensory loss",
+      "why": "Sensory pathways have already crossed, so loss is contralateral"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-mixed-0001-L1": {
+   "id": "bank-migrated-sys-mixed-0001-L1",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "organism"
+   ],
+   "facets": [
+    [
+     "Rickettsia rickettsii",
+     "doxycycline"
+    ],
+    [
+     "viral hemorrhagic fever",
+     "Ebola"
+    ],
+    [
+     "Borrelia burgdorferi",
+     "erythema migrans"
+    ],
+    [
+     "flavivirus",
+     "encephalitis"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Place names are recognizable on sight; tile 4 is a virus rather than a disease, slightly mismatching the title.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Q fever",
+      "why": "Named for 'query' (unknown cause), not a place"
+     },
+     {
+      "text": "Weil disease",
+      "why": "Severe leptospirosis named after Adolf Weil, a person"
+     },
+     {
+      "text": "Hansen disease",
+      "why": "Leprosy named after Gerhard Hansen, a person"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-mixed-0001-L2": {
+   "id": "bank-migrated-sys-mixed-0001-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "anatomy",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "aortic dissection",
+     "abdominal aortic aneurysm"
+    ],
+    [
+     "achalasia",
+     "Barrett esophagus"
+    ],
+    [
+     "Budd-Chiari syndrome",
+     "right heart failure"
+    ],
+    [
+     "parasympathetic",
+     "gastric emptying"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Classic 'I 8 10 eggs at 12' recall; thoracic duct, azygos vein and phrenic nerve also pass through.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Celiac trunk",
+      "why": "Arises from the abdominal aorta below the diaphragm and never crosses it"
+     },
+     {
+      "text": "Portal vein",
+      "why": "Lies entirely within the abdomen"
+     },
+     {
+      "text": "Left subclavian artery",
+      "why": "An aortic arch branch going to the arm, staying above the diaphragm"
+     },
+     {
+      "text": "Pulmonary veins",
+      "why": "Run from the lungs to the left atrium entirely within the thorax"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-mixed-0001-L3": {
+   "id": "bank-migrated-sys-mixed-0001-L3",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "anatomy",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "patent ductus arteriosus",
+     "indomethacin"
+    ],
+    [
+     "patent foramen ovale",
+     "paradoxical embolism"
+    ],
+    [
+     "umbilical catheter",
+     "ligamentum teres"
+    ],
+    [
+     "ligamentum venosum"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Standard fetal circulation list; umbilical arteries (medial umbilical ligaments) fit equally well.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Thyroglossal duct",
+      "why": "Embryologic duct whose remnant is the foramen cecum/pyramidal lobe, not circulatory"
+     },
+     {
+      "text": "Gubernaculum",
+      "why": "Becomes the round ligament or gubernaculum testis, not a circulatory structure"
+     },
+     {
+      "text": "Mesonephric duct",
+      "why": "Forms the ductus deferens and related ducts, not a circulatory structure"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-mixed-0001-L4": {
+   "id": "bank-migrated-sys-mixed-0001-L4",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "disease",
+    "disease",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "activated protein C resistance",
+     "DVT"
+    ],
+    [
+     "warfarin skin necrosis",
+     "purpura fulminans"
+    ],
+    [
+     "lupus",
+     "recurrent miscarriage"
+    ],
+    [
+     "DVT"
+    ]
+   ],
+   "issues": [],
+   "note": "Well-known thrombophilia list; mixing gene variants with syndromes keeps it from being purely format-based.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Immune thrombocytopenic purpura",
+      "why": "Autoimmune platelet destruction causing bleeding, not clotting"
+     },
+     {
+      "text": "Glanzmann thrombasthenia",
+      "why": "GpIIb/IIIa deficiency causing a platelet aggregation bleeding disorder"
+     },
+     {
+      "text": "Hemophilia B",
+      "why": "Factor IX deficiency causing bleeding"
+     },
+     {
+      "text": "Factor XI deficiency",
+      "why": "Hemophilia C, a bleeding tendency rather than thrombophilia"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-micro-0001-L1": {
+   "id": "bank-migrated-sys-micro-0001-L1",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "organism",
+    "organism",
+    "organism",
+    "organism"
+   ],
+   "facets": [
+    [
+     "caseating granuloma",
+     "Ghon complex"
+    ],
+    [
+     "brain abscess",
+     "sulfonamides"
+    ],
+    [
+     "watery diarrhea",
+     "AIDS"
+    ],
+    [
+     "raspberries",
+     "traveler's diarrhea"
+    ]
+   ],
+   "issues": [],
+   "note": "A recognized acid-fast list, but mixing bacteria and protozoa takes a moment of recall.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Cryptococcus neoformans",
+      "why": "Identified by India ink or mucicarmine staining, not acid-fast"
+     },
+     {
+      "text": "Legionella pneumophila",
+      "why": "Seen with silver stain; it is not acid-fast"
+     },
+     {
+      "text": "Toxoplasma gondii",
+      "why": "An apicomplexan like Cryptosporidium, but not identified by acid-fast staining"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-micro-0001-L3": {
+   "id": "bank-migrated-sys-micro-0001-L3",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "organism",
+    "organism",
+    "organism",
+    "organism"
+   ],
+   "facets": [
+    [
+     "syphilis",
+     "dark-field microscopy"
+    ],
+    [
+     "Lyme disease",
+     "Ixodes tick"
+    ],
+    [
+     "Weil disease",
+     "rat urine"
+    ],
+    [
+     "relapsing fever",
+     "louse"
+    ]
+   ],
+   "issues": [],
+   "note": "Classic spirochete list (Borrelia, Leptospira, Treponema); two Borrelia tiles help.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Spirillum minus",
+      "why": "A spiral rat-bite fever bacterium with polar flagella, not a spirochete"
+     },
+     {
+      "text": "Anaplasma phagocytophilum",
+      "why": "Transmitted by Ixodes ticks like B. burgdorferi, but a rickettsial organism"
+     },
+     {
+      "text": "Rickettsia prowazekii",
+      "why": "Louse-borne like B. recurrentis, but a rickettsia, not a spirochete"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-micro-0001-L4": {
+   "id": "bank-migrated-sys-micro-0001-L4",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "organism",
+    "organism",
+    "organism",
+    "organism"
+   ],
+   "facets": [
+    [
+     "Rocky Mountain spotted fever",
+     "doxycycline"
+    ],
+    [
+     "urethritis",
+     "trachoma"
+    ],
+    [
+     "Q fever",
+     "farm animals"
+    ],
+    [
+     "scrub typhus",
+     "chigger"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Standard list; Coxiella can now be grown axenically, though it is still taught as obligate intracellular.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Francisella tularensis",
+      "why": "Facultative intracellular; can be cultured on cysteine-enriched media"
+     },
+     {
+      "text": "Brucella abortus",
+      "why": "Facultative intracellular and grows in culture"
+     },
+     {
+      "text": "Mycobacterium tuberculosis",
+      "why": "Survives in macrophages but is facultative and grows on Lowenstein-Jensen medium"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-mixed-0002-L1": {
+   "id": "bank-migrated-sys-mixed-0002-L1",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "appendectomy incision"
+    ],
+    [
+     "peritonitis"
+    ],
+    [
+     "psoas abscess",
+     "retrocecal appendix"
+    ],
+    [
+     "pelvic abscess",
+     "obturator hernia"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "McBurney's point makes the group instant, and psoas/obturator signs are the textbook companions.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Boas sign",
+      "why": "Right subscapular hyperesthesia in acute cholecystitis"
+     },
+     {
+      "text": "Dance sign",
+      "why": "Empty right lower quadrant in intussusception"
+     },
+     {
+      "text": "Carnett sign",
+      "why": "Pain persists with tensed abdominal wall, pointing to an abdominal wall source"
+     },
+     {
+      "text": "Courvoisier sign",
+      "why": "Palpable painless gallbladder with jaundice, suggesting pancreatic head cancer"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-mixed-0002-L2": {
+   "id": "bank-migrated-sys-mixed-0002-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "meningitis"
+    ],
+    [
+     "meningitis"
+    ],
+    [
+     "subarachnoid hemorrhage",
+     "tetanus"
+    ],
+    [
+     "meningitis"
+    ]
+   ],
+   "issues": [],
+   "note": "Kernig and Brudzinski are instant pairs; jolt accentuation adds a little difficulty.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Spurling sign",
+      "why": "Neck extension and rotation reproduces radicular pain in cervical radiculopathy"
+     },
+     {
+      "text": "Lasègue sign",
+      "why": "Straight leg raise tests lumbosacral nerve root irritation, not meninges"
+     },
+     {
+      "text": "Papilledema",
+      "why": "A sign of raised intracranial pressure, not meningeal irritation"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-biochem-0001-L1": {
+   "id": "bank-migrated-sys-biochem-0001-L1",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "CAG repeat",
+     "anticipation",
+     "caudate atrophy"
+    ],
+    [
+     "aortic dissection",
+     "lens dislocation"
+    ],
+    [
+     "cafe-au-lait spots",
+     "neurofibromas"
+    ],
+    [
+     "tendon xanthomas",
+     "premature CAD"
+    ]
+   ],
+   "issues": [],
+   "note": "Four of the most-quoted autosomal dominant examples.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Friedreich ataxia",
+      "why": "A trinucleotide repeat disorder like Huntington, but autosomal recessive"
+     },
+     {
+      "text": "Hereditary hemochromatosis",
+      "why": "Autosomal recessive HFE mutation"
+     },
+     {
+      "text": "Fragile X syndrome",
+      "why": "X-linked, not autosomal"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-biochem-0001-L2": {
+   "id": "bank-migrated-sys-biochem-0001-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "CFTR",
+     "sweat chloride"
+    ],
+    [
+     "HbS",
+     "vaso-occlusive crisis"
+    ],
+    [
+     "musty odor",
+     "newborn screen"
+    ],
+    [
+     "cherry-red spot",
+     "Ashkenazi Jewish"
+    ]
+   ],
+   "issues": [],
+   "note": "Classic autosomal recessive examples; quick for most students.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "ADPKD",
+      "why": "Adult polycystic kidney disease is autosomal dominant"
+     },
+     {
+      "text": "Hereditary spherocytosis",
+      "why": "Usually autosomal dominant"
+     },
+     {
+      "text": "Achondroplasia",
+      "why": "Autosomal dominant FGFR3 mutation"
+     },
+     {
+      "text": "Fabry disease",
+      "why": "A lysosomal storage disease like Tay-Sachs, but X-linked"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-biochem-0001-L3": {
+   "id": "bank-migrated-sys-biochem-0001-L3",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "factor VIII",
+     "hemarthrosis"
+    ],
+    [
+     "Gowers sign",
+     "dystrophin"
+    ],
+    [
+     "Heinz bodies",
+     "bite cells",
+     "fava beans"
+    ],
+    [
+     "opsin"
+    ]
+   ],
+   "issues": [],
+   "note": "Well-known X-linked recessive list.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Rett syndrome",
+      "why": "X-linked dominant MECP2 disorder, seen almost only in girls"
+     },
+     {
+      "text": "Hurler syndrome",
+      "why": "Autosomal recessive, unlike X-linked Hunter syndrome"
+     },
+     {
+      "text": "Hemophilia C",
+      "why": "Factor XI deficiency is autosomal recessive"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-hemeonc-0001-L1": {
+   "id": "bank-migrated-sys-hemeonc-0001-L1",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "Down syndrome",
+     "TdT"
+    ],
+    [
+     "Auer rods"
+    ],
+    [
+     "smudge cells",
+     "warm AIHA"
+    ],
+    [
+     "Philadelphia chromosome",
+     "imatinib"
+    ]
+   ],
+   "issues": [
+    "series",
+    "shared-stem",
+    "title-leak",
+    "too-obvious"
+   ],
+   "note": "Acute/chronic x lymphoid/myeloid grid with 'leukemia' in every tile; sorts with no reasoning, consider retiring.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Leukemoid reaction",
+      "why": "Reactive benign leukocytosis, not a leukemia"
+     },
+     {
+      "text": "Leukoerythroblastic reaction",
+      "why": "Immature cells in blood from marrow infiltration, not a leukemia"
+     },
+     {
+      "text": "Myelodysplastic syndrome",
+      "why": "A clonal marrow disorder that can progress to AML but is not itself a leukemia"
+     },
+     {
+      "text": "Essential thrombocythemia",
+      "why": "A myeloproliferative neoplasm, not a leukemia"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-hemeonc-0001-L2": {
+   "id": "bank-migrated-sys-hemeonc-0001-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "CML",
+     "imatinib",
+     "ALL"
+    ],
+    [
+     "APL",
+     "all-trans retinoic acid",
+     "DIC"
+    ],
+    [
+     "Burkitt lymphoma",
+     "MYC"
+    ],
+    [
+     "follicular lymphoma",
+     "BCL2"
+    ]
+   ],
+   "issues": [
+    "shared-stem"
+   ],
+   "note": "The t(x;y) notation sorts them instantly unless near misses also use translocation notation.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "t(11;22)",
+      "why": "EWSR1-FLI1 translocation of Ewing sarcoma, a bone tumor, not a blood cancer"
+     },
+     {
+      "text": "t(X;18)",
+      "why": "SS18-SSX translocation of synovial sarcoma, not a blood cancer"
+     },
+     {
+      "text": "Trisomy 12",
+      "why": "A numeric change seen in CLL, not a translocation"
+     },
+     {
+      "text": "del(5q)",
+      "why": "A deletion seen in myelodysplastic syndrome, not a translocation"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-hemeonc-0001-L3": {
+   "id": "bank-migrated-sys-hemeonc-0001-L3",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "lab",
+    "lab",
+    "lab",
+    "lab"
+   ],
+   "facets": [
+    [
+     "ovarian cancer",
+     "endometriosis"
+    ],
+    [
+     "pancreatic cancer",
+     "cholangiocarcinoma"
+    ],
+    [
+     "hepatocellular carcinoma",
+     "neural tube defects",
+     "yolk sac tumor"
+    ],
+    [
+     "colorectal cancer",
+     "smoking"
+    ]
+   ],
+   "issues": [],
+   "note": "Two 'CA' tiles flag the group, but AFP and CEA are equally familiar.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Haptoglobin",
+      "why": "Falls in intravascular hemolysis; not a tumor marker"
+     },
+     {
+      "text": "D-dimer",
+      "why": "Marker of fibrin breakdown in thrombosis or DIC, not cancer"
+     },
+     {
+      "text": "Amylase",
+      "why": "Marker of pancreatitis, not pancreatic cancer"
+     },
+     {
+      "text": "CK-MB",
+      "why": "Marker of myocardial injury"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-hemeonc-0001-L4": {
+   "id": "bank-migrated-sys-hemeonc-0001-L4",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "lab",
+    "lab"
+   ],
+   "facets": [
+    [
+     "APL",
+     "DIC"
+    ],
+    [
+     "CLL"
+    ],
+    [
+     "ALL",
+     "lymphoblastic lymphoma"
+    ],
+    [
+     "hairy cell leukemia",
+     "BRAF V600E"
+    ]
+   ],
+   "issues": [],
+   "note": "Must separate leukemia findings from other classic smear findings shown alongside them.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Pelger-Huet cells",
+      "why": "Bilobed neutrophils of Pelger-Huet anomaly or myelodysplasia, not a leukemia finding"
+     },
+     {
+      "text": "Basophilic stippling",
+      "why": "Classic for lead poisoning and thalassemia"
+     },
+     {
+      "text": "Heinz bodies",
+      "why": "Denatured hemoglobin in G6PD deficiency"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pharm-0001-L1": {
+   "id": "bank-migrated-sys-pharm-0001-L1",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "delirium tremens",
+     "hepatic encephalopathy"
+    ],
+    [
+     "sympathomimetic toxidrome",
+     "CN III palsy"
+    ],
+    [
+     "niacin",
+     "carcinoid syndrome"
+    ],
+    [
+     "Sjogren syndrome",
+     "dehydration"
+    ]
+   ],
+   "issues": [],
+   "note": "Famous mnemonic, but mydriasis and confusion also fit sympathomimetic and serotonergic near misses.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Clonus",
+      "why": "Characteristic of serotonin syndrome, not anticholinergic toxicity"
+     },
+     {
+      "text": "Lead-pipe rigidity",
+      "why": "Characteristic of neuroleptic malignant syndrome"
+     },
+     {
+      "text": "Piloerection",
+      "why": "A sign of opioid withdrawal"
+     },
+     {
+      "text": "Bronchorrhea",
+      "why": "A cholinergic (muscarinic) sign"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pharm-0001-L2": {
+   "id": "bank-migrated-sys-pharm-0001-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "depression",
+     "sexual dysfunction"
+    ],
+    [
+     "tyramine crisis",
+     "depression"
+    ],
+    [
+     "seizures",
+     "opioid"
+    ],
+    [
+     "MRSA",
+     "VRE",
+     "thrombocytopenia"
+    ]
+   ],
+   "issues": [],
+   "note": "SSRIs and MAOIs are obvious; tramadol and linezolid add recall.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Morphine",
+      "why": "An opioid without meaningful serotonergic activity, unlike tramadol"
+     },
+     {
+      "text": "Vancomycin",
+      "why": "An MRSA antibiotic like linezolid but with no monoamine oxidase inhibition"
+     },
+     {
+      "text": "Dantrolene",
+      "why": "Treats malignant hyperthermia; it does not raise serotonin"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pharm-0001-L3": {
+   "id": "bank-migrated-sys-pharm-0001-L3",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "acetaminophen overdose",
+     "mucolytic"
+    ],
+    [
+     "ethylene glycol",
+     "methanol"
+    ],
+    [
+     "anticholinergic toxicity",
+     "glaucoma"
+    ],
+    [
+     "opioid overdose"
+    ]
+   ],
+   "issues": [],
+   "note": "Famous antidotes, though near misses linked to the same toxins make it fair.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Buprenorphine",
+      "why": "A partial opioid agonist used for opioid use disorder, not to reverse overdose"
+     },
+     {
+      "text": "Pyridostigmine",
+      "why": "A cholinesterase inhibitor for myasthenia that does not cross the blood-brain barrier, so not used to reverse anticholinergic delirium"
+     },
+     {
+      "text": "Bethanechol",
+      "why": "A muscarinic agonist for urinary retention, not an antidote"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-mixed-0003-L1": {
+   "id": "bank-migrated-sys-mixed-0003-L1",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "boot-shaped heart",
+     "tet spells",
+     "22q11 deletion"
+    ],
+    [
+     "egg on a string",
+     "maternal diabetes"
+    ],
+    [
+     "22q11 deletion",
+     "DiGeorge syndrome"
+    ],
+    [
+     "left axis deviation"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "too-obvious"
+   ],
+   "note": "All four tiles start with T, matching the '5 Ts' mnemonic, so they sort on the first letter alone.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Tetralogy of Fallot",
+     "Transposition of the great arteries",
+     "Hypoplastic left heart syndrome",
+     "Pulmonary atresia"
+    ],
+    "why": "Swapping two of the 5-T lesions for two other definitely cyanotic lesions removes the T giveaway while keeping the group correct.",
+    "changes": "Truncus arteriosus -> Hypoplastic left heart syndrome; Tricuspid atresia -> Pulmonary atresia"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Atrioventricular septal defect",
+      "why": "Left-to-right shunt, acyanotic at presentation (Down syndrome association)"
+     },
+     {
+      "text": "Congenitally corrected transposition",
+      "why": "L-TGA is physiologically corrected and acyanotic without other lesions"
+     },
+     {
+      "text": "Bicuspid aortic valve",
+      "why": "Acyanotic valve lesion"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-mixed-0003-L2": {
+   "id": "bank-migrated-sys-mixed-0003-L2",
+   "recognition": 3,
+   "reasoning": "recall",
+   "tileTypes": [
+    "anatomy",
+    "anatomy",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "TMJ",
+     "Pierre Robin sequence"
+    ],
+    [
+     "otosclerosis",
+     "hyperacusis"
+    ],
+    [
+     "thyroglossal duct cyst"
+    ],
+    [
+     "laryngeal prominence",
+     "cricothyrotomy"
+    ]
+   ],
+   "issues": [],
+   "note": "Needs recall of arch versus pouch and cleft derivatives, which the near misses test.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Thyroid gland",
+      "why": "Arises from the floor of the pharynx at the foramen cecum, not a pharyngeal arch"
+     },
+     {
+      "text": "Eustachian tube",
+      "why": "Derived from the 1st pharyngeal pouch"
+     },
+     {
+      "text": "Parafollicular C cells",
+      "why": "Derived from the 4th pouch (ultimobranchial body)"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-mixed-0003-L3": {
+   "id": "bank-migrated-sys-mixed-0003-L3",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "organism",
+    "organism",
+    "organism"
+   ],
+   "facets": [
+    [
+     "cat feces",
+     "ring-enhancing lesions",
+     "AIDS"
+    ],
+    [
+     "blueberry muffin rash",
+     "MMR vaccine"
+    ],
+    [
+     "owl's eye inclusions",
+     "ganciclovir"
+    ],
+    [
+     "encephalitis",
+     "acyclovir"
+    ]
+   ],
+   "issues": [
+    "series",
+    "too-obvious",
+    "alternate-member-risk"
+   ],
+   "note": "Spells the TORCH acronym directly; congenital syphilis (the 'O') is an equally expected member.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     1,
+     2,
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Neisseria gonorrhoeae",
+      "why": "Causes ophthalmia neonatorum acquired at delivery; not a TORCH agent"
+     },
+     {
+      "text": "Chlamydia trachomatis",
+      "why": "Causes neonatal conjunctivitis and pneumonia; not a TORCH agent"
+     },
+     {
+      "text": "Escherichia coli",
+      "why": "A cause of neonatal sepsis and meningitis, not a TORCH agent"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-mixed-0003-L4": {
+   "id": "bank-migrated-sys-mixed-0003-L4",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "tuft of hair",
+     "sacral dimple"
+    ],
+    [
+     "polyhydramnios",
+     "elevated AFP"
+    ],
+    [
+     "Meckel-Gruber syndrome"
+    ],
+    [
+     "Chiari II",
+     "hydrocephalus",
+     "folate"
+    ]
+   ],
+   "issues": [],
+   "note": "Familiar defects, but near misses with Chiari and Dandy-Walker require discrimination.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hydranencephaly",
+      "why": "Hemispheres are destroyed and replaced by fluid within an intact skull; not a closure defect"
+     },
+     {
+      "text": "Craniosynostosis",
+      "why": "Premature fusion of skull sutures, not a neural tube defect"
+     },
+     {
+      "text": "Caudal regression syndrome",
+      "why": "Sacral agenesis linked to maternal diabetes, not failed neural tube closure"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-cardio-0001-L1": {
+   "id": "bank-migrated-sys-cardio-0001-L1",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "mitral valve prolapse",
+     "holosystolic murmur"
+    ],
+    [
+     "syncope",
+     "angina",
+     "bicuspid valve"
+    ],
+    [
+     "IV drug use",
+     "carcinoid"
+    ],
+    [
+     "holosystolic murmur",
+     "Down syndrome"
+    ]
+   ],
+   "issues": [],
+   "note": "Core murmur timing; quick but requires separating from diastolic look-alikes.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Tricuspid stenosis",
+      "why": "Diastolic murmur at the left lower sternal border"
+     },
+     {
+      "text": "Austin Flint murmur",
+      "why": "Mid-diastolic rumble from severe aortic regurgitation"
+     },
+     {
+      "text": "Graham Steell murmur",
+      "why": "Early diastolic murmur of pulmonic regurgitation in pulmonary hypertension"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-cardio-0001-L2": {
+   "id": "bank-migrated-sys-cardio-0001-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "finding"
+   ],
+   "facets": [
+    [
+     "wide pulse pressure",
+     "water-hammer pulse"
+    ],
+    [
+     "rheumatic fever",
+     "opening snap"
+    ],
+    [
+     "Graham Steell murmur",
+     "pulmonary hypertension"
+    ],
+    [
+     "aortic regurgitation"
+    ]
+   ],
+   "issues": [],
+   "note": "Core murmur timing; Austin Flint adds a little recall.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Ventricular septal defect",
+      "why": "Holosystolic murmur"
+     },
+     {
+      "text": "Tricuspid regurgitation",
+      "why": "Holosystolic murmur that increases with inspiration"
+     },
+     {
+      "text": "Pulmonic stenosis",
+      "why": "Systolic ejection murmur"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-cardio-0001-L3": {
+   "id": "bank-migrated-sys-cardio-0001-L3",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "carcinoid syndrome",
+     "rheumatic fever"
+    ],
+    [
+     "Noonan syndrome",
+     "Tetralogy of Fallot"
+    ],
+    [
+     "lithium",
+     "tricuspid regurgitation"
+    ],
+    [
+     "flushing",
+     "5-HIAA"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Requires Carvallo reasoning, but tricuspid regurgitation, the most classic example, is missing and players will expect it.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Aortic regurgitation",
+      "why": "Left-sided; louder with expiration and leaning forward"
+     },
+     {
+      "text": "Mitral stenosis",
+      "why": "Left-sided diastolic rumble that does not augment with inspiration"
+     },
+     {
+      "text": "Ventricular septal defect",
+      "why": "A septal shunt murmur, not right-sided valve disease"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-cardio-0001-L4": {
+   "id": "bank-migrated-sys-cardio-0001-L4",
+   "recognition": 3,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "pericardial effusion",
+     "tamponade"
+    ],
+    [
+     "WPW",
+     "short PR"
+    ],
+    [
+     "hypothermia",
+     "hypercalcemia"
+    ],
+    [
+     "ARVC"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "imprecise"
+   ],
+   "note": "Three tiles end in 'wave'; 'named waveform' is loose, as U waves or Wellens T waves could also be argued in.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Torsades de pointes",
+      "why": "A named polymorphic VT rhythm, not a single-beat waveform finding"
+     },
+     {
+      "text": "Wenckebach phenomenon",
+      "why": "A named conduction pattern across beats, not a waveform"
+     },
+     {
+      "text": "Ashman phenomenon",
+      "why": "A named aberrant conduction pattern in atrial fibrillation, not a waveform"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-cardio-0002-L1": {
+   "id": "bank-migrated-sys-cardio-0002-L1",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "STEMI",
+     "troponin"
+    ],
+    [
+     "coxsackievirus",
+     "viral prodrome"
+    ],
+    [
+     "papillary muscle rupture",
+     "endocarditis"
+    ],
+    [
+     "structural heart disease",
+     "amiodarone"
+    ]
+   ],
+   "issues": [],
+   "note": "Pump failure causes are familiar; discrimination comes from obstructive and distributive near misses.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Massive pulmonary embolism",
+      "why": "Obstructive shock; the RV outflow is blocked"
+     },
+     {
+      "text": "Neurogenic shock",
+      "why": "Distributive shock from loss of sympathetic tone"
+     },
+     {
+      "text": "Adrenal crisis",
+      "why": "Distributive and hypovolemic shock from cortisol deficiency"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-cardio-0002-L2": {
+   "id": "bank-migrated-sys-cardio-0002-L2",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "Beck triad",
+     "pulsus paradoxus"
+    ],
+    [
+     "tracheal deviation",
+     "needle decompression"
+    ],
+    [
+     "DVT",
+     "right heart strain"
+    ],
+    [
+     "Kussmaul sign",
+     "pericardial knock"
+    ]
+   ],
+   "issues": [],
+   "note": "Classic obstructive causes; constrictive pericarditis usually causes chronic low output more than frank shock.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Acute myocarditis",
+      "why": "Cardiogenic shock from impaired contractility"
+     },
+     {
+      "text": "Sustained ventricular tachycardia",
+      "why": "Cardiogenic shock from an ineffective rhythm"
+     },
+     {
+      "text": "Neurogenic shock",
+      "why": "Distributive shock from loss of sympathetic tone"
+     },
+     {
+      "text": "Adrenal crisis",
+      "why": "Shock from cortisol deficiency, not mechanical obstruction"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-cardio-0002-L3": {
+   "id": "bank-migrated-sys-cardio-0002-L3",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "risk"
+   ],
+   "facets": [
+    [
+     "pulmonary edema",
+     "BNP"
+    ],
+    [
+     "rheumatic fever",
+     "atrial fibrillation"
+    ],
+    [
+     "mitral valve prolapse",
+     "holosystolic murmur"
+    ],
+    [
+     "renal failure",
+     "IV fluids"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires reasoning about left atrial pressure against pre-capillary near misses.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Cor pulmonale",
+      "why": "Right heart failure from lung disease with a normal wedge pressure"
+     },
+     {
+      "text": "Hypovolemia",
+      "why": "Lowers filling pressures, including the wedge"
+     },
+     {
+      "text": "Septic shock",
+      "why": "Distributive shock with a low or normal wedge pressure"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-cardio-0003-L1": {
+   "id": "bank-migrated-sys-cardio-0003-L1",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "disease",
+    "disease",
+    "risk"
+   ],
+   "facets": [
+    [
+     "hypertension",
+     "heart failure"
+    ],
+    [
+     "fatigue",
+     "cold intolerance"
+    ],
+    [
+     "tachy-brady syndrome",
+     "pacemaker"
+    ],
+    [
+     "LV hypertrophy"
+    ]
+   ],
+   "issues": [],
+   "note": "Well-known causes; the hypo/hyperthyroid near miss adds a small trap.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Albuterol use",
+      "why": "A beta-2 agonist that causes tachycardia"
+     },
+     {
+      "text": "Anemia",
+      "why": "Causes compensatory tachycardia"
+     },
+     {
+      "text": "Pheochromocytoma",
+      "why": "Catecholamine excess causes tachycardia"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-cardio-0003-L2": {
+   "id": "bank-migrated-sys-cardio-0003-L2",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "finding"
+   ],
+   "facets": [
+    [
+     "stroke",
+     "anticoagulation"
+    ],
+    [
+     "adenosine",
+     "vagal maneuvers"
+    ],
+    [
+     "sawtooth flutter waves"
+    ],
+    [
+     "fever",
+     "hypovolemia"
+    ]
+   ],
+   "issues": [],
+   "note": "Familiar SVTs; antidromic AVRT near miss rewards real discrimination.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Ventricular fibrillation",
+      "why": "Chaotic ventricular activity with no organized narrow QRS"
+     },
+     {
+      "text": "Pacemaker-mediated tachycardia",
+      "why": "Ventricular pacing produces wide paced complexes"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-cardio-0003-L3": {
+   "id": "bank-migrated-sys-cardio-0003-L3",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "prolonged PR"
+    ],
+    [
+     "inferior MI",
+     "digoxin"
+    ],
+    [
+     "pacemaker"
+    ],
+    [
+     "Lyme carditis",
+     "AV dissociation"
+    ]
+   ],
+   "issues": [
+    "series",
+    "shared-stem",
+    "title-leak",
+    "too-obvious"
+   ],
+   "note": "First, second (I and II) and third degree form an obvious series, with 'AV block' in title and tiles.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Sinoatrial exit block",
+      "why": "A block between the sinus node and atrium, not at the AV node"
+     },
+     {
+      "text": "Left anterior fascicular block",
+      "why": "An intraventricular fascicular block, not AV block"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-cardio-0003-L4": {
+   "id": "bank-migrated-sys-cardio-0003-L4",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "lab",
+    "disease",
+    "drug",
+    "finding"
+   ],
+   "facets": [
+    [
+     "alcohol use disorder",
+     "PPIs",
+     "hypokalemia"
+    ],
+    [
+     "deafness",
+     "beta-blockers"
+    ],
+    [
+     "amiodarone",
+     "sotalol"
+    ],
+    [
+     "AV block",
+     "hypothyroidism"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Mixed tile types require reasoning; hypokalemia, the most classic risk factor, is missing.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hyperkalemia",
+      "why": "Causes peaked T waves and conduction block, not QT prolongation"
+     },
+     {
+      "text": "Digoxin toxicity",
+      "why": "Shortens QT; associated with bidirectional VT rather than torsades"
+     },
+     {
+      "text": "Short QT syndrome",
+      "why": "A congenital channelopathy with short repolarization, not torsades risk"
+     },
+     {
+      "text": "Mexiletine",
+      "why": "Class IB agent that shortens repolarization"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pulm-0001-L2": {
+   "id": "bank-migrated-sys-pulm-0001-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "honeycombing",
+     "clubbing"
+    ],
+    [
+     "hilar lymphadenopathy",
+     "noncaseating granulomas"
+    ],
+    [
+     "hypercapnia",
+     "sleep apnea"
+    ],
+    [
+     "Marfan syndrome"
+    ]
+   ],
+   "issues": [],
+   "note": "Classic restrictive versus obstructive split; mixing parenchymal and chest wall causes adds a little.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Cystic fibrosis",
+      "why": "Predominantly obstructive airway disease"
+     },
+     {
+      "text": "Alpha-1 antitrypsin deficiency",
+      "why": "Causes panacinar emphysema, an obstructive pattern"
+     },
+     {
+      "text": "Bronchiolitis obliterans",
+      "why": "Small airway obstruction, an obstructive pattern"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pulm-0001-L3": {
+   "id": "bank-migrated-sys-pulm-0001-L3",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "smoking",
+     "barrel chest"
+    ],
+    [
+     "honeycombing",
+     "amiodarone"
+    ],
+    [
+     "loud P2",
+     "right heart failure"
+    ],
+    [
+     "fatigue",
+     "iron deficiency"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires reasoning about surface area, membrane, capillary volume and hemoglobin.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Kyphoscoliosis",
+      "why": "Chest wall restriction with a normal alveolar membrane, so DLCO is preserved"
+     },
+     {
+      "text": "Obesity",
+      "why": "DLCO is normal or increased"
+     },
+     {
+      "text": "Left-to-right cardiac shunt",
+      "why": "Increased pulmonary blood flow raises DLCO"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pulm-0001-L4": {
+   "id": "bank-migrated-sys-pulm-0001-L4",
+   "recognition": 4,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "process",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "cardiac output",
+     "VO2 max"
+    ],
+    [
+     "Goodpasture syndrome",
+     "hemoptysis"
+    ],
+    [
+     "JAK2",
+     "hyperviscosity"
+    ],
+    [
+     "ASD",
+     "Eisenmenger syndrome"
+    ]
+   ],
+   "issues": [],
+   "note": "Uncommonly taught direction of DLCO change that requires mechanistic reasoning; asthma and obesity can also raise DLCO.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Cigarette smoking",
+      "why": "Carboxyhemoglobin back pressure lowers measured DLCO"
+     },
+     {
+      "text": "Pulmonary hypertension",
+      "why": "Reduced capillary blood volume lowers DLCO"
+     },
+     {
+      "text": "Pulmonary sarcoidosis",
+      "why": "Interstitial involvement lowers DLCO"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pulm-0002-L1": {
+   "id": "bank-migrated-sys-pulm-0002-L1",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "lab"
+   ],
+   "facets": [
+    [
+     "BNP",
+     "pulmonary edema"
+    ],
+    [
+     "ascites",
+     "varices"
+    ],
+    [
+     "edema",
+     "hyperlipidemia"
+    ],
+    [
+     "malnutrition",
+     "edema"
+    ]
+   ],
+   "issues": [],
+   "note": "Standard transudate list driven by Starling forces.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Tuberculosis",
+      "why": "Produces a lymphocyte-rich exudate"
+     },
+     {
+      "text": "Systemic lupus erythematosus",
+      "why": "Serositis produces an exudate"
+     },
+     {
+      "text": "Esophageal rupture",
+      "why": "Produces an exudate with high amylase and low pH"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pulm-0002-L2": {
+   "id": "bank-migrated-sys-pulm-0002-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "pneumonia",
+     "empyema"
+    ],
+    [
+     "lung cancer",
+     "breast cancer"
+    ],
+    [
+     "DVT",
+     "hemoptysis"
+    ],
+    [
+     "adenosine deaminase",
+     "lymphocytes"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Pulmonary embolism produces transudates in a meaningful minority, so it is a loose member.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Parapneumonic effusion",
+     "Malignancy",
+     "Acute pancreatitis",
+     "Tuberculosis"
+    ],
+    "why": "Pulmonary embolism effusions can be transudates; acute pancreatitis reliably causes an exudate.",
+    "changes": "Pulmonary embolism -> Acute pancreatitis"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hypoalbuminemia",
+      "why": "Low oncotic pressure produces a transudate"
+     },
+     {
+      "text": "Atelectasis",
+      "why": "Lowered pleural pressure produces a transudate"
+     },
+     {
+      "text": "Constrictive pericarditis",
+      "why": "Raised venous pressure produces a transudate"
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pulm-0002-L3": {
+   "id": "bank-migrated-sys-pulm-0002-L3",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "caseating granuloma",
+     "cavitation",
+     "HIV"
+    ],
+    [
+     "eggshell calcification",
+     "TB risk"
+    ],
+    [
+     "Caplan syndrome",
+     "anthracosis"
+    ],
+    [
+     "Birbeck granules",
+     "smoking",
+     "CD1a/S-100"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Classic upper-zone list; sarcoidosis, ankylosing spondylitis, cystic fibrosis and centriacinar emphysema also fit and may be expected.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Primary tuberculosis",
+      "why": "The Ghon focus is typically in the mid or lower lung zones, unlike reactivation disease."
+     },
+     {
+      "text": "Lymphangioleiomyomatosis",
+      "why": "Thin-walled cysts are diffuse and uniform, without the upper-zone, base-sparing pattern of PLCH."
+     },
+     {
+      "text": "Systemic sclerosis interstitial lung disease",
+      "why": "NSIP pattern that is basal predominant."
+     },
+     {
+      "text": "Hematogenous lung metastases",
+      "why": "Favor the lung bases, where blood flow is greatest."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pulm-0002-L4": {
+   "id": "bank-migrated-sys-pulm-0002-L4",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "honeycombing",
+     "clubbing",
+     "pirfenidone"
+    ],
+    [
+     "anaerobes",
+     "alcoholism",
+     "right lower lobe"
+    ],
+    [
+     "pleural plaques",
+     "mesothelioma",
+     "ferruginous bodies"
+    ],
+    [
+     "panacinar emphysema",
+     "cirrhosis",
+     "PAS-positive globules"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Sound pairing with the upper-lobe set; aspiration location depends on posture (posterior upper-lobe segments when supine), so it needs an unstated exception.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Sarcoidosis",
+      "why": "Perilymphatic nodules favor the upper and mid zones."
+     },
+     {
+      "text": "Cystic fibrosis bronchiectasis",
+      "why": "Bronchiectasis is upper-lobe predominant."
+     },
+     {
+      "text": "Ankylosing spondylitis lung disease",
+      "why": "Causes apical fibrobullous disease."
+     },
+     {
+      "text": "Chronic hypersensitivity pneumonitis",
+      "why": "Usually upper- or mid-zone predominant, relatively sparing the bases."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pulm-0003-L1": {
+   "id": "bank-migrated-sys-pulm-0003-L1",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "process"
+   ],
+   "facets": [
+    [
+     "DVT",
+     "Virchow triad",
+     "S1Q3T3"
+    ],
+    [
+     "Streptococcus pneumoniae",
+     "consolidation"
+    ],
+    [
+     "heart failure",
+     "Kerley B lines"
+    ],
+    [
+     "tetralogy of Fallot",
+     "Eisenmenger syndrome",
+     "paradoxical embolism"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Well-known V/Q mismatch and shunt causes; ARDS, ILD and atelectasis fit equally and the shunt tile is a mechanism among diseases.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Guillain-Barré syndrome",
+      "why": "Neuromuscular hypoventilation with a normal A-a gradient."
+     },
+     {
+      "text": "Carbon monoxide poisoning",
+      "why": "PaO2 and the A-a gradient are normal; oxygen content falls instead."
+     },
+     {
+      "text": "Anemia",
+      "why": "Lowers oxygen content with a normal PaO2 and A-a gradient."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pulm-0003-L2": {
+   "id": "bank-migrated-sys-pulm-0003-L2",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "risk"
+   ],
+   "facets": [
+    [
+     "miosis",
+     "naloxone"
+    ],
+    [
+     "Cheyne-Stokes respiration",
+     "heart failure"
+    ],
+    [
+     "Campylobacter",
+     "albuminocytologic dissociation"
+    ],
+    [
+     "obstructive sleep apnea",
+     "obesity hypoventilation syndrome",
+     "type 2 diabetes"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Classic hypoventilation causes; shares Opioid overdose and Guillain-Barré with the respiratory acidosis set, so the two should not appear in one puzzle.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "High altitude",
+      "why": "Normal A-a gradient, but from low inspired oxygen with hyperventilation, not hypoventilation."
+     },
+     {
+      "text": "Pneumothorax",
+      "why": "Collapsed lung creates shunt and raises the A-a gradient."
+     },
+     {
+      "text": "Asthma exacerbation",
+      "why": "V/Q mismatch raises the A-a gradient."
+     },
+     {
+      "text": "Pulmonary edema",
+      "why": "Alveolar flooding causes shunt and a high A-a gradient."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pulm-0003-L3": {
+   "id": "bank-migrated-sys-pulm-0003-L3",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "change",
+    "change",
+    "change",
+    "change"
+   ],
+   "facets": [
+    [
+     "fever",
+     "malignant hyperthermia"
+    ],
+    [
+     "high altitude",
+     "anemia",
+     "fetal hemoglobin"
+    ],
+    [
+     "Bohr effect",
+     "DKA"
+    ],
+    [
+     "Bohr effect",
+     "hypoventilation"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "too-obvious",
+    "series"
+   ],
+   "note": "The CADET right-shift mnemonic, and three tiles start with 'Increased'.",
+   "revision": {
+    "kind": "wording",
+    "tiles": [
+     "Hyperthermia",
+     "Increased 2,3-BPG",
+     "Acidosis",
+     "Hypercapnia"
+    ],
+    "why": "Removes the repeated 'Increased' stem that signals the group.",
+    "changes": "Increased temperature -> Hyperthermia; Increased CO2 -> Hypercapnia"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hypocapnia",
+      "why": "Low CO2 shifts the curve left."
+     },
+     {
+      "text": "Methemoglobinemia",
+      "why": "Increases oxygen affinity of remaining heme, a left shift."
+     },
+     {
+      "text": "Stored (banked) blood",
+      "why": "Depleted 2,3-BPG shifts the curve left."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pulm-0003-L4": {
+   "id": "bank-migrated-sys-pulm-0003-L4",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "process",
+    "process",
+    "anatomy",
+    "anatomy"
+   ],
+   "facets": [
+    [
+     "pulmonary embolism",
+     "anatomic dead space"
+    ],
+    [
+     "ARDS",
+     "no response to 100% O2"
+    ],
+    [
+     "reactivation TB",
+     "West zone 1"
+    ],
+    [
+     "West zone 3",
+     "aspiration"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires placing infinity, zero, high and low V/Q; mixed tile types make it less mechanical.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     2,
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hypoxic pulmonary vasoconstriction",
+      "why": "A reflex that redirects perfusion to correct V/Q mismatch, not a point on the spectrum."
+     },
+     {
+      "text": "Perfusion-limited gas exchange",
+      "why": "Describes gas uptake limited by blood flow, not a V/Q ratio."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-renal-0001-L1": {
+   "id": "bank-migrated-sys-renal-0001-L1",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "vision loss",
+     "fomepizole",
+     "formic acid"
+    ],
+    [
+     "Kussmaul breathing",
+     "type 1 diabetes"
+    ],
+    [
+     "pericarditis",
+     "platelet dysfunction"
+    ],
+    [
+     "sepsis",
+     "metformin"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "title-leak"
+   ],
+   "note": "MUDPILES staples; 'acidosis' from the title appears in two tiles.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Methanol",
+     "Diabetic ketoacidosis",
+     "Uremia",
+     "Cyanide poisoning"
+    ],
+    "why": "Replaces the tile that repeats the title word with a definite high-gap cause that requires reasoning (cyanide blocks oxidative phosphorylation, causing lactic acidosis).",
+    "changes": "Lactic acidosis -> Cyanide poisoning"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Isopropyl alcohol",
+      "why": "Metabolized to acetone, causing ketosis without an anion gap acidosis."
+     },
+     {
+      "text": "Ureterosigmoidostomy",
+      "why": "Colonic chloride-for-bicarbonate exchange gives a normal anion gap acidosis."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-renal-0001-L3": {
+   "id": "bank-migrated-sys-renal-0001-L3",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "finding",
+    "drug",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "pyloric stenosis",
+     "bulimia",
+     "hypokalemia"
+    ],
+    [
+     "hypokalemia",
+     "gout"
+    ],
+    [
+     "Conn adenoma",
+     "hypokalemia",
+     "resistant hypertension"
+    ],
+    [
+     "calcium carbonate",
+     "hypercalcemia"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Standard causes; three tiles are shared with the hypokalemia set, so the two cannot share a puzzle.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Anxiety hyperventilation",
+      "why": "Causes respiratory, not metabolic, alkalosis."
+     },
+     {
+      "text": "Addison disease",
+      "why": "Aldosterone deficiency gives a hyperkalemic normal-gap acidosis."
+     },
+     {
+      "text": "Type 4 renal tubular acidosis",
+      "why": "Hypoaldosteronism causes hyperkalemic metabolic acidosis."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-renal-0001-L4": {
+   "id": "bank-migrated-sys-renal-0001-L4",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "miosis",
+     "naloxone"
+    ],
+    [
+     "smoking",
+     "barrel chest"
+    ],
+    [
+     "Campylobacter",
+     "ascending paralysis"
+    ],
+    [
+     "Pickwickian syndrome",
+     "polycythemia",
+     "OSA"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Classic hypoventilation causes; Opioid overdose and Guillain-Barré duplicate tiles in the normal A-a gradient set.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Pulmonary embolism",
+      "why": "Tachypnea usually causes respiratory alkalosis."
+     },
+     {
+      "text": "Cirrhosis",
+      "why": "Commonly causes chronic respiratory alkalosis."
+     },
+     {
+      "text": "Early sepsis",
+      "why": "Typically causes respiratory alkalosis from hyperventilation."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-renal-0002-L2": {
+   "id": "bank-migrated-sys-renal-0002-L2",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "lab",
+    "finding",
+    "finding",
+    "lab"
+   ],
+   "facets": [
+    [
+     "glomerulonephritis",
+     "IgA nephropathy"
+    ],
+    [
+     "essential hypertension",
+     "renal artery stenosis"
+    ],
+    [
+     "acute kidney injury",
+     "prerenal azotemia"
+    ],
+    [
+     "diabetic nephropathy",
+     "orthostatic proteinuria"
+    ]
+   ],
+   "issues": [],
+   "note": "RBC casts make the group quick; near misses force nephritic vs nephrotic discrimination.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Muddy brown casts",
+      "why": "Granular casts of acute tubular necrosis."
+     },
+     {
+      "text": "WBC casts",
+      "why": "Point to pyelonephritis or interstitial nephritis."
+     },
+     {
+      "text": "Hypoalbuminemia",
+      "why": "A nephrotic feature from heavy urinary protein loss."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-renal-0002-L3": {
+   "id": "bank-migrated-sys-renal-0002-L3",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "anti-GBM",
+     "hemoptysis",
+     "linear IgG"
+    ],
+    [
+     "c-ANCA/PR3",
+     "saddle nose"
+    ],
+    [
+     "anti-dsDNA",
+     "wire loops",
+     "full-house IF"
+    ],
+    [
+     "ASO titer",
+     "low C3",
+     "subepithelial humps"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Standard RPGN causes; microscopic polyangiitis and EGPA fit equally, and the nephrotic near misses are easy to exclude.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Alport syndrome",
+      "why": "Hereditary type IV collagen defect with a split GBM, not crescentic GN."
+     },
+     {
+      "text": "Thin basement membrane disease",
+      "why": "Benign familial hematuria without crescents."
+     },
+     {
+      "text": "Hemolytic uremic syndrome",
+      "why": "Glomerular thrombotic microangiopathy, not crescent formation."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-renal-0002-L4": {
+   "id": "bank-migrated-sys-renal-0002-L4",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "Goodpasture syndrome",
+     "anti-GBM"
+    ],
+    [
+     "membranous nephropathy",
+     "PLA2R"
+    ],
+    [
+     "IgA nephropathy",
+     "Henoch-Schönlein purpura"
+    ],
+    [
+     "MPGN",
+     "hepatitis C"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Classic glomerular biopsy patterns; the title fits any microscopy pattern, and all near misses are serologies, which give them away.",
+   "revision": {
+    "kind": "title",
+    "title": "Classic glomerular biopsy patterns",
+    "why": "The current title fits any microscopy pattern-disease pair; this states what unites the four.",
+    "changes": "Matches a microscopy pattern to its disease -> Classic glomerular biopsy patterns"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Thyroidization of tubules",
+      "why": "Tubular finding of chronic pyelonephritis, not glomerular."
+     },
+     {
+      "text": "Onion-skin arteriolar thickening",
+      "why": "Vascular lesion of malignant hypertension, not glomerular."
+     },
+     {
+      "text": "Muddy brown casts",
+      "why": "Urine sediment finding of acute tubular necrosis, not a biopsy pattern."
+     },
+     {
+      "text": "Fatty casts with oval fat bodies",
+      "why": "Urine sediment in nephrotic syndrome, not a biopsy pattern."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-renal-0003-L1": {
+   "id": "bank-migrated-sys-renal-0003-L1",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "drug",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "uremia",
+     "anemia",
+     "dialysis"
+    ],
+    [
+     "dry cough",
+     "angioedema"
+    ],
+    [
+     "myoglobinuria",
+     "crush injury",
+     "statins"
+    ],
+    [
+     "DKA",
+     "diarrhea"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Well-known causes; spironolactone, succinylcholine, digoxin toxicity and hemolysis fit equally.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hypomagnesemia",
+      "why": "Promotes renal potassium wasting, causing hypokalemia."
+     },
+     {
+      "text": "Bartter syndrome",
+      "why": "Loop-like salt wasting with hypokalemia."
+     },
+     {
+      "text": "Licorice ingestion",
+      "why": "Pseudohyperaldosteronism with hypokalemia."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-renal-0003-L2": {
+   "id": "bank-migrated-sys-renal-0003-L2",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "drug",
+    "finding",
+    "disease",
+    "drug"
+   ],
+   "facets": [
+    [
+     "metabolic alkalosis",
+     "gout"
+    ],
+    [
+     "metabolic alkalosis",
+     "pyloric stenosis"
+    ],
+    [
+     "Conn adenoma",
+     "resistant hypertension"
+    ],
+    [
+     "DKA treatment",
+     "hypoglycemia"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Three tiles duplicate the metabolic alkalosis set, so the group collapses into it if both appear.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Loop or thiazide diuretics",
+     "Hypomagnesemia",
+     "Albuterol",
+     "Insulin therapy"
+    ],
+    "why": "Removes the overlap with the metabolic alkalosis connection and requires mechanism (renal wasting vs transcellular shift); both new members definitely cause hypokalemia.",
+    "changes": "Vomiting -> Hypomagnesemia; Primary hyperaldosteronism -> Albuterol"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Digoxin toxicity",
+      "why": "Na/K-ATPase inhibition causes hyperkalemia."
+     },
+     {
+      "text": "Type 4 renal tubular acidosis",
+      "why": "Hypoaldosteronism causes hyperkalemia."
+     },
+     {
+      "text": "Trimethoprim",
+      "why": "Blocks ENaC like amiloride, raising potassium."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-renal-0003-L3": {
+   "id": "bank-migrated-sys-renal-0003-L3",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "ototoxicity",
+     "hypokalemia",
+     "pulmonary edema"
+    ],
+    [
+     "hypercalcemia",
+     "hyperglycemia",
+     "nephrolithiasis"
+    ],
+    [
+     "hyperkalemia",
+     "gynecomastia"
+    ],
+    [
+     "altitude sickness",
+     "glaucoma",
+     "normal anion gap acidosis"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "shared-stem",
+    "title-leak",
+    "alternate-member-risk"
+   ],
+   "note": "Tiles are the diuretic classes, two contain 'diuretics' from the title, and osmotic diuretics are a missing member; consider retiring or rebuilding around single drugs.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     0,
+     1
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Thiazolidinediones",
+      "why": "Cause fluid retention via collecting duct sodium reabsorption; not diuretics."
+     },
+     {
+      "text": "Mineralocorticoids",
+      "why": "Promote sodium retention in the collecting duct."
+     },
+     {
+      "text": "Angiotensin receptor blockers",
+      "why": "Act on the renin-angiotensin system, not a nephron-segment diuretic."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-renal-0003-L4": {
+   "id": "bank-migrated-sys-renal-0003-L4",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "lab",
+    "lab",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "nephrogenic DI",
+     "lithium"
+    ],
+    [
+     "small cell lung cancer",
+     "hyponatremia"
+    ],
+    [
+     "central DI",
+     "water deprivation test"
+    ],
+    [
+     "primary polydipsia",
+     "hyponatremia"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "imprecise"
+   ],
+   "note": "Parallel 'urine despite serum osmolality' wording pairs the tiles; 'Responds to desmopressin' is true only of central DI.",
+   "revision": {
+    "kind": "title",
+    "title": "Central diabetes insipidus vs SIADH",
+    "why": "Nephrogenic DI does not respond to desmopressin, so the title must specify central DI.",
+    "changes": "Diabetes insipidus vs SIADH -> Central diabetes insipidus vs SIADH"
+   },
+   "timedFit": "long",
+   "nearMissReview": {
+    "giveaway": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Urine concentrates with water deprivation",
+      "why": "Characteristic of primary polydipsia, with intact ADH."
+     },
+     {
+      "text": "Low urine and serum osmolality",
+      "why": "Primary polydipsia pattern."
+     },
+     {
+      "text": "Hyponatremia with volume depletion",
+      "why": "Points to cerebral salt wasting or GI losses, not SIADH (euvolemic)."
+     },
+     {
+      "text": "Hyponatremia with normal serum osmolality",
+      "why": "Pseudohyponatremia from lipids or protein."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-neuro-0001-L1": {
+   "id": "bank-migrated-sys-neuro-0001-L1",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "internal capsule lacune"
+    ],
+    [
+     "Broca area",
+     "Wernicke area"
+    ],
+    [
+     "non-dominant parietal lobe"
+    ],
+    [
+     "PCA stroke",
+     "optic tract lesion"
+    ]
+   ],
+   "issues": [],
+   "note": "Familiar MCA picture; near misses from ACA and PCA force territory discrimination, but tiles are long.",
+   "revision": null,
+   "timedFit": "long",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Abulia",
+      "why": "Medial frontal (ACA) sign."
+     },
+     {
+      "text": "Alexia without agraphia",
+      "why": "Dominant PCA territory with splenium involvement."
+     },
+     {
+      "text": "Crossed hemiplegia",
+      "why": "Brainstem lesion, not MCA cortex."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-neuro-0001-L2": {
+   "id": "bank-migrated-sys-neuro-0001-L2",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "parasagittal meningioma"
+    ],
+    [
+     "normal pressure hydrocephalus",
+     "multiple sclerosis"
+    ],
+    [
+     "frontotemporal dementia"
+    ],
+    [
+     "normal pressure hydrocephalus",
+     "magnetic gait"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Gait apraxia is not a standard ACA stroke sign and, with urinary incontinence, points to normal pressure hydrocephalus.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Contralateral leg weakness, face/arm-sparing",
+     "Urinary incontinence",
+     "Personality/behavioral changes",
+     "Abulia"
+    ],
+    "why": "Abulia is a classic medial frontal (ACA) finding; gait apraxia is nonstandard and misleads toward NPH.",
+    "changes": "Gait apraxia -> Abulia"
+   },
+   "timedFit": "long",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Truncal ataxia",
+      "why": "Cerebellar vermis lesion, not ACA."
+     },
+     {
+      "text": "Alexia without agraphia",
+      "why": "PCA territory with splenium involvement."
+     },
+     {
+      "text": "Ipsilateral Horner syndrome",
+      "why": "Lateral medullary (PICA) finding."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-neuro-0001-L3": {
+   "id": "bank-migrated-sys-neuro-0001-L3",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "posterior limb of internal capsule"
+    ],
+    [
+     "VPL thalamus"
+    ],
+    [
+     "pons",
+     "internal capsule"
+    ],
+    [
+     "basis pontis"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Four of the five classic lacunar syndromes, so sensorimotor stroke is an expected missing member; 'Pure' repeats in two tiles.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     0,
+     1
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Gerstmann syndrome",
+      "why": "Dominant parietal cortical syndrome, not lacunar."
+     },
+     {
+      "text": "Medial medullary syndrome",
+      "why": "Anterior spinal or vertebral artery territory syndrome, not a classic lacune."
+     },
+     {
+      "text": "Balint syndrome",
+      "why": "Bilateral parieto-occipital cortical lesion."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-neuro-0001-L4": {
+   "id": "bank-migrated-sys-neuro-0001-L4",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "finding",
+    "disease"
+   ],
+   "facets": [
+    [
+     "basilar artery occlusion",
+     "central pontine myelinolysis"
+    ],
+    [
+     "PICA",
+     "dysphagia",
+     "Horner syndrome"
+    ],
+    [
+     "multiple sclerosis",
+     "MLF"
+    ],
+    [
+     "AICA",
+     "facial paralysis"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "title-leak",
+    "alternate-member-risk"
+   ],
+   "note": "'Syndrome' repeats in three tiles and many brainstem syndromes (Weber, medial medullary, Parinaud) fit; near misses are well matched.",
+   "revision": {
+    "kind": "wording",
+    "tiles": [
+     "Locked-in syndrome",
+     "Lateral medullary (Wallenberg) syndrome",
+     "Internuclear ophthalmoplegia",
+     "Lateral pontine syndrome"
+    ],
+    "why": "'Lateral pontine/cerebellar syndrome' is nonstandard; 'lateral pontine syndrome' is the standard term for AICA territory.",
+    "changes": "Lateral pontine/cerebellar syndrome -> Lateral pontine syndrome"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Anterior cord syndrome",
+      "why": "Spinal cord infarction, not brainstem."
+     },
+     {
+      "text": "Balint syndrome",
+      "why": "Bilateral parieto-occipital cortex."
+     },
+     {
+      "text": "Klüver-Bucy syndrome",
+      "why": "Bilateral amygdala (temporal lobe) lesion."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-neuro-0002-L2": {
+   "id": "bank-migrated-sys-neuro-0002-L2",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "finding",
+    "disease"
+   ],
+   "facets": [
+    [
+     "CAG repeat",
+     "caudate atrophy",
+     "anticipation"
+    ],
+    [
+     "rheumatic fever",
+     "group A strep"
+    ],
+    [
+     "Parkinson disease",
+     "on-off phenomenon"
+    ],
+    [
+     "anti-dsDNA",
+     "malar rash",
+     "antiphospholipid antibodies"
+    ]
+   ],
+   "issues": [
+    "title-leak",
+    "alternate-member-risk"
+   ],
+   "note": "'Sydenham chorea' repeats the title word; Wilson disease and chorea gravidarum also fit.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Huntington disease",
+     "Acute rheumatic fever",
+     "Levodopa-induced dyskinesia",
+     "Systemic lupus erythematosus"
+    ],
+    "why": "Removes the title word while keeping a certain member; Sydenham chorea is the major neurologic manifestation of acute rheumatic fever.",
+    "changes": "Sydenham chorea -> Acute rheumatic fever"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     1
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Tourette syndrome",
+      "why": "Motor and vocal tics, not chorea."
+     },
+     {
+      "text": "Creutzfeldt-Jakob disease",
+      "why": "Characterized by myoclonus, not chorea."
+     },
+     {
+      "text": "Friedreich ataxia",
+      "why": "Ataxia with areflexia, not chorea."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-neuro-0002-L3": {
+   "id": "bank-migrated-sys-neuro-0002-L3",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "visual hallucinations",
+     "antipsychotic sensitivity",
+     "alpha-synuclein"
+    ],
+    [
+     "Pick bodies",
+     "disinhibition",
+     "tau"
+    ],
+    [
+     "amyloid plaques",
+     "APOE4",
+     "donepezil"
+    ],
+    [
+     "stepwise decline",
+     "hypertension"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "shared-stem",
+    "title-leak"
+   ],
+   "note": "Three tiles contain 'dementia', so the group sorts without reasoning; no standard rewording avoids it, consider retiring.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Wernicke-Korsakoff syndrome",
+      "why": "Thiamine-deficiency amnestic syndrome, far less common."
+     },
+     {
+      "text": "Huntington disease",
+      "why": "Causes subcortical dementia but is rare."
+     },
+     {
+      "text": "HIV-associated neurocognitive disorder",
+      "why": "An uncommon, secondary cause of dementia."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-neuro-0002-L4": {
+   "id": "bank-migrated-sys-neuro-0002-L4",
+   "recognition": 3,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "Lewy bodies",
+     "Parkinson disease"
+    ],
+    [
+     "neurofibrillary tangles",
+     "Pick bodies"
+    ],
+    [
+     "CAG repeat",
+     "Huntington disease"
+    ],
+    [
+     "ALS",
+     "frontotemporal dementia"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Needs recall of specific aggregates; amyloid-beta and prion protein fit equally.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Presenilin-1",
+      "why": "Gamma-secretase component mutated in familial Alzheimer disease, not the aggregate."
+     },
+     {
+      "text": "Frataxin",
+      "why": "Deficient in Friedreich ataxia, not aggregated."
+     },
+     {
+      "text": "Parkin",
+      "why": "E3 ubiquitin ligase lost in juvenile Parkinson disease, not the aggregating protein."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pharm-0002-L1": {
+   "id": "bank-migrated-sys-pharm-0002-L1",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "thiazides",
+     "ACE inhibitors"
+    ],
+    [
+     "anticoagulation",
+     "CHA2DS2-VASc"
+    ],
+    [
+     "aspirin",
+     "statins"
+    ],
+    [
+     "topiramate",
+     "triptans"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Familiar indications; HFrEF, angina, essential tremor and thyrotoxicosis fit equally and hypertension fits many classes.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Raynaud phenomenon",
+      "why": "Treated with calcium channel blockers; beta-blockers can worsen it."
+     },
+     {
+      "text": "Symptomatic sinus bradycardia",
+      "why": "Beta-blockers worsen it."
+     },
+     {
+      "text": "Pheochromocytoma before alpha-blockade",
+      "why": "Unopposed alpha stimulation can precipitate hypertensive crisis."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pharm-0002-L2": {
+   "id": "bank-migrated-sys-pharm-0002-L2",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "5-alpha reductase inhibitors",
+     "tamsulosin"
+    ],
+    [
+     "pheochromocytoma",
+     "nitroprusside"
+    ],
+    [
+     "first-dose effect",
+     "autonomic failure"
+    ],
+    [
+     "hydralazine",
+     "nifedipine"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "The parenthetical 'phentolamine' gives away the group, and alpha-blockers are used for catecholamine-driven crises, not hypertensive emergency generally.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Benign prostatic hyperplasia",
+     "Pheochromocytoma",
+     "Orthostatic hypotension",
+     "Reflex tachycardia"
+    ],
+    "why": "Pheochromocytoma is a certain alpha-blocker indication (phenoxybenzamine before surgery) and removes the drug-name giveaway.",
+    "changes": "Hypertensive emergency (phentolamine) -> Pheochromocytoma"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Nasal decongestion",
+      "why": "An alpha-1 agonist effect; alpha blockade causes nasal congestion."
+     },
+     {
+      "text": "Masked hypoglycemia",
+      "why": "A beta-blocker effect."
+     }
+    ]
+   }
+  },
+  "bank-migrated-sys-pharm-0002-L4": {
+   "id": "bank-migrated-sys-pharm-0002-L4",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "anticholinergic effects",
+     "first-generation antihistamine"
+    ],
+    [
+     "agranulocytosis",
+     "treatment-resistant schizophrenia"
+    ],
+    [
+     "diarrhea",
+     "P-glycoprotein"
+    ],
+    [
+     "QT prolongation",
+     "chemotherapy-induced nausea"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Requires mechanism, but the title fits almost any receptor-mediated drug effect; tiles are long for a timed round.",
+   "revision": null,
+   "timedFit": "long",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Isoniazid peripheral neuropathy",
+      "why": "Caused by pyridoxine depletion, not a receptor."
+     },
+     {
+      "text": "Statin myopathy",
+      "why": "Direct muscle toxicity, not receptor-mediated."
+     },
+     {
+      "text": "Metformin lactic acidosis",
+      "why": "From inhibition of mitochondrial metabolism, not a receptor."
+     }
+    ]
+   }
+  },
+  "bank-ext-003": {
+   "id": "bank-ext-003",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "microcytosis",
+     "Mediterranean ancestry",
+     "Hb electrophoresis"
+    ],
+    [
+     "acanthocytes",
+     "coagulopathy"
+    ],
+    [
+     "Howell-Jolly bodies",
+     "encapsulated organisms"
+    ],
+    [
+     "HbSC disease",
+     "crystals"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "series"
+   ],
+   "note": "The HALT target-cell mnemonic list.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Uremia",
+      "why": "Burr cells (echinocytes), not target cells."
+     },
+     {
+      "text": "Abetalipoproteinemia",
+      "why": "Acanthocytes from membrane lipid abnormality."
+     },
+     {
+      "text": "Multiple myeloma",
+      "why": "Rouleaux formation."
+     },
+     {
+      "text": "Thrombotic thrombocytopenic purpura",
+      "why": "Schistocytes from microangiopathy."
+     }
+    ]
+   }
+  },
+  "bank-ext-004": {
+   "id": "bank-ext-004",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "lab",
+    "lab",
+    "finding",
+    "lab"
+   ],
+   "facets": [
+    [
+     "thiazides",
+     "vomiting",
+     "U waves"
+    ],
+    [
+     "vomiting",
+     "hyperaldosteronism"
+    ],
+    [
+     "aminoglycosides",
+     "cisplatin"
+    ],
+    [
+     "hypoparathyroidism",
+     "Chvostek sign"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Standard 'OH DANG' items; hypomagnesemia, hyperuricemia and sulfa allergy fit equally.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hypermagnesemia",
+      "why": "Loops cause magnesium wasting, not retention."
+     },
+     {
+      "text": "Hyperchloremia",
+      "why": "Loops cause hypochloremic alkalosis."
+     }
+    ]
+   }
+  },
+  "bank-ext-005": {
+   "id": "bank-ext-005",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "process",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "LDH",
+     "haptoglobin",
+     "schistocytes"
+    ],
+    [
+     "UGT1A1",
+     "fasting"
+    ],
+    [
+     "kernicterus",
+     "phenobarbital"
+    ],
+    [
+     "phototherapy",
+     "breast milk jaundice"
+    ]
+   ],
+   "issues": [],
+   "note": "Gilbert and Crigler-Najjar pair is quick; near misses require conjugated vs unconjugated discrimination.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Primary sclerosing cholangitis",
+      "why": "Biliary obstruction causes conjugated hyperbilirubinemia."
+     },
+     {
+      "text": "Pancreatic head adenocarcinoma",
+      "why": "Obstructs the common bile duct, raising conjugated bilirubin."
+     }
+    ]
+   }
+  },
+  "bank-ext-006": {
+   "id": "bank-ext-006",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "tooth discoloration",
+     "doxycycline"
+    ],
+    [
+     "Stevens-Johnson syndrome",
+     "G6PD hemolysis",
+     "kernicterus"
+    ],
+    [
+     "pulmonary fibrosis",
+     "thyroid dysfunction",
+     "blue-gray skin"
+    ],
+    [
+     "tendon rupture",
+     "QT prolongation"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Classic mnemonic list; thiazides, NSAIDs, griseofulvin and voriconazole fit equally.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Aminoglycosides",
+      "why": "Known for nephrotoxicity and ototoxicity, not photosensitivity."
+     },
+     {
+      "text": "Macrolides",
+      "why": "Known for QT prolongation and GI upset, not classic photosensitivity."
+     }
+    ]
+   }
+  },
+  "bank-ext-007": {
+   "id": "bank-ext-007",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "mast cells",
+     "chronic urticaria"
+    ],
+    [
+     "asthma",
+     "beta-blockers"
+    ],
+    [
+     "sepsis",
+     "shock"
+    ],
+    [
+     "ACE inhibitors",
+     "C1 esterase inhibitor deficiency"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "The textbook anaphylaxis tetrad.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Crampy abdominal pain",
+     "Bronchospasm",
+     "Hypotension",
+     "Angioedema"
+    ],
+    "why": "Persistent GI symptoms are a diagnostic criterion for anaphylaxis but less instantly linked than urticaria.",
+    "changes": "Urticaria -> Crampy abdominal pain"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Arthralgia",
+      "why": "Suggests serum sickness (type III) days later, not acute anaphylaxis."
+     },
+     {
+      "text": "Lymphadenopathy",
+      "why": "Points to serum sickness or DRESS, not anaphylaxis."
+     }
+    ]
+   }
+  },
+  "bank-ext-008": {
+   "id": "bank-ext-008",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "DIP joints",
+     "psoriatic arthritis"
+    ],
+    [
+     "PIP joints"
+    ],
+    [
+     "rheumatoid arthritis"
+    ],
+    [
+     "spondylosis",
+     "DISH"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "imprecise"
+   ],
+   "note": "Heberden/Bouchard pair is instant, and joint space narrowing also occurs in RA.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Heberden nodes",
+     "First CMC joint involvement",
+     "Subchondral sclerosis",
+     "Osteophytes"
+    ],
+    "why": "Breaks the paired 'nodes' giveaway and replaces the nonspecific joint space narrowing with an OA-specific radiographic sign; both new members are certain OA features.",
+    "changes": "Bouchard nodes -> First CMC joint involvement; Joint space narrowing -> Subchondral sclerosis"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Ulnar deviation",
+      "why": "Rheumatoid arthritis MCP deformity."
+     },
+     {
+      "text": "Pencil-in-cup deformity",
+      "why": "Psoriatic arthritis erosive change."
+     },
+     {
+      "text": "Dactylitis",
+      "why": "Seen in psoriatic arthritis and other spondyloarthritides."
+     }
+    ]
+   }
+  },
+  "bank-ext-009": {
+   "id": "bank-ext-009",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "Koplik spots",
+     "SSPE",
+     "vitamin A"
+    ],
+    [
+     "congenital rubella",
+     "cataracts",
+     "PDA"
+    ],
+    [
+     "parotitis",
+     "orchitis"
+    ],
+    [
+     "shingles",
+     "Reye syndrome"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "series",
+    "title-leak"
+   ],
+   "note": "The tiles spell out the vaccine name in the title; no precise revision keeps the category, consider retiring.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Rotavirus gastroenteritis",
+      "why": "Vaccine-preventable, but by the separate oral rotavirus vaccine."
+     },
+     {
+      "text": "Hepatitis A",
+      "why": "Prevented by a separate hepatitis A vaccine."
+     },
+     {
+      "text": "Pertussis",
+      "why": "Prevented by DTaP, not MMRV."
+     }
+    ]
+   }
+  },
+  "bank-ext-021": {
+   "id": "bank-ext-021",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "risk",
+    "disease",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "metabolic syndrome",
+     "obesity hypoventilation syndrome"
+    ],
+    [
+     "primary hyperaldosteronism"
+    ],
+    [
+     "narcolepsy"
+    ],
+    []
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Snoring, obesity and somnolence are the textbook OSA picture.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Obesity",
+     "Systemic hypertension",
+     "Daytime somnolence",
+     "Atrial fibrillation"
+    ],
+    "why": "Atrial fibrillation is a well-established OSA association that requires recall, replacing the giveaway symptom.",
+    "changes": "Loud snoring -> Atrial fibrillation"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hypnagogic hallucinations",
+      "why": "Characteristic of narcolepsy."
+     },
+     {
+      "text": "Sleepwalking",
+      "why": "An NREM parasomnia, not airway obstruction."
+     }
+    ]
+   }
+  },
+  "bank-ext-022": {
+   "id": "bank-ext-022",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "lab",
+    "lab",
+    "drug"
+   ],
+   "facets": [
+    [
+     "bipolar disorder",
+     "hypothyroidism",
+     "Ebstein anomaly"
+    ],
+    [
+     "hyperparathyroidism",
+     "malignancy"
+    ],
+    [
+     "diuretics",
+     "vomiting"
+    ],
+    [
+     "SIADH treatment",
+     "tetracyclines"
+    ]
+   ],
+   "issues": [],
+   "note": "Well-known causes; near misses test central DI vs SIADH vs nephrogenic DI.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Cyclophosphamide",
+      "why": "Associated with SIADH, not nephrogenic DI."
+     },
+     {
+      "text": "SSRIs",
+      "why": "Cause SIADH, not ADH resistance."
+     },
+     {
+      "text": "Hypocalcemia",
+      "why": "Hypercalcemia, not hypocalcemia, impairs urine concentration."
+     },
+     {
+      "text": "Transsphenoidal surgery",
+      "why": "Causes central, not nephrogenic, DI."
+     }
+    ]
+   }
+  },
+  "bank-ext-025": {
+   "id": "bank-ext-025",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "glucocorticoid therapy"
+    ],
+    [
+     "metabolic syndrome"
+    ],
+    [
+     "pregnancy"
+    ],
+    [
+     "polymyositis",
+     "hypothyroidism"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Moon facies, central obesity and striae are the textbook Cushing picture.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Osteoporosis",
+     "Central obesity",
+     "Purple abdominal striae",
+     "Proximal muscle weakness"
+    ],
+    "why": "Osteoporosis is a certain consequence of cortisol excess and less instantly linked than moon facies.",
+    "changes": "Moon facies -> Osteoporosis"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Pretibial myxedema",
+      "why": "A Graves disease finding."
+     },
+     {
+      "text": "Frontal bossing",
+      "why": "An acromegaly feature from GH excess."
+     },
+     {
+      "text": "Galactorrhea",
+      "why": "Suggests prolactinoma."
+     }
+    ]
+   }
+  },
+  "bank-ext-026": {
+   "id": "bank-ext-026",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "finding",
+    "lab",
+    "lab",
+    "finding"
+   ],
+   "facets": [
+    [
+     "ACTH",
+     "hemochromatosis"
+    ],
+    [
+     "SIADH"
+    ],
+    [
+     "renal failure"
+    ],
+    [
+     "sepsis"
+    ]
+   ],
+   "issues": [],
+   "note": "Hyperpigmentation gives it away quickly, but opposite-direction near misses require mechanism.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Weight gain",
+      "why": "Adrenal insufficiency causes weight loss."
+     },
+     {
+      "text": "Low plasma ACTH",
+      "why": "Points to secondary adrenal insufficiency; primary has high ACTH."
+     },
+     {
+      "text": "Hypernatremia",
+      "why": "Primary adrenal insufficiency causes hyponatremia."
+     }
+    ]
+   }
+  },
+  "bank-ext-027": {
+   "id": "bank-ext-027",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "menorrhagia",
+     "colon cancer",
+     "pica"
+    ],
+    [
+     "target cells",
+     "Hb electrophoresis"
+    ],
+    [
+     "hepcidin",
+     "rheumatoid arthritis"
+    ],
+    [
+     "ALAS2",
+     "isoniazid",
+     "ringed sideroblasts"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "title-leak"
+   ],
+   "note": "The TAILS mnemonic; 'anemia' from the title appears in two tiles.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Iron deficiency",
+     "Thalassemia",
+     "Anemia of chronic disease",
+     "Lead poisoning"
+    ],
+    "why": "Lead poisoning is a certain microcytic cause (TAILS) and removes one title-word tile.",
+    "changes": "Sideroblastic anemia -> Lead poisoning"
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Anemia of chronic kidney disease",
+      "why": "Low erythropoietin gives a normocytic anemia."
+     },
+     {
+      "text": "Liver disease",
+      "why": "Typically causes macrocytosis."
+     },
+     {
+      "text": "Sickle cell anemia",
+      "why": "A normocytic hemolytic anemia."
+     }
+    ]
+   }
+  },
+  "bank-ext-028": {
+   "id": "bank-ext-028",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "risk",
+    "disease"
+   ],
+   "facets": [
+    [
+     "subacute combined degeneration",
+     "pernicious anemia",
+     "methylmalonic acid"
+    ],
+    [
+     "neural tube defects",
+     "methotrexate"
+    ],
+    [
+     "cirrhosis",
+     "Wernicke encephalopathy"
+    ],
+    [
+     "Hashimoto thyroiditis",
+     "hyperlipidemia"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "B12 and folate are instant; liver disease, MDS and methotrexate fit equally.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Anemia of chronic disease",
+      "why": "Normocytic or microcytic."
+     },
+     {
+      "text": "Hereditary spherocytosis",
+      "why": "Normocytic hemolytic anemia with high MCHC."
+     }
+    ]
+   }
+  },
+  "bank-ext-029": {
+   "id": "bank-ext-029",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "neuroleptic malignant syndrome",
+     "malignant hyperthermia",
+     "heat stroke"
+    ],
+    [
+     "upper motor neuron lesion"
+    ],
+    [
+     "delirium",
+     "sympathomimetics"
+    ],
+    [
+     "carcinoid syndrome",
+     "opioid withdrawal"
+    ]
+   ],
+   "issues": [],
+   "note": "Clonus is the key discriminator; near misses test NMS and anticholinergic look-alikes.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Bradycardia",
+      "why": "Serotonin syndrome causes tachycardia."
+     },
+     {
+      "text": "Urinary retention",
+      "why": "An anticholinergic toxidrome feature."
+     },
+     {
+      "text": "Absent bowel sounds",
+      "why": "Anticholinergic toxicity; serotonin syndrome causes hyperactive bowel sounds."
+     }
+    ]
+   }
+  },
+  "bank-ext-031": {
+   "id": "bank-ext-031",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "organism",
+    "organism",
+    "organism",
+    "organism"
+   ],
+   "facets": [
+    [
+     "osteomyelitis",
+     "toxic shock syndrome",
+     "MRSA"
+    ],
+    [
+     "dental caries",
+     "dextran"
+    ],
+    [
+     "UTI",
+     "vancomycin resistance"
+    ],
+    [
+     "colorectal cancer",
+     "group D streptococci"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Classic IE organism list recalled quickly; S. epidermidis (prosthetic valves) and HACEK are equally expected members.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Clostridium septicum",
+      "why": "Linked to colorectal cancer like S. gallolyticus, but causes spontaneous gas gangrene, not endocarditis."
+     },
+     {
+      "text": "Staphylococcus saprophyticus",
+      "why": "Coagulase-negative staph causing UTI in young women, not a classic endocarditis organism."
+     },
+     {
+      "text": "Bacillus cereus",
+      "why": "Causes toxin-mediated food poisoning, not valve infection."
+     }
+    ]
+   }
+  },
+  "bank-ext-033": {
+   "id": "bank-ext-033",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "status epilepticus",
+     "fetal hydantoin syndrome",
+     "CYP450 induction"
+    ],
+    [
+     "transplant rejection",
+     "nephrotoxicity"
+    ],
+    [
+     "peripheral edema",
+     "reflex tachycardia"
+    ],
+    [
+     "constipation",
+     "AV block"
+    ]
+   ],
+   "issues": [],
+   "note": "A classic high-yield list (phenytoin, cyclosporine, CCBs), recognized with little thought.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Minocycline",
+      "why": "Causes blue-gray pigmentation of skin and gums, not gingival overgrowth."
+     },
+     {
+      "text": "Zoledronic acid",
+      "why": "Bisphosphonate causing osteonecrosis of the jaw, not gingival hyperplasia."
+     },
+     {
+      "text": "Sirolimus",
+      "why": "mTOR inhibitor causing mouth ulcers and hyperlipidemia; unlike cyclosporine it is not linked to gingival overgrowth."
+     }
+    ]
+   }
+  },
+  "bank-ext-036": {
+   "id": "bank-ext-036",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "bilateral hilar lymphadenopathy",
+     "hypercalcemia"
+    ],
+    [
+     "rheumatic fever",
+     "poststreptococcal glomerulonephritis"
+    ],
+    [
+     "pyoderma gangrenosum",
+     "primary sclerosing cholangitis"
+    ],
+    [
+     "caseating granulomas",
+     "Ghon complex"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Well-known EN triggers; pregnancy/oral contraceptives and coccidioidomycosis are equally common expected members.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Pancreatitis",
+      "why": "Causes pancreatic panniculitis, a lobular panniculitis distinct from erythema nodosum."
+     },
+     {
+      "text": "Rheumatoid arthritis",
+      "why": "Rheumatoid nodules are firm, painless and over extensor surfaces, not tender shin panniculitis."
+     }
+    ]
+   }
+  },
+  "bank-ext-037": {
+   "id": "bank-ext-037",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "renal cysts",
+     "mitral valve prolapse"
+    ],
+    [
+     "joint hypermobility",
+     "type III collagen"
+    ],
+    [
+     "aortic dissection",
+     "ectopia lentis",
+     "fibrillin-1"
+    ],
+    [
+     "rib notching",
+     "Turner syndrome",
+     "bicuspid aortic valve"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Marfan's berry aneurysm link is debated (as its own explanation admits), so the group is not certainly correct as written; tile 1 is also long for a timed round.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Autosomal dominant polycystic kidney disease",
+     "Ehlers-Danlos syndrome",
+     "Fibromuscular dysplasia",
+     "Coarctation of the aorta"
+    ],
+    "why": "Marfan syndrome's association with intracranial aneurysms is not consistently confirmed; fibromuscular dysplasia has a well-established association.",
+    "changes": "Replace Marfan syndrome with Fibromuscular dysplasia."
+   },
+   "timedFit": "long",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Von Hippel-Lindau disease",
+      "why": "Causes renal cysts and CNS hemangioblastomas, not saccular aneurysms."
+     },
+     {
+      "text": "Medullary sponge kidney",
+      "why": "A benign cystic dilation of collecting ducts without the cerebral aneurysm risk of ADPKD."
+     }
+    ]
+   }
+  },
+  "bank-ext-052": {
+   "id": "bank-ext-052",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "risk",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "anxiety disorders",
+     "perioral paresthesias"
+    ],
+    [
+     "acute mountain sickness",
+     "polycythemia"
+    ],
+    [
+     "DVT",
+     "S1Q3T3"
+    ],
+    [
+     "tinnitus",
+     "anion gap metabolic acidosis"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Hyperventilation causes are familiar; pregnancy, sepsis and hepatic failure also fit.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "COPD exacerbation",
+      "why": "CO2 retention causes respiratory acidosis."
+     },
+     {
+      "text": "Loop diuretic use",
+      "why": "Volume contraction causes metabolic, not respiratory, alkalosis."
+     }
+    ]
+   }
+  },
+  "bank-ext-055": {
+   "id": "bank-ext-055",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "drug"
+   ],
+   "facets": [
+    [
+     "aspirin in children",
+     "encephalopathy"
+    ],
+    [
+     "third trimester",
+     "LCHAD deficiency"
+    ],
+    [
+     "neural tube defects",
+     "pancreatitis"
+    ],
+    [
+     "tooth discoloration",
+     "photosensitivity"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires linking mitochondrial beta-oxidation injury across tiles; tile 4 is a drug while tile 3 is a toxicity, a minor format mismatch.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Methotrexate",
+      "why": "Causes macrovesicular steatosis and hepatic fibrosis, not microvesicular fat."
+     },
+     {
+      "text": "Corticosteroids",
+      "why": "Cause macrovesicular steatosis."
+     }
+    ]
+   }
+  },
+  "bank-ext-056": {
+   "id": "bank-ext-056",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "hypercalcemia",
+     "parathyroid adenoma"
+    ],
+    [
+     "prolactinoma",
+     "bitemporal hemianopia"
+    ],
+    [
+     "Zollinger-Ellison syndrome",
+     "peptic ulcers"
+    ],
+    [
+     "Whipple triad",
+     "C-peptide"
+    ]
+   ],
+   "issues": [],
+   "note": "The 3 Ps mnemonic makes this quick for most students.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     2,
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hemangioblastoma",
+      "why": "A feature of von Hippel-Lindau disease, not MEN1."
+     },
+     {
+      "text": "Papillary thyroid carcinoma",
+      "why": "The common sporadic thyroid cancer; MEN syndromes involve medullary carcinoma, and not in MEN1."
+     },
+     {
+      "text": "Pancreatic adenocarcinoma",
+      "why": "An exocrine (KRAS-driven) tumor, not an MEN1 neuroendocrine islet tumor."
+     }
+    ]
+   }
+  },
+  "bank-ext-057": {
+   "id": "bank-ext-057",
+   "recognition": 2,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "lab"
+   ],
+   "facets": [
+    [
+     "post-thyroidectomy",
+     "DiGeorge syndrome"
+    ],
+    [
+     "rickets",
+     "osteomalacia"
+    ],
+    [
+     "secondary hyperparathyroidism",
+     "anemia"
+    ],
+    [
+     "alcohol use disorder",
+     "PPI use",
+     "torsades"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Standard causes; acute pancreatitis and tumor lysis are equally common expected members.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     1
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Familial hypocalciuric hypercalcemia",
+      "why": "A CaSR mutation causing mild hypercalcemia, not hypocalcemia."
+     },
+     {
+      "text": "Hyperthyroidism",
+      "why": "Increased bone turnover can cause mild hypercalcemia."
+     },
+     {
+      "text": "Prolonged immobilization",
+      "why": "Increased bone resorption raises serum calcium."
+     }
+    ]
+   }
+  },
+  "bank-ext-059": {
+   "id": "bank-ext-059",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "rasburicase",
+     "hyperkalemia"
+    ],
+    [
+     "Pancoast tumor",
+     "small cell lung cancer"
+    ],
+    [
+     "cauda equina syndrome",
+     "back pain"
+    ],
+    [
+     "PTHrP",
+     "squamous cell carcinoma"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Standard oncologic emergency list; febrile neutropenia is an equally expected member.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     1,
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hypertrophic osteoarthropathy",
+      "why": "A paraneoplastic clubbing and periostitis syndrome, not time-critical."
+     },
+     {
+      "text": "Lambert-Eaton myasthenic syndrome",
+      "why": "A subacute paraneoplastic weakness, not a classic oncologic emergency."
+     }
+    ]
+   }
+  },
+  "bank-ext-060": {
+   "id": "bank-ext-060",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "osteoporosis",
+     "disuse"
+    ],
+    [
+     "gout",
+     "psoriatic arthritis"
+    ],
+    [
+     "osteoarthritis"
+    ],
+    [
+     "gout",
+     "septic arthritis"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires separating inflammatory from degenerative radiographic patterns; 'symmetric' gives a hint.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Overhanging edge erosions",
+      "why": "Punched-out erosions with sclerotic overhanging margins typical of gout."
+     },
+     {
+      "text": "Asymmetric joint-space narrowing",
+      "why": "Characteristic of osteoarthritis rather than RA."
+     }
+    ]
+   }
+  },
+  "bank-ext-064": {
+   "id": "bank-ext-064",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "stroke-like episodes",
+     "lactic acidosis"
+    ],
+    [
+     "vision loss",
+     "maternal inheritance"
+    ],
+    [
+     "ragged red fibers",
+     "myoclonus"
+    ],
+    [
+     "infantile encephalopathy",
+     "basal ganglia lesions"
+    ]
+   ],
+   "issues": [],
+   "note": "Classic mitochondrial disease set; MELAS and MERRF acronyms are instantly familiar.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "McArdle disease",
+      "why": "Exercise intolerance from myophosphorylase deficiency, a glycogen storage myopathy, not mitochondrial."
+     },
+     {
+      "text": "Zellweger syndrome",
+      "why": "A peroxisomal biogenesis disorder, not a mitochondrial one."
+     },
+     {
+      "text": "Adrenoleukodystrophy",
+      "why": "A peroxisomal very-long-chain fatty acid disorder (ABCD1), not mitochondrial."
+     }
+    ]
+   }
+  },
+  "bank-ext-065": {
+   "id": "bank-ext-065",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "Parkinson disease",
+     "frontal lobe lesions"
+    ],
+    [
+     "UTI",
+     "spinal cord compression"
+    ],
+    [
+     "Alzheimer disease"
+    ],
+    [
+     "hydrocephalus ex vacuo",
+     "obstructive hydrocephalus"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "The 'wet, wobbly, wacky' triad plus enlarged ventricles is instantly recognized.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     2,
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Cogwheel rigidity",
+      "why": "Suggests Parkinson disease, not NPH."
+     },
+     {
+      "text": "Visual hallucinations",
+      "why": "Point to dementia with Lewy bodies rather than NPH."
+     },
+     {
+      "text": "Overflow incontinence",
+      "why": "NPH causes urge incontinence from detrusor overactivity, not overflow."
+     }
+    ]
+   }
+  },
+  "bank-ext-067": {
+   "id": "bank-ext-067",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "desmoglein 3",
+     "oral erosions"
+    ],
+    [
+     "exfoliative toxin",
+     "infants"
+    ],
+    [
+     "sulfonamides",
+     "SCORTEN"
+    ],
+    [
+     "mucositis",
+     "carbamazepine"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires knowing intraepidermal vs subepidermal splits, though PV and SSSS are classic.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Bullous impetigo",
+      "why": "Exfoliative toxin stays local, so the surrounding skin is Nikolsky-negative."
+     },
+     {
+      "text": "Erythema multiforme",
+      "why": "Target lesions without widespread epidermal fragility; Nikolsky-negative."
+     }
+    ]
+   }
+  },
+  "bank-ext-068": {
+   "id": "bank-ext-068",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "organism",
+    "organism",
+    "organism",
+    "organism"
+   ],
+   "facets": [
+    [
+     "post-splenectomy sepsis",
+     "lobar pneumonia"
+    ],
+    [
+     "epiglottitis",
+     "conjugate vaccine"
+    ],
+    [
+     "Waterhouse-Friderichsen syndrome",
+     "complement deficiency"
+    ],
+    [
+     "currant jelly sputum",
+     "alcohol use disorder"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Encapsulated organism mnemonic (SHiNE SKiS) is well known; GBS, Salmonella Typhi and Cryptococcus also fit.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Neisseria gonorrhoeae",
+      "why": "Unlike meningococcus, it lacks a polysaccharide capsule."
+     },
+     {
+      "text": "Legionella pneumophila",
+      "why": "A facultative intracellular rod without a polysaccharide capsule."
+     }
+    ]
+   }
+  },
+  "bank-ext-080": {
+   "id": "bank-ext-080",
+   "recognition": 4,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "pulmonary hypertension",
+     "COPD"
+    ],
+    [
+     "bifascicular block"
+    ],
+    [
+     "Q waves",
+     "circumflex artery"
+    ],
+    [
+     "S1Q3T3",
+     "sinus tachycardia"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires discriminating right- from left-axis causes; strong near misses.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Right bundle branch block",
+      "why": "Usually has a normal axis; right axis deviation suggests an added left posterior fascicular block."
+     },
+     {
+      "text": "Pregnancy",
+      "why": "Diaphragm elevation shifts the axis leftward, not rightward."
+     }
+    ]
+   }
+  },
+  "bank-ext-083": {
+   "id": "bank-ext-083",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "organism",
+    "organism",
+    "organism",
+    "organism"
+   ],
+   "facets": [
+    [
+     "reactive arthritis",
+     "seizures in children"
+    ],
+    [
+     "Guillain-Barré syndrome",
+     "undercooked poultry"
+    ],
+    [
+     "hemolytic uremic syndrome",
+     "undercooked beef"
+    ],
+    [
+     "liver abscess",
+     "flask-shaped ulcers"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Standard dysentery organisms; Salmonella and Yersinia are equally expected members.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Clostridium perfringens",
+      "why": "Food poisoning with watery, non-bloody diarrhea."
+     },
+     {
+      "text": "Bacillus cereus",
+      "why": "Causes vomiting or watery diarrhea from preformed or enterotoxins."
+     },
+     {
+      "text": "Cryptosporidium parvum",
+      "why": "Causes watery diarrhea, severe in AIDS, not dysentery."
+     }
+    ]
+   }
+  },
+  "bank-ext-084": {
+   "id": "bank-ext-084",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "c-ANCA",
+     "saddle nose",
+     "cyclophosphamide"
+    ],
+    [
+     "p-ANCA",
+     "pulmonary-renal syndrome"
+    ],
+    [
+     "asthma",
+     "eosinophilia"
+    ],
+    [
+     "rapidly progressive glomerulonephritis",
+     "Goodpasture syndrome"
+    ]
+   ],
+   "issues": [
+    "shared-stem",
+    "too-obvious"
+   ],
+   "note": "Three tiles end in 'polyangiitis', so the group sorts itself; long names also slow a timed round.",
+   "revision": {
+    "kind": "wording",
+    "tiles": [
+     "Granulomatosis with polyangiitis",
+     "Microscopic polyangiitis",
+     "Churg-Strauss syndrome",
+     "Pauci-immune crescentic glomerulonephritis"
+    ],
+    "why": "Breaks the triple 'polyangiitis' stem using the established eponym for the same disease.",
+    "changes": "Tile 3 'Eosinophilic granulomatosis with polyangiitis' becomes 'Churg-Strauss syndrome'."
+   },
+   "timedFit": "long",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Cryoglobulinemic vasculitis",
+      "why": "An immune-complex small-vessel vasculitis linked to hepatitis C, not pauci-immune."
+     },
+     {
+      "text": "Kawasaki disease",
+      "why": "A medium-vessel, ANCA-negative vasculitis of children."
+     },
+     {
+      "text": "Behçet disease",
+      "why": "A variable-vessel vasculitis with oral and genital ulcers, ANCA-negative."
+     }
+    ]
+   }
+  },
+  "bank-ext-085": {
+   "id": "bank-ext-085",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "red man syndrome",
+     "MRSA"
+    ],
+    [
+     "hyperkalemia",
+     "atrial fibrillation"
+    ],
+    [
+     "bipolar disorder",
+     "nephrogenic diabetes insipidus"
+    ],
+    [
+     "ototoxicity",
+     "gram-negative coverage"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Classic narrow-index drugs; phenytoin, theophylline and tacrolimus are equally expected.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Amiodarone",
+      "why": "Monitored with thyroid, liver and lung tests rather than serum drug levels."
+     },
+     {
+      "text": "Levothyroxine",
+      "why": "Titrated to TSH, not to drug levels."
+     },
+     {
+      "text": "Ceftriaxone",
+      "why": "A wide therapeutic index antibiotic needing no level monitoring."
+     }
+    ]
+   }
+  },
+  "bank-ext-087": {
+   "id": "bank-ext-087",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "hyponatremia",
+     "small cell lung cancer"
+    ],
+    [
+     "hypokalemia",
+     "Cushing disease"
+    ],
+    [
+     "myasthenia gravis",
+     "small cell lung cancer"
+    ],
+    [
+     "squamous cell carcinoma",
+     "hypercalcemia"
+    ]
+   ],
+   "issues": [],
+   "note": "Familiar paraneoplastic list centered on lung cancer.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     1
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Cushing disease",
+      "why": "ACTH from a pituitary adenoma, a primary endocrine tumor rather than ectopic secretion."
+     },
+     {
+      "text": "Primary hyperparathyroidism",
+      "why": "PTH from a parathyroid adenoma, not tumor-secreted PTHrP."
+     },
+     {
+      "text": "Hypercalcemia from osteolytic metastases",
+      "why": "Local bone destruction, not a remote humoral effect."
+     }
+    ]
+   }
+  },
+  "bank-ext-088": {
+   "id": "bank-ext-088",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "lab",
+    "lab",
+    "lab",
+    "lab"
+   ],
+   "facets": [
+    [
+     "lupus nephritis",
+     "anti-Smith"
+    ],
+    [
+     "rheumatoid factor"
+    ],
+    [
+     "interstitial lung disease",
+     "mechanic's hands"
+    ],
+    [
+     "diffuse scleroderma",
+     "topoisomerase I"
+    ]
+   ],
+   "issues": [
+    "shared-stem"
+   ],
+   "note": "All tiles start with 'Anti-', and three near misses lack it, so format sorts the group.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [
+     0,
+     1,
+     3
+    ],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Anti-cardiolipin",
+      "why": "Seen in antiphospholipid syndrome but also SLE and syphilis, so not specific to one disease."
+     },
+     {
+      "text": "Anti-TPO",
+      "why": "Found in both Hashimoto thyroiditis and Graves disease."
+     },
+     {
+      "text": "Anti-La/SSB",
+      "why": "Seen in both Sjögren syndrome and SLE."
+     }
+    ]
+   }
+  },
+  "bank-ext-089": {
+   "id": "bank-ext-089",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+   ],
+   "facets": [
+    [
+     "spermatogenesis",
+     "menopause"
+    ],
+    [
+     "ovulation",
+     "Leydig cells"
+    ],
+    [
+     "endometrial cancer",
+     "osteoporosis"
+    ],
+    [
+     "corpus luteum",
+     "pregnancy"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "The four menstrual cycle hormones are an instant set for this audience.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Testosterone",
+      "why": "An androgen substrate for ovarian estrogen synthesis; its levels do not define the cycle phases."
+     },
+     {
+      "text": "Growth hormone",
+      "why": "A pituitary hormone with no cyclical role in the menstrual cycle."
+     }
+    ]
+   }
+  },
+  "bank-ext-090": {
+   "id": "bank-ext-090",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "procedure",
+    "procedure",
+    "procedure",
+    "procedure"
+   ],
+   "facets": [
+    [
+     "STI prevention",
+     "latex allergy"
+    ],
+    [
+     "STI prevention"
+    ],
+    [
+     "spermicide",
+     "UTI risk"
+    ],
+    [
+     "spermicide"
+    ]
+   ],
+   "issues": [
+    "too-obvious"
+   ],
+   "note": "Two 'condom' tiles plus cervical devices make the set instant.",
+   "revision": {
+    "kind": "membership",
+    "tiles": [
+     "Male condom",
+     "Contraceptive sponge",
+     "Diaphragm",
+     "Cervical cap"
+    ],
+    "why": "Removes the duplicate 'condom' tile; the spermicide sponge is a recognized barrier method.",
+    "changes": "Replace Female condom with Contraceptive sponge."
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Levonorgestrel IUD",
+      "why": "A hormonal intrauterine method, not a barrier."
+     },
+     {
+      "text": "Contraceptive implant",
+      "why": "A subdermal etonogestrel rod, a hormonal method."
+     },
+     {
+      "text": "Lactational amenorrhea method",
+      "why": "Relies on breastfeeding-induced anovulation, not a physical barrier."
+     }
+    ]
+   }
+  },
+  "bank-ext-091": {
+   "id": "bank-ext-091",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "coarctation of the aorta",
+     "short stature"
+    ],
+    [
+     "MRKH",
+     "renal anomalies"
+    ],
+    [
+     "46,XY",
+     "testicular cancer risk"
+    ],
+    [
+     "hematocolpos",
+     "cyclic pelvic pain"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Classic primary amenorrhea causes; Kallmann syndrome and constitutional delay are equally expected.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Endometrial ablation",
+      "why": "Iatrogenic amenorrhea after previously established menses, so secondary."
+     }
+    ]
+   }
+  },
+  "bank-ext-092": {
+   "id": "bank-ext-092",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "change"
+   ],
+   "facets": [
+    [
+     "hirsutism",
+     "congenital adrenal hyperplasia"
+    ],
+    [
+     "infertility",
+     "hypothyroidism"
+    ],
+    [
+     "Rotterdam criteria"
+    ],
+    [
+     "type 2 diabetes",
+     "acanthosis nigricans",
+     "metformin"
+    ]
+   ],
+   "issues": [
+    "title-leak",
+    "too-obvious"
+   ],
+   "note": "'Polycystic ovaries' spells out the acronym, giving the group away; insulin resistance is an association rather than a criterion.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Galactorrhea",
+      "why": "Suggests hyperprolactinemia, which must be excluded before diagnosing PCOS."
+     },
+     {
+      "text": "Rapid virilization",
+      "why": "Suggests an androgen-secreting tumor rather than PCOS."
+     }
+    ]
+   }
+  },
+  "bank-ext-093": {
+   "id": "bank-ext-093",
+   "recognition": 3,
+   "reasoning": "mechanism",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "risk",
+    "other"
+   ],
+   "facets": [
+    [
+     "folate deficiency",
+     "valproate"
+    ],
+    [
+     "gastroschisis",
+     "omphalocele"
+    ],
+    [
+     "twin-twin transfusion",
+     "preterm labor"
+    ],
+    [
+     "dating ultrasound"
+    ]
+   ],
+   "issues": [],
+   "note": "Needs reasoning about fetal AFP leakage and dating; excellent tempting near misses.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Pregestational maternal diabetes",
+      "why": "Associated with lower, not higher, MSAFP."
+     },
+     {
+      "text": "Maternal obesity",
+      "why": "A larger blood volume dilutes AFP, lowering MSAFP."
+     }
+    ]
+   }
+  },
+  "bank-ext-095": {
+   "id": "bank-ext-095",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "painless bleeding",
+     "prior cesarean"
+    ],
+    [
+     "cocaine",
+     "hypertension"
+    ],
+    [
+     "velamentous cord insertion",
+     "fetal bradycardia"
+    ],
+    [
+     "prior cesarean",
+     "VBAC"
+    ]
+   ],
+   "issues": [],
+   "note": "Classic antepartum hemorrhage differential; two 'placenta/previa' tiles help sorting.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Hydatidiform mole",
+      "why": "Causes first- or early second-trimester bleeding, not third-trimester."
+     },
+     {
+      "text": "Subchorionic hematoma",
+      "why": "A typical cause of first-trimester bleeding."
+     }
+    ]
+   }
+  },
+  "bank-ext-096": {
+   "id": "bank-ext-096",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "lab",
+    "lab",
+    "finding"
+   ],
+   "facets": [
+    [
+     "schistocytes",
+     "TTP"
+    ],
+    [
+     "hepatitis",
+     "AFLP"
+    ],
+    [
+     "ITP",
+     "DIC"
+    ],
+    [
+     "cholecystitis",
+     "hepatic hematoma"
+    ]
+   ],
+   "issues": [
+    "title-leak",
+    "too-obvious"
+   ],
+   "note": "The first three tiles spell the acronym HELLP in order.",
+   "revision": {
+    "kind": "wording",
+    "tiles": [
+     "Microangiopathic hemolysis",
+     "Elevated transaminases",
+     "Thrombocytopenia",
+     "Right upper quadrant pain"
+    ],
+    "why": "Breaks the acronym-spelling wording while keeping identical meaning in standard terms.",
+    "changes": "'Hemolysis' to 'Microangiopathic hemolysis', 'Elevated liver enzymes' to 'Elevated transaminases', 'Low platelets' to 'Thrombocytopenia'."
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Marked hyperammonemia",
+      "why": "Points to acute fatty liver of pregnancy rather than HELLP."
+     }
+    ]
+   }
+  },
+  "bank-ext-101": {
+   "id": "bank-ext-101",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "bipolar disorder",
+     "nephrogenic diabetes insipidus"
+    ],
+    [
+     "neural tube defects",
+     "pancreatitis"
+    ],
+    [
+     "SIADH",
+     "HLA-B*15:02"
+    ],
+    [
+     "myocarditis",
+     "treatment-resistant schizophrenia"
+    ]
+   ],
+   "issues": [
+    "imprecise"
+   ],
+   "note": "Second-generation antipsychotics also need routine metabolic labs, so 'lab monitoring' is loose.",
+   "revision": {
+    "kind": "title",
+    "title": "Psychiatric drugs needing drug levels or blood counts",
+    "why": "Excludes antipsychotics that need only metabolic (glucose, lipid) monitoring.",
+    "changes": "Narrow 'serum or lab monitoring' to drug levels or blood counts."
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Lamotrigine",
+      "why": "No routine level or blood count monitoring; its key risk is SJS with fast titration."
+     },
+     {
+      "text": "Mirtazapine",
+      "why": "Agranulocytosis is rare and no routine blood counts are required."
+     }
+    ]
+   }
+  },
+  "bank-ext-102": {
+   "id": "bank-ext-102",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "drug",
+    "drug",
+    "drug",
+    "drug"
+   ],
+   "facets": [
+    [
+     "opioid use disorder",
+     "hepatotoxicity"
+    ],
+    [
+     "renal dosing"
+    ],
+    [
+     "aldehyde dehydrogenase",
+     "disulfiram-like reaction"
+    ],
+    [
+     "migraine prophylaxis",
+     "kidney stones",
+     "weight loss"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Standard AUD drugs; gabapentin is an equally plausible off-label member.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Naloxone",
+      "why": "A short-acting opioid antagonist for overdose reversal, not AUD maintenance."
+     },
+     {
+      "text": "Fomepizole",
+      "why": "Inhibits alcohol dehydrogenase to treat methanol or ethylene glycol poisoning."
+     },
+     {
+      "text": "Flumazenil",
+      "why": "A benzodiazepine antagonist for overdose, not AUD therapy."
+     }
+    ]
+   }
+  },
+  "bank-ext-106": {
+   "id": "bank-ext-106",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "Gowers sign",
+     "dystrophin",
+     "dilated cardiomyopathy"
+    ],
+    [
+     "dystrophin"
+    ],
+    [
+     "anticipation",
+     "cataracts",
+     "CTG repeat"
+    ],
+    [
+     "proximal weakness"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "title-leak"
+   ],
+   "note": "Duchenne and Becker instantly signal the set, and 'dystrophy' appears in a tile.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Inclusion body myositis",
+      "why": "An acquired inflammatory-degenerative myopathy of older adults, not an inherited dystrophy."
+     },
+     {
+      "text": "McArdle disease",
+      "why": "A metabolic glycogen storage myopathy, not a dystrophy."
+     },
+     {
+      "text": "Charcot-Marie-Tooth disease",
+      "why": "A hereditary peripheral neuropathy, not a myopathy."
+     }
+    ]
+   }
+  },
+  "bank-ext-107": {
+   "id": "bank-ext-107",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "Paget disease",
+     "retinoblastoma",
+     "Codman triangle"
+    ],
+    [
+     "t(11;22)",
+     "onion skin"
+    ],
+    [
+     "soap bubble",
+     "epiphysis"
+    ],
+    [
+     "exostosis",
+     "EXT1"
+    ]
+   ],
+   "issues": [
+    "alternate-member-risk"
+   ],
+   "note": "Board-classic bone tumors; chondrosarcoma and osteoid osteoma are equally expected.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Bone infarct",
+      "why": "Ischemic necrosis that can mimic a cartilage tumor, not a neoplasm."
+     },
+     {
+      "text": "Lytic renal cell carcinoma metastasis",
+      "why": "A secondary (metastatic) tumor, not primary to bone."
+     }
+    ]
+   }
+  },
+  "bank-ext-108": {
+   "id": "bank-ext-108",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "finding",
+    "finding",
+    "finding",
+    "finding"
+   ],
+   "facets": [
+    [
+     "vitiligo",
+     "freckle"
+    ],
+    [
+     "acne"
+    ],
+    [
+     "psoriasis"
+    ],
+    [
+     "erythema nodosum",
+     "rheumatoid nodule"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "imprecise",
+    "alternate-member-risk"
+   ],
+   "note": "Basic dermatology vocabulary; vesicle, bulla, pustule, patch and wheal are also primary lesions, so the four feel arbitrary.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Crust",
+      "why": "A secondary lesion of dried serum or blood."
+     },
+     {
+      "text": "Scale",
+      "why": "A secondary lesion of shed stratum corneum."
+     },
+     {
+      "text": "Erosion",
+      "why": "A secondary lesion: partial epidermal loss."
+     },
+     {
+      "text": "Lichenification",
+      "why": "Secondary skin thickening from chronic rubbing."
+     }
+    ]
+   }
+  },
+  "bank-ext-109": {
+   "id": "bank-ext-109",
+   "recognition": 2,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "Leser-Trélat sign",
+     "stuck-on appearance"
+    ],
+    [
+     "aging"
+    ],
+    [
+     "skin tag",
+     "acanthosis nigricans",
+     "insulin resistance"
+    ],
+    [
+     "dimple sign",
+     "insect bite"
+    ]
+   ],
+   "issues": [],
+   "note": "Recognizable benign growths, contrasted with good premalignant and malignant near misses.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Keratoacanthoma",
+      "why": "A rapidly growing crateriform lesion managed as a low-grade squamous cell carcinoma."
+     },
+     {
+      "text": "Bowen disease",
+      "why": "Squamous cell carcinoma in situ, not benign."
+     }
+    ]
+   }
+  },
+  "bank-ext-111": {
+   "id": "bank-ext-111",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "Nikolsky sign",
+     "desmoglein 3"
+    ],
+    [
+     "tense bullae",
+     "elderly"
+    ],
+    [
+     "celiac disease",
+     "dapsone"
+    ],
+    [
+     "desmoglein 1"
+    ]
+   ],
+   "issues": [
+    "shared-stem"
+   ],
+   "note": "Three tiles begin with 'Pemph-', sorting the group without reasoning.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Epidermolysis bullosa simplex",
+      "why": "An inherited keratin 5/14 defect, not autoimmune."
+     },
+     {
+      "text": "Erythema multiforme",
+      "why": "A cell-mediated hypersensitivity (often to HSV), not an autoantibody disease."
+     }
+    ]
+   }
+  },
+  "bank-ext-112": {
+   "id": "bank-ext-112",
+   "recognition": 1,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "rolled borders",
+     "Gorlin syndrome"
+    ],
+    [
+     "actinic keratosis",
+     "hypercalcemia"
+    ],
+    [
+     "BRAF",
+     "Breslow depth"
+    ],
+    [
+     "polyomavirus",
+     "neuroendocrine"
+    ]
+   ],
+   "issues": [
+    "too-obvious",
+    "shared-stem",
+    "imprecise"
+   ],
+   "note": "Three 'carcinoma' tiles make this instant; Kaposi, mycosis fungoides and DFSP (the near misses) are also skin cancers under this title.",
+   "revision": {
+    "kind": "title",
+    "title": "UV-associated skin cancers",
+    "why": "The explanation and near misses depend on UV association; the bare title makes three near misses true members.",
+    "changes": "Add 'UV-associated' to the title."
+   },
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [
+     0,
+     1,
+     2
+    ],
+    "replacements": [
+     {
+      "text": "Dysplastic nevus",
+      "why": "An atypical mole that marks melanoma risk but is not itself a cancer."
+     },
+     {
+      "text": "Seborrheic keratosis",
+      "why": "A benign pigmented growth that can mimic melanoma."
+     }
+    ]
+   }
+  },
+  "bank-ext-113": {
+   "id": "bank-ext-113",
+   "recognition": 2,
+   "reasoning": "recall",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "carbamazepine",
+     "HLA-B*15:02",
+     "mucositis"
+    ],
+    [
+     "SCORTEN",
+     "burn unit"
+    ],
+    [
+     "eosinophilia",
+     "anticonvulsants",
+     "allopurinol"
+    ],
+    [
+     "beta-lactams",
+     "pustules"
+    ]
+   ],
+   "issues": [],
+   "note": "The standard SCAR list; tile 4 is long with a redundant parenthetical.",
+   "revision": {
+    "kind": "wording",
+    "tiles": [
+     "Stevens-Johnson syndrome",
+     "Toxic epidermal necrolysis",
+     "DRESS syndrome",
+     "Acute generalized exanthematous pustulosis"
+    ],
+    "why": "Removes the redundant '(AGEP)' to shorten a tile for timed play; meaning unchanged.",
+    "changes": "Drop '(AGEP)' from tile 4."
+   },
+   "timedFit": "long",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Fixed drug eruption",
+      "why": "A recurrent localized lesion at the same site, typically not a severe systemic reaction."
+     },
+     {
+      "text": "Serum sickness-like reaction",
+      "why": "Fever, urticaria and arthralgia without epidermal detachment, pustules or organ failure."
+     }
+    ]
+   }
+  },
+  "bank-ext-116": {
+   "id": "bank-ext-116",
+   "recognition": 3,
+   "reasoning": "discrimination",
+   "tileTypes": [
+    "disease",
+    "disease",
+    "disease",
+    "disease"
+   ],
+   "facets": [
+    [
+     "alcohol use disorder",
+     "hepatitis C",
+     "varices"
+    ],
+    [
+     "JVD",
+     "pulmonary hypertension"
+    ],
+    [
+     "polycythemia vera",
+     "hepatic vein thrombosis"
+    ],
+    [
+     "Kussmaul sign",
+     "pericardial knock",
+     "tuberculosis"
+    ]
+   ],
+   "issues": [],
+   "note": "Requires applying the SAAG concept, with excellent low-SAAG near misses.",
+   "revision": null,
+   "timedFit": "good",
+   "nearMissReview": {
+    "giveaway": [],
+    "wrong": [],
+    "replacements": [
+     {
+      "text": "Lupus serositis",
+      "why": "Inflammatory peritoneal fluid with a low SAAG."
+     },
+     {
+      "text": "Biliary ascites",
+      "why": "A bile leak causes low-SAAG ascites, not portal hypertension."
+     }
+    ]
+   }
+  }
+ }
+}
