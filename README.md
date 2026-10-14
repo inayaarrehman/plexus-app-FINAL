@@ -52,7 +52,9 @@ real backend (e.g. Supabase) later without a UI rewrite.
   and **Connection Bank** (every raw category — title, difficulty, tiles,
   systems, connection type, tags, verification status — filterable by status
   and difficulty, plus paste-JSON-to-validate a new category). Not linked
-  from anywhere in the app's normal navigation.
+  from anywhere in the app's normal navigation. On the live site it is off,
+  because it shows every answer: set `VITE_ENABLE_DEV_VIEWER=1` in Vercel
+  (and redeploy) to turn it on, or use `npm run dev` locally.
 
 ### Explicitly deferred (by design, not oversight)
 

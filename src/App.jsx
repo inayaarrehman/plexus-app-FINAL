@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
 import connectionBank from './data/connectionBank.js'
 import Home from './components/Home.jsx'
 import Game from './components/Game.jsx'
@@ -23,7 +23,18 @@ import { snapshotLocal } from './utils/progressSync.js'
 import { timedBank } from './utils/timedLibrary.js'
 import { subjectProgress, libraryConnectionMap, subjectLabel, LIBRARY_SUBJECTS } from './utils/newLibrary.js'
 import StatsModal from './components/StatsModal.jsx'
-import DevViewer from './components/DevViewer.jsx'
+// The content viewer and library editor (#dev) are for the owner, not
+// players: they show every puzzle and answer. They load only in a dev build or
+// when VITE_ENABLE_DEV_VIEWER=1 is set in Vercel, and in a separate file so
+// players never download them.
+const DevViewer = lazy(() => import('./components/DevViewer.jsx'))
+const DEV_VIEWER_ON = (() => {
+  try {
+    return !!import.meta.env?.DEV || import.meta.env?.VITE_ENABLE_DEV_VIEWER === '1'
+  } catch {
+    return false
+  }
+})()
 import BrandMark from './components/BrandMark.jsx'
 import { dayNumber, dateKeyFromDayNumber } from './utils/game.js'
 import { finishStamp, useToday } from './utils/calendarHooks.js'
@@ -135,7 +146,7 @@ export default function App() {
     const m = window.location.hash.match(/^#challenge\/(\d+)$/)
     return m ? Number(m[1]) : null
   }
-  const [isDevRoute, setIsDevRoute] = useState(() => window.location.hash === '#dev')
+  const [isDevRoute, setIsDevRoute] = useState(() => DEV_VIEWER_ON && window.location.hash === '#dev')
   const [challengeInvite, setChallengeInvite] = useState(() => parseChallengeHash())
   // Terms / Privacy / Disclaimer have their own links (#terms etc.) so they can
   // be shared, and open over whatever screen is current. Never locked.
@@ -165,7 +176,7 @@ export default function App() {
   }
   useEffect(() => {
     const onHashChange = () => {
-      setIsDevRoute(window.location.hash === '#dev')
+      setIsDevRoute(DEV_VIEWER_ON && window.location.hash === '#dev')
       setChallengeInvite(parseChallengeHash())
       setLegalPage(parseLegalHash())
     }
@@ -932,7 +943,11 @@ export default function App() {
   const finishRequestedExit = () => setTimeout(() => history.back(), 0)
 
   if (isDevRoute) {
-    return <DevViewer />
+    return (
+      <Suspense fallback={null}>
+        <DevViewer />
+      </Suspense>
+    )
   }
 
   // Recipient entry for a Challenge link — lightweight, spoiler-free: no

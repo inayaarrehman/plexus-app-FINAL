@@ -7925,3 +7925,9 @@ body.env-systems .mini-progress-track { background: color-mix(in srgb, var(--roo
 .auth-data-note { margin: 8px 0 0; font-size: var(--type-caption); color: var(--text-dim); }
 .auth-data-note a { color: inherit; font-weight: 700; }
 .auth-terms-note a { font-weight: 700; }
+/* Short policy links stay on one line (a link split across two lines is
+   harder to tap), and the screen-reader note stays inside the link. */
+.policy-link { position: relative; white-space: nowrap; }
+.policy-notice-text a, .home-edu-note a, .report-privacy-note a, .auth-data-note a, .legal-body p a, .support-page a { white-space: nowrap; }
+.sc-terms-check { min-height: 44px; align-items: center; }
+.sc-terms-link { display: inline-flex; align-items: center; min-height: 44px; font-size: var(--type-caption); font-weight: 700; color: inherit; }

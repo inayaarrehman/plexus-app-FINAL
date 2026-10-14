@@ -167,10 +167,11 @@ export default function SubmitConnectionModal({ defaultSystem = '', onClose, sub
             </p>
             <label className="sc-terms-check" htmlFor={`${ids}-terms`}>
               <input id={`${ids}-terms`} type="checkbox" checked={!!form.acknowledged} onChange={(e) => setForm((f) => ({ ...f, acknowledged: e.target.checked }))} disabled={sending} aria-invalid={!!err('terms')} />
-              <span>
-                I wrote this or have permission to share it, and I agree to the <PolicyLink page="terms">submission terms</PolicyLink>.
-              </span>
+              <span>I wrote this or have permission to share it, and I agree to the submission terms.</span>
             </label>
+            <PolicyLink page="terms" className="sc-terms-link">
+              Read the submission terms
+            </PolicyLink>
           </div>
 
           {status === 'error' && error?.message && (
