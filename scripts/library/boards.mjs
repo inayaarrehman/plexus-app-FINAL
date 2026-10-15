@@ -159,7 +159,9 @@ export function analyzeBoard(conns, cfg = DEFAULT_CONFIG, { pairFlags = 0, cauti
   }
   // Effective difficulty per connection on this board.
   const eff = conns.map((c, i) => {
-    let e = c.rec
+    // Base: the connection's own difficulty score (rubric, October 2026),
+    // or audience recognition where no score was given.
+    let e = c.base ?? c.rec
     e += 0.5 * Math.min(2, lure[i])
     if (c.kinds.length && !kindIsolated[i]) e += 0.5
     if (surf.isolated[i].length) e -= 1
@@ -381,5 +383,81 @@ export function compatibilityBlocked(conns) {
   return false
 }
 
-// Recognition (1-5) to the served difficulty label.
+// Recognition (1-5) to the served difficulty label (before October 15 2026;
+// kept for the validation script).
 export const recognitionLabel = (rec) => (rec <= 1 ? 'easy' : rec === 2 ? 'medium' : rec <= 4 ? 'hard' : 'expert')
+
+// ---------------------------------------------------------------------
+// Difficulty labels (content/library/difficulty-rubric.md)
+// ---------------------------------------------------------------------
+export const TIERS = ['easy', 'medium', 'hard', 'expert']
+export const CUTS = [1.75, 2.75, 3.75]
+export const NEAR_CUT = 0.25
+export const REASONING_BONUS = { recall: 0, discrimination: 0.5, mechanism: 0.75 }
+const GIVEAWAY_ISSUES = ['series', 'shared-stem']
+export const tierOfScore = (x) => (x < CUTS[0] ? 0 : x < CUTS[1] ? 1 : x < CUTS[2] ? 2 : 3)
+
+// A connection's own score: recognition, plus the kind of thinking it takes,
+// plus tiles not under their best-known name, minus a wording giveaway.
+export function difficultyScore(meta, second) {
+  if (!meta || typeof meta.recognition !== 'number') return null
+  let x = meta.recognition + (REASONING_BONUS[meta.reasoning] ?? 0)
+  x += 0.25 * Math.min(2, Math.max(0, Number(second?.altNames) || 0))
+  if ((meta.issues || []).some((i) => GIVEAWAY_ISSUES.includes(i))) x -= 0.5
+  return Math.round(x * 100) / 100
+}
+
+// The label, and how sure it is.
+//   computed  from the score and the two rules below
+//   second    the independent rating against the rubric
+//   third     a tie-break rating, asked only when the first two disagree or
+//             the score sits near a cut point
+// Rules: Easy is recall only; Expert needs the second rating at Hard or
+// above. Status: confirmed (computed and second agree, not near a cut),
+// majority (the third agreed with one of them), queue (no majority, or the
+// ratings span two tiers or more: the owner decides), override (owner).
+export function connectionDifficulty({ meta, second, third, override }) {
+  const score = difficultyScore(meta, second)
+  if (score == null) return null
+  const recallOnly = (t) => (t === 0 && meta.reasoning !== 'recall' ? 1 : t)
+  const s2 = second ? TIERS.indexOf(second.tier) : -1
+  const expertOk = (t) => (t === 3 && s2 >= 0 && s2 < 2 ? 2 : t)
+  const computed = expertOk(recallOnly(tierOfScore(score)))
+  const near = CUTS.some((c) => Math.abs(score - c) < NEAR_CUT)
+  const s3 = third ? TIERS.indexOf(third.tier) : -1
+  let tier = computed
+  let status = 'computed'
+  if (s2 >= 0) {
+    if (s2 === computed && !near) status = 'confirmed'
+    else if (s3 >= 0) {
+      const votes = [computed, s2, s3]
+      const top = votes.find((v) => votes.filter((x) => x === v).length >= 2)
+      const spread = Math.max(...votes) - Math.min(...votes)
+      tier = top ?? [...votes].sort((a, b) => a - b)[1]
+      status = top != null && spread < 2 ? 'majority' : 'queue'
+    } else status = 'queue'
+  }
+  tier = expertOk(recallOnly(tier))
+  if (override && TIERS.includes(override.tier)) {
+    tier = TIERS.indexOf(override.tier)
+    status = 'override'
+  }
+  return { score, computed: TIERS[computed], second: second?.tier || null, third: third?.tier || null, near, tier: TIERS[tier], status }
+}
+
+// A numeric base for board estimates: the label's own step (Easy 1, Medium 2,
+// Hard 3, Expert 4, the same scale as audience recognition), nudged by at
+// most a quarter toward the score, so a board starts from the label the
+// group was given.
+export function baseForTier(score, tier) {
+  const step = TIERS.indexOf(tier) + 1
+  return Math.round((step + Math.max(-0.25, Math.min(0.25, score - step))) * 100) / 100
+}
+
+// A group's label on a board: its estimate on that board, at most one step
+// from its own label.
+export function boardTier(eff, ownTier) {
+  const own = TIERS.indexOf(ownTier)
+  const t = tierOfScore(eff)
+  return own < 0 ? TIERS[t] : TIERS[Math.max(own - 1, Math.min(own + 1, t))]
+}

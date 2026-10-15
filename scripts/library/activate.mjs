@@ -23,6 +23,7 @@
 //   node scripts/library/activate.mjs              build (or re-verify) and write
 //   node scripts/library/activate.mjs --check      verify only; exit 1 if outputs would change
 //   node scripts/library/activate.mjs --fresh      rebuild boards (only before launch)
+//   add --pin-since <date> to a --rebuild to re-form boards reviewed before that date
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -132,6 +133,17 @@ for (const [id, ce] of Object.entries(copyEdits)) {
 const auditMeta = readJson(P('content/library/audit/difficulty-audit.json'), { entries: {} }).entries || {}
 const rerateMeta = readJson(P('content/library/audit/rerate.json'), { entries: {} }).entries || {}
 const metaFor = (id) => (R[id]?.revision ? rerateMeta[id] : auditMeta[id]) || null
+// Difficulty labels (content/library/difficulty-rubric.md): the score from the
+// audit, an independent second rating, a tie-break third rating where the
+// first two disagree, and owner overrides.
+const secondRating = readJson(P('content/library/audit/difficulty-second-rating.json'), { entries: {} }).entries || {}
+const thirdRating = readJson(P('content/library/audit/difficulty-third-rating.json'), { entries: {} }).entries || {}
+const difficultyOverrides = readJson(P('content/library/audit/difficulty-overrides.json'), { entries: {} }).entries || {}
+const difficultyCache = new Map()
+const difficultyOf = (id) => {
+  if (!difficultyCache.has(id)) difficultyCache.set(id, B.connectionDifficulty({ meta: metaFor(id), second: secondRating[id], third: thirdRating[id], override: difficultyOverrides[id] }))
+  return difficultyCache.get(id)
+}
 const boardConfig = { ...B.DEFAULT_CONFIG, ...readJson(P('content/library/board-config.json'), {}) }
 boardConfig.weights = { ...B.DEFAULT_CONFIG.weights, ...(boardConfig.weights || {}) }
 // Board reviews for rebuilt boards, keyed by the sorted ids; each lapses if
@@ -298,12 +310,19 @@ const clearanceFromReview = (ids, flags) => {
 // Boards that already passed review stay as they are when content is
 // rebuilt again (only failed boards and leftovers are re-formed), so each
 // review round settles more of the collection.
+// --pin-since <YYYY-MM-DD> (with --rebuild): reuse only boards whose passing
+// review is from that date or later, so every other board is formed afresh
+// under the current difficulty model. Failed boards and the pairs they named
+// stay excluded everywhere; new boards need review.
+const PIN_SINCE = opt('--pin-since', null)
+const reviewDate = (d) => (String(d.by || '').match(/\d{4}-\d{2}-\d{2}/) || [''])[0]
 function pinnedBoards(kind, poolIds, subject = null) {
   const pool = new Set(poolIds)
   const taken = new Set()
   const out = []
   for (const [k, d] of Object.entries(boardReview).sort(([a], [b]) => a.localeCompare(b))) {
     if (d.verdict !== 'pass' || d.kind !== kind || (subject && d.subject !== subject)) continue
+    if (PIN_SINCE && reviewDate(d) < PIN_SINCE) continue
     const ids = k.split('+')
     if (!ids.every((id) => pool.has(id) && !taken.has(id)) || !reviewSigOk(d, ids)) continue
     ids.forEach((id) => taken.add(id))
@@ -311,7 +330,11 @@ function pinnedBoards(kind, poolIds, subject = null) {
   }
   return out
 }
-const prep = (id) => B.prepare(conn(R[id]), metaFor(id))
+const prep = (id) => {
+  const p = B.prepare(conn(R[id]), metaFor(id))
+  const d = difficultyOf(id)
+  return d ? { ...p, base: B.baseForTier(d.score, d.tier), ownTier: d.tier } : p
+}
 const describe = (ids) => B.describeBoard(ids.map(prep), boardConfig)
 // Easiest to hardest by the board's own estimate; ties keep board order.
 const levelsOf = (ids, d) =>
@@ -537,6 +560,38 @@ if (!fresh && prevLedger?.expansionBoards) {
 // ---------------------------------------------------------------------
 // 6. Outputs
 // ---------------------------------------------------------------------
+// ---- difficulty labels on every board (rubric, October 15 2026) ----
+// Each group's label on a board is its estimate there, at most one step from
+// its own label. A board not yet released is ordered easiest to hardest. A
+// released board keeps its order (a saved game in progress depends on it);
+// its labels are updated, and only where a label would otherwise be more than
+// one step from the group's own can a later group read easier.
+const relabelLog = []
+function relabel(b, released, where) {
+  if (!b.ids || b.ids.length !== 4 || !b.ids.every((id) => R[id])) return
+  const d = describe(b.ids)
+  const byId = Object.fromEntries(b.ids.map((id, i) => [id, { id, e: d.eff[i], i, tier: B.boardTier(d.eff[i], difficultyOf(id)?.tier) }]))
+  const before = (b.levels || []).map((l) => `${l.id}:${l.tier}`).join(',')
+  let order
+  if (released && b.levels && b.levels.length === 4) order = b.levels.map((l) => byId[l.id])
+  else order = Object.values(byId).sort((x, y) => x.e - y.e || x.i - y.i)
+  // Never easier than the group before it, and never more than one step from
+  // the group's own label; on a released board the second rule wins.
+  let floor = 0
+  const levels = order.map((x) => {
+    const own = B.TIERS.indexOf(difficultyOf(x.id)?.tier ?? x.tier)
+    const t = Math.min(own < 0 ? 3 : own + 1, Math.max(floor, B.TIERS.indexOf(x.tier)))
+    floor = t
+    return { id: x.id, tier: B.TIERS[t] }
+  })
+  b.levels = levels
+  const after = levels.map((l) => `${l.id}:${l.tier}`).join(',')
+  if (before !== after) relabelLog.push({ board: b.id, where, released, before, after })
+}
+for (const s of subjects) for (const b of starterOut[s] || []) relabel(b, true, 'systems')
+dailyBoardsOut.forEach((b, i) => relabel(b, i <= releasedThroughDay, 'daily'))
+expansion.forEach((b) => relabel(b, b.releaseDay <= releasedThroughDay, 'systems-more'))
+
 const usedIds = new Set([...Object.values(starterOut).flat().flatMap((b) => b.ids), ...dailyBoardsOut.flatMap((b) => b.ids)])
 const servedRecords = active.filter((r) => usedIds.has(r.id)).sort((a, b) => a.id.localeCompare(b.id))
 const clientConn = (r) => {
@@ -548,9 +603,9 @@ const clientConn = (r) => {
     title: c.title,
     tiles: c.tiles,
     explanation: c.explanation || '',
-    // Served difficulty comes from audience recognition (content audit),
-    // not the source label, which is kept for reference.
-    difficulty: metaFor(r.id) ? B.recognitionLabel(metaFor(r.id).recognition) : c.difficulty,
+    // Served difficulty follows the rubric (difficultyOf), not the source
+    // label, which is kept for reference.
+    difficulty: difficultyOf(r.id)?.tier || c.difficulty,
     sourceDifficulty: c.difficulty,
     subject: r.system,
     systems: tags,
@@ -710,7 +765,76 @@ w()
 
 const pendingFile = { about: 'Boards that need a person before they can be published. Add a decision to content/library/activation-review.json and re-run.', starter: starterHeld, daily: dailyPending }
 
+// ---- difficulty review: queue for the owner, and old rule vs new ----
+const servedIds = servedRecords.map((r) => r.id)
+const diffRows = servedIds.map((id) => {
+  const d = difficultyOf(id)
+  const m = metaFor(id)
+  return { id, title: R[id].content.title, subject: R[id].system, tiles: R[id].content.tiles, oldRule: m ? B.recognitionLabel(m.recognition) : R[id].content.difficulty, ...(d || {}), secondReason: secondRating[id]?.reason || '', thirdReason: thirdRating[id]?.reason || '' }
+})
+const queueRows = diffRows
+  .filter((x) => x.status === 'queue')
+  .sort((a, b) => {
+    const sp = (x) => Math.max(...[x.computed, x.second, x.third].filter(Boolean).map((t) => B.TIERS.indexOf(t))) - Math.min(...[x.computed, x.second, x.third].filter(Boolean).map((t) => B.TIERS.indexOf(t)))
+    return sp(b) - sp(a) || a.id.localeCompare(b.id)
+  })
+const countBy = (rows, f) => B.TIERS.map((t) => rows.filter((x) => f(x) === t).length)
+const boardMix = (boards) => {
+  const mix = {}
+  for (const b of boards) {
+    const k = (b.levels || []).map((l) => ({ easy: 'E', medium: 'M', hard: 'H', expert: 'X' })[l.tier]).join('')
+    mix[k] = (mix[k] || 0) + 1
+  }
+  return Object.entries(mix).sort((a, b) => b[1] - a[1])
+}
+const dq = []
+const dw = (x = '') => dq.push(x)
+dw('# Difficulty labels: review')
+dw()
+dw('How labels are set: `content/library/difficulty-rubric.md`. Decide a queued connection by adding it to `content/library/audit/difficulty-overrides.json` and running `node scripts/library/activate.mjs`. All ratings are AI estimates, not player data.')
+dw()
+dw('## Counts (served connections)')
+dw()
+dw('| | Easy | Medium | Hard | Expert |')
+dw('|---|---|---|---|---|')
+dw(`| Old rule (recognition only) | ${countBy(diffRows, (x) => x.oldRule).join(' | ')} |`)
+dw(`| Score alone | ${countBy(diffRows, (x) => x.computed).join(' | ')} |`)
+dw(`| Second rating | ${countBy(diffRows, (x) => x.second).join(' | ')} |`)
+dw(`| **Served now** | ${countBy(diffRows, (x) => x.tier).map((n) => `**${n}**`).join(' | ')} |`)
+dw()
+const st = (k) => diffRows.filter((x) => x.status === k).length
+dw(`Status: ${st('confirmed')} confirmed (score and second rating agree), ${st('majority')} settled by a third rating, ${st('queue')} waiting for you, ${st('override')} decided by you.`)
+dw()
+dw('Daily boards, labels shown easiest to hardest (E Easy, M Medium, H Hard, X Expert):')
+dw()
+for (const [k, n] of boardMix(dailyBoardsOut)) dw(`- ${k}: ${n}`)
+dw()
+dw(`${dailyBoardsOut.filter((b) => b.levels.some((l) => l.tier === 'hard' || l.tier === 'expert')).length} of ${dailyBoardsOut.length} Daily boards show at least one Hard or Expert group; ${dailyBoardsOut.filter((b) => b.levels.some((l) => l.tier === 'expert')).length} show an Expert group.`)
+dw()
+dw(`## Needs your decision (${queueRows.length})`)
+dw()
+dw('Shipped meanwhile with the majority rating, or the middle one when all three differ (an Easy that needs more than recall ships as Medium). Ratings that span two tiers or more are listed first.')
+dw()
+for (const x of queueRows) {
+  dw(`### ${x.id} · ${x.title} (${x.subject})`)
+  dw(`Tiles: ${x.tiles.join(' · ')}`)
+  dw(`- Score ${x.score}: **${x.computed}**${x.near ? ' (near a cut point)' : ''}`)
+  dw(`- Second rating: **${x.second}**. ${x.secondReason}`)
+  if (x.third) dw(`- Third rating: **${x.third}**. ${x.thirdReason}`)
+  dw(`- Shipped as: **${x.tier}** (old rule: ${x.oldRule})`)
+  dw()
+}
+const changed = diffRows.filter((x) => x.tier !== x.oldRule)
+dw(`## Every label that changed (${changed.length})`)
+dw()
+dw('| Id | Connection | Old | New | Score | 2nd | 3rd | How |')
+dw('|---|---|---|---|---|---|---|---|')
+for (const x of changed.sort((a, b) => a.id.localeCompare(b.id))) dw(`| ${x.id} | ${x.title.replace(/\|/g, '/')} | ${x.oldRule} | **${x.tier}** | ${x.computed} (${x.score}) | ${x.second || ''} | ${x.third || ''} | ${x.status} |`)
+dw()
+const queueFile = { about: 'Connections whose difficulty ratings did not settle. Decide in difficulty-overrides.json.', generated: 'by scripts/library/activate.mjs', entries: queueRows.map(({ id, title, subject, tiles, score, computed, second, third, tier, oldRule, secondReason, thirdReason, near }) => ({ id, title, subject, tiles, score, computed, second, third, shippedAs: tier, oldRule, secondReason, thirdReason, near })) }
 const outputs = {
+  [P('content/library/audit/difficulty-review.md')]: dq.join('\n') + '\n',
+  [P('content/library/audit/difficulty-review-queue.json')]: JSON.stringify(queueFile, null, 1) + '\n',
   [P('src/data/library/newLibrary.js')]: newLibSrc,
   [P('src/data/library/timedLibrary.js')]: timedSrc,
   [LEDGER_FILE]: JSON.stringify(ledger, null, 1) + '\n',

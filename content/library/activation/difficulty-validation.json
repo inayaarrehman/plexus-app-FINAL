@@ -1,48 +1,38 @@
 {
- "generatedAt": "2026-10-14T06:52:22.474Z",
+ "generatedAt": "2026-10-14T22:12:01.704Z",
  "caveat": "Automated estimates from content metadata and wording signals; not player data; not proof of medical uniqueness.",
  "daily": {
   "old": {
-   "boards": 84,
-   "meanScore": -13.74,
-   "groupsIsolatedByWordingPerBoard": 1,
-   "boardsWithAWordingGiveaway": 70,
-   "boardsWithASeriesGiveaway": 8,
-   "groupsIsolatedByTileKindPerBoard": 1.7,
-   "boardsThatSortByTileKind": 17,
-   "boardsWith2PlusInstantGroups": 54,
-   "boardsWith3PlusInstantGroups": 17,
-   "boardsWithARecognition3PlusGroup": 46,
+   "boards": 83,
+   "meanScore": -5.48,
+   "groupsIsolatedByWordingPerBoard": 0.57,
+   "boardsWithAWordingGiveaway": 45,
+   "boardsWithASeriesGiveaway": 2,
+   "groupsIsolatedByTileKindPerBoard": 0.37,
+   "boardsThatSortByTileKind": 0,
+   "boardsWith2PlusInstantGroups": 49,
+   "boardsWith3PlusInstantGroups": 10,
+   "boardsWithARecognition3PlusGroup": 52,
    "recognitionMix_instant_quick_reasoning": {
-    "0/4/0": 3,
-    "1/2/1": 10,
-    "2/2/0": 18,
-    "1/3/0": 15,
-    "2/1/1": 12,
-    "0/2/2": 3,
-    "3/1/0": 7,
-    "3/0/1": 5,
-    "0/1/3": 1,
-    "0/3/1": 6,
-    "4/0/0": 2,
+    "2/1/1": 18,
+    "1/3/0": 21,
+    "3/0/1": 4,
+    "1/1/2": 2,
+    "1/2/1": 17,
+    "2/2/0": 14,
+    "3/1/0": 4,
+    "0/4/0": 1,
     "2/0/2": 1,
-    "1/1/2": 1
+    "0/3/1": 1
    },
-   "estimatedMixMeets1_2_1": 11,
-   "estimatedChallengingGroupPresent": 42,
-   "crossGroupLureTilesPerBoard": 0.11,
-   "sharedAssociationHerringsPerBoard": 0.04,
+   "estimatedMixMeets1_2_1": 40,
+   "estimatedChallengingGroupPresent": 71,
+   "crossGroupLureTilesPerBoard": 0.72,
+   "sharedAssociationHerringsPerBoard": 0.42,
    "possibleUnintendedGroups": 0,
-   "associationRisksOnBoard": 3,
-   "automaticFlags": 25,
-   "aiReview": {
-    "reviewed": 84,
-    "pass": 84,
-    "competition": {
-     "low": 74,
-     "some": 10
-    }
-   }
+   "associationRisksOnBoard": 1,
+   "automaticFlags": 36,
+   "aiReview": null
   },
   "new": {
    "boards": 83,
@@ -88,41 +78,40 @@
  "systems": {
   "starterOld": {
    "boards": 77,
-   "meanScore": -17.11,
-   "groupsIsolatedByWordingPerBoard": 0.82,
-   "boardsWithAWordingGiveaway": 58,
-   "boardsWithASeriesGiveaway": 10,
-   "groupsIsolatedByTileKindPerBoard": 1.4,
-   "boardsThatSortByTileKind": 6,
-   "boardsWith2PlusInstantGroups": 57,
-   "boardsWith3PlusInstantGroups": 10,
-   "boardsWithARecognition3PlusGroup": 48,
+   "meanScore": -12.07,
+   "groupsIsolatedByWordingPerBoard": 0.53,
+   "boardsWithAWordingGiveaway": 45,
+   "boardsWithASeriesGiveaway": 4,
+   "groupsIsolatedByTileKindPerBoard": 0.48,
+   "boardsThatSortByTileKind": 0,
+   "boardsWith2PlusInstantGroups": 52,
+   "boardsWith3PlusInstantGroups": 18,
+   "boardsWithARecognition3PlusGroup": 55,
    "recognitionMix_instant_quick_reasoning": {
+    "1/3/0": 12,
+    "2/1/1": 15,
+    "1/2/1": 17,
+    "2/2/0": 11,
+    "3/1/0": 10,
+    "3/0/1": 4,
     "0/3/1": 2,
-    "3/1/0": 5,
-    "1/2/1": 13,
-    "2/1/1": 12,
-    "2/2/0": 19,
-    "1/3/0": 10,
-    "4/0/0": 3,
     "0/2/2": 1,
-    "1/1/2": 4,
-    "2/0/2": 5,
-    "0/4/0": 3
+    "0/4/0": 2,
+    "1/1/2": 2,
+    "1/0/3": 1
    },
-   "estimatedMixMeets1_2_1": 13,
-   "estimatedChallengingGroupPresent": 44,
-   "crossGroupLureTilesPerBoard": 0.14,
-   "sharedAssociationHerringsPerBoard": 0.25,
+   "estimatedMixMeets1_2_1": 30,
+   "estimatedChallengingGroupPresent": 58,
+   "crossGroupLureTilesPerBoard": 0.31,
+   "sharedAssociationHerringsPerBoard": 0.51,
    "possibleUnintendedGroups": 0,
-   "associationRisksOnBoard": 5,
-   "automaticFlags": 13,
+   "associationRisksOnBoard": 1,
+   "automaticFlags": 17,
    "aiReview": {
-    "reviewed": 77,
-    "pass": 73,
+    "reviewed": 1,
+    "pass": 1,
     "competition": {
-     "low": 58,
-     "some": 19
+     "low": 1
     }
    }
   },
@@ -169,36 +158,33 @@
    }
   },
   "expansionOld": {
-   "boards": 60,
-   "meanScore": -17.7,
-   "groupsIsolatedByWordingPerBoard": 0.97,
-   "boardsWithAWordingGiveaway": 68,
-   "boardsWithASeriesGiveaway": 13,
-   "groupsIsolatedByTileKindPerBoard": 1.33,
-   "boardsThatSortByTileKind": 12,
-   "boardsWith2PlusInstantGroups": 50,
-   "boardsWith3PlusInstantGroups": 20,
-   "boardsWithARecognition3PlusGroup": 38,
+   "boards": 49,
+   "meanScore": -16.34,
+   "groupsIsolatedByWordingPerBoard": 0.86,
+   "boardsWithAWordingGiveaway": 63,
+   "boardsWithASeriesGiveaway": 6,
+   "groupsIsolatedByTileKindPerBoard": 1.24,
+   "boardsThatSortByTileKind": 4,
+   "boardsWith2PlusInstantGroups": 55,
+   "boardsWith3PlusInstantGroups": 14,
+   "boardsWithARecognition3PlusGroup": 43,
    "recognitionMix_instant_quick_reasoning": {
-    "0/4/0": 5,
-    "2/2/0": 15,
-    "1/3/0": 7,
-    "1/2/1": 10,
-    "0/3/1": 4,
-    "3/1/0": 9,
-    "2/1/1": 3,
-    "3/0/1": 2,
-    "1/1/2": 1,
     "4/0/0": 1,
-    "1/0/3": 2,
-    "0/2/2": 1
+    "1/3/0": 5,
+    "2/2/0": 14,
+    "2/1/1": 6,
+    "0/4/0": 3,
+    "1/2/1": 13,
+    "0/2/2": 1,
+    "3/1/0": 5,
+    "3/0/1": 1
    },
-   "estimatedMixMeets1_2_1": 8,
-   "estimatedChallengingGroupPresent": 32,
-   "crossGroupLureTilesPerBoard": 0.2,
-   "sharedAssociationHerringsPerBoard": 0.27,
+   "estimatedMixMeets1_2_1": 14,
+   "estimatedChallengingGroupPresent": 35,
+   "crossGroupLureTilesPerBoard": 0.14,
+   "sharedAssociationHerringsPerBoard": 0.16,
    "possibleUnintendedGroups": 0,
-   "associationRisksOnBoard": 11,
+   "associationRisksOnBoard": 0,
    "automaticFlags": 0,
    "aiReview": null
   },
@@ -246,9 +232,9 @@
    "Cardiology": {
     "boardsOld": 12,
     "boardsNew": 12,
-    "wordingGiveawayOld": 50,
+    "wordingGiveawayOld": 33,
     "wordingGiveawayNew": 25,
-    "kindIsolatedOld": 1.42,
+    "kindIsolatedOld": 1.08,
     "kindIsolatedNew": 0.92,
     "instant2plusOld": 58,
     "instant2plusNew": 8,
@@ -257,88 +243,88 @@
    "Pulmonary": {
     "boardsOld": 4,
     "boardsNew": 4,
-    "wordingGiveawayOld": 75,
+    "wordingGiveawayOld": 50,
     "wordingGiveawayNew": 25,
-    "kindIsolatedOld": 1,
+    "kindIsolatedOld": 0.5,
     "kindIsolatedNew": 0.25,
-    "instant2plusOld": 75,
+    "instant2plusOld": 50,
     "instant2plusNew": 25,
     "aiReviewPassNew": "4/4"
    },
    "Renal": {
     "boardsOld": 5,
     "boardsNew": 5,
-    "wordingGiveawayOld": 40,
+    "wordingGiveawayOld": 20,
     "wordingGiveawayNew": 20,
-    "kindIsolatedOld": 1.4,
+    "kindIsolatedOld": 0.6,
     "kindIsolatedNew": 0.6,
-    "instant2plusOld": 80,
+    "instant2plusOld": 60,
     "instant2plusNew": 40,
     "aiReviewPassNew": "5/5"
    },
    "Neurology": {
-    "boardsOld": 12,
+    "boardsOld": 11,
     "boardsNew": 11,
-    "wordingGiveawayOld": 42,
+    "wordingGiveawayOld": 45,
     "wordingGiveawayNew": 45,
-    "kindIsolatedOld": 1.08,
+    "kindIsolatedOld": 0.45,
     "kindIsolatedNew": 0.45,
-    "instant2plusOld": 50,
+    "instant2plusOld": 45,
     "instant2plusNew": 55,
     "aiReviewPassNew": "11/11"
    },
    "GI": {
-    "boardsOld": 13,
+    "boardsOld": 9,
     "boardsNew": 9,
-    "wordingGiveawayOld": 62,
+    "wordingGiveawayOld": 22,
     "wordingGiveawayNew": 22,
-    "kindIsolatedOld": 1.62,
+    "kindIsolatedOld": 1.33,
     "kindIsolatedNew": 1.33,
-    "instant2plusOld": 46,
+    "instant2plusOld": 44,
     "instant2plusNew": 22,
     "aiReviewPassNew": "9/9"
    },
    "Endocrine": {
     "boardsOld": 9,
     "boardsNew": 9,
-    "wordingGiveawayOld": 89,
+    "wordingGiveawayOld": 44,
     "wordingGiveawayNew": 44,
-    "kindIsolatedOld": 1.22,
+    "kindIsolatedOld": 0.67,
     "kindIsolatedNew": 0.56,
-    "instant2plusOld": 11,
+    "instant2plusOld": 22,
     "instant2plusNew": 11,
     "aiReviewPassNew": "9/9"
    },
    "Heme/Onc": {
     "boardsOld": 13,
     "boardsNew": 13,
-    "wordingGiveawayOld": 69,
+    "wordingGiveawayOld": 77,
     "wordingGiveawayNew": 46,
-    "kindIsolatedOld": 1.15,
+    "kindIsolatedOld": 1.08,
     "kindIsolatedNew": 1.08,
-    "instant2plusOld": 62,
+    "instant2plusOld": 54,
     "instant2plusNew": 31,
     "aiReviewPassNew": "13/13"
    },
    "MSK": {
     "boardsOld": 5,
     "boardsNew": 5,
-    "wordingGiveawayOld": 60,
+    "wordingGiveawayOld": 80,
     "wordingGiveawayNew": 80,
-    "kindIsolatedOld": 1.2,
+    "kindIsolatedOld": 0.6,
     "kindIsolatedNew": 0.6,
-    "instant2plusOld": 80,
+    "instant2plusOld": 60,
     "instant2plusNew": 60,
     "aiReviewPassNew": "5/5"
    },
    "Reproductive": {
     "boardsOld": 5,
     "boardsNew": 5,
-    "wordingGiveawayOld": 60,
+    "wordingGiveawayOld": 20,
     "wordingGiveawayNew": 20,
-    "kindIsolatedOld": 2.6,
+    "kindIsolatedOld": 0.2,
     "kindIsolatedNew": 0,
-    "instant2plusOld": 40,
+    "instant2plusOld": 20,
     "instant2plusNew": 0,
     "aiReviewPassNew": "5/5"
    },
@@ -347,9 +333,9 @@
     "boardsNew": 5,
     "wordingGiveawayOld": 60,
     "wordingGiveawayNew": 60,
-    "kindIsolatedOld": 1.8,
+    "kindIsolatedOld": 0.6,
     "kindIsolatedNew": 0.2,
-    "instant2plusOld": 40,
+    "instant2plusOld": 60,
     "instant2plusNew": 40,
     "aiReviewPassNew": "5/5"
    },
@@ -358,7 +344,7 @@
     "boardsNew": 14,
     "wordingGiveawayOld": 79,
     "wordingGiveawayNew": 79,
-    "kindIsolatedOld": 1.64,
+    "kindIsolatedOld": 1.29,
     "kindIsolatedNew": 1.21,
     "instant2plusOld": 71,
     "instant2plusNew": 57,
@@ -367,22 +353,22 @@
    "Immunology": {
     "boardsOld": 8,
     "boardsNew": 8,
-    "wordingGiveawayOld": 50,
+    "wordingGiveawayOld": 38,
     "wordingGiveawayNew": 38,
-    "kindIsolatedOld": 1.13,
+    "kindIsolatedOld": 0.38,
     "kindIsolatedNew": 0.38,
-    "instant2plusOld": 50,
+    "instant2plusOld": 63,
     "instant2plusNew": 50,
     "aiReviewPassNew": "8/8"
    },
    "Dermatology": {
     "boardsOld": 8,
     "boardsNew": 8,
-    "wordingGiveawayOld": 63,
+    "wordingGiveawayOld": 50,
     "wordingGiveawayNew": 50,
-    "kindIsolatedOld": 1.38,
+    "kindIsolatedOld": 0.5,
     "kindIsolatedNew": 0.5,
-    "instant2plusOld": 75,
+    "instant2plusOld": 88,
     "instant2plusNew": 63,
     "aiReviewPassNew": "8/8"
    },
@@ -391,20 +377,20 @@
     "boardsNew": 3,
     "wordingGiveawayOld": 100,
     "wordingGiveawayNew": 100,
-    "kindIsolatedOld": 1.33,
+    "kindIsolatedOld": 0.33,
     "kindIsolatedNew": 0.33,
     "instant2plusOld": 33,
     "instant2plusNew": 0,
     "aiReviewPassNew": "3/3"
    },
    "Biochemistry/Genetics": {
-    "boardsOld": 16,
+    "boardsOld": 10,
     "boardsNew": 10,
-    "wordingGiveawayOld": 75,
+    "wordingGiveawayOld": 80,
     "wordingGiveawayNew": 80,
-    "kindIsolatedOld": 1.25,
+    "kindIsolatedOld": 0.9,
     "kindIsolatedNew": 1,
-    "instant2plusOld": 44,
+    "instant2plusOld": 40,
     "instant2plusNew": 10,
     "aiReviewPassNew": "10/10"
    },
@@ -413,7 +399,7 @@
     "boardsNew": 5,
     "wordingGiveawayOld": 20,
     "wordingGiveawayNew": 20,
-    "kindIsolatedOld": 1,
+    "kindIsolatedOld": 0.2,
     "kindIsolatedNew": 0.2,
     "instant2plusOld": 60,
     "instant2plusNew": 60,
@@ -426,87 +412,87 @@
    "miniConnections": {
     "rounds": 300,
     "couldNotBuild": 0,
-    "wordingShortcutPct": 28,
+    "wordingShortcutPct": 0,
     "lookAlikeWrongAnswers": null,
-    "kindOrSubjectMatch": 0.34,
-    "meanCharactersOnScreen": 141.65,
-    "distinctRoundsPct": 99,
+    "kindOrSubjectMatch": 0.77,
+    "meanCharactersOnScreen": 149.31,
+    "distinctRoundsPct": 73,
     "explainedPct": 100,
     "tierMix": {
-     "0": 9,
-     "1": 204,
-     "2": 87
+     "0": 109,
+     "1": 119,
+     "2": 72
     }
    },
    "impostor": {
     "rounds": 300,
     "couldNotBuild": 0,
-    "wordingShortcutPct": 8,
-    "lookAlikeWrongAnswers": 0.55,
+    "wordingShortcutPct": 0,
+    "lookAlikeWrongAnswers": 0.6,
     "kindOrSubjectMatch": null,
-    "meanCharactersOnScreen": 95.47,
-    "distinctRoundsPct": 77,
+    "meanCharactersOnScreen": 91.56,
+    "distinctRoundsPct": 69,
     "explainedPct": 100,
     "tierMix": {
-     "0": 40,
-     "1": 207,
-     "2": 53
+     "0": 57,
+     "1": 157,
+     "2": 86
     }
    },
    "rapidAssociation": {
     "rounds": 300,
     "couldNotBuild": 0,
-    "wordingShortcutPct": 7,
-    "lookAlikeWrongAnswers": 0.55,
+    "wordingShortcutPct": 0,
+    "lookAlikeWrongAnswers": 0.57,
     "kindOrSubjectMatch": null,
-    "meanCharactersOnScreen": 178.79,
-    "distinctRoundsPct": 41,
+    "meanCharactersOnScreen": 175.67,
+    "distinctRoundsPct": 75,
     "explainedPct": 100,
     "tierMix": {
-     "0": 56,
-     "1": 192,
-     "2": 52
+     "0": 87,
+     "1": 154,
+     "2": 59
     }
    },
    "completeConnection": {
     "rounds": 300,
     "couldNotBuild": 0,
-    "wordingShortcutPct": 9,
-    "lookAlikeWrongAnswers": 0.54,
+    "wordingShortcutPct": 0,
+    "lookAlikeWrongAnswers": 0.58,
     "kindOrSubjectMatch": null,
-    "meanCharactersOnScreen": 127.42,
-    "distinctRoundsPct": 92,
+    "meanCharactersOnScreen": 133.12,
+    "distinctRoundsPct": 94,
     "explainedPct": 100,
     "tierMix": {
-     "0": 54,
-     "1": 203,
-     "2": 43
+     "0": 43,
+     "1": 159,
+     "2": 98
     }
    },
    "commonLink": {
     "rounds": 300,
     "couldNotBuild": 0,
-    "wordingShortcutPct": 10,
+    "wordingShortcutPct": 2,
     "lookAlikeWrongAnswers": null,
-    "kindOrSubjectMatch": 0.49,
-    "meanCharactersOnScreen": 200.8,
-    "distinctRoundsPct": 89,
+    "kindOrSubjectMatch": 0.81,
+    "meanCharactersOnScreen": 196.28,
+    "distinctRoundsPct": 81,
     "explainedPct": 100,
     "tierMix": {
-     "0": 50,
-     "1": 203,
-     "2": 47
+     "0": 101,
+     "1": 126,
+     "2": 73
     }
    },
    "matchTheLink": {
     "rounds": 300,
     "couldNotBuild": 0,
-    "wordingShortcutPct": 29,
+    "wordingShortcutPct": 0,
     "lookAlikeWrongAnswers": null,
     "kindOrSubjectMatch": null,
-    "meanCharactersOnScreen": 198.17,
+    "meanCharactersOnScreen": 204.17,
     "distinctRoundsPct": 100,
-    "explainedPct": 0,
+    "explainedPct": 100,
     "tierMix": {
      "n/a": 300
     }
@@ -517,8 +503,8 @@
     "wordingShortcutPct": 0,
     "lookAlikeWrongAnswers": null,
     "kindOrSubjectMatch": null,
-    "meanCharactersOnScreen": 179.67,
-    "distinctRoundsPct": 37,
+    "meanCharactersOnScreen": 155.56,
+    "distinctRoundsPct": 35,
     "explainedPct": 100,
     "tierMix": {
      "n/a": 300
@@ -527,29 +513,31 @@
    "linkTwo": {
     "rounds": 300,
     "couldNotBuild": 0,
-    "wordingShortcutPct": 14,
-    "lookAlikeWrongAnswers": 0.54,
+    "wordingShortcutPct": 0,
+    "lookAlikeWrongAnswers": 0.59,
     "kindOrSubjectMatch": null,
-    "meanCharactersOnScreen": 142.93,
-    "distinctRoundsPct": 86,
+    "meanCharactersOnScreen": 140.81,
+    "distinctRoundsPct": 90,
     "explainedPct": 100,
     "tierMix": {
-     "n/a": 300
+     "0": 78,
+     "1": 143,
+     "2": 79
     }
    },
    "sameOrDifferent": {
     "rounds": 300,
     "couldNotBuild": 0,
     "wordingShortcutPct": 0,
-    "lookAlikeWrongAnswers": 0.56,
+    "lookAlikeWrongAnswers": 0.67,
     "kindOrSubjectMatch": null,
-    "meanCharactersOnScreen": 67.26,
-    "distinctRoundsPct": 93,
+    "meanCharactersOnScreen": 70.27,
+    "distinctRoundsPct": 87,
     "explainedPct": 100,
     "tierMix": {
-     "0": 59,
-     "1": 197,
-     "2": 44
+     "0": 121,
+     "1": 117,
+     "2": 62
     }
    },
    "completeTheChain": {
@@ -558,7 +546,7 @@
     "wordingShortcutPct": 0,
     "lookAlikeWrongAnswers": null,
     "kindOrSubjectMatch": null,
-    "meanCharactersOnScreen": 52.11,
+    "meanCharactersOnScreen": 52.02,
     "distinctRoundsPct": 3,
     "explainedPct": 100,
     "tierMix": {
@@ -571,8 +559,8 @@
     "wordingShortcutPct": 0,
     "lookAlikeWrongAnswers": null,
     "kindOrSubjectMatch": null,
-    "meanCharactersOnScreen": 182.54,
-    "distinctRoundsPct": 1,
+    "meanCharactersOnScreen": 152.57,
+    "distinctRoundsPct": 3,
     "explainedPct": 100,
     "tierMix": {
      "n/a": 300
@@ -584,7 +572,7 @@
     "wordingShortcutPct": 0,
     "lookAlikeWrongAnswers": null,
     "kindOrSubjectMatch": null,
-    "meanCharactersOnScreen": 67.48,
+    "meanCharactersOnScreen": 67.28,
     "distinctRoundsPct": 2,
     "explainedPct": 100,
     "tierMix": {
@@ -812,8 +800,8 @@
    ]
   },
   "crossSessionOld": {
-   "categoriesServed": 36,
-   "seenInTheLastFewSessionsPct": 8
+   "categoriesServed": 50,
+   "seenInTheLastFewSessionsPct": 26
   },
   "crossSessionNew": {
    "categoriesServed": 44,
@@ -828,57 +816,37 @@
     "10": 200
    },
    "relationshipRepeatsWithinARace": 0,
-   "wordingShortcutPct": 9,
+   "wordingShortcutPct": 1,
    "tierByRound": [
     {
-     "0": 26,
-     "1": 134,
-     "2": 40
+     "0": 200
     },
     {
-     "0": 31,
-     "1": 136,
-     "2": 33
+     "0": 200
     },
     {
-     "0": 29,
-     "1": 134,
-     "2": 37
+     "1": 200
     },
     {
-     "0": 41,
-     "1": 116,
-     "2": 43
+     "1": 200
     },
     {
-     "0": 27,
-     "1": 140,
-     "2": 33
+     "2": 200
     },
     {
-     "0": 42,
-     "1": 129,
-     "2": 29
+     "1": 200
     },
     {
-     "0": 32,
-     "1": 138,
-     "2": 30
+     "1": 200
     },
     {
-     "0": 35,
-     "1": 141,
-     "2": 24
+     "2": 200
     },
     {
-     "0": 34,
-     "1": 133,
-     "2": 33
+     "1": 200
     },
     {
-     "0": 37,
-     "1": 134,
-     "2": 29
+     "1": 200
     }
    ],
    "curve": null
@@ -975,9 +943,9 @@
  "capacity": {
   "activeConnections": 647,
   "servedConnections": 640,
-  "servedBefore": 644,
+  "servedBefore": 640,
   "dailyBoards": {
-   "before": 84,
+   "before": 83,
    "after": 83,
    "runwayEnds": "2026-12-31"
   },
@@ -1004,13 +972,13 @@
    }
   },
   "expansionBoards": {
-   "before": 60,
+   "before": 49,
    "after": 49,
    "waitingInQueues": 136
   },
   "dailyLeftover": 2,
   "timedCategories": {
-   "before": 157,
+   "before": 156,
    "after": 156,
    "withFourOrMoreNearMisses": 141
   },
@@ -1058,7 +1026,12 @@
    "detail": ""
   },
   {
-   "name": "every revised connection carries the AI revision-check label and keeps its source reference",
+   "name": "every revised connection carries the AI revision-check label",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "no source references are shipped in the app",
    "pass": true,
    "detail": ""
   },

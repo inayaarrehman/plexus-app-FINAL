@@ -1,0 +1,5 @@
+{
+ "about": "Connections whose difficulty ratings did not settle. Decide in difficulty-overrides.json.",
+ "generated": "by scripts/library/activate.mjs",
+ "entries": []
+}

@@ -1,0 +1,110 @@
+{
+ "about": "Owner decisions on difficulty labels. {\"<connection id>\": {\"tier\": \"easy|medium|hard|expert\", \"note\": \"why\"}}. Applied last, over every rating. Add entries after reviewing difficulty-review-queue.md, then run node scripts/library/activate.mjs.",
+ "entries": {
+  "CARD-002": {
+   "tier": "medium",
+   "note": "Classic list; thiamine deficiency and AV fistula pull toward other groups.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "CARD-007": {
+   "tier": "medium",
+   "note": "Standard rate-control drugs, but each tile also fits its own drug-class group.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "ENDO-010": {
+   "tier": "hard",
+   "note": "Peripheral deiodinase effect is a mechanism detail; amiodarone is the less familiar member.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "ENDO-021": {
+   "tier": "medium",
+   "note": "Core physiology, described as effects rather than a named list.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "ENDO-028": {
+   "tier": "hard",
+   "note": "Needs reasoning from reduced renal perfusion; reninoma is rarely taught.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "ENDO-031": {
+   "tier": "medium",
+   "note": "Four \"deficiency\" tiles group on sight; the title framing is the only subtle part.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "ENDO-032": {
+   "tier": "hard",
+   "note": "Electrolytes point to adrenal insufficiency in general; 17-OHP and renin decide it.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "ENDO-035": {
+   "tier": "hard",
+   "note": "Needs DHT versus testosterone reasoning for each tile.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "GI-014": {
+   "tier": "medium",
+   "note": "Classic pernicious anemia chain, with tiles that also fit B12 groups.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "GI-030": {
+   "tier": "medium",
+   "note": "Standard pre-, intra- and posthepatic list; schistosomiasis is the less familiar member.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "MSK-041": {
+   "tier": "hard",
+   "note": "Generic lab tiles that pull toward acidosis and rhabdomyolysis groups.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "NEPH-008": {
+   "tier": "medium",
+   "note": "Classic findings, given as biopsy descriptions.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "NEPH-012": {
+   "tier": "medium",
+   "note": "Classic, but subepithelial deposits overlap membranous nephropathy.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "NEPH-017": {
+   "tier": "hard",
+   "note": "Each exposure needs a mechanism step to oxalate.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "NEU-009": {
+   "tier": "medium",
+   "note": "Classic lesion, but each tile needs a laterality check.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "PLEXUS-GEN-009": {
+   "tier": "medium",
+   "note": "Standard pathway steps; polymerase and ligase also fit other repair groups.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "PLX-BCH-007": {
+   "tier": "medium",
+   "note": "Four \"Type ... collagen\" tiles group on sight; which types are fibrillar is the harder part.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "PLX-BCH-022": {
+   "tier": "medium",
+   "note": "Classic Kartagener features, but the tiles also fit cystic fibrosis and immunodeficiency groups.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "PLX-BCH-023": {
+   "tier": "hard",
+   "note": "Lab-description tiles; normal urinary GAGs must be told apart from the mucopolysaccharidoses.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "PLX-BCH-066": {
+   "tier": "medium",
+   "note": "Standard amino acid classification, less drilled; serine and threonine pull toward hydroxyl groups.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  },
+  "PLX-HEM-014": {
+   "tier": "hard",
+   "note": "Less taught; echinocytes and generic hemolysis tiles fit other hemolytic anemias.",
+   "by": "Claude, at the owner's request (2026-10-15)"
+  }
+ }
+}

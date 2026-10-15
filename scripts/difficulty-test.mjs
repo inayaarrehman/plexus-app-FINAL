@@ -173,5 +173,45 @@ section('[6] Content epoch reset')
   ok(!CE.snapshotInEpoch({ dailyHistory: { '2026-10-12': { completed: true } } }), 'a cloud save without the current epoch is not merged back')
 }
 
+section('[8] Difficulty labels follow the rubric (October 15 2026)')
+{
+  const fs = await import('node:fs')
+  const rj = (f) => JSON.parse(fs.readFileSync(new URL('../' + f, import.meta.url), 'utf8'))
+  const cd = (meta, second, third, override) => B.connectionDifficulty({ meta, second, third, override })
+  const m = (recognition, reasoning = 'recall', issues = []) => ({ recognition, reasoning, issues })
+  ok(B.difficultyScore(m(2, 'discrimination'), { altNames: 1 }) === 2.75, 'score: recognition + reasoning + names not best known')
+  ok(B.difficultyScore(m(2, 'recall', ['series']), { altNames: 3 }) === 2, 'a wording giveaway takes half a point off; names count at most twice')
+  ok(cd(m(1), { tier: 'easy', altNames: 0 }).status === 'confirmed', 'score and second rating agree: confirmed')
+  ok(cd(m(1, 'discrimination'), { tier: 'easy', altNames: 0 }).tier === 'medium', 'Easy is recall only')
+  ok(cd(m(4, 'mechanism'), { tier: 'medium', altNames: 0 }, { tier: 'hard' }).tier === 'hard', 'Expert needs the second rating at Hard or above')
+  ok(cd(m(4), { tier: 'expert', altNames: 0 }).tier === 'expert', 'a confirmed Expert stays Expert')
+  const maj = cd(m(3), { tier: 'medium', altNames: 0 }, { tier: 'medium' })
+  ok(maj.tier === 'medium' && maj.status === 'majority', 'a third rating settles a disagreement by majority')
+  const q = cd(m(3), { tier: 'easy', altNames: 0 }, { tier: 'medium' })
+  ok(q.status === 'queue' && q.tier === 'medium', 'ratings two tiers apart go to the owner, shipped meanwhile as the middle one')
+  ok(cd(m(2, 'mechanism'), { tier: 'medium', altNames: 0 }).status === 'queue', 'a score on a cut point is not confirmed without a third rating')
+  ok(cd(m(3), { tier: 'medium', altNames: 0 }, { tier: 'medium' }, { tier: 'hard' }).tier === 'hard', 'an owner override wins')
+  ok(B.boardTier(4.2, 'medium') === 'hard' && B.boardTier(0.5, 'hard') === 'medium', 'a board label is at most one step from the group’s own')
+
+  // The served content.
+  const audit = rj('content/library/audit/difficulty-audit.json').entries
+  const rerate = rj('content/library/audit/rerate.json').entries
+  const revisions = rj('content/library/revisions.json').entries
+  const second = rj('content/library/audit/difficulty-second-rating.json').entries
+  const overrides = rj('content/library/audit/difficulty-overrides.json').entries
+  const meta = (id) => (revisions[id] && rerate[id]) || audit[id]
+  const conns = Object.values(NL.connections)
+  ok(conns.every((c) => second[c.id]), 'every served connection has a second rating')
+  ok(conns.every((c) => ['easy', 'medium', 'hard', 'expert'].includes(c.difficulty)), 'every label is one of the four')
+  ok(conns.filter((c) => c.difficulty === 'easy' && !overrides[c.id]).every((c) => meta(c.id).reasoning === 'recall'), 'no served Easy group needs look-alike or mechanism thinking')
+  ok(conns.filter((c) => c.difficulty === 'expert' && !overrides[c.id]).every((c) => ['hard', 'expert'].includes(second[c.id].tier) && B.difficultyScore(meta(c.id), second[c.id]) >= 3.75), 'every served Expert clears the Expert criteria')
+  const T = (t) => ['easy', 'medium', 'hard', 'expert'].indexOf(t)
+  const boards = [...NL.dailyBoards, ...NL.expansionBoards, ...Object.values(NL.starterBoards).flat()]
+  ok(boards.every((b) => b.levels && b.levels.length === 4), 'every board carries its labels')
+  ok(boards.every((b) => b.levels.every((l) => Math.abs(T(l.tier) - T(NL.connections[l.id].difficulty)) <= 1)), 'no board shows a group more than one step from its own label')
+  ok(boards.every((b) => b.levels.every((l, i) => i === 0 || T(l.tier) >= T(b.levels[i - 1].tier) || T(l.tier) === T(NL.connections[l.id].difficulty) + 1)), 'labels never get easier from one group to the next, except where the one-step rule requires it on a released board')
+  ok(NL.dailyBoards.slice(7).every((b) => b.levels.every((l, i) => i === 0 || T(l.tier) >= T(b.levels[i - 1].tier))), 'boards not yet released are ordered easiest to hardest')
+}
+
 console.log(failed ? `\n${failed} FAILED (${passed} passed)` : `\nALL DIFFICULTY CHECKS PASSED (${passed} passed)`)
 if (failed) process.exit(1)

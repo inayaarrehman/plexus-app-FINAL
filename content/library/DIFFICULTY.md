@@ -18,6 +18,12 @@ How Plexus judges difficulty and builds puzzles in every mode, and how to rerun 
 | `content/timed/audit/round-review.json` | AI fairness review of generated 3 Minutes rounds, by round of fixes. |
 | `content/library/board-config.json` (optional) | Overrides for the board target (default 1 approachable, 2 moderate, 1 challenging) and scoring weights. |
 
+## Difficulty labels (Easy, Medium, Hard, Expert)
+
+Since October 15 2026 labels follow `content/library/difficulty-rubric.md`: a score from the audit (recognition, kind of thinking, wording giveaways) plus names not best known, checked against an independent second rating (`audit/difficulty-second-rating.json`); a third rating settles disagreements by majority (`audit/difficulty-third-rating.json`). What does not settle is listed in `audit/difficulty-review.md` for the owner, who decides in `audit/difficulty-overrides.json`. Board labels move at most one step from a group's own label; released boards keep their order. `node scripts/difficulty-test.mjs` checks the rules on the served content.
+
+On October 15 2026 all boards were rebuilt under these labels: `node scripts/library/activate.mjs --rebuild --epoch 2026-10-labels --pin-since 2026-10-15` (with `--plan` and `board-review.mjs add` rounds until every new board had a review). `--pin-since` reuses only boards reviewed from that date, so older boards are formed afresh.
+
 ## Daily and Systems boards
 
 `scripts/library/boards.mjs` scores a whole 16-tile board: estimated difficulty mix against the target, wording that isolates a group (`src/utils/surfaceSignals.js`), tile kinds no other group uses, tempting cross-group associations, and fairness risks (a tile whose common association is another group's subject blocks the pair). `activate.mjs` builds with a seeded greedy start and local search, so the same inputs give the same boards.

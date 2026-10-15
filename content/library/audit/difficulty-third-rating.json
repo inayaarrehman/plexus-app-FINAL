@@ -1,0 +1,982 @@
+{
+ "about": "Third, independent difficulty rating (2026-10-15) against the same rubric, only for connections where the first two did not agree or the score sat near a cut point. Settles a label when it matches one of the other two.",
+ "reviewer": "Claude agents (AI), not human verified",
+ "entries": {
+  "CARD-002": {
+   "tier": "easy",
+   "reason": "Classic heavily taught list of high-output failure causes; wet beriberi, anemia, thyrotoxicosis and AV fistula all recalled on sight."
+  },
+  "CARD-005": {
+   "tier": "medium",
+   "reason": "Requires recalling QT-prolonging drugs across antipsychotic, antiemetic and opioid classes; methadone and ziprasidone less instantly linked."
+  },
+  "CARD-007": {
+   "tier": "easy",
+   "reason": "Classic AV nodal blocking agents (CCBs, beta blockers, digoxin) heavily taught for rate control."
+  },
+  "CARD-008": {
+   "tier": "easy",
+   "reason": "Amiodarone toxicities are a classic, frequently tested list with distinctive blue-gray skin and pulmonary fibrosis."
+  },
+  "CARD-018": {
+   "tier": "easy",
+   "reason": "Rib notching, upper-extremity hypertension and delayed femoral pulses are textbook coarctation findings."
+  },
+  "CARD-022": {
+   "tier": "medium",
+   "reason": "Mixes murmur, causes and hemodynamic v wave; v wave less familiar and holosystolic murmur pulls toward TR/VSD."
+  },
+  "CARD-023": {
+   "tier": "medium",
+   "reason": "Standard TR findings, but holosystolic murmur and raised JVP pull toward MR and heart failure groups."
+  },
+  "CARD-024": {
+   "tier": "medium",
+   "reason": "S3 as volume overload sound is standard, but pregnancy and regurgitant lesions require one step of reasoning."
+  },
+  "CARD-025": {
+   "tier": "medium",
+   "reason": "S4 from stiff ventricle is standard; linking hypertension, AS, HCM and diastolic failure requires a mechanistic step."
+  },
+  "CARD-031": {
+   "tier": "easy",
+   "reason": "Bundle of Kent, short PR and delta wave are classic WPW recall."
+  },
+  "CARD-033": {
+   "tier": "medium",
+   "reason": "Pericardial knock and Kussmaul sign are classic, but Kussmaul and y descent findings pull toward tamponade/restrictive groups."
+  },
+  "CARD-035": {
+   "tier": "medium",
+   "reason": "Requires linking diverse causes to hemopericardium; aortic dissection and free wall rupture pull toward other groups."
+  },
+  "CARD-037": {
+   "tier": "easy",
+   "reason": "MI complications are a heavily taught timeline list; all four tiles are classic named complications."
+  },
+  "CARD-039": {
+   "tier": "medium",
+   "reason": "ECG lead localization is standard, but deciding V1-V4 versus septal/anterior/lateral subsets requires discrimination."
+  },
+  "CARD-040": {
+   "tier": "medium",
+   "reason": "Cocaine and triptans are familiar, but 5-FU vasospasm and ergots require recalling less prominent drug associations."
+  },
+  "CARD-041": {
+   "tier": "hard",
+   "reason": "Specific growth factors and cytokines in atheroma smooth muscle migration are less commonly taught; endothelin and IL-1 are unexpected."
+  },
+  "CARD-043": {
+   "tier": "easy",
+   "reason": "Claudication, diminished pulses, hair loss and low ABI are classic peripheral arterial disease findings."
+  },
+  "CARD-044": {
+   "tier": "easy",
+   "reason": "Endocrine causes of secondary hypertension are a classic list taught in every review source."
+  },
+  "CARD-045": {
+   "tier": "easy",
+   "reason": "Hemorrhage, GI bleed, diarrhea and burns obviously cause volume loss; plain recall."
+  },
+  "CARD-052": {
+   "tier": "medium",
+   "reason": "Requires physiological reasoning about exercise; reduced SVR may seem counterintuitive to some students."
+  },
+  "CARD-053": {
+   "tier": "medium",
+   "reason": "Aortic root causes of AR are standard, but linking dissection and aneurysm to AR takes one step."
+  },
+  "DERM-001": {
+   "tier": "easy",
+   "reason": "The four epidermal cell types are classic histology recall."
+  },
+  "DERM-004": {
+   "tier": "medium",
+   "reason": "SSSS features are standard, but desmoglein and Nikolsky pull toward pemphigus vulgaris; mucosal sparing distinguishes."
+  },
+  "DERM-005": {
+   "tier": "medium",
+   "reason": "Necrotizing fasciitis warning signs are standard, but crepitus and bullae could pull toward gas gangrene or blistering disease."
+  },
+  "DERM-007": {
+   "tier": "easy",
+   "reason": "Varicella, shingles, zoster ophthalmicus and Ramsay Hunt are classic VZV manifestations."
+  },
+  "DERM-008": {
+   "tier": "medium",
+   "reason": "HPV 16 and 18 are classic; 31 and 33 less commonly memorized but clearly fit."
+  },
+  "DERM-009": {
+   "tier": "medium",
+   "reason": "Latin wart names (verruca plana, plantaris) are less familiar terms, though the link to HPV is straightforward."
+  },
+  "DERM-017": {
+   "tier": "easy",
+   "reason": "Dermatitis herpetiformis with celiac, IgA deposits at papillae and dapsone is a classic heavily taught association."
+  },
+  "DERM-018": {
+   "tier": "medium",
+   "reason": "Erythema nodosum infectious triggers are standard, but fungi and TB pull toward granulomatous infection groups."
+  },
+  "DERM-020": {
+   "tier": "hard",
+   "reason": "Requires reasoning through type IV hypersensitivity mechanism; tiles are generic immunologic steps fitting many processes."
+  },
+  "DERM-022": {
+   "tier": "medium",
+   "reason": "Acne pathogenesis is standard, but generic mechanistic tiles require linking to the specific disease."
+  },
+  "DERM-024": {
+   "tier": "medium",
+   "reason": "Rosacea triggers are commonly known but tiles are generic and could fit other flushing groups."
+  },
+  "DERM-030": {
+   "tier": "medium",
+   "reason": "SCC risk factors are standard; Marjolin ulcer and arsenic require recall, and immunosuppression pulls toward other cancers."
+  },
+  "DERM-035": {
+   "tier": "medium",
+   "reason": "Bartonella and Warthin-Starry are standard, but neutrophilic infiltrate is a histology detail less commonly recalled."
+  },
+  "ENDO-005": {
+   "tier": "hard",
+   "reason": "Requires reasoning that each injures the posterior pituitary; Langerhans cell histiocytosis link is less commonly taught."
+  },
+  "ENDO-010": {
+   "tier": "medium",
+   "reason": "Classic thyroid storm drug list, but amiodarone pulls toward thyroid dysfunction groups."
+  },
+  "ENDO-015": {
+   "tier": "easy",
+   "reason": "Congenital hypothyroidism features (macroglossia, umbilical hernia, hypotonia) are a classic list."
+  },
+  "ENDO-021": {
+   "tier": "easy",
+   "reason": "PTH actions on kidney and bone are heavily taught core physiology."
+  },
+  "ENDO-022": {
+   "tier": "medium",
+   "reason": "Requires linking malabsorptive conditions to fat-soluble vitamin deficiency; celiac and CF pull toward other groups."
+  },
+  "ENDO-028": {
+   "tier": "medium",
+   "reason": "Requires reasoning about decreased renal perfusion activating renin; reninoma is less familiar."
+  },
+  "ENDO-029": {
+   "tier": "easy",
+   "reason": "Pheochromocytoma-associated syndromes NF1, VHL, MEN2A/2B are classic recall."
+  },
+  "ENDO-031": {
+   "tier": "hard",
+   "reason": "Must distinguish CAH enzyme defects; 11-beta and 21-hydroxylase strongly pull toward CAH groups, and recessive inheritance framing is subtle."
+  },
+  "ENDO-032": {
+   "tier": "medium",
+   "reason": "Requires linking lab findings to salt-wasting CAH; hyperkalemia and hyponatremia pull toward Addison disease."
+  },
+  "ENDO-033": {
+   "tier": "hard",
+   "reason": "Must distinguish 17-alpha from 11-beta hydroxylase deficiency; hypertension and hypokalemia overlap with hyperaldosteronism groups."
+  },
+  "ENDO-035": {
+   "tier": "medium",
+   "reason": "5-alpha-reductase features are standard, but requires reasoning from DHT versus testosterone dependence."
+  },
+  "ENDO-036": {
+   "tier": "easy",
+   "reason": "Insulin anabolic actions and GLUT4 translocation are classic core physiology."
+  },
+  "ENDO-037": {
+   "tier": "hard",
+   "reason": "APS type 2 is less commonly emphasized; celiac and T1DM pull toward HLA-DQ2/DQ8 or other autoimmune groups."
+  },
+  "ENDO-039": {
+   "tier": "medium",
+   "reason": "Precipitants of hyperglycemic crises are standard; pancreatitis and MI pull toward other groups."
+  },
+  "ENDO-042": {
+   "tier": "medium",
+   "reason": "Requires recalling weight effects across classes; metformin weight neutrality versus loss is somewhat ambiguous."
+  },
+  "GI-003": {
+   "tier": "medium",
+   "reason": "Hypoglossal innervation is standard anatomy; requires recalling palatoglossus exception to see the set."
+  },
+  "GI-004": {
+   "tier": "medium",
+   "reason": "Recurrent oral ulcers in systemic disease requires linking; celiac and IBD pull toward GI groups."
+  },
+  "GI-009": {
+   "tier": "medium",
+   "reason": "GERD risk factors are standard, but scleroderma and pregnancy pull toward other well-known groups."
+  },
+  "GI-010": {
+   "tier": "medium",
+   "reason": "Mechanical dysphagia is standard; requires distinguishing from motility disorders, with Schatzki ring less familiar."
+  },
+  "GI-014": {
+   "tier": "easy",
+   "reason": "Pernicious anemia consequences are a classic, heavily taught chain."
+  },
+  "GI-016": {
+   "tier": "easy",
+   "reason": "Zollinger-Ellison features including MEN1 association are classic recall."
+  },
+  "GI-018": {
+   "tier": "medium",
+   "reason": "PPI adverse effects are standard, but iron and B12 pull toward other deficiency groups."
+  },
+  "GI-019": {
+   "tier": "medium",
+   "reason": "Cimetidine side effects are classic, but tiles are described generically and creatinine rise is less familiar."
+  },
+  "GI-020": {
+   "tier": "hard",
+   "reason": "Requires mechanistic reasoning about zone 3 hypoxia and CYP450; halothane and alcohol pull toward other hepatotoxicity groups."
+  },
+  "GI-027": {
+   "tier": "medium",
+   "reason": "Liver synthetic failure markers are standard; requires linking diverse labs to hepatocellular dysfunction."
+  },
+  "GI-030": {
+   "tier": "medium",
+   "reason": "Portal hypertension causes are standard; schistosomiasis is less familiar but known."
+  },
+  "GI-031": {
+   "tier": "hard",
+   "reason": "Atazanavir UGT1A1 inhibition is less commonly taught; Gilbert and Crigler-Najjar pull toward hereditary hyperbilirubinemia groups."
+  },
+  "GI-032": {
+   "tier": "medium",
+   "reason": "Standard neonatal jaundice causes, but 'suboptimal intake jaundice' is a less familiar name than breastfeeding failure jaundice."
+  },
+  "GI-036": {
+   "tier": "medium",
+   "reason": "Classic cholecystitis findings, but imaging descriptors need one linking step and could pull toward other gallbladder pathology."
+  },
+  "GI-040": {
+   "tier": "medium",
+   "reason": "Classic drug-induced pancreatitis list, though hydrochlorothiazide and valproate pull strongly toward other well-known adverse-effect groups."
+  },
+  "GI-048": {
+   "tier": "hard",
+   "reason": "Less commonly taught tumor syndrome; generic tiles like diabetes, steatorrhea and weight loss fit many other groups."
+  },
+  "GI-049": {
+   "tier": "medium",
+   "reason": "Standard GI histology; requires recalling which epithelial cells reside in crypts, with goblet cells also seen on villi."
+  },
+  "GI-052": {
+   "tier": "medium",
+   "reason": "Whipple's extraintestinal triad is taught; culture-negative endocarditis and lymphadenopathy are less familiar links."
+  },
+  "GI-054": {
+   "tier": "medium",
+   "reason": "Requires linking each lesion to acting as a lead point; Meckel and HSP pull toward other classic groups."
+  },
+  "GI-061": {
+   "tier": "easy",
+   "reason": "Classic Hirschsprung presentation and pathogenesis, recalled directly with best-known descriptors."
+  },
+  "IMM-002": {
+   "tier": "easy",
+   "reason": "Classic LAD1 findings: delayed cord separation, no pus, poor healing, neutrophilia are heavily taught."
+  },
+  "IMM-004": {
+   "tier": "medium",
+   "reason": "Growth factors are familiar but grouping as repair mediators is a one-step link with pulls toward angiogenesis or fibrosis."
+  },
+  "IMM-006": {
+   "tier": "easy",
+   "reason": "Heavily taught MHC class I table features, all under standard names."
+  },
+  "IMM-007": {
+   "tier": "medium",
+   "reason": "Classic MHC II table, though invariant chain is a less recalled detail and features mirror MHC I."
+  },
+  "IMM-010": {
+   "tier": "medium",
+   "reason": "Requires linking protein antigen, MHC II and CD40L to T-dependent response; tiles overlap with MHC II features."
+  },
+  "IMM-011": {
+   "tier": "easy",
+   "reason": "IgG properties are a heavily taught classic list recalled on sight."
+  },
+  "IMM-018": {
+   "tier": "easy",
+   "reason": "Classic live attenuated vaccine list, plain recall."
+  },
+  "IMM-019": {
+   "tier": "medium",
+   "reason": "Requires recognizing subunit, recombinant and toxoid vaccines share protein-antigen basis; one categorizing step."
+  },
+  "IMM-024": {
+   "tier": "medium",
+   "reason": "Classic IgA deficiency features, but false-negative tTG-IgA testing requires a reasoning step."
+  },
+  "IMM-028": {
+   "tier": "medium",
+   "reason": "Classic X-linked immunodeficiencies, but gene-based names (BTK, CD40L, FOXP3) require one step to link to inheritance."
+  },
+  "IMM-034": {
+   "tier": "medium",
+   "reason": "Standard transfusion reaction; mechanistic tiles need linking and pull toward ARDS or TACO."
+  },
+  "IMM-038": {
+   "tier": "medium",
+   "reason": "Standard immunosuppressant table, but sirolimus and basiliximab require mechanistic linking to IL-2 pathway."
+  },
+  "IMM-039": {
+   "tier": "easy",
+   "reason": "Well-known corticosteroid adverse effects recalled directly."
+  },
+  "MICRO-001": {
+   "tier": "medium",
+   "reason": "Standard toxin mechanisms; requires linking different routes, pertussis and anthrax, to the shared cAMP rise."
+  },
+  "MICRO-002": {
+   "tier": "medium",
+   "reason": "Standard exotoxin table; links EF-2 and 60S mechanisms to shared protein synthesis inhibition."
+  },
+  "MICRO-003": {
+   "tier": "medium",
+   "reason": "ABCDE lysogenic mnemonic is classic, but SpeA naming and overlap with protein-synthesis toxins add difficulty."
+  },
+  "MICRO-008": {
+   "tier": "medium",
+   "reason": "Culture-negative endocarditis organisms are taught; Brucella and Haemophilus link less directly."
+  },
+  "MICRO-009": {
+   "tier": "easy",
+   "reason": "Classic atypical pneumonia organisms, plain recall."
+  },
+  "MICRO-010": {
+   "tier": "medium",
+   "reason": "Listeria and Brucella classic for unpasteurized dairy; Campylobacter and Yersinia links less emphasized."
+  },
+  "MICRO-016": {
+   "tier": "medium",
+   "reason": "Classic congenital syphilis stigmata, but saddle nose pulls toward GPA."
+  },
+  "MICRO-020": {
+   "tier": "easy",
+   "reason": "Classic Cryptococcus diagnostic findings with best-known names."
+  },
+  "MICRO-022": {
+   "tier": "medium",
+   "reason": "ABPA features taught, but asthma, IgE and eosinophilia pull strongly toward allergic or asthma groups."
+  },
+  "MICRO-025": {
+   "tier": "easy",
+   "reason": "Classic PCP associations in HIV, plain recall."
+  },
+  "MICRO-033": {
+   "tier": "medium",
+   "reason": "Requires recalling larval lung migration life cycles; hookworms also pull toward skin-penetrating group."
+  },
+  "MICRO-035": {
+   "tier": "hard",
+   "reason": "Uses unfamiliar renamed Dibothriocephalus and less-taught Anisakis; Taenia solium pulls toward cysticercosis via eggs."
+  },
+  "MICRO-039": {
+   "tier": "medium",
+   "reason": "Standard arboviruses; linking all four to Aedes vector requires one step."
+  },
+  "MICRO-040": {
+   "tier": "medium",
+   "reason": "BOAR mnemonic is classic, but rotavirus replaces reovirus and Bunyavirales naming is less familiar."
+  },
+  "MICRO-049": {
+   "tier": "easy",
+   "reason": "Classic parvovirus B19 syndromes recalled directly."
+  },
+  "MICRO-052": {
+   "tier": "easy",
+   "reason": "Well-known poxvirus diseases under best-known names."
+  },
+  "MICRO-056": {
+   "tier": "medium",
+   "reason": "Classic third-generation agents, though cefixime is less familiar and cef- drugs pull toward other generations."
+  },
+  "MICRO-057": {
+   "tier": "easy",
+   "reason": "Classic 50S inhibitor mnemonic, plain recall."
+  },
+  "MICRO-069": {
+   "tier": "medium",
+   "reason": "Recognizable by -asvir suffix, but pibrentasvir and elbasvir are less familiar drug names."
+  },
+  "MICRO-070": {
+   "tier": "medium",
+   "reason": "Recognizable by -previr suffix, though several agents are less familiar and could blur with NS5A drugs."
+  },
+  "MSK-005": {
+   "tier": "easy",
+   "reason": "Classic osteoarthritis radiographic findings (LOSS), plain recall."
+  },
+  "MSK-007": {
+   "tier": "medium",
+   "reason": "Requires reasoning from defective resorption; pancytopenia and extramedullary hematopoiesis pull toward hematologic groups."
+  },
+  "MSK-009": {
+   "tier": "easy",
+   "reason": "Classic Paget disease associations heavily taught."
+  },
+  "MSK-012": {
+   "tier": "medium",
+   "reason": "Heart block and rash are classic; cytopenias and transaminitis are less familiar manifestations."
+  },
+  "MSK-013": {
+   "tier": "medium",
+   "reason": "Sicca features classic, but distal RTA is a less commonly recalled extraglandular association."
+  },
+  "MSK-017": {
+   "tier": "easy",
+   "reason": "Classic CREST features with anti-centromere, plain recall."
+  },
+  "MSK-018": {
+   "tier": "medium",
+   "reason": "Classic sarcoid findings, but BAL CD4:CD8 ratio is a less familiar tile."
+  },
+  "MSK-020": {
+   "tier": "medium",
+   "reason": "Classic Ewing clues, but EWSR1-FLI1 named instead of t(11;22) and small round blue cells overlap other tumors."
+  },
+  "MSK-022": {
+   "tier": "easy",
+   "reason": "Classic GPA upper airway, lung and kidney findings."
+  },
+  "MSK-023": {
+   "tier": "easy",
+   "reason": "Classic HSP tetrad, plain recall."
+  },
+  "MSK-026": {
+   "tier": "medium",
+   "reason": "Standard lower limb anatomy; requires recalling medial compartment innervation with adductor magnus nuance."
+  },
+  "MSK-033": {
+   "tier": "medium",
+   "reason": "Requires reasoning that each raises compartment pressure; envenomation and reperfusion are less obvious."
+  },
+  "MSK-034": {
+   "tier": "hard",
+   "reason": "Clinical decision rule landmarks are less commonly taught for Step 1 and need specific recall."
+  },
+  "MSK-035": {
+   "tier": "expert",
+   "reason": "Niche sports-medicine detail on tension-side and high-risk sites rarely covered for Step 1."
+  },
+  "MSK-040": {
+   "tier": "easy",
+   "reason": "Classic arachidonic acid pathway COX products, plain recall."
+  },
+  "MSK-041": {
+   "tier": "medium",
+   "reason": "Requires reasoning from hypermetabolism and muscle breakdown; tiles pull toward rhabdomyolysis or acidosis groups."
+  },
+  "NEPH-002": {
+   "tier": "medium",
+   "reason": "Standard renal embryology, needing discrimination from ureteric bud derivatives."
+  },
+  "NEPH-008": {
+   "tier": "easy",
+   "reason": "Classic minimal change disease biopsy findings, plain recall."
+  },
+  "NEPH-010": {
+   "tier": "medium",
+   "reason": "Secondary membranous associations are taught but each tile pulls toward other renal or systemic groups."
+  },
+  "NEPH-012": {
+   "tier": "easy",
+   "reason": "Classic PSGN findings heavily taught."
+  },
+  "NEPH-013": {
+   "tier": "medium",
+   "reason": "Classic Alport triad, but anterior lenticonus and basket-weave EM are less familiar tile wordings."
+  },
+  "NEPH-016": {
+   "tier": "easy",
+   "reason": "Heavily taught struvite stone picture: urease organisms, alkaline urine, coffin-lid crystals, staghorn calculus."
+  },
+  "NEPH-017": {
+   "tier": "medium",
+   "reason": "Requires linking each exposure to oxalate excess or lost inhibitor; fat malabsorption and hypocitraturia need mechanism."
+  },
+  "NEPH-018": {
+   "tier": "easy",
+   "reason": "Classic papillary necrosis list (sickle cell, analgesics, diabetes, obstruction) recalled on sight."
+  },
+  "NEPH-021": {
+   "tier": "medium",
+   "reason": "Standard prerenal table, but hyaline casts and osmolality cutoffs need telling apart from intrinsic AKI values."
+  },
+  "NEPH-030": {
+   "tier": "medium",
+   "reason": "One mechanistic step links decreased clearance, low PTH, and cell lysis to hyperphosphatemia."
+  },
+  "NEPH-031": {
+   "tier": "easy",
+   "reason": "Kimmelstiel-Wilson nodules and associated diabetic glomerular lesions are a classic, heavily taught set."
+  },
+  "NEU-003": {
+   "tier": "easy",
+   "reason": "Textbook lower motor neuron signs; fibrillations on EMG is a well-known companion finding."
+  },
+  "NEU-004": {
+   "tier": "hard",
+   "reason": "Descending brainstem tract names are less commonly emphasized; grouping as extrapyramidal relies on less-taught neuroanatomy."
+  },
+  "NEU-005": {
+   "tier": "medium",
+   "reason": "Rule-of-4 recall: motor nuclei dividing evenly into 12 lie medially; one step to apply."
+  },
+  "NEU-006": {
+   "tier": "medium",
+   "reason": "Rule-of-4 medial 'M' structures; requires recalling mnemonic and mapping each tract."
+  },
+  "NEU-007": {
+   "tier": "medium",
+   "reason": "Rule-of-4 lateral 'S' structures; requires mnemonic recall and tract mapping."
+  },
+  "NEU-009": {
+   "tier": "medium",
+   "reason": "Classic hemisection, but laterality of each deficit and the segmental LMN tile require careful reasoning."
+  },
+  "NEU-011": {
+   "tier": "medium",
+   "reason": "Optic neuritis and INO are classic; Uhthoff phenomenon is a less familiar eponym."
+  },
+  "NEU-012": {
+   "tier": "medium",
+   "reason": "Oligoclonal bands classic; Dawson fingers and delayed VEPs are less familiar but standard."
+  },
+  "NEU-014": {
+   "tier": "medium",
+   "reason": "Requires linking GABA-A modulators and glycine via shared chloride channel mechanism."
+  },
+  "NEU-016": {
+   "tier": "medium",
+   "reason": "Recognizable MG symptoms, but ptosis and diplopia pull strongly toward CN III or botulism groups."
+  },
+  "NEU-018": {
+   "tier": "medium",
+   "reason": "Standard CN III palsy findings, though ptosis overlaps with Horner and myasthenia groups."
+  },
+  "NEU-020": {
+   "tier": "medium",
+   "reason": "Requires mapping facial nerve branches to deficits; hyperacusis and lacrimation need anatomical reasoning."
+  },
+  "NEU-021": {
+   "tier": "medium",
+   "reason": "Standard CN IX functions; stylopharyngeus and afferent gag limb need distinguishing from CN X."
+  },
+  "NEU-024": {
+   "tier": "easy",
+   "reason": "Plain recall of common conductive hearing loss causes."
+  },
+  "NEU-026": {
+   "tier": "easy",
+   "reason": "Classic list of peripheral vertigo disorders under best-known names."
+  },
+  "NEU-027": {
+   "tier": "easy",
+   "reason": "Dix-Hallpike, Epley, and otoconia are classic BPPV associations recalled on sight."
+  },
+  "NEU-028": {
+   "tier": "medium",
+   "reason": "Homer-Wright rosettes classic, but small round blue cells and cerebellar tumor pull to other tumors."
+  },
+  "NEU-029": {
+   "tier": "medium",
+   "reason": "Rosenthal fibers classic, but GFAP positivity and cystic cerebellar mass are shared with other tumors."
+  },
+  "NEU-032": {
+   "tier": "medium",
+   "reason": "Classic meningioma features, but psammoma bodies pull toward other psammoma-associated tumors."
+  },
+  "NEU-035": {
+   "tier": "medium",
+   "reason": "Requires mapping cortical areas to MCA territory; angular gyrus less directly associated."
+  },
+  "NEU-043": {
+   "tier": "easy",
+   "reason": "Classic Friedreich ataxia facts: GAA repeat, frataxin, hypertrophic cardiomyopathy, diabetes."
+  },
+  "NEU-045": {
+   "tier": "medium",
+   "reason": "Generic function tiles; linking each to hypothalamus is one step and somewhat diffuse."
+  },
+  "NEU-046": {
+   "tier": "easy",
+   "reason": "Kallmann anosmia with hypogonadotropic hypogonadism is a classic, heavily taught association."
+  },
+  "NEU-050": {
+   "tier": "medium",
+   "reason": "Plaques and tangles are classic; Hirano bodies and amyloid angiopathy are less familiar."
+  },
+  "NEU-053": {
+   "tier": "easy",
+   "reason": "Standard Parkinson drug classes recalled directly from pharmacology tables."
+  },
+  "NEU-055": {
+   "tier": "easy",
+   "reason": "Classic CJD presentation: rapid dementia, myoclonus, spongiform change, periodic sharp waves."
+  },
+  "NEU-057": {
+   "tier": "easy",
+   "reason": "Textbook migraine features recalled on sight."
+  },
+  "PHARM-001": {
+   "tier": "easy",
+   "reason": "Classic phase II conjugation list taught in every pharmacology review."
+  },
+  "PLEXUS-GEN-007": {
+   "tier": "medium",
+   "reason": "Orotic aciduria under enzyme name; normal ammonia requires distinguishing from OTC deficiency."
+  },
+  "PLEXUS-GEN-009": {
+   "tier": "medium",
+   "reason": "Standard BER steps, but polymerase beta and AP endonuclease need distinguishing from other repair pathways."
+  },
+  "PLEXUS-GEN-011": {
+   "tier": "medium",
+   "reason": "Known Fanconi features, but cafe-au-lait and AML risk pull toward other syndromes."
+  },
+  "PLEXUS-GEN-017": {
+   "tier": "medium",
+   "reason": "Inappropriate laughter is the key; seizures, ataxia, intellectual disability are nonspecific and pull toward Prader-Willi/Rett."
+  },
+  "PLEXUS-GEN-020": {
+   "tier": "medium",
+   "reason": "Sickle complications recognizable, but separating vaso-occlusive ones from other sickle complications takes one step."
+  },
+  "PLEXUS-GEN-021": {
+   "tier": "medium",
+   "reason": "Classic sickle associations, but papillary necrosis and osteomyelitis pull toward other groups."
+  },
+  "PLEXUS-GEN-029": {
+   "tier": "medium",
+   "reason": "Clenched overlapping fingers are classic, but rocker-bottom feet and low-set ears overlap with Patau."
+  },
+  "PLEXUS-GEN-030": {
+   "tier": "easy",
+   "reason": "Classic Down syndrome congenital associations taught heavily."
+  },
+  "PLEXUS-GEN-032": {
+   "tier": "easy",
+   "reason": "Cat-like cry, microcephaly, and VSD are the classic cri-du-chat list."
+  },
+  "PLX-BCH-005": {
+   "tier": "easy",
+   "reason": "The four irreversible gluconeogenic enzymes are a classic, heavily taught list."
+  },
+  "PLX-BCH-007": {
+   "tier": "hard",
+   "reason": "Fibril-forming classification including type V is less commonly taught than collagen type locations."
+  },
+  "PLX-BCH-008": {
+   "tier": "medium",
+   "reason": "Fat-soluble vitamins classic, but tiles use chemical names rather than letter names."
+  },
+  "PLX-BCH-011": {
+   "tier": "medium",
+   "reason": "Lysyl oxidase and tyrosinase taught via Menkes; cytochrome c oxidase and SOD1 copper dependence less recalled."
+  },
+  "PLX-BCH-012": {
+   "tier": "medium",
+   "reason": "Requires linking each enzyme to NADPH as reducing power; standard but one-step reasoning."
+  },
+  "PLX-BCH-014": {
+   "tier": "medium",
+   "reason": "Urea cycle defects standard; NAGS deficiency less familiar and arginase behaves differently."
+  },
+  "PLX-BCH-015": {
+   "tier": "hard",
+   "reason": "Requires telling hepatic GSDs apart from muscle forms; Andersen and Hers are less familiar eponyms."
+  },
+  "PLX-BCH-016": {
+   "tier": "hard",
+   "reason": "Requires mechanistic recall that each synthesis pathway uses a PLP-dependent decarboxylase."
+  },
+  "PLX-BCH-022": {
+   "tier": "easy",
+   "reason": "Classic Kartagener/PCD findings recalled on sight."
+  },
+  "PLX-BCH-023": {
+   "tier": "medium",
+   "reason": "I-cell disease clues are standard, but normal urinary GAGs requires distinguishing from mucopolysaccharidoses."
+  },
+  "PLX-BCH-024": {
+   "tier": "medium",
+   "reason": "Classic Tay-Sachs, but cherry-red macula pulls toward Niemann-Pick."
+  },
+  "PLX-BCH-025": {
+   "tier": "easy",
+   "reason": "Classic Fabry presentation: angiokeratomas, hypohidrosis, neuropathic pain, renal failure."
+  },
+  "PLX-BCH-028": {
+   "tier": "easy",
+   "reason": "Arylsulfatase A and sulfatide accumulation are the classic MLD association."
+  },
+  "PLX-BCH-030": {
+   "tier": "medium",
+   "reason": "Menkes standard, but low copper and ceruloplasmin pull strongly toward Wilson disease."
+  },
+  "PLX-BCH-031": {
+   "tier": "easy",
+   "reason": "Classic Marfan features including upward lens subluxation, heavily taught."
+  },
+  "PLX-BCH-036": {
+   "tier": "medium",
+   "reason": "Requires linking each process to SAM methyl donation; standard biochemistry with one step."
+  },
+  "PLX-BCH-038": {
+   "tier": "easy",
+   "reason": "Classic catalase-positive CGD organisms recalled on sight."
+  },
+  "PLX-BCH-039": {
+   "tier": "medium",
+   "reason": "Requires linking four findings to one mechanism, the raised NADH:NAD+ ratio; standard but a reasoning step."
+  },
+  "PLX-BCH-040": {
+   "tier": "hard",
+   "reason": "Muscle involvement in Cori and Andersen is less taught; must separate from hepatic GSDs like Von Gierke."
+  },
+  "PLX-BCH-041": {
+   "tier": "easy",
+   "reason": "Classic Von Gierke tetrad of hypoglycemia, lactic acidosis, hypertriglyceridemia and hyperuricemia is heavily taught recall."
+  },
+  "PLX-BCH-042": {
+   "tier": "medium",
+   "reason": "Classic Pompe features, but macroglossia and cardiomyopathy pull toward amyloidosis or hypothyroidism."
+  },
+  "PLX-BCH-044": {
+   "tier": "medium",
+   "reason": "Known that liver cannot use ketones; renal cortex and brain inclusion require some reasoning."
+  },
+  "PLX-BCH-046": {
+   "tier": "easy",
+   "reason": "Classic familial hypercholesterolemia findings with tendon xanthomas and arcus, all under familiar names."
+  },
+  "PLX-BCH-047": {
+   "tier": "medium",
+   "reason": "Trypsin activating zymogens is standard, but procarboxypeptidase and proelastase names are less familiar."
+  },
+  "PLX-BCH-049": {
+   "tier": "easy",
+   "reason": "Musty odor, fair skin, eczema, seizures is the textbook PKU presentation."
+  },
+  "PLX-BCH-055": {
+   "tier": "medium",
+   "reason": "AIP precipitants are taught, but smoking and phenytoin overlap with CYP inducer and other lists."
+  },
+  "PLX-BCH-057": {
+   "tier": "medium",
+   "reason": "Night blindness and Bitot spots are classic; follicular hyperkeratosis and keratomalacia are less familiar terms."
+  },
+  "PLX-BCH-058": {
+   "tier": "medium",
+   "reason": "Vitamin A toxicity list is standard, though alopecia and hepatotoxicity overlap other toxicities."
+  },
+  "PLX-BCH-060": {
+   "tier": "easy",
+   "reason": "Wernicke-Korsakoff, dry and wet beriberi are the classic thiamine deficiency manifestations."
+  },
+  "PLX-BCH-062": {
+   "tier": "medium",
+   "reason": "B6 deficiency list is standard; sideroblastic anemia link needs the ALA synthase step; cheilitis overlaps riboflavin."
+  },
+  "PLX-BCH-064": {
+   "tier": "hard",
+   "reason": "Zinc metalloenzymes are less commonly taught facts; tiles readily pull toward other enzyme groupings."
+  },
+  "PLX-BCH-065": {
+   "tier": "medium",
+   "reason": "Zinc deficiency findings are taught, but alopecia and diarrhea are nonspecific and pull elsewhere."
+  },
+  "PLX-BCH-067": {
+   "tier": "medium",
+   "reason": "Known classic list but requires recalling amino acid classification; tiles overlap aromatic amino acids."
+  },
+  "PLX-BCH-068": {
+   "tier": "hard",
+   "reason": "Specific catabolic entry points of amino acids are less commonly recalled and require pathway detail."
+  },
+  "PLX-BCH-069": {
+   "tier": "hard",
+   "reason": "Amino acid entry via glutamate to alpha-ketoglutarate is detailed pathway knowledge, not common recall."
+  },
+  "PLX-BCH-072": {
+   "tier": "medium",
+   "reason": "PLP for transaminases and ALA synthase is classic; glycogen phosphorylase is a less familiar member."
+  },
+  "PLX-BCH-073": {
+   "tier": "hard",
+   "reason": "Catecholamine lipolysis is known, but natriuretic peptide-driven lipolysis is a less commonly taught fact."
+  },
+  "PLX-BCH-074": {
+   "tier": "medium",
+   "reason": "Carnitine shuttle is standard; recognizing synthetase and translocase as part of it takes one step."
+  },
+  "PLX-BCH-079": {
+   "tier": "hard",
+   "reason": "Requires discriminating which lysosomal storage diseases have established ERT among many look-alike LSDs."
+  },
+  "PLX-HEM-006": {
+   "tier": "easy",
+   "reason": "Classic G6PD oxidative triggers: primaquine, sulfa drugs, nitrofurantoin, infection."
+  },
+  "PLX-HEM-008": {
+   "tier": "easy",
+   "reason": "Spherocytes, high MCHC, osmotic fragility and negative Coombs are the textbook HS workup."
+  },
+  "PLX-HEM-013": {
+   "tier": "medium",
+   "reason": "Sickled cells are obvious, but target cells and Howell-Jolly bodies pull toward thalassemia and asplenia groups."
+  },
+  "PLX-HEM-014": {
+   "tier": "medium",
+   "reason": "PK deficiency is less emphasized; echinocytes and generic hemolysis features need specific linking."
+  },
+  "PLX-HEM-016": {
+   "tier": "medium",
+   "reason": "Koilonychia and Plummer-Vinson are classic, but glossitis and pica pull toward B12 and other groups."
+  },
+  "PLX-HEM-017": {
+   "tier": "medium",
+   "reason": "Recognizing chronic blood loss causes is one step; hookworm and malignancy also fit other groups."
+  },
+  "PLX-HEM-019": {
+   "tier": "easy",
+   "reason": "Wrist drop, colic, Burton lines and cognitive effects are classic lead poisoning recall."
+  },
+  "PLX-HEM-037": {
+   "tier": "easy",
+   "reason": "Classic inherited thrombophilia list, all tiles under best-known names."
+  },
+  "PLX-HEM-040": {
+   "tier": "easy",
+   "reason": "Low platelets, prolonged PT/aPTT, low fibrinogen, high D-dimer is the textbook DIC panel."
+  },
+  "PLX-HEM-044": {
+   "tier": "medium",
+   "reason": "Purine antimetabolites are standard, but cladribine and fludarabine are less familiar and pull to leukemia drugs."
+  },
+  "PLX-HEM-045": {
+   "tier": "medium",
+   "reason": "Pyrimidine analogues are standard; azacitidine is less familiar and could pull toward hypomethylating agents."
+  },
+  "PLX-HEM-047": {
+   "tier": "medium",
+   "reason": "Checkpoint inhibitors are taught; atezolizumab and durvalumab are less familiar names."
+  },
+  "PLX-HEM-048": {
+   "tier": "medium",
+   "reason": "Alkylating agents are standard, but cisplatin requires mechanism linking and busulfan pulls to fibrosis groups."
+  },
+  "PLX-HEM-050": {
+   "tier": "medium",
+   "reason": "Requires linking oncogenes as kinases; each is well known but the shared feature takes one step."
+  },
+  "PLX-HEM-052": {
+   "tier": "medium",
+   "reason": "Basophilia and low LAP are classic CML, but splenomegaly and left shift overlap other myeloproliferative disorders."
+  },
+  "PLX-HEM-056": {
+   "tier": "medium",
+   "reason": "TRAP and dry tap are classic; BRAF mutation is less familiar and pancytopenia is nonspecific."
+  },
+  "PLX-HEM-057": {
+   "tier": "medium",
+   "reason": "CD5 B cells and Richter are classic, but AIHA and lymphocytosis are shared with other lymphoid neoplasms."
+  },
+  "PLX-HEM-059": {
+   "tier": "medium",
+   "reason": "HTLV-1 link is classic, but hypercalcemia and lytic lesions pull strongly toward multiple myeloma."
+  },
+  "PLX-HEM-064": {
+   "tier": "medium",
+   "reason": "Teardrop cells and splenomegaly are classic; leukoerythroblastic picture is a less familiar term."
+  },
+  "PSY-005": {
+   "tier": "medium",
+   "reason": "Atypical depression criteria are standard, but recognizing the specifier from individual features takes a step."
+  },
+  "PSY-010": {
+   "tier": "easy",
+   "reason": "Yawning, lacrimation, rhinorrhea and diarrhea are classic opioid withdrawal recall."
+  },
+  "PSY-018": {
+   "tier": "medium",
+   "reason": "Haloperidol and fluphenazine are classic; trifluoperazine and pimozide are less familiar members."
+  },
+  "PSY-019": {
+   "tier": "easy",
+   "reason": "The four extrapyramidal syndromes of antipsychotics are a heavily taught classic list."
+  },
+  "PSY-023": {
+   "tier": "easy",
+   "reason": "Rigidity, high CK, altered mental status and autonomic instability is the classic NMS presentation."
+  },
+  "PULM-001": {
+   "tier": "easy",
+   "reason": "Bleomycin, amiodarone, nitrofurantoin, busulfan is the classic drug-induced pulmonary fibrosis list."
+  },
+  "PULM-007": {
+   "tier": "medium",
+   "reason": "Requires linking diverse conditions to a shared physiologic effect of decreased compliance."
+  },
+  "PULM-010": {
+   "tier": "hard",
+   "reason": "Requires mechanism reasoning about A-a gradient and shunt versus other hypoxemia causes responding to oxygen."
+  },
+  "PULM-011": {
+   "tier": "hard",
+   "reason": "Requires reasoning about oxygen content versus PaO2; tiles also fit toxicology and anemia groups."
+  },
+  "PULM-016": {
+   "tier": "medium",
+   "reason": "Central location, keratin bridges and PTHrP are classic squamous features; cavitation is less emphasized."
+  },
+  "PULM-017": {
+   "tier": "easy",
+   "reason": "Pleural plaques, mesothelioma, bronchogenic carcinoma and lower-lobe fibrosis are classic asbestos associations."
+  },
+  "REPRO-004": {
+   "tier": "medium",
+   "reason": "Turner cardiac and renal features are classic; cystic hygroma is less familiar and coarctation pulls elsewhere."
+  },
+  "REPRO-009": {
+   "tier": "medium",
+   "reason": "Requires linking diverse causes to reduced fetal urine output, a one-step mechanism link."
+  },
+  "REPRO-011": {
+   "tier": "medium",
+   "reason": "4 Ts mnemonic is known but tiles are given as descriptions, not the mnemonic words."
+  },
+  "REPRO-014": {
+   "tier": "hard",
+   "reason": "Uses histology and imprinting details like absent p57 and androgenetic genome rather than familiar clinical names."
+  },
+  "REPRO-015": {
+   "tier": "medium",
+   "reason": "Requires linking diverse conditions to unopposed estrogen; granulosa cell tumor and late menopause need that step."
+  },
+  "REPRO-019": {
+   "tier": "medium",
+   "reason": "Protective factors are standard, but tubal ligation is less familiar and tiles overlap other cancers."
+  },
+  "REPRO-020": {
+   "tier": "medium",
+   "reason": "Classic gynecomastia drug list, though finasteride is less familiar and ketoconazole pulls to CYP inhibitors."
+  },
+  "REPRO-021": {
+   "tier": "medium",
+   "reason": "GnRH agonists share the -relin stem; nafarelin and histrelin are less familiar names."
+  },
+  "REPRO-025": {
+   "tier": "medium",
+   "reason": "Chlamydia, gonorrhea and E. coli are classic; Pseudomonas is a less familiar, catheter-related member."
+  }
+ }
+}

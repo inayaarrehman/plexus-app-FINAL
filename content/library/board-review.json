@@ -3560,6 +3560,3536 @@
    "rationale": "PULM-011 tissue-hypoxia overlap: the PULM-010 mechanisms all lower PaO2, so the 'despite normal arterial oxygen tension' title excludes them and a careful player can separate the two oxygen groups.",
    "competition": "some",
    "note": "The two oxygen-related groups compete in a fair, resolvable way; the others are distinct."
+  },
+  "PLX-BCH-044+PLX-BCH-055+PLX-BCH-071+PLX-BCH-073": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "48740543",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Four unrelated biochemistry themes with distinct tiles."
+  },
+  "PLX-BCH-017+PLX-BCH-025+PLX-BCH-034+PLX-BCH-058": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "23ed445d",
+   "rationale": "No flags; scurvy hemarthrosis vs vitamin A 'Arthralgia' is mild overlap a prepared student resolves since the scurvy set is already complete.",
+   "competition": "some",
+   "note": "Vitamin excess/deficiency findings give modest tension."
+  },
+  "PLX-BCH-023+PLX-BCH-028+PLX-BCH-030+PLX-BCH-070": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "c87791b6",
+   "rationale": "No flags; 'Lysosomal inclusion bodies' and 'Hypotonia' lean only weakly toward MLD/I-cell and resolve cleanly.",
+   "competition": "some",
+   "note": "Storage and organelle themes create mild red herrings."
+  },
+  "CARD-005+CARD-012+CARD-025+CARD-049": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "63d0c83e",
+   "rationale": "No flags; restrictive cardiomyopathy causes are not classic S4 tiles and the S4 set is complete.",
+   "competition": "some",
+   "note": "S4 and restrictive filling give healthy diastolic tension."
+  },
+  "CARD-008+CARD-019+CARD-033+CARD-046": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "4e79fd71",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct cardiac findings, drug toxicity and anatomy."
+  },
+  "CARD-001+CARD-010+CARD-041+CARD-043": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "6b190d42",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clear, separate groups."
+  },
+  "CARD-007+CARD-016+CARD-034+CARD-054": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "769ef8e1",
+   "rationale": "No flags; 'Dilated cardiomyopathy' is an outcome, not an agent, so it stays with Chagas.",
+   "competition": "some",
+   "note": "Cardiomyopathy theme links Chagas and cardiotoxic agents without ambiguity."
+  },
+  "DERM-010+DERM-032+DERM-033+DERM-037": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "a9ddb88e",
+   "rationale": "No flags; 'Intertriginous distribution' and 'Insulin resistance' are not Candida syndromes, and 'Rapid growth over weeks' is not a melanoma subtype.",
+   "competition": "some",
+   "note": "Intertriginous and growth-pattern clues are fair red herrings."
+  },
+  "DERM-002+DERM-005+DERM-023+DERM-031": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "201b004a",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct skin conditions plus cell junctions."
+  },
+  "DERM-012+DERM-017+DERM-020+DERM-022": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "12d6f8bd",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clear mechanism and clue sets."
+  },
+  "DERM-025+DERM-030+DERM-035+DERM-038": {
+   "verdict": "fail",
+   "kind": "starter",
+   "conflicts": [
+    [
+     "DERM-030",
+     "DERM-035"
+    ]
+   ],
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d018f8ca",
+   "rationale": "\"Immunosuppression\" (Risk settings for cutaneous squamous cell carcinoma) is a classic clue for Bacillary angiomatosis clues, which occurs mainly in immunocompromised (AIDS) patients.",
+   "competition": "some",
+   "note": "Immunosuppression is a hallmark host clue for bacillary angiomatosis."
+  },
+  "DERM-013+DERM-015+DERM-016+DERM-024": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8e70dfa3",
+   "rationale": "No flags; pemphigus vs pemphigoid tiles are sharply distinguishable (flaccid vs tense, intra- vs subepidermal).",
+   "competition": "some",
+   "note": "Classic blistering-disease contrast creates good tension."
+  },
+  "ENDO-007+ENDO-015+ENDO-036+ENDO-039": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b405fed2",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct endocrine themes."
+  },
+  "ENDO-006+ENDO-011+ENDO-025+ENDO-041": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d94e58de",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Drug classes and FHH are clearly separated."
+  },
+  "ENDO-003+ENDO-008+ENDO-010+ENDO-013": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "27f81dca",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Thyroid themes are distinct (antibodies/histology vs drug effect)."
+  },
+  "ENDO-023+ENDO-029+ENDO-032+ENDO-033": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "9f9221af",
+   "rationale": "No flags; electrolyte tiles differ in direction (hyper- vs hypokalemia, elevated renin only in salt-wasting).",
+   "competition": "some",
+   "note": "Adrenal enzyme defects give healthy lab-pattern tension."
+  },
+  "ENDO-014+ENDO-016+ENDO-034+ENDO-035": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "75284ed5",
+   "rationale": "No flags; 'Virilization at puberty' is a 5-alpha-reductase hallmark and not a steroid/electrolyte pattern tile.",
+   "competition": "some",
+   "note": "Androgen-related tiles create mild tension."
+  },
+  "GI-019+GI-034+GI-058+GI-061": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "59b5237b",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct GI topics."
+  },
+  "GI-002+GI-028+GI-036+GI-038": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "1eb13032",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clear liver/biliary and anatomy groups."
+  },
+  "GI-025+GI-030+GI-037+GI-055": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "c81ff4c9",
+   "rationale": "No flags; 'Cirrhosis' is hepatic, so it does not fit the extrahepatic hemochromatosis group.",
+   "competition": "some",
+   "note": "Liver themes interlink but resolve cleanly."
+  },
+  "GI-022+GI-027+GI-029+GI-046": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "7e0fcf37",
+   "rationale": "No flags; low ceruloplasmin is a Wilson clue, not a classic cirrhosis synthetic marker, and diabetes is not a portal/synthetic tile.",
+   "competition": "some",
+   "note": "Liver-disease groups give fair tension."
+  },
+  "GI-007+GI-039+GI-040+GI-051": {
+   "verdict": "fail",
+   "kind": "starter",
+   "conflicts": [
+    [
+     "GI-039",
+     "GI-040"
+    ]
+   ],
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "dbf60501",
+   "rationale": "\"Valproic acid\", \"Azathioprine\", \"Didanosine\" and \"Hydrochlorothiazide\" (Drugs associated with acute pancreatitis) are all causes of acute pancreatitis beyond alcohol and gallstones, so they fit Causes of acute pancreatitis beyond alcohol and gallstones.",
+   "competition": "high",
+   "note": "The two pancreatitis groups are nested categories."
+  },
+  "PLEXUS-GEN-001+PLEXUS-GEN-008+PLEXUS-GEN-010+PLEXUS-GEN-013": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e11e30f9",
+   "rationale": "No flags; radiation vs UV sensitivity cleanly separates AT and XP.",
+   "competition": "some",
+   "note": "DNA repair disorders give fair tension."
+  },
+  "PLEXUS-GEN-015+PLEXUS-GEN-018+PLEXUS-GEN-021+PLEXUS-GEN-030": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "1181f2cd",
+   "rationale": "No flags; Hirschsprung and meconium ileus belong to distinct disorders without ambiguity.",
+   "competition": "some",
+   "note": "Neonatal GI tiles create mild red herrings."
+  },
+  "PLEXUS-GEN-020+PLEXUS-GEN-023+PLEXUS-GEN-028+PLEXUS-GEN-031": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "50ef4680",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct genetic syndrome features."
+  },
+  "PLEXUS-GEN-007+PLEXUS-GEN-016+PLEXUS-GEN-017+PLEXUS-GEN-022": {
+   "verdict": "fail",
+   "kind": "starter",
+   "conflicts": [
+    [
+     "PLEXUS-GEN-016",
+     "PLEXUS-GEN-017"
+    ]
+   ],
+   "subject": "Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "7f15a98d",
+   "rationale": "\"Intellectual disability\" (Angelman syndrome associations) is a classic Prader-Willi feature and fits Prader-Willi syndrome associations. \"Hypotonia\" (Prader-Willi syndrome associations) is also a recognized Angelman feature, fitting Angelman syndrome associations.",
+   "competition": "high",
+   "note": "Imprinting-disorder features overlap between PWS and Angelman."
+  },
+  "PLEXUS-GEN-024+PLEXUS-GEN-026+PLEXUS-GEN-027+PLEXUS-GEN-033": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "a2c2fea1",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct genetic disorders."
+  },
+  "PLX-HEM-008+PLX-HEM-018+PLX-HEM-056+PLX-HEM-065": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "c4f921b9",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clear hematology clue sets."
+  },
+  "PLX-HEM-006+PLX-HEM-021+PLX-HEM-027+PLX-HEM-041": {
+   "verdict": "fail",
+   "kind": "starter",
+   "conflicts": [
+    [
+     "PLX-HEM-006",
+     "PLX-HEM-021"
+    ],
+    [
+     "PLX-HEM-006",
+     "PLX-HEM-027"
+    ],
+    [
+     "PLX-HEM-021",
+     "PLX-HEM-027"
+    ]
+   ],
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e1dfac41",
+   "rationale": "\"Alcohol\" (Acquired sideroblastic-anemia exposures) and \"Chronic alcohol use\" (Contexts predisposing to folate deficiency) are near-interchangeable: alcohol is a classic cause of both folate deficiency and acquired sideroblastic anemia, so either tile fits either group. \"Isoniazid\" (Acquired sideroblastic-anemia exposures) also appears on some G6PD oxidant-drug lists, adding mild pull toward Oxidative triggers in G6PD deficiency.",
+   "competition": "high",
+   "note": "Alcohol duplicated across folate and sideroblastic groups makes the board ambiguous."
+  },
+  "PLX-HEM-001+PLX-HEM-033+PLX-HEM-044+PLX-HEM-049": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "1c371100",
+   "rationale": "Azathioprine is an occasional refractory-ITP agent but is far better known as a purine analogue, and leucovorin is clearly a rescue agent; no real cross-fit.",
+   "competition": "low",
+   "note": "Four well-separated drug classes."
+  },
+  "PLX-HEM-038+PLX-HEM-039+PLX-HEM-051+PLX-HEM-059": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "9ef3f004",
+   "rationale": "Lupus anticoagulant classically prolongs aPTT rather than PT, and hypercalcemia/lytic lesions do not fit the translocation group; no cross-fits.",
+   "competition": "some",
+   "note": "Lupus anticoagulant gives a mild coagulation red herring."
+  },
+  "IMM-009+IMM-013+IMM-020+IMM-038": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "1762022a",
+   "rationale": "No flags; surface IgD and secreted pentameric IgM are clearly distinct, no cross-fits.",
+   "competition": "low",
+   "note": "Clean, distinct groups."
+  },
+  "IMM-004+IMM-005+IMM-015+IMM-036": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8587067c",
+   "rationale": "TGF-beta and IL-10 are both regulatory cytokines, but TGF-beta is not Th2-associated and IL-10 is not a repair growth factor; a prepared student resolves this.",
+   "competition": "some",
+   "note": "IL-10/TGF-beta gives healthy tension."
+  },
+  "IMM-008+IMM-010+IMM-030+IMM-039": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "118fd096",
+   "rationale": "No flags; Treg markers and T-dependent B-activation features do not overlap tile-for-tile.",
+   "competition": "some",
+   "note": "Mild T-cell theme overlap only."
+  },
+  "IMM-021+IMM-022+IMM-029+IMM-034": {
+   "verdict": "fail",
+   "kind": "starter",
+   "conflicts": [
+    [
+     "IMM-021",
+     "IMM-022"
+    ]
+   ],
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "09ac5e17",
+   "rationale": "\"Markedly reduced immunoglobulins\" (Clues to X-linked agammaglobulinemia) also fits SCID screening and presentation clues: SCID causes profound hypogammaglobulinemia once maternal IgG wanes. \"Underdeveloped tonsils\" (Clues to X-linked agammaglobulinemia) also fits SCID screening and presentation clues: absent/hypoplastic tonsils and lymph nodes are a classic SCID finding.",
+   "competition": "high",
+   "note": "SCID and XLA groups share well-known antibody and lymphoid-tissue findings."
+  },
+  "MICRO-012+MICRO-017+MICRO-057+MICRO-065": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "86cd96f9",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Four unrelated, clean groups."
+  },
+  "MICRO-003+MICRO-037+MICRO-045+MICRO-052": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8332a483",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct groups with no shared tiles."
+  },
+  "MICRO-004+MICRO-019+MICRO-059+MICRO-066": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "4a1977b8",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "MICRO-006+MICRO-018+MICRO-028+MICRO-039": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "3882a44c",
+   "rationale": "No flags; Klebsiella's pulmonary role does not place it among fungi and no urease-positive fungus is present.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "MSK-001+MSK-030+MSK-032+MSK-033": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "MSK",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e3e25055",
+   "rationale": "No flags; fracture is excluded from osteonecrosis by the 'nontraumatic' title.",
+   "competition": "low",
+   "note": "Clean anatomy/pathology mix."
+  },
+  "MSK-009+MSK-025+MSK-029+MSK-041": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "MSK",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "484a189d",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "NEPH-002+NEPH-011+NEPH-016+NEPH-018": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Renal",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "151b042a",
+   "rationale": "Urinary obstruction is a papillary necrosis association and staghorn stones can obstruct, but the struvite tiles are stone-specific; no real cross-fit.",
+   "competition": "some",
+   "note": "Obstruction/stone tension is resolvable."
+  },
+  "NEPH-012+NEPH-019+NEPH-020+NEPH-021": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Renal",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "ed0fb967",
+   "rationale": "NSAIDs can also cause prerenal/hemodynamic injury but are not direct tubular toxins and no prerenal tile is a drug; no real cross-fit.",
+   "competition": "some",
+   "note": "AKI theme gives mild healthy tension."
+  },
+  "NEPH-001+NEPH-007+NEPH-013+NEPH-017": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Renal",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "cd9eab26",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "NEPH-004+NEPH-005+NEPH-023+NEPH-026": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Renal",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "05aca6b8",
+   "rationale": "No flags; diuretic classes are distinct and acetazolamide uses are conditions, not drugs.",
+   "competition": "some",
+   "note": "Diuretic theme across three groups is resolvable."
+  },
+  "NEU-013+NEU-045+NEU-051+NEU-062": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "46b56471",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "NEU-015+NEU-025+NEU-053+NEU-061": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "62a4477c",
+   "rationale": "No flags; donepezil has no competing Alzheimer group here.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "NEU-004+NEU-007+NEU-009+NEU-060": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "63f3f93f",
+   "rationale": "Spinothalamic and spinocerebellar tracts relate to cord findings but are structures, not Brown-Sequard findings, and spinocerebellar pathways are ascending, not extrapyramidal motor tracts.",
+   "competition": "some",
+   "note": "Tract names create healthy tension."
+  },
+  "NEU-021+NEU-029+NEU-040+NEU-046": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "fd5b8f8c",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "PSY-003+PSY-005+PSY-019+PSY-021": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Psychiatry",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "27e9fc1d",
+   "rationale": "Lithium tremor is a symptom, not one of the named antipsychotic movement-disorder syndromes; resolvable.",
+   "competition": "some",
+   "note": "Tremor offers a mild red herring."
+  },
+  "PSY-007+PSY-015+PSY-016+PSY-020": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Psychiatry",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "09effcf1",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "PSY-013+PSY-014+PSY-017+PSY-025": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Psychiatry",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "5a210495",
+   "rationale": "TCAs also inhibit serotonin and norepinephrine reuptake, but class membership (tricyclic vs SNRI) is unambiguous to a prepared student.",
+   "competition": "some",
+   "note": "TCA/SNRI mechanism overlap gives healthy tension."
+  },
+  "PULM-002+PULM-004+PULM-010+PULM-016": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Pulmonary",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "40a57c9a",
+   "rationale": "No flags; PTHrP hypercalcemia is squamous, not small cell; no cross-fits.",
+   "competition": "some",
+   "note": "Lung-cancer paraneoplastic contrast is a fair red herring."
+  },
+  "REPRO-004+REPRO-009+REPRO-012+REPRO-020": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Reproductive",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "6738b5a4",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "REPRO-008+REPRO-019+REPRO-021+REPRO-022": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Reproductive",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "2eb83653",
+   "rationale": "Oral contraceptive use is a protective exposure, not a progestin drug; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "REPRO-001+REPRO-002+REPRO-017+REPRO-018": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Reproductive",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e5332ede",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "PLX-BCH-040+PLX-BCH-046+PLX-BCH-050+PLX-BCH-077": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "197a871a",
+   "rationale": "No other neurotransmitter-deficiency group is on the board; Pompe-related hypotonia is a finding tile and does not fit a group of disease names.",
+   "competition": "some",
+   "note": "Hypotonia and developmental delay brush against Pompe, but the GSD group is all disease names."
+  },
+  "MSK-013+MSK-015+MSK-035+MSK-040": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "MSK",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e4b7fb4d",
+   "rationale": "Navicular and sesamoids are not on the board, and no other group competes for the fracture sites.",
+   "competition": "low",
+   "note": "Four clearly separate domains."
+  },
+  "PSY-001+PSY-002+PSY-008+PSY-023": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Psychiatry",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "bf869251",
+   "rationale": "No anticipation, affiliation or self-assertion tiles and no serotonin syndrome group are on the board, so neither caution applies.",
+   "competition": "low",
+   "note": "The groups are cleanly separated."
+  },
+  "PSY-006+PSY-010+PSY-012+PSY-018": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Psychiatry",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "4bf2887a",
+   "rationale": "Escitalopram is absent, there is no competing EPS-risk group, and no other psychotic-disorder group competes for the positive symptoms.",
+   "competition": "low",
+   "note": "Drug classes and symptom sets don't overlap."
+  },
+  "PULM-003+PULM-005+PULM-009+PULM-012": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Pulmonary",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "9632c5ea",
+   "rationale": "No carcinoid or LCNEC group is on the board, so the marker overlap does not apply.",
+   "competition": "low",
+   "note": "Four separate topics."
+  },
+  "PULM-006+PULM-011+PULM-013+PULM-017": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Pulmonary",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "894ac080",
+   "rationale": "There is no competing pleural, air-trapping or general tissue-hypoxia group; the asbestos fibrosis tile is parenchymal and does not fit the extrapulmonary neuromuscular group.",
+   "competition": "some",
+   "note": "Restrictive and obstructive groups create mild tension but resolve cleanly."
+  },
+  "REPRO-007+REPRO-011+REPRO-013+REPRO-015": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Reproductive",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "24e94f11",
+   "rationale": "There are no endometrial-cancer, GTD or quad-screen groups on the board; preeclampsia and trauma tiles stay in their own groups.",
+   "competition": "some",
+   "note": "Obstetric overlap is thematic only; 'Abdominal trauma' vs 'Genital tract trauma' is a fair decoy."
+  },
+  "CARD-032+IMM-028+PLX-BCH-049+PLX-HEM-032": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "IMM-028",
+     "PLX-BCH-049"
+    ],
+    [
+     "IMM-028",
+     "PLX-HEM-032"
+    ],
+    [
+     "PLX-BCH-049",
+     "PLX-HEM-032"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8c2f3d53",
+   "rationale": "\"Wiskott-Aldrich syndrome\" (X-linked inborn errors of immunity) also fits \"Mucocutaneous bleeding from primary-hemostasis defects\": WAS causes thrombocytopenia with small platelets, which produces petechiae and mucocutaneous bleeding. \"Eczema\" (Classic phenylketonuria presentation clues) is part of the classic Wiskott-Aldrich triad, which strengthens the pull toward the X-linked group.",
+   "competition": "high",
+   "note": "Wiskott-Aldrich is a textbook primary-hemostasis bleeding disorder."
+  },
+  "GI-010+GI-013+MICRO-034+MICRO-040": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "bc9db64f",
+   "rationale": "No flags; Diphyllobothrium is a cestode acquired from larvae in fish, so it cannot join the egg-ingested nematode group.",
+   "competition": "some",
+   "note": "D. latum is a fair helminth red herring."
+  },
+  "CARD-053+ENDO-017+NEU-027+PLX-HEM-020": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "9c7ce407",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Groups are fully distinct."
+  },
+  "GI-056+MICRO-001+MICRO-022+PLX-BCH-001": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "6fc99390",
+   "rationale": "No flags; bronchospasm leans toward ABPA, but the carcinoid group has exactly four candidates, and toxin names cannot take symptom tiles.",
+   "competition": "some",
+   "note": "'Bronchospasm' vs 'Asthma exacerbations' is healthy tension."
+  },
+  "CARD-013+ENDO-024+IMM-025+NEU-041": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "edea907d",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct topics."
+  },
+  "DERM-028+GI-033+GI-062+PLX-BCH-024": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b63fd6bc",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct topics."
+  },
+  "ENDO-009+IMM-031+MICRO-055+NEU-030": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8a050153",
+   "rationale": "No flags; suprasellar location and pituitary resection are only thematically related.",
+   "competition": "low",
+   "note": "Sellar themes touch but don't conflict."
+  },
+  "DERM-029+GI-044+PLX-BCH-029+PLX-HEM-019": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d253d314",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct topics."
+  },
+  "CARD-028+IMM-014+MICRO-026+MICRO-036": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "IMM-014",
+     "MICRO-036"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "1407ef8a",
+   "rationale": "\"Anaphylaxis after cyst rupture\" (Hydatid disease diagnostic and complication clues) also fits \"IgE-associated immune events\": it is IgE-mediated type I hypersensitivity to released antigen, and 'Helminth defense' could plausibly be swapped into the hydatid group.",
+   "competition": "high",
+   "note": "Hydatid anaphylaxis is an IgE event, which makes the two groups interchangeable."
+  },
+  "DERM-014+GI-015+NEU-038+PLX-HEM-013": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "310cf2d7",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct topics."
+  },
+  "CARD-029+ENDO-042+MICRO-062+PLX-BCH-041": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "672eeccc",
+   "rationale": "No flags; hyperuricemia from pyrazinamide and lactate from metformin are drug effects and do not move tiles into the drug-name groups.",
+   "competition": "some",
+   "note": "Subtle drug adverse-effect echoes add mild tension."
+  },
+  "DERM-001+GI-049+NEU-005+PLX-HEM-061": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "ea375626",
+   "rationale": "No flags; 'Stem cells' could evoke basal epidermal stem cells, but the crypt group has exactly four candidates and the epidermal four are the classic set.",
+   "competition": "some",
+   "note": "Paired cell-population groups create fair tension."
+  },
+  "CARD-042+IMM-002+MICRO-009+PLX-BCH-038": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "05a69c73",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "some",
+   "note": "Immunodeficiency themes sit near each other but don't share tiles."
+  },
+  "ENDO-012+GI-047+NEU-057+PLX-HEM-048": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "ENDO-012",
+     "GI-047"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "fe0b8492",
+   "rationale": "\"Weight loss\" (VIPoma (Verner-Morrison) findings) also fits \"Characteristic associations of Graves disease\": weight loss is a hallmark of Graves hyperthyroidism, and it is not part of the classic WDHA triad.",
+   "competition": "some",
+   "note": "Weight loss is a nonspecific tile that points more strongly to Graves than to VIPoma."
+  },
+  "CARD-038+CARD-039+DERM-027+MICRO-047": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d99bf354",
+   "rationale": "No flags; standard localization puts V3-V4 in the anterior territory and V5-V6 with I and aVL in the lateral territory.",
+   "competition": "high",
+   "note": "The two ECG-lead groups give strong but resolvable tension."
+  },
+  "GI-003+IMM-016+NEU-006+PLX-BCH-006": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "700eada1",
+   "rationale": "No flags; the hypoglossal nucleus is a brainstem structure, not a tongue muscle, so it stays medial.",
+   "competition": "some",
+   "note": "The CN XII theme links two groups without any tile ambiguity."
+  },
+  "DERM-019+MICRO-069+MICRO-070+PLX-HEM-053": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d573eeda",
+   "rationale": "No flags; the -asvir and -previr suffixes cleanly separate NS5A inhibitors from protease inhibitors.",
+   "competition": "high",
+   "note": "HCV drug pairs make strong, fair decoys."
+  },
+  "CARD-024+ENDO-027+GI-032+PLX-BCH-037": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "7367d81c",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct topics."
+  },
+  "DERM-006+IMM-003+MICRO-015+PLX-HEM-030": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "870aa534",
+   "rationale": "No flags; dendritic keratitis (HSV) and contact-lens ulcer (Pseudomonas) are distinct corneal entities.",
+   "competition": "some",
+   "note": "The keratitis pair is a fair red herring."
+  },
+  "CARD-011+ENDO-005+NEU-059+PLX-BCH-052": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "aaed2ca3",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct topics."
+  },
+  "DERM-026+IMM-035+MICRO-013+PLX-HEM-055": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "c064ec0d",
+   "rationale": "No flags; the hepatitis C and EBV associations belong to different diseases and don't compete.",
+   "competition": "low",
+   "note": "Distinct topics."
+  },
+  "CARD-004+ENDO-028+GI-005+NEU-043": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "2d9d5ee0",
+   "rationale": "No flags; beta-blocker renin suppression and Friedreich cardiomyopathy are only thematic links to the hyperaldosteronism group, not cross-fits.",
+   "competition": "some",
+   "note": "Clean board with a mild renin/cardiac red herring."
+  },
+  "IMM-027+MICRO-031+PLX-BCH-026+PLX-HEM-058": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "IMM-027",
+     "PLX-BCH-026"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "c992ba66",
+   "rationale": "\"Thrombocytopenia\" (Wiskott-Aldrich syndrome clues) is a defensible member of Characteristic Gaucher disease findings: thrombocytopenia from hypersplenism and marrow infiltration is a classic presenting Gaucher finding (bruising/bleeding).",
+   "competition": "high",
+   "note": "Cytopenia tiles blur WAS and Gaucher."
+  },
+  "GI-026+MICRO-056+NEU-028+PLX-HEM-034": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d04c800f",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Four distinct domains with no overlap."
+  },
+  "CARD-021+GI-053+NEU-001+PLX-HEM-016": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "62d58987",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Groups are well separated."
+  },
+  "ENDO-019+MICRO-032+PLX-BCH-054+PLX-HEM-064": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "MICRO-032",
+     "PLX-HEM-064"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "6ba64b33",
+   "rationale": "\"Massive splenomegaly\" (Myelofibrosis clues) fits Visceral leishmaniasis diagnostic associations: kala-azar is a classic cause of massive splenomegaly, making it near-interchangeable with \"Hepatosplenomegaly\". \"Hepatosplenomegaly\" (Visceral leishmaniasis diagnostic associations) fits Myelofibrosis clues: extramedullary hematopoiesis enlarges both liver and spleen.",
+   "competition": "high",
+   "note": "Organomegaly tiles swap between myelofibrosis and kala-azar."
+  },
+  "MICRO-060+NEU-022+PLX-BCH-027+PLX-HEM-005": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "7cbb1fd8",
+   "rationale": "No flags; antibiotic tiles in the hemolysis group are not fluoroquinolones, so no cross-fits.",
+   "competition": "some",
+   "note": "Antibiotic-themed red herring resolves cleanly by class."
+  },
+  "DERM-018+ENDO-038+GI-057+IMM-026": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d529dc85",
+   "rationale": "No flags; granuloma and infection themes (Crohn, TB, histoplasmosis) are thematic only and each tile has one clear home.",
+   "competition": "some",
+   "note": "Granuloma theme creates mild tension only."
+  },
+  "CARD-014+MICRO-025+PLX-BCH-020+PLX-HEM-009": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "50fdb89c",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct disease clue sets."
+  },
+  "CARD-040+GI-065+MICRO-016+NEU-031": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "f36babaa",
+   "rationale": "No flags; triptans are 5-HT1B/1D agonists, not 5-HT3 antagonists, so the serotonin link is a fair red herring.",
+   "competition": "some",
+   "note": "Serotonin red herring with triptans is resolvable."
+  },
+  "ENDO-021+PLX-BCH-007+PLX-BCH-010+PLX-HEM-045": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "50d2d0cc",
+   "rationale": "No flags; vincristine and the pyrimidine analogues are both chemotherapy but differ clearly by mechanism.",
+   "competition": "some",
+   "note": "Chemotherapy theme splits cleanly by mechanism."
+  },
+  "CARD-048+GI-042+MICRO-027+PLX-HEM-010": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "GI-042",
+     "MICRO-027"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "1c9bece5",
+   "rationale": "\"Foul-smelling fatty diarrhea\" (Giardiasis clinical and microscopy clues) fits Diagnostic pattern of chronic pancreatic exocrine insufficiency: steatorrhea is the defining clinical feature of exocrine pancreatic insufficiency.",
+   "competition": "high",
+   "note": "Steatorrhea tile belongs equally to pancreatic insufficiency."
+  },
+  "CARD-051+DERM-009+NEU-020+PLX-HEM-011": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "5d0361ce",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Well separated groups."
+  },
+  "GI-020+IMM-037+MICRO-041+PLX-BCH-060": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "2f28d989",
+   "rationale": "No flags; alcohol links to thiamine deficiency and jaundice to liver injury are thematic only since the tiles are phrased specifically.",
+   "competition": "some",
+   "note": "Liver and alcohol themes give mild tension."
+  },
+  "CARD-036+ENDO-018+NEU-055+PLX-HEM-052": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "0deab895",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct clue sets."
+  },
+  "DERM-036+GI-041+MICRO-048+PLX-BCH-061": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "72edf4f9",
+   "rationale": "No flags; skin-lesion and DIC tiles each have one clear home.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "CARD-022+NEU-032+PLX-BCH-032+PLX-HEM-047": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "518940aa",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Groups do not overlap."
+  },
+  "GI-017+MICRO-061+NEU-047+PLX-BCH-065": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "42fa2839",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Two drug classes plus two clue sets, all distinct."
+  },
+  "GI-023+MICRO-068+NEU-033+PLX-BCH-063": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "963ceea4",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "CARD-035+MICRO-053+NEU-039+PLX-HEM-057": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "ec1798ff",
+   "rationale": "No flags; hemorrhage themes (subdural vs hemopericardium vs splinter hemorrhages) resolve clearly.",
+   "competition": "some",
+   "note": "Bleeding theme is a fair red herring."
+  },
+  "GI-014+NEU-056+PLX-BCH-014+PLX-HEM-028": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "GI-014",
+     "NEU-056"
+    ],
+    [
+     "GI-014",
+     "PLX-HEM-028"
+    ],
+    [
+     "NEU-056",
+     "PLX-HEM-028"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "26c68f9b",
+   "rationale": "\"Vitamin B12 deficiency\" (Potentially treatable contributors to cognitive impairment) fits Consequences of parietal-cell autoimmunity: pernicious anemia directly causes B12 deficiency, near-interchangeable with \"Vitamin B12 malabsorption\". \"Megaloblastic anemia\", \"Hypersegmented neutrophils\" and \"Increased homocysteine\" (Folate-deficiency laboratory pattern) are also consequences of parietal-cell autoimmunity via B12 deficiency.",
+   "competition": "high",
+   "note": "B12/pernicious anemia tiles spread across three groups."
+  },
+  "GI-060+IMM-007+PLX-BCH-076+PLX-HEM-054": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "a2f6e5fe",
+   "rationale": "No flags; carcinoid tumor (appendix) and the Hartnup niacin link, and lymphoid hyperplasia vs Hodgkin, are thematic only.",
+   "competition": "some",
+   "note": "Mild lymphoid and tryptophan red herrings."
+  },
+  "CARD-031+ENDO-026+PLX-BCH-043+PLX-HEM-063": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "763f5195",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct clue sets."
+  },
+  "MICRO-051+NEU-026+PLX-BCH-018+PLX-BCH-019": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8c086546",
+   "rationale": "No flags; the two hearing-loss tiles are disambiguated (mumps causes sudden sensorineural loss, OI causes progressive conductive/mixed loss), and pancreatitis vs AIP abdominal pain is thematic.",
+   "competition": "high",
+   "note": "Hearing-loss tiles create strong but resolvable tension."
+  },
+  "CARD-018+IMM-023+MICRO-021+PLX-HEM-036": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e00deeb1",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "GI-018+MICRO-033+MICRO-035+PLX-BCH-021": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "90a9afb3",
+   "rationale": "No flags; D. latus (B12) and hookworms (iron) link to PPI nutrients only thematically, and Ascaris/Strongyloides are not acquired by eating larvae in meat.",
+   "competition": "some",
+   "note": "Parasite-nutrient red herrings are fair."
+  },
+  "ENDO-001+MICRO-008+NEU-014+PLX-BCH-074": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "bd15c07d",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Well separated groups."
+  },
+  "CARD-050+MICRO-044+PLEXUS-GEN-032+PLX-BCH-059": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "ecfae6dd",
+   "rationale": "No flags; skull findings (microcephaly vs craniotabes/fontanelle) are distinct.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "NEU-023+NEU-035+PLX-BCH-062+PLX-HEM-060": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "1166df4a",
+   "rationale": "No flags; Meyer loop is subcortical white matter rather than an MCA language/motor cortical target, and generic anemia vs sideroblastic anemia is clearly separated.",
+   "competition": "some",
+   "note": "Neuro-anatomy groups give mild tension."
+  },
+  "CARD-044+ENDO-022+GI-063+PLX-BCH-015": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "02bdc31b",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Four clearly separated domains with no shared tiles."
+  },
+  "ENDO-030+GI-031+MICRO-038+PLX-BCH-051": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "be489a3a",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "some",
+   "note": "Urine-based clues (VMA/HVA vs sweet-smelling urine) give mild tension but resolve cleanly."
+  },
+  "IMM-018+MICRO-067+NEU-012+PLX-BCH-057": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "a63509e2",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "some",
+   "note": "Visual-pathway tiles (night blindness vs delayed VEPs) are a fair red herring."
+  },
+  "CARD-027+GI-054+PLX-BCH-031+PLX-HEM-017": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "GI-054",
+     "PLX-HEM-017"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "c1f23fc2",
+   "rationale": "\"Meckel diverticulum\" (Potential lead points for intussusception) also fits Sources of chronic iron-loss anemia: ectopic gastric mucosa causes painless GI bleeding and is a classic cause of iron-deficiency anemia in children. \"Intestinal polyp\" (Potential lead points for intussusception) also fits Sources of chronic iron-loss anemia: bleeding GI polyps are a standard cause of occult blood loss and iron deficiency, nearly interchangeable with \"Bleeding gastrointestinal malignancy\".",
+   "competition": "high",
+   "note": "Two GI-bleeding sources sit in the intussusception group and cross into the iron-loss group."
+  },
+  "ENDO-037+GI-066+PLX-BCH-056+PLX-HEM-024": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e1711999",
+   "rationale": "No flags; Hyperpigmentation evokes Addison disease and iron overload, but the APS and thalassemia groups list diseases/associations, so it only fits PCT findings.",
+   "competition": "some",
+   "note": "Hyperpigmentation and iron overload give healthy red-herring tension."
+  },
+  "GI-001+MSK-028+PLX-BCH-003+PLX-BCH-066": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "6e713a38",
+   "rationale": "Adductor magnus, midgut/hindgut organs and cysteine are all absent; cystine (cystinuria) is not a polar uncharged side chain, and lysine/arginine/ornithine are basic.",
+   "competition": "some",
+   "note": "Two amino-acid groups compete superficially but separate by charge."
+  },
+  "GI-064+MICRO-010+PHARM-014+REPRO-025": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "MICRO-010",
+     "REPRO-025"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "112c0740",
+   "rationale": "\"Escherichia coli\" (Bacterial pathogens of infectious epididymitis) also fits Bacterial infections linked to unpasteurized dairy: E. coli O157:H7 (EHEC) is a classic raw-milk pathogen, as the MICRO-010 flag itself notes.",
+   "competition": "high",
+   "note": "E. coli double-fits the epididymitis and raw-dairy groups."
+  },
+  "DERM-004+IMM-001+MSK-003+NEU-049": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "97db5bd3",
+   "rationale": "Chlamydia, primary lymphoid organs and bullous impetigo are absent; the dopamine-pathway note is content only.",
+   "competition": "low",
+   "note": "Yersinia/Peyer's patch link is only thematic."
+  },
+  "CARD-009+DERM-011+NEPH-030+PLX-HEM-040": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "5d916f59",
+   "rationale": "No hypocalcemia category or tinea versicolor is on the board; renal failure/rhabdo/TLS cause hyperkalemia but are causes, not ACE-inhibitor effects.",
+   "competition": "some",
+   "note": "Hyperkalemia and thrombocytopenia evoke other groups but resolve by tile type."
+  },
+  "CARD-020+PLEXUS-GEN-011+PLX-BCH-016+PLX-BCH-069": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "038f9a5f",
+   "rationale": "Glutamate is not on the board; histidine vs histamine is a fair red herring since one is an amino acid and the other a neurotransmitter.",
+   "competition": "some",
+   "note": "Histidine/histamine and glutamine/GABA give healthy tension."
+  },
+  "DERM-021+ENDO-020+NEU-003+PLX-BCH-036": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "1b35acf8",
+   "rationale": "No RNA/protein methylation, ALS, or hyperparathyroidism groups are present; hyporeflexia is not a classic stones/bones/groans/overtones tile.",
+   "competition": "low",
+   "note": "Clean separation across biochemistry, immunology, neurology and endocrine."
+  },
+  "GI-009+MICRO-014+MSK-017+NEU-017": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "GI-009",
+     "MSK-017"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "525dccee",
+   "rationale": "\"Scleroderma\" (Conditions predisposing to gastroesophageal reflux) also fits Characteristic limited systemic sclerosis features: it names the disease itself, so the player sees five systemic-sclerosis tiles, and the esophageal dysmotility it implies is the CREST feature the MSK-017 flag warns against placing on the board.",
+   "competition": "high",
+   "note": "Scleroderma in the GERD group collides with the limited SSc group."
+  },
+  "IMM-024+NEPH-009+PLEXUS-GEN-004+PLEXUS-GEN-012": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b6cd884a",
+   "rationale": "No xeroderma pigmentosum/chromosomal-instability, collapsing glomerulopathy, or anticipation group is present.",
+   "competition": "low",
+   "note": "Genetics groups are distinct in tile type."
+  },
+  "ENDO-002+NEU-016+PLX-HEM-050+PSY-009": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "4a8f31a9",
+   "rationale": "No glycoprotein-hormone, botulism, or broad nutritional-deficiency tiles are present; amenorrhea relates to low FSH/LH but is a clinical sign, not a hormone.",
+   "competition": "some",
+   "note": "Amenorrhea and gonadotropins give mild, resolvable tension."
+  },
+  "GI-006+MSK-024+PLX-BCH-002+PLX-BCH-033": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "6f28a925",
+   "rationale": "No other glucogenic amino acids or Down syndrome tile; the ANA-positive overlap describes the same four tiles, so it does not compete.",
+   "competition": "low",
+   "note": "Distinct groups; amyloidosis/Sjogren link is too weak to matter."
+  },
+  "MICRO-063+MSK-010+NEU-054+PLEXUS-GEN-029": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b3bc3f56",
+   "rationale": "No Patau group, biologic DMARDs or JAK inhibitors are on the board.",
+   "competition": "low",
+   "note": "Drug classes and syndromes separate cleanly."
+  },
+  "CARD-003+MSK-006+PLX-BCH-068+PLX-HEM-003": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "53c6dca8",
+   "rationale": "Weak positive birefringence and blue-parallel are redundant within the CPP group, which makes it easier but creates no cross-fit; tryptophan/threonine are absent, and Factor IX has no vitamin K group to compete with.",
+   "competition": "low",
+   "note": "The CPP group is slightly redundant but fair."
+  },
+  "CARD-023+GI-008+MSK-034+NEU-008": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "4c6396d3",
+   "rationale": "No tricuspid-endocarditis group; the manometry and Ottawa caveats are content notes, not board conflicts.",
+   "competition": "low",
+   "note": "Very distinct domains."
+  },
+  "DERM-003+MSK-020+NEU-058+PLX-BCH-022": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "05b446a2",
+   "rationale": "No other TAC, Kawasaki/TSS, or small round blue cell group is present; rhinorrhea/congestion vs recurrent sinusitis is only thematic.",
+   "competition": "some",
+   "note": "Nasal symptoms vs sinusitis give mild red-herring tension."
+  },
+  "MSK-011+NEPH-024+PHARM-011+PLX-BCH-035": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "1378e13d",
+   "rationale": "Alfuzosin/silodosin, a BPH category, quinidine/anti-TNF and hypercalcemia/erythrocytosis groups are absent; methyldopa is an alpha-2 agonist, not an alpha-1 blocker.",
+   "competition": "some",
+   "note": "Methyldopa vs the alpha-1 blockers is a fair adrenergic red herring."
+  },
+  "CARD-052+GI-024+PLX-BCH-078+PLX-HEM-035": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "f0942262",
+   "rationale": "No TTP group or secondary iron-overload group is present.",
+   "competition": "low",
+   "note": "Lab-pattern groups are internally distinct."
+  },
+  "CARD-006+MICRO-002+NEPH-003+PLX-BCH-067": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "3a6c9039",
+   "rationale": "No threonine, ototoxicity, or class IA group is on the board; the Shiga pair only makes its own group easier.",
+   "competition": "low",
+   "note": "Clean drug and biochemistry classes."
+  },
+  "GI-048+MSK-005+NEU-024+PLX-BCH-004": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "27cb6aed",
+   "rationale": "No RA or other malabsorption group; otosclerosis vs subchondral sclerosis is only wordplay.",
+   "competition": "some",
+   "note": "The sclerosis wordplay is a mild red herring."
+  },
+  "GI-052+NEPH-010+PLX-BCH-011+PLX-BCH-072": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "0c67c132",
+   "rationale": "No Mn-SOD tile and no other glomerular-lesion or neurologic group compete.",
+   "competition": "some",
+   "note": "The two enzyme-cofactor groups compete only superficially."
+  },
+  "MICRO-020+MSK-021+PLX-HEM-037+REPRO-023": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "PLX-HEM-037",
+     "REPRO-023"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "392f8eb2",
+   "rationale": "\"Factor V Leiden\" (Inherited venous-thrombophilia mechanisms) also fits Category 4 contraindications to combined (estrogen-containing) hormonal contraception: known thrombogenic mutations are US MEC Category 4 and a classic USMLE estrogen contraindication; the same applies to \"Prothrombin G20210A mutation\", \"Antithrombin deficiency\" and \"Protein C deficiency\".",
+   "competition": "high",
+   "note": "Every inherited thrombophilia is itself a Category 4 contraindication to combined hormonal contraception."
+  },
+  "DERM-008+ENDO-031+PLX-BCH-013+PLX-HEM-004": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "5a2d29a5",
+   "rationale": "No warm-AIHA group and no extra homocysteine-raising tile is on the board.",
+   "competition": "low",
+   "note": "Separate topics with no shared tiles."
+  },
+  "MICRO-054+PLX-BCH-012+PLX-BCH-047+PULM-001": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "527924dc",
+   "rationale": "No extra NADPH users, trypsinogen or pepsinogen are on the board; the antineoplastic note is internal to the fibrosis group.",
+   "competition": "low",
+   "note": "Drug and enzyme classes separate cleanly."
+  },
+  "DERM-007+GI-004+MICRO-050+PLX-BCH-079": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "014ff76d",
+   "rationale": "No Hunter syndrome, zoster-complications group or separate Crohn/UC tile; lichen planus causes oral lesions but is mucocutaneous, not a systemic disease.",
+   "competition": "some",
+   "note": "Lichen planus and SLE/MPGN give mild, resolvable tension."
+  },
+  "CARD-037+NEU-002+PLEXUS-GEN-019+PSY-004": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8acd19d2",
+   "rationale": "No acute stress disorder or hypertonia tile appears, so the PTSD and spasticity notes don't cause any conflict, and the four domains are far apart.",
+   "competition": "low",
+   "note": "Four unrelated systems with clean groups."
+  },
+  "GI-059+MSK-002+NEU-050+PLX-BCH-042": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "GI-059",
+     "MSK-002"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "4127ff4e",
+   "rationale": "\"IBD-associated (enteropathic) spondyloarthritis\" (Seronegative spondyloarthritides) is itself an extraintestinal manifestation of IBD and fits \"Extraintestinal manifestations of inflammatory bowel disease\" as well as its own group; \"Sacroiliitis\" is the axial lesion of that same entity, so the two are near-interchangeable.",
+   "competition": "high",
+   "note": "The IBD and spondyloarthritis groups collide, as the flags warned."
+  },
+  "MICRO-058+MSK-004+NEPH-028+PLEXUS-GEN-002": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "07321f40",
+   "rationale": "No anthracycline beyond doxorubicin, no second RTA category and no other nephrotoxic group is present; aspirin and thiazides don't cause a normal-anion-gap acidosis.",
+   "competition": "some",
+   "note": "Drug-heavy board, but each class is distinct."
+  },
+  "GI-016+GI-045+PLX-BCH-045+PLX-HEM-043": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "0c735585",
+   "rationale": "Gastrinoma is not a tile, and 'MEN1 association' is a feature, not a tumor type, so it stays with Zollinger-Ellison; VIPoma and somatostatinoma cause achlorhydria, not acid excess.",
+   "competition": "some",
+   "note": "The pancreatic NET/ZES pairing is a fair red herring."
+  },
+  "ENDO-040+NEU-034+PLEXUS-GEN-014+PLX-BCH-039": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "ENDO-040",
+     "PLX-BCH-039"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b391330b",
+   "rationale": "\"Ketonemia\" (Classic clues to diabetic ketoacidosis) fits \"Metabolic consequences of ethanol-driven NADH excess\" because alcoholic ketoacidosis produces ketonemia. \"Anion gap metabolic acidosis\" (Classic clues to diabetic ketoacidosis) fits \"Metabolic consequences of ethanol-driven NADH excess\" because ethanol-driven lactic acidosis and ketoacidosis are both anion-gap acidoses.",
+   "competition": "high",
+   "note": "The flag's ketoacidosis-mimic warning is realized by the ethanol group."
+  },
+  "MSK-022+PLEXUS-GEN-009+PLX-BCH-008+PLX-HEM-062": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e9608c22",
+   "rationale": "No MPA/EGPA group or NER/MMR group is present; DNA ligase is shared with other pathways only off-board.",
+   "competition": "low",
+   "note": "Clean, well-separated groups."
+  },
+  "GI-010+GI-013+GI-033+GI-062": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b4fe09a6",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Four distinct GI themes."
+  },
+  "MICRO-001+MICRO-022+MICRO-034+MICRO-040": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "90791030",
+   "rationale": "No flags; eosinophilia relates to helminths only thematically, and the nematode group is organism names.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "CARD-013+CARD-028+CARD-032+CARD-053": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "01639706",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct cardiac entities."
+  },
+  "PLX-BCH-024+PLX-BCH-029+PLX-BCH-041+PLX-BCH-049": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "0277709e",
+   "rationale": "No flags; 'Seizures' is a nonspecific feature also seen in Tay-Sachs and in hypoglycemia, but the Tay-Sachs and Von Gierke groups each have four more specific tiles.",
+   "competition": "some",
+   "note": "'Seizures' is a mild red herring."
+  },
+  "PLX-HEM-013+PLX-HEM-020+PLX-HEM-032+PLX-HEM-061": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "499e23c4",
+   "rationale": "No flags; the smear findings for lead and sickle cell are distinct (stippling and ringed sideroblasts vs target and Howell-Jolly).",
+   "competition": "some",
+   "note": "Smear-finding tension resolves cleanly."
+  },
+  "NEU-027+NEU-030+NEU-038+NEU-041": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "039b0d90",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean neuro board."
+  },
+  "IMM-002+IMM-025+IMM-028+IMM-031": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "4378955d",
+   "rationale": "No flags; the disease-name tile 'CD40L-deficient hyper-IgM syndrome' is not itself a clue to the disease, so it belongs only to the X-linked group.",
+   "competition": "high",
+   "note": "A strong but fair red herring between the X-linked and hyper-IgM groups."
+  },
+  "MICRO-009+MICRO-026+MICRO-036+MICRO-062": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "87fb1062",
+   "rationale": "No flags; amebic abscess and hydatid cyst tiles are clearly distinct.",
+   "competition": "some",
+   "note": "Liver-lesion tiles create fair tension."
+  },
+  "GI-015+GI-044+GI-049+GI-056": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8c403305",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "ENDO-009+ENDO-012+ENDO-017+ENDO-042": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "666a425d",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean endocrine board."
+  },
+  "DERM-001+DERM-014+DERM-027+DERM-028": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "3c87d38a",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean derm board."
+  },
+  "CARD-024+CARD-038+CARD-039+CARD-042": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "013f28ec",
+   "rationale": "No flags; the standard split (V1-V4 anteroseptal, I/aVL/V5-V6 lateral) is the accepted Step 1 teaching.",
+   "competition": "some",
+   "note": "The V4/V5 boundary is fair tension."
+  },
+  "MICRO-047+MICRO-055+MICRO-069+MICRO-070": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "77a41ec8",
+   "rationale": "No flags; the -asvir and -previr suffixes separate the HCV classes.",
+   "competition": "some",
+   "note": "The HCV classes are a fair pair."
+  },
+  "PLX-BCH-001+PLX-BCH-006+PLX-BCH-038+PLX-BCH-052": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "37a4330e",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean biochem board."
+  },
+  "PLX-HEM-019+PLX-HEM-030+PLX-HEM-048+PLX-HEM-053": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b8bd5006",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean heme board."
+  },
+  "NEU-006+NEU-043+NEU-057+NEU-059": {
+   "verdict": "fail",
+   "kind": "expansion",
+   "conflicts": [
+    [
+     "NEU-006",
+     "NEU-057"
+    ],
+    [
+     "NEU-006",
+     "NEU-059"
+    ],
+    [
+     "NEU-057",
+     "NEU-059"
+    ]
+   ],
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "46f123c0",
+   "rationale": "\"Abducens (CN VI) palsy\" (Idiopathic intracranial hypertension clues) fits \"Medial brainstem structures\": by the rule of 4s, the abducens nucleus is one of the medial motor nuclei, and paramedian pontine lesions cause CN VI palsy. \"Nausea or vomiting\" (Typical migraine features) fits \"Idiopathic intracranial hypertension clues\" as a classic symptom of raised intracranial pressure.",
+   "competition": "high",
+   "note": "IIH tiles leak into both the migraine and brainstem groups."
+  },
+  "IMM-014+IMM-016+IMM-027+IMM-035": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "3723a7f0",
+   "rationale": "No flags; the high IgE in Wiskott-Aldrich and the bradykinin edema are distinguishable from the IgE mechanism tiles.",
+   "competition": "some",
+   "note": "Fair immunology tension."
+  },
+  "GI-003+GI-005+GI-026+GI-047": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "eae240b6",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "PLX-HEM-016+PLX-HEM-034+PLX-HEM-055+PLX-HEM-064": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "ac715ba8",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean heme board."
+  },
+  "MICRO-013+MICRO-015+MICRO-031+MICRO-032": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8ca34588",
+   "rationale": "No flags; hemolysis, cytopenias and organomegaly are mild overlaps between babesiosis and leishmaniasis, but each has unambiguous tiles.",
+   "competition": "some",
+   "note": "Parasite tiles create mild tension."
+  },
+  "ENDO-005+ENDO-024+ENDO-027+ENDO-028": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "c6a6e144",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean endocrine board."
+  },
+  "DERM-006+DERM-018+DERM-019+DERM-026": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "5ad67ccb",
+   "rationale": "No flags; no tile fits a second group.",
+   "competition": "low",
+   "note": "Clean derm board."
+  },
+  "CARD-004+CARD-011+CARD-014+CARD-021": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "3ce733bb",
+   "rationale": "No flags; alcohol/AF and catecholamine/beta-blocker links are thematic only.",
+   "competition": "some",
+   "note": "Four distinct cardiology themes with mild alcohol and catecholamine echoes."
+  },
+  "PLX-BCH-020+PLX-BCH-026+PLX-BCH-027+PLX-BCH-037": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "ffc8186b",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct metabolic disease groups."
+  },
+  "NEU-001+NEU-005+NEU-022+NEU-031": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "62d974bf",
+   "rationale": "No flags; hypoglossal is a nerve name, not a vagal lesion finding.",
+   "competition": "low",
+   "note": "Clean separation of brainstem, receptor, vagal and tumor groups."
+  },
+  "PLX-HEM-005+PLX-HEM-009+PLX-HEM-045+PLX-HEM-058": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "360d4359",
+   "rationale": "No flags; complement-mediated hemolysis is a PNH feature tile while the drug group contains only drug names.",
+   "competition": "some",
+   "note": "Hemolysis theme shared but tile types differ clearly."
+  },
+  "GI-032+GI-042+GI-053+GI-057": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "05ffdf38",
+   "rationale": "No flags; malabsorption themes overlap only loosely.",
+   "competition": "some",
+   "note": "Malabsorption tension between abetalipoproteinemia and pancreatic insufficiency is resolvable."
+  },
+  "MICRO-016+MICRO-025+MICRO-027+MICRO-056": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "61fdb6ff",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct antibiotic, PCP, syphilis and Giardia groups."
+  },
+  "CARD-029+CARD-040+CARD-048+CARD-051": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "4b6aae7c",
+   "rationale": "No flags; expanded plasma volume and sodium reabsorption are distinct concepts.",
+   "competition": "some",
+   "note": "Physiology groups have mild volume-related tension."
+  },
+  "PLX-BCH-007+PLX-BCH-010+PLX-BCH-054+PLX-BCH-060": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "978351a8",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct groups."
+  },
+  "NEU-028+NEU-032+NEU-047+NEU-055": {
+   "verdict": "fail",
+   "kind": "expansion",
+   "conflicts": [
+    [
+     "NEU-028",
+     "NEU-047"
+    ]
+   ],
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "abca0dd9",
+   "rationale": "\"Obstructive hydrocephalus\" (Parinaud (dorsal midbrain) syndrome clues) also fits \"Medulloblastoma pathology and behavior\": medulloblastoma classically compresses the fourth ventricle causing noncommunicating hydrocephalus.",
+   "competition": "some",
+   "note": "Hydrocephalus is a textbook medulloblastoma presentation."
+  },
+  "GI-020+GI-023+GI-041+GI-065": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e7d5da3c",
+   "rationale": "No flags; alcohol tile is specific to hepatic injury, not pancreatitis.",
+   "competition": "some",
+   "note": "Alcohol echo between liver and pancreas is resolvable."
+  },
+  "MICRO-041+MICRO-048+MICRO-060+MICRO-061": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "3f9a55be",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Drug classes and virus/rubella groups are distinct."
+  },
+  "PLX-HEM-010+PLX-HEM-011+PLX-HEM-052+PLX-HEM-057": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "93ba029e",
+   "rationale": "No flags; splenomegaly can occur in CLL but the CLL group is fully specified by four specific tiles, and AIHA is a disease not a lab.",
+   "competition": "some",
+   "note": "Hemolysis and leukemia groups create healthy tension."
+  },
+  "PLX-BCH-014+PLX-BCH-061+PLX-BCH-063+PLX-BCH-065": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "611b362b",
+   "rationale": "No flags; diarrhea is a pellagra manifestation but the niacin group lists causes, not manifestations.",
+   "competition": "some",
+   "note": "Nutrition theme overlap resolved by cause-vs-finding framing."
+  },
+  "IMM-003+IMM-007+IMM-026+IMM-037": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e61eb98a",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct immunology groups."
+  },
+  "ENDO-019+ENDO-021+ENDO-026+ENDO-038": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b67d7614",
+   "rationale": "No flags; calcium signs vs PTH actions are clearly different.",
+   "competition": "some",
+   "note": "Calcium theme spans two groups but tiles are distinct."
+  },
+  "PLX-BCH-018+PLX-BCH-019+PLX-BCH-032+PLX-BCH-043": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "62bde6d8",
+   "rationale": "No flags; polyneuropathy is an AIP finding, thiamine is a vitamin tile.",
+   "competition": "low",
+   "note": "Distinct groups."
+  },
+  "NEU-020+NEU-026+NEU-033+NEU-056": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "891260c5",
+   "rationale": "No flags; hyperacusis is facial-nerve specific, not vertigo.",
+   "competition": "low",
+   "note": "Distinct groups."
+  },
+  "CARD-018+CARD-022+CARD-031+CARD-036": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "5050bb5a",
+   "rationale": "No flags; papillary rupture and Dressler are both post-MI but belong to different framings.",
+   "competition": "some",
+   "note": "Post-MI echo is resolvable."
+  },
+  "PLX-HEM-028+PLX-HEM-036+PLX-HEM-054+PLX-HEM-063": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "35782f1f",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct hematology groups."
+  },
+  "MICRO-021+MICRO-033+MICRO-035+MICRO-053": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "7ec1693b",
+   "rationale": "No flags; Trichinella and Anisakis are nematodes but lack the classic pulmonary migration phase, and the hookworms/Ascaris/Strongyloides are not acquired from meat.",
+   "competition": "some",
+   "note": "Parasite groups create good tension."
+  },
+  "PLX-BCH-021+PLX-BCH-062+PLX-BCH-074+PLX-BCH-076": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "2af3ab01",
+   "rationale": "No flags; B6 and Hartnup neuro/skin findings are distinguishable.",
+   "competition": "some",
+   "note": "Mild vitamin overlap."
+  },
+  "GI-014+GI-017+GI-060+GI-063": {
+   "verdict": "fail",
+   "kind": "expansion",
+   "conflicts": [
+    [
+     "GI-014",
+     "GI-060"
+    ]
+   ],
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8ef58224",
+   "rationale": "\"Carcinoid tumor\" (Causes of appendiceal luminal obstruction) also fits \"Consequences of parietal-cell autoimmunity\": autoimmune atrophic gastritis causes hypergastrinemia and type 1 gastric (ECL) carcinoid tumors, as the group's own explanation states.",
+   "competition": "some",
+   "note": "Gastric carcinoid makes the carcinoid tile ambiguous."
+  },
+  "MICRO-008+MICRO-038+MICRO-044+MICRO-051": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "dfc5089c",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct groups."
+  },
+  "NEU-014+NEU-023+NEU-035+NEU-039": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "f48cff50",
+   "rationale": "No flags; Meyer loop is white matter, not a language-dominant cortical target, and V1 is PCA territory.",
+   "competition": "some",
+   "note": "MCA/visual-pathway tension is resolvable."
+  },
+  "PLX-BCH-031+PLX-BCH-051+PLX-BCH-057+PLX-BCH-059": {
+   "verdict": "fail",
+   "kind": "expansion",
+   "conflicts": [
+    [
+     "PLX-BCH-031",
+     "PLX-BCH-059"
+    ]
+   ],
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "86f0f3e2",
+   "rationale": "\"Pectus deformity\" (Classic Marfan syndrome associations) also fits \"Classic skeletal findings of rickets\": pectus carinatum (pigeon breast) is a classic rickets skeletal finding.",
+   "competition": "some",
+   "note": "Pectus deformity is shared by rickets and Marfan."
+  },
+  "CARD-027+CARD-035+CARD-044+CARD-050": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "fdd89cb6",
+   "rationale": "No flags; wide pulse pressure is a PDA finding while the endocrine group lists only disease names.",
+   "competition": "low",
+   "note": "Distinct groups."
+  },
+  "GI-018+GI-031+GI-054+GI-066": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "04b39671",
+   "rationale": "No flags; Meckel and processus vaginalis are different embryologic remnants.",
+   "competition": "some",
+   "note": "Embryologic remnant echo is resolvable."
+  },
+  "ENDO-001+ENDO-018+ENDO-022+ENDO-030": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "7809ed8d",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct groups."
+  },
+  "DERM-002+DERM-005+DERM-017+DERM-030": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "4d59eb8d",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Four distinct dermatology themes; DH vesicles and necrotizing-fasciitis bullae are clearly separated."
+  },
+  "DERM-013+DERM-015+DERM-016+DERM-031": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "547607a8",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "some",
+   "note": "Pemphigus vs pemphigoid tiles are contrasting and resolvable (flaccid vs tense, intraepidermal vs subepidermal)."
+  },
+  "DERM-012+DERM-020+DERM-022+DERM-024": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "3790b7d6",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Acne, contact dermatitis, rosacea triggers and tinea versicolor do not overlap."
+  },
+  "DERM-023+DERM-025+DERM-035+DERM-038": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "47c165ff",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Hidradenitis, rosacea phenotypes, bacillary angiomatosis and seborrheic keratosis are distinct."
+  },
+  "GI-002+GI-007+GI-038+GI-040": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8e8c6e81",
+   "rationale": "No flags; tetracycline's rare pancreatitis link and no pill-esophagitis role for the pancreatitis drugs leave groups unambiguous.",
+   "competition": "some",
+   "note": "Tetracycline is only a minor pancreatitis association; drug groups are otherwise cleanly split."
+  },
+  "GI-019+GI-046+GI-058+GI-061": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "0f4c00c4",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Glucagonoma, cimetidine, UC and Hirschsprung tiles are distinct."
+  },
+  "GI-022+GI-027+GI-028+GI-029": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "c2045849",
+   "rationale": "No flags; each cirrhosis tile maps to one mechanism-specific title, and Wilson tiles are disease-specific.",
+   "competition": "some",
+   "note": "Cirrhosis subgroups are split by mechanism (portal hypertension, synthetic failure, hyperestrogenism) and resolve cleanly."
+  },
+  "GI-034+GI-036+GI-039+GI-051": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "a7fcc31f",
+   "rationale": "No flags; hypertriglyceridemia/hypercalcemia are not classic gallstone risks, and the pancreatitis title excludes gallstone pathways.",
+   "competition": "some",
+   "note": "Gallstone risk factors vs non-gallstone pancreatitis causes are separable by title."
+  },
+  "PLEXUS-GEN-001+PLEXUS-GEN-008+PLEXUS-GEN-013+PLEXUS-GEN-026": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "dcfe13cc",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Histones, PCR, Friedreich ataxia and XP are unrelated."
+  },
+  "PLEXUS-GEN-007+PLEXUS-GEN-015+PLEXUS-GEN-017+PLEXUS-GEN-020": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "6630fa42",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Angelman, NF1, orotic aciduria and sickle vaso-occlusion are distinct."
+  },
+  "PLEXUS-GEN-018+PLEXUS-GEN-024+PLEXUS-GEN-027+PLEXUS-GEN-030": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b30b323d",
+   "rationale": "No flags; GI tiles split clearly between CF and Down, and aggression is a classic Huntington psychiatric feature.",
+   "competition": "some",
+   "note": "Meconium ileus (CF) vs Hirschsprung/duodenal atresia (Down) are classically distinct."
+  },
+  "PLEXUS-GEN-021+PLEXUS-GEN-023+PLEXUS-GEN-028+PLEXUS-GEN-031": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "5949254d",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Patau, Down exam, DM1 and sickle complications do not overlap."
+  },
+  "PLEXUS-GEN-010+PLEXUS-GEN-016+PLEXUS-GEN-022+PLEXUS-GEN-033": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "cd8673f1",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "AT, Williams, Prader-Willi and Duchenne tiles are distinct."
+  },
+  "PLX-HEM-008+PLX-HEM-018+PLX-HEM-027+PLX-HEM-065": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "755c4096",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Anemia of inflammation, HS, TLS and folate contexts are clean."
+  },
+  "PLX-HEM-001+PLX-HEM-006+PLX-HEM-033+PLX-HEM-044": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "013cc37b",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Drug classes and G6PD triggers do not cross."
+  },
+  "PLX-HEM-007+PLX-HEM-023+PLX-HEM-039+PLX-HEM-059": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "ad2a9e0d",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "ATLL, G6PD, alpha-thal and PT causes are distinct."
+  },
+  "PLX-HEM-021+PLX-HEM-041+PLX-HEM-049+PLX-HEM-056": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "21a38873",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Supportive agents, HCL, sideroblastic exposures and erythropoiesis sites do not overlap."
+  },
+  "PLX-HEM-014+PLX-HEM-025+PLX-HEM-038+PLX-HEM-051": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "457f989a",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Lymphoma translocations, PK deficiency, APS and B12 malabsorption are distinct."
+  },
+  "IMM-019+IMM-021+IMM-034+IMM-040": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "ee08246d",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Vaccines, TRALI, anti-TNF agents and SCID clues are clean."
+  },
+  "IMM-006+IMM-011+IMM-022+IMM-029": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "588cfcc1",
+   "rationale": "No flags; type II tiles are named diseases while IgG tiles are molecular properties.",
+   "competition": "some",
+   "note": "IgG properties vs type II disease examples are separable (properties vs named diseases)."
+  },
+  "GI-014+GI-047+MICRO-026+PLX-HEM-017": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "GI-014",
+     "GI-047"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "4c0b5a39",
+   "rationale": "\"Achlorhydria\" (VIPoma (Verner-Morrison) findings) fits \"Consequences of parietal-cell autoimmunity\" equally well: autoimmune destruction of parietal cells abolishes acid secretion, a classic consequence of autoimmune atrophic gastritis.",
+   "competition": "high",
+   "note": "Achlorhydria is a defensible member of the parietal-cell autoimmunity group."
+  },
+  "ENDO-012+MICRO-031+PLX-BCH-049+PLX-HEM-058": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "3e761d63",
+   "rationale": "No flags; eczema and erythroderma are distinct terms tied to different diseases.",
+   "competition": "some",
+   "note": "PKU eczema vs Sezary erythroderma and babesial hemolysis are distinct enough."
+  },
+  "CARD-027+GI-009+MICRO-027+NEU-057": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8f48959a",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Giardia, PDA, GERD predispositions and migraine are unrelated."
+  },
+  "CARD-048+ENDO-019+MICRO-014+PLX-HEM-028": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "90408f7e",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Ang II actions, Legionella, hypocalcemia signs and folate labs are distinct."
+  },
+  "CARD-028+GI-042+IMM-014+MICRO-032": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "39a0e5c8",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Leishmaniasis, TGA, IgE and chronic pancreatitis are distinct."
+  },
+  "NEU-017+PLX-BCH-026+PLX-BCH-039+PLX-HEM-010": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "187934ff",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Hemolysis labs, LEMS, ethanol NADH and Gaucher tiles do not cross."
+  },
+  "CARD-032+MICRO-036+PLX-BCH-054+PLX-HEM-064": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "f833c3d5",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Sideroblastic anemia, myelofibrosis, hydatid disease and pericarditis are distinct."
+  },
+  "GI-059+MICRO-005+PLX-BCH-031+REPRO-025": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "556cf0dd",
+   "rationale": "No systemic-inflammatory, epididymo-orchitis, or clostridial-toxin category is present on this board, so none of the three flagged conflicts apply.",
+   "competition": "low",
+   "note": "Marfan, IBD extraintestinal, epididymitis pathogens and clostridia are clean."
+  },
+  "IMM-028+MSK-017+NEU-050+PLX-BCH-042": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "779ee104",
+   "rationale": "Tau/tangle redundancy is confined to the Alzheimer group and only one tangle tile is present; no esophageal dysmotility tile is on the board.",
+   "competition": "low",
+   "note": "Four distinct domains with no cross-fits."
+  },
+  "NEU-034+PLEXUS-GEN-014+PLX-BCH-014+PLX-HEM-037": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "3eda2c0e",
+   "rationale": "Protein S deficiency is not on the board; paired blot format is self-contained; stroke mechanisms are generic processes, not named inherited thrombophilias.",
+   "competition": "low",
+   "note": "Thrombosis theme overlaps loosely but tiles are clearly typed."
+  },
+  "GI-054+IMM-027+MICRO-020+PLX-HEM-032": {
+   "verdict": "fail",
+   "kind": "daily",
+   "conflicts": [
+    [
+     "IMM-027",
+     "PLX-HEM-032"
+    ]
+   ],
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "2ae9ed2d",
+   "rationale": "\"Thrombocytopenia\" (Wiskott-Aldrich syndrome clues) is itself a primary-hemostasis defect causing mucocutaneous bleeding, so it fits \"Mucocutaneous bleeding from primary-hemostasis defects\" (especially beside \"Immune thrombocytopenia\" and BSS, which is often thrombocytopenic).",
+   "competition": "high",
+   "note": "Generic thrombocytopenia tile competes with the primary-hemostasis group."
+  },
+  "GI-064+MICRO-010+PHARM-014+PLX-HEM-048": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "141cf360",
+   "rationale": "No antacid group is present; PDE-5 quartet appears once; EHEC, M. bovis and Coxiella are not on the board.",
+   "competition": "low",
+   "note": "Clean drug and microbe classes."
+  },
+  "ENDO-040+MSK-021+NEU-056+REPRO-023": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "c530db93",
+   "rationale": "DKA tiles are used together in a DKA group; no PMR tile is present; no progestin-only tile is present; migraine with aura and transient monocular vision loss are resolved by context.",
+   "competition": "some",
+   "note": "Headache/vision tiles brush against each other but resolve cleanly."
+  },
+  "PLX-BCH-002+PLX-BCH-016+PLX-BCH-022+PLX-BCH-037": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "ad21ac4b",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct biochemistry and clinical sets."
+  },
+  "GI-014+GI-026+GI-032+GI-047": {
+   "verdict": "fail",
+   "kind": "expansion",
+   "conflicts": [
+    [
+     "GI-014",
+     "GI-047"
+    ]
+   ],
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d5208d73",
+   "rationale": "\"Achlorhydria\" (VIPoma (Verner-Morrison) findings) is a classic direct consequence of parietal-cell destruction and fits \"Consequences of parietal-cell autoimmunity\" equally well.",
+   "competition": "high",
+   "note": "Achlorhydria is a textbook feature of autoimmune gastritis."
+  },
+  "MICRO-015+MICRO-026+MICRO-055+MICRO-063": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "2527d0a1",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct organism clues and drug classes."
+  },
+  "PLX-HEM-009+PLX-HEM-017+PLX-HEM-030+PLX-HEM-034": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "743aa2a3",
+   "rationale": "No flags; thrombocytopenia and thrombosis tiles are each anchored to their own disorder without strong cross-fit.",
+   "competition": "low",
+   "note": "Distinct hematologic syndromes."
+  },
+  "IMM-003+IMM-024+IMM-026+IMM-031": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "35d297a0",
+   "rationale": "No flags; eczema/IgE belong only to the hyper-IgE group here.",
+   "competition": "low",
+   "note": "Distinct immunology syndromes."
+  },
+  "NEU-022+NEU-028+NEU-030+NEU-054": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "97209d6a",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct neuro-oncology and clinical sets."
+  },
+  "PLX-BCH-001+PLX-BCH-020+PLX-BCH-027+PLX-BCH-045": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "020c3f3a",
+   "rationale": "No flags; alcohol/pancreatitis link is thematic only.",
+   "competition": "low",
+   "note": "Distinct metabolic disorders."
+  },
+  "GI-016+GI-053+GI-056+GI-057": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "869eea3b",
+   "rationale": "No flags; diarrhea in ZES is not a tile in that group and the ZES set is fully specific.",
+   "competition": "some",
+   "note": "Diarrhea and MEN1 brush carcinoid only weakly."
+  },
+  "MICRO-022+MICRO-025+MICRO-056+MICRO-060": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "4955bd28",
+   "rationale": "No flags; TMP-SMX is not a cephalosporin or fluoroquinolone.",
+   "competition": "low",
+   "note": "Clean drug classes and syndromes."
+  },
+  "ENDO-009+ENDO-017+ENDO-027+ENDO-038": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "3ee71961",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct endocrine topics."
+  },
+  "PLX-HEM-005+PLX-HEM-016+PLX-HEM-043+PLX-HEM-050": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "514290d3",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct pathology and drug sets."
+  },
+  "CARD-013+CARD-014+CARD-020+CARD-021": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "69475fea",
+   "rationale": "No flags; atrial fibrillation and LA enlargement are hallmark mitral stenosis tiles and other groups are complete without them.",
+   "competition": "some",
+   "note": "Cardiac findings overlap thematically but resolve."
+  },
+  "DERM-006+DERM-018+DERM-021+DERM-028": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "1579923d",
+   "rationale": "No flags; acanthosis is a psoriasis histology tile while the atopic group is mechanistic.",
+   "competition": "low",
+   "note": "Distinct derm topics."
+  },
+  "NEU-001+NEU-008+NEU-027+NEU-041": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "4e1116e5",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct neuro topics."
+  },
+  "PLX-BCH-007+PLX-BCH-010+PLX-BCH-024+PLX-BCH-049": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b16ffaa1",
+   "rationale": "No flags; seizures occur in Tay-Sachs but the Tay-Sachs set is fully specific.",
+   "competition": "some",
+   "note": "Seizures is a mild generic overlap."
+  },
+  "GI-033+GI-045+GI-062+GI-065": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d1f0fbfb",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean named-entity sets."
+  },
+  "MICRO-016+MICRO-031+MICRO-050+MICRO-054": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "6f6ccc11",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct infection associations."
+  },
+  "ENDO-012+ENDO-021+ENDO-024+ENDO-031": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b08080ef",
+   "rationale": "No flags; CKD lab pattern and PTH actions point in opposite directions (phosphate retention vs phosphaturia, low vs stimulated calcitriol).",
+   "competition": "some",
+   "note": "Calcium-axis tiles need careful reading but are not interchangeable."
+  },
+  "PLX-HEM-020+PLX-HEM-045+PLX-HEM-058+PLX-HEM-062": {
+   "verdict": "fail",
+   "kind": "expansion",
+   "conflicts": [
+    [
+     "PLX-HEM-020",
+     "PLX-HEM-058"
+    ],
+    [
+     "PLX-HEM-020",
+     "PLX-HEM-062"
+    ],
+    [
+     "PLX-HEM-058",
+     "PLX-HEM-062"
+    ]
+   ],
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "70685bba",
+   "rationale": "\"Lymphadenopathy\" (Sezary-syndrome clues) is a classic feature of lymphoplasmacytic lymphoma and fits \"Waldenstrom-macroglobulinemia clues\" equally well. \"Peripheral neuropathy\" (Waldenstrom-macroglobulinemia clues) is a well-known lead toxicity feature, brushing \"Lead-toxicity hematologic clues\" (mitigated by 'hematologic' in the title).",
+   "competition": "some",
+   "note": "Generic lymphadenopathy tile fits two lymphoma groups."
+  },
+  "CARD-003+CARD-024+CARD-027+CARD-040": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "cb80f3ff",
+   "rationale": "No flags; aortic regurgitation and wide pulse pressure sit in different groups without interchange.",
+   "competition": "low",
+   "note": "Distinct cardiology sets."
+  },
+  "MICRO-027+MICRO-034+MICRO-040+MICRO-062": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "725372a4",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct micro sets."
+  },
+  "GI-009+GI-010+GI-013+GI-015": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e30921e4",
+   "rationale": "No flags; scleroderma is motility not mechanical, and stricture is a GERD consequence not a predisposing condition.",
+   "competition": "some",
+   "note": "Esophageal tiles overlap thematically but resolve."
+  },
+  "NEU-020+NEU-031+NEU-038+NEU-057": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "2148cbea",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Distinct neuro topics."
+  },
+  "CARD-029+CARD-037+CARD-051+CARD-053": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "dfdb15f9",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Aortic, MI, AF and training groups are distinct."
+  },
+  "PLX-HEM-003+PLX-HEM-011+PLX-HEM-013+PLX-HEM-057": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8d853c3c",
+   "rationale": "No flags; warm AIHA in CLL gives spherocytes rather than schistocytes, and polychromasia is clearly a smear finding, not a schistocyte disease.",
+   "competition": "low",
+   "note": "Disease-list vs smear-finding formats separate cleanly."
+  },
+  "DERM-008+DERM-009+DERM-014+DERM-019": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b4f48eed",
+   "rationale": "No flags; condylomata are low-risk HPV 6/11 lesions and do not compete with the high-risk type numbers.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "MICRO-014+MICRO-053+MICRO-069+MICRO-070": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "2f28ad92",
+   "rationale": "No flags; -asvir vs -previr suffixes separate the HCV classes.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "CARD-009+CARD-011+CARD-035+CARD-048": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "76a3d15d",
+   "rationale": "No flags; hyperkalemia is an ACEi effect and not an angiotensin II action.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "PLX-HEM-028+PLX-HEM-040+PLX-HEM-053+PLX-HEM-055": {
+   "verdict": "fail",
+   "kind": "expansion",
+   "conflicts": [
+    [
+     "PLX-HEM-040",
+     "PLX-HEM-053"
+    ]
+   ],
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "778b495c",
+   "rationale": "\"Disseminated intravascular coagulation\" (Acute promyelocytic-leukemia clues) is the very entity named by \"DIC laboratory pattern\", while \"Low fibrinogen\" and \"Prolonged PT and aPTT\" (DIC laboratory pattern) are classic presenting clues of APL coagulopathy, so tiles are near-interchangeable between the two groups.",
+   "competition": "high",
+   "note": "DIC tile mirrors another group's title."
+  },
+  "ENDO-005+ENDO-019+ENDO-028+ENDO-042": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8e052762",
+   "rationale": "No flags; seizures in this board fit only hypocalcemia, and the DI causes do not overlap hyperaldosteronism.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "NEU-032+NEU-039+NEU-043+NEU-059": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "7b65f18c",
+   "rationale": "No flags; SDH is extra-axial, and papilledema/CN VI palsy occur with mass effect, but the SDH and IIH groups already have four specific tiles.",
+   "competition": "some",
+   "note": "Extra-axial and raised-ICP tiles are mild lures only."
+  },
+  "IMM-016+IMM-025+IMM-035+IMM-037": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "cc517ff3",
+   "rationale": "No flags; GVHD diarrhea vs HAE bowel-wall edema and complement in hyperacute rejection vs low C4 are only thematic overlaps.",
+   "competition": "some",
+   "note": "Mild overlap resolvable by specificity."
+  },
+  "GI-003+GI-005+GI-020+GI-041": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "50c72231",
+   "rationale": "No flags; DIC fits pancreatitis complications and monocytic AML is not the DIC subtype.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "MICRO-001+MICRO-013+MICRO-041+MICRO-048": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e7a80ce1",
+   "rationale": "No flags; blueberry-muffin rash and PDA are congenital rubella, and no other TORCH group is present.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "NEU-006+NEU-033+NEU-047+NEU-055": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "2ff07949",
+   "rationale": "No flags; MLF is not a Parinaud finding, and periventricular mass vs pineal tumor/hydrocephalus is only a mild lure.",
+   "competition": "some",
+   "note": "Mild anatomic overlap only."
+  },
+  "GI-017+GI-023+GI-044+GI-049": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "fb8bbe6f",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "PLX-HEM-019+PLX-HEM-047+PLX-HEM-052+PLX-HEM-061": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d17c5697",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "DERM-001+DERM-027+DERM-029+DERM-036": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "524ca802",
+   "rationale": "No flags; Koebner and collarette scale are each discriminated within their own disease.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "CARD-022+CARD-036+CARD-038+CARD-039": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8bb452e7",
+   "rationale": "No flags; V4 is sometimes called anterolateral, but the standard I/aVL/V5/V6 lateral vs V1-V4 split is unambiguous.",
+   "competition": "some",
+   "note": "V4 is a mild lead-territory lure."
+  },
+  "NEU-005+NEU-017+NEU-023+NEU-035": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "6d3c5b6b",
+   "rationale": "No flags; Meyer loop is MCA-territory white matter but the language group is cortical and complete without it.",
+   "competition": "some",
+   "note": "Meyer loop is a mild vascular-territory lure."
+  },
+  "PLX-HEM-010+PLX-HEM-054+PLX-HEM-060+PLX-HEM-063": {
+   "verdict": "fail",
+   "kind": "expansion",
+   "conflicts": [
+    [
+     "PLX-HEM-010",
+     "PLX-HEM-054"
+    ],
+    [
+     "PLX-HEM-010",
+     "PLX-HEM-060"
+    ],
+    [
+     "PLX-HEM-054",
+     "PLX-HEM-060"
+    ]
+   ],
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "036298ed",
+   "rationale": "\"Anemia\" (Myeloma-related CRAB manifestations) is the defining laboratory finding of hemolysis and fits \"Typical laboratory pattern of hemolysis\". \"Hypercalcemia\" (Myeloma-related CRAB manifestations) is a well-known Hodgkin lymphoma association via calcitriol production, fitting \"Classical Hodgkin-lymphoma clues\".",
+   "competition": "some",
+   "note": "CRAB tiles bleed into hemolysis and Hodgkin groups."
+  },
+  "MICRO-032+MICRO-051+MICRO-061+MICRO-068": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "ace4c06d",
+   "rationale": "No flags; rifabutin's use in HIV does not make it a protease inhibitor.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "CARD-004+CARD-018+CARD-028+CARD-031": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "157b2c6f",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "MICRO-021+MICRO-033+MICRO-035+MICRO-036": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "dc9c0bc4",
+   "rationale": "No flags; Trichinella lacks lung migration and hydatid infection is acquired from eggs, not meat larvae.",
+   "competition": "some",
+   "note": "Parasite route groups stay distinct."
+  },
+  "IMM-002+IMM-007+IMM-014+IMM-023": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "5638271a",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "MICRO-008+MICRO-009+MICRO-044+MICRO-047": {
+   "verdict": "fail",
+   "kind": "expansion",
+   "conflicts": [
+    [
+     "MICRO-008",
+     "MICRO-009"
+    ]
+   ],
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "62374479",
+   "rationale": "\"Coxiella burnetii\" (Fastidious causes of blood-culture-negative endocarditis) is a classic cause of atypical pneumonia (Q fever) and fits \"Classic bacterial causes of atypical pneumonia\". \"Chlamydia psittaci\" (Classic bacterial causes of atypical pneumonia) is a recognized cause of culture-negative endocarditis, fitting \"Fastidious causes of blood-culture-negative endocarditis\".",
+   "competition": "high",
+   "note": "Coxiella and Chlamydia psittaci can sit in either bacterial group."
+  },
+  "CARD-032+CARD-042+CARD-050+CARD-052": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "753e6f68",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "ENDO-001+ENDO-018+ENDO-022+ENDO-026": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d8260102",
+   "rationale": "No flags; CRH vs elevated ACTH is only a pathway association, not a group fit.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "GI-018+GI-042+GI-060+GI-063": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d2db24b7",
+   "rationale": "No flags; pancreatic insufficiency can impair B12 absorption, but the pancreatic group is a test/imaging pattern and does not take a bare nutrient tile.",
+   "competition": "some",
+   "note": "B12 is a mild lure toward pancreatic insufficiency."
+  },
+  "GI-036+GI-039+GI-046+GI-051": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "f0ea0e3a",
+   "rationale": "No flags; weight loss and diabetes are glucagonoma-specific here, and celiac tiles are serology/histology only.",
+   "competition": "low",
+   "note": "Four distinct GI entities with no cross-fitting tiles."
+  },
+  "PLEXUS-GEN-016+PLEXUS-GEN-022+PLEXUS-GEN-026+PLEXUS-GEN-033": {
+   "verdict": "pass",
+   "kind": "starter",
+   "subject": "Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e7c08304",
+   "rationale": "No flags; hypotonia and weakness tiles separate cleanly between Prader-Willi and Duchenne, and Friedreich tiles are anatomic structures.",
+   "competition": "low",
+   "note": "Distinct genetic syndromes with clear tile types."
+  },
+  "GI-014+IMM-027+MICRO-026+PLX-HEM-017": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "23581d98",
+   "rationale": "No flags; bleeding GI malignancy (iron loss) is distinct from gastric malignancy risk, and hookworm is not an Entamoeba feature.",
+   "competition": "some",
+   "note": "Mild parasite/malignancy theme overlap that a prepared student resolves."
+  },
+  "GI-047+GI-054+MICRO-020+PLX-HEM-032": {
+   "verdict": "pass",
+   "kind": "daily",
+   "subject": null,
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e6fae563",
+   "rationale": "No flags; HSP is a vasculitis lead point, not a primary-hemostasis defect, since platelet counts and function are normal.",
+   "competition": "low",
+   "note": "Clean separation across four systems."
+  },
+  "PLX-BCH-020+PLX-BCH-022+PLX-BCH-027+PLX-BCH-042": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b307f7ac",
+   "rationale": "No flags; no tile plausibly belongs to another storage, cilia or porphyria group.",
+   "competition": "low",
+   "note": "Distinct biochemical disorders."
+  },
+  "PLX-HEM-009+PLX-HEM-017+PLX-HEM-032+PLX-HEM-048": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "b3f2d241",
+   "rationale": "No flags; vWD/ITP can cause menorrhagia, but the hemostasis group lists disorders while the iron-loss group lists bleeding sources, so tile types separate them.",
+   "competition": "some",
+   "note": "Cause-versus-manifestation overlap (menorrhagia/vWD) is resolvable by tile type."
+  },
+  "MICRO-020+MICRO-025+MICRO-026+MICRO-060": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "034764bd",
+   "rationale": "No flags; TMP-SMX is a PCP prophylaxis tile, not a fluoroquinolone.",
+   "competition": "low",
+   "note": "Distinct organisms and one drug class."
+  },
+  "GI-014+GI-026+GI-054+GI-057": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "f4de3860",
+   "rationale": "No flags; Crohn ileal disease can cause B12 malabsorption, but the Crohn group lists transmural morphologic findings, so the tile stays with parietal-cell autoimmunity.",
+   "competition": "some",
+   "note": "Mild B12/Crohn overlap is resolved by the morphologic framing."
+  },
+  "IMM-024+IMM-026+IMM-028+IMM-031": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "775c1d31",
+   "rationale": "No flags; eczema/IgE also occur in WAS and IPEX, and Giardia in XLA, but the X-linked group holds disease names only, so symptom tiles cannot move there.",
+   "competition": "some",
+   "note": "Immunodeficiency feature overlap is limited to tiles vs disease names."
+  },
+  "PLX-BCH-002+PLX-BCH-016+PLX-BCH-037+PLX-BCH-045": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "a50bf72b",
+   "rationale": "No flags; B6 relevance to homocystinuria does not move any neurotransmitter tile, and thromboembolism is not a clotting factor.",
+   "competition": "low",
+   "note": "Clean biochemistry board."
+  },
+  "ENDO-009+ENDO-024+ENDO-027+ENDO-038": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "ebe49929",
+   "rationale": "No flags; renal pathology, CKD labs, Cushing signs and acromegaly treatments do not interchange.",
+   "competition": "low",
+   "note": "Distinct tile types per group."
+  },
+  "MICRO-001+MICRO-022+MICRO-055+MICRO-056": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "17f10d47",
+   "rationale": "No flags; the two beta-lactam classes are distinguishable by name (cef- vs -penem).",
+   "competition": "low",
+   "note": "Clean drug-class and syndrome separation."
+  },
+  "PLX-HEM-005+PLX-HEM-030+PLX-HEM-034+PLX-HEM-050": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "9b700d65",
+   "rationale": "No flags; thrombocytopenia and schistocytes are TTP-specific here, and drug and kinase tiles do not overlap.",
+   "competition": "low",
+   "note": "Clean hematology board."
+  },
+  "GI-016+GI-033+GI-047+GI-062": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "7806b1a1",
+   "rationale": "No flags; ZES can cause diarrhea and VIPoma can be MEN1-related, but achlorhydria/hypokalemia anchor WDHA and MEN1 is the classic gastrinoma association.",
+   "competition": "some",
+   "note": "Pancreatic NET overlap is mild and resolvable."
+  },
+  "CARD-013+CARD-014+CARD-037+CARD-053": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "79cf72b9",
+   "rationale": "No flags; HOCM can cause ventricular arrhythmia and Takotsubo can cause mural thrombus, but neither is a classic defining feature of those groups.",
+   "competition": "some",
+   "note": "Cardiomyopathy/MI overlap is mild."
+  },
+  "MICRO-015+MICRO-031+MICRO-050+MICRO-063": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "c5d78cfe",
+   "rationale": "No flags; PCT and hemolytic anemia belong to their groups only.",
+   "competition": "low",
+   "note": "Distinct infections and one drug class."
+  },
+  "PLX-BCH-001+PLX-BCH-010+PLX-BCH-024+PLX-BCH-049": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "89351746",
+   "rationale": "No flags; seizures can occur in Tay-Sachs, but that group uses its pathognomonic clues, so seizures stay with PKU.",
+   "competition": "low",
+   "note": "Minor seizure overlap is easily resolved."
+  },
+  "NEU-008+NEU-027+NEU-031+NEU-041": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "a9cf6d60",
+   "rationale": "No flags; truncal ataxia and nystagmus findings separate cerebellar from vestibular groups.",
+   "competition": "low",
+   "note": "Clean neuro board."
+  },
+  "GI-032+GI-045+GI-056+GI-065": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "752a2e99",
+   "rationale": "No flags; watery diarrhea and flushing also occur with VIPoma, but the PNET group lists tumor names, not symptoms.",
+   "competition": "some",
+   "note": "Serotonin/NET theme overlap separated by tile type."
+  },
+  "ENDO-012+ENDO-017+ENDO-021+ENDO-031": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Endocrine",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "f70dfc02",
+   "rationale": "No flags; thyroid, PTH and steroidogenic tiles do not interchange.",
+   "competition": "low",
+   "note": "Clean endocrine board."
+  },
+  "MICRO-016+MICRO-027+MICRO-034+MICRO-040": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "24efe91a",
+   "rationale": "No flags; no tile crosses between syphilis stigmata, Giardia, egg-ingested nematodes and segmented viruses.",
+   "competition": "low",
+   "note": "Distinct microbiology categories."
+  },
+  "PLX-HEM-003+PLX-HEM-020+PLX-HEM-043+PLX-HEM-045": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "daebdfaa",
+   "rationale": "No flags; lead findings, psammoma tumors, pyrimidine analogues and contact factors are distinct.",
+   "competition": "low",
+   "note": "Clean hematology/oncology board."
+  },
+  "GI-009+GI-010+GI-013+GI-053": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "52600803",
+   "rationale": "No flags; scleroderma causes dysphagia, but it is a motility (not mechanical) disorder, so it stays with GERD predisposition.",
+   "competition": "some",
+   "note": "Scleroderma/dysphagia overlap is excluded by the 'mechanical' qualifier."
+  },
+  "NEU-001+NEU-005+NEU-038+NEU-057": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "2fbafa8d",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Four unrelated neuro categories."
+  },
+  "PLX-HEM-013+PLX-HEM-016+PLX-HEM-058+PLX-HEM-061": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "a08f5658",
+   "rationale": "No flags; target cells are a smear finding and the iron group is purely clinical signs, so no cross-fit.",
+   "competition": "low",
+   "note": "Four distinct hematologic themes with clean tiles."
+  },
+  "PLX-BCH-007+PLX-BCH-008+PLX-BCH-035+PLX-BCH-041": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Biochemistry/Genetics",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "83892f57",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Collagens, vitamins, amino acids and GSD I labs are unambiguous."
+  },
+  "DERM-001+DERM-008+DERM-009+DERM-014": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "7dedb48a",
+   "rationale": "No flags; HPV types versus clinical wart subtypes are different tile kinds and high-risk types are not wart types.",
+   "competition": "some",
+   "note": "Two HPV groups share a theme but tiles separate cleanly."
+  },
+  "CARD-020+CARD-021+CARD-035+CARD-051": {
+   "verdict": "fail",
+   "kind": "expansion",
+   "conflicts": [
+    [
+     "CARD-020",
+     "CARD-051"
+    ]
+   ],
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d6a9d815",
+   "rationale": "\"Larger stroke volume\" (Cardiovascular adaptations to endurance training) fits Classic chronic aortic regurgitation findings: increased total LV stroke volume is the hallmark hemodynamic feature of chronic AR and underlies its wide pulse pressure and bounding pulses.",
+   "competition": "some",
+   "note": "Stroke volume tile straddles AR and endurance training."
+  },
+  "IMM-003+IMM-016+IMM-025+IMM-027": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "87ba5ce4",
+   "rationale": "No flags; immunoglobulin patterns differ distinctly and autosomal dominant inheritance fits only HAE among these.",
+   "competition": "some",
+   "note": "Immunodeficiency clues are well separated."
+  },
+  "PLX-HEM-011+PLX-HEM-028+PLX-HEM-040+PLX-HEM-062": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "1dc63085",
+   "rationale": "No flags; the DIC disease tile sits with other schistocyte-causing disorders while the DIC group holds only lab values, so tile type resolves it.",
+   "competition": "some",
+   "note": "DIC thematic overlap resolved by diseases versus labs."
+  },
+  "MICRO-014+MICRO-053+MICRO-054+MICRO-062": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "a0ad55da",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Drug classes and clinical clue sets are distinct."
+  },
+  "CARD-009+CARD-011+CARD-029+CARD-048": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "18eafce9",
+   "rationale": "No flags; ACE-inhibitor adverse effects and angiotensin II actions do not overlap tile-wise.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "NEU-020+NEU-039+NEU-043+NEU-059": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "77c8da35",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Facial nerve, SDH, IIH and Friedreich clues are distinct."
+  },
+  "GI-003+GI-005+GI-015+GI-049": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "bc38151b",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "PLX-HEM-047+PLX-HEM-053+PLX-HEM-055+PLX-HEM-057": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "aec06855",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Malignancy clue sets and checkpoint drugs are distinct."
+  },
+  "MICRO-013+MICRO-047+MICRO-069+MICRO-070": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e896b67f",
+   "rationale": "No flags; -asvir versus -previr suffixes separate the HCV groups cleanly.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "CARD-004+CARD-022+CARD-038+CARD-039": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "75b4a464",
+   "rationale": "No flags; V1-V4 versus I/aVL/V5/V6 is the standard split and no lead is plausibly swapped.",
+   "competition": "some",
+   "note": "Two lead groups are adjacent but conventionally distinct."
+  },
+  "NEU-006+NEU-032+NEU-055+NEU-056": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "a3cf6418",
+   "rationale": "No flags; treatable dementia causes are diagnoses while CJD tiles are features, so no cross-fit.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "GI-017+GI-020+GI-041+GI-060": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "GI",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "d47e20bf",
+   "rationale": "No flags; alcohol is a pancreatitis cause but that group lists complications, so no cross-fit.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "DERM-019+DERM-027+DERM-029+DERM-036": {
+   "verdict": "fail",
+   "kind": "expansion",
+   "conflicts": [
+    [
+     "DERM-019",
+     "DERM-027"
+    ]
+   ],
+   "subject": "Dermatology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "40ffb642",
+   "rationale": "\"HHV-6 reactivation\" (DRESS syndrome associations) fits Pityriasis rosea presentation: pityriasis rosea is classically associated with HHV-6/HHV-7 reactivation (listed in First Aid).",
+   "competition": "some",
+   "note": "HHV-6 is a well-known association of both DRESS and pityriasis rosea."
+  },
+  "MICRO-041+MICRO-048+MICRO-061+MICRO-068": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "cfa68983",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "PLX-HEM-019+PLX-HEM-052+PLX-HEM-054+PLX-HEM-063": {
+   "verdict": "fail",
+   "kind": "expansion",
+   "conflicts": [
+    [
+     "PLX-HEM-052",
+     "PLX-HEM-063"
+    ]
+   ],
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "3cc77975",
+   "rationale": "\"Splenomegaly\" (Chronic myeloid-leukemia clues) fits Polycythemia-vera clues: splenomegaly is a classic finding of polycythemia vera and other myeloproliferative neoplasms. \"Basophilia\" (Chronic myeloid-leukemia clues) also commonly occurs in Polycythemia-vera clues as a myeloproliferative feature.",
+   "competition": "high",
+   "note": "Shared myeloproliferative features blur CML and PV."
+  },
+  "IMM-007+IMM-023+IMM-035+IMM-037": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Immunology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "3b4937fb",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Transplant, MHC II and DiGeorge clues are distinct."
+  },
+  "NEU-014+NEU-026+NEU-033+NEU-047": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "7fc38448",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "CARD-018+CARD-031+CARD-036+CARD-052": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "49590918",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "MICRO-008+MICRO-032+MICRO-044+MICRO-051": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Microbiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "23ccf5ec",
+   "rationale": "No flags; organisms, anatomic sites and clinical findings are different tile types.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "CARD-028+CARD-032+CARD-042+CARD-050": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "0e7b1067",
+   "rationale": "No flags; no cross-fits.",
+   "competition": "low",
+   "note": "Clean board."
+  },
+  "NEU-012+NEU-017+NEU-023+NEU-035": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Neurology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "46c4fd46",
+   "rationale": "No flags; Meyer loop is temporal white matter in the visual pathway, not a language/motor cortical target, so it stays with visual field sites.",
+   "competition": "some",
+   "note": "Minor MCA/visual pathway proximity is resolvable."
+  },
+  "CARD-009+CARD-020+CARD-021+CARD-035": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "6fb9c862",
+   "rationale": "No flags; 'Aortic dissection' causes acute rather than chronic AR and is not an AR finding, and atrial fibrillation/LA enlargement belong only to mitral stenosis here.",
+   "competition": "low",
+   "note": "Four clearly distinct cardiology topics with unambiguous tiles."
+  },
+  "CARD-011+CARD-029+CARD-048+CARD-051": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Cardiology",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "8369bd79",
+   "rationale": "No flags; alcohol is an AF risk factor but the AF group consists of ECG/exam/mechanism clues, and plasma volume expansion from training is not an angiotensin II action tile.",
+   "competition": "some",
+   "note": "Minor thematic links (alcohol-AF, volume expansion) are easily resolved by group framing."
+  },
+  "PLX-HEM-019+PLX-HEM-036+PLX-HEM-052+PLX-HEM-054": {
+   "verdict": "pass",
+   "kind": "expansion",
+   "subject": "Heme/Onc",
+   "by": "Claude (AI board review), 2026-10-15",
+   "signature": "e28832ce",
+   "rationale": "No flags; 'Basophilia' (CML) is distinct from lead's basophilic stippling, and splenomegaly is not a classic Hodgkin clue.",
+   "competition": "low",
+   "note": "Distinct hematology entities with classic, non-overlapping clues."
   }
  }
 }
