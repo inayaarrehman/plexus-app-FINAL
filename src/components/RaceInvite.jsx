@@ -25,9 +25,10 @@ export function raceLink(code) {
   return appLink(`#race=${normalizeJoinCode(code)}`)
 }
 
-// The lobby's invitation card: the code to read out or type, plus Copy Code,
-// Copy Race Link and Share Race. Both lead to the same race and the same
-// joining rules (a link just fills in the code and joins).
+// The lobby's invitation card: the code to read out or type, Copy Code, and
+// one invite button: Share Race opens the share sheet where there is one
+// (phones), otherwise Copy Invite Link copies the same invitation text and
+// link. The link opens the "Join the race" popup (RaceInvitePrompt.jsx).
 export default function RaceInvite({ code }) {
   const [done, setDone] = useState('')
   const timer = useRef(null)
@@ -37,6 +38,8 @@ export default function RaceInvite({ code }) {
     timer.current = setTimeout(() => setDone(''), 1800)
   }
   const link = raceLink(code)
+  // Phones open the share sheet; elsewhere the same invitation is copied.
+  const canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function'
   const copy = async (text, what) => {
     try {
       await navigator.clipboard.writeText(text)
@@ -57,7 +60,7 @@ export default function RaceInvite({ code }) {
       }
     }
     // No share sheet on this device: copy the same invitation instead.
-    copy(`${payload.text}\n${link}`, 'Invitation copied')
+    copy(`${payload.text}\n${link}`, 'Invite link copied')
   }
   return (
     <div className="race-code-card race-invite">
@@ -67,11 +70,8 @@ export default function RaceInvite({ code }) {
         <button type="button" className="race-copy-btn" onClick={() => copy(code, 'Code copied')}>
           Copy Code
         </button>
-        <button type="button" className="race-copy-btn" onClick={() => copy(link, 'Link copied')}>
-          Copy Race Link
-        </button>
         <button type="button" className="race-copy-btn" onClick={share}>
-          Share Race
+          {canShare ? 'Share Race' : 'Copy Invite Link'}
         </button>
       </div>
       <p className="race-invite-status" role="status" aria-live="polite">
