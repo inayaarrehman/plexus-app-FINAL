@@ -98,7 +98,7 @@ function PlayerBadge({ level }) {
   return <PlexusBadge level={ms} size={44} label={`Level ${ms} milestone badge`} />
 }
 
-export default function ServerRace({ bank, initialCode = '', onExit, account = true, onFallback, onSignIn }) {
+export default function ServerRace({ bank, initialCode = '', onExit, account = true, onFallback, onSignIn, autoJoin = false }) {
   const [view, setView] = useState('entry') // entry | lobby | race | results
   const [joinInput, setJoinInput] = useState(initialCode ? normalizeJoinCode(initialCode) : '')
   const [state, setState] = useState(null) // server state
@@ -165,15 +165,16 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
     } catch {
       /* ignore */
     }
-    // Signed-out players keep their one-tap join step: the code is filled in
-    // and they choose to join as a guest (no guest identity is made for them).
+    // Signed-out players join straight away only when they chose to (the
+    // "Join the race" popup, `autoJoin`); otherwise the code is filled in and
+    // no guest identity is made until they tap Join.
     const joinFromLink = () => {
       const c = normalizeJoinCode(initialCode)
       if (autoJoined.current || !isValidJoinCode(c)) return
       autoJoined.current = true
       // Back from signing in: the seat is moved instead (see below).
       if (account && readRaceResume()?.matchId) return
-      if (account || isGuestRacing()) join(c)
+      if (account || isGuestRacing() || autoJoin) join(c)
     }
     if (!id) {
       joinFromLink()

@@ -60,6 +60,15 @@ console.log('[3] Race: Plexus room, Sign in beside the guest message, seat kept'
   ok(/accountModal/.test(read('src/App.jsx')), 'the account dialog opens over Race')
 }
 
+console.log('[3b] Race links: Join the race popup')
+{
+  const app = read('src/App.jsx')
+  ok(/RaceInvitePrompt/.test(app) && /offerRaceInvite\(code\)/.test(app), 'a race link opens the Join the race popup')
+  ok(/!\(view === 'race' && invitePass\)/.test(app), 'joining from a link skips the Daily gate for that race only')
+  ok(/autoJoin/.test(read('src/components/ServerRace.jsx')), 'Join goes straight to the lobby')
+  ok(!read('src/components/RaceInvitePrompt.jsx').includes('—'), 'no em dashes in the popup')
+}
+
 console.log('[4] Home Screen install')
 {
   const m = JSON.parse(read('public/manifest.webmanifest'))

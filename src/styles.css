@@ -8110,3 +8110,14 @@ body.env-race .race-outcome-tie { background: var(--race-surface); }
 }
 .install-tabs { display: flex; flex-wrap: wrap; }
 .install-tab { flex: 1 1 auto; min-width: 0; white-space: nowrap; padding-inline: 10px; }
+
+/* Race link popup: one tap to the lobby. */
+.race-invite-prompt .modal-body { text-align: center; }
+.race-invite-art { display: block; width: min(200px, 60vw); margin: 0 auto 10px; }
+.race-invite-lede { margin: 0 0 4px; font-size: var(--type-body); line-height: 1.45; color: var(--text); }
+.race-invite-lede b { letter-spacing: 0.12em; }
+.race-invite-sub { margin: 0 0 16px; font-size: var(--type-secondary); color: var(--text-dim); }
+.race-invite-join { width: 100%; min-height: 48px; }
+.race-invite-later { display: block; width: 100%; min-height: 44px; margin-top: 6px; border: 0; background: none; color: var(--text-dim); font: inherit; font-weight: 700; cursor: pointer; }
+.race-invite-later:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; border-radius: 8px; }
+.race-invite-note-small { margin: 8px 0 0; font-size: var(--type-caption); line-height: 1.45; color: var(--text-dim); font-weight: 600; }

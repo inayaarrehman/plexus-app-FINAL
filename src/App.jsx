@@ -20,6 +20,7 @@ import SupportPage from './components/SupportPage.jsx'
 import ReportModal from './components/ReportModal.jsx'
 import HowToModal from './components/HowToModal.jsx'
 import InstallGuide from './components/InstallGuide.jsx'
+import RaceInvitePrompt from './components/RaceInvitePrompt.jsx'
 import { isSupabaseConfigured } from './lib/supabaseClient.js'
 import { onAuthChange } from './lib/auth.js'
 import { AUTH_REDIRECT, clearAuthHash } from './lib/authRedirect.js'
@@ -228,6 +229,47 @@ export default function App() {
   // A race join code carried in the URL hash (#race=CODE) drops a tapped
   // invite link straight into Race Mode's join screen.
   const [raceInitialCode, setRaceInitialCode] = useState('')
+  // A shared race link: a popup offers to join, then goes straight to that
+  // race's lobby. Joining from a link skips the Daily gate for that race
+  // (kept for this tab, so a reload mid-race still works); Race opened from
+  // Home still needs today's Daily.
+  const [raceInvite, setRaceInvite] = useState('')
+  const [inviteSignedIn, setInviteSignedIn] = useState(false)
+  const [raceAutoJoin, setRaceAutoJoin] = useState(false)
+  const [invitePass, setInvitePass] = useState(() => {
+    try {
+      return sessionStorage.getItem('plexus.raceInvitePass.v1') === '1'
+    } catch {
+      return false
+    }
+  })
+  const setPass = (on) => {
+    setInvitePass(on)
+    try {
+      if (on) sessionStorage.setItem('plexus.raceInvitePass.v1', '1')
+      else sessionStorage.removeItem('plexus.raceInvitePass.v1')
+    } catch {
+      /* storage unavailable */
+    }
+  }
+  const offerRaceInvite = (code) => {
+    setRaceInvite(code)
+    hasAccountSession().then(setInviteSignedIn)
+  }
+  const joinRaceInvite = () => {
+    setPass(true)
+    setRaceInitialCode(raceInvite)
+    setRaceAutoJoin(true)
+    setRaceInvite('')
+    setGameCtx(null)
+    setView('race')
+  }
+  const exitRace = () => {
+    setPass(false)
+    setRaceAutoJoin(false)
+    setGameCtx(null)
+    setView('home')
+  }
   const [showHowTo, setShowHowTo] = useState(false)
   const [showInstall, setShowInstall] = useState(false)
   const [showStats, setShowStats] = useState(false)
@@ -294,10 +336,10 @@ export default function App() {
     if (typeof window === 'undefined') return
     const code = raceCodeFromHash(window.location.hash)
     if (code) {
-      setRaceInitialCode(code)
-      setView('race')
-      // The code now lives in Race's join screen; drop it from the address so
-      // a refresh or later history entry does not reopen the invite.
+      // Offer to join; the code lives in the popup now, so drop it from the
+      // address so a refresh or later history entry does not reopen it.
+      offerRaceInvite(code)
+      setView('home')
       history.replaceState(history.state, '', window.location.pathname + window.location.search)
       return
     }
@@ -323,6 +365,19 @@ export default function App() {
         setView('race')
       })
     }
+  }, [])
+
+  // A race link opened while Plexus is already open in this tab.
+  useEffect(() => {
+    const on = () => {
+      const code = raceCodeFromHash(window.location.hash)
+      if (!code) return
+      offerRaceInvite(code)
+      history.replaceState(history.state, '', window.location.pathname + window.location.search)
+    }
+    window.addEventListener('hashchange', on)
+    return () => window.removeEventListener('hashchange', on)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // A shared Systems result links to its system (#system/Cardiology): open
@@ -501,7 +556,7 @@ export default function App() {
   // Route protection: whatever path leads into a gated view (nav, a hash
   // link, an internal button, a stale state), it is sent back to Today with
   // the same notice. Render-time check below keeps it from flashing.
-  const blockedView = !modesUnlocked && isGatedView(view, gameCtx?.mode)
+  const blockedView = !modesUnlocked && isGatedView(view, gameCtx?.mode) && !(view === 'race' && invitePass)
   useEffect(() => {
     if (!blockedView) return
     replaceNextRoute.current = true
@@ -1110,7 +1165,7 @@ export default function App() {
   if (view === 'race' && !blockedView) {
     return (
       <div className="app-shell">
-        <Race bank={bank} initialCode={raceInitialCode} onExit={goHome} onSignIn={supaConfigured ? () => setShowAccount(true) : null} />
+        <Race bank={bank} initialCode={raceInitialCode} autoJoin={raceAutoJoin} onExit={exitRace} onSignIn={supaConfigured ? () => setShowAccount(true) : null} />
         {accountModal}
       </div>
     )
@@ -1241,6 +1296,11 @@ export default function App() {
       {reportModal}
       {showStats && <StatsModal stats={stats} onClose={() => setShowStats(false)} />}
       {accountModal}
+      {raceInvite && <RaceInvitePrompt code={raceInvite} signedIn={inviteSignedIn} onJoin={joinRaceInvite} onClose={() => {
+        // Not now: the code waits until Race is opened from Home.
+        setPendingRaceCode(raceInvite)
+        setRaceInvite('')
+      }} />}
       <InstallPrompt />
     </div>
   )
