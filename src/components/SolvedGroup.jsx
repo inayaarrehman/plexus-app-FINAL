@@ -1,6 +1,5 @@
 import React from 'react'
 import { difficultyLabelOf } from './DifficultyIcon.jsx'
-import { softHyphenate } from './TileText.jsx'
 import ConnectionExplain from './ConnectionExplain.jsx'
 
 // ---------------------------------------------------------------------
@@ -39,7 +38,7 @@ export default function SolvedGroup({
         {category.items.map((it) => (
           <li className="strand-node" key={it.term}>
             <span className="strand-dot" aria-hidden="true" />
-            <span className="strand-term">{softHyphenate(it.term)}</span>
+            <span className="strand-term">{it.term}</span>
           </li>
         ))}
       </ol>

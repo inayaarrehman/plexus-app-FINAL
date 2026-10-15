@@ -14,7 +14,7 @@ import { buildRaceChallenge, makeJoinCode, normalizeJoinCode, isValidJoinCode, R
 import { timedBank, timedCanonicalId } from '../src/utils/timedLibrary.js'
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-const ACTIONS = new Set(['config', 'me', 'create', 'join', 'state', 'chaos', 'accept', 'start', 'answer', 'heartbeat', 'leave', 'arm', 'attack', 'rematch'])
+const ACTIONS = new Set(['config', 'me', 'create', 'join', 'state', 'chaos', 'accept', 'start', 'answer', 'heartbeat', 'leave', 'arm', 'attack', 'rematch', 'upgrade'])
 
 // Rounds for a code, built once per server instance.
 const roundsCache = new Map()
@@ -127,6 +127,15 @@ export async function handleRace({ token, body }, { rpc, getUser, makeCode = mak
         return fromDb(await rpc('race_arm', { p_user: u, p_match: matchId }))
       case 'attack':
         return fromDb(await rpc('race_attack', { p_user: u, p_match: matchId }))
+      case 'upgrade': {
+        // A guest signed in while in a lobby: move their seat to the account.
+        // The caller is the account; the guest session must be shown too, so
+        // nobody can take over a seat they do not hold.
+        if (guest) return bad('guest', 403)
+        const g = typeof body.guestToken === 'string' && body.guestToken ? await getUser(body.guestToken).catch(() => null) : null
+        if (!g || !g.id || g.is_anonymous !== true) return bad('not-guest', 403)
+        return fromDb(await rpc('race_upgrade_guest', { p_user: u, p_guest: g.id, p_match: matchId }))
+      }
       default:
         return bad('bad-action')
     }

@@ -114,13 +114,37 @@ export function levelCost(level) {
 //          Coverage past its cap is swapped for a puzzle tool or XP instead
 //          (COVERAGE_OVERFLOW below).
 //   server race items live in the trusted backend, not in this save
+//   desc   the Daily effect (kept for older callers)
+//   modes  what the tool does in each mode, checked against Game.jsx and
+//          Challenge.jsx (toolEffect). Puzzle tools work in today's Daily
+//          and in 3 Minutes only, one per Daily and one per session.
 export const KIT = {
-  curbside: { name: 'Consult', group: 'puzzle', desc: 'Highlights two tiles that belong together.', unlock: 1, max: 5, ready: true },
-  lab: { name: 'Rule Out', group: 'puzzle', desc: 'After a “one away” guess, identifies the tile that doesn’t belong with the other three.', unlock: 3, max: 5, ready: true },
-  'second-opinion': { name: 'Second Opinion', group: 'puzzle', desc: 'Restores one mistake allowance. Your original mistake stays recorded.', unlock: 5, max: 5, ready: true },
+  curbside: {
+    name: 'Consult', group: 'puzzle', desc: 'Highlights two tiles that belong together.', unlock: 1, max: 5, ready: true,
+    modes: {
+      daily: 'Highlights two tiles that belong together, from the easiest group you haven’t solved.',
+      timed: 'In rounds where you pick or group answers, highlights two that belong together, or one right answer when you pick two.',
+    },
+  },
+  lab: {
+    name: 'Rule Out', group: 'puzzle', desc: 'After a “one away” guess, identifies the tile that doesn’t belong with the other three.', unlock: 3, max: 5, ready: true,
+    modes: {
+      daily: 'After a “one away” guess, identifies the tile that doesn’t belong.',
+      timed: 'Crosses out one wrong choice, in rounds with a list of choices.',
+    },
+  },
+  'second-opinion': {
+    name: 'Second Opinion', group: 'puzzle', desc: 'Restores one mistake allowance. Your original mistake stays recorded.', unlock: 5, max: 5, ready: true,
+    modes: {
+      daily: 'After a mistake, restores one mistake allowance. Your original mistake stays recorded.',
+      timed: 'Right after a wrong answer, gives back the points it cost and restores your streak. The miss still counts toward accuracy.',
+    },
+  },
   shield: { name: 'Coverage', group: 'streak', desc: 'Covers one missed day to protect your streak. Used automatically.', unlock: 1, max: 2, ready: true },
 }
 export const PUZZLE_TOOLS = ['curbside', 'lab', 'second-opinion']
+// Where puzzle tools can be used, in one line.
+export const TOOL_WHERE = 'Today’s Daily and 3 Minutes only: one per Daily, one per 3 Minutes session. Not in the Archive, Systems or Race.'
 export const KIT_ORDER = ['curbside', 'lab', 'second-opinion', 'shield']
 
 // Race power-ups. Inventory, earning and spending happen on the server

@@ -160,7 +160,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     if (toolUsed) return { ok: false, why: 'One tool per session' }
     if (!(kit.counts[item] > 0)) return { ok: false, why: 'None left' }
     if (lockRef.current && item !== 'second-opinion') return { ok: false, why: 'Wait for the next round' }
-    if (!toolEffect(item)) return { ok: false, why: item === 'second-opinion' ? 'Right after a wrong answer' : 'Not for this round' }
+    if (!toolEffect(item)) return { ok: false, why: item === 'second-opinion' ? 'Right after a wrong answer' : item === 'lab' ? 'Only in rounds with choices' : 'Only in pick or group rounds' }
     return { ok: true }
   }
   const useTool = (item) => {

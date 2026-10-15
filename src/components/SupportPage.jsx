@@ -33,7 +33,7 @@ export default function SupportPage({ onBack, onNavigate }) {
         </p>
 
         <h2>Something wrong with a connection?</h2>
-        <p>After you solve a group, open Explanation and choose Report this connection. You can also report from Show connections on the results screen and from Connection of the day. The puzzle and connection are attached for you.</p>
+        <p>After you solve a group, open Explanation and choose Report this connection. You can also report from Review connections on the results screen and from Connection of the day. The puzzle and connection are attached for you.</p>
 
         <h2>Contact us</h2>
         {SUPPORT_EMAIL ? (

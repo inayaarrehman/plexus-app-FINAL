@@ -4692,7 +4692,18 @@ body.env-record {
   --difficulty-hard: #5a84d0;
   --difficulty-expert: #9973c0;
 }
-body.bg-home, body.env-daily, body.env-systems, body.env-challenge, body.env-review, body.env-record {
+body.env-race {
+  --room: var(--room-peacock);
+  --room-deep: var(--room-peacock-deep);
+  --room-deeper: var(--room-peacock-deeper);
+  --room-text: #fbf6ee; /* 6.4:1 on peacock */
+  --room-dim: #c3d8d6; /* 4.9:1 */
+  --difficulty-easy: #f0c9b9;
+  --difficulty-medium: #bfe3dc;
+  --difficulty-hard: #c9d6ef;
+  --difficulty-expert: #dccbe6;
+}
+body.bg-home, body.env-daily, body.env-systems, body.env-challenge, body.env-review, body.env-record, body.env-race {
   background: var(--room);
   color: var(--room-text);
   color-scheme: dark;
@@ -5591,12 +5602,16 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
   /* Shrink only as much as the longest word needs (--lw = its length in
      characters, set per tile), between a readable floor and the normal size. */
   font-size: clamp(0.7rem, calc(100cqi / (var(--lw, 10) * 0.6)), 1em);
-  /* Soft hyphens (added in TileText.jsx) and the browser's own hyphenation
-     come first; an arbitrary break only if a word still cannot fit. */
+  /* Whole words only. TileText.jsx measures the words and sets the size;
+     break points inside a word are added there only when it cannot fit at
+     the readable floor, and an arbitrary break is the very last resort. */
   hyphens: manual;
   -webkit-hyphens: manual;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   word-break: normal;
+  line-height: 1.22;
+  /* Tight tracking on long labels must not run words together. */
+  word-spacing: 0.08em;
   text-wrap: balance;
 }
 /* Very narrow phones (and high browser zoom): give the board a little more
@@ -5606,6 +5621,14 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
   .tile { padding-left: 3px; padding-right: 3px; }
   .tile-text { font-size: clamp(0.66rem, calc(100cqi / (var(--lw, 10) * 0.6)), 1em); }
 }
+.tile-text.is-split { overflow-wrap: anywhere; }
+.tile-nobreak { white-space: nowrap; }
+/* Tiles never hyphenate on their own; wrapping is handled by .tile-text. */
+.tile, .race-option { hyphens: manual; -webkit-hyphens: manual; overflow-wrap: normal; }
+/* Phones: a little less side padding gives long words more room. */
+@media (max-width: 430px) and (min-width: 361px) { .tile { padding-left: 4px; padding-right: 4px; } }
+.race-option { min-width: 0; }
+.race-option .tile-text { font-size: inherit; }
 
 /* ==================================================================
    YOUR KIT ON THE BOARD: description, first-use explanation, highlight
@@ -5806,7 +5829,7 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 .difficulty-tag.accordion-level { min-width: 0; font-weight: 600; opacity: 0.8; }
 /* Long concept names wrap inside their column on narrow phones. */
 .strand-node { min-width: 0; }
-.strand-term { min-width: 0; overflow-wrap: anywhere; hyphens: manual; -webkit-hyphens: manual; }
+.strand-term { min-width: 0; overflow-wrap: break-word; hyphens: manual; -webkit-hyphens: manual; }
 @media (max-width: 520px) {
   .strand-nodes { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
@@ -7931,3 +7954,159 @@ body.env-systems .mini-progress-track { background: color-mix(in srgb, var(--roo
 .policy-notice-text a, .home-edu-note a, .report-privacy-note a, .auth-data-note a, .legal-body p a, .support-page a { white-space: nowrap; }
 .sc-terms-check { min-height: 44px; align-items: center; }
 .sc-terms-link { display: inline-flex; align-items: center; min-height: 44px; font-size: var(--type-caption); font-weight: 700; color: inherit; }
+/* Your Tools: what a puzzle tool does in each mode. */
+.kit-modes { margin: 4px 0 6px; display: grid; gap: 6px; }
+.kit-modes div { display: grid; grid-template-columns: 4.6rem 1fr; gap: 8px; align-items: baseline; }
+.kit-modes dt { font-size: var(--type-caption); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-dim); }
+.kit-modes dd { margin: 0; font-size: var(--type-secondary); line-height: 1.45; }
+
+/* ==================================================================
+   HOME SCREEN INSTALL: the row in How to play and the guide
+   ================================================================== */
+.howto-install { margin: 16px 0 4px; }
+.howto-install-btn {
+  display: flex; align-items: center; gap: 12px; width: 100%; min-height: 56px; padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--text) 16%, transparent); border-radius: 12px;
+  background: color-mix(in srgb, var(--text) 5%, transparent); color: var(--text);
+  font: inherit; text-align: left; cursor: pointer;
+}
+.howto-install-btn:hover { border-color: color-mix(in srgb, var(--text) 32%, transparent); }
+.howto-install-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.howto-install-icon { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: color-mix(in srgb, var(--node-peacock) 18%, transparent); color: var(--text); }
+.howto-install-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1; }
+.howto-install-title { font-weight: 700; font-size: var(--type-secondary); }
+.howto-install-sub { font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
+.howto-install-chev { flex: none; font-size: 1.3rem; line-height: 1; color: var(--text-dim); }
+.howto-install-note { margin: 0; font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
+
+.install-guide .install-lede { margin: 0 0 14px; font-size: var(--type-secondary); line-height: 1.45; color: var(--text); }
+.install-status { margin: 4px 0 8px; font-size: var(--type-secondary); font-weight: 700; line-height: 1.45; color: var(--text); }
+.install-native { margin: 0 0 16px; }
+.install-native-btn { width: 100%; min-height: 46px; }
+.install-note { margin: 8px 0 0; font-size: var(--type-caption); line-height: 1.45; color: var(--text-dim); font-weight: 600; }
+.install-or { margin: 0 0 6px; }
+.install-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 12px; background: color-mix(in srgb, var(--text) 7%, transparent); }
+.install-tab {
+  min-height: 40px; padding: 6px 4px; border: 0; border-radius: 9px; background: transparent; color: var(--text-dim);
+  font: inherit; font-size: var(--type-caption); font-weight: 700; cursor: pointer; line-height: 1.2;
+}
+.install-tab.is-active { background: var(--bg-elevated, #fff); color: var(--text); box-shadow: 0 1px 0 rgba(10, 6, 20, 0.18); }
+.install-tab:focus-visible { outline: 2px solid var(--text); outline-offset: 1px; }
+.install-panel { padding-top: 12px; }
+.install-steps { margin: 0; padding: 0; list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 10px; }
+.install-steps li { counter-increment: step; position: relative; padding-left: 34px; font-size: var(--type-secondary); line-height: 1.45; color: var(--text); }
+.install-steps li::before {
+  content: counter(step); position: absolute; left: 0; top: 0; width: 24px; height: 24px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 0.78rem; font-weight: 700;
+  background: color-mix(in srgb, var(--node-peacock) 22%, transparent); color: var(--text);
+}
+.install-steps b { font-weight: 700; }
+
+/* ==================================================================
+   RACE: its own room (peacock), with the node motif, Plexus buttons and
+   surfaces. Setup and lobby first; play and results follow the room.
+   ================================================================== */
+body.env-race { --race-surface: color-mix(in srgb, var(--room-text) 8%, transparent); --race-line: color-mix(in srgb, var(--room-text) 20%, transparent); }
+body.env-race .race { max-width: 560px; width: 100%; margin: 0 auto; padding-bottom: 32px; }
+.race-hero { display: flex; flex-direction: column; align-items: center; text-align: center; margin: 4px 0 18px; }
+.race-hero .race-title { margin: 6px 0 4px; }
+.race-hero .race-lede { margin: 0; }
+.race-hero-small { margin-bottom: 10px; }
+.race-art { width: min(240px, 66vw); height: auto; overflow: visible; }
+.race-art-path { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: 0.5; }
+.race-art-path.race-art-a { stroke: var(--node-terracotta); }
+.race-art-path.race-art-b { stroke: var(--node-cobalt); }
+.race-art-runner.race-art-a circle { fill: var(--node-terracotta); }
+.race-art-runner.race-art-b circle { fill: var(--node-cobalt); }
+.race-art-goal { fill: var(--text); }
+.race-art-goal-ring { fill: none; stroke: color-mix(in srgb, var(--text) 35%, transparent); stroke-width: 1.5; }
+@media (prefers-reduced-motion: no-preference) {
+  .race-art-runner { animation: race-art-run 2.8s cubic-bezier(0.45, 0, 0.25, 1) both; }
+  .race-art-runner.race-art-b { animation-delay: 0.12s; }
+  @keyframes race-art-run { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
+}
+
+/* Panels: the translucent surfaces used across the rooms. */
+.race-panel { padding: 16px; border-radius: 16px; background: var(--race-surface, transparent); border: 1px solid var(--race-line, var(--border)); }
+.race-panel-title { margin: 0 0 10px; font-size: var(--type-caption); font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+.race-entry .race-entry-actions { max-width: none; gap: 12px; }
+.race-or { display: flex; align-items: center; gap: 10px; margin: 2px 0; font-size: var(--type-caption); font-weight: 600; color: var(--text-dim); }
+.race-or::before, .race-or::after { content: ''; flex: 1; height: 1px; background: var(--race-line, var(--border)); }
+
+/* Buttons: ivory primary like 3 Minutes' Start, outlined secondary. */
+body.env-race .race-primary-btn { width: 100%; min-height: 52px; background: var(--ivory-text); color: var(--ink); border-radius: 14px; box-shadow: 0 2px 0 rgba(10, 6, 20, 0.3); }
+body.env-race .race-primary-btn:disabled { opacity: 0.45; }
+body.env-race .race-secondary-btn { min-height: 46px; border-color: color-mix(in srgb, var(--room-text) 45%, transparent); color: var(--room-text); }
+body.env-race .race-secondary-btn:not(:disabled):hover { border-color: var(--room-text); }
+body.env-race .race-code-input { min-height: 46px; background: var(--tile-cream); color: var(--ink); border-color: transparent; letter-spacing: 0.3em; text-align: center; }
+body.env-race .race-code-input::placeholder { color: #6f6a78; letter-spacing: 0.08em; }
+body.env-race .race-code-input:focus-visible { outline: 3px solid color-mix(in srgb, var(--room-text) 70%, transparent); }
+body.env-race .race-primary-btn:focus-visible, body.env-race .race-secondary-btn:focus-visible { outline: 2px solid var(--room-text); outline-offset: 2px; }
+
+/* Guest rewards message with Sign in beside it. */
+.race-guest { display: flex; align-items: center; gap: 12px; margin: 16px 0 0; padding: 12px 14px; border-radius: 14px; border: 1px dashed var(--race-line, var(--border)); }
+.race-guest-text { flex: 1; min-width: 0; margin: 0; font-size: var(--type-caption); line-height: 1.45; font-weight: 600; color: var(--text); }
+.race-signin-btn { flex: none; min-height: 40px; padding: 0 16px; border-radius: 999px; border: 0; background: var(--ivory-text); color: var(--ink); font: inherit; font-size: var(--type-caption); font-weight: 700; cursor: pointer; }
+.race-signin-btn:focus-visible { outline: 2px solid var(--room-text, var(--text)); outline-offset: 2px; }
+body:not(.env-race) .race-signin-btn { background: var(--text); color: var(--bg); }
+.race-signed-note { color: var(--text); font-weight: 600; }
+.race-rules { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--race-line, var(--border)); }
+.race-rules .race-scoring { margin: 0; font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; line-height: 1.45; }
+.race-invite-note { padding: 10px 14px; border-radius: 12px; background: var(--race-surface, transparent); color: var(--text); margin: 0 0 14px; max-width: none; }
+
+/* Lobby: the invite card, the two players joined by a link, race type. */
+body.env-race .race-code-card { margin: 0 0 14px; background: var(--race-surface); border-color: var(--race-line); }
+body.env-race .race-code-value { color: var(--room-text); }
+body.env-race .race-copy-btn { min-height: 40px; color: var(--room-text); border-color: color-mix(in srgb, var(--room-text) 40%, transparent); }
+.race-players { position: relative; grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr); gap: 0; align-items: stretch; margin-bottom: 14px; }
+body.env-race .race-player { background: var(--race-surface); border-color: var(--race-line); min-width: 0; }
+.race-player-you { border-left: 3px solid var(--node-terracotta) !important; }
+.race-player-opp { border-left: 3px solid var(--node-cobalt) !important; }
+.race-player-you { grid-column: 1; grid-row: 1; }
+.race-player-opp { grid-column: 3; grid-row: 1; }
+.race-players-link { grid-column: 2; grid-row: 1; position: relative; display: block; align-self: center; height: 2px; background: repeating-linear-gradient(90deg, var(--text-dim) 0 4px, transparent 4px 8px); opacity: 0.6; }
+.race-players.is-paired .race-players-link { background: var(--text); opacity: 0.75; }
+.race-players-node { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--room, var(--bg)); border: 2px solid var(--text-dim); }
+.race-players.is-paired .race-players-node { background: var(--text); border-color: var(--text); }
+.race-player-text { min-width: 0; }
+.race-player-status { overflow-wrap: anywhere; }
+@media (max-width: 359px) {
+  .race-players { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .race-player-you { grid-column: 1; grid-row: 1; }
+  .race-player-opp { grid-column: 1; grid-row: 3; }
+  .race-players-link { grid-column: 1; grid-row: 2; width: 2px; height: 16px; justify-self: center; background: repeating-linear-gradient(180deg, var(--text-dim) 0 4px, transparent 4px 8px); }
+  .race-players.is-paired .race-players-link { background: var(--text); }
+}
+body.env-race .race-chaos { margin: 0 0 4px; }
+body.env-race .race-chaos.is-on { border-color: color-mix(in srgb, var(--node-plum) 70%, transparent); }
+.race-type { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 12px; background: color-mix(in srgb, var(--text) 9%, transparent); }
+.race-type-option { min-height: 42px; border: 0; border-radius: 9px; background: transparent; color: var(--text-dim); font: inherit; font-weight: 700; font-size: var(--type-secondary); cursor: pointer; }
+.race-type-option.is-active { background: var(--ivory-text); color: var(--ink); box-shadow: 0 1px 0 rgba(10, 6, 20, 0.25); }
+.race-type-option:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.race-type-option:disabled { cursor: default; }
+.race-chaos-classic, .race-chaos-copy { margin: 10px 0 0; font-size: var(--type-caption); line-height: 1.45; color: var(--text-dim); font-weight: 600; }
+.race-start { margin-top: 16px; }
+.race-start .race-start-note { margin: 0 0 10px; max-width: none; }
+
+/* Play: answer options are cream Plexus tiles, as on every board. */
+body.env-race .race-option { background: var(--tile-cream); color: var(--ink); border-color: transparent; box-shadow: 0 2px 0 rgba(10, 6, 20, 0.28); font-weight: 700; }
+body.env-race .race-option.is-selected { background: var(--ink); color: var(--ivory-text); border-color: var(--ink); }
+body.env-race .race-submit-btn { background: var(--ivory-text); color: var(--ink); }
+body.env-race .race-option.is-wrong-tile { background: color-mix(in srgb, var(--jewel-terracotta) 22%, var(--tile-cream)); border-color: var(--jewel-terracotta); }
+body.env-race .race-option.is-wrong-tile::after { color: var(--jewel-terracotta); }
+@media (max-width: 520px) {
+  .race-players .race-player-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+body.env-race .race-code-card { padding: 18px 16px 12px; gap: 6px; }
+body.env-race .race-invite-status { color: var(--room-text); }
+body.env-race .race-outcome-win { background: color-mix(in srgb, var(--difficulty-medium) 18%, transparent); }
+body.env-race .race-outcome-lose { background: color-mix(in srgb, var(--difficulty-easy) 16%, transparent); }
+body.env-race .race-outcome-tie { background: var(--race-surface); }
+.tool-card-body { min-width: 0; }
+.kit-modes, .kit-modes div, .kit-modes dd { min-width: 0; }
+.kit-modes dd { overflow-wrap: break-word; }
+@media (max-width: 400px) {
+  .kit-modes div { grid-template-columns: minmax(0, 1fr); gap: 1px; }
+}
+.install-tabs { display: flex; flex-wrap: wrap; }
+.install-tab { flex: 1 1 auto; min-width: 0; white-space: nowrap; padding-inline: 10px; }

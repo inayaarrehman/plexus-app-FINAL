@@ -4,6 +4,10 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Splash, { shouldShowSplash } from './components/Splash.jsx'
 import './styles.css'
+import { initInstall } from './lib/install.js'
+
+// Catch the browser's install offer early; it fires once, soon after load.
+initInstall()
 
 // Decided once at load (not inside a component) so StrictMode's double
 // render can't consume the once-per-launch flag before the splash shows.

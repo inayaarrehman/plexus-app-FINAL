@@ -147,6 +147,21 @@ console.log('[6] Level info through the server; Race power-ups are Race only')
   ok((await call('tok-a', { action: 'solo', item: 'mutation' })).status === 400, 'there is no solo (3 Minutes) use of Race power-ups')
 }
 
+console.log('[9] Sign in from a lobby: the seat moves only with both sessions')
+{
+  codes = ['UPGR']
+  const g = await call('tok-anon', { action: 'create', tz: 'UTC' })
+  const mid = g.json.match.id
+  ok((await call('tok-anon', { action: 'upgrade', matchId: mid, guestToken: 'tok-anon' })).json.reason === 'guest', 'a guest session cannot claim a seat')
+  ok((await call('tok-a', { action: 'upgrade', matchId: mid })).json.reason === 'not-guest', 'the guest session must be shown')
+  ok((await call('tok-a', { action: 'upgrade', matchId: mid, guestToken: 'tok-b' })).json.reason === 'not-guest', 'another account is not a guest session')
+  ok((await call('tok-a', { action: 'upgrade', matchId: mid, guestToken: 'tok-x' })).json.reason === 'not-guest', 'an unknown token is refused')
+  const up = await call('tok-a', { action: 'upgrade', matchId: mid, guestToken: 'tok-anon' })
+  ok(up.status === 200 && up.json.you === USERS['tok-a'].id && up.json.players[0].user_id === USERS['tok-a'].id && up.json.players[0].guest === false, 'with both sessions the seat moves to the account')
+  ok((await call('tok-anon', { action: 'state', matchId: mid })).json.reason === 'not-in-match', 'the guest session no longer has the seat')
+  sql(`delete from public.race_matches where id = '${mid}'`)
+}
+
 sql(`update public.race_config set value = 3000 where key = 'countdown_ms'; update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
 sql(`update public.race_config set value = 5 where key = 'crispr_unlock_races'; update public.race_config set value = 0.02 where key = 'crispr_drop_chance'`)
 console.log(`\n${failed ? `${failed} FAILED` : 'ALL RACE SERVER CHECKS PASSED'} (${passed} passed)`)

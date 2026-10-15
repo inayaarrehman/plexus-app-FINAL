@@ -1,13 +1,15 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import TileText from './TileText.jsx'
 import { INSTRUCTIONS } from '../utils/challengeEngine.js'
 import { RACE_LENGTH, normalizeJoinCode, isValidJoinCode, buildRaceChallenge } from '../utils/raceEngine.js'
 import { timedCanonicalId } from '../utils/timedLibrary.js'
-import { raceCall, subscribeMatch, getRaceSummary, startGuestRacing, isGuestRacing } from '../lib/raceApi.js'
+import { raceCall, subscribeMatch, getRaceSummary, startGuestRacing, isGuestRacing, upgradeGuestSeat, saveRaceResume, readRaceResume, clearRaceResume } from '../lib/raceApi.js'
 import { scrambleLabel, activeEffect } from '../utils/mutation.js'
 import { haptics } from '../utils/haptics.js'
 import { recordRaceFinish, recordRaceWin, toolKit } from '../progression/store.js'
 import { RACE_REWARDS, MUTATION_MS, CRISPR_UNLOCK_LEVEL, nextCrisprLevel, lastMilestoneLevel } from '../progression/config.js'
 import PlexusBadge from './PlexusBadge.jsx'
+import RaceArt from './RaceArt.jsx'
 import ToolReveal from './ToolReveal.jsx'
 import RaceInvite, { RACE_SCORING_COPY, raceJoinError } from './RaceInvite.jsx'
 import { RewardMoments } from './XpResult.jsx'
@@ -96,7 +98,7 @@ function PlayerBadge({ level }) {
   return <PlexusBadge level={ms} size={44} label={`Level ${ms} milestone badge`} />
 }
 
-export default function ServerRace({ bank, initialCode = '', onExit, account = true, onFallback }) {
+export default function ServerRace({ bank, initialCode = '', onExit, account = true, onFallback, onSignIn }) {
   const [view, setView] = useState('entry') // entry | lobby | race | results
   const [joinInput, setJoinInput] = useState(initialCode ? normalizeJoinCode(initialCode) : '')
   const [state, setState] = useState(null) // server state
@@ -169,6 +171,8 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
       const c = normalizeJoinCode(initialCode)
       if (autoJoined.current || !isValidJoinCode(c)) return
       autoJoined.current = true
+      // Back from signing in: the seat is moved instead (see below).
+      if (account && readRaceResume()?.matchId) return
       if (account || isGuestRacing()) join(c)
     }
     if (!id) {
@@ -201,6 +205,64 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
   const hasMut = (p) => !!(p && (p.temp_mutation || p.equip_mutation))
   const hasCrispr = (p) => !!(p && (p.temp_crispr || p.equip_crispr))
 
+  // ---- signing in from Race ----
+  // The guest message offers Sign in. The account dialog opens over Race, so
+  // the code, the invite and the lobby stay on screen. Once signed in, a guest
+  // seat in a lobby moves to the account (the server checks both sessions);
+  // a race already under way stays a guest race.
+  const [signedInHere, setSignedInHere] = useState(false)
+  const [seatNote, setSeatNote] = useState('')
+  const signIn = () => {
+    saveRaceResume({ code: code || joinInput || normalizeJoinCode(initialCode), matchId })
+    onSignIn?.()
+  }
+  const upgrading = useRef(false)
+  const moveSeat = async (id) => {
+    if (upgrading.current) return null
+    upgrading.current = true
+    const r = await upgradeGuestSeat(id)
+    upgrading.current = false
+    if (r.ok) {
+      apply(r)
+      setMe(r.you)
+      setSeatNote('')
+    } else {
+      setSeatNote(
+        {
+          'not-in-lobby': 'You’re signed in. This race already started, so it stays a guest race. Your next race can count.',
+          'already-in-match': 'You’re signed in, and your account is already in this race on another device.',
+        }[r.reason] || 'You’re signed in, but this lobby couldn’t move to your account. You can keep racing as a guest, or leave and join again.',
+      )
+    }
+    return r
+  }
+  const wasAccount = useRef(account)
+  useEffect(() => {
+    if (!account) {
+      wasAccount.current = false
+      return
+    }
+    if (wasAccount.current) return
+    wasAccount.current = true
+    setSignedInHere(true)
+    clearRaceResume()
+    if (matchId && status === 'lobby' && mine?.guest) moveSeat(matchId)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account])
+  // Back from a sign-in that left the page: pick up the guest seat if this
+  // device still has it, otherwise keep the code ready to join.
+  useEffect(() => {
+    const resume = account ? readRaceResume() : null
+    if (!resume) return
+    clearRaceResume()
+    if (resume.matchId) {
+      moveSeat(resume.matchId).then((r) => {
+        if (r && !r.ok && resume.code) setJoinInput(normalizeJoinCode(resume.code))
+      })
+    } else if (resume.code) setJoinInput(normalizeJoinCode(resume.code))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   // Phase from the server's view.
   useEffect(() => {
     if (!state) return
@@ -224,7 +286,8 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
       clearInterval(poll)
       clearInterval(beat)
     }
-  }, [matchId, apply])
+    // A guest who signs in moves to the account's session: subscribe again.
+  }, [matchId, apply, account])
 
   // Redraw while a countdown or effect is running.
   useEffect(() => {
@@ -384,38 +447,73 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
     </div>
   )
 
+  // The guest rewards message, with Sign in beside it; after signing in, what
+  // the existing reward rules mean for this race.
+  const opponentGuest = !!opp?.guest
+  const rewardNote = guest ? (
+    <div className="race-guest">
+      <p className="race-guest-text">You’re racing as a guest. Guest races don’t earn Race rewards.</p>
+      {onSignIn && (
+        <button type="button" className="race-signin-btn" onClick={signIn}>
+          Sign in
+        </button>
+      )}
+    </div>
+  ) : seatNote ? (
+    <p className="race-note race-signed-note" role="status">
+      {seatNote}
+    </p>
+  ) : (
+    <p className={`race-note ${signedInHere ? 'race-signed-note' : ''}`} role={signedInHere ? 'status' : undefined}>
+      {signedInHere ? 'You’re signed in. ' : ''}
+      {view === 'lobby' && opponentGuest
+        ? 'Your opponent is racing as a guest, so this race won’t count toward Race rewards.'
+        : view === 'lobby'
+          ? 'This race can count toward your Race rewards.'
+          : 'Your races can count toward Race rewards.'}
+    </p>
+  )
+
   if (view === 'entry' || !state) {
+    const invited = isValidJoinCode(initialCode) && !error
     return (
-      <div className="race">
+      <div className="race race-entry">
         {header}
-        <h1 className="race-title">Race</h1>
-        <p className="race-lede">Race a friend through the same Plexus, live.</p>
-        <p className="race-scoring">{RACE_SCORING_COPY}</p>
-        <TimedXpNote />
-        {isValidJoinCode(initialCode) && !error && (busy || account || isGuestRacing() ? (
-          busy && <p className="race-note" role="status">Joining race {normalizeJoinCode(initialCode)}…</p>
-        ) : (
-          <p className="race-note race-invite-note" role="status">
-            You’ve been invited to race <b>{normalizeJoinCode(initialCode)}</b>. Tap Join to enter the lobby as a guest.
-          </p>
-        ))}
-        <div className="race-entry-actions">
+        <div className="race-hero">
+          <RaceArt />
+          <h1 className="race-title">Race</h1>
+          <p className="race-lede">Race a friend through the same Plexus, live.</p>
+        </div>
+        {invited &&
+          (busy ? (
+            <p className="race-note race-joining" role="status">
+              Joining race {normalizeJoinCode(initialCode)}…
+            </p>
+          ) : (
+            <p className="race-note race-invite-note" role="status">
+              You’ve been invited to race <b>{normalizeJoinCode(initialCode)}</b>. Tap Join to enter the lobby{account || isGuestRacing() ? '' : ' as a guest'}.
+            </p>
+          ))}
+        <div className="race-panel race-entry-actions">
           <button className="race-primary-btn" onClick={create} disabled={busy}>
             Create a race
           </button>
+          <p className="race-or" aria-hidden="true">
+            <span>or join with a code</span>
+          </p>
           <div className="race-join-row">
-            <input className="race-code-input" value={joinInput} onChange={(e) => setJoinInput(normalizeJoinCode(e.target.value))} placeholder="Enter code" aria-label="Race join code" autoCapitalize="characters" maxLength={4} />
+            <input className="race-code-input" value={joinInput} onChange={(e) => setJoinInput(normalizeJoinCode(e.target.value))} placeholder="Code" aria-label="Race join code" autoCapitalize="characters" maxLength={4} />
             <button className="race-secondary-btn" onClick={() => join()} disabled={!isValidJoinCode(joinInput) || busy}>
               Join
             </button>
           </div>
         </div>
         {error && <p className="race-error" role="alert">{error}</p>}
-        <p className="race-note">
-          {guest
-            ? 'You’re playing as a guest. You can race and use Chaos, but guest races don’t earn Race rewards. Sign in to earn them and keep your progress.'
-            : 'This race counts toward your Race rewards.'}
-        </p>
+        {rewardNote}
+        <div className="race-rules">
+          <p className="race-scoring">{RACE_SCORING_COPY}</p>
+          <TimedXpNote />
+        </div>
       </div>
     )
   }
@@ -424,23 +522,29 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
     const both = players.length === 2
     const canStart = both && (!chaos || players.every((p) => p.chaos_accepted))
     const loadoutText = (p) => (p ? [hasMut(p) ? 'Mutation' : null, hasCrispr(p) ? 'CRISPR' : null].filter(Boolean).join(' + ') || 'nothing equipped' : '')
+    const myShownLevel = guest ? null : mine?.level ?? myLevel
+    const setType = (on) => {
+      if (on !== chaos && !busy) toggleChaos()
+    }
     return (
-      <div className="race">
+      <div className="race race-lobby">
         {header}
-        <h1 className="race-title">Race lobby</h1>
+        <div className="race-hero race-hero-small">
+          <h1 className="race-title">Race lobby</h1>
+        </div>
         <RaceInvite code={code} />
-        <div className="race-players">
-          <div className="race-player">
+        <div className={`race-players ${opp ? 'is-paired' : ''}`}>
+          <div className="race-player race-player-you">
             <div className="race-player-head">
-              <PlayerBadge level={guest ? null : myLevel} />
+              <PlayerBadge level={myShownLevel} />
               <div className="race-player-text">
                 <span className="race-player-name">You{guest ? ' (guest)' : ''}</span>
-                {!guest && myLevel ? <span className="race-player-level">Level {myLevel}</span> : null}
+                {myShownLevel ? <span className="race-player-level">Level {myShownLevel}</span> : null}
                 <span className="race-player-status is-ready">{chaos ? (mine?.chaos_accepted ? `Chaos accepted · ${loadoutText(mine)}` : 'Chaos not accepted yet') : 'Ready'}</span>
               </div>
             </div>
           </div>
-          <div className="race-player">
+          <div className="race-player race-player-opp">
             <div className="race-player-head">
               <PlayerBadge level={opp && !opp.guest ? opp.level : null} />
               <div className="race-player-text">
@@ -452,14 +556,24 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
               </div>
             </div>
           </div>
+          <span className="race-players-link" aria-hidden="true">
+            <span className="race-players-node" />
+          </span>
         </div>
 
-        <div className={`race-chaos ${chaos ? 'is-on' : ''}`}>
-          <label className="race-chaos-toggle">
-            <input type="checkbox" checked={chaos} onChange={toggleChaos} disabled={busy} />
-            <span>{free ? CHAOS_COPY_FREE : CHAOS_COPY}</span>
-          </label>
-          {!chaos && <p className="race-chaos-classic">Classic: no power-ups.</p>}
+        <section className={`race-panel race-chaos ${chaos ? 'is-on' : ''}`} aria-labelledby="race-type-label">
+          <h2 className="race-panel-title" id="race-type-label">
+            Race type
+          </h2>
+          <div className="race-type" role="radiogroup" aria-labelledby="race-type-label">
+            <button type="button" role="radio" aria-checked={!chaos} className={`race-type-option ${!chaos ? 'is-active' : ''}`} onClick={() => setType(false)} disabled={busy}>
+              Classic
+            </button>
+            <button type="button" role="radio" aria-checked={chaos} className={`race-type-option ${chaos ? 'is-active' : ''}`} onClick={() => setType(true)} disabled={busy}>
+              Chaos
+            </button>
+          </div>
+          {!chaos ? <p className="race-chaos-classic">Classic: no power-ups.</p> : <p className="race-chaos-copy">{free ? CHAOS_COPY_FREE : CHAOS_COPY}</p>}
           {chaos && <PowerupExplainer free={free} />}
           {chaos && free && (
             <div className="race-chaos-loadout">
@@ -490,13 +604,18 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
               )}
             </div>
           )}
-        </div>
+        </section>
         {error && <p className="race-error" role="alert">{error}</p>}
-        <p className="race-note">{!both ? 'Share the code or link. The race starts once your opponent joins.' : chaos && !canStart ? 'Both players must accept Chaos before the race can start. Turn Chaos off to race without power-ups.' : 'Either of you can start. It begins the race for both.'}</p>
-        <p className="race-scoring">{RACE_SCORING_COPY}</p>
-        <button className="race-primary-btn" onClick={start} disabled={!canStart || busy}>
-          Start race
-        </button>
+        {rewardNote}
+        <div className="race-start">
+          <p className="race-note race-start-note">{!both ? 'Share the code or link. The race starts once your opponent joins.' : chaos && !canStart ? 'Both players must accept Chaos before the race can start. Choose Classic to race without power-ups.' : 'Either of you can start. It begins the race for both.'}</p>
+          <button className="race-primary-btn" onClick={start} disabled={!canStart || busy}>
+            Start race
+          </button>
+        </div>
+        <div className="race-rules">
+          <p className="race-scoring">{RACE_SCORING_COPY}</p>
+        </div>
       </div>
     )
   }
@@ -592,7 +711,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
                   }}
                   disabled={!!verdict}
                 >
-                  {label(opt.text)}
+                  <TileText>{label(opt.text)}</TileText>
                 </button>
               )
             })}

@@ -15,9 +15,9 @@ import { ToolArt } from './RecordParts.jsx'
 //                   accuracy)
 // Race power-ups (Mutation, CRISPR) are for Race only.
 export const CHALLENGE_TOOL_TIP = {
-  curbside: 'Highlights answers that belong together in this round.',
-  lab: 'Crosses out one wrong choice in this round.',
-  'second-opinion': 'Right after a wrong answer, gives back the points it cost and restores your streak.',
+  curbside: KIT.curbside.modes.timed,
+  lab: KIT.lab.modes.timed,
+  'second-opinion': KIT['second-opinion'].modes.timed,
 }
 
 export function ToolsIntro({ kit }) {

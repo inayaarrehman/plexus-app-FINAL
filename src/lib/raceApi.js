@@ -152,3 +152,42 @@ export async function subscribeMatch(matchId, onChange) {
 export async function hasAccountSession() {
   return Boolean(await accountToken())
 }
+
+// ---- Signing in from Race ----
+// A guest who signs in while in a lobby keeps their seat: the server moves it
+// from the guest identity to the account (migration 0013). Both sessions are
+// shown: the account in the Authorization header, the guest token in the body.
+export async function upgradeGuestSeat(matchId) {
+  const g = await guestToken()
+  if (!g) return { ok: false, reason: 'not-guest' }
+  return raceCall('upgrade', { matchId, guestToken: g })
+}
+
+// Sign-in can leave the page (a confirmation email opens a new tab), so the
+// race the player was in is noted first and picked up again when Plexus opens
+// signed in. Kept for one hour at most.
+const RESUME_KEY = 'plexus.race.resume.v1'
+const RESUME_MS = 60 * 60 * 1000
+export function saveRaceResume({ code = '', matchId = null } = {}) {
+  try {
+    localStorage.setItem(RESUME_KEY, JSON.stringify({ code: String(code || ''), matchId: matchId || null, at: Date.now() }))
+  } catch {
+    /* storage unavailable */
+  }
+}
+export function readRaceResume(maxAge = RESUME_MS) {
+  try {
+    const r = JSON.parse(localStorage.getItem(RESUME_KEY) || 'null')
+    if (!r || typeof r !== 'object' || !(Date.now() - (r.at || 0) < Math.min(maxAge, RESUME_MS))) return null
+    return r
+  } catch {
+    return null
+  }
+}
+export function clearRaceResume() {
+  try {
+    localStorage.removeItem(RESUME_KEY)
+  } catch {
+    /* ignore */
+  }
+}

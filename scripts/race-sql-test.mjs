@@ -1,4 +1,4 @@
-// Race backend checks against a real Postgres with migrations 0003 and 0006-0011 applied.
+// Race backend checks against a real Postgres with migrations 0003 and 0006-0013 applied.
 //   PGTEST="psql -h /tmp/pgtest -p 5544 -U postgres -d t" node scripts/race-sql-test.mjs
 // The database needs Supabase-like stubs (auth.users, auth.uid(), roles anon /
 // authenticated / service_role); scripts/race-sql-setup.sql creates them.
@@ -643,6 +643,45 @@ console.log('[13] Milestone CRISPRs and levels in the Race lobby (0011)')
   const p2 = call('race_state', M, made2.match.id).players
   ok(p2.find((p) => p.user_id === C).level === null, 'a guest has no level')
   run(`delete from public.race_matches where id in ('${mid}', '${made2.match.id}')`)
+}
+
+console.log('[14] A guest who signs in keeps their lobby seat (0013)')
+{
+  const GU = uid(81)
+  const AC = uid(82)
+  const OP = uid(83)
+  run(`insert into auth.users(id, is_anonymous) values ('${GU}', true), ('${AC}', false), ('${OP}', false) on conflict (id) do update set is_anonymous = excluded.is_anonymous`)
+  run(`update public.race_config set value = 1 where key = 'chaos_free_loadout'`)
+  const code = newCode()
+  const made = call('race_create', GU, code, 'America/Los_Angeles', true)
+  const mid = made.match.id
+  call('race_join', OP, code, 'America/Los_Angeles', false)
+  call('race_set_chaos', GU, mid, true)
+  call('race_accept_chaos', GU, mid, false, false)
+  ok(call('race_upgrade_guest', GU, AC, mid).reason === 'guest', 'the account must not be a guest')
+  ok(call('race_upgrade_guest', AC, OP, mid).reason === 'not-guest', 'only a guest seat can be moved')
+  const up = call('race_upgrade_guest', AC, GU, mid)
+  ok(up.ok === true, 'a lobby seat moves from the guest to the account')
+  const me1 = up.players.find((p) => p.user_id === AC)
+  ok(me1 && me1.seat === 1 && me1.guest === false && !up.players.some((p) => p.user_id === GU), 'same seat, no longer a guest, the guest is gone from the race')
+  ok(up.match.code === code && up.match.chaos === true && up.match.status === 'lobby', 'same code, Chaos still on, still in the lobby')
+  ok(me1.chaos_accepted === false, 'Chaos acceptance is asked again for the account')
+  ok(j(`select to_jsonb(created_by) from public.race_matches where id = '${mid}'`) === AC, 'the account now owns the race it created')
+  ok(j(`select count(*) from public.race_events where match_id = '${mid}' and from_user = '${GU}'`) === 0, 'earlier events follow the seat')
+  ok(call('race_upgrade_guest', AC, GU, mid).ok === true, 'a retry after a dropped reply is harmless')
+  ok(call('race_state', OP, mid).players.find((p) => p.user_id === AC).guest === false, 'the opponent sees a signed-in player')
+  // Not once the race has started.
+  const code2 = newCode()
+  const m2 = call('race_create', GU, code2, 'America/Los_Angeles', true).match.id
+  call('race_join', OP, code2, 'America/Los_Angeles', false)
+  call('race_start', OP, m2)
+  ok(call('race_upgrade_guest', AC, GU, m2).reason === 'not-in-lobby', 'a race already under way stays a guest race')
+  // Not into a race the account is already in.
+  const code3 = newCode()
+  const m3 = call('race_create', GU, code3, 'America/Los_Angeles', true).match.id
+  call('race_join', AC, code3, 'America/Los_Angeles', false)
+  ok(call('race_upgrade_guest', AC, GU, m3).reason === 'already-in-match', 'not into a race the account already has a seat in')
+  run(`delete from public.race_matches where id in ('${mid}', '${m2}', '${m3}')`)
 }
 
 run(`update public.race_config set value = 3000 where key = 'countdown_ms'`)

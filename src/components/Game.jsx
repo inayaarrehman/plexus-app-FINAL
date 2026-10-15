@@ -845,17 +845,17 @@ function readKit() {
 // tap, click and keyboard (Enter/Space to open, Escape to close).
 const TOOL_DETAIL = {
   curbside: {
-    what: 'Highlights two tiles that belong together.',
+    what: KIT.curbside.modes.daily,
     more: 'The two tiles come from the easiest group you have not solved yet.',
     when: 'Any time before the board ends.',
   },
   lab: {
-    what: 'After a “one away” guess, identifies the tile that does not belong with the other three.',
+    what: KIT.lab.modes.daily,
     more: 'It works on your most recent submitted one-away guess, not on tiles you have only selected.',
     when: 'After you submit a guess and see “one away”.',
   },
   'second-opinion': {
-    what: 'Restores one mistake allowance. The original mistake stays recorded.',
+    what: KIT['second-opinion'].modes.daily,
     more: 'Your results still count the mistake. You just get one more guess.',
     when: 'After at least one mistake.',
   },
@@ -933,6 +933,7 @@ function ToolBar({ kit, toolState, toolsUsed, ask, setAsk, onConfirm, isDaily, c
             <div><dt>When</dt><dd>{TOOL_DETAIL[info].when}</dd></div>
             <div><dt>Status</dt><dd>{toolStatusText(info, toolState(info), kit.counts[info] || 0, kit.level)}</dd></div>
             <div><dt>Limit</dt><dd>One tool per Daily. A Daily solved with a tool doesn’t count as Perfect.</dd></div>
+            <div><dt>In 3 Minutes</dt><dd>{KIT[info].modes.timed}</dd></div>
             <div><dt>Get more</dt><dd>Level up and complete This Week.</dd></div>
           </dl>
           <button type="button" className="tool-info-close" onClick={() => { setInfo(null); document.getElementById(`tool-info-btn-${info}`)?.focus() }}>Close</button>

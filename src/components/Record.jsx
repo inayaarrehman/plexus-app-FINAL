@@ -147,7 +147,20 @@ function ToolCard({ item, def, count, cap = def.max, open, pending = [], onClaim
       </span>
       <div className="tool-card-body kit-text">
         <h3 className="kit-name">{def.name}</h3>
-        <p className="kit-desc">{def.desc}</p>
+        {def.modes ? (
+          <dl className="kit-modes">
+            <div>
+              <dt>Daily</dt>
+              <dd>{def.modes.daily}</dd>
+            </div>
+            <div>
+              <dt>3 Minutes</dt>
+              <dd>{def.modes.timed}</dd>
+            </div>
+          </dl>
+        ) : (
+          <p className="kit-desc">{def.desc}</p>
+        )}
         {open ? (
           <div className="tool-card-qty" aria-label={`${count} of ${cap} held`}>
             <Pips value={count} max={cap} />
@@ -488,7 +501,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
         <section className="record-kit" aria-label="Your Tools">
           <div className="kit-section">
             <h2 className="kit-group-head">
-              Puzzle Tools <span className="kit-group-sub">Dailies and 3 Minutes · one per Daily or session</span>
+              Puzzle Tools <span className="kit-group-sub">Today’s Daily and 3 Minutes · one per Daily or session</span>
             </h2>
             <ul className="kit-list tool-cards">
               {PUZZLE_TOOLS.map((item) => (
@@ -593,7 +606,7 @@ export default function Record({ history, todayKey, stats, onBack, systemsBoards
               <span className="kit-more-chev" aria-hidden="true" />
             </summary>
             <p className="kit-foot">
-              Caps: puzzle tools {snap.caps?.curbside ?? KIT.curbside.max} each (one more at every milestone), Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Puzzle tools that arrive when you are full wait here as claims, nothing is lost. Coverage that arrives when you hold {KIT.shield.max} becomes a puzzle tool or {XP.coverageAlt} XP. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Puzzle tools can be used in Dailies and 3 Minutes (one per Daily, one per 3 Minutes session), not in Systems or Race. Race power-ups are for Chaos races only. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
+              Caps: puzzle tools {snap.caps?.curbside ?? KIT.curbside.max} each (one more at every milestone), Coverage {KIT.shield.max}, Race power-ups {RACE_ITEMS.mutation.max} each. Puzzle tools that arrive when you are full wait here as claims, nothing is lost. Coverage that arrives when you hold {KIT.shield.max} becomes a puzzle tool or {XP.coverageAlt} XP. A Daily solved with a tool earns its normal XP and shows {'“'}Solved with assistance{'”'}; Perfect needs no mistakes and no tools. Puzzle tools can be used in today’s Daily and in 3 Minutes (one per Daily, one per 3 Minutes session), not in the Archive, Systems or Race. Race power-ups are for Chaos races only. Race rewards count up to {RACE_REWARDS.perOpponentPerDay} qualifying races per opponent and {RACE_REWARDS.perDay} in total each day.
             </p>
           </details>
           {convertedList.length > 0 && (

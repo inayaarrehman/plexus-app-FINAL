@@ -1,4 +1,5 @@
 {
+  "id": "/",
   "name": "Plexus",
   "short_name": "Plexus",
   "description": "A daily medical connections puzzle. Sixteen clinical concepts, four hidden links. Find the connections.",
@@ -8,7 +9,11 @@
   "orientation": "portrait",
   "background_color": "#1e1238",
   "theme_color": "#1e1238",
-  "categories": ["education", "games", "medical"],
+  "categories": [
+    "education",
+    "games",
+    "medical"
+  ],
   "icons": [
     {
       "src": "/icons/icon-192.png",

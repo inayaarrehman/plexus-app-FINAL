@@ -7,6 +7,11 @@ import Systems from './components/Systems.jsx'
 import Challenge from './components/Challenge.jsx'
 import Race from './components/Race.jsx'
 import { raceCodeFromHash } from './utils/raceEngine.js'
+import { readRaceResume, hasAccountSession } from './lib/raceApi.js'
+
+// Opened from an email link (sign-up confirmation or magic link)? Read before
+// the Supabase client clears the address.
+const FROM_EMAIL_LINK = typeof window !== 'undefined' && /access_token=|[?&]code=/.test(window.location.hash + window.location.search)
 import AppNav from './components/AppNav.jsx'
 import InstallPrompt from './components/InstallPrompt.jsx'
 import AuthModal from './components/AuthModal.jsx'
@@ -14,6 +19,7 @@ import Legal, { LEGAL_PAGES } from './components/Legal.jsx'
 import SupportPage from './components/SupportPage.jsx'
 import ReportModal from './components/ReportModal.jsx'
 import HowToModal from './components/HowToModal.jsx'
+import InstallGuide from './components/InstallGuide.jsx'
 import { isSupabaseConfigured } from './lib/supabaseClient.js'
 import { onAuthChange } from './lib/auth.js'
 import { AUTH_REDIRECT, clearAuthHash } from './lib/authRedirect.js'
@@ -223,6 +229,7 @@ export default function App() {
   // invite link straight into Race Mode's join screen.
   const [raceInitialCode, setRaceInitialCode] = useState('')
   const [showHowTo, setShowHowTo] = useState(false)
+  const [showInstall, setShowInstall] = useState(false)
   const [showStats, setShowStats] = useState(false)
   // A password reset link (or an expired one) opens Account at the right step.
   const [showAccount, setShowAccount] = useState(() => !!AUTH_REDIRECT && isSupabaseConfigured())
@@ -297,9 +304,24 @@ export default function App() {
     // A server race in progress on this tab (reload or reconnect): go back to
     // it; the race screen resumes from the server's state.
     try {
-      if (sessionStorage.getItem('plexus.raceMatch.v1')) setView('race')
+      if (sessionStorage.getItem('plexus.raceMatch.v1')) {
+        setView('race')
+        return
+      }
     } catch {
       /* storage unavailable */
+    }
+    // Signed in from Race in another tab (a confirmation link): go back to
+    // that race once this tab is signed in. Race picks up the seat or code.
+    // Without an email link, only a note from the last few minutes counts,
+    // so an abandoned sign-in does not reopen Race later.
+    const resume = readRaceResume(FROM_EMAIL_LINK ? undefined : 10 * 60 * 1000)
+    if (resume?.code) {
+      hasAccountSession().then((acct) => {
+        if (!acct) return
+        setRaceInitialCode(resume.code)
+        setView('race')
+      })
     }
   }, [])
 
@@ -453,6 +475,7 @@ export default function App() {
     b.classList.toggle('env-review', !isDevRoute && v === 'archive')
     b.classList.toggle('env-challenge', !isDevRoute && v === 'challenge')
     b.classList.toggle('env-record', !isDevRoute && v === 'record')
+    b.classList.toggle('env-race', !isDevRoute && v === 'race')
     b.classList.toggle('bg-challenge-focus', !isDevRoute && v === 'challenge' && challengePhase === 'playing')
   }, [view, legalPage, gameCtx, challengePhase, isDevRoute])
 
@@ -942,6 +965,21 @@ export default function App() {
   // Back, finish the step back.
   const finishRequestedExit = () => setTimeout(() => history.back(), 0)
 
+  // Account dialog: on every screen, including Race (which can open it for
+  // a guest who wants to sign in without leaving the lobby).
+  const accountModal = showAccount ? (
+    <AuthModal
+      initialMode={accountInitial}
+      onClose={() => {
+        setShowAccount(false)
+        setAccountInitial('in')
+        clearAuthHash()
+      }}
+      onAuthChanged={resyncProgress}
+      onOpenLegal={openLegal}
+    />
+  ) : null
+
   if (isDevRoute) {
     return (
       <Suspense fallback={null}>
@@ -1072,7 +1110,8 @@ export default function App() {
   if (view === 'race' && !blockedView) {
     return (
       <div className="app-shell">
-        <Race bank={bank} initialCode={raceInitialCode} onExit={goHome} />
+        <Race bank={bank} initialCode={raceInitialCode} onExit={goHome} onSignIn={supaConfigured ? () => setShowAccount(true) : null} />
+        {accountModal}
       </div>
     )
   }
@@ -1165,7 +1204,16 @@ export default function App() {
           {LOCK_COPY}
         </p>
       )}
-      {showHowTo && <HowToModal onClose={() => setShowHowTo(false)} />}
+      {showHowTo && (
+        <HowToModal
+          onClose={() => setShowHowTo(false)}
+          onInstall={() => {
+            setShowHowTo(false)
+            setShowInstall(true)
+          }}
+        />
+      )}
+      {showInstall && <InstallGuide onClose={() => setShowInstall(false)} />}
       {lockedPreview && (
         <Modal title={LOCKED_PREVIEWS[lockedPreview].title} onClose={() => setLockedPreview(null)} className="locked-preview">
           <p className="locked-preview-text">{LOCKED_PREVIEWS[lockedPreview].text}</p>
@@ -1192,18 +1240,7 @@ export default function App() {
       )}
       {reportModal}
       {showStats && <StatsModal stats={stats} onClose={() => setShowStats(false)} />}
-      {showAccount && (
-        <AuthModal
-          initialMode={accountInitial}
-          onClose={() => {
-            setShowAccount(false)
-            setAccountInitial('in')
-            clearAuthHash()
-          }}
-          onAuthChanged={resyncProgress}
-          onOpenLegal={openLegal}
-        />
-      )}
+      {accountModal}
       <InstallPrompt />
     </div>
   )

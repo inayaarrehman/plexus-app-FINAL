@@ -22,7 +22,8 @@
     "test:systems": "node scripts/systems-test.mjs",
     "test:submissions-db": "node scripts/submissions-sql-test.mjs",
     "test:legal": "node scripts/legal-test.mjs",
-    "test:privacy-db": "node scripts/privacy-sql-test.mjs"
+    "test:privacy-db": "node scripts/privacy-sql-test.mjs",
+    "test:ui": "node scripts/ui-improvements-test.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",

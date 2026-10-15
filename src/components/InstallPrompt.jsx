@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { canPromptInstall, isStandalone, promptInstall, subscribeInstall, wasInstalledNow } from '../lib/install.js'
 
 // ---------------------------------------------------------------------
 // InstallPrompt — unobtrusive "Add to Home Screen" hint.
@@ -10,8 +11,8 @@ import React, { useEffect, useRef, useState } from 'react'
 //     running as an installed app, we show the manual Share → Add to Home
 //     Screen instructions instead.
 // It never shows once installed (display-mode: standalone / navigator.standalone)
-// and remembers a dismissal so it doesn't nag. Purely additive — no effect on
-// gameplay.
+// and remembers a dismissal so it doesn't nag. Purely additive, no effect on
+// gameplay. The full guide is in How to play (InstallGuide.jsx).
 
 const DISMISS_KEY = 'plexus.installHintDismissed.v1'
 const VISITS_KEY = 'plexus.visits.v1'
@@ -47,21 +48,13 @@ export function installPromptEligible() {
   return sessions >= 2 || hasFinishedAPuzzle()
 }
 
-function isStandalone() {
-  if (typeof window === 'undefined') return false
-  return (
-    window.matchMedia?.('(display-mode: standalone)')?.matches ||
-    window.navigator.standalone === true
-  )
-}
-
 function isIos() {
   if (typeof navigator === 'undefined') return false
   return /iphone|ipad|ipod/i.test(navigator.userAgent) && !/crios|fxios/i.test(navigator.userAgent)
 }
 
 export default function InstallPrompt() {
-  const [deferred, setDeferred] = useState(null)
+  const [deferred, setDeferred] = useState(() => canPromptInstall())
   const [showIosHint, setShowIosHint] = useState(false)
   const [eligible] = useState(() => installPromptEligible())
   const [dismissed, setDismissed] = useState(() => {
@@ -74,29 +67,22 @@ export default function InstallPrompt() {
 
   useEffect(() => {
     if (dismissed || !eligible || isStandalone()) return undefined
-
-    const onBeforeInstall = (e) => {
-      e.preventDefault()
-      setDeferred(e)
+    // The install offer is captured at startup (lib/install.js), so it is
+    // still here if it arrived before this hint mounted.
+    const sync = () => {
+      setDeferred(canPromptInstall())
+      if (wasInstalledNow()) close()
     }
-    window.addEventListener('beforeinstallprompt', onBeforeInstall)
-
-    // iOS gives no event — decide from the environment.
+    sync()
+    // iOS gives no event: decide from the environment.
     if (isIos()) setShowIosHint(true)
-
-    const onInstalled = () => close()
-    window.addEventListener('appinstalled', onInstalled)
-
-    return () => {
-      window.removeEventListener('beforeinstallprompt', onBeforeInstall)
-      window.removeEventListener('appinstalled', onInstalled)
-    }
+    return subscribeInstall(sync)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dismissed])
 
   const close = () => {
     setDismissed(true)
-    setDeferred(null)
+    setDeferred(false)
     setShowIosHint(false)
     try {
       localStorage.setItem(DISMISS_KEY, '1')
@@ -107,16 +93,11 @@ export default function InstallPrompt() {
 
   const install = async () => {
     if (!deferred) return
-    deferred.prompt()
-    try {
-      await deferred.userChoice
-    } catch {
-      /* ignore */
-    }
+    await promptInstall()
     close()
   }
 
-  const visible = !dismissed && !isStandalone() && Boolean(deferred || showIosHint)
+  const visible = eligible && !dismissed && !isStandalone() && Boolean(deferred || showIosHint)
   // While the hint is fixed to the bottom, the page reserves its height so it
   // never covers the last content (styles.css, body.has-install-hint).
   const hintRef = useRef(null)

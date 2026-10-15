@@ -1,4 +1,5 @@
 import { INSTRUCTIONS } from '../utils/challengeEngine.js'
+import TileText from './TileText.jsx'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import {
   RACE_LENGTH,
@@ -13,6 +14,7 @@ import { haptics } from '../utils/haptics.js'
 import { timedCanonicalId } from '../utils/timedLibrary.js'
 import { recordRaceFinish, recordRaceWin } from '../progression/store.js'
 import { raceCall, hasAccountSession } from '../lib/raceApi.js'
+import { onAuthChange } from '../lib/auth.js'
 import ServerRace from './ServerRace.jsx'
 import { RewardMoments } from './XpResult.jsx'
 import { TimedXpNote, TimedResultLine } from './TimedXp.jsx'
@@ -63,12 +65,15 @@ export default function Race(props) {
       setMode(r.ok ? 'server' : 'local')
     })
   }, [mode])
+  // Signing in (or out) from Race updates the screen in place: the code, the
+  // invite and the lobby stay where they are.
+  useEffect(() => onAuthChange(() => hasAccountSession().then(setAccount)), [])
   if (mode === 'checking') return <div className="race"><p className="race-note">Loading Race…</p></div>
   if (mode === 'server') return <ServerRace {...props} account={account} onFallback={() => { setWhy('guest-unavailable'); setMode('local') }} />
   return <LocalRace {...props} signedOut={!account && why !== 'not-configured'} guestUnavailable={why === 'guest-unavailable'} />
 }
 
-function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUnavailable = false }) {
+function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUnavailable = false, onSignIn }) {
   const live = isSupabaseConfigured()
   const [phase, setPhase] = useState(initialCode ? 'join' : 'entry') // entry | join | lobby | countdown | playing | results
   const [code, setCode] = useState(initialCode ? normalizeJoinCode(initialCode) : '')
@@ -333,7 +338,16 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
             : 'Both players enter the same code to get the identical challenge set, then compare times.'}
         </p>
         {guestUnavailable && <p className="race-note">Live races for guests aren’t available right now, so this is a shared-code race: you both play the same set and compare scores. Sign in for live races with Chaos.</p>}
-        {signedOut && !guestUnavailable && <p className="race-note">Sign in to earn Race rewards.</p>}
+        {signedOut && !guestUnavailable && (
+          <div className="race-guest">
+            <p className="race-guest-text">Sign in to earn Race rewards.</p>
+            {onSignIn && (
+              <button type="button" className="race-signin-btn" onClick={onSignIn}>
+                Sign in
+              </button>
+            )}
+          </div>
+        )}
       </div>
     )
   }
@@ -443,7 +457,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
                   onClick={() => (isRapid ? toggle(opt.text) : answerSingle(opt))}
                   disabled={!!verdict}
                 >
-                  {opt.text}
+                  <TileText>{opt.text}</TileText>
                 </button>
               )
             })}

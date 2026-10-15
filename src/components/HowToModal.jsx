@@ -3,6 +3,7 @@ import Modal from './Modal.jsx'
 import BrandMark from './BrandMark.jsx'
 import { MAX_MISTAKES } from '../utils/game.js'
 import { XP, KIT, TIMED_XP, RACE_QUALIFY } from '../progression/config.js'
+import { isStandalone } from '../lib/install.js'
 
 // How to play. The rules fit in a few seconds: three short steps and a small
 // example drawn with demo tiles (everyday words, never a real or upcoming
@@ -34,8 +35,11 @@ const MORE = [
     id: 'tools',
     title: 'Tools',
     body: [
-      'Consult highlights two tiles that belong together. Rule Out finds the odd tile in a “one away” guess. Second Opinion gives back one mistake.',
-      'Tools work in Dailies and 3 Minutes: one per Daily, one per 3 Minutes session. A Daily solved with a tool shows “Solved with assistance.” You earn tools from levels, This Week and Coverage. Race has its own power-ups, Mutation and CRISPR, for Chaos races only.',
+      'Tools work in today’s Daily and in 3 Minutes: one per Daily, one per 3 Minutes session. Each works a little differently in the two.',
+      `Consult. Daily: ${KIT.curbside.modes.daily} 3 Minutes: ${KIT.curbside.modes.timed}`,
+      `Rule Out. Daily: ${KIT.lab.modes.daily} 3 Minutes: ${KIT.lab.modes.timed}`,
+      `Second Opinion. Daily: ${KIT['second-opinion'].modes.daily} 3 Minutes: ${KIT['second-opinion'].modes.timed}`,
+      'A Daily solved with a tool shows “Solved with assistance.” You earn tools from levels, This Week and Coverage. Race has its own power-ups, Mutation and CRISPR, for Chaos races only.',
     ],
   },
   {
@@ -80,7 +84,8 @@ const MORE = [
   },
 ]
 
-export default function HowToModal({ onClose }) {
+export default function HowToModal({ onClose, onInstall }) {
+  const standalone = isStandalone()
   return (
     <Modal onClose={onClose} title="How to play" className="howto-modal">
       <ol className="howto-rules">
@@ -129,6 +134,28 @@ export default function HowToModal({ onClose }) {
           </details>
         ))}
       </div>
+
+      {onInstall && (
+        <div className="howto-install">
+          {standalone ? (
+            <p className="howto-install-note">You’re playing from your Home Screen.</p>
+          ) : (
+            <button type="button" className="howto-install-btn" onClick={onInstall}>
+              <span className="howto-install-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="6" y="2.5" width="12" height="19" rx="2.6" />
+                  <path d="M12 8.5v6M9 11.5h6" />
+                </svg>
+              </span>
+              <span className="howto-install-text">
+                <span className="howto-install-title">Add Plexus to your Home Screen</span>
+                <span className="howto-install-sub">Open it in one tap, like an app</span>
+              </span>
+              <span className="howto-install-chev" aria-hidden="true">›</span>
+            </button>
+          )}
+        </div>
+      )}
 
       <p className="howto-signoff">
         <BrandMark size={22} decorative />
