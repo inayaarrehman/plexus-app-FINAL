@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { CONTACT_EMAIL, LEGAL_UPDATED, DISCLAIMER_TEXT, ACCURACY_TEXT, AGE_TEXT, TERMS_VERSION, PRIVACY_VERSION, SUBMISSION_TERMS_VERSION, OPERATOR_TEXT } from '../legal/config.js'
+import { CONTACT_EMAIL, LEGAL_UPDATED, PRIVACY_UPDATED, DISCLAIMER_TEXT, ACCURACY_TEXT, AGE_TEXT, TERMS_VERSION, PRIVACY_VERSION, SUBMISSION_TERMS_VERSION, OPERATOR_TEXT } from '../legal/config.js'
 import LegalFooter from './LegalFooter.jsx'
 
 // ---------------------------------------------------------------------
@@ -152,7 +152,7 @@ function Privacy() {
       <ul className="legal-summary">
         <li>You can play without an account. Most of your game then stays in your browser.</li>
         <li>Some features send information to our servers even without an account: live races, reports, support messages and suggested connections.</li>
-        <li>Plexus has no ads, no analytics service and no tracking cookies. We do not sell personal information or track you across other sites.</li>
+        <li>Plexus has no ads and no tracking cookies. It counts visits with Cloudflare Web Analytics, which uses no cookies and does not follow you across sites. We do not sell personal information.</li>
       </ul>
 
       <Section id="privacy-who" title="Who we are">
@@ -188,6 +188,9 @@ function Privacy() {
         <h3>Suggested connections</h3>
         <p>When you use Submit a Connection, we store the title, the four concepts, your explanation, the organ system you chose, any source you add, the version of the submission terms you confirmed, the app version and the random browser ID. If you are signed in, the suggestion is linked to your account. Suggestions are not shown to other players unless a reviewed version is added to the puzzle library.</p>
 
+        <h3>Visit counts</h3>
+        <p>Plexus uses Cloudflare Web Analytics to count visits and to find pages that load slowly. When you open playplexus.com, a small Cloudflare script sends Cloudflare the page address, the site that linked you there (if any), your browser and device type, and page load timings. Cloudflare also receives your IP address, which it uses to estimate your country. Cloudflare states that this service does not use cookies or your browser's storage and does not use your IP address to identify or follow you. We see only totals, such as the number of visits per page and per country, never a record of one person.</p>
+
         <h3>What you type</h3>
         <p>Reports, messages and suggestions are stored as you write them. Please do not include patient information, confidential records or other people's personal information. We use your reply email only to answer you about that message or report.</p>
       </Section>
@@ -202,6 +205,7 @@ function Privacy() {
           <li>to run live races, decide results and rewards, and keep them fair;</li>
           <li>to keep accounts working and secure, and to prevent spam and abuse;</li>
           <li>to read and answer reports and messages, review suggestions and fix problems;</li>
+          <li>to count visits and find pages that load slowly (as totals only);</li>
           <li>to meet legal obligations.</li>
         </ul>
         <p>We do not sell or rent personal information, use it for advertising, build profiles of you, or use it to train AI models. If we use an outside tool, including an AI tool, to help check the medical accuracy of a suggested connection, we send only the connection itself (its title, concepts, explanation and source), never your email or account details.</p>
@@ -211,6 +215,7 @@ function Privacy() {
         <ul>
           <li><b>Supabase</b>: database, sign-in, account emails, race server data and live race connections.</li>
           <li><b>Vercel</b>: hosts the site and runs the race and email functions. Like most hosts, it processes standard request information such as your IP address and browser type to deliver and protect the site.</li>
+          <li><b>Cloudflare</b>: Cloudflare Web Analytics counts visits and page load times (see Visit counts).</li>
           <li><b>Resend</b>: sends us an email copy of each new report, support message and suggestion, including any reply email you add.</li>
           <li><b>Our email provider</b>: receives those copies and any email you send to <Mail />.</li>
         </ul>
@@ -229,7 +234,7 @@ function Privacy() {
           <li><b>Connection reports:</b> kept to keep puzzles accurate. Any reply email is removed after 12 months, or when you delete your account.</li>
           <li><b>Suggested connections:</b> rejected or duplicate suggestions are deleted after 12 months, and suggestions not yet accepted are deleted when you delete your account. Accepted suggestions become part of the puzzle library.</li>
           <li><b>The random browser ID</b> on reports and suggestions: removed after 7 days.</li>
-          <li><b>Provider records</b> (Supabase sign-in and security logs, Vercel request logs, Resend and our inbox): kept for the periods those services use.</li>
+          <li><b>Provider records</b> (Supabase sign-in and security logs, Vercel request logs, Cloudflare visit counts, Resend and our inbox): kept for the periods those services use.</li>
           <li><b>Backups:</b> our database provider may keep backups for a limited time, so deleted information can remain in a backup until it expires.</li>
         </ul>
       </Section>
@@ -287,7 +292,7 @@ export default function Legal({ page, onBack, onNavigate }) {
         <h1 className="legal-title">{TITLES[page]}</h1>
         <Body />
         <p className="legal-updated">
-          Version {VERSIONS[page]} · Effective and last updated {LEGAL_UPDATED}
+          Version {VERSIONS[page]} · Effective and last updated {page === 'privacy' ? PRIVACY_UPDATED : LEGAL_UPDATED}
         </p>
       </article>
       <LegalFooter onNavigate={onNavigate} current={page} />

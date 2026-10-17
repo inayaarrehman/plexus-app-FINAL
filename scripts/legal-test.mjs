@@ -23,6 +23,11 @@ console.log('[1] Every outside service the code calls is named')
   if (/api\.resend\.com/.test(read('server/notifyCore.js'))) ok(/<b>Resend<\/b>/.test(legal), 'Resend (report and suggestion emails) is named')
   ok(/<b>Supabase<\/b>/.test(legal) && /<b>Vercel<\/b>/.test(legal), 'Supabase and Vercel are named')
   ok(/Supabase Realtime/.test(legal), 'the fallback live race channel is described')
+  if (/cloudflareinsights\.com/.test(read('index.html'))) {
+    ok(/<b>Cloudflare<\/b>/.test(legal) && /Visit counts/.test(legal), 'Cloudflare Web Analytics (index.html) is named and described')
+    ok(!/no analytics service/.test(legal), 'no claim that Plexus has no analytics')
+    ok(/playplexus\\\.com\$/.test(read('index.html')), 'analytics load only on playplexus.com')
+  }
   const code = ['src', 'api', 'server'].flatMap((d) => walk(d)).filter((f) => !f.startsWith('src/data/')).map(read).join('\n')
   const hosts = new Set([...code.matchAll(/https:\/\/([a-z0-9.-]+)\//gi)].map((m) => m[1].toLowerCase()))
   const known = ['playplexus.com', 'api.resend.com', 'resend.com', 'www.w3.org']

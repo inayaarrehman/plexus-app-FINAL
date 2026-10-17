@@ -34,6 +34,18 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Plexus" />
 
+    <!-- Cloudflare Web Analytics: visit counts without cookies (Privacy Policy, Visit counts).
+         Loaded only on playplexus.com, so local runs and preview deploys are not counted. -->
+    <script>
+      if (/(^|\.)playplexus\.com$/.test(location.hostname)) {
+        var cf = document.createElement('script')
+        cf.type = 'module'
+        cf.src = 'https://static.cloudflareinsights.com/beacon.min.js'
+        cf.setAttribute('data-cf-beacon', '{"token": "03187784ec6f407cb9bd04fec425b384"}')
+        document.head.appendChild(cf)
+      }
+    </script>
+
     <title>Plexus</title>
   </head>
   <body>

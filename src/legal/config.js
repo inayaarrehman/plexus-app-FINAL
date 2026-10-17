@@ -19,12 +19,15 @@ const envSupport = (() => {
 })()
 export const SUPPORT_EMAIL = (envSupport || CONTACT_EMAIL || '').trim()
 export const LEGAL_UPDATED = 'October 14, 2026'
+// The Privacy Policy changed on its own on October 17 2026 (Cloudflare Web
+// Analytics); the Terms and Disclaimer keep LEGAL_UPDATED.
+export const PRIVACY_UPDATED = 'October 17, 2026'
 // Policy versions. Change the matching one whenever a page changes in a way
 // people should know about; the app then shows a short update notice, and a
 // signed-in account records that it accepted the new version
 // (terms_acceptances, migration 0012). Sign-up records them too.
 export const TERMS_VERSION = '2026-10-14'
-export const PRIVACY_VERSION = '2026-10-14'
+export const PRIVACY_VERSION = '2026-10-17'
 // The submission terms confirmed at Submit a Connection (Terms, Submissions).
 export const SUBMISSION_TERMS_VERSION = '2026-10-14'
 export const COPYRIGHT = '© 2026 Plexus. All rights reserved.'

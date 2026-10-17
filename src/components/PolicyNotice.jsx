@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { TERMS_VERSION, PRIVACY_VERSION, LEGAL_UPDATED } from '../legal/config.js'
+import { TERMS_VERSION, PRIVACY_VERSION, LEGAL_UPDATED, PRIVACY_UPDATED } from '../legal/config.js'
 import { getCurrentUser, getMyAcceptance, recordAcceptance } from '../lib/auth.js'
 
 // A short notice on Home, never a pop-up: on a first visit it says what
@@ -29,6 +29,8 @@ export default function PolicyNotice({ onOpenLegal }) {
   const [ack] = useState(readAck)
   const [state, setState] = useState(() => (current(ack) ? null : ack ? 'updated' : 'first'))
   const [account, setAccount] = useState(false) // signed in and needs to accept
+  // Only the Privacy Policy changed since the last acceptance.
+  const [privacyOnly, setPrivacyOnly] = useState(() => !!ack && ack.terms === TERMS_VERSION)
   const [busy, setBusy] = useState(false)
 
   useEffect(() => {
@@ -40,6 +42,7 @@ export default function PolicyNotice({ onOpenLegal }) {
         if (!live) return
         if (!a || a.terms_version !== TERMS_VERSION || a.privacy_version !== PRIVACY_VERSION) {
           setAccount(true)
+          setPrivacyOnly(!!a && a.terms_version === TERMS_VERSION)
           setState((s) => s || 'updated')
         }
       })
@@ -80,6 +83,11 @@ export default function PolicyNotice({ onOpenLegal }) {
       {state === 'first' ? (
         <p className="policy-notice-text">
           Plexus is a study game, not medical advice ({link('disclaimer', 'Disclaimer')}). By playing, you agree to the {link('terms', 'Terms of Use')}. The {link('privacy', 'Privacy Policy')} explains what stays in your browser and what we store.
+        </p>
+      ) : privacyOnly ? (
+        <p className="policy-notice-text">
+          We updated the {link('privacy', 'Privacy Policy')} on {PRIVACY_UPDATED}: Plexus now counts visits with Cloudflare Web Analytics, which uses no cookies.{' '}
+          {account ? 'Please review it and accept to keep using your account.' : ''}
         </p>
       ) : (
         <p className="policy-notice-text">
