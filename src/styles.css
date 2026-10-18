@@ -6577,7 +6577,7 @@ ol.challenge-review-misses { list-style: none; padding: 0; text-align: left; }
 .race-powerup { min-height: 34px; padding: 0 12px; border-radius: 999px; border: 1.5px solid var(--node-plum, #7a49b2); background: none; color: var(--text); font-family: var(--font-ui); font-size: var(--type-caption); font-weight: 700; cursor: pointer; }
 .race-powerup:disabled { opacity: 0.55; cursor: default; }
 .race-powerup-opp { font-size: var(--type-caption); color: var(--text-dim); font-weight: 600; }
-.race-playing.is-mutated .race-option { outline: 2px dashed var(--node-plum, #7a49b2); outline-offset: -4px; }
+.race-playing.is-mutated .race-option, .race-playing.is-mutated .race-chain-step { outline: 2px dashed var(--node-plum, #7a49b2); outline-offset: -4px; }
 .race-error { color: var(--node-terracotta, #bf5236); font-weight: 700; font-size: var(--type-secondary); }
 .race-toast { position: static; margin: 6px auto; }
 
@@ -8121,3 +8121,60 @@ body.env-race .race-outcome-tie { background: var(--race-surface); }
 .race-invite-later { display: block; width: 100%; min-height: 44px; margin-top: 6px; border: 0; background: none; color: var(--text-dim); font: inherit; font-weight: 700; cursor: pointer; }
 .race-invite-later:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; border-radius: 8px; }
 .race-invite-note-small { margin: 8px 0 0; font-size: var(--type-caption); line-height: 1.45; color: var(--text-dim); font-weight: 600; }
+
+/* ==================================================================
+   IMPORTED TIMED ROUNDS (Split, Sequence, Missing Step): clinical context,
+   six-tile Split board, and per-tile explanations in the review.
+   ================================================================== */
+.challenge-context {
+  margin: 2px 0 8px;
+  padding: 8px 12px;
+  border-left: 3px solid color-mix(in srgb, var(--text) 45%, transparent);
+  border-radius: 0 10px 10px 0;
+  background: color-mix(in srgb, var(--text) 7%, transparent);
+  color: var(--text);
+  font-size: var(--type-secondary);
+  font-weight: 500;
+  line-height: 1.45;
+  overflow-wrap: break-word;
+  hyphens: manual;
+}
+/* Six phrase-length tiles: two columns on phones, three on wider screens. */
+.challenge-tile-grid.challenge-split-grid-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 560px) { .challenge-tile-grid.challenge-split-grid-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* The A/B badge sits in its own strip at the top, so it never covers words. */
+.challenge-split-grid-6 .tile { min-height: 72px; padding: 20px 8px 8px; }
+.challenge-split-labels .challenge-split-label { overflow-wrap: break-word; }
+.challenge-chain-step-btn, .challenge-chain-cell, .challenge-choice { overflow-wrap: break-word; hyphens: manual; min-width: 0; }
+.challenge-chain-cell { max-width: 100%; }
+.challenge-miss-context { margin: 2px 0 6px; font-size: var(--type-caption); line-height: 1.45; color: var(--text-dim); font-weight: 600; }
+.challenge-miss-details { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; text-align: left; }
+.challenge-miss-details li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 8px; row-gap: 1px; font-size: var(--type-caption); line-height: 1.45; }
+.challenge-miss-detail-tag { grid-row: span 2; align-self: start; min-width: 22px; padding: 1px 6px; border-radius: 6px; background: color-mix(in srgb, var(--text) 12%, transparent); font-weight: 800; text-align: center; }
+.challenge-miss-detail-text { font-weight: 700; color: var(--text); overflow-wrap: break-word; }
+.challenge-miss-detail-note { grid-column: 2; color: var(--text-dim); overflow-wrap: break-word; }
+.challenge-miss-details li:not(:has(.challenge-miss-detail-tag)) .challenge-miss-detail-text,
+.challenge-miss-details li:not(:has(.challenge-miss-detail-tag)) .challenge-miss-detail-note { grid-column: 1 / -1; }
+
+/* Race: Split, Chain and Complete the Chain rounds */
+.race-context { margin: 2px 0 8px; padding: 8px 12px; border-left: 3px solid color-mix(in srgb, var(--text) 45%, transparent); border-radius: 0 10px 10px 0; background: color-mix(in srgb, var(--text) 8%, transparent); font-size: var(--type-secondary); font-weight: 600; line-height: 1.45; overflow-wrap: break-word; }
+.race-chain-seq { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 4px 0 12px; }
+.race-chain-cell { max-width: 100%; padding: 6px 10px; border-radius: 8px; background: color-mix(in srgb, var(--text) 9%, transparent); font-weight: 600; overflow-wrap: break-word; }
+.race-chain-cell.is-blank { min-width: 28px; text-align: center; background: transparent; border: 1px dashed color-mix(in srgb, var(--text) 55%, transparent); color: var(--text-dim); }
+.race-chain-arrow { color: var(--text-dim); }
+.race-split-labels { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin-bottom: 10px; }
+.race-split-label { padding: 6px 10px; border-radius: 10px; border-left: 4px solid; background: color-mix(in srgb, var(--text) 8%, transparent); font-size: var(--type-caption); font-weight: 700; line-height: 1.35; overflow-wrap: break-word; }
+.race-split-label.split-a { border-left-color: var(--node-terracotta); }
+.race-split-label.split-b { border-left-color: var(--node-cobalt); }
+.race-split-tile { position: relative; padding-top: 22px; }
+body.env-race .race-split-tile.assigned-a { box-shadow: inset 0 0 0 3px var(--jewel-terracotta), 0 2px 0 rgba(10, 6, 20, 0.28); }
+body.env-race .race-split-tile.assigned-b { box-shadow: inset 0 0 0 3px var(--jewel-cobalt), 0 2px 0 rgba(10, 6, 20, 0.28); }
+.race-split-badge { position: absolute; top: 4px; right: 6px; width: 18px; height: 18px; border-radius: 50%; color: #fff; font-size: 0.7rem; font-weight: 800; line-height: 18px; text-align: center; }
+.race-split-badge.a { background: var(--jewel-terracotta); }
+.race-split-badge.b { background: var(--jewel-cobalt); }
+.race-chain-steps { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+.race-chain-step { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 10px 12px; border: 0; border-radius: 12px; background: var(--tile-cream); color: var(--ink); font: inherit; font-weight: 700; text-align: left; cursor: pointer; box-shadow: 0 2px 0 rgba(10, 6, 20, 0.28); }
+.race-chain-step.placed { box-shadow: inset 0 0 0 3px var(--jewel-cobalt), 0 2px 0 rgba(10, 6, 20, 0.28); }
+.race-chain-num { flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 0.78rem; font-weight: 800; background: color-mix(in srgb, var(--ink) 10%, transparent); }
+.race-chain-step.placed .race-chain-num { background: var(--jewel-cobalt); color: #fff; }
+.race-chain-text { min-width: 0; overflow-wrap: break-word; }

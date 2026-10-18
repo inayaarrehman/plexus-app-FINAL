@@ -23,7 +23,9 @@
     "test:submissions-db": "node scripts/submissions-sql-test.mjs",
     "test:legal": "node scripts/legal-test.mjs",
     "test:privacy-db": "node scripts/privacy-sql-test.mjs",
-    "test:ui": "node scripts/ui-improvements-test.mjs"
+    "test:ui": "node scripts/ui-improvements-test.mjs",
+    "test:timed-bank": "node scripts/timed-arrows-test.mjs",
+    "import:timed-arrows": "node scripts/library/import-timed-arrows.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",

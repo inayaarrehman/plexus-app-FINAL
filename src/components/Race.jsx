@@ -7,6 +7,7 @@ import {
   normalizeJoinCode,
   isValidJoinCode,
   buildRaceChallenge,
+  RACE_CLASSIC_TYPES,
 } from '../utils/raceEngine.js'
 import RaceInvite, { RACE_SCORING_COPY } from './RaceInvite.jsx'
 import { openLiveRace, isSupabaseConfigured } from '../lib/liveRace.js'
@@ -143,7 +144,7 @@ function LocalRace({ bank, initialCode = '', onExit, signedOut = false, guestUna
   // Build the deterministic set from the code and roll into the countdown.
   // Both players call this (host on tap, guest on the broadcast) → same set.
   const buildAndCountdown = () => {
-    const built = buildRaceChallenge(bank, { code, length: RACE_LENGTH, canonicalOf: timedCanonicalId })
+    const built = buildRaceChallenge(bank, { code, length: RACE_LENGTH, canonicalOf: timedCanonicalId, roundTypes: RACE_CLASSIC_TYPES })
     setRounds(built)
     setIdx(0)
     setSelected([])

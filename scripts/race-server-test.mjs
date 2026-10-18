@@ -62,8 +62,16 @@ await call('tok-a', { action: 'start', matchId: m })
 sql(`update public.race_matches set start_at = now() - interval '2 minutes' where id = '${m}'`)
 const rounds = roundsFor('WXYZ')
 ok(rounds.length === 10, 'server rebuilds the same 10 rounds from the code')
-const right = (r) => (r.type === 'rapidAssociation' ? r.correctAnswers.slice() : r.correctAnswer)
-const wrong = (r) => (r.type === 'rapidAssociation' ? r.options.filter((o) => !o.correct).slice(0, 4).map((o) => o.text) : r.options.find((o) => !o.correct).text)
+const right = (r) =>
+  r.type === 'rapidAssociation' ? r.correctAnswers.slice()
+  : r.type === 'split' ? Object.fromEntries(r.tiles.map((t) => [t.id, t.group]))
+  : r.type === 'chain' ? r.order.slice()
+  : r.correctAnswer
+const wrong = (r) =>
+  r.type === 'rapidAssociation' ? r.options.filter((o) => !o.correct).slice(0, 4).map((o) => o.text)
+  : r.type === 'split' ? Object.fromEntries(r.tiles.map((t) => [t.id, t.group === 'a' ? 'b' : 'a']))
+  : r.type === 'chain' ? r.order.slice().reverse()
+  : r.options.find((o) => !o.correct).text
 ok(scoreAnswer(rounds[0], right(rounds[0])) === true && scoreAnswer(rounds[0], wrong(rounds[0])) === false, 'scoring accepts the right answer only')
 let last
 for (let i = 0; i < 10; i++) last = await call('tok-a', { action: 'answer', matchId: m, round: i, answer: i < 7 ? right(rounds[i]) : wrong(rounds[i]), correct: true, score: 10 })

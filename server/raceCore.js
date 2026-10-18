@@ -24,10 +24,21 @@ export function roundsFor(code) {
   return roundsCache.get(c)
 }
 
-// Is `answer` right for this round? Single-answer rounds take the option
-// text; Rapid Association takes the four chosen texts (any order).
+// Is `answer` right for this round? Single-answer rounds (including
+// Complete the Chain) take the option text; Rapid Association takes the four
+// chosen texts (any order); Split takes { tileId: 'a' | 'b' } for every tile;
+// Chain takes the step ids in order.
 export function scoreAnswer(round, answer) {
   if (!round) return null
+  if (round.type === 'split') {
+    if (!answer || typeof answer !== 'object' || Array.isArray(answer)) return false
+    if (Object.keys(answer).length !== round.tiles.length) return false
+    return round.tiles.every((t) => answer[t.id] === t.group)
+  }
+  if (round.type === 'chain') {
+    if (!Array.isArray(answer) || answer.length !== round.order.length) return false
+    return round.order.every((id, i) => answer[i] === id)
+  }
   if (round.type === 'rapidAssociation') {
     if (!Array.isArray(answer) || answer.length !== 4 || new Set(answer).size !== 4) return false
     const want = new Set(round.correctAnswers)
@@ -112,8 +123,18 @@ export async function handleRace({ token, body }, { rpc, getUser, makeCode = mak
         return fromDb(r)
       }
       case 'rematch': {
+        // Race again with the same friend: pick a code whose imported rounds
+        // share no concept with the race just played, so a chain (in either
+        // format) or a Split is never served in back-to-back races.
+        const prev = await rpc('race_state', { p_user: u, p_match: matchId }).catch(() => null)
+        const prevKeys = new Set(prev?.match?.code ? roundsFor(prev.match.code).map((x) => x.conceptKey).filter(Boolean) : [])
+        const freshCode = () => {
+          let code = makeCode()
+          for (let k = 0; k < 24 && prevKeys.size && roundsFor(code).some((x) => prevKeys.has(x.conceptKey)); k++) code = makeCode()
+          return code
+        }
         for (let i = 0; i < 8; i++) {
-          const r = await rpc('race_rematch', { p_user: u, p_match: matchId, p_code: makeCode(), p_tz: tzOf(body), p_guest: guest })
+          const r = await rpc('race_rematch', { p_user: u, p_match: matchId, p_code: freshCode(), p_tz: tzOf(body), p_guest: guest })
           if (r && r.ok === false && r.reason === 'code-taken') continue
           return fromDb(r)
         }

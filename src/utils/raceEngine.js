@@ -19,9 +19,14 @@ import { composeNextRound, roundRelationships } from './challengeEngine.js'
 import { seededRng } from './puzzleAssembler.js'
 import { RACE_TIER_CURVE } from './timedPacing.js'
 
-// Only single-screen round types are used in Race so both clients render the
-// identical set simply and deterministically.
-export const RACE_ROUND_TYPES = ['rapidAssociation', 'commonLink', 'completeConnection', 'impostor']
+// Single-screen round types, so both clients render the identical set simply
+// and deterministically. The live (server) race also uses Split, Chain and
+// Complete the Chain, at most one of each per race (RACE_TYPE_CAP), so those
+// slower formats never crowd out the rest. The shared-code fallback race
+// (Race.jsx) keeps the original four.
+export const RACE_CLASSIC_TYPES = ['rapidAssociation', 'commonLink', 'completeConnection', 'impostor']
+export const RACE_ROUND_TYPES = [...RACE_CLASSIC_TYPES, 'split', 'chain', 'completeTheChain']
+export const RACE_TYPE_CAP = { split: 1, chain: 1, completeTheChain: 1 }
 
 export const RACE_LENGTH = 10
 
@@ -59,8 +64,9 @@ export function isValidJoinCode(code) {
 // Every race follows the same difficulty curve (RACE_TIER_CURVE): both
 // players get the identical rounds, options and order, and every race has
 // the same shape, so a harder generator gives neither player an edge.
-export function buildRaceChallenge(bank, { code, length = RACE_LENGTH, canonicalOf } = {}) {
+export function buildRaceChallenge(bank, { code, length = RACE_LENGTH, canonicalOf, roundTypes = RACE_ROUND_TYPES } = {}) {
   const seed = `race:${normalizeJoinCode(code)}`
+  const typeCount = {}
   const rng = seededRng(seed)
   const rounds = []
   const used = new Set()
@@ -69,8 +75,10 @@ export function buildRaceChallenge(bank, { code, length = RACE_LENGTH, canonical
   while (rounds.length < length && guard < length * 8) {
     guard++
     const tier = RACE_TIER_CURVE[rounds.length % RACE_TIER_CURVE.length]
-    const round = composeNextRound(bank, { rng, roundTypes: RACE_ROUND_TYPES, recent, used, canonicalOf, tier })
+    const allowed = roundTypes.filter((t) => !(t in RACE_TYPE_CAP) || (typeCount[t] || 0) < RACE_TYPE_CAP[t])
+    const round = composeNextRound(bank, { rng, roundTypes: allowed, recent, used, canonicalOf, tier })
     if (!round) break
+    typeCount[round.type] = (typeCount[round.type] || 0) + 1
     rounds.push(round)
     roundRelationships(round, bank, canonicalOf).forEach((id) => used.add(id))
     recent = [{ type: round.type, systems: round.systems, conceptTags: round.conceptTags }, ...recent].slice(0, 3)

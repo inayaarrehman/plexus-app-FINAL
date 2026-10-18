@@ -107,6 +107,9 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
   const [busy, setBusy] = useState(false)
   const [loadout, setLoadout] = useState({ mutation: false, crispr: false })
   const [selected, setSelected] = useState([])
+  // Split: tile id -> 'a' | 'b'. Chain: step ids in the order tapped.
+  const [assignments, setAssignments] = useState({})
+  const [chainOrder, setChainOrder] = useState([])
   const [verdict, setVerdict] = useState(null)
   // The tiles of a wrong answer, marked red (and shaken) for a moment.
   const [wrongTiles, setWrongTiles] = useState([])
@@ -387,7 +390,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
       const right = !!r.lastAnswer?.correct
       setHeldIdx(idx)
       setVerdict(right ? 'correct' : 'incorrect')
-      if (!right) setWrongTiles(Array.isArray(answer) ? answer : [answer])
+      if (!right) setWrongTiles(typeof answer === 'string' ? [answer] : Array.isArray(answer) && round.type === 'rapidAssociation' ? answer : [])
       right ? haptics.correct() : haptics.incorrect()
       // About half a second to register, then the next round. The race clock
       // (the server's) keeps running throughout.
@@ -395,6 +398,8 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
         setVerdict(null)
         setWrongTiles([])
         setSelected([])
+        setAssignments({})
+        setChainOrder([])
         setHeldIdx(null)
         apply(r)
         lockRef.current = false
@@ -695,14 +700,88 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
             </>
           )}
           {isRapid && <p className="race-prompt">{INSTRUCTIONS.rapidAssociation}</p>}
+          {(round.type === 'split' || round.type === 'chain' || round.type === 'completeTheChain') && (
+            <>
+              {round.title && <p className="race-anchor">{round.title}</p>}
+              {round.context && <p className="race-context">{round.context}</p>}
+              <p className="race-prompt">{round.prompt || INSTRUCTIONS[round.type]}</p>
+            </>
+          )}
+          {round.type === 'completeTheChain' && (
+            <div className="race-chain-seq">
+              {round.sequence.map((x, i) => (
+                <React.Fragment key={i}>
+                  {i > 0 && <span className="race-chain-arrow" aria-hidden="true">→</span>}
+                  <span className={`race-chain-cell ${x === null ? 'is-blank' : ''}`}>{x === null ? '?' : x}</span>
+                </React.Fragment>
+              ))}
+            </div>
+          )}
+          {round.type === 'split' && (
+            <>
+              <div className="race-split-labels">
+                <span className="race-split-label split-a">A · {round.labelA}</span>
+                <span className="race-split-label split-b">B · {round.labelB}</span>
+              </div>
+              <div className="race-options race-split-tiles">
+                {round.tiles.map((t) => {
+                  const g = assignments[t.id]
+                  return (
+                    <button
+                      key={t.id}
+                      className={`race-option race-split-tile ${g ? 'assigned-' + g : ''}`}
+                      data-id={t.id}
+                      data-original={t.text}
+                      aria-label={`${t.text}${g ? `, in ${g === 'a' ? 'A' : 'B'}` : ''}`}
+                      onClick={() => !verdict && setAssignments((prev) => ({ ...prev, [t.id]: prev[t.id] === 'a' ? 'b' : prev[t.id] === 'b' ? undefined : 'a' }))}
+                      disabled={!!verdict}
+                    >
+                      <TileText>{label(t.text)}</TileText>
+                      {g && <span className={`race-split-badge ${g}`}>{g === 'a' ? 'A' : 'B'}</span>}
+                    </button>
+                  )
+                })}
+              </div>
+              <button className="race-submit-btn" onClick={() => sendAnswer(Object.fromEntries(round.tiles.map((t) => [t.id, assignments[t.id]])))} disabled={!round.tiles.every((t) => assignments[t.id]) || !!verdict}>
+                Submit
+              </button>
+            </>
+          )}
+          {round.type === 'chain' && (
+            <>
+              <div className="race-chain-steps">
+                {round.steps.map((x) => {
+                  const pos = chainOrder.indexOf(x.id)
+                  return (
+                    <button
+                      key={x.id}
+                      className={`race-chain-step ${pos >= 0 ? 'placed' : ''}`}
+                      data-id={x.id}
+                      data-original={x.text}
+                      onClick={() => !verdict && setChainOrder((prev) => (prev.includes(x.id) ? prev.filter((k) => k !== x.id) : [...prev, x.id]))}
+                      disabled={!!verdict}
+                    >
+                      <span className="race-chain-num" aria-hidden="true">{pos >= 0 ? pos + 1 : ''}</span>
+                      <span className="race-chain-text">{label(x.text)}</span>
+                    </button>
+                  )
+                })}
+              </div>
+              <button className="race-submit-btn" onClick={() => sendAnswer(chainOrder)} disabled={chainOrder.length !== round.steps.length || !!verdict}>
+                Submit
+              </button>
+            </>
+          )}
+          {round.options && round.type !== 'split' && (
           <div className="race-options">
             {round.options.map((opt) => {
               const isSel = selected.includes(opt.text)
               return (
                 <button
-                  key={opt.text}
+                  key={opt.id || opt.text}
                   className={`race-option ${isSel ? 'is-selected' : ''} ${wrongTiles.includes(opt.text) ? 'is-wrong-tile' : ''}`}
                   data-original={opt.text}
+                  data-id={opt.id}
                   aria-label={opt.text}
                   onClick={() => {
                     if (isRapid) {
@@ -717,6 +796,7 @@ export default function ServerRace({ bank, initialCode = '', onExit, account = t
               )
             })}
           </div>
+          )}
           {isRapid && (
             <button className="race-submit-btn" onClick={() => sendAnswer(selected)} disabled={selected.length !== 4 || !!verdict}>
               Submit ({selected.length}/4)

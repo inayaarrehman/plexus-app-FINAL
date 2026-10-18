@@ -53,14 +53,13 @@ export const INSTRUCTIONS = {
 // The four original modes plus commonLink ("Which Connection?").
 export const CORE_ROUND_TYPES = ['miniConnections', 'impostor', 'rapidAssociation', 'completeConnection']
 
-// Expanded-mode readiness mirrors the mode-quality gate (assessModes):
-// READY modes enter the normal rotation; LIMITED modes (few distinct valid
-// rounds today — Split has 4 curated pairs, Chain 5 curated sequences) ship
-// behind this flag rather than being hidden, since each round is itself
-// high-quality. Flip the flag off to restrict to READY-only.
+// Expanded-mode readiness mirrors the mode-quality gate (assessModes).
+// Split, Chain and Complete the Chain were LIMITED (a handful of curated
+// pairs and chains) until October 17 2026, when the AI-reviewed timed bank
+// added 60 Split, 30 Sequence and 30 Missing Step rounds; they are READY now.
 export const INCLUDE_LIMITED_MODES = true
-const READY_MODES = ['commonLink', 'matchTheLink', 'doubleAgent', 'linkTwo', 'sameOrDifferent', 'completeTheChain']
-const LIMITED_MODES = ['split', 'chain']
+const READY_MODES = ['commonLink', 'matchTheLink', 'doubleAgent', 'linkTwo', 'sameOrDifferent', 'completeTheChain', 'split', 'chain']
+const LIMITED_MODES = []
 export const ROUND_TYPES = [
   ...CORE_ROUND_TYPES,
   ...READY_MODES,
@@ -447,9 +446,9 @@ export function validateRound(round, bank, { strictShortcuts = true } = {}) {
 // required modes (default includes the optional 5th, Common Link).
 // `avoidType` (usually the previous round's type) is skipped on the first
 // attempt for variety, but every type is tried before giving up.
-// Formats with only a handful of distinct rounds (curated chains, Split
-// pairs) come up less often so they do not repeat within a few sessions.
-export const TYPE_WEIGHT = { chain: 0.4, completeTheChain: 0.6, split: 0.7 }
+// Split and the two chain formats take longer to answer, so they come up a
+// little less often than one-tap rounds.
+export const TYPE_WEIGHT = { chain: 0.8, completeTheChain: 0.9, split: 0.9 }
 function weightedOrder(types, rng) {
   return types
     .map((t) => ({ t, k: Math.pow(rng(), 1 / (TYPE_WEIGHT[t] || 1)) }))
@@ -515,6 +514,12 @@ export function roundRelationships(round, bank, canonicalOf = (id) => id) {
   const add = (id) => id && out.add(canonicalOf(id))
   add(round.categoryId)
   for (const g of Object.values(round.groups || {})) add(g && g.categoryId)
+  // Imported Split, Sequence and Missing Step rounds: one key per concept,
+  // shared by a chain's two formats.
+  if (round.conceptKey) {
+    out.add(round.conceptKey)
+    return out
+  }
   const idx = titleIndex(bank)
   const named = [...(round.conceptTags || []), round.labelA, round.labelB, round.anchor, round.categoryTitle].filter(Boolean)
   for (const t of named) {

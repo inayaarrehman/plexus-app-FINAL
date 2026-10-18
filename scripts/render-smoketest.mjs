@@ -680,7 +680,9 @@ for (const type of ['doubleAgent', 'completeTheChain', 'linkTwo', 'sameOrDiffere
     } else if (type === 'sameOrDifferent') {
       if (round.pair.length !== 2 || !['same', 'different'].includes(round.answer)) throw new Error('expected a 2-concept pair + verdict')
     } else if (type === 'split') {
-      if (round.tiles.length !== 8 || round.tiles.filter((t) => t.group === 'a').length !== 4) throw new Error('expected 8 tiles, 4/4')
+      // Curated pairs: 8 tiles, 4/4. Imported rounds: 6 tiles, 3/3.
+      const n = round.source === 'arrows' ? 6 : 8
+      if (round.tiles.length !== n || round.tiles.filter((t) => t.group === 'a').length !== n / 2) throw new Error(`expected ${n} tiles, ${n / 2}/${n / 2}`)
     } else if (type === 'matchTheLink') {
       if (round.concepts.length !== 4 || round.labels.length !== 4) throw new Error('expected 4 concepts + 4 labels')
     } else if (type === 'chain') {

@@ -10,6 +10,7 @@
 // fudged. Cognitive-task tags let the session composer vary the KIND of
 // thinking, not just the mode.
 import chainBank from '../data/chainBank.js'
+import ARROWS from '../data/timedArrowsBank.js'
 import { normalizeTile, shuffleWith } from './puzzleAssembler.js'
 import { drawTier, pickAnchor, pickLookAlike, tierOf, blockedPair, VAGUE_LABELS } from './timedPacing.js'
 import { titleLeak, answerShortcuts } from './surfaceSignals.js'
@@ -107,8 +108,72 @@ function exclusiveTiles(idx, ownerTitle, otherTitle) {
 // Builders
 // ---------------------------------------------------------------------
 
-// SPLIT — two labelled buckets, eight concepts, sort four into each.
+// ---- Imported Split, Sequence and Missing Step rounds ----
+// From the AI-reviewed timed bank (src/data/timedArrowsBank.js). Each round
+// keeps its stable content id and tile, step and choice ids; only the display
+// order is shuffled, so the answer key never moves. A Sequence item and its
+// Missing Step item share a concept id and count as one chain for repeats:
+// both carry the same `conceptKey`, which the session (`used`), the device's
+// recent list (`avoid`) and the composer's last-rounds check all read.
+export const arrowsKey = (conceptId) => `arrows:${conceptId}`
+const arrowsFresh = (items, avoid) => {
+  if (!avoid || !avoid.size) return items
+  const fresh = items.filter((x) => !avoid.has(arrowsKey(x.conceptId)))
+  return fresh.length ? fresh : items
+}
+// Nearest requested tier, like pickAnchor.
+const nearTier = (items, tier) => {
+  if (tier == null) return items
+  for (const d of [0, 1, 2]) {
+    const near = items.filter((x) => Math.abs((x.tier ?? 1) - tier) === d)
+    if (near.length) return near
+  }
+  return items
+}
+const arrowsBase = (it, type) => ({
+  type,
+  source: 'arrows',
+  contentId: it.contentId,
+  conceptId: it.conceptId,
+  conceptKey: arrowsKey(it.conceptId),
+  conceptTags: [arrowsKey(it.conceptId)],
+  title: it.topic,
+  prompt: it.prompt,
+  context: it.context,
+  tier: it.tier,
+  systems: it.systems || [],
+  explanation: it.explanation,
+  review: it.review,
+})
+// Which source a format draws from: the imported items and the curated ones
+// in proportion to how many each has, recent ones last.
+// A requested tier (Race's shared difficulty curve) needs a rated item, and
+// only the imported rounds carry a difficulty rating.
+function chooseSource(arrowsCount, curatedCount, rng, tier) {
+  if (tier != null && arrowsCount) return 'arrows'
+  const total = arrowsCount + curatedCount
+  return total && rng() * total < arrowsCount ? 'arrows' : 'curated'
+}
+
+// SPLIT — two labelled buckets. Curated pairs (eight concepts, four each,
+// from verified categories) and imported rounds (six tiles, three each).
 export function buildSplit(bank, rng, opts = {}) {
+  if (chooseSource(ARROWS.split.length, SPLIT_PAIRS.length, rng, opts.tier) === 'arrows') {
+    const it = pick(nearTier(arrowsFresh(ARROWS.split, opts.avoid), opts.tier), rng)
+    return {
+      ...arrowsBase(it, 'split'),
+      labelA: it.labelA,
+      labelB: it.labelB,
+      tiles: shuffleWith(it.tiles.map((t) => ({ id: t.id, text: t.text, group: t.group, why: t.why })), rng),
+      details: [
+        ...it.tiles.filter((t) => t.group === 'a').map((t) => ({ text: t.text, tag: 'A', note: t.why })),
+        ...it.tiles.filter((t) => t.group === 'b').map((t) => ({ text: t.text, tag: 'B', note: t.why })),
+      ],
+    }
+  }
+  return buildCuratedSplit(bank, rng, opts)
+}
+function buildCuratedSplit(bank, rng, opts = {}) {
   const idx = index(bank)
   // Pairs served recently on this device go last.
   const recent = (ta) => (opts.avoid && idx.byTitle.get(ta) && opts.avoid.has(idx.byTitle.get(ta).id) ? 1 : 0)
@@ -118,8 +183,8 @@ export function buildSplit(bank, rng, opts = {}) {
     const b = idx.byTitle.get(tb)
     if (!a || !b) continue
     const tiles = [
-      ...a.tiles.map((text) => ({ text, group: 'a' })),
-      ...b.tiles.map((text) => ({ text, group: 'b' })),
+      ...a.tiles.map((text) => ({ id: text, text, group: 'a' })),
+      ...b.tiles.map((text) => ({ id: text, text, group: 'b' })),
     ]
     return {
       type: 'split',
@@ -324,15 +389,25 @@ export function buildSameOrDifferent(bank, rng, opts = {}) {
   }
 }
 
-// CHAIN — order four steps of a verified sequence.
-export function buildChain(bank, rng) {
+// CHAIN — order four steps. Curated chains (chainBank) and imported
+// Sequence items. Steps carry ids; `order` is the ids in the right order.
+export function buildChain(bank, rng, opts = {}) {
+  if (chooseSource(ARROWS.sequence.length, chainBank.length, rng, opts.tier) === 'arrows') {
+    const it = pick(nearTier(arrowsFresh(ARROWS.sequence, opts.avoid), opts.tier), rng)
+    return {
+      ...arrowsBase(it, 'chain'),
+      steps: shuffleWith(it.steps.map((x) => ({ id: x.id, text: x.text })), rng),
+      order: it.steps.map((x) => x.id),
+      details: it.steps.map((x, n) => ({ text: x.text, tag: String(n + 1), note: x.why })),
+    }
+  }
   if (chainBank.length === 0) return null
   const chain = pick(chainBank, rng)
   return {
     type: 'chain',
     prompt: 'Build the chain.',
     title: chain.title,
-    steps: shuffleWith(chain.steps, rng),
+    steps: shuffleWith(chain.steps.map((text) => ({ id: text, text })), rng),
     order: chain.steps.slice(),
     systems: chain.systems || [],
     conceptTags: [chain.title],
@@ -340,8 +415,23 @@ export function buildChain(bank, rng) {
   }
 }
 
-// COMPLETE THE CHAIN — one missing middle step, pick it.
-export function buildCompleteTheChain(bank, rng) {
+// COMPLETE THE CHAIN — one missing step, pick it. Curated chains (a middle
+// step hidden, curated decoys) and imported Missing Step items (fixed blank,
+// audited choices with ids).
+export function buildCompleteTheChain(bank, rng, opts = {}) {
+  if (chooseSource(ARROWS.missingStep.length, chainBank.length, rng, opts.tier) === 'arrows') {
+    const it = pick(nearTier(arrowsFresh(ARROWS.missingStep, opts.avoid), opts.tier), rng)
+    const correct = it.choices.find((c) => c.correct)
+    return {
+      ...arrowsBase(it, 'completeTheChain'),
+      sequence: it.chain.map((x, n) => (n === it.missingIndex ? null : x)),
+      missingIndex: it.missingIndex,
+      options: shuffleWith(it.choices.map((c) => ({ id: c.id, text: c.text, correct: c.correct, why: c.why })), rng),
+      correctId: it.correctId,
+      correctAnswer: correct.text,
+      details: [correct, ...it.choices.filter((c) => !c.correct)].map((c) => ({ text: c.text, tag: c.correct ? 'Answer' : '', note: c.why })),
+    }
+  }
   if (chainBank.length < 2) return null
   const chain = pick(chainBank, rng)
   const missingIndex = 1 + Math.floor(rng() * 2) // hide step 2 or 3 (a middle step)
@@ -356,7 +446,7 @@ export function buildCompleteTheChain(bank, rng) {
     title: chain.title,
     sequence,
     missingIndex,
-    options: shuffleWith([{ text: missing, correct: true }, ...distractors.map((text) => ({ text, correct: false }))], rng),
+    options: shuffleWith([{ id: missing, text: missing, correct: true }, ...distractors.map((text) => ({ id: text, text, correct: false }))], rng),
     correctAnswer: missing,
     systems: chain.systems || [],
     conceptTags: [chain.title],
@@ -383,6 +473,7 @@ export function validateModeRound(round, bank) {
   const idx = index(bank)
 
   if (round.type === 'split') {
+    if (round.source === 'arrows') return validateArrowsRound(round)
     if (round.tiles.length !== 8) return { valid: false, reason: 'split: expected 8 tiles' }
     if (new Set(round.tiles.map((t) => lower(t.text))).size !== 8) return { valid: false, reason: 'split: duplicate tile' }
     const aCount = round.tiles.filter((t) => t.group === 'a').length
@@ -445,18 +536,49 @@ export function validateModeRound(round, bank) {
   }
 
   if (round.type === 'chain') {
+    if (round.source === 'arrows') return validateArrowsRound(round)
     if (round.order.length !== 4 || round.steps.length !== 4) return { valid: false, reason: 'chain: need 4 steps' }
-    if (new Set(round.steps.map(lower)).size !== 4) return { valid: false, reason: 'chain: duplicate step' }
+    if (new Set(round.steps.map((x) => lower(x.text))).size !== 4) return { valid: false, reason: 'chain: duplicate step' }
     return { valid: true }
   }
 
   if (round.type === 'completeTheChain') {
+    if (round.source === 'arrows') return validateArrowsRound(round)
     if (round.options.filter((o) => o.correct).length !== 1) return { valid: false, reason: 'completeTheChain: need one answer' }
     if (new Set(round.options.map((o) => lower(o.text))).size !== round.options.length) return { valid: false, reason: 'completeTheChain: duplicate option' }
     return { valid: true }
   }
 
   return { valid: false, reason: `unknown mode ${round.type}` }
+}
+
+// Imported rounds: the shown round must still be its source item exactly
+// (same tiles, steps or choices and the same answers), only reordered.
+const ARROWS_BY_ID = new Map([...ARROWS.split, ...ARROWS.sequence, ...ARROWS.missingStep].map((x) => [x.contentId, x]))
+export function validateArrowsRound(round) {
+  const it = ARROWS_BY_ID.get(round.contentId)
+  if (!it) return { valid: false, reason: `unknown imported item ${round.contentId}` }
+  const same = (a, b) => JSON.stringify(a) === JSON.stringify(b)
+  const byId = (xs) => [...xs].sort((x, y) => String(x.id).localeCompare(String(y.id)))
+  if (round.type === 'split') {
+    if (round.tiles.length !== 6) return { valid: false, reason: 'split: expected 6 tiles' }
+    if (round.tiles.filter((t) => t.group === 'a').length !== 3) return { valid: false, reason: 'split: groups not 3/3' }
+    if (!same(byId(round.tiles).map((t) => [t.id, t.text, t.group]), byId(it.tiles).map((t) => [t.id, t.text, t.group]))) return { valid: false, reason: 'split: tiles differ from the source item' }
+    return { valid: true }
+  }
+  if (round.type === 'chain') {
+    if (!same(round.order, it.steps.map((x) => x.id))) return { valid: false, reason: 'chain: order differs from the source item' }
+    if (!same(byId(round.steps).map((x) => [x.id, x.text]), byId(it.steps).map((x) => [x.id, x.text]))) return { valid: false, reason: 'chain: steps differ from the source item' }
+    return { valid: true }
+  }
+  if (round.type === 'completeTheChain') {
+    if (round.options.length !== 4 || round.options.filter((o) => o.correct).length !== 1) return { valid: false, reason: 'missing step: need 4 choices, one right' }
+    if (!same(byId(round.options).map((o) => [o.id, o.text, !!o.correct]), byId(it.choices).map((o) => [o.id, o.text, !!o.correct]))) return { valid: false, reason: 'missing step: choices differ from the source item' }
+    const right = round.options.find((o) => o.correct)
+    if (right.id !== it.correctId || right.text !== it.chain[it.missingIndex] || round.sequence[it.missingIndex] !== null) return { valid: false, reason: 'missing step: answer does not fill the blank' }
+    return { valid: true }
+  }
+  return { valid: false, reason: `imported item in unknown format ${round.type}` }
 }
 
 // ---------------------------------------------------------------------

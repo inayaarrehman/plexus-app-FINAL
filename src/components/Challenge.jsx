@@ -62,7 +62,8 @@ function readTimedRecent() {
 }
 function rememberTimedRound(r) {
   try {
-    const ids = [r.categoryId, r.groups?.a?.categoryId, r.groups?.b?.categoryId].filter(Boolean)
+    // Imported chain rounds store their concept key, shared by both formats.
+    const ids = [r.categoryId, r.groups?.a?.categoryId, r.groups?.b?.categoryId, r.conceptKey].filter(Boolean)
     if (!ids.length) return
     const prev = JSON.parse(localStorage.getItem(TIMED_RECENT_KEY) || '[]')
     const next = [...ids, ...(Array.isArray(prev) ? prev : []).filter((x) => !ids.includes(x))].slice(0, TIMED_RECENT_MAX)
@@ -573,13 +574,16 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     if (option.correct) {
       applyCorrect(basePoints, responseMs, round.systems)
     } else {
-      const tag = round.categoryTitle || round.anchor || round.labelA || round.anchorLabel
+      const tag = round.categoryTitle || round.anchor || round.labelA || round.anchorLabel || round.title
       applyIncorrect(tag, round.correctAnswer, round.explanation, round.systems)
       logMistake({
         label: mistakeLabel(round),
+        context: round.context || '',
         yours: option.text,
         answer: round.correctAnswer,
-        explanation: [round.explanation, option.why ? `${option.text}: ${option.why}` : ''].filter(Boolean).join(' '),
+        // Imported rounds list every choice with its own explanation below.
+        explanation: round.details ? round.explanation : [round.explanation, option.why ? `${option.text}: ${option.why}` : ''].filter(Boolean).join(' '),
+        details: round.details || null,
       })
       setAnswerNote(`Answer: ${round.correctAnswer}`)
     }
@@ -599,7 +603,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     if (correct) applyCorrect(BASE_POINTS[round.type], responseMs, round.systems)
     else {
       applyIncorrect(missTag, missText, explanation, round.systems)
-      logMistake({ label: mistakeLabel(round), yours: yours || '', answer: missText, explanation })
+      logMistake({ label: mistakeLabel(round), context: round.context || '', yours: yours || '', answer: missText, explanation, details: round.details || null })
       setAnswerNote(`Answer: ${missText}`)
     }
     setTimeout(() => {
@@ -640,17 +644,18 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
     setAssignments((prev) => ({ ...prev, [text]: prev[text] === group ? undefined : group }))
   }
   // One tap cycles a concept: unplaced -> A -> B -> unplaced.
-  const cycleTile = (text) => {
+  // Keyed by tile id (imported rounds) or text (curated ones, where id = text).
+  const cycleTile = (key) => {
     if (feedback) return
-    setAssignments((prev) => ({ ...prev, [text]: prev[text] === 'a' ? 'b' : prev[text] === 'b' ? undefined : 'a' }))
+    setAssignments((prev) => ({ ...prev, [key]: prev[key] === 'a' ? 'b' : prev[key] === 'b' ? undefined : 'a' }))
   }
   const handleSplitSubmit = () => {
     if (lockRef.current) return
-    const allAssigned = round.tiles.every((t) => assignments[t.text] === 'a' || assignments[t.text] === 'b')
+    const allAssigned = round.tiles.every((t) => assignments[t.id] === 'a' || assignments[t.id] === 'b')
     if (!allAssigned) return
-    const correct = round.tiles.every((t) => assignments[t.text] === t.group)
+    const correct = round.tiles.every((t) => assignments[t.id] === t.group)
     resolveRound(correct, {
-      missTag: round.labelA,
+      missTag: round.source === 'arrows' ? round.title : round.labelA,
       missText: ['a', 'b'].map((g) => `${g === 'a' ? round.labelA : round.labelB}: ${round.tiles.filter((t) => t.group === g).map((t) => t.text).join(', ')}`).join(' · '),
       explanation: round.explanation,
     })
@@ -674,14 +679,16 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
   }
 
   // Chain: tap steps into order (tap a placed step to pull it back).
-  const placeChainStep = (text) => {
+  // Steps are placed by id; the answer is the ids in order.
+  const placeChainStep = (id) => {
     if (feedback) return
-    setChainOrder((prev) => (prev.includes(text) ? prev.filter((t) => t !== text) : [...prev, text]))
+    setChainOrder((prev) => (prev.includes(id) ? prev.filter((t) => t !== id) : [...prev, id]))
   }
   const handleChainSubmit = () => {
     if (lockRef.current || chainOrder.length !== round.order.length) return
-    const correct = round.order.every((step, i) => chainOrder[i] === step)
-    resolveRound(correct, { missTag: round.title, missText: round.order.join(' → '), explanation: round.explanation, yours: chainOrder.join(' → ') })
+    const correct = round.order.every((id, i) => chainOrder[i] === id)
+    const textOf = (id) => round.steps.find((x) => x.id === id)?.text || id
+    resolveRound(correct, { missTag: round.title, missText: round.order.map(textOf).join(' → '), explanation: round.explanation, yours: chainOrder.map(textOf).join(' → ') })
   }
 
   // -------------------------------------------------------------------
@@ -801,6 +808,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
             {mistakes.map((m, i) => (
               <li className="challenge-miss-item" key={i}>
                 <div className="challenge-miss-tag">{m.label}</div>
+                {m.context && <p className="challenge-miss-context">{m.context}</p>}
                 {m.yours && (
                   <div className="challenge-miss-text">
                     You chose: <span>{m.yours}</span>
@@ -810,6 +818,17 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
                   Answer: <strong>{m.answer}</strong>
                 </div>
                 {m.explanation && <p className="challenge-miss-explanation">{m.explanation}</p>}
+                {m.details && (
+                  <ul className="challenge-miss-details">
+                    {m.details.map((d, k) => (
+                      <li key={k}>
+                        {d.tag && <span className="challenge-miss-detail-tag">{d.tag}</span>}
+                        <span className="challenge-miss-detail-text">{d.text}</span>
+                        {d.note && <span className="challenge-miss-detail-note">{d.note}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ol>
@@ -1003,6 +1022,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
       {round.type === 'completeTheChain' && (
         <>
           <p className="challenge-anchor">{round.title}</p>
+          <RoundContext round={round} />
           <div className="challenge-chain-seq">
             {round.sequence.map((s, i) => (
               <React.Fragment key={i}>
@@ -1015,12 +1035,13 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
           <div className="challenge-choice-list">
             {round.options.map((o) => (
               <button
-                key={o.text}
+                key={o.id || o.text}
                 className={`challenge-choice ${choiceMark(o.text)} ${
                   feedback && o.text === resolvedOption ? (o.correct ? 'is-correct' : 'is-incorrect') : ''
                 } ${feedback === 'incorrect' && o.correct ? 'is-answer' : ''}`}
                 onClick={() => handleChoiceClick(o)}
                 disabled={!!feedback || ruledOut === o.text}
+                data-id={o.id}
               >
                 {(o.text)}
               </button>
@@ -1092,23 +1113,26 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
       {/* Split */}
       {round.type === 'split' && (
         <>
+          {round.source === 'arrows' && <p className="challenge-anchor">{round.title}</p>}
+          <RoundContext round={round} />
           <p className="challenge-prompt">{round.prompt}</p>
           <div className="challenge-split-labels">
             <span className="challenge-split-label split-a">A · {round.labelA}</span>
             <span className="challenge-split-label split-b">B · {round.labelB}</span>
           </div>
-          <div className="tile-grid challenge-tile-grid">
+          <div className={`tile-grid challenge-tile-grid ${round.tiles.length === 6 ? 'challenge-split-grid-6' : ''}`}>
             {round.tiles.map((t) => {
-              const g = assignments[t.text]
+              const g = assignments[t.id]
               return (
                 <button
-                  key={t.text}
+                  key={t.id}
                   className={`tile challenge-split-tile ${tileMark(t.text)} ${g ? 'assigned-' + g : ''} ${
                     feedback ? (g === t.group ? 'is-correct' : 'is-incorrect') : ''
                   }`}
-                  onClick={() => cycleTile(t.text)}
+                  onClick={() => cycleTile(t.id)}
                   disabled={!!feedback}
                   data-term={t.text}
+                  data-id={t.id}
                 >
                   <TileText>{(t.text)}</TileText>
                   {g && <span className={`challenge-split-badge ${g}`}>{g === 'a' ? 'A' : 'B'}</span>}
@@ -1116,7 +1140,7 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
               )
             })}
           </div>
-          {round.tiles.every((t) => assignments[t.text]) && !feedback && (
+          {round.tiles.every((t) => assignments[t.id]) && !feedback && (
             <button className="primary-btn challenge-submit-btn" onClick={handleSplitSubmit}>
               Submit
             </button>
@@ -1165,19 +1189,21 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
       {round.type === 'chain' && (
         <>
           <p className="challenge-anchor">{round.title}</p>
+          <RoundContext round={round} />
           <p className="challenge-prompt">{round.prompt}</p>
           <div className="challenge-chain-steps">
             {round.steps.map((s) => {
-              const pos = chainOrder.indexOf(s)
+              const pos = chainOrder.indexOf(s.id)
               return (
                 <button
-                  key={s}
+                  key={s.id}
                   className={`challenge-chain-step-btn ${pos >= 0 ? 'placed' : ''}`}
-                  onClick={() => placeChainStep(s)}
+                  onClick={() => placeChainStep(s.id)}
                   disabled={!!feedback}
+                  data-id={s.id}
                 >
                   {pos >= 0 && <span className="challenge-chain-num">{pos + 1}</span>}
-                  {(s)}
+                  {(s.text)}
                 </button>
               )
             })}
@@ -1191,6 +1217,14 @@ export default function Challenge({ bank, onExit, onPhaseChange, exitRequest = 0
       )}
     </div>
   )
+}
+
+// The clinical context of an imported round (the qualifiers the answer
+// depends on: untreated disease, preserved kidney function, one isolated
+// mechanism). Always shown before the player answers.
+function RoundContext({ round }) {
+  if (!round.context) return null
+  return <p className="challenge-context">{round.context}</p>
 }
 
 // What a mistake was about, for the end-of-run review.
@@ -1211,7 +1245,7 @@ function mistakeLabel(round) {
     case 'sameOrDifferent':
       return round.anchorLabel
     case 'split':
-      return `${round.labelA} or ${round.labelB}`
+      return round.source === 'arrows' ? `${round.title}: ${round.labelA} or ${round.labelB}` : `${round.labelA} or ${round.labelB}`
     case 'matchTheLink':
       return 'Match each concept to its group'
     default:
