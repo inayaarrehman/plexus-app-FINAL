@@ -1,7 +1,7 @@
 {
  "about": "Activation ledger. Published boards, the Daily schedule and Systems expansion boards are read back from this file on every run and never reshuffled (except a deliberate --rebuild with a new epoch).",
  "epoch": "2026-10-labels",
- "dailyStart": "2026-10-10",
+ "dailyStart": "2026-10-17",
  "boardConfig": {
   "target": {
    "approachable": 1,

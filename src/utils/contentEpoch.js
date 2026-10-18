@@ -21,8 +21,9 @@ import NEW_LIBRARY from '../data/library/newLibrary.js'
 // the level curve and Race rewards. Saved progress from before is cleared
 // the same way, once. Change PROGRESS_EPOCH only for a deliberate reset.
 // October 17 2026: bumped for launch, so every device starts clean alongside
-// the prelaunch server reset.
-export const PROGRESS_EPOCH = '2026-10-launch'
+// the prelaunch server reset; bumped again the same night when the Daily
+// schedule moved to start on October 17.
+export const PROGRESS_EPOCH = '2026-10-17-launch'
 export const CONTENT_EPOCH = `${NEW_LIBRARY.epoch || 'launch'}|${PROGRESS_EPOCH}`
 export const EPOCH_KEY = 'plexus.contentEpoch.v1'
 

@@ -1,6 +1,6 @@
 # Plexus new library: activation report
 
-Daily switches to the new library on **2026-10-10** (players' local date). Earlier dates keep the existing Daily.
+Daily switches to the new library on **2026-10-17** (players' local date). Earlier dates keep the existing Daily.
 
 ## Content
 
@@ -86,9 +86,9 @@ Total published: 77. Held: 0.
 ## Daily
 
 - Launch-ready Daily boards: **83** (54 with no flags, 29 flagged and cleared on review).
-- Runway: 2026-10-10 to 2026-12-31 with no relationship repeated.
+- Runway: 2026-10-17 to 2027-01-07 with no relationship repeated.
 - Boards waiting for review (not scheduled): 0. Rejected on review: 27. Connections left over (no compatible board yet): 2.
-- Exhaustion policy: after 2026-12-31, the Daily replays the same reviewed boards in the same order, one per day, under new dates. Nothing is regenerated, so no unreviewed board appears. Importing more content before then extends the new schedule instead.
+- Exhaustion policy: after 2027-01-07, the Daily replays the same reviewed boards in the same order, one per day, under new dates. Nothing is regenerated, so no unreviewed board appears. Importing more content before then extends the new schedule instead.
 
 ### Daily boards reviewed
 - **nd-001** cleared (Claude (AI board review), 2026-10-15): No RNA/protein methylation, ALS, or hyperparathyroidism groups are present; hyporeflexia is not a classic stones/bones/groans/overtones tile.
@@ -267,15 +267,15 @@ Total published: 77. Held: 0.
 ## Systems expansion from released Dailies
 
 - 49 expansion boards are scheduled. Each is released on the same date as the Daily that supplied its last connection, never earlier.
-  - Cardiology: 7 (first on 2026-11-04)
-  - Neurology: 7 (first on 2026-10-27)
-  - GI: 6 (first on 2026-10-21)
-  - Endocrine: 4 (first on 2026-10-29)
-  - Heme/Onc: 7 (first on 2026-10-19)
-  - Microbiology: 9 (first on 2026-10-19)
-  - Immunology: 3 (first on 2026-10-23)
-  - Dermatology: 2 (first on 2026-11-03)
-  - Biochemistry/Genetics: 4 (first on 2026-10-19)
+  - Cardiology: 7 (first on 2026-11-11)
+  - Neurology: 7 (first on 2026-11-03)
+  - GI: 6 (first on 2026-10-28)
+  - Endocrine: 4 (first on 2026-11-05)
+  - Heme/Onc: 7 (first on 2026-10-26)
+  - Microbiology: 9 (first on 2026-10-26)
+  - Immunology: 3 (first on 2026-10-30)
+  - Dermatology: 2 (first on 2026-11-10)
+  - Biochemistry/Genetics: 4 (first on 2026-10-26)
 - Connections still waiting in subject queues at the end of the runway: 136.
 - These boards intentionally reuse released Daily connections. That is separate from timed-mode overlap, which is excluded below.
 

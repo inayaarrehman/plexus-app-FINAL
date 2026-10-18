@@ -64,7 +64,7 @@ const { default: connectionBank } = await import(P('src/data/connectionBank.js')
 
 // The first date the new library serves Daily. Kept in the ledger so a rerun
 // never moves it; set once with --daily-start.
-const DAILY_START = opt('--daily-start', prevLedger?.dailyStart || anyLedger?.dailyStart || '2026-10-10')
+const DAILY_START = opt('--daily-start', prevLedger?.dailyStart || anyLedger?.dailyStart || '2026-10-17')
 if (!/^\d{4}-\d{2}-\d{2}$/.test(DAILY_START)) throw new Error('--daily-start must be YYYY-MM-DD')
 
 // ---- date helpers (calendar arithmetic on keys only) ----
