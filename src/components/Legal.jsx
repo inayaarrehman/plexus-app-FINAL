@@ -214,7 +214,7 @@ function Privacy() {
       <Section id="privacy-sharing" title="Who else handles it">
         <ul>
           <li><b>Supabase</b>: database, sign-in, account emails, race server data and live race connections.</li>
-          <li><b>Vercel</b>: hosts the site and runs the race and email functions. Like most hosts, it processes standard request information such as your IP address and browser type to deliver and protect the site.</li>
+          <li><b>Vercel</b>: hosts the site and runs the race and email functions. Vercel Web Analytics counts visits and page load times (see Visit counts). Like most hosts, Vercel processes standard request information such as your IP address and browser type to deliver and protect the site.</li>
           <li><b>Cloudflare</b>: Cloudflare Web Analytics counts visits and page load times (see Visit counts).</li>
           <li><b>Resend</b>: sends us an email copy of each new report, support message and suggestion, including any reply email you add.</li>
           <li><b>Our email provider</b>: receives those copies and any email you send to <Mail />.</li>
