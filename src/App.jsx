@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import connectionBank from './data/connectionBank.js'
 import Home from './components/Home.jsx'
 import Game from './components/Game.jsx'
@@ -1156,6 +1157,7 @@ export default function App() {
   if (view === 'challenge' && !blockedView) {
     return (
       <div className="app-shell">
+        <Analytics />
         {challengePhase !== 'playing' && <AppNav active="challenge" onNavigate={navigate} />}
         <Challenge bank={bank} onExit={goHome} onPhaseChange={setChallengePhase} exitRequest={exitRequest} onRequestedExit={finishRequestedExit} />
       </div>
@@ -1165,6 +1167,7 @@ export default function App() {
   if (view === 'race' && !blockedView) {
     return (
       <div className="app-shell">
+        <Analytics />
         <Race bank={bank} initialCode={raceInitialCode} autoJoin={raceAutoJoin} onExit={exitRace} onSignIn={supaConfigured ? () => setShowAccount(true) : null} />
         {accountModal}
       </div>
@@ -1174,6 +1177,7 @@ export default function App() {
   if (view === 'archive' && !blockedView) {
     return (
       <div className="app-shell">
+        <Analytics />
         <AppNav active="archive" onNavigate={navigate} />
         <Archive dailyHistory={getDailyHistory()} onOpenDay={openArchiveDay} onBack={goHome} currentStreak={streak.current} />
       </div>
@@ -1183,6 +1187,7 @@ export default function App() {
   if (view === 'systems' && !blockedView) {
     return (
       <div className="app-shell app-shell-systems">
+        <Analytics />
         <AppNav active="systems" onNavigate={navigate} />
         <Systems
           todayKey={todayKey}
@@ -1210,6 +1215,7 @@ export default function App() {
 
   return (
     <div className="app-shell app-shell-home">
+      <Analytics />
       <AppNav active="home" onNavigate={navigate} locked={!modesUnlocked} onLocked={openLockedPreview} />
       <Home
         key={todayKey}

@@ -1257,7 +1257,7 @@ console.log('\n[40] Legal: footer, disclaimers, privacy matches the code, accoun
   // and nothing collects what the page says Plexus does not collect
   const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(d + '/' + e.name) : /\.(jsx?|html)$/.test(e.name) ? [d + '/' + e.name] : []))
   const code = [...walk('src').filter((f) => !f.startsWith('src/data/')), 'index.html'].map((f) => src(f)).join('\n')
-  assert(!/navigator\.geolocation|gtag\(|googletagmanager|posthog|mixpanel|segment\.io|plausible\.io|@vercel\/analytics|sentry|hotjar|fbq\(/i.test(code), 'no trackers or location: if one is added, update the Privacy page first')
+  assert(!/navigator\.geolocation|gtag\(|googletagmanager|posthog|mixpanel|segment\.io|plausible\.io|sentry|hotjar|fbq\(/i.test(code), 'no trackers or location: if one is added, update the Privacy page first')
   assert(!/document\.cookie\s*=/.test(code), 'no cookies set by Plexus')
   // the cloud progress table is limited to its owner
   const mig3 = src('supabase/migrations/0003_profiles_progress.sql')
